@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	선생님은 이쁘다.
+	선생님은 이쁘다..
 </body>
 </html>

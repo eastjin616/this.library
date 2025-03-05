@@ -1,77 +1,137 @@
 #content>div{height: 100%;float: left;}
 
-      #header{height: 35%;}
-      #content{height: 50%;}
+      #header{height: 25%;}
+      #content{height: 60%;}
       #footer{height: 15%;}
 
       #content_1{width: 40%;height: 100%;}
       #content_2{width: 20%;height: 100%}
       #content_3{width: 40%;height: 100%}
+
+      
  /* -------------------------------------------------------- */
 
       #content_1_1{width: 100%; height: 22%; position: relative;}
       #content_1_2{width: 100%; height: 41%; position: relative;}
       #content_1_3{width: 100%; height: 37%; position: relative;}
 
+      #content_1_2_1{width: 100%; height: 79%; position: relative;}
+      #content_1_2_2{width: 100%; height: 21%; position: relative;}
 
-      #content_2_1{width: 100%; height: 10%;}
-      #content_2_2{width: 100%; height: 6%;}
-      #content_2_3{width: 100%; height: 37%;}
-      #content_2_4{width: 100%; height: 10%;}
-      #content_2_5{width: 100%; height: 37%;}
+      #content_1_3_1{width: 100%; height: 20%; position: relative;}
+      #content_1_3_2{width: 100%; height: 80%; position: relative;}
+      
+ /* -------------------------------------------------------- */
+      #content_2_1{width: 100%; height: 8%;}
+      #content_2_2{width: 100%; height: 8%; position: relative;}
+      #content_2_3{width: 100%; height: 38.5%; position: relative;}
+      #content_2_4{width: 100%; height: 8%; position: relative;}
+      #content_2_5{width: 100%; height: 37.5%; }
 
+      #content_2_5_1{width: 100%; height: 20%; position: relative;}
+      #content_2_5_2{width: 100%; height: 80%; position: relative;}
+      
+ /* -------------------------------------------------------- */
+      #content_3_1{width: 100%; height: 22%; position: relative;}
+      #content_3_2{width: 100%; height: 41%; position: relative;}
+      #content_3_3{width: 100%; height: 37%; position: relative;}
 
-      #content_3_1{width: 100%; height: 24%; position: relative;}
-      #content_3_2{width: 100%; height: 39%; position: relative;}
-      #content_3_3{width: 100%; height: 38%; position: relative;}
+      #content_3_2_1{width: 100%; height: 79%; position: relative;}
+      #content_3_2_2{width: 100%; height: 21%; position: relative;}
+
+      #content_3_3_1{width: 100%; height: 20%; position: relative;}
+      #content_3_3_2{width: 100%; height: 80%; position: relative;}
 /* -------------------------------------------------------- */
+  
+      .pick-button{
+            width: 100%;
+            border-radius: 300%;
+      }
 
 /* -------------------------------------------------------- */  
 
       #content_1_1>#silver {
             position: absolute;
-            margin-right: 23%;
+            margin-right: 35%;
             right: 0; 
-            bottom: 0; 
+            bottom: 7%; 
             height: 23%;
         }
-        #content_1_2>#silverbook {
+        #content_1_2_1>#book1 {
             position: absolute;
-            margin-top: 3%;
-            margin-right: 10%;
+            margin-top: 1%;
+            margin-right: 22%;
             right: 0; 
             bottom: 0;
             top: 0;
+            height: 100%;
+            width: 35%;
         }
-        #content_1_3>#leftbook {
+        #content_1_3_2>#book2 {
             position: absolute;
-            margin-right: 10%;
+            margin-top: 5%;
+            margin-right: 22%;
             right: 0;
             bottom: 0;
             top: 0;
+            height: 100%;
+            width: 35%;
         }
-
 /* -------------------------------------------------------- */
-        #content_3_1>#brown {
+      
+      #content_2_2>#gold{
+            width: 15%; height: 70%; 
+            margin-top: 6%;
+      }
+
+      #content_2_3>#book3{
             position: absolute;
-            margin-right: 10%;
-            left: 0; 
+            margin-left: 15%;
+            margin-top: 5%;
+      }
+
+      #content_2_4>button{
+            position: absolute;
+            bottom: 0;
+            right: 10%;
+      }
+
+      #content_2_5_2>#book4{
+            position: absolute;
+            margin-top: 8%;
+            margin-left: 20%;
+            height: 100%;
+            
+      }
+/* -------------------------------------------------------- */
+      #content_3_1>#brown {
+            position: absolute;
+            margin-right: 57%;
+            right: 0; 
             bottom: 0;
             height: 23%;
-        }
-      #content_3_2>#brownbook {
+      }
+      #content_3_2_1>#book5 {
           position: absolute;
-          margin-top: 3%;
+          margin-top: 2%;
+          margin-right: 43%;
           right: 0; 
           bottom: 0;
           top: 0;
+          height: 95%;
+          width: 35%;
       }
-      #content_3_3>#rightbook {
+      #content_3_3_2>#book6 { 
           position: absolute;
+          margin-top: 5%;
+          margin-right: 43%;
           right: 0;
           bottom: 0;
           top: 0;
+          height: 100%;
+          width: 35%;
       }
+      
 /* -------------------------------------------------------- */
 
       #content_1_2>img{height: 90%; display: block;}

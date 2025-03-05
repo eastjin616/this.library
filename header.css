@@ -1,0 +1,81 @@
+
+
+
+#header>div{height: 100%;}
+     #header_1_1>div{float: left;}
+     #header_1_2>div{float: left;}
+     #header_1_3>div{float: left;}
+
+     #header_1>#header_1_1{height: 25%;}
+     #header_1_1_1{width: 15%;height: 100%;}
+     #navigator{width: 60%;height: 100%; text-align: right;}
+     #navigator>a{justify-self: end; margin-right: 13px; line-height: 60px;}
+
+     #header_1>#header_1_2{height: 45%;}
+     #header_1_2_1{width: 30%;height: 100%;}
+     #header_1_2_2{width: 40%;height: 100%;}
+     #header_1_2_3{width: 30%;height: 100%;}
+
+     #header_1>#header_1_3{height: 30%;}
+     #header_1_3_1{width: 15%;height: 100%;}
+     #header_1_3_2{width: 70%;height: 100%;}
+     #header_1_3_3{width: 15%;height: 100%;}
+
+     a{
+      text-decoration-line: none; 
+      color: black;
+    }
+
+      #header_1_3_2 {
+        display: flex;
+        justify-content: center;  /* 가운데 정렬 */
+        align-items: center;
+        height: 100%;
+      }
+
+      #search-container {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        overflow: hidden;
+        width: 95%;  /* 부모 요소 크기에 맞춤 */
+        height: 70%; /* 높이를 #header_1_3_2 크기에 맞춤 */
+        background-color: white;
+        
+      }
+
+      #search-filter {
+        height: 100%;
+        width: 20%;
+        border: none;
+        background-color: white;
+        color: black;
+        font-size: 14px;
+        padding: 5px;
+        cursor: pointer;
+      }
+      
+
+      #search-bar {
+        flex: 1;
+        height: 100%;
+        border: none;
+        padding: 5px;
+        font-size: 16px;
+        outline: none;
+      }
+
+      #search-btn {
+        height: 100%;
+        width: 15%;
+        border: none;
+        background-color: burlywood;
+        color: black;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      #search-btn:hover {
+        background-color: #0056b3;
+      }

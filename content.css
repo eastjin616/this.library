@@ -7,3 +7,132 @@
       #content_1{width: 40%;height: 100%;}
       #content_2{width: 20%;height: 100%}
       #content_3{width: 40%;height: 100%}
+ /* -------------------------------------------------------- */
+
+      #content_1_1{width: 100%; height: 22%; position: relative;}
+      #content_1_2{width: 100%; height: 41%; position: relative;}
+      #content_1_3{width: 100%; height: 37%; position: relative;}
+
+
+      #content_2_1{width: 100%; height: 10%;}
+      #content_2_2{width: 100%; height: 6%;}
+      #content_2_3{width: 100%; height: 37%;}
+      #content_2_4{width: 100%; height: 10%;}
+      #content_2_5{width: 100%; height: 37%;}
+
+
+      #content_3_1{width: 100%; height: 24%; position: relative;}
+      #content_3_2{width: 100%; height: 39%; position: relative;}
+      #content_3_3{width: 100%; height: 38%; position: relative;}
+/* -------------------------------------------------------- */
+
+/* -------------------------------------------------------- */  
+
+      #content_1_1>#silver {
+            position: absolute;
+            margin-right: 23%;
+            right: 0; 
+            bottom: 0; 
+            height: 23%;
+        }
+        #content_1_2>#silverbook {
+            position: absolute;
+            margin-top: 3%;
+            margin-right: 10%;
+            right: 0; 
+            bottom: 0;
+            top: 0;
+        }
+        #content_1_3>#leftbook {
+            position: absolute;
+            margin-right: 10%;
+            right: 0;
+            bottom: 0;
+            top: 0;
+        }
+
+/* -------------------------------------------------------- */
+        #content_3_1>#brown {
+            position: absolute;
+            margin-right: 10%;
+            left: 0; 
+            bottom: 0;
+            height: 23%;
+        }
+      #content_3_2>#brownbook {
+          position: absolute;
+          margin-top: 3%;
+          right: 0; 
+          bottom: 0;
+          top: 0;
+      }
+      #content_3_3>#rightbook {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          top: 0;
+      }
+/* -------------------------------------------------------- */
+
+      #content_1_2>img{height: 90%; display: block;}
+      #content_1_3>img{width: 28%; height: 100%; display: block;}
+        
+      #content_2_2>img{height: 90%; margin: auto; display: block;}
+      #content_2_3>img{height: 90%; margin: auto; display: block;}
+      #content_2_5>img{height: 100%; margin: auto; display: block;}
+
+      #content_3_1>img{height: 23%;}
+      #content_3_2>img{height: 90%; display: block;}
+      #content_3_3>img{height: 98%; display: block;}
+
+      /* ---------------------------------------- */
+      .today-pick-container {
+            display: flex;
+            justify-content: center; /* 가로 중앙 정렬 */
+            align-items: center; /* 세로 중앙 정렬 (필요할 경우) */
+            height: 100%; /* 부모 요소 높이를 100%로 설정 */
+        }
+        
+        
+          .pick-button {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #4A4A4A;
+            background-color: #f8f9fa;
+            border: 2px solid #4A4A4A;
+            border-radius: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+          }
+        
+          .pick-button:hover {
+            background-color: #4A4A4A;
+            color: white;
+          }
+        
+          .book-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+          }
+        
+          .book-item {
+            text-align: center;
+          }
+        
+          .book-item img {
+            width: 120px;
+            height: 180px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+          }
+        
+          .book-item p {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+          }

@@ -1,5 +1,20 @@
 package com.kh.member.model.service;
 
-public class MemberService {
+import static com.kh.common.JDBCTemplate.*;
 
+import java.sql.Connection;
+
+import com.kh.member.model.dao.MemberDao;
+import com.kh.member.model.vo.Member;
+
+public class MemberService {
+	public Member loginMember(String memId, String memPwd) {
+		Connection conn = getConnection();
+		Member m = new MemberDao().loginMember(conn, memId, memPwd);
+		
+		close(conn);
+		
+		return m;
+				
+	}
 }

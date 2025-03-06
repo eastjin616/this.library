@@ -1,0 +1,20 @@
+git init --> git이 관리하는 폴더로 지정됨
+git status --> git의 상태를 봄
+git add 파일명 --> 이 파일을 commit대상에 올림
+git add . --> 모든 파일을 commit 대상에 올림
+git commit -m "메시지" --> 커밋하는거
+git reset --hard 커밋해쉬코드 --> 메인 브런치를 변경하는것(그냥 리셋)
+git branch 브랜치 명 --> 브랜치 만드는거(기능이름으로)
+git switch 브랜치 명 --> 그 브랜치로 이동하는 것
+git merge 브랜치 명 --> 병합 (근데 이건 main에서 해야함)
+-----------------------------------------------------------------
+- conflict 났을때
+해결 되면
+ -> git add . -> git merge --continue 
+-> VIM모드 켜지면 :wq누르기
+
+해결 안되면
+git merge --abort 이걸 써서 merge중단 要
+-----------------------------------------------------------------
+merge다하고 branch 삭제하기
+-> git branch -D 삭제할 branch 명

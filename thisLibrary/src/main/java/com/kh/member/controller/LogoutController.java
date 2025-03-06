@@ -7,20 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.member.model.service.MemberService;
-import com.kh.member.model.vo.Member;
-
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class LogoutController
  */
-@WebServlet("/login.me")
-public class LoginController extends HttpServlet {
+@WebServlet("/logout.me")
+public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public LogoutController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,21 +26,11 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String memId = request.getParameter("memId");
-		String memPwd = request.getParameter("memPwd");
 		
+		request.getSession().invalidate(); // 무력화하다. (세션 만료)
 		
-		Member loginMember = new MemberService().loginMember(memId, memPwd);
-		if(loginMember == null) {
-			request.setAttribute("errorMsg", "로그인 실패했습니다!");
-
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);;
-		}else {
-			
-			request.getSession().setAttribute("loginMember", loginMember);
-			response.sendRedirect(request.getContextPath());
-		}
+		// 응답페이지 => /jsp url 재요청(메인 페이지는 한번이라도 봤으니 url 재요청방식 사용) => index.jsp 페이지
+		response.sendRedirect(request.getContextPath()); // 메인 화면으로 간다. (로그아웃 간단 끝)
 	}
 
 	/**

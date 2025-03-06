@@ -10,12 +10,12 @@ public class Member {
 	private String email;
 	private String profile;
 	private String phone;
-	private char status;
+	private String status;
 	
 	public Member() {}
 
 	public Member(int memNo, String memName, String memId, String memPwd, String nickname, String address, String email,
-			String profile, String phone, char status) {
+			String profile, String phone, String status) {
 		super();
 		this.memNo = memNo;
 		this.memName = memName;
@@ -101,11 +101,11 @@ public class Member {
 		this.phone = phone;
 	}
 
-	public char getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(char status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 

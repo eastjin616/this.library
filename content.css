@@ -1,9 +1,5 @@
 #content>div{height: 100%;float: left;}
 
-      #header{height: 25%;}
-      #content{height: 60%;}
-      #footer{height: 15%;}
-
       #content_1{width: 40%;height: 100%;}
       #content_2{width: 20%;height: 100%}
       #content_3{width: 40%;height: 100%}

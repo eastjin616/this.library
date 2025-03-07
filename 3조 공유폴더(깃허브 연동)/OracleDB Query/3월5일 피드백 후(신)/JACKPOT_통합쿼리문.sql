@@ -1,5 +1,14 @@
 -- 통합 쿼리문
 ------------------------------ TABLE & SEQUENCE 제거문 --------------------------
+DROP TABLE MEMBER_SOCIAL;
+DROP SEQUENCE SEQ_SOCIAL_ID;
+
+DROP TABLE VOTE_ANSWER;
+DROP SEQUENCE SEQ_V_ANSWER_NO;
+
+DROP TABLE FNA;
+DROP SEQUENCE SEQ_FNA_NO;
+
 DROP TABLE REVIEW_ANSWER;
 DROP SEQUENCE SEQ_R_ANSWER_NO;
 
@@ -1268,6 +1277,7 @@ CREATE TABLE REVIEW(
     REVIEW      VARCHAR2(900) CONSTRAINT REVIEW_NN NOT NULL,
     BOOK_NO     NUMBER CONSTRAINT BOOK_NO_FK REFERENCES BOOK ON DELETE CASCADE NOT NULL,
     MEM_NO      NUMBER CONSTRAINT REVIEW_MEM_NO_FK REFERENCES MEMBER ON DELETE CASCADE NOT NULL,
+    REVIEW_DATE DATE DEFAULT SYSDATE,
     REVIEW_LIKE NUMBER DEFAULT 0, 
     RATING      NUMBER DEFAULT 1 CONSTRAINT RATING_NN NOT NULL,
     STATUS      CHAR(1) DEFAULT 'Y'
@@ -1277,6 +1287,7 @@ COMMENT ON COLUMN REVIEW.REVIEW_NO IS '리뷰번호';
 COMMENT ON COLUMN REVIEW.REVIEW IS '리뷰내용';
 COMMENT ON COLUMN REVIEW.BOOK_NO IS '책번호';
 COMMENT ON COLUMN REVIEW.MEM_NO IS '사용자번호';
+COMMENT ON COLUMN REVIEW.REVIEW_DATE IS '리뷰작성날짜';
 COMMENT ON COLUMN REVIEW.REVIEW_LIKE IS '좋아요 개수';
 COMMENT ON COLUMN REVIEW.RATING IS '별점 개수';
 COMMENT ON COLUMN REVIEW.STATUS IS '리뷰 존재여부';
@@ -1420,6 +1431,182 @@ INSERT INTO REVIEW_ANSWER(R_ANSWER_NO, REVIEW_NO, R_ANSWER, STATUS)
                         , 5
                         , '리뷰에대한 답글 5입니다 ㅋㅌㅋㅌㅋㅌㅋㅌ'
                         , 'Y'
+                        );
+-------------------------------- REVIEW_ANSWER ---------------------------------
+CREATE TABLE FNA(
+    FNA_NO NUMBER CONSTRAINT FNA_NO_PK PRIMARY KEY,
+    FNA_TITLE VARCHAR2(3000) CONSTRAINT FNA_TITLE_NN NOT NULL,
+    CONTENT VARCHAR2(3000) CONSTRAINT FNA_CONTENT_NN NOT NULL,
+    ANSWER VARCHAR2(3000),
+    INQUIRY_DATE DATE DEFAULT SYSDATE,
+    STATUS CHAR(1) DEFAULT 'Y'
+);
+
+COMMENT ON COLUMN FNA.FNA_NO IS 'FNA번호';
+COMMENT ON COLUMN FNA.FNA_TITLE IS 'FNA제목';
+COMMENT ON COLUMN FNA.CONTENT IS '자주하는 질문내용';
+COMMENT ON COLUMN FNA.ANSWER IS '답변내용';
+COMMENT ON COLUMN FNA.INQUIRY_DATE IS '작성한 날짜';
+COMMENT ON COLUMN FNA.STATUS IS 'FNA 존재유무상태';
+
+CREATE SEQUENCE SEQ_FNA_NO;
+
+INSERT INTO FNA(FNA_NO, FNA_TITLE, CONTENT, ANSWER, INQUIRY_DATE, STATUS)
+         VALUES(SEQ_FNA_NO.NEXTVAL
+              , 'FNA제목1'
+              , 'FNA 질문 내용입니다람쥐렁이1'
+              , 'FNA에 대한 답변 내용입니다람쥐렁이1'
+              , DEFAULT
+              , DEFAULT
+              );
+              
+INSERT INTO FNA(FNA_NO, FNA_TITLE, CONTENT, ANSWER, INQUIRY_DATE, STATUS)
+         VALUES(SEQ_FNA_NO.NEXTVAL
+              , 'FNA제목2'
+              , 'FNA 질문 내용입니다람쥐렁이2'
+              , 'FNA에 대한 답변 내용입니다람쥐렁이2'
+              , DEFAULT
+              , DEFAULT
+              );
+              
+INSERT INTO FNA(FNA_NO, FNA_TITLE, CONTENT, ANSWER, INQUIRY_DATE, STATUS)
+         VALUES(SEQ_FNA_NO.NEXTVAL
+              , 'FNA제목3'
+              , 'FNA 질문 내용입니다람쥐렁이3'
+              , 'FNA에 대한 답변 내용입니다람쥐렁이3'
+              , DEFAULT
+              , DEFAULT
+              );
+              
+INSERT INTO FNA(FNA_NO, FNA_TITLE, CONTENT, ANSWER, INQUIRY_DATE, STATUS)
+         VALUES(SEQ_FNA_NO.NEXTVAL
+              , 'FNA제목4'
+              , 'FNA 질문 내용입니다람쥐렁이4'
+              , 'FNA에 대한 답변 내용입니다람쥐렁이4'
+              , DEFAULT
+              , DEFAULT
+              );
+              
+INSERT INTO FNA(FNA_NO, FNA_TITLE, CONTENT, ANSWER, INQUIRY_DATE, STATUS)
+         VALUES(SEQ_FNA_NO.NEXTVAL
+              , 'FNA제목5'
+              , 'FNA 질문 내용입니다람쥐렁이5'
+              , 'FNA에 대한 답변 내용입니다람쥐렁이5'
+              , DEFAULT
+              , DEFAULT
+              );
+---------------------------------- VOTE_ANSWER ---------------------------------          
+CREATE TABLE VOTE_ANSWER(
+    V_ANSWER_NO NUMBER CONSTRAINT V_ANSWER_NO_PK PRIMARY KEY,
+    VOTE_NO NUMBER CONSTRAINT VOTE_NO_FK REFERENCES VOTE ON DELETE CASCADE NOT NULL,
+    MEM_NO NUMBER CONSTRAINT VOTE_ANSWER_MEM_NO_FK REFERENCES MEMBER ON DELETE CASCADE NOT NULL,
+    V_ANSWER VARCHAR2(900) CONSTRAINT V_ANSWER_NN NOT NULL,
+    ANSWER_DATE DATE DEFAULT SYSDATE,
+    STATUS CHAR(1) DEFAULT 'Y'
+);
+              
+COMMENT ON COLUMN VOTE_ANSWER.V_ANSWER_NO IS '투표에 대한 답글 번호';
+COMMENT ON COLUMN VOTE_ANSWER.VOTE_NO IS '투표번호ID';
+COMMENT ON COLUMN VOTE_ANSWER.MEM_NO IS '투표 작성자 번호';
+COMMENT ON COLUMN VOTE_ANSWER.V_ANSWER IS '투표 댓글';
+COMMENT ON COLUMN VOTE_ANSWER.ANSWER_DATE IS '투표 댓글 작성 날짜';
+COMMENT ON COLUMN VOTE_ANSWER.STATUS IS '투표 댓글 존재 유무(Y존재 N삭제)';
+             
+CREATE SEQUENCE SEQ_V_ANSWER_NO;
+
+INSERT INTO VOTE_ANSWER(V_ANSWER_NO, VOTE_NO, MEM_NO, V_ANSWER, ANSWER_DATE, STATUS)
+                 VALUES(SEQ_V_ANSWER_NO.NEXTVAL
+                      , 1
+                      , 2
+                      , '투표에 대한 댓글1 입니다람쥐렁이빨대나무엇이든물어보살'
+                      , DEFAULT
+                      , 'Y'
+                      );
+                      
+INSERT INTO VOTE_ANSWER(V_ANSWER_NO, VOTE_NO, MEM_NO, V_ANSWER, ANSWER_DATE, STATUS)
+                 VALUES(SEQ_V_ANSWER_NO.NEXTVAL
+                      , 2
+                      , 3
+                      , '투표에 대한 댓글2 입니다람쥐렁이빨대나무엇이든물어보살'
+                      , DEFAULT
+                      , 'Y'
+                      );
+                      
+INSERT INTO VOTE_ANSWER(V_ANSWER_NO, VOTE_NO, MEM_NO, V_ANSWER, ANSWER_DATE, STATUS)
+                 VALUES(SEQ_V_ANSWER_NO.NEXTVAL
+                      , 3
+                      , 4
+                      , '투표에 대한 댓글3 입니다람쥐렁이빨대나무엇이든물어보살'
+                      , DEFAULT
+                      , 'Y'
+                      );
+                      
+INSERT INTO VOTE_ANSWER(V_ANSWER_NO, VOTE_NO, MEM_NO, V_ANSWER, ANSWER_DATE, STATUS)
+                 VALUES(SEQ_V_ANSWER_NO.NEXTVAL
+                      , 4
+                      , 5
+                      , '투표에 대한 댓글4 입니다람쥐렁이빨대나무엇이든물어보살'
+                      , DEFAULT
+                      , 'Y'
+                      );
+                      
+INSERT INTO VOTE_ANSWER(V_ANSWER_NO, VOTE_NO, MEM_NO, V_ANSWER, ANSWER_DATE, STATUS)
+                 VALUES(SEQ_V_ANSWER_NO.NEXTVAL
+                      , 5
+                      , 5
+                      , '투표에 대한 댓글1 입니다람쥐렁이빨대나무엇이든물어보살'
+                      , DEFAULT
+                      , 'Y'
+                      );
+                      
+-------------------------------- MEMBER_SOCIAL ---------------------------------
+CREATE TABLE MEMBER_SOCIAL(
+    SOCIAL_ID NUMBER CONSTRAINT SOCIAL_ID_PK PRIMARY KEY,
+    MEM_NO NUMBER CONSTRAINT MEMBER_SOCIAL_MEM_NO_FK REFERENCES MEMBER ON DELETE CASCADE NOT NULL,
+    PROVIDER VARCHAR2(20) CONSTRAINT PROVIDER_NN NOT NULL,
+    PROVIDER_ID VARCHAR2(60) CONSTRAINT PROVIDER_ID_NN NOT NULL
+);
+
+CREATE SEQUENCE SEQ_SOCIAL_ID;
+
+COMMENT ON COLUMN MEMBER_SOCIAL.SOCIAL_ID IS '소셜로그인정보';
+COMMENT ON COLUMN MEMBER_SOCIAL.MEM_NO IS '사용자 번호';
+COMMENT ON COLUMN MEMBER_SOCIAL.PROVIDER IS '소셜로그인 제공자(KAKAO, GOOGLE, APPLE)';
+COMMENT ON COLUMN MEMBER_SOCIAL.PROVIDER_ID IS '각 소셜 로그인에서 제공하는 회원 고유 ID';
+
+INSERT INTO MEMBER_SOCIAL(SOCIAL_ID, MEM_NO, PROVIDER, PROVIDER_ID)
+                   VALUES(SEQ_SOCIAL_ID.NEXTVAL
+                        , 2
+                        , 'KAKAO'
+                        , '31CS24'
+                        );
+                        
+INSERT INTO MEMBER_SOCIAL(SOCIAL_ID, MEM_NO, PROVIDER, PROVIDER_ID)
+                   VALUES(SEQ_SOCIAL_ID.NEXTVAL
+                        , 3
+                        , 'GOOGLE'
+                        , '48SG94'
+                        );
+                        
+INSERT INTO MEMBER_SOCIAL(SOCIAL_ID, MEM_NO, PROVIDER, PROVIDER_ID)
+                   VALUES(SEQ_SOCIAL_ID.NEXTVAL
+                        , 4
+                        , 'APPLE'
+                        , '27CB94'
+                        );
+                        
+INSERT INTO MEMBER_SOCIAL(SOCIAL_ID, MEM_NO, PROVIDER, PROVIDER_ID)
+                   VALUES(SEQ_SOCIAL_ID.NEXTVAL
+                        , 5
+                        , 'KAKAO'
+                        , '31PJ95'
+                        );
+                        
+INSERT INTO MEMBER_SOCIAL(SOCIAL_ID, MEM_NO, PROVIDER, PROVIDER_ID)
+                   VALUES(SEQ_SOCIAL_ID.NEXTVAL
+                        , 2
+                        , 'KAKAO'
+                        , '31CS24'
                         );
 ----------------------------------- FINISH -------------------------------------
 COMMIT;

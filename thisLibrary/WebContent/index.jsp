@@ -8,5 +8,6 @@
 </head>
 <body>
 	<%@ include file="views/common/loginTest.jsp" %>
+	테스트
 </body>
 </html>

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="views/common/loginTest.jsp" %>
+	<%@ include file="views/common/menubar.jsp" %>
 	테스트1
 </body>
 </html>

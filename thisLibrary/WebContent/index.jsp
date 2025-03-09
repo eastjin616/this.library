@@ -8,6 +8,6 @@
 </head>
 <body>
 <!-- 	<%@ include file="views/common/loginTest.jsp" %>  -->
-	<%@ include file="views/common/kyh/kakaoLogin2.jsp" %>
+	<%@ include file="views/common/kyh/kakaoLogin.jsp" %>
 </body>
 </html>

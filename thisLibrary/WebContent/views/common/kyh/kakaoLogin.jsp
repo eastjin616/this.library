@@ -50,6 +50,7 @@
                     var birthday = res.kakao_account.birthday;
 
                     console.log(email, gender, profile_nickname, profile_image, birthday);
+                    alert(email + ',' +  gender + ',' +  profile_nickname + "," + profile_image + ',' +  birthday);
                 },
                 fail: function (error) {
                     alert('카카오 로그인에 실패했습니다. 관리자에게 문의하세요.' + JSON.stringify(error));

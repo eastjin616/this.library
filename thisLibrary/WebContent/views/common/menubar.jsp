@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+	String contextPath = request.getContextPath(); // "/jsp
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +34,23 @@
               <a href="">마이페이지</a> 
               <a href="">고객센터</a>     
           </div>
+<!-- ------------------------------------------------------ -->         
+           <button onclick="address()">주소</button>
+           <button onclick="login()">login</button>
+    <script>
+ // addressAPIPopup.jsp createUser.jsp
+	function address() {
+		location.href="<%= contextPath %>/views/common/jins/createUser.jsp";
+	}
+	</script>
+<!-- ------------------------------------------------------ -->         
 
+<script>
+  // addressAPIPopup.jsp createUser.jsp
+   function login() {
+     location.href="<%= contextPath %>/views/common/jins/jinsloginform.jsp";
+   }
+   </script>
+	
 </body>
 </html>

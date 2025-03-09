@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <meta charset="UTF-8">
+    <%
+	String contextPath = request.getContextPath(); // "/jsp
+
+%>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
@@ -20,7 +25,7 @@ li {
   list-style: none;
 }
 
-#loginf {
+.wrap {
   width: 100%;
   height: 100vh;
   display: flex;
@@ -30,7 +35,7 @@ li {
 }
 
 .login {
-  width: 500px;
+  width: 30%;
   height: 600px;
   background: white;
   border-radius: 20px;
@@ -125,14 +130,13 @@ li {
     <title>Document</title>
     <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
-    <div class="wrap" id="loginf">
+    <div class="wrap">
         <div class="login">
             <h2 id="loginTitle">로그인</h2>
               <div class="sns_login">
               <!-- <li><a href=""><i class="fa-solid fa-n"></i></a></li> 이거 안됨 버전 낮아서... 근데 버전업그레이드를 못찾겠음--> 
-              <li><a href="">N</i></a></li>
+              <li><a href="javascript:void(0);" onclick="naver()">N</i></a></li>
               <li><a href=""><i class="fab fa-apple"></i></a></li>
               <li><a href=""><i class="fab fa-google"></i></a></li>
             </div>
@@ -157,6 +161,13 @@ li {
             </div>
         </div>
     </div>
+    
+    <script>
+  // addressAPIPopup.jsp createUser.jsp
+   function naver() {
+     location.href="<%= contextPath %>/views/common/jins/naverlogin.jsp";
+   }
+   </script>
 </body>
 </html>
 </body>

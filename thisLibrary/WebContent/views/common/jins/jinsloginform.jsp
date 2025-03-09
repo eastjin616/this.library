@@ -137,7 +137,7 @@ li {
               <div class="sns_login">
               <!-- <li><a href=""><i class="fa-solid fa-n"></i></a></li> 이거 안됨 버전 낮아서... 근데 버전업그레이드를 못찾겠음--> 
               <li><a href="javascript:void(0);" onclick="naver()">N</i></a></li>
-              <li><a href=""><i class="fab fa-apple"></i></a></li>
+              <li><a href=""><i class="fas fa-comment"></i></a></li>
               <li><a href=""><i class="fab fa-google"></i></a></li>
             </div>
             <div class="login_id">

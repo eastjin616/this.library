@@ -14,26 +14,27 @@
 
     .wrap{
       width: 1000px;
-      height: 1000px;
+      height: auto;
       margin: auto; /*정 가운데 배치*/
-}
+      overflow: hidden;
+      }
 
-    .wrap>div{
-      width: 100%;
-    }
-
-    #header{height: 25%;}
-    #firstbar{height: 25%;}
-    #content{height: 60%;}
-    #spaceContent{height: 15%;}
-    #footer{height: 15%;}
+    #header{height: 50px;}
+    #footer{height: 150px;}
     #header>div{height: 100%;}
+    #header_1>div, #header_1_3>div{float: left;}
+    #header_1_1_1{width: 15%;height: 100%;}
+
+
+
+    #firstbar{height: 100px;}
+    #content{height: 700px;}
+    #spaceContent{height: 200px;}
+
+
      #header_1_1>div{float: left;}
      #header_1_2>div{float: left;}
-     #header_1_3>div{float: left;}
 
-     #header_1>#header_1_1{height: 25%;}
-     #header_1_1_1{width: 15%;height: 100%;}
      #navigator{
       position: relative; 
       width: 60%; 
@@ -93,27 +94,15 @@
     }
 
 /*-------------------------------------------------------------  */
-     #header_1>#header_1_2{height: 45%;}
-     #header_1_2_1{width: 30%;height: 100%;}
-     #header_1_2_2{width: 40%;height: 100%;}
-     #header_1_2_3{width: 30%;height: 100%;}
+     #header_1_2{text-align:center ;}
 
-     #header_1>#header_1_3{height: 30%;}
-     #header_1_3_1{width: 15%;height: 100%;}
-     #header_1_3_2{width: 70%;height: 100%;}
-     #header_1_3_3{width: 15%;height: 100%;}
+     /* #header_1_3{border: 1px solid;} */
+     
 
      a{
       text-decoration-line: none; 
       color: black;
     }
-
-      #header_1_3_2 {
-        display: flex;
-        justify-content: center;  /* 가운데 정렬 */
-        align-items: center;
-        height: 100%;
-      }
 
       #search-container {
         display: flex;
@@ -121,9 +110,11 @@
         border: 1px solid #ccc;
         border-radius: 30px;
         overflow: hidden;
-        width: 95%;  /* 부모 요소 크기에 맞춤 */
-        height: 70%; /* 높이를 #header_1_3_2 크기에 맞춤 */
+        width: 700px;  /* 부모 요소 크기에 맞춤 */
+        height: 50px; /* 높이를 #header_1_3_2 크기에 맞춤 */
         background-color: white;
+        border: 1px solid;
+        margin: auto;
         
       }
 
@@ -407,8 +398,9 @@
 <body>
   <div class="wrap">
     <div id="header">
+      
       <div id="header_1">
-        <div id="header_1_1">
+        <!-- <div id="header_1_1"> -->
           <div id="header_1_1_1">
             <img src="assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;">
           </div>
@@ -428,18 +420,14 @@
           <div id="header_mypage_btn" style="height: 100%; width: 7%;" >
             <button class="btn"  id="mypage"><img src="assets/user01.png" alt=""></button>
           </div>
-        </div>
-        <div id="header_1_2">
-          <div id="header_1_2_1"></div>
-          <div id="header_1_2_2">
-            <img src="assets/This_서고 로고.png" alt="" style="width: 100%; height: 100%;">
           </div>
-          <div id="header_1_2_3"></div>
+        <!-- </div> -->
+    </div>
+<!-- ============================================================================================ -->
+        <div id="header_1_2">
+          <img src="assets/This_서고 로고.png" alt="" >
         </div>
-        <div id="header_1_3">
-          <div id="header_1_3_1"></div>
 
-          <div id="header_1_3_2">
             <div id="search-container">
               <select id="search-filter">
                 <option value="all">통합검색</option>
@@ -451,16 +439,10 @@
               <input type="text" id="search-bar" placeholder="검색어를 입력하세요">
               <button id="search-btn">검색</button>
             </div>
-          </div>
-<!-- -------------------------------------------------------------------- -->
-          <div id="firstbar"></div>
-<!-- -------------------------------------------------------------------- -->         
-          
-          <div id="header_1_3_3"></div>
-        </div>
-      </div>
-    </div>
-<!-- -------------------------------------------------------------------- -->
+       
+            <div id="firstbar"></div>
+
+
       <div id="content">
         <div id="content_1">
           <div id="content_1_1">
@@ -479,7 +461,7 @@
             </div>
           </div>
         </div>
-<!-- -------------------------------------------------------------------- -->
+
         <div id="content_2">
           <div id="content_2_1">
             <button class="pick-button">오늘의 Pick</button>
@@ -499,7 +481,7 @@
             </div>
           </div>
         </div>
-<!-- -------------------------------------------------------------------- -->
+
         <div id="content_3">
           <div id="content_3_1">
             <img src="assets/brown.png" alt="" id="brown">
@@ -536,8 +518,9 @@
 
         </div>
        </div>
-
   </div>
+  
+</div>
 <!-- -------------------------------------------------------------------- -->
 </body>
 </html>

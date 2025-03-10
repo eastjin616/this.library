@@ -90,50 +90,6 @@
     }
 
     /*-------------------------------------------------------------  */
-    #content div{font-family: Arial, Helvetica, sans-serif;}
-    #content1{width: 100%;
-              height: 225px;
-              background-color: #fddcce;
-              display: flex;  
-            }
-    #content2{width: 70%;       height: 400px; margin-left: 15%; }
-    #content3{width: 100%;       height: 400px;  }
-    #textcontent{
-      border: 1px solid;
-      padding-top: 50px; 
-      font-size: 30px;
-    }
-    
-    #content2_1, #content2_2{width: 100%; height: 50%; display: flex; }
-    #content2_1_1, #content2_1_2, #content2_1_3, #content2_1_4{width: 50%;}
-        #contentDiv1_1, #contentDiv2_1, #contentDiv3_1, #contentDiv4_1{width: 100%; height: 60%; text-align: center;box-sizing: border-box; margin-bottom: -20px;}
-        #contentDiv1_2, #contentDiv2_2, #contentDiv3_2, #contentDiv4_2{width: 100%; height: 30%; text-align: center;box-sizing: border-box;}
-        #contentDiv1_3, #contentDiv2_3, #contentDiv3_3, #contentDiv4_3{width: 100%; height: 10%; text-align: center;box-sizing: border-box; }
-        
-
-        #content2 img{ width: 100px;}
-
-
-        .notice-board {
-            border: 1px solid #ccc;
-            border-radius: 10px; /* 둥근 모서리 */
-            padding: 20px;
-            background-color: #fff;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-      
-        table {
-          margin: auto;
-            width: 80%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: center;
-        }
-        th {background-color: #ebc597;}
 
     /* ==============footer======================================= */
         #footer_1 {

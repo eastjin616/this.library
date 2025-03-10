@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
+<% String contextPath = request.getContextPath(); %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -400,7 +400,6 @@ a{
   <div class="wrap">
     <div id="header">
       <div id="header_1">
-        <!-- <div id="header_1_1"> -->
           <div id="header_1_1_1">
             <img src="../common/asset/This_서고 로고.png" alt="" style="height: 100%; width: 100%;">
           </div>
@@ -412,7 +411,7 @@ a{
             <a href="">고객센터</a>
           </div>
           <div id="header_login_btn" style="height: 100%; width: 9%;">
-            <button class="btn" id="login">Log In</button>
+            <button class="btn" id="login" onclick="login()">Log In</button>
           </div>
           <div id="header_signin_btn" style="height: 100%; width: 9%;">
             <button class="btn" id="signin">Sign In</button>
@@ -420,7 +419,6 @@ a{
           <div id="header_mypage_btn" style="height: 100%; width: 7%;">
             <button class="btn" id="mypage"><img src="../../../../assets/user01.png" alt=""></button>
           </div>
-        <!-- </div> -->
       
       </div>
     </div>
@@ -520,6 +518,12 @@ a{
     </div>
   </div>
   <!-- -------------------------------------------------------------------- -->
+  
+  <script>
+  function login() {
+	     location.href="<%= contextPath %>/views/loginform.jsp";
+	   }
+  </script>
 </body>
 
 </html>

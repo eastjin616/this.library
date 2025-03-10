@@ -408,7 +408,7 @@ a{
             <a href="">온라인투표</a>
             <a href="">자유게시판</a>
             <a href="">마이페이지</a>
-            <a href="">고객센터</a>
+            <a href="<%= contextPath %>/views/customerService.jsp">고객센터</a>
           </div>
           <div id="header_login_btn" style="height: 100%; width: 9%;">
             <button class="btn" id="login" onclick="login()">Log In</button>
@@ -505,7 +505,7 @@ a{
       <div id="footer_1">
         <div id="footer_1_1"><img src="../../../../assets/This_서고 로고.png" alt=""></div>
         <div id="navigator" class="navigator">
-          <a a href="">Home</a>
+          <a href="">Home</a>
           <a href="">온라인투표</a>
           <a href="">자유게시판</a>
           <a href="">마이페이지</a>
@@ -523,7 +523,8 @@ a{
   function login() {
 	     location.href="<%= contextPath %>/views/loginform.jsp";
 	   }
-  </script>
-</body>
 
+  </script>
+  
+</body>
 </html>

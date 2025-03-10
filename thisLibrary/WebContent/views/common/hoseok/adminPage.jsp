@@ -198,14 +198,14 @@
     </div>
     <!-- -------------------------------------------------------------------- -->
 
-
+    
 
     
 
     <!-- -------------------------------------------------------------------- -->
     <div id="footer" style="background-color: #fdf5f1;">
       <div id="footer_1">
-        <div id="footer_1_1"><img src="../../../../assets/This_서고 로고.png" alt=""></div>
+        <div id="footer_1_1"><img src="../asset/This_서고 로고.png" alt=""></div>
         <div id="navigator" class="navigator">
           <a a href="">Home</a>
           <a href="">온라인투표</a>

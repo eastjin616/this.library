@@ -521,7 +521,7 @@ a{
   
   <script>
   function login() {
-	     location.href="<%= contextPath %>/views/loginform.jsp";
+	     location.href="<%= contextPath %>/views/member/loginform.jsp";
 	   }
 
   </script>

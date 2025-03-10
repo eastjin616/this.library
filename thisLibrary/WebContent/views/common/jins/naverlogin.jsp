@@ -18,7 +18,8 @@
          + "&redirect_uri=" + redirectURI
          + "&state=" + state;
     session.setAttribute("state", state);
+    response.sendRedirect(apiURL);
  %>
-  <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
+  <!-- <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>-->
   </body>
 </html>

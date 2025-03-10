@@ -186,7 +186,7 @@
             <a href="">고객센터</a>
           </div>
           <div id="header_login_btn" style="height: 100%; width: 9%;">
-            <button href="" class="btn" id="login">Log In</button>
+            <button  class="btn" id="login" onclick="location.href='<%= contextPath %>/views/jinsloginform.jsp'">Log In</button>
           </div>
           <div id="header_signin_btn" style="height: 100%; width: 9%;">
             <button class="btn" id="signin">Sign In</button>

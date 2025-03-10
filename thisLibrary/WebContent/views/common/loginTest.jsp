@@ -13,9 +13,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+
+</script>
 </head>
 <body>
-    
+
+
+
+   <!-- 여기까지지 -->
+
     <% if(loginMember == null){%>
 		    <form action="<%= contextPath %>/login.me" method="Post">
 		        아이디 : <input type="text" name="memId" required><br>

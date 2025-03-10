@@ -330,6 +330,9 @@
                     var birthday = res.kakao_account.birthday;
 										
                     window.location.href = "<%= contextPath %>/enroll.me?email="+ email + "&nickName=" + nickName
+                  
+                    
+               
                  
                     console.log(email, gender, profile_nickname, profile_image, birthday);
                     alert(email + ',' +  gender + ',' +  profile_nickname + "," + profile_image + ',' +  birthday);

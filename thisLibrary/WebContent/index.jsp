@@ -9,7 +9,5 @@
 <body>
 
 	<%@ include file="views/common/menubar.jsp" %>
-
-	<%@ include file="views/common/kyh/kakaoLogin.jsp" %>
 </body>
 </html>

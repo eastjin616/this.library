@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% 
+		String kakaoName = (String)request.getAttribute("kakaoName"); 
+		String kakaoEmail = (String)request.getAttribute("kakaoEmail");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,9 +32,12 @@
 		<form action="createUser.do" method="post">
 			<div class="col-sm-6 col-md-offset-3">
 			                
+			             	<% System.out.print("kakaoName = " + kakaoName); %>
+			             	<% System.out.print("kakaoEmail = " + kakaoEmail); %>
+			             	
                     <div class="form-group">
                         <label for="inputName">이름</label>
-                        <input type="text" class="form-control" name="name" placeholder="이름을 입력해 주세요">
+                        <input type="text" class="form-control" name="name" placeholder="이름을 입력해 주세요" value="<%= kakaoName %>">
                     </div>
      
             		<div class="form-group">
@@ -45,7 +52,7 @@
 
                     <div class="form-group">
                         <label for="InputEmail">이메일 주소</label>
-                        <input type="email" class="form-control" name="email" placeholder="이메일 주소를 입력해주세요">
+                        <input type="email" class="form-control" name="email" placeholder="이메일 주소를 입력해주세요" value="<%= kakaoEmail %>">
                     </div>
                     
                     <div class="form-group"> 

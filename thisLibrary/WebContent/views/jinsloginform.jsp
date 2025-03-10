@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% 
+	String contextPath = request.getContextPath(); 
+	String kakaoEmail = "email";
+	String kakaoName = "name";
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -228,12 +233,11 @@
 
 <body>
   <div class="wrap">
-z
     <div id="header">
       <div id="header_1">
         <!-- <div id="header_1_1"> -->
           <div id="header_1_1_1">
-            <img src="./../로고,사진,그림,캐릭터/This_서고 로고.png" alt="" style="height: 100%; width: 100%;">
+            <img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;">
           </div>
           <div id="navigator">
             <a href="">Home</a>
@@ -249,7 +253,7 @@ z
             <button class="btn" id="signin">Sign In</button>
           </div>
           <div id="header_mypage_btn" style="height: 100%; width: 7%;">
-            <button class="btn" id="mypage"><img src="./../로고,사진,그림,캐릭터/user01.png" alt=""></button>
+            <button class="btn" id="mypage"><img src="<%= contextPath %>/views/common/assets/user01.png" alt=""></button>
           </div>
         <!-- </div> -->
       
@@ -261,7 +265,7 @@ z
       <div class="sns_login">
         <!-- <li><a href=""><i class="fa-solid fa-n"></i></a></li> 이거 안됨 버전 낮아서... 근데 버전업그레이드를 못찾겠음-->
         <li><a href="javascript:void(0);" onclick="naver()">N</i></a></li>
-        <li><a href=""><i class="fas fa-comment"></i></a></li>
+        <li><a href="javascript:loginWithKakao()"><i class="fas fa-comment"></i></a></li>
         <li><a href=""><i class="fab fa-google"></i></a></li>
       </div>
       <div class="login_id">
@@ -284,14 +288,79 @@ z
         <input type="submit" value="로그인">
       </div>
     </div>
+    
+    
+    <!------------------------------ 카카오 로그인 부분 ------------------------>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    
+    <script>
+        // 카카오 초기화
+        Kakao.init('93a0920238e62f6613575ad15d4e692c');
 
+          //카카오 로그인 후 토근 값 저장.
+          function loginWithKakao() {
+            Kakao.Auth.login({
+                success: function (authObj) {
+                    console.log(authObj); // access토큰 값
+                    Kakao.Auth.setAccessToken(authObj.access_token); // access토큰값 저장
+                    
+                    getInfo();
+                    
+                    
+                    
+                },
+                fail: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+         // 엑세스 토큰을 발급받고, 아래 함수를 호출시켜서 사용자 정보를 받아옴.
+         function getInfo() {
+            Kakao.API.request({
+                url: '/v2/user/me',
+                success: function (res) {
+                    console.log(res);
+                    // 이메일, 성별, 닉네임, 프로필이미지
+                    var email = res.kakao_account.email;
+                    var gender = res.kakao_account.gender;
+                    var nickName = res.kakao_account.profile.nickname;
+                    var profile_image = res.kakao_account.profile.thumbnail_image_url;
+                    var birthday = res.kakao_account.birthday;
+										
+                    window.location.href = "<%= contextPath %>/enroll.me?email="+ email + "&nickName=" + nickName
+                  
+                    
+               
+                 
+                    console.log(email, gender, profile_nickname, profile_image, birthday);
+                    alert(email + ',' +  gender + ',' +  profile_nickname + "," + profile_image + ',' +  birthday);
+                },
+                fail: function (error) {
+                    alert('카카오 로그인에 실패했습니다. 관리자에게 문의하세요.' + JSON.stringify(error));
+                }
+            });
+        }
+
+        // 로그아웃 기능 - 카카오 서버에 접속하는 엑세스 토큰을 만료, 사용자 어플리케이션의 로그아웃은 따로 진행.
+        function kakaoLogout() {
+            if (!Kakao.Auth.getAccessToken()) {
+                alert('Not logged in.');
+                return;
+            }
+            Kakao.Auth.logout(function() {
+                alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken());
+            });
+        }
+    </script>
+<!-------------------------------------- 여기까지가 카카오 로그인--------------------------- -->
 
     
 
     <!-- -------------------------------------------------------------------- -->
     <div id="footer" style="background-color: #fdf5f1;">
       <div id="footer_1">
-        <div id="footer_1_1"><img src="./../로고,사진,그림,캐릭터/This_서고 로고.png" alt=""></div>
+        <div id="footer_1_1"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt=""></div>
         <div id="navigator" class="navigator">
           <a a href="">Home</a>
           <a href="">온라인투표</a>
@@ -305,6 +374,8 @@ z
       </div>
     </div>
   </div>
+  
+  
   <!-- -------------------------------------------------------------------- -->
 </body>
 

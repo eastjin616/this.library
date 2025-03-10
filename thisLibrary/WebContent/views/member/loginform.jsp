@@ -4,7 +4,7 @@
 	String contextPath = request.getContextPath(); 
 	String kakaoEmail = "email";
 	String kakaoName = "name";
-%>
+%> 
 <!DOCTYPE html>
 <html lang="en">
 

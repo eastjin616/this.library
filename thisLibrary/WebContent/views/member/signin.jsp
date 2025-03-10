@@ -202,20 +202,6 @@
                    <input type="date" class="form-control" name="birth" placeholder=" ex) 19990101">
           </div>
 
-          <div class="form-group">
-       <label>가입 등급</label>
-            <div class="form-control">
-            <label class="radio-inline">
-            <input type="radio" name="role" value="Admin" > Admin </label>
-             <label class="radio-inline">
-             <input type="radio" name="role" value="User" > User </label>
-                    </div>
-           </div>
-                   
-           <div class="form-group">
-                       <label for="profile">프로필 사진</label>
-                       <input type="text" class="form-control" name="image" >
-                   </div>
                    
                    <div class="form-group">
                        <label>주소</label>

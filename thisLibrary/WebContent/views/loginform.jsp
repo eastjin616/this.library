@@ -1,15 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD:thisLibrary/WebContent/views/jinsloginform.jsp
 <% 
 	String contextPath = request.getContextPath(); 
 	String kakaoEmail = "email";
 	String kakaoName = "name";
 %>
-=======
-    
-<% String contextPath = request.getContextPath(); %>
->>>>>>> a3a89ee7d69c03bb605cfa3198d214298cda0acc:thisLibrary/WebContent/views/loginform.jsp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -335,9 +330,6 @@
                     var birthday = res.kakao_account.birthday;
 										
                     window.location.href = "<%= contextPath %>/enroll.me?email="+ email + "&nickName=" + nickName
-                  
-                    
-               
                  
                     console.log(email, gender, profile_nickname, profile_image, birthday);
                     alert(email + ',' +  gender + ',' +  profile_nickname + "," + profile_image + ',' +  birthday);

@@ -37,7 +37,10 @@
 			             	
                     <div class="form-group">
                         <label for="inputName">이름</label>
-                        <input type="text" class="form-control" name="name" placeholder="이름을 입력해 주세요" value="<%= kakaoName %>">
+                        <input type="text" class="form-control" name="name" placeholder="이름을 입력해 주세요" 
+                        <% if(kakaoName != null){ %>
+                        value="<%= kakaoName %>">
+                        <% } %>
                     </div>
      
             		<div class="form-group">
@@ -52,7 +55,10 @@
 
                     <div class="form-group">
                         <label for="InputEmail">이메일 주소</label>
-                        <input type="email" class="form-control" name="email" placeholder="이메일 주소를 입력해주세요" value="<%= kakaoEmail %>">
+                        <input type="email" class="form-control" name="email" placeholder="이메일 주소를 입력해주세요" 
+                        <% if(kakaoEmail != null) { %>
+                        value="<%= kakaoEmail %>">
+                        <% } %>
                     </div>
                     
                     <div class="form-group"> 

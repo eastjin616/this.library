@@ -248,10 +248,10 @@
             <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
           </div>
           <div id="header_login_btn" style="height: 100%; width: 9%;">
-            <button class="btn" id="login">Log In</button>
+            <button  class="btn" id="login" onclick="location.href='<%= contextPath %>/views/jinsloginform.jsp'">Log In</button>
           </div>
           <div id="header_signin_btn" style="height: 100%; width: 9%;">
-            <button class="btn" id="signin">Sign In</button>
+            <button class="btn" id="signin" onclick="signin()">Sign In</button>
           </div>
           <div id="header_mypage_btn" style="height: 100%; width: 7%;">
             <button class="btn" id="mypage"><img src="<%= contextPath %>/views/common/assets/user01.png" alt=""></button>
@@ -382,6 +382,14 @@
    <script>
   function login() {
 	     location.href="<%= contextPath %>/views/member/loginform.jsp";
+	   }
+     
+
+  </script>
+
+<script>
+  function signin() {
+	     location.href="<%= contextPath %>/views/member/signin.jsp";
 	   }
 
   </script>

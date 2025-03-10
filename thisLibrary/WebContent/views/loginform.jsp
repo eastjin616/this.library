@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD:thisLibrary/WebContent/views/jinsloginform.jsp
 <% 
 	String contextPath = request.getContextPath(); 
 	String kakaoEmail = "email";
 	String kakaoName = "name";
 %>
+=======
+    
+<% String contextPath = request.getContextPath(); %>
+>>>>>>> a3a89ee7d69c03bb605cfa3198d214298cda0acc:thisLibrary/WebContent/views/loginform.jsp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -125,6 +130,8 @@
           padding: 10px;
           border-radius: 50px;
           background: white;
+          color: rgb(187 114 63);
+          text-decoration-line: none;
           font-size: 20px;
           box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4), -3px -3px 5px rgba(0, 0, 0, 0.1);
         }
@@ -224,14 +231,13 @@
    
 
 /* ----------------------------------------------------------------- */
-
-
   </style>
 </head>
 <meta charset="UTF-8">
 <!-- ------------------------------------------------------------------ -->
 
 <body>
+  <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
   <div class="wrap">
     <div id="header">
       <div id="header_1">
@@ -260,10 +266,10 @@
       </div>
     </div>
     <!-- -------------------------------------------------------------------- -->
+     
     <div class="login">
       <h2 id="loginTitle" align="center">로그인</h2>
       <div class="sns_login">
-        <!-- <li><a href=""><i class="fa-solid fa-n"></i></a></li> 이거 안됨 버전 낮아서... 근데 버전업그레이드를 못찾겠음-->
         <li><a href="javascript:void(0);" onclick="naver()">N</i></a></li>
         <li><a href="javascript:loginWithKakao()"><i class="fas fa-comment"></i></a></li>
         <li><a href=""><i class="fab fa-google"></i></a></li>
@@ -377,6 +383,12 @@
   
   
   <!-- -------------------------------------------------------------------- -->
+  
+   <script>
+	function naver() {
+		location.href="<%= contextPath %>/views/common/jins/naverlogin.jsp";
+	}
+	</script>
 </body>
 
 </html>

@@ -414,7 +414,7 @@ a{
             <button class="btn" id="login" onclick="login()">Log In</button>
           </div>
           <div id="header_signin_btn" style="height: 100%; width: 9%;">
-            <button class="btn" id="signin">Sign In</button>
+            <button class="btn" id="signin" onclick="enroll()">Sign In</button>
           </div>
           <div id="header_mypage_btn" style="height: 100%; width: 7%;">
             <button class="btn" id="mypage"><img src="../../../../assets/user01.png" alt=""></button>
@@ -523,6 +523,10 @@ a{
   function login() {
 	     location.href="<%= contextPath %>/views/loginform.jsp";
 	   }
+  
+  function enroll(){
+	  location.href="<%= contextPath %>"
+  }
 
   </script>
   

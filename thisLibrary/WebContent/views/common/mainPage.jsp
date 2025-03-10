@@ -401,14 +401,14 @@ a{
     <div id="header">
       <div id="header_1">
           <div id="header_1_1_1">
-            <img src="../common/asset/This_서고 로고.png" alt="" style="height: 100%; width: 100%;">
+            <img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;">
           </div>
           <div id="navigator">
             <a href="">Home</a>
             <a href="">온라인투표</a>
             <a href="">자유게시판</a>
             <a href="">마이페이지</a>
-            <a href="<%= contextPath %>/views/customerService.jsp">고객센터</a>
+            <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
           </div>
           <div id="header_login_btn" style="height: 100%; width: 9%;">
             <button class="btn" id="login" onclick="login()">Log In</button>
@@ -417,14 +417,14 @@ a{
             <button class="btn" id="signin">Sign In</button>
           </div>
           <div id="header_mypage_btn" style="height: 100%; width: 7%;">
-            <button class="btn" id="mypage"><img src="../../../../assets/user01.png" alt=""></button>
+            <button class="btn" id="mypage"><img src="<%= contextPath %>/views/common/assets/user01.png" alt=""></button>
           </div>
       
       </div>
     </div>
     <!-- -------------------------------------------------------------------- -->
     <div id="header_1_2">
-      <img src="../../../../assets/This_서고 로고.png" alt="" >
+      <img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="" >
     </div>
 
         <div id="search-container">
@@ -445,18 +445,18 @@ a{
   <div id="content">
     <div id="content_1">
       <div id="content_1_1">
-        <img src="../../../../assets/silver.png" alt="" id="silver">
+        <img src="<%= contextPath %>/views/common/assets/silver.png" alt="" id="silver">
       </div>
       <div id="content_1_2">
         <div id="content_1_2_1">
-          <img src="../../../../assets/book1.jpg" alt="" id="book1">
+          <img src="<%= contextPath %>/views/common/assets/book1.jpg" alt="" id="book1">
         </div>
         <div id="content_1_2_2"></div>
       </div>
       <div id="content_1_3">
         <div id="content_1_3_1"></div>
         <div id="content_1_3_2">
-          <img src="../../../../assets/book2.jpg" alt="" id="book2">
+          <img src="<%= contextPath %>/views/common/assets/book2.jpg" alt="" id="book2">
         </div>
       </div>
     </div>
@@ -466,35 +466,35 @@ a{
         <button class="pick-button">오늘의 Pick</button>
       </div>
       <div id="content_2_2">
-        <img src="../../../../assets/gold.png" alt="" id="gold">
+        <img src="<%= contextPath %>/views/common/assets/gold.png" alt="" id="gold">
       </div>
       <div id="content_2_3">
-        <img src="../../../../assets/book3.jpg" alt="" id="book3">
+        <img src="<%= contextPath %>/views/common/assets/book3.jpg" alt="" id="book3">
       </div>
       <div id="content_2_4">
       </div>
       <div id="content_2_5">
         <button class="pick-button">관리자의 Pick</button>
         <div id="content_2_5_2">
-          <img src="../../../../assets/book4.jpg" alt="" id="book4">
+          <img src="<%= contextPath %>/views/common/assets/book4.jpg" alt="" id="book4">
         </div>
       </div>
     </div>
 
     <div id="content_3">
       <div id="content_3_1">
-        <img src="../../../../assets/brown.png" alt="" id="brown">
+        <img src="<%= contextPath %>/views/common/assets/brown.png" alt="" id="brown">
       </div>
       <div id="content_3_2">
       <div id="content_3_2_1">
-        <img src="../../../../assets/book5.jpg" alt="" id="book5">
+        <img src="<%= contextPath %>/views/common/assets/book5.jpg" alt="" id="book5">
       </div>
       <div id="content_3_2_2"></div>
       </div>
       <div id="content_3_3">
         <div id="content_3_3_1"></div>
         <div id="content_3_3_2">
-          <img src="../../../../assets/book6.jpg" alt="" id="book6">
+          <img src="<%= contextPath %>/views/common/assets/book6.jpg" alt="" id="book6">
         </div>
       </div>
     </div>
@@ -503,7 +503,7 @@ a{
     <!-- -------------------------------------------------------------------- -->
     <div id="footer" style="background-color: #fdf5f1;">
       <div id="footer_1">
-        <div id="footer_1_1"><img src="../../../../assets/This_서고 로고.png" alt=""></div>
+        <div id="footer_1_1"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt=""></div>
         <div id="navigator" class="navigator">
           <a href="">Home</a>
           <a href="">온라인투표</a>

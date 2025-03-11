@@ -197,7 +197,7 @@
     <div id="header">
       <div id="header_1">
           <div id="header_1_1_1">
-            <img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;">
+						<a href="<%= contextPath %>"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;"></a>
           </div>
           <div id="navigator">
             <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>

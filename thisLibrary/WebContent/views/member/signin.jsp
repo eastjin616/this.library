@@ -202,7 +202,7 @@
                    <div class="form-group">
                       <label for="inputName">아이디</label>
                       <input type="text" class="form-control" name="id" placeholder="아이디를 입력해 주세요">
-                      <button class="btn btn-default" type="button" onClick="goPopup();" id="addressbtn">중복확인</button>
+                      <button class="btn btn-default" type="button" onClick="" id="addressbtn">중복확인</button>
                    </div>
 
                    <div class="form-group">

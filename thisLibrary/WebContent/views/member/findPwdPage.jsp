@@ -2,13 +2,6 @@
     pageEncoding="UTF-8"%>
 <% String contextPath = request.getContextPath(); %>
 
-<<<<<<< HEAD
-=======
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<% String contextPath = request.getContextPath(); %>
-
->>>>>>> findPwd
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,11 +14,7 @@
   <link rel="stylesheet" href="footer.css"> -->
 
   <style>
-<<<<<<< HEAD
-    /* div {box-sizing: border-box;border: 1px solid red;} */
-=======
     div {box-sizing: border-box;border: 1px solid red;}
->>>>>>> findPwd
     .wrap {
       width: 1000px;
       margin: auto;
@@ -132,8 +121,6 @@
         margin-top: 2%;
         }
    
-<<<<<<< HEAD
-=======
 /* -------------------------------------------------- */
 .btn-space {
     margin-right: 5px;
@@ -161,7 +148,6 @@
   margin-left: 320px;
 }
 
->>>>>>> findPwd
   </style>
 </head>
 <meta charset="UTF-8">
@@ -195,10 +181,6 @@
     </div>
     <!-- -------------------------------------------------------------------- -->
 
-<<<<<<< HEAD
-
-        
-=======
     <div id="content" style="align-content: center;">
 
         <meta charset="utf-8">
@@ -245,7 +227,6 @@
     </article>
     <hr>
   </div>
->>>>>>> findPwd
     
 
     <!-- -------------------------------------------------------------------- -->

@@ -14,6 +14,18 @@
   <link rel="stylesheet" href="footer.css"> -->
 
   <style>
+
+    @font-face {
+        font-family: 'Chosunilbo_myungjo';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    body *{
+      font-family: 'Chosunilbo_myungjo';
+    }
+    
     /* div {box-sizing: border-box;border: 1px solid red;} */
     .wrap {
       width: 1000px;
@@ -21,6 +33,15 @@
       height: auto;
       overflow: hidden;
     }
+
+    /* body{
+      width: 100%;
+      height: 100%;
+      background-image: url("resources/assets/background.jpg");
+      background-size: cover;
+      opacity: ;
+    } */
+
     #header {height: 50px;}
     #footer { height: 150px;}
     #header>div {height: 100%;}
@@ -409,7 +430,7 @@ a{
     <div id="header">
       <div id="header_1">
           <div id="header_1_1_1">
-            <img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;">
+           <a href="<%= contextPath %>"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;"></a>
           </div>
           <div id="navigator">
             <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
@@ -515,7 +536,7 @@ a{
       <div id="footer_1">
         <div id="footer_1_1"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt=""></div>
         <div id="navigator" class="navigator">
-          <a a href="<%= contextPath %>/views/common.mainPage.jsp">Home</a>
+          <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
           <a href="">온라인투표</a>
           <a href="">자유게시판</a>
           <a href="">마이페이지</a>

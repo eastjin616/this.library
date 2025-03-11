@@ -34,13 +34,16 @@
       height: 1000px;
     }
 
-    #main-content1{ width: 25%; border: 1px solid;}
+    #main-content1{ width: 25%; border: 1px solid; background-color: rgb(248, 215, 220);}
     #main-content2{ width: 75%; border: 1px solid;}
     #profile-photo{height: 40%; border: 1px solid;}
     #photo{ height: 90%; border-radius: 50%;  }
     #userName     {text-align: center; height: 10%; box-sizing: border-box;}
-    #tab1 ,#tab2{display: flex; width: 100%; height: 12%; box-sizing: border-box; }
-  
+    #tab1 ,#tab2{display: flex; width: 100%; height: 12%; box-sizing: border-box;cursor: pointer;}
+    #tab1:hover, #tab2:hover{
+      background-color: orange;
+    }
+    #tab1:active{background-color: orange;}
     #tab1_1{width: 10px; }
     #tab1_2{width: 20px;  background-color: #d88634;}
     #tab1_3{width: 100px; margin: auto;}
@@ -71,7 +74,9 @@
     .container {
             width: 80%;
             margin: 20px auto;
+            display: flex;
         }
+    
         .table {
             width: 100%;
             border-collapse: collapse;
@@ -115,6 +120,44 @@
             background-color: #6c5ce7;
             color: white;
         }
+        .card {
+    width: 30%;
+    aspect-ratio: 2 / 3;
+    background: #c0ddfa;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 200px;
+    transition: transform 0.75s; /* 애니메이션 시간 설정 */
+}
+
+.card:hover {
+    transform: scale(1.1); /* 마우스 오버 시 크기 증가 */
+    border-radius: 50%; /* 원형으로 변경 */
+}
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            margin-right: 10px;
+        }
+        .upload-icon {
+            position: absolute;
+            font-size: 24px;
+            color: #6c757d;
+            z-index: 1;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        
+        
   </style>
 </head>
 <meta charset="UTF-8">
@@ -139,60 +182,27 @@
         <div id="tab2">
           <div id="tab1_1"></div>
           <div id="tab1_2"></div>
-          <div id="tab1_3"><img src="../assets/book.png" alt=""></div>
-          <div id="tab1_4">모든 회원 정보</div>
+          <div id="tab1_3"><img src="../assets/facebook.png" alt=""></div>
+          <div id="tab1_4"> 관리자 PICK</div>
       </div>
       
     </div>
     <div id="main-content2">
+      
       <div class="container">
-        <button class="btn">+ Add User</button>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th><input type="checkbox"></th>
-                    <th>Users Name</th>
-                    <th>Email</th>
-                    <th>NickName</th>
-                    <th>번호</th>
-                    <th>주소</th>
-                    <th>수정</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td><img class="user-img" src="../assets/user01.png" alt=""> <strong>Elizabeth Lee</strong></td>
-                    <td>ElizabethLee@email.com</td>
-                    <td>user01</td>
-                    <td>010-1234-1234</td>
-                    <td>user01</td>
-                    <td>✏️</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td><img class="user-img" src="user2.png" alt=""> <strong>Carlos Garcia</strong></td>
-                    <td>CarlosGarcia@email.com</td>
-                    <td>user02</td>
-                    <td>010-1234-1234</td>
-                    <td>user01</td>
-                    <td>✏️</td>
-                </tr>
-                <!-- 추가 사용자들 -->
-            </tbody>
-        </table>
-    
-        <div class="pagination">
-            <button class="active"><</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>></button>
+        <div class="card" onclick="uploadImage(0)">
+            <span class="upload-icon">➕</span>
+            <input type="button" accept="image" >
+        </div>
+        <div class="card" onclick="uploadImage(1)">
+            <span class="upload-icon">➕</span>
+            <input type="button" accept="image" >
+        </div>
+        <div class="card" onclick="uploadImage(2)">
+            <span class="upload-icon">➕</span>
+            <input type="button" accept="image" >
         </div>
     </div>
-    
 
 
 
@@ -201,6 +211,30 @@
         
     </div>
   </div>
+<!--
+<script>
+    let tap1Active = false;
+
+    document.getElementById('tap1').addEventListener('click', function() {
+        if (!tap1Active) {
+            this.classList.add('active');
+            tap1Active = true;
+        }
+    });
+
+    document.getElementById('tap2').addEventListener('click', function() {
+        // tap1의 배경색을 유지하고 tap2의 배경색을 변경할 수 있습니다.
+        document.getElementById('tap1').classList.remove('active'); // tap1의 배경색을 원래대로 되돌림
+        this.classList.add('active'); // tap2의 배경색을 변경
+        tap1Active = false; // tap1의 상태를 초기화
+    });
+</script>
+좌측에 프로필 사진 밑에 위치한 tab1(모든회원정보), tab2(관리자PICK) 을 클릭시, 색이 변하고, 
+다른 탭을 클릭할때 까지 색이 변하지 않고 그대로 고정하고 싶었다. 
+하지만 CSS 에서는 불가능하다고 함. 
+하여, SCRIPT 를 적어보았습니다만, 완벽하지 않으니 주의 바람.-호
+-->
+
 
 
 </body>

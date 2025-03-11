@@ -6,170 +6,164 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document1</title>
-  <!-- <link rel="stylesheet" href="header.css">
-  <link rel="stylesheet" href="content.css">
-  <link rel="stylesheet" href="footer.css"> -->
+  <title>관리자 페이지</title>
 
   <style>
-    /* div {box-sizing: border-box;border: 1px solid red;} */
     .wrap {
-      width: 1000px;
+      width: 1800px;
       margin: auto;
       height: auto;
       overflow: hidden;
-    }
-    #header {height: 50px;}
-    #footer { height: 150px;}
-    #header>div {height: 100%;}
-    #header_1>div , #header_1_3>div{float: left;}
-    #header_1_1_1 {width: 15%;height: 100%;}
-
-    #navigator {
-      position: relative;
-      width: 60%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-    }
-    #navigator>a {
-      text-decoration: none;
-      color: black;
-      font-size: 13px;
-    }
-
-    /*-------------------------------------------------------------  */
-    #header_mypage_btn,
-    #header_login_btn,
-    #header_signin_btn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    #login {
-      width: 70%;
-      height: 50%;
-      border-radius: 5px;
-      background-color: #ea916e;
-      color: white;
-      border: none;
-    }
-
-    #signin {
-      width: 70%;
-      height: 50%;
-      border-radius: 5px;
-      background-color: #ea916e;
-      color: white;
-      border: none;
-    }
-
-    /* ---------------------------------------------- */
-    #mypage {
-      border-radius: 50%;
-      width: 50%;
-      height: 50%;
-      background-color: #ea916e;
-      border: none;
-    }
-
-    #mypage>img {
-      width: 90%;
-      height: 60%;
-    }
-
-    /* ---------------------------------------------- */
-
-    .btn:hover {
-      opacity: 0.7;
-      color: white;
-      cursor: pointer;
-    }
-
-    /*-------------------------------------------------------------  */
-    #content div{font-family: Arial, Helvetica, sans-serif;}
-    #content1{width: 100%;
-              height: 225px;
-              background-color: #fddcce;
-              display: flex;  
-            }
-    #content2{width: 70%;       height: 400px; margin-left: 15%; }
-    #content3{width: 100%;       height: 400px;  }
-    #textcontent{
       border: 1px solid;
-      padding-top: 50px; 
-      font-size: 30px;
     }
-    
-    #content2_1, #content2_2{width: 100%; height: 50%; display: flex; }
-    #content2_1_1, #content2_1_2, #content2_1_3, #content2_1_4{width: 50%;}
-        #contentDiv1_1, #contentDiv2_1, #contentDiv3_1, #contentDiv4_1{width: 100%; height: 60%; text-align: center;box-sizing: border-box; margin-bottom: -20px;}
-        #contentDiv1_2, #contentDiv2_2, #contentDiv3_2, #contentDiv4_2{width: 100%; height: 30%; text-align: center;box-sizing: border-box;}
-        #contentDiv1_3, #contentDiv2_3, #contentDiv3_3, #contentDiv4_3{width: 100%; height: 10%; text-align: center;box-sizing: border-box; }
-        
+    .content1{
+      height: 100px;
+      background-color: #d88634;
+      position: relative;
+    }
+    #content1_text{
+      position: absolute;
+      right: 50px;
+      bottom: 10px;
+      color: white; /* 글자 색상을 흰색으로 설정 */
+      font-size: 20px; /* 글자 크기 증가 (원하는 크기로 조정 가능) */
 
-        #content2 img{ width: 100px;}
+    }
+    .content2{
+      display: flex;
+      height: 1000px;
+    }
+
+    #main-content1{ width: 25%; border: 1px solid; background-color: rgb(248, 215, 220);}
+    #main-content2{ width: 75%; border: 1px solid; display: flex;}
+    #profile-photo{height: 40%; border: 1px solid;}
+    #photo{ height: 90%; border-radius: 50%;  }
+    #userName     {text-align: center; height: 10%; box-sizing: border-box;}
+    #tab1 ,#tab2{display: flex; width: 100%; height: 12%; box-sizing: border-box;cursor: pointer;}
+    #tab1:hover, #tab2:hover{
+      background-color: orange;
+    }
+    #tab1_1{width: 10px; }
+    #tab1_2{width: 20px;  background-color: #d88634;}
+    #tab1_3{width: 100px; margin: auto;}
+    #tab1_4{width: 300px; margin: auto; }
+    #tab1_3>img{width: 90px;}
+  
 
 
-        .notice-board {
-            border: 1px solid #ccc;
-            border-radius: 10px; /* 둥근 모서리 */
-            padding: 20px;
-            background-color: #fff;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-      
-        table {
-          margin: auto;
+
+    #tab2_1{width: 100px; }
+    #photo {
+    background-image: url("../assets/chill.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    }
+
+
+
+    .userInfo{
+      width: 1200px;;
+      margin: auto;
+      height: 800px;
+      border-radius: 10%;
+      margin-top: 100px;
+    }
+  
+    .container {
             width: 80%;
-            border-collapse: collapse;
+            margin: 20px auto;
         }
-        th, td {
-            border: 1px solid #ccc;
+    
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .table th, .table td {
+            border: 1px solid #ddd;
             padding: 10px;
+            text-align: left;
+        }
+        .table th {
+            background-color: #f4f4f4;
+        }
+        .user-img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .btn {
+            background-color: #f4a261;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            justify-items: right;
+        }
+        .pagination {
+            margin-top: 10px;
             text-align: center;
         }
-        th {background-color: #ebc597;}
-
-    /* ==============footer======================================= */
-        #footer_1 {
-        width: 100%;
-        height: 65%;
+        .pagination button {
+            padding: 5px 10px;
+            margin: 3px;
+            border: 1px solid #ddd;
+            background-color: white;
+            cursor: pointer;
         }
-
-        #footer_1>div {
-        float: left;
+        .pagination .active {
+            background-color: #6c5ce7;
+            color: white;
         }
+        .card {
+    width: 30%;
+    aspect-ratio: 2 / 3;
+    background: #c0ddfa;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 200px;
+    transition: transform 0.75s; /* 애니메이션 시간 설정 */
+}
 
-        #footer_1_1 {
-        height: 100%;
-        width: 20%;
+.card:hover {
+    transform: scale(1.1); /* 마우스 오버 시 크기 증가 */
+    border-radius: 50%; /* 원형으로 변경 */
+}
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            margin-right: 10px;
         }
-
-        #footer_1_1>img {
-        display: flex;
-        margin: auto;
-        width: 60%;
-        height: 60%;
-        margin-top: 20%;
+        .upload-icon {
+            position: absolute;
+            font-size: 24px;
+            color: #6c757d;
+            z-index: 1;
+        }
+        input[type="file"] {
+            display: none;
         }
         
-        #footer_2 {
-        width: 100%;
-        height: 35%;
-        text-align: center;
-        margin-top: 2%;
-        }
-   
+        
   </style>
 </head>
 <meta charset="UTF-8">
-<!-- ------------------------------------------------------------------ -->
+
 
 <body>
   <div class="wrap">
+<<<<<<< HEAD
     <div id="header">
       <div id="header_1">
         <!-- <div id="header_1_1"> -->
@@ -213,14 +207,89 @@
           <a href="">자유게시판</a>
           <a href="">마이페이지</a>
           <a href="">고객센터</a>
+=======
+    <div class="content1"><div id="content1_text">관리자 페이지</div> </div>
+    <div class="content2">
+      <div id="main-content1">
+        <div id="profile-photo">
+          <div id="photo"></div>
+          <div id="userName">여기는 관리자 아이디가 올 자리입니다. </div>
+>>>>>>> adminPage
         </div>
+        <div id="tab1">
+          <div id="tab1_1"></div>
+          <div id="tab1_2"></div>
+          <div id="tab1_3"><img src="../assets/book.png" alt=""></div>
+          <div id="tab1_4">모든 회원 정보</div>
+        </div>
+        <br>
+        <div id="tab2">
+          <div id="tab1_1"></div>
+          <div id="tab1_2"></div>
+          <div id="tab1_3"><img src="../assets/facebook.png" alt=""></div>
+          <div id="tab1_4"> 관리자 PICK</div>
       </div>
-      <div id="footer_2">
-        © 2025 YourCompany. All Rights Reserved.
-      </div>
+      
+    </div>
+    <div id="main-content2">
+      <div class="container">
+        <button class="btn">+ Add User</button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th><input type="checkbox"></th>
+                    <th>Users Name</th>
+                    <th>Email</th>
+                    <th>NickName</th>
+                    <th>번호</th>
+                    <th>주소</th>
+                    <th>수정</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><img class="user-img" src="../assets/user01.png" alt=""> <strong>Elizabeth Lee</strong></td>
+                    <td>ElizabethLee@email.com</td>
+                    <td>user01</td>
+                    <td>010-1234-1234</td>
+                    <td>user01</td>
+                    <td>✏️</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><img class="user-img" src="user2.png" alt=""> <strong>Carlos Garcia</strong></td>
+                    <td>CarlosGarcia@email.com</td>
+                    <td>user02</td>
+                    <td>010-1234-1234</td>
+                    <td>user01</td>
+                    <td>✏️</td>
+                </tr>
+                <!-- 추가 사용자들 -->
+            </tbody>
+        </table>
+    
+        <div class="pagination">
+            <button class="active"><</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>></button>
+        </div>
+    </div>
+    
+
+
+
+      </table>
+
+        
     </div>
   </div>
-  <!-- -------------------------------------------------------------------- -->
+
+
 </body>
 
 </html>

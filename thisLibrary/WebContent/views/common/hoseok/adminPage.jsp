@@ -34,13 +34,15 @@
       height: 1000px;
     }
 
-    #main-content1{ width: 25%; border: 1px solid;}
-    #main-content2{ width: 75%; border: 1px solid;}
+    #main-content1{ width: 25%; border: 1px solid; background-color: rgb(248, 215, 220);}
+    #main-content2{ width: 75%; border: 1px solid; display: flex;}
     #profile-photo{height: 40%; border: 1px solid;}
     #photo{ height: 90%; border-radius: 50%;  }
     #userName     {text-align: center; height: 10%; box-sizing: border-box;}
-    #tab1 ,#tab2{display: flex; width: 100%; height: 12%; box-sizing: border-box; }
-  
+    #tab1 ,#tab2{display: flex; width: 100%; height: 12%; box-sizing: border-box;cursor: pointer;}
+    #tab1:hover, #tab2:hover{
+      background-color: orange;
+    }
     #tab1_1{width: 10px; }
     #tab1_2{width: 20px;  background-color: #d88634;}
     #tab1_3{width: 100px; margin: auto;}
@@ -72,6 +74,7 @@
             width: 80%;
             margin: 20px auto;
         }
+    
         .table {
             width: 100%;
             border-collapse: collapse;
@@ -115,6 +118,44 @@
             background-color: #6c5ce7;
             color: white;
         }
+        .card {
+    width: 30%;
+    aspect-ratio: 2 / 3;
+    background: #c0ddfa;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 200px;
+    transition: transform 0.75s; /* 애니메이션 시간 설정 */
+}
+
+.card:hover {
+    transform: scale(1.1); /* 마우스 오버 시 크기 증가 */
+    border-radius: 50%; /* 원형으로 변경 */
+}
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            margin-right: 10px;
+        }
+        .upload-icon {
+            position: absolute;
+            font-size: 24px;
+            color: #6c757d;
+            z-index: 1;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        
+        
   </style>
 </head>
 <meta charset="UTF-8">
@@ -139,8 +180,8 @@
         <div id="tab2">
           <div id="tab1_1"></div>
           <div id="tab1_2"></div>
-          <div id="tab1_3"><img src="../assets/book.png" alt=""></div>
-          <div id="tab1_4">모든 회원 정보</div>
+          <div id="tab1_3"><img src="../assets/facebook.png" alt=""></div>
+          <div id="tab1_4"> 관리자 PICK</div>
       </div>
       
     </div>

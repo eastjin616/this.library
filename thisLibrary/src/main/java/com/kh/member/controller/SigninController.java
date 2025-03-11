@@ -42,7 +42,14 @@ public class SigninController extends HttpServlet {
 		
 		Member m = new Member(memName, memId, nickname, memPwd, address, phone, email);
 		
-		new MemberService().insertMember(m);
+		int result = new MemberService().insertMember(m);
+		
+		if(result > 0) { // 성공적으로 회원가입 완료 됨 (Member 테이블에 Insert 완료 됨)
+			request.getSession().setAttribute("Member", m);
+			response.sendRedirect(request.getContextPath());
+		}else {
+			request.setAttribute("alertMsg", m)
+		}
 	}
 
 	/**

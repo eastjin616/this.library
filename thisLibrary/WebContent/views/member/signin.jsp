@@ -126,19 +126,21 @@
     margin-right: 5px;
 }
 
-#info-id {
-  position: relative;
+/* .div{
+  margin-left: 20%;
+} */
+
+.form-group>label{
+  margin-left: 320px;
 }
 
-#info-id>button {
-  position: absolute;
-  width: 90px;
-  height: 40px;
-  top: 0;
-  bottom: 0;
-  right: 5px;
-  margin: auto 0;
-  border-radius: 3px;
+.form-group>input{
+  width: 500px;
+  margin: auto;
+}
+
+.form-group #addressbtn{
+  margin-left: 320px;
 }
 
   </style>
@@ -181,16 +183,16 @@
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-    <article class="container">
+    <article class="container" id="container">
         <div class="page-header">
                <center><h1><a onclick="location.reload()" style="cursor: pointer;"><b>회원가입</b></a></h1></center>
-            <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-6 col-md-offset-3">
              </div>
         </div>
 
        <hr>
-       <form action="createUser.do" method="post">
-           <div class="col-sm-6 col-md-offset-3">
+       <form id="form" action="createUser.do" method="post">
+           <div class="col-sm-6-col-md-offset-3">
                            
                    <div class="form-group">
                        <label for="inputName">이름</label>
@@ -198,44 +200,46 @@
                    </div>
     
                    <div class="form-group">
-                    <label for="inputName">아이디</label>
-                    <div id="info__id">
-                      <input type="text" class="form-control" name="id" placeholder="아이디를 입력해 주세요"/>
-                      <input type="button" id="button" value="중복확인"/>
-                    </div>
-                </div> 
+                      <label for="inputName">아이디</label>
+                      <input type="text" class="form-control" name="id" placeholder="아이디를 입력해 주세요">
+                      <button class="btn btn-default" type="button" onClick="goPopup();" id="addressbtn">중복확인</button>
+                   </div>
+
+                   <div class="form-group">
+                      <label for="inputPassword">닉네임</label>
+                      <label for=""></label><input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해">
+                   </div>
 
                    <div class="form-group">
                        <label for="inputPassword">비밀번호</label>
-                       <input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해">
+                       <label for=""></label><input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해">
                    </div>
 
                    <div class="form-group">
                     <label for="inputPassword">비밀번호 확인</label>
-                    <input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해주세요">
+                    <input type="password" class="form-control" placeholder="비밀번호를 입력해주세요">
                   </div>
-
-                   <div class="form-group">
-                       <label for="InputEmail">이메일 주소</label>
-                       <input type="email" class="form-control" name="email" placeholder="이메일 주소를 입력해주세요">
-                   </div>
-                   
-                   <div class="form-group"> 
-       <label for="inputBirth">생년월일</label>
-                   <input type="date" class="form-control" name="birth" placeholder=" ex) 19990101">
-          </div>
 
                    
                    <div class="form-group">
                        <label>주소</label>
                        <input type="text" class="form-control" id="zipNo" name="post" placeholder="우편번호" >
-                       <button class="btn btn-default" type="button" onClick="goPopup();"><i class="fa fa-search"></i>주소검색</button>
-
+                       <button class="btn btn-default" type="button" onClick="goPopup();" id="addressbtn"><i class="fa fa-search" ></i>주소검색</button>
                    </div>
                    
                    <div class="form-group" style="margin-top:0px;">
                        <input type="text" class="form-control" id="roadFullAddr" name="address" placeholder="상세주소"/>
                    </div>
+
+                   <div class="form-group"> 
+                    <label for="phone">PHONE</label>
+                    <input type="tel" class="form-control" name="birth" placeholder="ex) 010-1234-5678">
+                  </div>
+
+                   <div class="form-group">
+                    <label for="InputEmail">이메일 주소</label>
+                    <input type="email" class="form-control" name="email" placeholder="이메일 주소를 입력해주세요">
+                </div>
            
 
                   <div class="form-group text-center">
@@ -245,6 +249,7 @@
                            취소<i class="fa fa-check spaceLeft"></i>
                        </button>
                       
+                       
 
        </form>
        </div>

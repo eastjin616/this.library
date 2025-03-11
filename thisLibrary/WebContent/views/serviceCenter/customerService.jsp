@@ -15,6 +15,17 @@ String contextPath = request.getContextPath();
   <link rel="stylesheet" href="footer.css"> -->
 
 <style>
+	@font-face {
+        font-family: 'Chosunilbo_myungjo';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    body *{
+      font-family: 'Chosunilbo_myungjo';
+    }
+    
 /* div {box-sizing: border-box;border: 1px solid red;} */
 .wrap {
 	width: 1000px;
@@ -242,8 +253,7 @@ th {
 			<div id="header_1">
 				<!-- <div id="header_1_1"> -->
 				<div id="header_1_1_1">
-					<img src="<%=contextPath%>/views/common/assets/This_서고 로고.png"
-						alt="" style="height: 100%; width: 100%;">
+					<a href="<%= contextPath %>"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="" style="height: 70%; width: 70%;"></a>
 				</div>
 				<div id="navigator">
 					<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a
@@ -448,9 +458,8 @@ th {
   </script>
 
 	<script>
-  function login() {
-	     location.href="<%=contextPath%>
-		/views/member/loginform.jsp";
+  function signin() {
+		location.href="<%=contextPath%>/views/member/signin.jsp";
 		}
 	</script>
 </body>

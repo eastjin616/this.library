@@ -14,6 +14,15 @@
   <link rel="stylesheet" href="footer.css"> -->
 
 <style>
+	@font-face {
+    font-family: 'Gyeonggi_Batang_Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+ body *{
+	font-family: 'Gyeonggi_Batang_Regular';
+ }
 /* div {box-sizing: border-box;border: 1px solid red;} */
 .wrap {
 	width: 1000px;
@@ -145,11 +154,11 @@
 		<div id="header">
 			<div id="header_1">
 				<div id="header_1_1_1">
-					<img src="<%= contextPath %>/views/common/assets/This_서고 로고.png"
+					<a href="<%= contextPath %>"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;"></a>
 						alt="" style="height: 100%; width: 100%;">
 				</div>
 				<div id="navigator">
-					<a a href="<%= contextPath %>/views/common.mainPage.jsp">Home</a> <a
+					<a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a> <a
 						href="">온라인투표</a> <a href="">자유게시판</a> <a href="">마이페이지</a> <a
 						href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
 				</div>

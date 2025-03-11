@@ -144,7 +144,7 @@
 
 }
 .container {
-        width: 1000px !important;
+   width: 1000px !important;
 }
 
 .form-group>label{
@@ -155,6 +155,7 @@
   width: 500px;
   margin: auto;
 }
+
 
   </style>
 </head>
@@ -207,12 +208,13 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
         <article class="container" id="container">
             <div class="page-header">
-                  <center><h1><a onclick="location.reload()" style="cursor: pointer;"><b>비밀번호 찾기</b></a></h1></center>
+                  <center><h1><a onclick="location.reload()" style="cursor: pointer;"><b>아이디 찾기</b></a></h1></center>
             <div class="col-md-6 col-md-offset-3">
                 </div>
             </div>
@@ -226,28 +228,20 @@
                   </div>
 
                   <div class="form-group">
-                      <label for="inputName">아이디</label>
-                      <input type="text" class="form-control" name="id" placeholder="아이디를 입력해 주세요">
-                  </div>
-
-                  <div class="form-group">
                     <label for="InputEmail">이메일 주소</label>
                     <input type="email" class="form-control" name="email" placeholder="이메일 주소를 입력해주세요">
                 </div>
           
 
                   <div class="form-group text-center">
-                      <center> <button type="submit" id="" class="btn btn-primary btn-space">비밀번호 찾기<i class="fa fa-check spaceLeft"></i></center>
+                      <center> <button type="submit" id="" class="btn btn-primary btn-space">아이디 찾기<i class="fa fa-check spaceLeft"></i></center>
                        
 
     </form>
     </div>
     </article>
-    <hr>
   </div>
-    
-
-    <!-- -------------------------------------------------------------------- -->
+ <!-- -------------------------------------------------------------------- -->
     <div id="footer" style="background-color: #fdf5f1;">
       <div id="footer_1">
         <div id="footer_1_1"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt=""></div>
@@ -278,7 +272,6 @@
 	   }
 
   </script>
-  <!-- -------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------- -->
 </body>
-
 </html>

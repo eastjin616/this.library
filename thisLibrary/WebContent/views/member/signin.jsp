@@ -189,7 +189,7 @@
         </div>
 
        <hr>
-       <form action="createUser.do" method="post">
+       <form action="<%= contextPath %>/signin.me" method="post">
            <div class="col-sm-6 col-md-offset-3">
                            
                    <div class="form-group">
@@ -212,7 +212,7 @@
 
                    <div class="form-group">
                     <label for="inputPassword">비밀번호 확인</label>
-                    <input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해주세요">
+                    <input type="password" class="form-control"placeholder="비밀번호를 입력해주세요">
                   </div>
 
                    <div class="form-group">

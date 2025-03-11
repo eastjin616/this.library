@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MemberEnrollController
+ * Servlet implementation class SigninController
  */
-@WebServlet("/enroll.me")
-public class MemberEnrollController extends HttpServlet {
+@WebServlet("/signin.me")
+public class SigninController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberEnrollController() {
+    public SigninController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,13 +27,15 @@ public class MemberEnrollController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String kakaoName = request.getParameter("nickName");
-		String kakaoEmail = request.getParameter("email");
-	
-		request.setAttribute("kakaoName", kakaoName);
-		request.setAttribute("kakaoEmail", kakaoEmail);
+		request.setCharacterEncoding("UTF-8");
 		
-		request.getRequestDispatcher("views/common/jins/createUser.jsp").forward(request, response);
+		String memName = request.getParameter("name");
+		String memId = request.getParameter("id");
+		String memPwd = request.getParameter("password");
+		String email = request.getParameter("email");
+		String address = request.getParameter("address");
+		
+		System.out.println(memName + ", " + memId + ", " + memPwd + ", " + email + ", " + address);
 		
 		
 	}

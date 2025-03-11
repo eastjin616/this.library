@@ -306,9 +306,6 @@
                     Kakao.Auth.setAccessToken(authObj.access_token); // access토큰값 저장
                     
                     getInfo();
-                    
-                    
-                    
                 },
                 fail: function (err) {
                     console.log(err);
@@ -329,13 +326,10 @@
                     var profile_image = res.kakao_account.profile.thumbnail_image_url;
                     var birthday = res.kakao_account.birthday;
 										
-                    window.location.href = "<%= contextPath %>/enroll.me?email="+ email + "&nickName=" + nickName
-                  
-                    
-               
+                    window.location.href = "<%= contextPath %>/kakaoSignin.me?email="+ email + "&nickName=" + nickName
                  
-                    console.log(email, gender, profile_nickname, profile_image, birthday);
-                    alert(email + ',' +  gender + ',' +  profile_nickname + "," + profile_image + ',' +  birthday);
+                    console.log(email, gender, nickName, profile_image, birthday);
+                    alert(email + ',' +  gender + ',' +  nickName + "," + profile_image + ',' +  birthday);
                 },
                 fail: function (error) {
                     alert('카카오 로그인에 실패했습니다. 관리자에게 문의하세요.' + JSON.stringify(error));

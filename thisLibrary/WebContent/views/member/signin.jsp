@@ -126,6 +126,21 @@
     margin-right: 5px;
 }
 
+#info-id {
+  position: relative;
+}
+
+#info-id>button {
+  position: absolute;
+  width: 90px;
+  height: 40px;
+  top: 0;
+  bottom: 0;
+  right: 5px;
+  margin: auto 0;
+  border-radius: 3px;
+}
+
   </style>
 </head>
 <meta charset="UTF-8">
@@ -183,14 +198,22 @@
                    </div>
     
                    <div class="form-group">
-                       <label for="inputName">아이디</label>
-                       <input type="text" class="form-control" name="id" placeholder="아이디를 입력해 주세요">
-                      </div>
+                    <label for="inputName">아이디</label>
+                    <div id="info__id">
+                      <input type="text" class="form-control" name="id" placeholder="아이디를 입력해 주세요"/>
+                      <input type="button" id="button" value="중복확인"/>
+                    </div>
+                </div> 
 
                    <div class="form-group">
                        <label for="inputPassword">비밀번호</label>
-                       <input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해주세요">
+                       <input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해">
                    </div>
+
+                   <div class="form-group">
+                    <label for="inputPassword">비밀번호 확인</label>
+                    <input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해주세요">
+                  </div>
 
                    <div class="form-group">
                        <label for="InputEmail">이메일 주소</label>

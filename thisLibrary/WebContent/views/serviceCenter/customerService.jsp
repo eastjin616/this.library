@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% String contextPath = request.getContextPath(); %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,7 +91,7 @@
     /*-------------------------------------------------------------  */
     #content div{ font-family: Arial, Helvetica, sans-serif; font-weight: 700;}
     #content>#content1 {
-      background-image: url("../asset/Container81.png");
+      background-image: url("<%= contextPath %>/views/common/assets/Container81.png");
       background-size: cover; /* 이미지를 요소 크기에 맞게 채움 */
       background-position: center; /* 중앙 정렬 */
       background-repeat: no-repeat; /* 이미지 반복 방지 */
@@ -171,26 +172,26 @@
 </head>
 <!-- ------------------------------------------------------------------ -->
 
-<body>z32
+<body>
   <div class="wrap">
     <div id="header">
       <div id="header_1">
         <!-- <div id="header_1_1"> -->
           <div id="header_1_1_1">
-            <img src="./../asset/This_서고 로고.png" alt="" style="height: 100%; width: 100%;">
+            <img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;">
           </div>
           <div id="navigator">
-            <a href="">Home</a>
+            <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
             <a href="">온라인투표</a>
             <a href="">자유게시판</a>
             <a href="">마이페이지</a>
-            <a href="">고객센터</a>
+            <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
           </div>
           <div id="header_login_btn" style="height: 100%; width: 9%;">
-            <button class="btn" id="login">Log In</button>
+            <button class="btn" id="login" onclick="login()">Log In</button>
           </div>
           <div id="header_signin_btn" style="height: 100%; width: 9%;">
-            <button class="btn" id="signin">Sign In</button>
+            <button class="btn" id="signin" onclick="signin()">Sign In</button>
           </div>
           <div id="header_mypage_btn" style="height: 100%; width: 7%;">
             <button class="btn" id="mypage"><img src="./../asset/user01.png" alt=""></button>
@@ -214,24 +215,24 @@
         <div id="content2">
           <div id="content2_1">
               <div id="content2_1_1">
-                    <div id="contentDiv1_1"><img src="../asset/interview_15747273.gif"></div>
+                    <div id="contentDiv1_1"><img src="<%= contextPath %>/views/common/assets/interview_15747273.gif"></div>
                     <div id="contentDiv1_2"><p><b>1:1 문의 접수</b></p></div>
                     <div id="contentDiv1_3">고객센터에 문의글 접수중입니다.</div>
               </div>
               <div id="content2_1_2">
-                    <div id="contentDiv2_1"><img src="../asset/faq_12205153.gif" ></div>
+                    <div id="contentDiv2_1"><img src="<%= contextPath %>/views/common/assets/faq_12205153.gif" ></div>
                     <div id="contentDiv2_2"><p><b>F&A</b></p></div>
                     <div id="contentDiv2_3">자주 문의되는 질문에 대한 답변을 보실 수 있습니다. </div>
               </div>
           </div>
           <div id="content2_2">
             <div id="content2_1_3">
-                  <div id="contentDiv3_1"><img src="../asset/conversation_15578485.gif" ></div>
+                  <div id="contentDiv3_1"><img src="<%= contextPath %>/views/common/assets/conversation_15578485.gif" ></div>
                   <div id="contentDiv3_2"><p><b>1:1 문의 내역</b></p></div>
                   <div id="contentDiv3_3">사용자가 문의한 글 내역을 확인합니다.</div>
             </div>
             <div id="content2_1_4">
-                  <div id="contentDiv4_1"><img src="../asset/virtual-assistant_15579142.gif" ></div>
+                  <div id="contentDiv4_1"><img src="<%= contextPath %>/views/common/assets/virtual-assistant_15579142.gif" ></div>
                   <div id="contentDiv4_2"><p><b>전화 상담</b></p></div>
                   <div id="contentDiv4_3">고객 센터에 연결되어 상담자와 연결이 됩니다.</div>
             </div>
@@ -326,13 +327,13 @@
     <!-- -------------------------------------------------------------------- -->
     <div id="footer" style="background-color: #fdf5f1;">
       <div id="footer_1">
-        <div id="footer_1_1"><img src="./../asset/This_서고 로고.png" alt=""></div>
+        <div id="footer_1_1"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt=""></div>
         <div id="navigator" class="navigator">
-          <a a href="">Home</a>
+          <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
           <a href="">온라인투표</a>
           <a href="">자유게시판</a>
           <a href="">마이페이지</a>
-          <a href="">고객센터</a>
+          <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
         </div>
       </div>
       <div id="footer_2">
@@ -341,6 +342,19 @@
     </div>
   </div>
   <!-- -------------------------------------------------------------------- -->
+   <script>
+  function login() {
+	     location.href="<%= contextPath %>/views/member/loginform.jsp";
+	   }
+
+  </script>
+
+<script>
+  function login() {
+	     location.href="<%= contextPath %>/views/member/loginform.jsp";
+	   }
+
+  </script>
 </body>
 
 </html>

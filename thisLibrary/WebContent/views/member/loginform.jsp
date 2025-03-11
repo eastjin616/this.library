@@ -4,7 +4,7 @@
 	String contextPath = request.getContextPath(); 
 	String kakaoEmail = "email";
 	String kakaoName = "name";
-%>
+%> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -241,17 +241,17 @@
             <img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;">
           </div>
           <div id="navigator">
-            <a href="">Home</a>
+            <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
             <a href="">온라인투표</a>
             <a href="">자유게시판</a>
             <a href="">마이페이지</a>
-            <a href="">고객센터</a>
+            <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
           </div>
           <div id="header_login_btn" style="height: 100%; width: 9%;">
-            <button class="btn" id="login">Log In</button>
+            <button  class="btn" id="login" onclick="location.href='<%= contextPath %>/views/jinsloginform.jsp'">Log In</button>
           </div>
           <div id="header_signin_btn" style="height: 100%; width: 9%;">
-            <button class="btn" id="signin">Sign In</button>
+            <button class="btn" id="signin" onclick="signin()">Sign In</button>
           </div>
           <div id="header_mypage_btn" style="height: 100%; width: 7%;">
             <button class="btn" id="mypage"><img src="<%= contextPath %>/views/common/assets/user01.png" alt=""></button>
@@ -363,11 +363,11 @@
       <div id="footer_1">
         <div id="footer_1_1"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt=""></div>
         <div id="navigator" class="navigator">
-          <a a href="">Home</a>
+          <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
           <a href="">온라인투표</a>
           <a href="">자유게시판</a>
           <a href="">마이페이지</a>
-          <a href="">고객센터</a>
+          <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
         </div>
       </div>
       <div id="footer_2">
@@ -380,10 +380,19 @@
   <!-- -------------------------------------------------------------------- -->
   
    <script>
-	function naver() {
-		location.href="<%= contextPath %>/views/common/jins/naverlogin.jsp";
-	}
-	</script>
+  function login() {
+	     location.href="<%= contextPath %>/views/member/loginform.jsp";
+	   }
+     
+
+  </script>
+
+<script>
+  function signin() {
+	     location.href="<%= contextPath %>/views/member/signin.jsp";
+	   }
+
+  </script>
 </body>
 
 </html>

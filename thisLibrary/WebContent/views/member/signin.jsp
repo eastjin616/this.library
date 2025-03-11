@@ -131,7 +131,7 @@
 } */
 
 .form-group>label{
-  margin-left: 320px;
+  margin-left: 230px;
 }
 
 .form-group>input{
@@ -140,7 +140,11 @@
 }
 
 .form-group #addressbtn{
-  margin-left: 320px;
+  margin-left: 235px;
+}
+
+.container {
+        width: 1000px !important;
 }
 
   </style>
@@ -191,7 +195,7 @@
         </div>
 
        <hr>
-       <form id="form" action="createUser.do" method="post">
+       <form id="form" action="<%= contextPath %>/signin.me" method="post">
            <div class="col-sm-6-col-md-offset-3">
                            
                    <div class="form-group">
@@ -207,12 +211,12 @@
 
                    <div class="form-group">
                       <label for="inputPassword">닉네임</label>
-                      <label for=""></label><input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해">
+                      <label for=""></label><input type="text" class="form-control" name="nickname" placeholder="닉네임을 입력해주세요">
                    </div>
 
                    <div class="form-group">
                        <label for="inputPassword">비밀번호</label>
-                       <label for=""></label><input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해">
+                       <label for=""></label><input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해주세요">
                    </div>
 
                    <div class="form-group">
@@ -233,7 +237,7 @@
 
                    <div class="form-group"> 
                     <label for="phone">PHONE</label>
-                    <input type="tel" class="form-control" name="birth" placeholder="ex) 010-1234-5678">
+                    <input type="tel" class="form-control" name="phone" placeholder="ex) 010-1234-5678">
                   </div>
 
                    <div class="form-group">

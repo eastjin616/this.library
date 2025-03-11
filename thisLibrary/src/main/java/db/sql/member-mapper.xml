@@ -45,4 +45,30 @@
 	     , ?
 	     )
 	</entry>
+	
+	<entry key="naverInsert">
+		INSERT 
+	  INTO MEMBER
+	     (
+	       MEM_NO
+	     , MEM_NAME
+	     , MEM_ID
+	     , MEM_PWD
+	     , NICKNAME
+	     , ADDRESS
+	     , EMAIL
+	     , PHONE
+	     )
+	VALUES
+	     ( 
+	       SEQ_MEM_NO.NEXTVAL
+	     , 홍길동
+	     , user99
+	     , 1234
+	     , ?
+	     , 서울시
+	     , ?
+	     , 010
+	     )
+	</entry>
 </properties>

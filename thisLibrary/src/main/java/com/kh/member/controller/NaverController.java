@@ -7,17 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.member.model.service.MemberService;
+
 /**
- * Servlet implementation class KaKaoSigninController
+ * Servlet implementation class NaverController
  */
-@WebServlet("/kakaoSignin.me")
-public class KaKaoSigninController extends HttpServlet {
+@WebServlet("/naver.bo")
+public class NaverController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public KaKaoSigninController() {
+    public NaverController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,16 +28,15 @@ public class KaKaoSigninController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String kakaoName = request.getParameter("nickName");
-		String kakaoEmail = request.getParameter("email");
-	
-		request.setAttribute("kakaoName", kakaoName);
-		request.setAttribute("kakaoEmail", kakaoEmail);
-		
-		request.getRequestDispatcher("views/member/signin.jsp").forward(request, response);
-		
-		System.out.println("ㅆㅂ");
+		String nickname = request.getParameter("nickname");
+        String email = request.getParameter("email");
+
+        // 여기서 nickname과 email을 처리합니다.
+        System.out.println("Nickname: " + nickname);
+        System.out.println("Email: " + email);
+
+        // 응답 처리
+       int result = new MemberService().naverInsert(nickname, email);
 	}
 
 	/**

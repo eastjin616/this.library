@@ -33,6 +33,7 @@ public class LoginController extends HttpServlet {
 		String memId = request.getParameter("memId");
 		String memPwd = request.getParameter("memPwd");
 		
+			System.out.println("Rjwu");
 		
 		Member loginMember = new MemberService().loginMember(memId, memPwd);
 		if(loginMember == null) {
@@ -45,6 +46,7 @@ public class LoginController extends HttpServlet {
 			response.sendRedirect(request.getContextPath());
 		}
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

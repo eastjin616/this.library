@@ -23,30 +23,26 @@
 <body>
 	<article class="container">
          <div class="page-header">
-				<center><h1><a onclick="location.reload()" style="cursor: pointer;"><b>회원가입</b></a></h1></center>
-             <div class="col-md-6 col-md-offset-3">
-              </div>
+             <center><h1><a onclick="location.reload()" style="cursor: pointer;"><b>회원가입</b></a></h1></center>
+             <div class="col-md-6 col-md-offset-3"></div>
          </div>
 
 		<hr>
-		<form action="createUser.do" method="post">
+		<form action="enroll.me" method="post">
 			<div class="col-sm-6 col-md-offset-3">
-			                
-			             	<% System.out.print("kakaoName = " + kakaoName); %>
-			             	<% System.out.print("kakaoEmail = " + kakaoEmail); %>
-			             	
-                    <div class="form-group">
-                        <label for="inputName">이름</label>
-                        <input type="text" class="form-control" name="name" placeholder="이름을 입력해 주세요" 
-                        <% if(kakaoName != null){ %>
-                        value="<%= kakaoName %>">
-                        <% } %>
-                    </div>
-     
-            		<div class="form-group">
-                        <label for="inputName">아이디</label>
-                        <input type="text" class="form-control" name="id" placeholder="아이디를 입력해 주세요">
-           			</div>
+			             
+              <div class="form-group">
+                  <label for="inputName">이름</label>
+                  <input type="text" class="form-control" name="name" placeholder="이름을 입력해 주세요" 
+                  <% if(kakaoName != null){ %>
+                  value="<%= kakaoName %>">
+                  <% } %>
+              </div>
+   
+          		<div class="form-group">
+                 <label for="inputName">아이디</label>
+                 <input type="text" class="form-control" name="id" placeholder="아이디를 입력해 주세요">
+         			</div>
 
 					<div class="form-group">
                         <label for="inputPassword">비밀번호</label>

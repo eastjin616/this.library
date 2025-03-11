@@ -197,21 +197,30 @@
     <div id="header">
       <div id="header_1">
           <div id="header_1_1_1">
-            <img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;">
+						<a href="<%= contextPath %>"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;"></a>
           </div>
           <div id="navigator">
-            <a a href="<%= contextPath %>/views/common.mainPage.jsp">Home</a>
+            <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
             <a href="">온라인투표</a>
             <a href="">자유게시판</a>
             <a href="">마이페이지</a>
             <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
           </div>
           <div id="header_login_btn" style="height: 100%; width: 9%;">
-            <button  class="btn" id="login" onclick="location.href='<%= contextPath %>/views/member/loginform.jsp'">Log In</button>
-          </div>
-          <div id="header_signin_btn" style="height: 100%; width: 9%;">
-            <button class="btn" id="signin" onclick="signin()">Sign In</button>
-          </div>
+            <button class="btn" id="login"
+						onclick="location.href='<%= contextPath %>/views/member/loginform.jsp'" 
+            style="display: flex;
+            justify-content: center;
+            align-items: center;"
+            >LogIn</button>
+				</div>
+				<div id="header_signin_btn" style="height: 100%; width: 9%;">
+					<button class="btn" id="signin" onclick="signin()"
+          style="display: flex;
+            justify-content: center;
+            align-items: center;"
+            >Sign In</button>
+				</div>
           <div id="header_mypage_btn" style="height: 100%; width: 7%;">
             <button class="btn" id="mypage"><img src="<%= contextPath %>/views/common/assets/user01.png" alt=""></button>
           </div>

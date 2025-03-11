@@ -19,5 +19,30 @@
 	   AND MEM_PWD = ?
 	   AND STATUS = 'Y'
 	</entry>
-
+	
+	<entry key="insertMember">
+	INSERT 
+	  INTO MEMBER
+	     (
+	       MEM_NO
+	     , MEM_NAME
+	     , MEM_ID
+	     , MEM_PWD
+	     , NICKNAME
+	     , ADDRESS
+	     , EMAIL
+	     , PHONE
+	     )
+	VALUES
+	     ( 
+	       SEQ_MEM_NO.NEXTVAL
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     )
+	</entry>
 </properties>

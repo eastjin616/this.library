@@ -131,7 +131,7 @@
 } */
 
 .form-group>label{
-  margin-left: 320px;
+  margin-left: 230px;
 }
 
 .form-group>input{
@@ -140,7 +140,11 @@
 }
 
 .form-group #addressbtn{
-  margin-left: 320px;
+  margin-left: 235px;
+}
+
+.container {
+        width: 1000px !important;
 }
 
   </style>

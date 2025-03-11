@@ -200,7 +200,7 @@
             <img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;">
           </div>
           <div id="navigator">
-            <a a href="<%= contextPath %>/views/common.mainPage.jsp">Home</a>
+            <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
             <a href="">온라인투표</a>
             <a href="">자유게시판</a>
             <a href="">마이페이지</a>

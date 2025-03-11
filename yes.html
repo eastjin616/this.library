@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-    <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
+<% String contextPath = request.getContextPath(); %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -93,50 +90,6 @@
     }
 
     /*-------------------------------------------------------------  */
-    #content div{font-family: Arial, Helvetica, sans-serif;}
-    #content1{width: 100%;
-              height: 225px;
-              background-color: #fddcce;
-              display: flex;  
-            }
-    #content2{width: 70%;       height: 400px; margin-left: 15%; }
-    #content3{width: 100%;       height: 400px;  }
-    #textcontent{
-      border: 1px solid;
-      padding-top: 50px; 
-      font-size: 30px;
-    }
-    
-    #content2_1, #content2_2{width: 100%; height: 50%; display: flex; }
-    #content2_1_1, #content2_1_2, #content2_1_3, #content2_1_4{width: 50%;}
-        #contentDiv1_1, #contentDiv2_1, #contentDiv3_1, #contentDiv4_1{width: 100%; height: 60%; text-align: center;box-sizing: border-box; margin-bottom: -20px;}
-        #contentDiv1_2, #contentDiv2_2, #contentDiv3_2, #contentDiv4_2{width: 100%; height: 30%; text-align: center;box-sizing: border-box;}
-        #contentDiv1_3, #contentDiv2_3, #contentDiv3_3, #contentDiv4_3{width: 100%; height: 10%; text-align: center;box-sizing: border-box; }
-        
-
-        #content2 img{ width: 100px;}
-
-
-        .notice-board {
-            border: 1px solid #ccc;
-            border-radius: 10px; /* 둥근 모서리 */
-            padding: 20px;
-            background-color: #fff;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-      
-        table {
-          margin: auto;
-            width: 80%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: center;
-        }
-        th {background-color: #ebc597;}
 
     /* ==============footer======================================= */
         #footer_1 {
@@ -168,6 +121,28 @@
         margin-top: 2%;
         }
    
+/* -------------------------------------------------------------- */
+.btn-space {
+    margin-right: 5px;
+}
+
+/* .div{
+  margin-left: 20%;
+} */
+
+.form-group>label{
+  margin-left: 320px;
+}
+
+.form-group>input{
+  width: 500px;
+  margin: auto;
+}
+
+.form-group #addressbtn{
+  margin-left: 320px;
+}
+
   </style>
 </head>
 <meta charset="UTF-8">
@@ -177,46 +152,144 @@
   <div class="wrap">
     <div id="header">
       <div id="header_1">
-        <!-- <div id="header_1_1"> -->
           <div id="header_1_1_1">
-            <img src="./../로고,사진,그림,캐릭터/This_서고 로고.png" alt="" style="height: 100%; width: 100%;">
+            <img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;">
           </div>
           <div id="navigator">
-            <a href="">Home</a>
+            <a a href="<%= contextPath %>/views/common.mainPage.jsp">Home</a>
             <a href="">온라인투표</a>
             <a href="">자유게시판</a>
             <a href="">마이페이지</a>
-            <a href="">고객센터</a>
+            <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
           </div>
           <div id="header_login_btn" style="height: 100%; width: 9%;">
-            <button class="btn" id="login">Log In</button>
+            <button  class="btn" id="login" onclick="location.href='<%= contextPath %>/views/member/loginform.jsp'">Log In</button>
           </div>
           <div id="header_signin_btn" style="height: 100%; width: 9%;">
-            <button class="btn" id="signin">Sign In</button>
+            <button class="btn" id="signin" onclick="signin()">Sign In</button>
           </div>
           <div id="header_mypage_btn" style="height: 100%; width: 7%;">
-            <button class="btn" id="mypage"><img src="./../로고,사진,그림,캐릭터/user01.png" alt=""></button>
+            <button class="btn" id="mypage"><img src="<%= contextPath %>/views/common/assets/user01.png" alt=""></button>
           </div>
-        <!-- </div> -->
       
       </div>
     </div>
     <!-- -------------------------------------------------------------------- -->
 
+    <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>회원가입</title>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
+    <article class="container" id="container">
+        <div class="page-header">
+               <center><h1><a onclick="location.reload()" style="cursor: pointer;"><b>회원가입</b></a></h1></center>
+        <div class="col-md-6 col-md-offset-3">
+             </div>
+        </div>
+
+       <hr>
+       <form id="form" action="createUser.do" method="post">
+           <div class="col-sm-6-col-md-offset-3">
+                           
+                   <div class="form-group">
+                       <label for="inputName">이름</label>
+                       <input type="text" class="form-control" name="name" placeholder="이름을 입력해 주세요">
+                   </div>
+    
+                   <div class="form-group">
+                      <label for="inputName">아이디</label>
+                      <input type="text" class="form-control" name="id" placeholder="아이디를 입력해 주세요">
+                      <button class="btn btn-default" type="button" onClick="goPopup();" id="addressbtn">중복확인</button>
+                   </div>
+
+                   <div class="form-group">
+                      <label for="inputPassword">닉네임</label>
+                      <label for=""></label><input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해">
+                   </div>
+
+                   <div class="form-group">
+                       <label for="inputPassword">비밀번호</label>
+                       <label for=""></label><input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해">
+                   </div>
+
+                   <div class="form-group">
+                    <label for="inputPassword">비밀번호 확인</label>
+                    <input type="password" class="form-control" placeholder="비밀번호를 입력해주세요">
+                  </div>
+
+                   
+                   <div class="form-group">
+                       <label>주소</label>
+                       <input type="text" class="form-control" id="zipNo" name="post" placeholder="우편번호" >
+                       <button class="btn btn-default" type="button" onClick="goPopup();" id="addressbtn"><i class="fa fa-search" ></i>주소검색</button>
+                   </div>
+                   
+                   <div class="form-group" style="margin-top:0px;">
+                       <input type="text" class="form-control" id="roadFullAddr" name="address" placeholder="상세주소"/>
+                   </div>
+
+                   <div class="form-group"> 
+                    <label for="phone">PHONE</label>
+                    <input type="tel" class="form-control" name="birth" placeholder="ex) 010-1234-5678">
+                  </div>
+
+                   <div class="form-group">
+                    <label for="InputEmail">이메일 주소</label>
+                    <input type="email" class="form-control" name="email" placeholder="이메일 주소를 입력해주세요">
+                </div>
+           
+
+                  <div class="form-group text-center">
+                       <button type="submit" id="join-submit" class="btn btn-primary btn-space">
+                           회원가입<i class="fa fa-check spaceLeft"></i>
+                           <button type="button" class="btn btn-danger" onClick="location.href='index.jsp'"/>
+                           취소<i class="fa fa-check spaceLeft"></i>
+                       </button>
+                      
+                       
+
+       </form>
+       </div>
+       </article>
+       <hr>
+       
+       <script>
+       function goPopup(){
+       // 주소검색을 수행할 팝업 페이지를 호출합니다.
+       // 호출된 페이지(addressAPIPopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+           var pop = window.open("<%= contextPath %>/views/common/jins/addressAPIPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+       
+           // 모바일 웹인 경우, 호출된 페이지(addressAPIPopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
+           //var pop = window.open("/popup/addressAPIPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
+       }
+
+
+       function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+           // 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+           
+           var address1 = document.querySelector("#zipNo");
+           address1.value = zipNo;
+   
+           var address2 = document.querySelector("#roadFullAddr");
+           address2.value = roadFullAddr;
+       }
+       </script>
 
     
 
     <!-- -------------------------------------------------------------------- -->
     <div id="footer" style="background-color: #fdf5f1;">
       <div id="footer_1">
-        <div id="footer_1_1"><img src="./../로고,사진,그림,캐릭터/This_서고 로고.png" alt=""></div>
+        <div id="footer_1_1"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt=""></div>
         <div id="navigator" class="navigator">
-          <a a href="">Home</a>
+          <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
           <a href="">온라인투표</a>
           <a href="">자유게시판</a>
           <a href="">마이페이지</a>
-          <a href="">고객센터</a>
+          <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
         </div>
       </div>
       <div id="footer_2">
@@ -224,6 +297,13 @@
       </div>
     </div>
   </div>
+  
+  <script>
+  function login() {
+	     location.href="<%= contextPath %>/views/member/loginform.jsp";
+	   }
+
+  </script>
   <!-- -------------------------------------------------------------------- -->
 </body>
 

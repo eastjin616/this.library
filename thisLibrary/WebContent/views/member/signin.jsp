@@ -191,7 +191,7 @@
         </div>
 
        <hr>
-       <form id="form" action="createUser.do" method="post">
+       <form id="form" action="<%= contextPath %>/signin.me" method="post">
            <div class="col-sm-6-col-md-offset-3">
                            
                    <div class="form-group">
@@ -224,7 +224,7 @@
                    <div class="form-group">
                        <label>주소</label>
                        <input type="text" class="form-control" id="zipNo" name="post" placeholder="우편번호" >
-                       <button class="btn btn-default" type="button" onClick="goPopup();" id="addressbtn"><i class="fa fa-search" ></i>주소검색</button>
+                       <button class="btn btn-default" type="button" onClick="" id="addressbtn"><i class="fa fa-search" ></i>주소검색</button>
                    </div>
                    
                    <div class="form-group" style="margin-top:0px;">

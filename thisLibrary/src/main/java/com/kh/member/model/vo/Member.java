@@ -28,6 +28,8 @@ public class Member {
 		this.phone = phone;
 		this.status = status;
 	}
+	
+	
 
 	public int getMemNo() {
 		return memNo;

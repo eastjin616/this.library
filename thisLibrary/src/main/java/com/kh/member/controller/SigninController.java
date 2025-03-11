@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.member.model.service.MemberService;
 import com.kh.member.model.vo.Member;
 
 /**
@@ -33,13 +34,15 @@ public class SigninController extends HttpServlet {
 		
 		String memName = request.getParameter("name");
 		String memId = request.getParameter("id");
+		String nickname = request.getParameter("nickname");
 		String memPwd = request.getParameter("password");
-		String email = request.getParameter("email");
 		String address = request.getParameter("address");
+		String phone = request.getParameter("phone");
+		String email = request.getParameter("email");
 		
-		Member m = new Member(memName, memId, memPwd, email, address);
+		Member m = new Member(memName, memId, nickname, memPwd, address, phone, email);
 		
-		
+		new MemberService().insertMember(m);
 	}
 
 	/**

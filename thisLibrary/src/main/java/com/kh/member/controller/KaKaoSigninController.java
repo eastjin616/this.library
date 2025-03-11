@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MemberEnrollController
+ * Servlet implementation class KaKaoSigninController
  */
-@WebServlet("/enroll.me")
-public class MemberEnrollController extends HttpServlet {
+@WebServlet("/kakaoSignin.me")
+public class KaKaoSigninController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberEnrollController() {
+    public KaKaoSigninController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +33,7 @@ public class MemberEnrollController extends HttpServlet {
 		request.setAttribute("kakaoName", kakaoName);
 		request.setAttribute("kakaoEmail", kakaoEmail);
 		
-		request.getRequestDispatcher("views/common/jins/createUser.jsp").forward(request, response);
+		request.getRequestDispatcher("views/member/signin.jsp").forward(request, response);
 		
 		
 	}

@@ -31,9 +31,6 @@
 		<hr>
 		<form action="createUser.do" method="post">
 			<div class="col-sm-6 col-md-offset-3">
-			                
-			             	<% System.out.print("kakaoName = " + kakaoName); %>
-			             	<% System.out.print("kakaoEmail = " + kakaoEmail); %>
 			             	
                     <div class="form-group">
                         <label for="inputName">이름</label>

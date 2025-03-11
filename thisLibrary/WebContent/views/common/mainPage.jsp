@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<% String alertMsg = (String)session.getAttribute("alertMsg"); %>
 <% String contextPath = request.getContextPath(); %>
 <!DOCTYPE html>
 <html lang="en">
@@ -417,6 +417,14 @@ a{
 <meta charset="UTF-8">
 <!-- ------------------------------------------------------------------ -->
 
+<% if(alertMsg != null){ %>
+				<script>
+					alert('<%=alertMsg%>');
+				</script>
+				<% session.removeAttribute("alertMsg"); %>
+	<% } %>
+			
+
 <body>
   <div class="wrap">
     <div id="header">
@@ -435,7 +443,9 @@ a{
             <button class="btn" id="login" onclick="login()">Log In</button>
           </div>
           <div id="header_signin_btn" style="height: 100%; width: 9%;">
+
             <button class="btn" id="signin" onclick="signin()">Sign In</button>
+
           </div>
           <div id="header_mypage_btn" style="height: 100%; width: 7%;">
             <button class="btn" id="mypage"><img src="<%= contextPath %>/views/common/assets/user01.png" alt=""></button>
@@ -542,16 +552,12 @@ a{
   
   <script>
   function login() {
-	     location.href="<%= contextPath %>/views/member/loginform.jsp";
+	     	location.href="<%= contextPath %>/views/member/loginform.jsp";
 	   }
-
-  </script>
   
-  <script>
   function signin() {
 	     location.href="<%= contextPath %>/views/member/signin.jsp";
 	   }
-
   </script>
   
 </body>

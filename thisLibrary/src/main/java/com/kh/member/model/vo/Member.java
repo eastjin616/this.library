@@ -28,6 +28,20 @@ public class Member {
 		this.phone = phone;
 		this.status = status;
 	}
+	
+	
+
+	public Member(String memName, String memId, String memPwd, String nickname, String address, String email,
+			String phone) {
+		super();
+		this.memName = memName;
+		this.memId = memId;
+		this.memPwd = memPwd;
+		this.nickname = nickname;
+		this.address = address;
+		this.email = email;
+		this.phone = phone;
+	}
 
 	public int getMemNo() {
 		return memNo;

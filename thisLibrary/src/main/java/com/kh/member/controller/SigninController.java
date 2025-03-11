@@ -34,11 +34,11 @@ public class SigninController extends HttpServlet {
 		
 		String memName = request.getParameter("name");
 		String memId = request.getParameter("id");
-		String nickname = request.getParameter("nickname");
-		String memPwd = request.getParameter("password");
+		String nickname = request.getParameter("password");
+		String memPwd = request.getParameter("nickname");
 		String address = request.getParameter("address");
-		String phone = request.getParameter("phone");
-		String email = request.getParameter("email");
+		String phone = request.getParameter("email");
+		String email = request.getParameter("phone");
 		
 		Member m = new Member(memName, memId, nickname, memPwd, address, phone, email);
 		
@@ -46,9 +46,11 @@ public class SigninController extends HttpServlet {
 		
 		if(result > 0) { // 성공적으로 회원가입 완료 됨 (Member 테이블에 Insert 완료 됨)
 			request.getSession().setAttribute("Member", m);
+			request.getSession().setAttribute("alertMsg", "회원가입성공");
 			response.sendRedirect(request.getContextPath());
 		}else {
-			request.setAttribute("alertMsg", m)
+			request.setAttribute("alertMsg", "회원가입실패");
+			request.getRequestDispatcher("views/member/signin.jsp").forward(request, response);
 		}
 	}
 

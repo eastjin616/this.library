@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<% String alertMsg = (String)session.getAttribute("alertMsg"); %>
 <% String contextPath = request.getContextPath(); %>
 <!DOCTYPE html>
 <html lang="en">
@@ -395,6 +395,14 @@ a{
 </head>
 <meta charset="UTF-8">
 <!-- ------------------------------------------------------------------ -->
+
+<% if(alertMsg != null){ %>
+				<script>
+					alert('<%=alertMsg%>');
+				</script>
+				<% session.removeAttribute("alertMsg"); %>
+	<% } %>
+			
 
 <body>
   <div class="wrap">

@@ -1,6 +1,12 @@
+<%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% String contextPath = request.getContextPath(); %>
+<%
+	String alertMsg = (String)request.getAttribute("alertMsg");
+	Member loginMember = (Member)session.getAttribute("Member");
+
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -153,6 +159,14 @@
 <!-- ------------------------------------------------------------------ -->
 
 <body>
+	
+	
+	<% if(alertMsg != null){ %>
+				<script>
+					alert('<%=alertMsg%>');
+				</script>
+				
+	<% } %>
   <div class="wrap">
     <div id="header">
       <div id="header_1">
@@ -228,7 +242,7 @@
                    <div class="form-group">
                        <label>주소</label>
                        <input type="text" class="form-control" id="zipNo" name="post" placeholder="우편번호" >
-                       <button class="btn btn-default" type="button" onClick="" id="addressbtn"><i class="fa fa-search" ></i>주소검색</button>
+                       <button class="btn btn-default" type="button" onClick="goPopup()" id="addressbtn"><i class="fa fa-search" ></i>주소검색</button>
                    </div>
                    
                    <div class="form-group" style="margin-top:0px;">

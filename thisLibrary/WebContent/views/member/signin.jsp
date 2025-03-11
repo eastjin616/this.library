@@ -191,8 +191,8 @@
         </div>
 
        <hr>
-       <form action="<%= contextPath %>/signin.me" method="post">
-           <div class="col-sm-6 col-md-offset-3">
+       <form id="form" action="createUser.do" method="post">
+           <div class="col-sm-6-col-md-offset-3">
                            
                    <div class="form-group">
                        <label for="inputName">이름</label>
@@ -217,18 +217,6 @@
 
                    <div class="form-group">
                     <label for="inputPassword">비밀번호 확인</label>
-                    <input type="password" class="form-control"placeholder="비밀번호를 입력해주세요">
-                  </div>
-
-                   <div class="form-group">
-                       <label for="InputEmail">이메일 주소</label>
-                       <input type="email" class="form-control" name="email" placeholder="이메일 주소를 입력해주세요">
-                   </div>
-                   
-                   <div class="form-group"> 
-       <label for="inputBirth">생년월일</label>
-                   <input type="date" class="form-control" name="birth" placeholder=" ex) 19990101">
-          </div>
                     <input type="password" class="form-control" placeholder="비밀번호를 입력해주세요">
                   </div>
 

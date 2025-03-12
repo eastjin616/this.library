@@ -62,7 +62,7 @@
 
     #navigator {
       position: relative;
-      width: 60%;
+      width: 800px;
       height: 100%;
       display: flex;
       align-items: center;

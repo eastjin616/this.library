@@ -29,15 +29,19 @@ public class NaverController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		String id = (String)request.getAttribute("id");
 		String nickname = (String)request.getAttribute("nickname");
         String email = (String)request.getAttribute("email");
+        String mobile = (String)request.getAttribute("mobile");
 
         // 여기서 nickname과 email을 처리합니다.
+        System.out.println("id: " + id);
         System.out.println("Nickname: " + nickname);
         System.out.println("Email: " + email);
+        System.out.println("mobile" + mobile);
 
         // 응답 처리
-       int result = new MemberService().naverInsert(nickname, email);
+       int result = new MemberService().naverInsert(id,nickname, email,mobile);
 	}
 
 	/**

@@ -91,16 +91,18 @@ public class MemberDao {
 	
 //	==============================================
 	
-	public int naverInsert(Connection conn, String nickname, String email) {
+	public int naverInsert(Connection conn, String id, String nickname, String email, String moblie) {
 
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("naverInsert");
 		try {
-			System.out.println("쿼리전");
 			pstmt = conn.prepareStatement(sql);
+			
 			pstmt.setString(1, nickname);
 			pstmt.setString(2, email);
+			pstmt.setString(3, nickname);
+			pstmt.setString(4, id);
 			
 			result = pstmt.executeUpdate();
 

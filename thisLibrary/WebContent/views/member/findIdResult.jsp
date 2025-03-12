@@ -211,7 +211,7 @@
 
         <article class="container" id="container">
             <div class="page-header">
-                  <center><h1><a onclick="location.reload()" style="cursor: pointer;"><b>비밀번호 재설정</b></a></h1></center>
+                  <center><h1><a onclick="location.reload()" style="cursor: pointer;"><b>아이디 찾기</b></a></h1></center>
             <div class="col-md-6 col-md-offset-3">
                 </div>
             </div>
@@ -220,21 +220,17 @@
               <div class="col-sm-6-col-md-offset-3">
 
                   <div class="form-group">
-                      <label for="inputId">아이디</label>
+                      <label for="inputName">이름</label>
                       <input type="text" class="form-control" name="id" placeholder="아이디를 입력해 주세요">
                   </div>
 
                   <div class="form-group">
-                    <label for="Inputpassword">비밀번호</label>
-                    <input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해주세요">
-                </div>
-                <div class="form-group">
-                    <label for="Inputpassword">비밀번호 확인</label>
-                    <input type="password" class="form-control" placeholder="비밀번호를 입력해주세요">
+                    <label for="InputEmail">이메일</label>
+                    <input type="email" class="form-control" name="email" placeholder="이메일 주소를 입력해주세요">
                 </div>
 
                   <div class="form-group text-center">
-                      <center> <button type="submit" id="" class="btn btn-primary btn-space">재설정<i class="fa fa-check spaceLeft"></i></center>
+                      <center> <button type="submit" id="" class="btn btn-primary btn-space">아이디 찾기<i class="fa fa-check spaceLeft"></i></center>
                        
 
     </form>

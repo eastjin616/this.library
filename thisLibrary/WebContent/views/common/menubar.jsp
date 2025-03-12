@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<% String contextPath = request.getContextPath(); %>
+<%
+String contextPath = request.getContextPath();
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,18 +16,20 @@
   <link rel="stylesheet" href="footer.css"> -->
 
 <style>
-	@font-face {
-    font-family: 'Gyeonggi_Batang_Regular';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-}
- body *{
+@font-face {
 	font-family: 'Gyeonggi_Batang_Regular';
- }
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+body * {
+	font-family: 'Gyeonggi_Batang_Regular';
+}
 
 /* div {box-sizing: border-box;border: 1px solid red;} */
-
 .wrap {
 	width: 1000px;
 	margin: auto;
@@ -156,17 +160,19 @@
 		<div id="header">
 			<div id="header_1">
 				<div id="header_1_1_1">
-					<a href="<%= contextPath %>"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;"></a>
-						alt="" style="height: 100%; width: 100%;">
+					<a href="<%=contextPath%>"><img
+						src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt=""
+						style="height: 100%; width: 100%;"></a> alt="" style="height:
+					100%; width: 100%;">
 				</div>
 				<div id="navigator">
-					<a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a> <a
+					<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a
 						href="">온라인투표</a> <a href="">자유게시판</a> <a href="">마이페이지</a> <a
-						href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
+						href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
 				</div>
 				<div id="header_login_btn" style="height: 100%; width: 9%;">
 					<button class="btn" id="login"
-						onclick="location.href='<%= contextPath %>/views/jinsloginform.jsp'">Log
+						onclick="location.href='<%=contextPath%>/views/jinsloginform.jsp'">Log
 						In</button>
 				</div>
 				<div id="header_signin_btn" style="height: 100%; width: 9%;">
@@ -174,7 +180,7 @@
 				</div>
 				<div id="header_mypage_btn" style="height: 100%; width: 7%;">
 					<button class="btn" id="mypage">
-						<img src="<%= contextPath %>/views/common/assets/user01.png"
+						<img src="<%=contextPath%>/views/common/assets/user01.png"
 							alt="">
 					</button>
 				</div>
@@ -191,13 +197,13 @@
 		<div id="footer" style="background-color: #fdf5f1;">
 			<div id="footer_1">
 				<div id="footer_1_1">
-					<img src="<%= contextPath %>/views/common/assets/This_서고 로고.png"
+					<img src="<%=contextPath%>/views/common/assets/This_서고 로고.png"
 						alt="">
 				</div>
 				<div id="navigator" class="navigator">
-					<a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a> <a
+					<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a
 						href="">온라인투표</a> <a href="">자유게시판</a> <a href="">마이페이지</a> <a
-						href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
+						href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
 				</div>
 			</div>
 			<div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
@@ -206,17 +212,17 @@
 
 	<script>
   function login() {
-	     location.href="<%= contextPath %>/views/member/loginform.jsp";
+	     location.href="<%=contextPath%>/views/member/loginform.jsp";
 	   }
 
   </script>
 
 	<script>
   function signin() {
-	     location.href="<%= contextPath %>/views/member/signin.jsp";
-	   }
-
-  </script>
+	     location.href="<%=contextPath%>
+		/views/member/signin.jsp";
+		}
+	</script>
 	<!-- -------------------------------------------------------------------- -->
 </body>
 

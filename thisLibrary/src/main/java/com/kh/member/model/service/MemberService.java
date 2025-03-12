@@ -36,9 +36,9 @@ public class MemberService {
 	
 //	==========================================
 	
-	public int naverInsert(String nickname, String email) {
+	public int naverInsert(String id,String nickname, String email,String moblie) {
 		Connection conn = getConnection();
-		int result = new MemberDao().naverInsert(conn, nickname, email);
+		int result = new MemberDao().naverInsert(conn, id, nickname, email, moblie);
 	
 		if(result > 0) {
 			commit(conn);

@@ -58,6 +58,7 @@
 	     , ADDRESS
 	     , EMAIL
 	     , PHONE
+	     , TOKEN
 	     )
 	VALUES
 	     ( 
@@ -68,7 +69,8 @@
 	     , ?
 	     , '서울시'
 	     , ?
-	     , 010
+	     , ?
+	     , ?
 	     )
 	</entry>
 </properties>

@@ -426,8 +426,7 @@ body * {
   </script>
 	<script>
   function signin() {
-	     location.href="<%=contextPath%>
-		/views/member/signin.jsp";
+	     location.href="<%=contextPath%>/views/member/signin.jsp";
 		}
 	</script>
 </body>

@@ -81,12 +81,17 @@
                 JSONObject response1 = (JSONObject) userJson.get("response");
 
                 // 사용자 정보 출력
+                String id = (String) response1.get("id");
                 String nickname = (String) response1.get("nickname");
                 String email = (String) response1.get("email");
+                String mobile = (String) response1.get("mobile");
 
                 // 서블릿으로 사용자 정보 전달
+                request.setAttribute("id", id);
                 request.setAttribute("nickname", nickname);
                 request.setAttribute("email", email);
+                request.setAttribute("mobile", mobile);
+                
 
                 // 서블릿으로 포워딩
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/naver.bo"); // 서블릿 경로로 변경

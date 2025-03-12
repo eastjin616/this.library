@@ -236,7 +236,9 @@
           
 
                   <div class="form-group text-center">
-                      <center> <button type="submit" id="" class="btn btn-primary btn-space">비밀번호 찾기<i class="fa fa-check spaceLeft"></i></center>
+                      <center> <button type="submit" id="" class="btn btn-primary btn-space"
+                        her
+                        >비밀번호 찾기<i class="fa fa-check spaceLeft"></i></center>
                        
 
     </form>

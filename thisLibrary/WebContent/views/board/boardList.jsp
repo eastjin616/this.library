@@ -9,17 +9,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    <link rel="stylesheet" href="styles.css"> <!-- 컴파일된 CSS 파일 링크 -->
-    <link rel="stylesheet" href="https://unpkg.com/@material/data-table/dist/mdc.data-table.css">
-    <link rel="stylesheet" href="https://unpkg.com/@material/checkbox/dist/mdc.checkbox.css">
-    <link rel="stylesheet" href="https://unpkg.com/@material/icon-button/dist/mdc.icon-button.css">
-
-  @font-face {
-        font-family: 'Chosunilbo_myungjo';
-        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
 
     body *{
       font-family: 'Chosunilbo_myungjo';
@@ -99,7 +88,38 @@
       cursor: pointer;
     }
 
-    /*-------------------------------------------------------------  */
+    /*------------------------------------------------------------- 공지사항  */
+
+    .notice-board {
+					border: 1px solid #ccc;
+					border-radius: 10px;
+					/* 둥근 모서리 */
+					padding: 20px;
+					background-color: #fff;
+					max-width: 800px;
+					margin: 0 auto;
+				}
+
+				table {
+					margin: auto;
+					width: 80%;
+					border-collapse: collapse;
+				}
+
+				th,
+				td {
+					border: 1px solid #ccc;
+					padding: 10px;
+					text-align: center;
+				}
+
+				th {
+					background-color: #ebc597;
+				}
+
+				.notice-form {
+					text-align: center;
+				}
 
     /* ==============footer======================================= */
         #footer_1 {
@@ -163,86 +183,93 @@
     </div>
     <!-- -------------------------------------------------------------------- -->
 
+    <div class="notice-form">
+      <h2>공지사항 작성</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>날짜</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성 날짜</th>
+            <th>관리</th> <!-- '관리' 열 추가 -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="material-symbols-outlined">edit
+              </span></td> 
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="material-symbols-outlined">edit
+              </span></td> 
+          </tr>
 
-    <div class="mdc-data-table">
-      <div class="mdc-data-table__table-container">
-          <table class="mdc-data-table__table" aria-label="Dessert calories">
-              <thead>
-                  <tr class="mdc-data-table__header-row">
-                      <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Dessert</th>
-                      <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Carbs (g)</th>
-                      <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Protein (g)</th>
-                      <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Comments</th>
-                  </tr>
-              </thead>
-              <tbody class="mdc-data-table__content">
-                  <tr class="mdc-data-table__row">
-                      <th class="mdc-data-table__cell" scope="row">Frozen yogurt</th>
-                      <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
-                      <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.0</td>
-                      <td class="mdc-data-table__cell">Super tasty</td>
-                  </tr>
-                  <tr class="mdc-data-table__row">
-                      <th class="mdc-data-table__cell" scope="row">Ice cream sandwich</th>
-                      <td class="mdc-data-table__cell mdc-data-table__cell--numeric">37</td>
-                      <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.33333333333</td>
-                      <td class="mdc-data-table__cell">I like ice cream more</td>
-                  </tr>
-                  <tr class="mdc-data-table__row">
-                      <th class="mdc-data-table__cell" scope="row">Eclair</th>
-                      <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
-                      <td class="mdc-data-table__cell mdc-data-table__cell--numeric">6.0</td>
-                      <td class="mdc-data-table__cell">New filing flavor</td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="material-symbols-outlined">edit
+              </span></td> 
+          </tr><tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="material-symbols-outlined">edit
+              </span></td> 
+          </tr><tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="material-symbols-outlined">edit
+              </span></td> 
+          </tr><tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="material-symbols-outlined">edit
+              </span></td> 
+          </tr><tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="material-symbols-outlined">edit
+              </span></td> 
+          </tr><tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="material-symbols-outlined">edit
+              </span></td> 
+          </tr>
+
+
+
+        </tbody>
+      
+      
+      <!-- 추가 공지사항은 여기에 삽입 -->
+      </table>
+    </div>
+
+
+
   </div>
-
-  <script src="https://unpkg.com/@material/data-table/dist/mdc.data-table.js"></script>
-  <script src="https://unpkg.com/@material/checkbox/dist/mdc.checkbox.js"></script>
-  <script src="https://unpkg.com/@material/icon-button/dist/mdc.icon-button.js"></script>
-  <script>
-      const dataTable = new mdc.dataTable.MDCDataTable(document.querySelector('.mdc-data-table'));
-  </script>
-
-
-
- 
-    <center><h1>자유 게시판</h1></center>
-    <table border="1">
-      <tr>
-        <th width="50">No</th>
-        <th width="500">제목</th>
-        <th width="200">글쓴이</th>
-        <th width="200">작성일자</th>
-        <th width="100">조회수</th>
-      </tr>
-
-      <tr>
-        <th>3</th>
-        <td>제목자리입니다람쥐333</td>
-        <td align="center">글쓴이3입니다</td>
-        <td align="center">2025/03/11</td>
-        <td align="center">123</td>
-      </tr>
-
-      <tr>
-        <th>2</th>
-        <td>제목자리입니다람쥐22</td>
-        <td align="center">글쓴이2입니다</td>
-        <td align="center">2025/03/10</td>
-        <td align="center">256</td>
-      </tr>
-
-      <tr>
-        <th>1</th>
-        <td>제목자리입니다람쥐111</td>
-        <td align="center">글쓴이1입니다</td>
-        <td align="center">2025/03/09</td>
-        <td align="center">5203</td>
-      </tr>
-    </table>
+</div>
 
     
 

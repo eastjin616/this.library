@@ -88,4 +88,27 @@ public class MemberDao {
 		
 		return result;
 	}
-}
+	
+//	==============================================
+	
+	public int naverInsert(Connection conn, String nickname, String email) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("naverInsert");
+		System.out.println(email);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nickname);
+			pstmt.setString(2, email);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	}
+

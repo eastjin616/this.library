@@ -33,4 +33,21 @@ public class MemberService {
 		return result;
 		
 	}
+	
+//	==========================================
+	
+	public int naverInsert(String nickname, String email) {
+		Connection conn = getConnection();
+		int result = new MemberDao().naverInsert(conn, nickname, email);
+	
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
 }

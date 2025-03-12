@@ -87,7 +87,7 @@
                 // 서블릿으로 사용자 정보 전달
                 request.setAttribute("nickname", nickname);
                 request.setAttribute("email", email);
-                
+
                 // 서블릿으로 포워딩
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/naver.bo"); // 서블릿 경로로 변경
                 dispatcher.forward(request, response);

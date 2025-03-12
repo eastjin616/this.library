@@ -28,8 +28,9 @@ public class NaverController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nickname = request.getParameter("nickname");
-        String email = request.getParameter("email");
+
+		String nickname = (String)request.getAttribute("nickname");
+        String email = (String)request.getAttribute("email");
 
         // 여기서 nickname과 email을 처리합니다.
         System.out.println("Nickname: " + nickname);

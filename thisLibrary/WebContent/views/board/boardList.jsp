@@ -1,308 +1,369 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+  <% String contextPath=request.getContextPath(); %>
 
+    <!DOCTYPE html>
+    <html lang="en">
 
-<% String contextPath = request.getContextPath(); %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document1</title>
 
-    body *{
-      font-family: 'Chosunilbo_myungjo';
-    }
-    /* div {box-sizing: border-box;border: 1px solid red;} */
-    .wrap {
-      width: 1000px;
-      margin: auto;
-      height: auto;
-      overflow: hidden;
-    }
-    #header {height: 50px;}
-    #footer { height: 150px;}
-    #header>div {height: 100%;}
-    #header_1>div , #header_1_3>div{float: left;}
-    #header_1_1_1 {width: 15%;height: 100%;}
+      <style>
+        @font-face {
+          font-family: 'Gyeonggi_Batang_Regular';
+          src:
+            url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff') format('woff');
+          font-weight: 400;
+          font-style: normal;
+        }
 
-    #navigator {
-      position: relative;
-      width: 60%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-    }
-    #navigator>a {
-      text-decoration: none;
-      color: black;
-      font-size: 13px;
-    }
+        body * {
+          font-family: 'Gyeonggi_Batang_Regular';
+        }
 
-    /*-------------------------------------------------------------  */
-    #header_mypage_btn,
-    #header_login_btn,
-    #header_signin_btn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    #login {
-      width: 70%;
-      height: 50%;
-      border-radius: 5px;
-      background-color: #ea916e;
-      color: white;
-      border: none;
-    }
+        /* div {box-sizing: border-box;border: 1px solid red;} */
+        .wrap {
+          width: 1500px;
+          margin: auto;
+          height: auto;
+          overflow: hidden;
+        }
 
-    #signin {
-      width: 70%;
-      height: 50%;
-      border-radius: 5px;
-      background-color: #ea916e;
-      color: white;
-      border: none;
-    }
+        #header {
+          height: 50px;
+        }
 
-    /* ---------------------------------------------- */
-    #mypage {
-      border-radius: 50%;
-      width: 50%;
-      height: 50%;
-      background-color: #ea916e;
-      border: none;
-    }
+        #footer {
+          height: 150px;
+          margin-top: 50px;
+        }
 
-    #mypage>img {
-      width: 90%;
-      height: 60%;
-    }
+        #header>div {
+          height: 100%;
+        }
 
-    /* ---------------------------------------------- */
+        #header_1>div,
+        #header_1_3>div {
+          float: left;
+        }
 
-    .btn:hover {
-      opacity: 0.7;
-      color: white;
-      cursor: pointer;
-    }
+        #header_1_1_1 {
+          width: 15%;
+          height: 100%;
+        }
 
-    /*------------------------------------------------------------- 공지사항  */
+        #navigator {
+          position: relative;
+          width: 60%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+        }
 
-    .notice-board {
-					border: 1px solid #ccc;
-					border-radius: 10px;
-					/* 둥근 모서리 */
-					padding: 20px;
-					background-color: #fff;
-					max-width: 800px;
-					margin: 0 auto;
-				}
+        #navigator>a {
+          text-decoration: none;
+          color: black;
+          font-size: 13px;
+        }
 
-				table {
-					margin: auto;
-					width: 80%;
-					border-collapse: collapse;
-				}
+        /*-------------------------------------------------------------  */
+        #header_mypage_btn,
+        #header_login_btn,
+        #header_signin_btn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
 
-				th,
-				td {
-					border: 1px solid #ccc;
-					padding: 10px;
-					text-align: center;
-				}
+        #login {
+          width: 70%;
+          height: 50%;
+          border-radius: 5px;
+          background-color: #ea916e;
+          color: white;
+          border: none;
+        }
 
-				th {
-					background-color: #ebc597;
-				}
+        #signin {
+          width: 70%;
+          height: 50%;
+          border-radius: 5px;
+          background-color: #ea916e;
+          color: white;
+          border: none;
+        }
 
-				.notice-form {
-					text-align: center;
-				}
+        /* ---------------------------------------------- */
+        #mypage {
+          border-radius: 50%;
+          width: 50%;
+          height: 50%;
+          background-color: #ea916e;
+          border: none;
+        }
 
-    /* ==============footer======================================= */
+        #mypage>img {
+          width: 90%;
+          height: 60%;
+        }
+
+        /* ---------------------------------------------- */
+        .btn:hover {
+          opacity: 0.7;
+          color: white;
+          cursor: pointer;
+        }
+
+        /* ---------------------------------------------- */
+
+        /* 자유게시판 스타일 */
+        .board-container {
+          max-width: 1000px;
+          margin: 20px auto;
+          background: white;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          margin-top: 70px;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+
+        th,
+        td {
+          border-bottom: 1px solid #ddd;
+          padding: 10px;
+          text-align: left;
+        }
+
+        th {
+          background-color: #f4f4f4;
+        }
+
+        .pagination {
+          text-align: center;
+          margin-top: 20px;
+        }
+
+        .pagination a {
+          margin: 0 5px;
+          text-decoration: none;
+          color: #333;
+        }
+
+        .write-btn {
+          display: block;
+          width: 80px;
+          padding: 10px;
+          /* margin: auto; */
+          background-color: #ff6347;
+          color: white;
+          text-align: center;
+          border-radius: 5px;
+          text-decoration: none;
+
+        }
+
+        div .write-btn>a {
+          text-align: right;
+        }
+
+        /* ==============footer======================================= */
         #footer_1 {
-        width: 100%;
-        height: 65%;
+          width: 100%;
+          height: 65%;
         }
 
         #footer_1>div {
-        float: left;
+          float: left;
         }
 
         #footer_1_1 {
-        height: 100%;
-        width: 20%;
+          height: 100%;
+          width: 20%;
         }
 
         #footer_1_1>img {
-        display: flex;
-        margin: auto;
-        width: 60%;
-        height: 60%;
-        margin-top: 20%;
+          display: flex;
+          margin: auto;
+          width: 60%;
+          height: 60%;
+          margin-top: 20%;
         }
-        
+
         #footer_2 {
-        width: 100%;
-        height: 35%;
-        text-align: center;
-        margin-top: 2%;
+          width: 100%;
+          height: 35%;
+          text-align: center;
+          margin-top: 2%;
         }
+      </style>
+    </head>
 
-        
-   
-  </style>
-</head>
-<body>
-	<div class="wrap">
-    <div id="header">
-      <div id="header_1">
-          <div id="header_1_1_1">
-            <img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;">
+    <body>
+      <div class="wrap">
+        <div id="header">
+          <!-- 기존 헤더 내용 -->
+          <div id="header_1">
+            <div id="header_1_1_1">
+              <a href="<%=contextPath%>"><img src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt=""
+                  style="height: 100%; width: 100%;"></a>
+            </div>
+            <div id="navigator">
+              <a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="">자유게시판</a>
+              <a href="">마이페이지</a> <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+            </div>
+            <div id="header_login_btn" style="height: 100%; width: 9%;">
+              <button class="btn" id="login" onclick="location.href='<%=contextPath%>/views/jinsloginform.jsp'">Log
+                In</button>
+            </div>
+            <div id="header_signin_btn" style="height: 100%; width: 9%;">
+              <button class="btn" id="signin" onclick="signin()">Sign In</button>
+            </div>
+            <div id="header_mypage_btn" style="height: 100%; width: 7%;">
+              <button class="btn" id="mypage">
+                <img src="<%=contextPath%>/views/common/assets/user01.png" alt="">
+              </button>
+            </div>
+
           </div>
-          <div id="navigator">
-            <a a href="<%= contextPath %>/views/common.mainPage.jsp">Home</a>
-            <a href="">온라인투표</a>
-            <a href="">자유게시판</a>
-            <a href="">마이페이지</a>
-            <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
+        </div>
+
+        <!-- 자유게시판 -->
+        <div class="board-container">
+          <h2>자유게시판</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>제목</th>
+                <th>글쓴이</th>
+                <th>작성시간</th>
+                <th>좋아요</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>10</td>
+                <td>네이버 지도(v5) 임베드</td>
+                <td>아임웹</td>
+                <td>2019-12-17</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>제목</td>
+                <td>아임웹</td>
+                <td>2019-12-16</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>구글 지도 게시물에 임베드 하기</td>
+                <td>아임웹</td>
+                <td>2019-12-16</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>구글 지도 게시물에 임베드 하기</td>
+                <td>아임웹</td>
+                <td>2019-12-16</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>구글 지도 게시물에 임베드 하기</td>
+                <td>아임웹</td>
+                <td>2019-12-16</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>구글 지도 게시물에 임베드 하기</td>
+                <td>아임웹</td>
+                <td>2019-12-16</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>구글 지도 게시물에 임베드 하기</td>
+                <td>아임웹</td>
+                <td>2019-12-16</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>구글 지도 게시물에 임베드 하기</td>
+                <td>아임웹</td>
+                <td>2019-12-16</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>구글 지도 게시물에 임베드 하기</td>
+                <td>아임웹</td>
+                <td>2019-12-16</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>구글 지도 게시물에 임베드 하기</td>
+                <td>아임웹</td>
+                <td>2019-12-16</td>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <div class="pagination">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
           </div>
-          <div id="header_login_btn" style="height: 100%; width: 9%;">
-            <button  class="btn" id="login" onclick="location.href='<%= contextPath %>/views/jinsloginform.jsp'">Log In</button>
+
+          <div style="display: flex;">
+            <a href="#" class="write-btn" style="margin-left: auto;">글쓰기</a>
           </div>
-          <div id="header_signin_btn" style="height: 100%; width: 9%;">
-            <button class="btn" id="signin" onclick="signin()">Sign In</button>
+
+        </div>
+        <!-- 자유게시판 끝 -->
+
+        <div id="footer" style="background-color: #fdf5f1;">
+          <!-- 기존 푸터 내용 -->
+          <div id="footer_1">
+            <div id="footer_1_1">
+              <img src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt="">
+            </div>
+            <div id="navigator" class="navigator">
+              <a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="">자유게시판</a>
+              <a href="">마이페이지</a> <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+            </div>
           </div>
-          <div id="header_mypage_btn" style="height: 100%; width: 7%;">
-            <button class="btn" id="mypage"><img src="<%= contextPath %>/views/common/assets/user01.png" alt=""></button>
-          </div>
-      
-      </div>
-    </div>
-    <!-- -------------------------------------------------------------------- -->
-
-    <div class="notice-form">
-      <h2>공지사항 작성</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>날짜</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>작성 날짜</th>
-            <th>관리</th> <!-- '관리' 열 추가 -->
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><span class="material-symbols-outlined">edit
-              </span></td> 
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><span class="material-symbols-outlined">edit
-              </span></td> 
-          </tr>
-
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><span class="material-symbols-outlined">edit
-              </span></td> 
-          </tr><tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><span class="material-symbols-outlined">edit
-              </span></td> 
-          </tr><tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><span class="material-symbols-outlined">edit
-              </span></td> 
-          </tr><tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><span class="material-symbols-outlined">edit
-              </span></td> 
-          </tr><tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><span class="material-symbols-outlined">edit
-              </span></td> 
-          </tr><tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><span class="material-symbols-outlined">edit
-              </span></td> 
-          </tr>
-
-
-
-        </tbody>
-      
-      
-      <!-- 추가 공지사항은 여기에 삽입 -->
-      </table>
-    </div>
-
-
-
-  </div>
-</div>
-
-    
-
-    <!-- -------------------------------------------------------------------- -->
-    <div id="footer" style="background-color: #fdf5f1;">
-      <div id="footer_1">
-        <div id="footer_1_1"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt=""></div>
-        <div id="navigator" class="navigator">
-          <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
-          <a href="">온라인투표</a>
-          <a href="">자유게시판</a>
-          <a href="">마이페이지</a>
-          <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
+          <div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
         </div>
       </div>
-      <div id="footer_2">
-        © 2025 YourCompany. All Rights Reserved.
-      </div>
-    </div>
-  </div>
-  
-  <script>
-  function login() {
-	     location.href="<%= contextPath %>/views/member/loginform.jsp";
-	   }
+      <script>
+        function login() {
+          location.href = "<%=contextPath%>/views/member/loginform.jsp";
+        }
 
-  </script>
-  
-<script>
-  function signin() {
-	     location.href="<%= contextPath %>/views/member/signin.jsp";
-	   }
+      </script>
 
-  </script>
-</body>
-</html>
+      <script>
+        function signin() {
+          location.href = "<%=contextPath%>/views/member/signin.jsp";
+        }
+      </script>
+      <!-- -------------------------------------------------------------------- -->
+    </body>
+
+    </html>

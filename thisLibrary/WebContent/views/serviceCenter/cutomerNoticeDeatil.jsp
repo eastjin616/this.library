@@ -148,7 +148,8 @@
         .form-group {
           margin-bottom: 15px;
         }
-        #form-group-content{
+
+        #form-group-content {
           min-height: 300px;
         }
 
@@ -204,20 +205,26 @@
           font-size: 30px;
           margin: 0 0 -35px 30px;
         }
-        #content5{
+
+        #content5 {
           display: flex;
         }
-        #beCarefulText1{
+
+        #beCarefulText1 {
           width: 15%;
         }
+
         #submitTag {
+          display: inline-block;
           width: 80px;
+          text-align: center;
+          padding: 8px;
           background-color: black;
           color: white;
           border-radius: 1em;
           cursor: pointer;
-          resize: none;
         }
+
         /* ==============footer======================================= */
         #footer_1 {
           width: 100%;
@@ -293,7 +300,7 @@
                 <label for="title">제목 </label>
                 <input type="text" id="title" placeholder="새로운 게시글 제목입니다.">
               </div>
-              
+
               <div class="form-group">
                 <label for="content">내용 </label>
                 <textarea id="form-group-content" placeholder="새로운 게시글 내용입니다."></textarea>
@@ -306,13 +313,10 @@
                   <li>이를 어기고 개인정보가 포함된 파일을 업로드된 사실이 확인시 불이익을 받으실수 있습니다.</li>
                 </div>
               </div>
-
-              <input type="submit" id="submitTag" value="첨부하기">
-
-
+              <input type="file" id="fileUpload" hidden />
+              <label for="fileUpload" id="submitTag">파일 선택</label>
               <div class="buttons">
                 <button type="submit">저장</button>
-                
                 <button type="button">뒤로</button>
               </div>
             </form>

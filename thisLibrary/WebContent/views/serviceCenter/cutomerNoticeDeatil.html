@@ -8,6 +8,8 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Document1</title>
+      <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=label_important" />
       <!-- <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="content.css">
   <link rel="stylesheet" href="footer.css"> -->
@@ -121,8 +123,16 @@
         }
 
         /*----------------------------------------------------------*/
+        #noticeBoardBackgraound {
+          background-color: rgb(221, 214, 214);
+          width: 90%;
+          margin: auto;
+          border-radius: 8px;
+          padding: 1%;
+        }
+
         .container {
-          width: 50%;
+          width: 80%;
           margin: 50px auto;
           background: white;
           padding: 20px;
@@ -137,6 +147,9 @@
 
         .form-group {
           margin-bottom: 15px;
+        }
+        #form-group-content{
+          min-height: 300px;
         }
 
         label {
@@ -186,17 +199,25 @@
           background-color: #5a6268;
         }
 
-        /* .date-label {
-          float: right;
-        } */
-
-
-
-
-
-
-        /*-------------------------------------------------------------  */
-
+        #kk {
+          margin: 10px;
+          font-size: 30px;
+          margin: 0 0 -35px 30px;
+        }
+        #content5{
+          display: flex;
+        }
+        #beCarefulText1{
+          width: 15%;
+        }
+        #submitTag {
+          width: 80px;
+          background-color: black;
+          color: white;
+          border-radius: 1em;
+          cursor: pointer;
+          resize: none;
+        }
         /* ==============footer======================================= */
         #footer_1 {
           width: 100%;
@@ -263,33 +284,40 @@
 
 
         <div>
-          <div>공지사항 관리</div>
-          <div >
+          <div id="noticeBoardBackgraound">
+            <div id="kk"> 공지사항 관리하기</div>
             <form class="container">
+
               <label class="date-label">등록일 <input type="date" id="date" value="2023-04-03"></label>
               <div class="form-group">
                 <label for="title">제목 </label>
                 <input type="text" id="title" placeholder="새로운 게시글 제목입니다.">
               </div>
-              <div class="form-group">
-                <label for="name">이름 </label>
-                <input type="text" id="name" placeholder="사용자 이름을 적어주세요.">
-              </div>
+              
               <div class="form-group">
                 <label for="content">내용 </label>
-                <textarea id="content" placeholder="새로운 게시글 내용입니다."></textarea>
+                <textarea id="form-group-content" placeholder="새로운 게시글 내용입니다."></textarea>
               </div>
+              <div id="content5">
+                <div id="beCarefulText1">첨부파일</div>
+                <div id="beCarefulText2">
+                  <li>개인정보를 포함한 이미지는 첨부 파일에 업로드할 수 없습니다. </li>
+                  <li> 개인정보 - 이름, 주민등록번호, 운전면허번호, 주소, 전화번호, 생년월일, 출생지, 본적지, 성별, 국적</li>
+                  <li>이를 어기고 개인정보가 포함된 파일을 업로드된 사실이 확인시 불이익을 받으실수 있습니다.</li>
+                </div>
+              </div>
+
+              <input type="submit" id="submitTag" value="첨부하기">
+
+
               <div class="buttons">
                 <button type="submit">저장</button>
+                
                 <button type="button">뒤로</button>
               </div>
             </form>
           </div>
         </div>
-
-
-
-
         <!-- -------------------------------------------------------------------- -->
         <div id="footer" style="background-color: #fdf5f1;">
           <div id="footer_1">
@@ -314,8 +342,7 @@
 
       <script>
         function signin() {
-          location.href = "<%=contextPath%>
-            / views / member / signin.jsp";
+          location.href = "<%=contextPath%>/views/member/signin.jsp";
         }
       </script>
       <!-- -------------------------------------------------------------------- -->

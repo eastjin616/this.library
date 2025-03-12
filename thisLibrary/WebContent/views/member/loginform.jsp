@@ -360,8 +360,8 @@ body * {
                     console.log(res);
                     // 이메일, 성별, 닉네임, 프로필이미지
                     var email = res.kakao_account.email;
-                    var gender = res.kakao_account.gender;
                     var nickName = res.kakao_account.profile.nickname;
+<<<<<<< HEAD
                     var profile_image = res.kakao_account.profile.thumbnail_image_url;
                     var birthday = res.kakao_account.birthday;
 										
@@ -369,6 +369,12 @@ body * {
                  
                     console.log(email, gender, nickName, profile_image, birthday);
                     alert(email + ',' +  gender + ',' +  nickName + "," + profile_image + ',' +  birthday);
+=======
+										var key = res.id;
+                    
+                    window.location.href = "<%= contextPath %>/kakaoSignin.me?email="+ email + "&nickName=" + nickName + "&key=" + key
+                    
+>>>>>>> kakaoLogin
                 },
                 fail: function (error) {
                     alert('카카오 로그인에 실패했습니다. 관리자에게 문의하세요.' + JSON.stringify(error));

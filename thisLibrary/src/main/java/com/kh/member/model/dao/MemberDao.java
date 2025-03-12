@@ -52,7 +52,8 @@ public class MemberDao {
 						       rset.getString("email"),
 						       rset.getString("profile"),
 						       rset.getString("phone"),
-						       rset.getString("status"));
+						       rset.getString("status"),
+						       rset.getString("sns_key"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -78,6 +79,7 @@ public class MemberDao {
 			pstmt.setString(5, m.getAddress());
 			pstmt.setString(6, m.getEmail());
 			pstmt.setString(7, m.getPhone());
+			pstmt.setString(8, m.getSnsKey());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

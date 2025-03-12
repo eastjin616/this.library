@@ -88,7 +88,38 @@
       cursor: pointer;
     }
 
-    /*-------------------------------------------------------------  */
+    /*------------------------------------------------------------- 공지사항  */
+
+    .notice-board {
+					border: 1px solid #ccc;
+					border-radius: 10px;
+					/* 둥근 모서리 */
+					padding: 20px;
+					background-color: #fff;
+					max-width: 800px;
+					margin: 0 auto;
+				}
+
+				table {
+					margin: auto;
+					width: 80%;
+					border-collapse: collapse;
+				}
+
+				th,
+				td {
+					border: 1px solid #ccc;
+					padding: 10px;
+					text-align: center;
+				}
+
+				th {
+					background-color: #ebc597;
+				}
+
+				.notice-form {
+					text-align: center;
+				}
 
     /* ==============footer======================================= */
         #footer_1 {
@@ -152,40 +183,93 @@
     </div>
     <!-- -------------------------------------------------------------------- -->
 
-    <center><h1>자유 게시판</h1></center>
-    <table border="1">
-      <tr>
-        <th width="50">No</th>
-        <th width="500">제목</th>
-        <th width="200">글쓴이</th>
-        <th width="200">작성일자</th>
-        <th width="100">조회수</th>
-      </tr>
+    <div class="notice-form">
+      <h2>공지사항 작성</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>날짜</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성 날짜</th>
+            <th>관리</th> <!-- '관리' 열 추가 -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="material-symbols-outlined">edit
+              </span></td> 
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="material-symbols-outlined">edit
+              </span></td> 
+          </tr>
 
-      <tr>
-        <th>3</th>
-        <td>제목자리입니다람쥐333</td>
-        <td align="center">글쓴이3입니다</td>
-        <td align="center">2025/03/11</td>
-        <td align="center">123</td>
-      </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="material-symbols-outlined">edit
+              </span></td> 
+          </tr><tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="material-symbols-outlined">edit
+              </span></td> 
+          </tr><tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="material-symbols-outlined">edit
+              </span></td> 
+          </tr><tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="material-symbols-outlined">edit
+              </span></td> 
+          </tr><tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="material-symbols-outlined">edit
+              </span></td> 
+          </tr><tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="material-symbols-outlined">edit
+              </span></td> 
+          </tr>
 
-      <tr>
-        <th>2</th>
-        <td>제목자리입니다람쥐22</td>
-        <td align="center">글쓴이2입니다</td>
-        <td align="center">2025/03/10</td>
-        <td align="center">256</td>
-      </tr>
 
-      <tr>
-        <th>1</th>
-        <td>제목자리입니다람쥐111</td>
-        <td align="center">글쓴이1입니다</td>
-        <td align="center">2025/03/09</td>
-        <td align="center">5203</td>
-      </tr>
-    </table>
+
+        </tbody>
+      
+      
+      <!-- 추가 공지사항은 여기에 삽입 -->
+      </table>
+    </div>
+
+
+
+  </div>
+</div>
 
     
 

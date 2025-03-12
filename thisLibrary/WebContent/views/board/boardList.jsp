@@ -9,17 +9,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    <link rel="stylesheet" href="styles.css"> <!-- 컴파일된 CSS 파일 링크 -->
-    <link rel="stylesheet" href="https://unpkg.com/@material/data-table/dist/mdc.data-table.css">
-    <link rel="stylesheet" href="https://unpkg.com/@material/checkbox/dist/mdc.checkbox.css">
-    <link rel="stylesheet" href="https://unpkg.com/@material/icon-button/dist/mdc.icon-button.css">
-
-  @font-face {
-        font-family: 'Chosunilbo_myungjo';
-        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
 
     body *{
       font-family: 'Chosunilbo_myungjo';
@@ -163,52 +152,6 @@
     </div>
     <!-- -------------------------------------------------------------------- -->
 
-
-    <div class="mdc-data-table">
-      <div class="mdc-data-table__table-container">
-          <table class="mdc-data-table__table" aria-label="Dessert calories">
-              <thead>
-                  <tr class="mdc-data-table__header-row">
-                      <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Dessert</th>
-                      <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Carbs (g)</th>
-                      <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Protein (g)</th>
-                      <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Comments</th>
-                  </tr>
-              </thead>
-              <tbody class="mdc-data-table__content">
-                  <tr class="mdc-data-table__row">
-                      <th class="mdc-data-table__cell" scope="row">Frozen yogurt</th>
-                      <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
-                      <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.0</td>
-                      <td class="mdc-data-table__cell">Super tasty</td>
-                  </tr>
-                  <tr class="mdc-data-table__row">
-                      <th class="mdc-data-table__cell" scope="row">Ice cream sandwich</th>
-                      <td class="mdc-data-table__cell mdc-data-table__cell--numeric">37</td>
-                      <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.33333333333</td>
-                      <td class="mdc-data-table__cell">I like ice cream more</td>
-                  </tr>
-                  <tr class="mdc-data-table__row">
-                      <th class="mdc-data-table__cell" scope="row">Eclair</th>
-                      <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
-                      <td class="mdc-data-table__cell mdc-data-table__cell--numeric">6.0</td>
-                      <td class="mdc-data-table__cell">New filing flavor</td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-  </div>
-
-  <script src="https://unpkg.com/@material/data-table/dist/mdc.data-table.js"></script>
-  <script src="https://unpkg.com/@material/checkbox/dist/mdc.checkbox.js"></script>
-  <script src="https://unpkg.com/@material/icon-button/dist/mdc.icon-button.js"></script>
-  <script>
-      const dataTable = new mdc.dataTable.MDCDataTable(document.querySelector('.mdc-data-table'));
-  </script>
-
-
-
- 
     <center><h1>자유 게시판</h1></center>
     <table border="1">
       <tr>

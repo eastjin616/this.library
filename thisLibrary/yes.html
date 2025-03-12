@@ -120,8 +120,8 @@ body * {
 }
 
 /*-------------------------------------------------------------  */
-div {box-sizing: border-box;border: 1px solid red;}
-#content{border: 1px solid red; height: 1000px;}
+/* div {box-sizing: border-box;border: 1px solid red;} */
+/* #content{border: 1px solid red; height: 1000px;} */
 /* -------------------------------------------------------------- */
 
 #content_1{height: 11%;}
@@ -236,21 +236,46 @@ div {box-sizing: border-box;border: 1px solid red;}
 
 #content_3_4{
 	height: 25%;
-
+	
 }
-#content_3_4_1,#content_3_4_2,#content_3_4_3{
+
+#content_3_4_1,#content_3_4_2{	
+	width: 100%;
+	height: 20%;
 	float: left;
 }
-#content_3_4_1{
+
+#content_3_4_1_1,#content_3_4_1_2,#content_3_4_1_3{
+	float: left;
+}
+
+#content_3_4_1_1{
+	width: 20%;
+	height: 100%;
+	text-align: right;
+}
+
+#content_3_4_1_1 input{
+	width: 75%;
+	height: 100%;
+}
+
+
+#content_3_4_1_2{
 	width: 30%;
-	height: 20%;
+	height: 100%;
+	margin-right: auto;
+}
+#content_3_4_1_2 button{
+	margin-left: 5%;
 }
 
-#content_3_4_2{
-	width: 10%;
-	height: 20%;
+#content_3_4_1_3{
+	width: 50%;
+	height: 100%;
 }
 
+<<<<<<< HEAD
 #content_3_4_3{
 	width: 60%;
 	height: 20%;
@@ -262,14 +287,53 @@ div {box-sizing: border-box;border: 1px solid red;}
 
 
 #content_3_4_3 button{
+=======
+#content_3_4_1_3 button{
+>>>>>>> 82881fcc15a735e2fb4990568f6bc9c73602738a
 	border: 0;
 	background-color: transparent;
 	margin-left: auto;
 }
+#content_3_4_1_4 {
 
-#content_3_5{height: 25%;}
-#content_3_6{height: 5%;}
+	height: 75%;
+}
 
+#content_3_4_2{
+	height: 80%;
+	width: 100%;
+	display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#content_3_4_2 input{
+	height: 90%;
+	width: 90%;
+	border-radius: 10px;
+}
+
+
+#content_3_5{
+	height: 5%;
+	display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+		#pagination {
+		height: 100%;
+          text-align: center;
+        }
+
+        .pagination a {
+          margin: 0 5px;
+          text-decoration: none;
+          color: #333;
+        }
+
+#etc{
+	height: 10%;
+}
 /* -------------------------------------------------------------- */
 
 
@@ -360,8 +424,8 @@ div {box-sizing: border-box;border: 1px solid red;}
         <div id="content_2_2"><img src="WebContent/resources/assets/vs.png" alt=""></div>
         <div id="content_2_3">
           <div id="content_2_3_1">
-						<img src="WebContent/resources/assets/book5.jpg" alt="">
-					</div>
+			<img src="WebContent/resources/assets/book5.jpg" alt="">
+		 </div>
           <div id="content_2_3_2"><input type="radio"></div>
         </div>
       </div>
@@ -390,24 +454,54 @@ div {box-sizing: border-box;border: 1px solid red;}
 
 
         <div id="content_3_4">
-					<div id="content_3_4_1">
-						<input type="text">
-					</div>
-					<div id="content_3_4_2">
-						<button>팔로잉</button>
-					</div>
-					<div id="content_3_4_3">
-						<button>수정 &nbsp; &nbsp; |</button> <button>삭제</button>
-					</div>
+			<div id="content_3_4_1">
+				<div id="content_3_4_1_1">
+					<input type="text" id="userId">
 				</div>
+				<div id="content_3_4_1_2">
+					<button>팔로잉</button>
+				</div>
+				<div id="content_3_4_1_3">
+					<button>수정 &nbsp; &nbsp; |</button> <button>삭제</button>
+				</div>
+				
+			</div>
+			<div id="content_3_4_2">
+				<input type="text">
+			</div>
+					
+		</div>
+        <div id="content_3_4">
+			<div id="content_3_4_1">
+				<div id="content_3_4_1_1">
+					<input type="text" id="userId">
+				</div>
+				<div id="content_3_4_1_2">
+					<button>팔로잉</button>
+				</div>
+				<div id="content_3_4_1_3">
+					<button>수정 &nbsp; &nbsp; |</button> <button>삭제</button>
+				</div>
+				
+			</div>
+			<div id="content_3_4_2">
+				<input type="text">
+			</div>
+		</div>
+
         <div id="content_3_5">
-					<input type="text" name="userId" >
-				</div>
-        <div id="content_3_6"></div>
+			<div class="pagination">
+				<a href="#">1</a>
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<a href="#">4</a>
+				<a href="#">5</a>
+			</div>
+		</div>
       </div>
     </div>
 
-
+<div id="etc"></div>
 
 
 

@@ -206,36 +206,7 @@
 					cursor: pointer;
 				}
 
-				.notice-board {
-					border: 1px solid #ccc;
-					border-radius: 10px;
-					/* 둥근 모서리 */
-					padding: 20px;
-					background-color: #fff;
-					max-width: 800px;
-					margin: 0 auto;
-				}
 
-				table {
-					margin: auto;
-					width: 80%;
-					border-collapse: collapse;
-				}
-
-				th,
-				td {
-					border: 1px solid #ccc;
-					padding: 10px;
-					text-align: center;
-				}
-
-				th {
-					background-color: #ebc597;
-				}
-
-				.notice-form {
-					text-align: center;
-				}
 
 				.material-symbols-outlined {
 					font-variation-settings:

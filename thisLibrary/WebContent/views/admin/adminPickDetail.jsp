@@ -187,7 +187,7 @@
   <div class="wrap">
     <header>
       <div class="header1">
-        <div id="keyWordLogo"><img src="../assets/This_서고 로고.png" alt=""></div>
+        <div id="keyWordLogo"><img src="../serviceCenter/assets/This_서고 로고.png" alt=""></div>
         <div id="headSearchBar">
           <div id="search-container">
             <select id="search-filter">
@@ -208,7 +208,7 @@
 
       <div class="header2">
         <div id="greenBox">
-          <div id="headPicture"><img src="../assets/icons8-book-100.png" alt=""></div>
+          <div id="headPicture"><img src="../serviceCenter/assets/icons8-book-100.png" alt=""></div>
           <div id="headText">
             <pre>
               <b>[태그]</b> 책에 연관되어 있는 태크 단어들을 검색하여 원하는 책을 검색 할 수 있다. <br>
@@ -225,7 +225,7 @@
     <content>
 
       <div class="bookList">
-        <div id="bookImg"><img src="../assets/book3.jpg" alt=""></div>
+        <div id="bookImg"><img src="../serviceCenter/assets/book1.jpg" alt=""></div>
         <div id="bookInfo">
           <div id="bookInfoTitle">222</div>
           <div id="bookInfoAuthor"></div>
@@ -239,7 +239,7 @@
       </div>
       <br>
       <div class="bookList">
-        <div id="bookImg"><img src="../assets/book2.jpg" alt=""></div>
+        <div id="bookImg"><img src="../serviceCenter/assets/book1.jpg" alt=""></div>
         <div id="bookInfo">
           <div id="bookInfoTitle">222</div>
           <div id="bookInfoAuthor"></div>
@@ -253,7 +253,7 @@
       </div>
       <br>
       <div class="bookList">
-        <div id="bookImg"><img src="../assets/book4.jpg" alt=""></div>
+        <div id="bookImg"><img src="../serviceCenter/assets/book1.jpg" alt=""></div>
         <div id="bookInfo">
           <div id="bookInfoTitle">222</div>
           <div id="bookInfoAuthor"></div>
@@ -267,7 +267,7 @@
       </div>
       <br>
       <div class="bookList">
-        <div id="bookImg"><img src="../assets/book5.jpg" alt=""></div>
+        <div id="bookImg"><img src="../serviceCenter/assets/book1.jpg" alt=""></div>
         <div id="bookInfo">
           <div id="bookInfoTitle">222</div>
           <div id="bookInfoAuthor"></div>
@@ -281,7 +281,7 @@
       </div>
       <br>
       <div class="bookList">
-        <div id="bookImg"><img src="../assets/book6.jpg" alt=""></div>
+        <div id="bookImg"><img src="../serviceCenter/assets/book1.jpg" alt=""></div>
         <div id="bookInfo">
           <div id="bookInfoTitle">222</div>
           <div id="bookInfoAuthor"></div>

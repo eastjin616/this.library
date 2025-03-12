@@ -35,14 +35,8 @@ public class KaKaoSigninController extends HttpServlet {
 		request.setAttribute("kakaoEmail", kakaoEmail);
 		request.setAttribute("kakaoKey",kakaoKey);
 		
-<<<<<<< HEAD
-		request.getRequestDispatcher("views/member/signin.jsp").forward(request, response);
-		
-		System.out.println("ㅆㅂ");
-=======
 		request.getRequestDispatcher("views/member/kakaoSignin.jsp").forward(request, response);
 		
->>>>>>> kakaoLogin
 	}
 
 	/**

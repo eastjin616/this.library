@@ -5,10 +5,7 @@
 <%@ page import="java.io.InputStreamReader" %>
 <%@ page import="org.json.simple.JSONObject" %>
 <%@ page import="org.json.simple.parser.JSONParser" %>
-<<<<<<< HEAD
-=======
 <%@ page import="javax.servlet.RequestDispatcher" %>
->>>>>>> f887ed67f4861737baccbb32e276aeb345f12ca0
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -81,30 +78,6 @@
             // 사용자 정보 JSON 처리
             if (userInfoResponseCode == 200) {
                 JSONObject userJson = (JSONObject) parser.parse(userInfoRes.toString());
-<<<<<<< HEAD
-                
-                // response 키 존재 여부 확인
-                if (!userJson.containsKey("response")) {
-                    out.println("<p>사용자 정보 응답에 'response' 키가 없습니다.</p>");
-                    return;
-                }
-
-                // response 객체 가져오기
-                Object responseObj = userJson.get("response");
-                if (responseObj instanceof JSONObject) {
-                    JSONObject response1 = (JSONObject) responseObj;
-
-                    // 사용자 정보 출력
-                    String nickname = (String) response1.get("nickname");
-                    String email = (String) response1.get("email");
-
-                    out.println("<h2>사용자 정보</h2>");
-                    out.println("<p>Nickname: " + nickname + "</p>");
-                    out.println("<p>Email: " + email + "</p>");
-                } else {
-                    out.println("<p>응답이 JSONObject가 아닙니다. 실제 타입: " + responseObj.getClass().getName() + "</p>");
-                }
-=======
                 JSONObject response1 = (JSONObject) userJson.get("response");
 
                 // 사용자 정보 출력
@@ -118,7 +91,6 @@
                 // 서블릿으로 포워딩
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/naver.bo"); // 서블릿 경로로 변경
                 dispatcher.forward(request, response);
->>>>>>> f887ed67f4861737baccbb32e276aeb345f12ca0
             } else {
                 out.println("<p>사용자 정보 요청 실패. Error Code: " + userInfoResponseCode + "</p>");
             }

@@ -8,6 +8,8 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Document1</title>
+      <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=keyboard_double_arrow_down" />
       <!-- <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="content.css">
   <link rel="stylesheet" href="footer.css"> -->
@@ -15,7 +17,7 @@
       <style>
         /* div {box-sizing: border-box;border: 1px solid red;} */
         .wrap {
-          width: 1500px;
+          width: 1000px;
           margin: auto;
           overflow: hidden;
         }
@@ -116,18 +118,16 @@
 
         #left {
           width: 100%;
-          border: 1px solid #ccc;
-          padding: 20px;
           background-color: #f9f9f9;
           display: flex;
           justify-content: center;
+          position: relative;
         }
 
         #leftBox {
-          width: 50%;
-          border: 1px solid #ccc;
+          width: 100%;
           border-radius: 2em;
-          margin: 5% auto;
+          margin: 10% 10% 10% 10%;
           padding: 20px;
           background: white;
           box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
@@ -136,10 +136,7 @@
           overflow: hidden;
         }
 
-        #rightBox {
-          width: 45%;
-          border: 1px solid;
-        }
+
 
         #title {
           font-size: 35px;
@@ -152,10 +149,13 @@
           box-sizing: border-box;
           font-weight: 800;
           height: 70px;
+          display: flex;
+          position: relative;
+                    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 
         }
 
-       
+
 
         .questionBox1>a {
           text-decoration: none;
@@ -171,49 +171,61 @@
           font-size: 16px;
           font-weight: bold;
           z-index: 1;
+          box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+
         }
 
         /* 배경 그라데이션 효과 */
-        .leftBoxdiv1>a::before,
-        .leftBoxdiv2>a::before {
+        .questionBox1>a::before {
           content: "";
           position: absolute;
           top: 0;
           left: -100%;
           width: 200%;
           height: 100%;
-          background-image: linear-gradient(to right, #E040FB, #00BCD4);
+          background-image: linear-gradient(to right, #f1d6b8, #c49a6c);
           transition: transform 0.4s ease;
           z-index: -2;
         }
 
-        .leftBoxdiv1>a:hover::before,
-        .leftBoxdiv2>a:hover::before {
+        .questionBox1>a:hover::before {
           transform: translateX(50%);
         }
 
-        .leftBoxdiv1>a:hover,
-        .leftBoxdiv2>a:hover {
+        .questionBox1>a:hover\  {
           color: white;
           transition: color 0.4s ease;
           z-index: 2;
         }
 
-        .leftBoxdiv1 {
-          background-color: white;
-          border: 1px solid;
-        }
 
-        .leftBoxdiv2 {
+
+        .questionBox1 {
           background-color: lightgrey;
         }
 
-
-
-        #backBtn {
-          text-align: right;
-          margin: 25px;
+        .material-symbols-outlined {
+          font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+            
         }
+
+        .material-symbols-outlined {
+          line-height: 50px;
+          font-size: 30px;
+          width: 5%;
+          background-color: #c49a6c;
+          color: white;
+        }
+        .material-symbols-outlined:hover {
+          cursor: pointer;
+        }
+
+
+        
 
         /* ==============footer======================================= */
         #footer_1 {
@@ -288,16 +300,32 @@
               <div id="leftBox1">
                 <p align="center" id="title">질문들을 정리해 봤어요!</p>
               </div>
-              <div id="questionBox1" class="questionBox1"><a href="#">검색이 되지 않거나 품절 / 절판이 된 도서는 구입할 수 없나요?</a></div>
-              <div>sss</div>
-              <div id="questionBox1" class="questionBox1"><a href="">This.서재에 없는 책은 무엇인가요?</a></div>
-              <div id="questionBox1" class="questionBox1"><a href="">도서카테고리 별 분류는 어디서 볼수 있는 건가요?</a></div>
-              <div id="questionBox1" class="questionBox1"><a href="">아 저기서 여기서 이렇게 하면 되는거라구요? 예?!? 왜? 어쨰서? 오류떠요?!</a></div>
+
+
+              <div id="questionBox1" class="questionBox1">
+                <a href="#">검색이 되지 않거나 품절 / 절판이 된 도서는 구입할 수 없나요?</a>
+                <span class="material-symbols-outlined">
+                  keyboard_double_arrow_down
+                </span>
+              </div><br>
+
+              <div id="questionBox1" class="questionBox1"><a href="">This.서재에 없는 책은 무엇인가요?</a><span
+                  class="material-symbols-outlined">
+                  keyboard_double_arrow_down
+                </span></div><br>
+              <div id="questionBox1" class="questionBox1"><a href="">도서카테고리 별 분류는 어디서 볼수 있는 건가요?</a><span
+                  class="material-symbols-outlined">
+                  keyboard_double_arrow_down
+                </span></div><br>
+              <div id="questionBox1" class="questionBox1"><a href="">아 저기서 여기서 이렇게 하면 되는거라구요? 예?!? 왜? 어쨰서?
+                  오류떠요?!</a><span class="material-symbols-outlined">
+                  keyboard_double_arrow_down
+                </span>
+              </div>
               <br><br>
             </div>
-            <div id="backBtn"><button>뒤로가기</button></div>
-          </div>
 
+          </div>
 
         </div>
 

@@ -27,14 +27,15 @@ public class KaKaoSigninController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String kakaoName = request.getParameter("nickName");
+		String kakaoNickName = request.getParameter("nickName");
 		String kakaoEmail = request.getParameter("email");
-	
-		request.setAttribute("kakaoName", kakaoName);
+		String kakaoKey = request.getParameter("key");
+
+		request.setAttribute("kakaoNickName", kakaoNickName);
 		request.setAttribute("kakaoEmail", kakaoEmail);
+		request.setAttribute("kakaoKey",kakaoKey);
 		
-		request.getRequestDispatcher("views/member/signin.jsp").forward(request, response);
-		
+		request.getRequestDispatcher("views/member/kakaoSignin.jsp").forward(request, response);
 		
 	}
 

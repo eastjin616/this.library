@@ -14,6 +14,7 @@
 	     , PROFILE
 	     , PHONE
 	     , STATUS
+	     , SNS_KEY
 	  FROM MEMBER
 	 WHERE MEM_ID = ?
 	   AND MEM_PWD = ?
@@ -32,10 +33,12 @@
 	     , ADDRESS
 	     , EMAIL
 	     , PHONE
+	     , SNS_KEY
 	     )
 	VALUES
 	     ( 
 	       SEQ_MEM_NO.NEXTVAL
+	     , ?
 	     , ?
 	     , ?
 	     , ?

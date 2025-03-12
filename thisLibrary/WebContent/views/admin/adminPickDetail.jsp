@@ -172,6 +172,7 @@ header {
 </head>
 
 <body>
+<<<<<<< HEAD
 	<div class="wrap">
 		<header>
 			<div class="header1">
@@ -192,10 +193,31 @@ header {
 					</div>
 				</div>
 			</div>
+=======
+  <div class="wrap">
+    <header>
+      <div class="header1">
+        <div id="keyWordLogo"><img src="../serviceCenter/assets/This_서고 로고.png" alt=""></div>
+        <div id="headSearchBar">
+          <div id="search-container">
+            <select id="search-filter">
+              <option value="all">통합검색</option>
+              <option value="genre">장르별검색</option>
+              <option value="national">국가별검색</option>
+              <option value="languague">언어별선택</option>
+              <option value="author">작가별선택</option>
+            </select>
+            <input type="text" id="search-bar" placeholder="검색어를 입력하세요">
+            <button id="search-btn">검색</button>
+          </div>
+        </div>
+      </div>
+>>>>>>> fnaPage
 
 
 
 
+<<<<<<< HEAD
 			<div class="header2">
 				<div id="greenBox">
 					<div id="headPicture">
@@ -203,6 +225,13 @@ header {
 					</div>
 					<div id="headText">
 						<pre>
+=======
+      <div class="header2">
+        <div id="greenBox">
+          <div id="headPicture"><img src="../serviceCenter/assets/icons8-book-100.png" alt=""></div>
+          <div id="headText">
+            <pre>
+>>>>>>> fnaPage
               <b>[태그]</b> 책에 연관되어 있는 태크 단어들을 검색하여 원하는 책을 검색 할 수 있다. <br>
               <b>[장르]</b> 책의 장르를 검색하여 손 쉽게 검색해 보세요!<br>
               <b>[온라인 투표]</b> 책 사진 우측에 온라인 투표 결과가 포함되어 보여집니다. 
@@ -216,6 +245,7 @@ header {
 		<br>
 		<content>
 
+<<<<<<< HEAD
 		<div class="bookList">
 			<div id="bookImg">
 				<img src="../assets/book3.jpg" alt="">
@@ -231,6 +261,79 @@ header {
 			<div id="chooseThisBook">
 				<button>등록띠</button>
 			</div>
+=======
+      <div class="bookList">
+        <div id="bookImg"><img src="../serviceCenter/assets/book1.jpg" alt=""></div>
+        <div id="bookInfo">
+          <div id="bookInfoTitle">222</div>
+          <div id="bookInfoAuthor"></div>
+          <div id="bookInfoGenre"></div>
+          <div id="bookInfoPublisher"></div>
+          <div id="bookInfoLikeCount"></div>
+          <div id="bookInfoVoteResult"></div>
+        </div>
+        <div id="chooseThisBook"><button>등록띠</button></div>
+        
+      </div>
+      <br>
+      <div class="bookList">
+        <div id="bookImg"><img src="../serviceCenter/assets/book1.jpg" alt=""></div>
+        <div id="bookInfo">
+          <div id="bookInfoTitle">222</div>
+          <div id="bookInfoAuthor"></div>
+          <div id="bookInfoGenre"></div>
+          <div id="bookInfoPublisher"></div>
+          <div id="bookInfoLikeCount"></div>
+          <div id="bookInfoVoteResult"></div>
+        </div>
+        <div id="chooseThisBook"><button>등록띠</button></div>
+        <br><br>
+      </div>
+      <br>
+      <div class="bookList">
+        <div id="bookImg"><img src="../serviceCenter/assets/book1.jpg" alt=""></div>
+        <div id="bookInfo">
+          <div id="bookInfoTitle">222</div>
+          <div id="bookInfoAuthor"></div>
+          <div id="bookInfoGenre"></div>
+          <div id="bookInfoPublisher"></div>
+          <div id="bookInfoLikeCount"></div>
+          <div id="bookInfoVoteResult"></div>
+        </div>
+        <div id="chooseThisBook"><button>등록띠</button></div>
+        <br><br>
+      </div>
+      <br>
+      <div class="bookList">
+        <div id="bookImg"><img src="../serviceCenter/assets/book1.jpg" alt=""></div>
+        <div id="bookInfo">
+          <div id="bookInfoTitle">222</div>
+          <div id="bookInfoAuthor"></div>
+          <div id="bookInfoGenre"></div>
+          <div id="bookInfoPublisher"></div>
+          <div id="bookInfoLikeCount"></div>
+          <div id="bookInfoVoteResult"></div>
+        </div>
+        <div id="chooseThisBook"><button>등록띠</button></div>
+        <br><br>
+      </div>
+      <br>
+      <div class="bookList">
+        <div id="bookImg"><img src="../serviceCenter/assets/book1.jpg" alt=""></div>
+        <div id="bookInfo">
+          <div id="bookInfoTitle">222</div>
+          <div id="bookInfoAuthor"></div>
+          <div id="bookInfoGenre"></div>
+          <div id="bookInfoPublisher"></div>
+          <div id="bookInfoLikeCount"></div>
+          <div id="bookInfoVoteResult"></div>
+        </div>
+        <div id="chooseThisBook"><button>등록띠</button></div>
+        <br><br>
+      </div>
+      
+      
+>>>>>>> fnaPage
 
 		</div>
 		<br>

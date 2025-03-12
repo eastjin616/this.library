@@ -62,11 +62,14 @@
 
     #navigator {
       position: relative;
-      width: 60%;
+      width: 800px;
       height: 100%;
       display: flex;
       align-items: center;
       justify-content: space-around;
+      padding-left: 30px;
+      font-weight: 800;
+      font-size: 16px;
     }
     #navigator>a {
       text-decoration: none;
@@ -83,7 +86,7 @@
       align-items: center;
     }
     #login {
-      width: 70%;
+      width: 300px;
       height: 50%;
       border-radius: 5px;
       background-color: #ea916e;

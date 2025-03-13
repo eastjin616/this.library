@@ -8,6 +8,11 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Document1</title>
+      <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=label_important" />
+      <!-- <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="content.css">
+  <link rel="stylesheet" href="footer.css"> -->
 
       <style>
         @font-face {
@@ -24,7 +29,7 @@
 
         /* div {box-sizing: border-box;border: 1px solid red;} */
         .wrap {
-          width: 1500px;
+          width: 1000px;
           margin: auto;
           height: auto;
           overflow: hidden;
@@ -32,11 +37,12 @@
 
         #header {
           height: 50px;
+          margin-bottom: 10%;
         }
 
         #footer {
+          margin-top: 10%;
           height: 150px;
-          margin-top: 50px;
         }
 
         #header>div {
@@ -116,73 +122,108 @@
           cursor: pointer;
         }
 
-        /* ---------------------------------------------- */
+        /*----------------------------------------------------------*/
+        #noticeBoardBackgraound {
+          background-color: rgb(221, 214, 214);
+          width: 90%;
+          margin: auto;
+          border-radius: 8px;
+          padding: 1%;
+        }
 
-        /* 자유게시판 스타일 */
-        .board-container {
-          max-width: 1000px;
-          margin: 20px auto;
+        .container {
+          width: 80%;
+          margin: 50px auto;
           background: white;
           padding: 20px;
-          border-radius: 10px;
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-          margin-top: 70px;
+          border-radius: 8px;
         }
 
-        table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-
-        th,
-        td {
-          border-bottom: 1px solid #ddd;
-          padding: 10px;
+        h2 {
           text-align: left;
-        }
-
-        th {
-          background-color: #f4f4f4;
-        }
-
-        .pagination {
-          text-align: center;
-          margin-top: 20px;
-        }
-
-        .pagination a {
-          margin: 0 5px;
-          text-decoration: none;
           color: #333;
         }
 
-        .write-btn {
+        .form-group {
+          margin-bottom: 15px;
+        }
+
+        #form-group-content {
+          min-height: 300px;
+        }
+
+        label {
+          font-weight: bold;
           display: block;
-          width: 80px;
+          margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        textarea {
+          width: 100%;
           padding: 10px;
-          /* margin: auto; */
-          background-color: #ea916e;
-          color: white;
-          text-align: center;
+          border: 1px solid #ccc;
           border-radius: 5px;
-          text-decoration: none;
+          box-sizing: border-box;
         }
 
-        .write-btn:hover{
-          opacity: 0.7;
-          
+        textarea {
+          height: 100px;
+          resize: none;
         }
 
-        div .write-btn>a {
-          text-align: right;
+        .buttons {
+          display: flex;
+          justify-content: center;
         }
 
-        .board-container tbody tr:hover{
-          background-color: lightgrey;
+        button {
+          background-color: #007bff;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
           cursor: pointer;
         }
 
-        
+        button:hover {
+          background-color: #0056b3;
+        }
+
+        button[type="button"] {
+          background-color: #6c757d;
+        }
+
+        button[type="button"]:hover {
+          background-color: #5a6268;
+        }
+
+        #kk {
+          margin: 10px;
+          font-size: 30px;
+          margin: 0 0 -35px 30px;
+        }
+
+        #content5 {
+          display: flex;
+        }
+
+        #beCarefulText1 {
+          width: 15%;
+        }
+
+        #submitTag {
+          display: inline-block;
+          width: 80px;
+          text-align: center;
+          padding: 8px;
+          background-color: black;
+          color: white;
+          border-radius: 1em;
+          cursor: pointer;
+        }
 
         /* ==============footer======================================= */
         #footer_1 {
@@ -215,14 +256,15 @@
         }
       </style>
     </head>
+    <meta charset="UTF-8">
+    <!-- ------------------------------------------------------------------ -->
 
     <body>
       <div class="wrap">
         <div id="header">
-          <!-- 기존 헤더 내용 -->
           <div id="header_1">
             <div id="header_1_1_1">
-              <a href="<%=contextPath%>"><img src="<%=contextPath%>/resources/assets/This_서고 로고.png" alt=""
+              <a href="<%=contextPath%>"><img src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt=""
                   style="height: 100%; width: 100%;"></a>
             </div>
             <div id="navigator">
@@ -230,7 +272,7 @@
               <a href="">마이페이지</a> <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
             </div>
             <div id="header_login_btn" style="height: 100%; width: 9%;">
-              <button class="btn" id="login" onclick="location.href='<%=contextPath%>/views/member/loginform.jsp'">Log
+              <button class="btn" id="login" onclick="location.href='<%=contextPath%>/views/jinsloginform.jsp'">Log
                 In</button>
             </div>
             <div id="header_signin_btn" style="height: 100%; width: 9%;">
@@ -238,121 +280,53 @@
             </div>
             <div id="header_mypage_btn" style="height: 100%; width: 7%;">
               <button class="btn" id="mypage">
-                <img src="<%=contextPath%>/resources/assets/user01.png" alt="">
+                <img src="<%=contextPath%>/views/common/assets/user01.png" alt="">
               </button>
             </div>
 
           </div>
         </div>
-
-        <!-- 자유게시판 -->
-        <div class="board-container">
-          <h2>자유게시판</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>제목</th>
-                <th>글쓴이</th>
-                <th>작성일자</th>
-                <th>조회수</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>10</td>
-                <td>네이버 지도(v5) 임베드</td>
-                <td>아임웹</td>
-                <td>2019-12-17</td>
-                <td>120</td>
-              </tr>
-              <tr>
-                <td>9</td>
-                <td>제목</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>160</td>
-              </tr>
-              <tr>
-                <td>8</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>0</td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- -------------------------------------------------------------------- -->
 
 
-          <div class="pagination">
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
+
+        <div>
+          <div id="noticeBoardBackgraound">
+            <div id="kk"> 공지사항 관리하기</div>
+            <form class="container">
+
+              <label class="date-label">등록일 <input type="date" id="date" value="2023-04-03"></label>
+              <div class="form-group">
+                <label for="title">제목 </label>
+                <input type="text" id="title" placeholder="새로운 게시글 제목입니다.">
+              </div>
+
+              <div class="form-group">
+                <label for="content">내용 </label>
+                <textarea id="form-group-content" placeholder="새로운 게시글 내용입니다."></textarea>
+              </div>
+              <div id="content5">
+                <div id="beCarefulText1">첨부파일</div>
+                <div id="beCarefulText2">
+                  <li>개인정보를 포함한 이미지는 첨부 파일에 업로드할 수 없습니다. </li>
+                  <li> 개인정보 - 이름, 주민등록번호, 운전면허번호, 주소, 전화번호, 생년월일, 출생지, 본적지, 성별, 국적</li>
+                  <li>이를 어기고 개인정보가 포함된 파일을 업로드된 사실이 확인시 불이익을 받으실수 있습니다.</li>
+                </div>
+              </div>
+              <input type="file" id="fileUpload" hidden />
+              <label for="fileUpload" id="submitTag">파일 선택</label>
+              <div class="buttons">
+                <button type="submit">저장</button>
+                <button type="button">뒤로</button>
+              </div>
+            </form>
           </div>
-
-          <div style="display: flex;">
-            <a href="#" class="write-btn" style="margin-left: auto;">글쓰기</a>
-          </div>
-
         </div>
-        <!-- 자유게시판 끝 -->
-
+        <!-- -------------------------------------------------------------------- -->
         <div id="footer" style="background-color: #fdf5f1;">
-          <!-- 기존 푸터 내용 -->
           <div id="footer_1">
             <div id="footer_1_1">
-              <img src="<%=contextPath%>/resources/assets/This_서고 로고.png" alt="">
+              <img src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt="">
             </div>
             <div id="navigator" class="navigator">
               <a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="">자유게시판</a>
@@ -362,6 +336,7 @@
           <div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
         </div>
       </div>
+
       <script>
         function login() {
           location.href = "<%=contextPath%>/views/member/loginform.jsp";

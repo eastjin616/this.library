@@ -124,7 +124,7 @@
 
 				#content>#content1 {
 					background-image:
-						url("<%=contextPath%>/views/common/assets/Container81.png");
+						url("<%=contextPath%>/resources/assets/Container81.png");
 					background-size: cover;
 					/* 이미지를 요소 크기에 맞게 채움 */
 					background-position: center;
@@ -235,7 +235,7 @@
 			width: 20%;
 			}
 
-			#footer_1_1>img {
+			#footer_1_1 img {
 			display: flex;
 			margin: auto;
 			width: 60%;
@@ -259,11 +259,11 @@
 					<div id="header_1">
 						<!-- <div id="header_1_1"> -->
 						<div id="header_1_1_1">
-							<a href="<%= contextPath %>"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt=""
+							<a href="<%= contextPath %>/views/common/mainPage.jsp"><img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""
 									style="height: 70%; width: 70%;"></a>
 						</div>
 						<div id="navigator">
-							<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="">자유게시판</a>
+							<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a>
 							<a href="">마이페이지</a> <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
 						</div>
 						<div id="header_login_btn" style="height: 100%; width: 9%;">
@@ -274,7 +274,7 @@
 						</div>
 						<div id="header_mypage_btn" style="height: 100%; width: 7%;">
 							<button class="btn" id="mypage">
-								<img src="./../asset/user01.png" alt="">
+								<img src="<%=contextPath%>/resources/assets/user01.png" alt="">
 							</button>
 						</div>
 					</div>
@@ -301,7 +301,7 @@
 						<div id="content2_1">
 							<div id="content2_1_1">
 								<div id="contentDiv1_1">
-									<img src="<%=contextPath%>/views/common/assets/interview_15747273.gif">
+									<img src="<%=contextPath%>/resources/assets/interview_15747273.gif">
 								</div>
 								<div id="contentDiv1_2">
 									<p>
@@ -312,7 +312,7 @@
 							</div>
 							<div id="content2_1_2">
 								<div id="contentDiv2_1">
-									<img src="<%=contextPath%>/views/common/assets/faq_12205153.gif">
+									<img src="<%=contextPath%>/resources/assets/faq_12205153.gif">
 								</div>
 								<div id="contentDiv2_2">
 									<p>
@@ -325,7 +325,7 @@
 						<div id="content2_2">
 							<div id="content2_1_3">
 								<div id="contentDiv3_1">
-									<img src="<%=contextPath%>/views/common/assets/conversation_15578485.gif">
+									<img src="<%=contextPath%>/resources/assets/conversation_15578485.gif">
 								</div>
 								<div id="contentDiv3_2">
 									<p>
@@ -336,7 +336,7 @@
 							</div>
 							<div id="content2_1_4">
 								<div id="contentDiv4_1">
-									<img src="<%=contextPath%>/views/common/assets/virtual-assistant_15579142.gif">
+									<img src="<%=contextPath%>/resources/assets/virtual-assistant_15579142.gif">
 								</div>
 								<div id="contentDiv4_2">
 									<p>
@@ -442,11 +442,9 @@
 				<!-- -------------------------------------------------------------------- -->
 				<div id="footer" style="background-color: #fdf5f1;">
 					<div id="footer_1">
-						<div id="footer_1_1">
-							<img src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt="">
-						</div>
+						<div id="footer_1_1"><a href="<%= contextPath %>/views/common/mainPage.jsp"><img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""></a></div>
 						<div id="navigator" class="navigator">
-							<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="">자유게시판</a>
+							<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a>
 							<a href="">마이페이지</a> <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
 						</div>
 					</div>

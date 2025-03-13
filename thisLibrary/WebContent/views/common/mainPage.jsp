@@ -292,11 +292,32 @@
             position: relative;
           }
 
+<<<<<<< HEAD
           #content_1_2_2 {
             width: 100%;
             height: 21%;
             position: relative;
           }
+=======
+<body>
+  <div class="wrap">
+    <div id="header">
+      <div id="header_1">
+          <div id="header_1_1_1">
+           <a href="<%= contextPath %>/views/common/mainPage.jsp"><img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;"></a>
+          </div>
+          <div id="navigator">
+            <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
+            <a href="">온라인투표</a>
+            <a href="<%= contextPath %>/views/board/boardList.jsp">자유게시판</a>
+            <a href="">마이페이지</a>
+            <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
+          </div>
+          <div id="header_login_btn" style="height: 100%; width: 9%;">
+            <button class="btn" id="login" onclick="login()">Log In</button>
+          </div>
+          <div id="header_signin_btn" style="height: 100%; width: 9%;">
+>>>>>>> d27ae61c64f20ee96e0945ffb42368a75f59dae8
 
           #content_1_3_1 {
             width: 100%;
@@ -592,11 +613,11 @@
     <!-- -------------------------------------------------------------------- -->
     <div id="footer" style="background-color: #fdf5f1;">
       <div id="footer_1">
-        <div id="footer_1_1"><a href="<%=contextPath%>"><img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""></a></div>
+        <div id="footer_1_1"><a href="<%= contextPath %>/views/common/mainPage.jsp"><img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""></a></div>
         <div id="navigator" class="navigator">
           <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
           <a href="">온라인투표</a>
-          <a href="">자유게시판</a>
+          <a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a>
           <a href="">마이페이지</a>
           <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
         </div>

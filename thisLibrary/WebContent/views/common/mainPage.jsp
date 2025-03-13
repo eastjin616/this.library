@@ -399,7 +399,7 @@ a{
         width: 20%;
         }
 
-        #footer_1_1>img {
+        #footer_1_1 img {
         display: flex;
         margin: auto;
         width: 60%;
@@ -536,7 +536,7 @@ a{
     <!-- -------------------------------------------------------------------- -->
     <div id="footer" style="background-color: #fdf5f1;">
       <div id="footer_1">
-        <div id="footer_1_1"><img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""></div>
+        <div id="footer_1_1"><a href="<%=contextPath%>"><img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""></a></div>
         <div id="navigator" class="navigator">
           <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
           <a href="">온라인투표</a>

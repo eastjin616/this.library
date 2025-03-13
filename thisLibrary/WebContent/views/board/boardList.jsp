@@ -121,12 +121,11 @@
         /* 자유게시판 스타일 */
         .board-container {
           max-width: 1000px;
-          margin: 20px auto;
+          margin: 120px auto;
           background: white;
           padding: 20px;
           border-radius: 10px;
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-          margin-top: 70px;
         }
 
         table {
@@ -134,8 +133,7 @@
           border-collapse: collapse;
         }
 
-        th,
-        td {
+        th,td {
           border-bottom: 1px solid #ddd;
           padding: 10px;
           text-align: left;
@@ -261,7 +259,7 @@
             <tbody>
               <tr>
                 <td>10</td>
-                <td>네이버 지도(v5) 임베드</td>
+                <td>네이버 지도(v5) 임베드asdasdasdasdasdsadasdasdasdadasd</td>
                 <td>아임웹</td>
                 <td>2019-12-17</td>
                 <td>120</td>
@@ -278,56 +276,56 @@
                 <td>구글 지도 게시물에 임베드 하기</td>
                 <td>아임웹</td>
                 <td>2019-12-16</td>
-                <td>0</td>
+                <td>77</td>
               </tr>
               <tr>
                 <td>7</td>
                 <td>구글 지도 게시물에 임베드 하기</td>
                 <td>아임웹</td>
                 <td>2019-12-16</td>
-                <td>0</td>
+                <td>99</td>
               </tr>
               <tr>
                 <td>6</td>
                 <td>구글 지도 게시물에 임베드 하기</td>
                 <td>아임웹</td>
                 <td>2019-12-16</td>
-                <td>0</td>
+                <td>50</td>
               </tr>
               <tr>
                 <td>5</td>
                 <td>구글 지도 게시물에 임베드 하기</td>
                 <td>아임웹</td>
                 <td>2019-12-16</td>
-                <td>0</td>
+                <td>1</td>
               </tr>
               <tr>
                 <td>4</td>
                 <td>구글 지도 게시물에 임베드 하기</td>
                 <td>아임웹</td>
                 <td>2019-12-16</td>
-                <td>0</td>
+                <td>9015</td>
               </tr>
               <tr>
                 <td>3</td>
                 <td>구글 지도 게시물에 임베드 하기</td>
                 <td>아임웹</td>
                 <td>2019-12-16</td>
-                <td>0</td>
+                <td>60</td>
               </tr>
               <tr>
                 <td>2</td>
                 <td>구글 지도 게시물에 임베드 하기</td>
                 <td>아임웹</td>
                 <td>2019-12-16</td>
-                <td>0</td>
+                <td>111560</td>
               </tr>
               <tr>
                 <td>1</td>
                 <td>구글 지도 게시물에 임베드 하기</td>
                 <td>아임웹</td>
                 <td>2019-12-16</td>
-                <td>0</td>
+                <td>1105</td>
               </tr>
             </tbody>
           </table>
@@ -342,7 +340,7 @@
           </div>
 
           <div style="display: flex;">
-            <a href="#" class="write-btn" style="margin-left: auto;">글쓰기</a>
+            <a href="<%= contextPath %>/views/board/boardInsertForm.jsp" class="write-btn" style="margin-left: auto;">글쓰기</a>
           </div>
 
         </div>

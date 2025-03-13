@@ -31,7 +31,7 @@ body * {
 
 /* div {box-sizing: border-box;border: 1px solid red;} */
 .wrap {
-	width: 1000px;
+	width: 1500px;
 	overflow: hidden;
 	margin: auto;
 }

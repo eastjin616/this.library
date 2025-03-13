@@ -29,7 +29,7 @@ body * {
 	font-family: 'Gyeonggi_Batang_Regular';
 }
 
-div {box-sizing: border-box;border: 1px solid red;}
+/* div {box-sizing: border-box;border: 1px solid red;} */
 .wrap {
 	width: 1500px;
 	margin: auto;
@@ -178,12 +178,12 @@ div {box-sizing: border-box;border: 1px solid red;}
 }
 
 #content_2_2_0{
-  margin-top: 20px;
+  margin-top: 30px;
   margin-left: 60px;
   width: 90%;
   height: 98%;
   border-radius: 10px;
-  border: 1px solid lightgray;
+  border: none;
 }
 
 #content_2_2_1,#content_2_2_2,#content_2_2_3,#content_2_2_4{
@@ -253,7 +253,10 @@ i:hover{
   border-radius: 3px;
  }
 
-
+hr{
+  width: 90%;
+  margin-left: 0%;
+}
 
 /* ==============footer======================================= */
 #footer_1 {
@@ -297,12 +300,12 @@ i:hover{
 			<div id="header_1">
 				<div id="header_1_1_1">
 					<a href="<%=contextPath%>"><img
-						src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt=""
+						src="<%=contextPath%>/resources/assets/This_서고 로고.png" alt=""
 						style="height: 100%; width: 100%;"></a>
 				</div>
 				<div id="navigator">
 					<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a
-						href="">온라인투표</a> <a href="">자유게시판</a> <a href="">마이페이지</a> <a
+						href="">온라인투표</a> <a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a> <a href="">마이페이지</a> <a
 						href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
 				</div>
 				<div id="header_login_btn" style="height: 100%; width: 9%;">
@@ -315,7 +318,7 @@ i:hover{
 				</div>
 				<div id="header_mypage_btn" style="height: 100%; width: 7%;">
 					<button class="btn" id="mypage">
-						<img src="<%=contextPath%>/views/common/assets/user01.png"
+						<img src="<%=contextPath%>/resources/assets/user01.png"
 							alt="">
 					</button>
 				</div>
@@ -373,13 +376,27 @@ i:hover{
                 </div>
                 <div id="bookcon1">
                   <div class="spare1"></div>
-                  <div class="bookinfo"></div>
+                  <div class="bookinfo">
+                    <p>[국내도서]</p>
+                    <p style="font-size: 20px;"><b> 마이클센델 정의란 무엇인가</b></p>
+                    <hr style="width: 70px; margin-left: 0%;">
+                    <p style="font-size: 15px;">마이클 센델 저자(글) | 김명철 번역 | 김선욱 감수</p>
+                    <p style="font-size: 15px;">와이즈베리 2014년 11월 20일</p>
+                    <br><br><br>
+
+                    <div style="display: flex;">
+                      <p><i class="fas fa-star" style="color: #085ae7;"></i></p>
+                      <p style="margin-left: 5px; margin-top: 20;">4.84</p>
+                      <p style="margin-left: 5px; margin-top: 20;">(350reviews)</p>
+                    </div>
+                  </div>
                   <div class="heart">
                     <i class="fas fa-heart"></i>
                     <i class="fas fa-heart" style="color: #ec1818;"></i>
                   </div>
                 </div>
               </div>
+<!-- ================================================================== -->
               <hr>
               <div id="content_2_2_2">
                 <div id="book2">
@@ -387,7 +404,20 @@ i:hover{
                 </div>
                 <div id="bookcon2">
                   <div class="spare1"></div>
-                  <div class="bookinfo"></div>
+                  <div class="bookinfo">
+                    <p>[국내도서]</p>
+                    <p style="font-size: 20px;"><b> 마이클센델 정의란 무엇인가</b></p>
+                    <hr style="width: 70px; margin-left: 0%;">
+                    <p style="font-size: 15px;">마이클 센델 저자(글) | 김명철 번역 | 김선욱 감수</p>
+                    <p style="font-size: 15px;">와이즈베리 2014년 11월 20일</p>
+                    <br><br><br>
+
+                    <div style="display: flex;">
+                      <p><i class="fas fa-star" style="color: #085ae7;"></i></p>
+                      <p style="margin-left: 5px; margin-top: 20;">4.84</p>
+                      <p style="margin-left: 5px; margin-top: 20;">(350reviews)</p>
+                    </div>
+                  </div>
                   <div class="heart">
                     <i class="fas fa-heart"></i>
                     <i class="fas fa-heart" style="color: #ec1818;"></i>
@@ -401,7 +431,20 @@ i:hover{
                 </div>
                 <div id="bookcon3">
                   <div class="spare1"></div>
-                  <div class="bookinfo"></div>
+                  <div class="bookinfo">
+                    <p>[국내도서]</p>
+                    <p style="font-size: 20px;"><b> 마이클센델 정의란 무엇인가</b></p>
+                    <hr style="width: 70px; margin-left: 0%;">
+                    <p style="font-size: 15px;">마이클 센델 저자(글) | 김명철 번역 | 김선욱 감수</p>
+                    <p style="font-size: 15px;">와이즈베리 2014년 11월 20일</p>
+                    <br><br><br>
+
+                    <div style="display: flex;">
+                      <p><i class="fas fa-star" style="color: #085ae7;"></i></p>
+                      <p style="margin-left: 5px; margin-top: 20;">4.84</p>
+                      <p style="margin-left: 5px; margin-top: 20;">(350reviews)</p>
+                    </div>
+                  </div>
                   <div class="heart">
                     <i class="fas fa-heart"></i>
                     <i class="fas fa-heart" style="color: #ec1818;"></i>
@@ -417,10 +460,17 @@ i:hover{
                   <div class="spare1"></div>
                   <div class="bookinfo">
                     <p>[국내도서]</p>
-                    <p><b> 마이클센델 정의란 무엇인가</b></p>
+                    <p style="font-size: 20px;"><b> 마이클센델 정의란 무엇인가</b></p>
                     <hr style="width: 70px; margin-left: 0%;">
-                    <p>마이클 센델 저자(글) | 김명철 번역 | 김선욱 감수</p>
+                    <p style="font-size: 15px;">마이클 센델 저자(글) | 김명철 번역 | 김선욱 감수</p>
+                    <p style="font-size: 15px;">와이즈베리 2014년 11월 20일</p>
+                    <br><br><br>
 
+                    <div style="display: flex;">
+                      <p><i class="fas fa-star" style="color: #085ae7;"></i></p>
+                      <p style="margin-left: 5px; margin-top: 20;">4.84</p>
+                      <p style="margin-left: 5px; margin-top: 20;">(350reviews)</p>
+                    </div>
                   </div>
                   <div class="heart">
                     <i class="fas fa-heart"></i>
@@ -448,7 +498,7 @@ i:hover{
 		<div id="footer" style="background-color: #fdf5f1;">
 			<div id="footer_1">
 				<div id="footer_1_1">
-					<img src="<%=contextPath%>/views/common/assets/This_서고 로고.png"
+					<img src="<%=contextPath%>/resources/assets/This_서고 로고.png"
 						alt="">
 				</div>
 				<div id="navigator" class="navigator">

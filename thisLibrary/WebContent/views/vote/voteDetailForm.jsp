@@ -360,6 +360,11 @@
 					background-color: transparent;
 				}
 
+				#content_3_4_1_3 button:hover{
+					cursor: pointer;
+					opacity: 0.7;
+				}
+
 				#content_3_4_1_4 {
 
 					height: 75%;
@@ -522,7 +527,7 @@
 									<button>팔로우</button>
 								</div>
 								<div id="content_3_4_1_3">
-									<button>수정&nbsp; &nbsp;|</button> <button>삭제</button>
+									<button>수정</button> | <button>삭제</button>
 								</div>
 							</div>
 							<pre id="content_3_4_2">
@@ -542,7 +547,7 @@
 									<button>팔로우</button>
 								</div>
 								<div id="content_3_4_1_3">
-									<button>수정 &nbsp; &nbsp; |</button> <button>삭제</button>
+									<button>수정</button> | <button>삭제</button>
 								</div>
 
 							</div>

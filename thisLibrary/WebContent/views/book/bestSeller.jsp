@@ -81,7 +81,7 @@ body * {
 }
 
 #login {
-	width: 50%;
+	width: 70%;
 	height: 50%;
 	border-radius: 5px;
 	background-color: #ea916e;
@@ -90,7 +90,7 @@ body * {
 }
 
 #signin {
-	width: 50%;
+	width: 70%;
 	height: 50%;
 	border-radius: 5px;
 	background-color: #ea916e;
@@ -101,8 +101,8 @@ body * {
 /* ---------------------------------------------- */
 #mypage {
 	border-radius: 50%;
-	width: 40%;
-	height: 60%;
+	width: 50%;
+	height: 50%;
 	background-color: #ea916e;
 	border: none;
 }

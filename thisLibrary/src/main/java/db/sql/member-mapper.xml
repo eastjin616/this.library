@@ -61,7 +61,7 @@
 	     , ADDRESS
 	     , EMAIL
 	     , PHONE
-	     , TOKEN
+	     , SNS_KEY
 	     )
 	VALUES
 	     ( 

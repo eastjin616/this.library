@@ -257,7 +257,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr onclick="window.location.href='<%= contextPath %>/views/board/boardDetail.jsp'">
                 <td>10</td>
                 <td>네이버 지도(v5) 임베드asdasdasdasdasdsadasdasdasdadasd</td>
                 <td>아임웹</td>

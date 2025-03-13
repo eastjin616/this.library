@@ -271,7 +271,7 @@ body * {
 				<!-- <div id="header_1_1"> -->
 				<div id="header_1_1_1">
 					<a href="<%=contextPath%>"><img
-						src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt=""
+						src="<%=contextPath%>/resources/assets/This_서고 로고.png" alt=""
 						style="height: 100%; width: 100%;"></a>
 				</div>
 				<div id="navigator">
@@ -289,7 +289,7 @@ body * {
 				</div>
 				<div id="header_mypage_btn" style="height: 100%; width: 7%;">
 					<button class="btn" id="mypage">
-						<img src="<%=contextPath%>/views/common/assets/user01.png" alt="">
+						<img src="<%=contextPath%>/resources/assets/user01.png" alt="">
 					</button>
 				</div>
 				<!-- </div> -->
@@ -390,7 +390,7 @@ body * {
 		<div id="footer" style="background-color: #fdf5f1;">
 			<div id="footer_1">
 				<div id="footer_1_1">
-					<img src="<%=contextPath%>/views/common/assets/This_서고 로고.png"
+					<img src="<%=contextPath%>/resources/assets/This_서고 로고.png"
 						alt="">
 				</div>
 				<div id="navigator" class="navigator">

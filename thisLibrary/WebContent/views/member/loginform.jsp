@@ -241,7 +241,7 @@ body * {
 	width: 20%;
 }
 
-#footer_1_1>img {
+#footer_1_1 img {
 	display: flex;
 	margin: auto;
 	width: 60%;
@@ -270,13 +270,13 @@ body * {
 			<div id="header_1">
 				<!-- <div id="header_1_1"> -->
 				<div id="header_1_1_1">
-					<a href="<%=contextPath%>"><img
+					<a href="<%=contextPath%>/views/common/mainPage.jsp"><img
 						src="<%=contextPath%>/resources/assets/This_서고 로고.png" alt=""
 						style="height: 100%; width: 100%;"></a>
 				</div>
 				<div id="navigator">
 					<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a
-						href="">온라인투표</a> <a href="">자유게시판</a> <a href="">마이페이지</a> <a
+						href="">온라인투표</a> <a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a> <a href="">마이페이지</a> <a
 						href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
 				</div>
 				<div id="header_login_btn" style="height: 100%; width: 9%;">
@@ -389,13 +389,10 @@ body * {
 		<!-- -------------------------------------------------------------------- -->
 		<div id="footer" style="background-color: #fdf5f1;">
 			<div id="footer_1">
-				<div id="footer_1_1">
-					<img src="<%=contextPath%>/resources/assets/This_서고 로고.png"
-						alt="">
-				</div>
+				<div id="footer_1_1"><a href="<%= contextPath %>/views/common/mainPage.jsp"><img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""></a></div>
 				<div id="navigator" class="navigator">
 					<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a
-						href="">온라인투표</a> <a href="">자유게시판</a> <a href="">마이페이지</a> <a
+						href="">온라인투표</a> <a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a> <a href="">마이페이지</a> <a
 						href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
 				</div>
 			</div>

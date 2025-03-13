@@ -139,7 +139,7 @@
 	width: 20%;
 }
 
-#footer_1_1>img {
+#footer_1_1 img {
 	display: flex;
 	margin: auto;
 	width: 60%;
@@ -198,12 +198,12 @@
     <div id="header">
       <div id="header_1">
           <div id="header_1_1_1">
-						<a href="<%= contextPath %>"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;"></a>
+						<a href="<%= contextPath %>/views/common/mainPage.jsp"><img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;"></a>
           </div>
           <div id="navigator">
             <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
             <a href="">온라인투표</a>
-            <a href="">자유게시판</a>
+            <a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a>
             <a href="">마이페이지</a>
             <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
           </div>
@@ -223,7 +223,7 @@
             >Sign In</button>
 				</div>
           <div id="header_mypage_btn" style="height: 100%; width: 7%;">
-            <button class="btn" id="mypage"><img src="<%= contextPath %>/views/common/assets/user01.png" alt=""></button>
+            <button class="btn" id="mypage"><img src="<%= contextPath %>/resources/assets/user01.png" alt=""></button>
           </div>
       
       </div>
@@ -307,7 +307,7 @@
 							class="btn btn-primary btn-space">
 							회원가입<i class="fa fa-check spaceLeft"></i>
 							<button type="button" class="btn btn-danger"
-								onClick="location.href='index.jsp'" />
+								onClick="location.href='<%=contextPath%>/views/common/mainPage.jsp'">
 							취소<i class="fa fa-check spaceLeft"></i>
 						</button>
 			</form>
@@ -342,13 +342,10 @@
 	<!-- -------------------------------------------------------------------- -->
 	<div id="footer" style="background-color: #fdf5f1;">
 		<div id="footer_1">
-			<div id="footer_1_1">
-				<img src="<%= contextPath %>/views/common/assets/This_서고 로고.png"
-					alt="">
-			</div>
+			<div id="footer_1_1"><a href="<%= contextPath %>/views/common/mainPage.jsp"><img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""></a></div>
 			<div id="navigator" class="navigator">
 				<a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a> <a
-					href="">온라인투표</a> <a href="">자유게시판</a> <a href="">마이페이지</a> <a
+					href="">온라인투표</a> <a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a> <a href="">마이페이지</a> <a
 					href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
 			</div>
 		</div>

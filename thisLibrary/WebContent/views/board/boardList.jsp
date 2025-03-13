@@ -161,17 +161,28 @@
           width: 80px;
           padding: 10px;
           /* margin: auto; */
-          background-color: #ff6347;
+          background-color: #ea916e;
           color: white;
           text-align: center;
           border-radius: 5px;
           text-decoration: none;
+        }
 
+        .write-btn:hover{
+          opacity: 0.7;
+          
         }
 
         div .write-btn>a {
           text-align: right;
         }
+
+        .board-container tbody tr:hover{
+          background-color: lightgrey;
+          cursor: pointer;
+        }
+
+        
 
         /* ==============footer======================================= */
         #footer_1 {
@@ -211,7 +222,7 @@
           <!-- 기존 헤더 내용 -->
           <div id="header_1">
             <div id="header_1_1_1">
-              <a href="<%=contextPath%>"><img src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt=""
+              <a href="<%=contextPath%>"><img src="<%=contextPath%>/resources/assets/This_서고 로고.png" alt=""
                   style="height: 100%; width: 100%;"></a>
             </div>
             <div id="navigator">
@@ -219,7 +230,7 @@
               <a href="">마이페이지</a> <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
             </div>
             <div id="header_login_btn" style="height: 100%; width: 9%;">
-              <button class="btn" id="login" onclick="location.href='<%=contextPath%>/views/jinsloginform.jsp'">Log
+              <button class="btn" id="login" onclick="location.href='<%=contextPath%>/views/member/loginform.jsp'">Log
                 In</button>
             </div>
             <div id="header_signin_btn" style="height: 100%; width: 9%;">
@@ -227,7 +238,7 @@
             </div>
             <div id="header_mypage_btn" style="height: 100%; width: 7%;">
               <button class="btn" id="mypage">
-                <img src="<%=contextPath%>/views/common/assets/user01.png" alt="">
+                <img src="<%=contextPath%>/resources/assets/user01.png" alt="">
               </button>
             </div>
 
@@ -243,8 +254,8 @@
                 <th>No</th>
                 <th>제목</th>
                 <th>글쓴이</th>
-                <th>작성시간</th>
-                <th>좋아요</th>
+                <th>작성일자</th>
+                <th>조회수</th>
               </tr>
             </thead>
             <tbody>
@@ -253,14 +264,14 @@
                 <td>네이버 지도(v5) 임베드</td>
                 <td>아임웹</td>
                 <td>2019-12-17</td>
-                <td>0</td>
+                <td>120</td>
               </tr>
               <tr>
                 <td>9</td>
                 <td>제목</td>
                 <td>아임웹</td>
                 <td>2019-12-16</td>
-                <td>0</td>
+                <td>160</td>
               </tr>
               <tr>
                 <td>8</td>
@@ -341,7 +352,7 @@
           <!-- 기존 푸터 내용 -->
           <div id="footer_1">
             <div id="footer_1_1">
-              <img src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt="">
+              <img src="<%=contextPath%>/resources/assets/This_서고 로고.png" alt="">
             </div>
             <div id="navigator" class="navigator">
               <a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="">자유게시판</a>

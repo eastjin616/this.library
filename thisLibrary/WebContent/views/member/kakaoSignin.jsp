@@ -7,6 +7,7 @@
 	Member loginMember = (Member)session.getAttribute("Member");
 	String kakaoNickName = (String)request.getAttribute("kakaoNickName");
 	String kakaoEmail = (String)request.getAttribute("kakaoEmail");
+	String kakaoKey = (String)request.getAttribute("kakaoKey");
 %>
 
 <!DOCTYPE html>
@@ -266,7 +267,7 @@
 					<div class="form-group">
 						<label for="inputPassword">닉네임</label> <label for=""></label><input
 							type="text" class="form-control" name="nickname"
-							placeholder="닉네임을 입력해주세요">
+							placeholder="닉네임을 입력해주세요" value=<%= kakaoNickName %>>
 					</div>
 
 					<div class="form-group">
@@ -298,8 +299,10 @@
 
 					<div class="form-group">
 						<label for="InputEmail">이메일 주소</label> <input type="email"
-							class="form-control" name="email" placeholder="이메일 주소를 입력해주세요">
+							class="form-control" name="email" placeholder="이메일 주소를 입력해주세요" value="<%= kakaoEmail %>">
 					</div>
+					
+					<input type="hidden" name="key" value="<%= kakaoKey %>">
 
 
 					<div class="form-group text-center">

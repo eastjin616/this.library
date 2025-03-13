@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%
 String contextPath = request.getContextPath();
-String kakaoEmail = "email";
-String kakaoName = "name";
+
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -272,7 +271,7 @@ body * {
 				<!-- <div id="header_1_1"> -->
 				<div id="header_1_1_1">
 					<a href="<%=contextPath%>"><img
-						src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt=""
+						src="<%=contextPath%>/resources/assets/This_서고 로고.png" alt=""
 						style="height: 100%; width: 100%;"></a>
 				</div>
 				<div id="navigator">
@@ -290,7 +289,7 @@ body * {
 				</div>
 				<div id="header_mypage_btn" style="height: 100%; width: 7%;">
 					<button class="btn" id="mypage">
-						<img src="<%=contextPath%>/views/common/assets/user01.png" alt="">
+						<img src="<%=contextPath%>/resources/assets/user01.png" alt="">
 					</button>
 				</div>
 				<!-- </div> -->
@@ -360,15 +359,11 @@ body * {
                     console.log(res);
                     // 이메일, 성별, 닉네임, 프로필이미지
                     var email = res.kakao_account.email;
-                    var gender = res.kakao_account.gender;
                     var nickName = res.kakao_account.profile.nickname;
-                    var profile_image = res.kakao_account.profile.thumbnail_image_url;
-                    var birthday = res.kakao_account.birthday;
-										
-                    window.location.href = "<%=contextPath%>/kakaoSignin.me?email="+ email + "&nickName=" + nickName
-                 
-                    console.log(email, gender, nickName, profile_image, birthday);
-                    alert(email + ',' +  gender + ',' +  nickName + "," + profile_image + ',' +  birthday);
+										var key = res.id;
+                    
+                    window.location.href = "<%= contextPath %>/kakaoSignin.me?email="+ email + "&nickName=" + nickName + "&key=" + key
+                    
                 },
                 fail: function (error) {
                     alert('카카오 로그인에 실패했습니다. 관리자에게 문의하세요.' + JSON.stringify(error));
@@ -395,7 +390,7 @@ body * {
 		<div id="footer" style="background-color: #fdf5f1;">
 			<div id="footer_1">
 				<div id="footer_1_1">
-					<img src="<%=contextPath%>/views/common/assets/This_서고 로고.png"
+					<img src="<%=contextPath%>/resources/assets/This_서고 로고.png"
 						alt="">
 				</div>
 				<div id="navigator" class="navigator">

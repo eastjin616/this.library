@@ -121,6 +121,15 @@ body * {
 
 /*-------------------------------------------------------------  */
 
+
+
+
+
+
+
+
+
+
 /* ==============footer======================================= */
 #footer_1 {
 	width: 100%;
@@ -162,8 +171,7 @@ body * {
 				<div id="header_1_1_1">
 					<a href="<%=contextPath%>"><img
 						src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt=""
-						style="height: 100%; width: 100%;"></a> alt="" style="height:
-					100%; width: 100%;">
+						style="height: 100%; width: 100%;"></a>
 				</div>
 				<div id="navigator">
 					<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a
@@ -189,11 +197,12 @@ body * {
 		</div>
 		<!-- -------------------------------------------------------------------- -->
 
+		
 
 
 
 
-		<!-- -------------------------------------------------------------------- -->
+		<!-- -----------------------------footer---------------------------------- -->
 		<div id="footer" style="background-color: #fdf5f1;">
 			<div id="footer_1">
 				<div id="footer_1_1">

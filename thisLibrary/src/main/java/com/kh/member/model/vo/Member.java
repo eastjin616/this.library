@@ -11,11 +11,12 @@ public class Member {
 	private String profile;
 	private String phone;
 	private String status;
+	private String snsKey;
 	
 	public Member() {}
 
 	public Member(int memNo, String memName, String memId, String memPwd, String nickname, String address, String email,
-			String profile, String phone, String status) {
+			String profile, String phone, String status, String snsKey) {
 		super();
 		this.memNo = memNo;
 		this.memName = memName;
@@ -27,12 +28,13 @@ public class Member {
 		this.profile = profile;
 		this.phone = phone;
 		this.status = status;
+		this.snsKey = snsKey;
 	}
 	
 	
 
 	public Member(String memName, String memId, String memPwd, String nickname, String address, String email,
-			String phone) {
+			String phone, String snsKey) {
 		super();
 		this.memName = memName;
 		this.memId = memId;
@@ -41,6 +43,7 @@ public class Member {
 		this.address = address;
 		this.email = email;
 		this.phone = phone;
+		this.snsKey = snsKey;
 	}
 
 	public int getMemNo() {
@@ -122,12 +125,20 @@ public class Member {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	public String getSnsKey() {
+		return snsKey;
+	}
+
+	public void setSnsKey(String snsKey) {
+		this.snsKey = snsKey;
+	}
 
 	@Override
 	public String toString() {
 		return "Member [memNo=" + memNo + ", memName=" + memName + ", memId=" + memId + ", memPwd=" + memPwd
 				+ ", nickname=" + nickname + ", address=" + address + ", email=" + email + ", profile=" + profile
-				+ ", phone=" + phone + ", status=" + status + "]";
+				+ ", phone=" + phone + ", status=" + status + ", snsKey=" + snsKey + "]";
 	}
 	
 }

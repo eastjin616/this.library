@@ -273,6 +273,7 @@ a{
       position: absolute;
       margin-left: 15%;
       margin-top: 5%;
+      width: 210px;
 }
 
 #content_2_4>button{
@@ -284,8 +285,9 @@ a{
 #content_2_5_2>#book4{
       position: absolute;
       margin-top: 8%;
-      margin-left: 20%;
+      margin-left: 15%;
       height: 100%;
+      width: 210px;
       
 }
 /* -------------------------------------------------------- */

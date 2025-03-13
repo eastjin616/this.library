@@ -58,7 +58,7 @@
 	     , ADDRESS
 	     , EMAIL
 	     , PHONE
-	     , TOKEN
+	     , SNS_KEY
 	     )
 	VALUES
 	     ( 
@@ -71,6 +71,7 @@
 	     , ?
 	     , ?
 	     , ?
+	     , 'token'
 	     )
 	</entry>
 </properties>

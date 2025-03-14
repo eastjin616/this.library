@@ -19,7 +19,7 @@
 <!-- <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="content.css">
   <link rel="stylesheet" href="footer.css"> -->
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <style>
 	@font-face {
         font-family: 'Chosunilbo_myungjo';
@@ -171,7 +171,7 @@
 	margin: auto;
 }
 
-.form-group #addressbtn {
+.form-group .addressbtn {
 	margin-left: 235px;
 }
 
@@ -253,38 +253,38 @@
 
 					<div class="form-group">
 						<label for="inputName" >이름</label> <input type="text"
-							class="form-control" name="name" placeholder="이름을 입력해 주세요">
+							class="form-control" name="name" placeholder="이름을 입력해 주세요" required>
 					</div>
 
 					<div class="form-group">
 						<label for="inputName">아이디</label> <input type="text"
-							class="form-control" name="id" placeholder="아이디를 입력해 주세요">
-						<button class="btn btn-default" type="button" onClick=""
-							id="addressbtn">중복확인</button>
+							class="form-control" name="id" placeholder="아이디를 입력해 주세요" required>
+						<button class="btn btn-default addressbtn" type="button" onClick="idCheck()"
+							id="dupl_btn">중복확인</button>
 					</div>
 
 					<div class="form-group">
-						<label for="inputPassword">닉네임</label> <label for=""></label><input
+						<label for="inputPassword" >닉네임</label> <label for=""></label><input
 							type="text" class="form-control" name="nickname"
-							placeholder="닉네임을 입력해주세요">
+							placeholder="닉네임을 입력해주세요" required>
 					</div>
 
 					<div class="form-group">
 						<label for="inputPassword">비밀번호</label> <label for=""></label><input
 							type="password" class="form-control" name="password"
-							placeholder="비밀번호를 입력해주세요">
+							placeholder="비밀번호를 입력해주세요" required>
 					</div>
 
 					<div class="form-group">
 						<label for="inputPassword">비밀번호 확인</label> <input type="password"
-							class="form-control" placeholder="비밀번호를 입력해주세요">
+							class="form-control" placeholder="비밀번호를 입력해주세요" required>
 					</div>
 
                    
                    <div class="form-group">
                        <label>주소</label>
                        <input type="text" class="form-control" id="zipNo" name="post" placeholder="우편번호" >
-                       <button class="btn btn-default" type="button" onClick="goPopup();" id="addressbtn"><i class="fa fa-search" ></i>주소검색</button>
+                       <button class="btn btn-default addressbtn" type="button" onClick="goPopup();" id="address_btn"><i class="fa fa-search" ></i>주소검색</button>
                    </div>
                    
                    <div class="form-group" style="margin-top:0px;">
@@ -292,8 +292,8 @@
                    </div>
 
 					<div class="form-group">
-						<label for="phone">PHONE</label> <input type="tel"
-							class="form-control" name="phone" placeholder="ex) 010-1234-5678">
+						<label for="phone">PHONE</label> <input type="tel" 
+							class="form-control" name="phone" placeholder="ex) 010-1234-5678" required>
 					</div>
 
 					<div class="form-group">
@@ -354,9 +354,42 @@
 	</div>
 
 	<script>
-  function login() {
-	     location.href="<%= contextPath %>/views/member/loginform.jsp";
-	   }
+	function login() {
+		location.href="<%= contextPath %>/views/member/loginform.jsp";
+	}
+  
+	//===================================================================
+	function idCheck(){
+		//아이디 입력하는 input 요소 객체
+		const $idInput = $("input[name=id]"); 
+		$.ajax({
+			url:"<%=contextPath%>/idCheck.me",
+			//data:{키값:벨류값},
+			data:{
+				checkId: $idInput.val()
+			},
+			type:"get",
+			success:function(result){
+				if(result == 'NNNNN'){//사용불가능일 경우
+					alert("이미 존재하거나 탈퇴한 회원의 아이디입니다.")
+					$idInput.focus();//다시 입력할수 있도록 유도
+					
+				}else{//사용 가능일 경우
+					
+					if(confirm("사용 가능한 아이디입니다. 사용하시겠습니까?")){
+						$idInput.attr("readonly", true);
+						$("#enroll-form :submit").removeAttr("disabled");
+					}else{
+						$idInput.focus();//다시 입력할수 있도록 유도
+					}
+				}
+			},
+			error:function(){
+				console.log("아이디 중복체크용 ajax 통신 실패");
+			}
+		});
+	}
+	
 
   </script>
 	<!-- -------------------------------------------------------------------- -->

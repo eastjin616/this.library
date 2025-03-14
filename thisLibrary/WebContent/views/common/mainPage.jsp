@@ -85,8 +85,9 @@
       justify-content: center;
       align-items: center;
     }
+    
     #login {
-      width: 300px;
+      width: 50%;
       height: 50%;
       border-radius: 5px;
       background-color: #ea916e;
@@ -95,7 +96,7 @@
     }
 
     #signin {
-      width: 70%;
+      width: 50%;
       height: 50%;
       border-radius: 5px;
       background-color: #ea916e;
@@ -106,15 +107,15 @@
     /* ---------------------------------------------- */
     #mypage {
       border-radius: 50%;
-      width: 50%;
-      height: 50%;
+      width: 40%;
+      height: 60%;
       background-color: #ea916e;
       border: none;
     }
 
     #mypage>img {
-      width: 90%;
-      height: 60%;
+      width: 100%;
+      height: 100%;
     }
 
     /* ---------------------------------------------- */

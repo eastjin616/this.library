@@ -54,4 +54,15 @@
 		  FROM MEMBER
 		 WHERE MEM_ID = ?
 	</entry>
+	<entry key="findPwd">
+		SELECT COUNT(*) 
+			FROM MEMBER WHERE MEM_NAME = ? 
+			AND MEM_ID = ? 
+			AND EMAIL = ?
+	</entry>
+	<entry key="updatePwd">
+		UPDATE MEMBER
+			SET MEM_PWD = ?
+			WHERE MEM_ID = ?
+	</entry>
 </properties>

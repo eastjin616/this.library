@@ -47,5 +47,32 @@ public class MemberService {
 
 //=================================================
 
+	public int findpwd(String name, String id, String email) {
+		Connection conn = getConnection();
+		int result = new MemberDao().findPwd(conn, name,id,email);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+//=================================================
+	public int updatePwd(String id, String newPwd) {
+		Connection conn = getConnection();
+		int result = new MemberDao().updatePwd(conn, id,newPwd);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
 
 }

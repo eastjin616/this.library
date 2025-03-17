@@ -186,7 +186,8 @@
 <!-- ------------------------------------------------------------------ -->
 
 <body>
-	
+	<form id="form" action="<%= contextPath %>/signin.me" method="post" onsubmit="return validatePassword();">
+
 	
 	<% if(alertMsg != null){ %>
 				<script>
@@ -390,8 +391,32 @@
 		});
 	}
 	
+// --------------------------------------------------------
 
+function validatePassword() {
+  const password = document.querySelector("input[name='password']").value;
+  const passwordCheck = document.querySelector("input[placeholder='비밀번호를 입력해주세요']").value;
+
+  // 비밀번호 유효성 검사 정규표현식
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,16}$/;
+
+  if (!passwordRegex.test(password)) {
+    alert("비밀번호는 영문, 숫자, 특수문자를 포함한 8~16자여야 합니다.");
+    return false;
+  }
+
+  if (password !== passwordCheck) {
+    alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+    return false;
+  }
+
+  return true; // 모든 조건이 충족되면 true 반환
+}
+
+	
   </script>
+
+	
 	<!-- -------------------------------------------------------------------- -->
 </body>
 

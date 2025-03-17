@@ -118,5 +118,61 @@ public class MemberDao {
 		}
 		return count;
 	}
+	
+//	==============================================
+	
+	public int findPwd(Connection conn, String name, String id, String email) {
+		//select문 -> resultset => int 
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("findPwd");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, id);
+			pstmt.setString(3, email);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				 result = rset.getInt(1);
+				 System.out.println(result);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+		
+	}
+//	==============================================
+
+	public int updatePwd(Connection conn, String id, String newPwd) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updatePwd");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, newPwd);
+			pstmt.setString(2, id);
+			
+			result = pstmt.executeUpdate(); 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 }
 

@@ -263,9 +263,11 @@ body * {
 					alt="">
 			</div>
 			<div id="navigator" class="navigator">
-				<a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a> <a
-					href="">온라인투표</a> <a href="">자유게시판</a> <a href="">마이페이지</a> <a
-					href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
+				<a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a> 
+				<a href="">온라인투표</a> 
+				<a href="">자유게시판</a> 
+				<a href="">마이페이지</a> 
+				<a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
 			</div>
 		</div>
 		<div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>

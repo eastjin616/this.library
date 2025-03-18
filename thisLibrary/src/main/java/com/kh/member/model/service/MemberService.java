@@ -74,5 +74,12 @@ public class MemberService {
 		close(conn);
 		return result;
 	}
+//=================================================
+	
+	public int findIdPage(String name, String email) {
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().findIdPage(conn, name, email);
+	}
 
 }

@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.member.model.service.MemberService;
+
 /**
  * Servlet implementation class findIdPageControllor
  */
@@ -26,8 +28,16 @@ public class findIdPageControllor extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		request.setCharacterEncoding("UTF-8");
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		
+//		System.out.println("name: " + name);
+//		System.out.println("email: " + email);
+		
+		int result = new MemberService().findIdPage(name, email);
+		
 	}
 
 	/**

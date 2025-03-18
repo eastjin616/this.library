@@ -80,36 +80,36 @@
 				}
 
 				#login {
-      width: 50%;
-      height: 50%;
-      border-radius: 5px;
-      background-color: #ea916e;
-      color: white;
-      border: none;
-    }
+					width: 50%;
+					height: 50%;
+					border-radius: 5px;
+					background-color: #ea916e;
+					color: white;
+					border: none;
+				}
 
-    #signin {
-      width: 50%;
-      height: 50%;
-      border-radius: 5px;
-      background-color: #ea916e;
-      color: white;
-      border: none;
-    }
+				#signin {
+					width: 50%;
+					height: 50%;
+					border-radius: 5px;
+					background-color: #ea916e;
+					color: white;
+					border: none;
+				}
 
-    /* ---------------------------------------------- */
-    #mypage {
-      border-radius: 50%;
-      width: 40%;
-      height: 60%;
-      background-color: #ea916e;
-      border: none;
-    }
+				/* ---------------------------------------------- */
+				#mypage {
+					border-radius: 50%;
+					width: 40%;
+					height: 60%;
+					background-color: #ea916e;
+					border: none;
+				}
 
-    #mypage>img {
-      width: 100%;
-      height: 100%;
-    }
+				#mypage>img {
+					width: 100%;
+					height: 100%;
+				}
 
 				/* ---------------------------------------------- */
 				.btn:hover {
@@ -119,8 +119,6 @@
 				}
 
 				/*-------------------------------------------------------------  */
-
-
 
 				.post-container {
 					width: 70%;
@@ -151,16 +149,9 @@
 					margin-left: 5px;
 				}
 
-				.label:hover{
+				.label:hover {
 					opacity: 0.7;
 				}
-
-				.post-meta {
-					font-size: 14px;
-					color: #777;
-				}
-
-
 
 				.post-content {
 					font-size: 16px;
@@ -236,7 +227,7 @@
 					font-size: 14px;
 				}
 
-				.submit-btn:hover{
+				.submit-btn:hover {
 					opacity: 0.7;
 				}
 
@@ -276,24 +267,83 @@
 					background: #f0f0f0;
 				}
 
-				.set-comment button, .set-header button{
-						border: 0;
-						background-color: transparent;
-						
+				.set-comment button,
+				.set-header button {
+					border: 0;
+					background-color: transparent;
+
 				}
 
-				.set-comment button:hover, .set-header button:hover{
-						cursor: pointer;
-						opacity: 0.7;
+				.set-comment button:hover,
+				.set-header button:hover {
+					cursor: pointer;
+					opacity: 0.7;
 				}
 
-				.set-comment{
+				.set-comment {
 					padding-left: 770px;
 				}
 
-				.set-header{
-					padding-left: 720px;
+				.vote {
+					display: flex;
+					justify-content: center;
 				}
+
+
+				.card {
+					width: 30%;
+					aspect-ratio: 2 / 3;
+					background: #c0ddfa;
+					border-radius: 20px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					position: relative;
+					overflow: hidden;
+					cursor: pointer;
+					margin: auto;
+					transition: transform 0.75s;
+					/* 애니메이션 시간 설정 */
+				}
+
+				.card:hover {
+					transform: scale(1.1);
+					/* 마우스 오버 시 크기 증가 */
+					border-radius: 50%;
+					/* 원형으로 변경 */
+				}
+
+				.card img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					position: absolute;
+					margin-right: 10px;
+				}
+
+				.upload-icon {
+					position: absolute;
+					font-size: 24px;
+					color: #6c757d;
+					z-index: 1;
+				}
+
+				input[type="file"] {
+					display: none;
+				}
+
+				.container {
+					width: 80%;
+					margin: 20px auto;
+					display: flex;
+				}
+
+				.table {
+					width: 100%;
+					border-collapse: collapse;
+				}
+
+
 
 
 
@@ -340,11 +390,13 @@
 									style="height: 100%; width: 100%;"></a>
 						</div>
 						<div id="navigator">
-							<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> <a href="<%= contextPath %>/views/board/boardList.jsp">자유게시판</a>
+							<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a
+								href="<%=contextPath%>/views/vote/voteDetailForm.jsp">온라인투표</a> <a
+								href="<%= contextPath %>/views/board/boardList.jsp">자유게시판</a>
 							<a href="">마이페이지</a> <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
 						</div>
 						<div id="header_login_btn" style="height: 100%; width: 9%;">
-							<button class="btn" id="login"  onclick="login()">Log
+							<button class="btn" id="login" onclick="login()">Log
 								In</button>
 						</div>
 						<div id="header_signin_btn" style="height: 100%; width: 9%;">
@@ -364,96 +416,30 @@
 
 				<div class="post-container">
 					<div class="post-header">
-						<h2>제목 들어갈 공간 <span class="label">팔로우</span></h2>
-						<span class="set-header"><button>수정</button> | <button>삭제</button></span>
-						
-						<p class="post-meta">
-							작성자: 작성자2 | 2025.02.18 | 조회수: 50
-						</p>
+						<h2>제목<input type="text" style="width: 985px; margin-left: 10px;"></h2>
 					</div>
 
 					<div class="post-content">
-						<p>
-							내용 들어갈 공간이야 흘러간다 근데 자기 싫다ㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㅁㄴㅇㅁㄴㅇㄴㅁㅇㅁㄴㅇㄴㅁㅇㅁㄴㅇㅇㅁㄴㅇㄴㅁㅇ이것만 마무리 짓아야한다.지금은 2025년02월 23일 일요일
-							오전12시26분이다.오전 2시라 세벽이겠지?그럼 00시까지 해야하나??
-							어디까지 써야하지?조교님도 이만히 보신다 할까마지막이 좋을 것 같기도 하고,,,
-						</p>
-					</div>
+						<p>내용
+							<center><textarea style="width: 1040px; height: 400px; resize: none;"></textarea></center>
+							<br>
 
-					<div class="comment-section">
-						<h3 class="comment-count">댓글 5</h3>
+						<div id="post-content2">
 
-						<div class="comment-form">
-							<div class="comment-form-header">
-								<h4>댓글 작성하기</h4>
-								<button class="submit-btn">작성하기</button>
+							<div class="container">
+								
+								<div class="card" onclick="uploadImage(0)">
+									<span class="upload-icon">➕</span>
+									<input type="file" accept="image">
+								</div>
+								<div class="card" onclick="uploadImage(1)">
+									<span class="upload-icon">➕</span>
+									<input type="file" accept="image">
+								</div>
 							</div>
-							<textarea placeholder="댓글을 입력하세요..." maxlength="300" style="width: 1000px;"></textarea>
-							<div class="char-count">0 / 300 자</div>
+
+							</p>
 						</div>
-
-						<div class="comment-list">
-							<div class="comment">
-								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18 <span class="label">팔로우</span>
-									<span class="set-comment"><button>수정</button> | <button>삭제</button></span>
-								</p>
-								<p class="comment-text">
-									이왕 하면 내용 멋지고 지리고 맛있고 ~ 멋있네
-									~ㅁㅇㅁㄴㅇㄴㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ히히
-									완전완전 ~ 총 익시어야죠 ~
-								</p>
-							</div>
-							<div class="comment">
-								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18 <span class="label">팔로우</span>
-									<span class="set-comment"><button>수정</button> | <button>삭제</button></span>
-								</p>
-								<p class="comment-text">
-									이왕 하면 내용 멋지고 지리고 맛있고 ~ 멋있네
-									~ㅁㅇㅁㄴㅇㄴㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ히히
-									완전완전 ~ 총 익시어야죠 ~
-								</p>
-							</div>
-							<div class="comment">
-								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18 <span class="label">팔로우</span>
-									<span class="set-comment"><button>수정</button> | <button>삭제</button></span>
-								</p>
-								<p class="comment-text">
-									이왕 하면 내용 멋지고 지리고 맛있고 ~ 멋있네
-									~ㅁㅇㅁㄴㅇㄴㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ히히
-									완전완전 ~ 총 익시어야죠 ~
-								</p>
-							</div>
-							<div class="comment">
-								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18 <span class="label">팔로우</span>
-									<span class="set-comment"><button>수정</button> | <button>삭제</button></span>
-								</p>
-								<p class="comment-text">
-									이왕 하면 내용 멋지고 지리고 맛있고 ~ 멋있네
-									~ㅁㅇㅁㄴㅇㄴㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ히히
-									완전완전 ~ 총 익시어야죠 ~
-								</p>
-							</div>
-							<div class="comment">
-								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18 <span class="label">팔로우</span>
-									<span class="set-comment"><button>수정</button> | <button>삭제</button></span>
-								</p>
-								<p class="comment-text">
-									이왕 하면 내용 멋지고 지리고 맛있고 ~ 멋있네
-									~ㅁㅇㅁㄴㅇㄴㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ히히
-									완전완전 ~ 총 익시어야죠 ~
-								</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="pagination">
-						<span><</span>
-						<span>1</span>
-						<span>2</span>
-						<span>3</span>
-						<span>4</span>
-						<span>5</span>
-						<span>></span>
 					</div>
 				</div>
 

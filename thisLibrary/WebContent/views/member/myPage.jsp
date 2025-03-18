@@ -122,16 +122,6 @@
 
 				/*-------------------------------------------------------------  */
 				.wrap2 {
-<<<<<<< HEAD
-					width: 100%;
-					border: 1px solid;
-					background-color: #964b00;
-				}
-
-				.wrap2 * {
-					border: 1px solid;
-				}
-=======
 					width: 1000px;
 					border: 1px solid;
 					background-color: #964b00;
@@ -143,40 +133,24 @@
 				.container2 * {
 					border: 1px solid;
 				} */
->>>>>>> myPageForm
 
 				.container {
 					background-color: white;
 					width: 98.5%;
 					margin-left: 1.5%;
 					display: flex;
-<<<<<<< HEAD
-					box-sizing: border-box;
-=======
->>>>>>> myPageForm
 				}
 
 				.container1 {
 					width: 15%;
-<<<<<<< HEAD
-				}
-
-=======
 					background-color: rgb(252, 230, 234);
 				}
 
 				/* -------------------------------------------container2 options------- */
->>>>>>> myPageForm
 				.container2 {
 					width: 85%;
 					padding: 5% 3%;
 				}
-<<<<<<< HEAD
-				.container2 span{
-					line-height: 50px;
-					font-size: 30px;
-					margin-left: -2%;
-=======
 
 
 				.container2 span,
@@ -295,13 +269,10 @@
 					margin-bottom: 40px;
 					box-sizing: border-box;
 					display: flex;
->>>>>>> myPageForm
 				}
 
 
 
-<<<<<<< HEAD
-=======
 				/* #commantary *{
 					border: 1px solid;
 				} */
@@ -495,7 +466,6 @@
 					cursor: pointer;
 				}
 
->>>>>>> myPageForm
 
 
 				/* ==============footer======================================= */

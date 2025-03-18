@@ -81,36 +81,36 @@
 				}
 
 				#login {
-					width: 70%;
-					height: 50%;
-					border-radius: 5px;
-					background-color: #ea916e;
-					color: white;
-					border: none;
-				}
+      width: 50%;
+      height: 50%;
+      border-radius: 5px;
+      background-color: #ea916e;
+      color: white;
+      border: none;
+    }
 
-				#signin {
-					width: 70%;
-					height: 50%;
-					border-radius: 5px;
-					background-color: #ea916e;
-					color: white;
-					border: none;
-				}
+    #signin {
+      width: 50%;
+      height: 50%;
+      border-radius: 5px;
+      background-color: #ea916e;
+      color: white;
+      border: none;
+    }
 
-				/* ---------------------------------------------- */
-				#mypage {
-					border-radius: 50%;
-					width: 50%;
-					height: 50%;
-					background-color: #ea916e;
-					border: none;
-				}
+    /* ---------------------------------------------- */
+    #mypage {
+      border-radius: 50%;
+      width: 40%;
+      height: 60%;
+      background-color: #ea916e;
+      border: none;
+    }
 
-				#mypage>img {
-					width: 90%;
-					height: 60%;
-				}
+    #mypage>img {
+      width: 100%;
+      height: 100%;
+    }
 
 				/* ---------------------------------------------- */
 				.btn:hover {

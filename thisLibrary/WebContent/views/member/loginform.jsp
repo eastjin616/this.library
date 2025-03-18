@@ -302,8 +302,7 @@ body * {
 			<h2 id="loginTitle" align="center">로그인</h2>
 			<div class="sns_login">
 				<li><a href="javascript:void(0);" onclick="naver()">N</i></a></li>
-				<li><a href="javascript:loginWithKakao()"><i
-						class="fas fa-comment"></i></a></li>
+				<li><a href="javascript:loginWithKakao()"><i class="fas fa-comment"></i></a></li>
 				<li><a href=""><i class="fab fa-google"></i></a></li>
 			</div>
 			<div class="login_id">
@@ -404,23 +403,18 @@ body * {
 	<!-- -------------------------------------------------------------------- -->
 
 	<script>
-    function naver() {
-         location.href="<%=contextPath%>/views/common/jins/naverlogin.jsp";
-       }
-    </script>
-
-	<script>
-  function login() {
-	     location.href="<%=contextPath%>/views/member/loginform.jsp";
-	   }
-     
-
+	  function naver() {
+	        location.href="<%=contextPath%>/views/common/jins/naverlogin.jsp";
+	      }
+	  function login() {
+		     location.href="<%=contextPath%>/views/member/loginform.jsp";
+		   }
+	     
+	  function signin() {
+		     location.href="<%=contextPath%>/views/member/signin.jsp";
+			}
   </script>
-	<script>
-  function signin() {
-	     location.href="<%=contextPath%>/views/member/signin.jsp";
-		}
-	</script>
+
 </body>
 
 </html>

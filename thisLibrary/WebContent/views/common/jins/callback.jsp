@@ -94,7 +94,7 @@
                 
 
                 // 서블릿으로 포워딩
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/naver.bo"); // 서블릿 경로로 변경
+                RequestDispatcher dispatcher = request.getRequestDispatcher("naverSignin.jsp"); // 서블릿 경로로 변경
                 dispatcher.forward(request, response);
             } else {
                 out.println("<p>사용자 정보 요청 실패. Error Code: " + userInfoResponseCode + "</p>");

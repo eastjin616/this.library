@@ -165,20 +165,6 @@
 <!-- ------------------------------------------------------------------ -->
 
 <body>
-	
-<% 
-        String alertMsg = (String) session.getAttribute("alertMsg");
-        if (alertMsg != null) {
-            session.removeAttribute("alertMsg"); // 세션에서 값 삭제 (한 번만 보여주기 위해)
-    %>
-        <script>
-            alert("<%= alertMsg %>");
-        </script>
-    <% 
-        }
-    %>
-	
-	
 	<div class="wrap">
 		<div id="header">
 			<div id="header_1">

@@ -233,7 +233,7 @@ body * {
 					<div class="col-md-6 col-md-offset-3"></div>
 				</div>
 
-				<form id="form" action="" method="post">
+				<form id="form" action="<%= contextPath %>/findIdPage.me" method="post">
 					<div class="col-sm-6-col-md-offset-3">
 
 						<div class="form-group">

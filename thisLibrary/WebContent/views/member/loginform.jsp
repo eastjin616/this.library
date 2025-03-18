@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%
 String contextPath = request.getContextPath();
-
+String alertMsg = (String) session.getAttribute("alertMsg");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -263,6 +263,18 @@ body * {
 <!-- ------------------------------------------------------------------ -->
 
 <body>
+
+	<% 
+    if (alertMsg != null) {
+        session.removeAttribute("alertMsg"); // 세션에서 값 삭제 (한 번만 보여주기 위해)
+%>
+    <script>
+        alert("<%= alertMsg %>");
+    </script>
+<% 
+    }
+%>
+
 	<script src="https://kit.fontawesome.com/53a8c415f1.js"
 		crossorigin="anonymous"></script>
 	<div class="wrap">

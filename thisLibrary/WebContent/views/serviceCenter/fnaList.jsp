@@ -341,7 +341,7 @@
               <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
             </div>
             <div id="header_login_btn" style="height: 100%; width: 9%;">
-              <button class="btn" id="login" onclick="location.href='<%= contextPath %>/views/jinsloginform.jsp'">Log
+              <button class="btn" id="login" onclick="login()">Log
                 In</button>
             </div>
             <div id="header_signin_btn" style="height: 100%; width: 9%;">
@@ -352,8 +352,6 @@
                   alt=""></button>
             </div>
             <div id="rightBox">
-
-
             </div>
 
           </div>
@@ -370,7 +368,7 @@
 
               <div id="questionBox1" class="questionBox1">
                 <a href="#">검색이 되지 않거나 품절 / 절판이 된 도서는 구입할 수 없나요?</a>
-                <span class="material-symbols-outlined">keyboard_double_arrow_down</span>
+                  <span class="material-symbols-outlined">keyboard_double_arrow_down</span>
               </div>
               <!-- 관리자 답변 입력 영역 -->
               <div id="fnqReply" class="reply-box">
@@ -425,16 +423,18 @@
         </div>
       </div>
 
-      <script>
+        <script>
+         
+
         function login() {
-          location.href = "<%= contextPath %>/views/member/loginform.jsp";
+          location.href="<%=contextPath%>/views/member/loginform.jsp";
         }
 
       </script>
 
       <script>
         function signin() {
-          location.href = "<%= contextPath %>/views/member/signin.jsp";
+          location.href="<%=contextPath%>/views/member/signin.jsp";
         }
 
       </script>

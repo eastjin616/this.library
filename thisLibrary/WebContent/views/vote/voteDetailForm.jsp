@@ -475,15 +475,15 @@
 					<div id="content_2">
 						<div id="content_2_1">
 							<div id="content_2_1_1">
-								<img src="WebContent/resources/assets/book3.jpg" alt="">
+								<img src="<%= contextPath %>/resources/assets/book3.jpg" alt="">
 							</div>
 							<div id="content_2_1_2"><input type="radio"></div>
 
 						</div>
-						<div id="content_2_2"><img src="WebContent/resources/assets/vs.png" alt=""></div>
+						<div id="content_2_2"><img src="<%= contextPath %>/resources/assets/vs.png" alt=""></div>
 						<div id="content_2_3">
 							<div id="content_2_3_1">
-								<img src="WebContent/resources/assets/book5.jpg" alt="">
+								<img src="<%= contextPath %>/resources/assets/book5.jpg" alt="">
 							</div>
 							<div id="content_2_3_2"><input type="radio"></div>
 						</div>

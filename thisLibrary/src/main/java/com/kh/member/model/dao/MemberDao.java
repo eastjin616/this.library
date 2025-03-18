@@ -30,7 +30,12 @@ public class MemberDao {
 			e.printStackTrace();
 		}
 	}
+<<<<<<< HEAD
 
+=======
+//	============================================================================
+	
+>>>>>>> 77c105623c4d6489fc391caf875bcc4a780442d1
 	public Member loginMember(Connection conn, String memId, String memPwd) {
 		Member m = null;
 		PreparedStatement pstmt = null;
@@ -59,7 +64,7 @@ public class MemberDao {
 
 		return m;
 	}
-
+//	============================================================================
 	public int insertMember(Connection conn, Member m) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -225,6 +230,9 @@ public class MemberDao {
 
 		return memberId;
 	}
+//	==============================================
+	
+	
 
 
 	

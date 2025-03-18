@@ -13,6 +13,7 @@ import com.kh.member.model.vo.Attachment;
 import com.kh.member.model.vo.Member;
 
 public class MemberService {
+	
 	public Member loginMember(String memId, String memPwd) {
 		Connection conn = getConnection();
 		Member m = new MemberDao().loginMember(conn, memId, memPwd);
@@ -22,7 +23,9 @@ public class MemberService {
 		return m;
 				
 	}
-
+	
+//==========================================
+	
 	public int insertMember(Member m) {
 		Connection conn = getConnection();
 		int result = new MemberDao().insertMember(conn, m);
@@ -92,6 +95,7 @@ public class MemberService {
 		return memberId;
 		
 	}
+<<<<<<< HEAD
 	
 	public int insertphoto(Member b, ArrayList<Attachment> list) {
 
@@ -113,5 +117,9 @@ public class MemberService {
 	
 	
 	
+=======
+//=================================================
+
+>>>>>>> 77c105623c4d6489fc391caf875bcc4a780442d1
 
 }

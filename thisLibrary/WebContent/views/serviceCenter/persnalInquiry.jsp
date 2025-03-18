@@ -185,7 +185,7 @@
           font-size: 12px;
           color: rgb(110, 104, 104);
           width: 95%;
-          height: 70px;
+          height: 120px;
           background-color: #f9f9f9;
           border-radius: 4px;
           padding: 15px;
@@ -273,7 +273,7 @@
           <div class="content2">
             <div>공지사항</div>
             <div>F&Q</div>
-            <div>1:1 문의</div>
+            <div style="color: blue;">1:1 문의</div>
           </div>
           <div class="content3">모든항목을 반드시 입력해 주셔야 문의접수가 가능합니다.
             <hr>

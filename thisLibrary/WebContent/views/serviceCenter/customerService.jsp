@@ -135,7 +135,7 @@
 
 				#content1 {
 					width: 100%;
-					height: 225px;
+					height: 300px;
 					display: flex;
 					object-fit: cover;
 				}
@@ -153,6 +153,8 @@
 
 				#textcontent {
 					font-size: 30px;
+					line-height: 100px;
+					margin-left: 150px;
 				}
 
 				#content2_1,
@@ -214,7 +216,67 @@
 						'GRAD' 0,
 						'opsz' 24
 				}
-			
+			/* 자유게시판 스타일 */
+			.board-container {
+          max-width: 1000px;
+          margin: 120px auto;
+          background: white;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+
+        th,td {
+          border-bottom: 1px solid #ddd;
+          padding: 10px;
+          text-align: left;
+        }
+
+        th {
+          background-color: #f4f4f4;
+        }
+
+        .pagination {
+          text-align: center;
+          margin-top: 20px;
+        }
+
+        .pagination a {
+          margin: 0 5px;
+          text-decoration: none;
+          color: #333;
+        }
+
+        .write-btn {
+          display: block;
+          width: 80px;
+          padding: 10px;
+          /* margin: auto; */
+          background-color: #ea916e;
+          color: white;
+          text-align: center;
+          border-radius: 5px;
+          text-decoration: none;
+        }
+
+        .write-btn:hover{
+          opacity: 0.7;
+          
+        }
+
+        div .write-btn>a {
+          text-align: right;
+        }
+
+        .board-container tbody tr:hover{
+          background-color: lightgrey;
+          cursor: pointer;
+        }
 
 
 
@@ -361,91 +423,114 @@
 						</div>
 					</div>
 					<br>
+					
 					<br>
 					<br>
 					<div id="content3">
 
 						<div class="notice-form">
-							<h2>공지사항 작성</h2>
-							<table>
-								<thead>
-									<tr>
-										<th>날짜</th>
-										<th>제목</th>
-										<th>작성자</th>
-										<th>작성 날짜</th>
-										<th>관리</th> <!-- '관리' 열 추가 -->
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td><span class="material-symbols-outlined">edit
-											</span></td> 
-									</tr>
-									<tr>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td><span class="material-symbols-outlined">edit
-											</span></td> 
-									</tr>
+							<!-- 자유게시판 -->
+        <div class="board-container">
+          <h2>공지사항</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>제목</th>
+                <th>글쓴이</th>
+                <th>작성일자</th>
+                <th>조회수</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr onclick="window.location.href='<%= contextPath %>/views/board/boardDetail.jsp'">
+                <td>10</td>
+                <td>네이버 지도(v5) 임베드asdasdasdasdasdsadasdasdasdadasd</td>
+                <td>아임웹</td>
+                <td>2019-12-17</td>
+                <td>120</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>제목</td>
+                <td>아임웹</td>
+                <td>2019-12-16</td>
+                <td>160</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>구글 지도 게시물에 임베드 하기</td>
+                <td>아임웹</td>
+                <td>2019-12-16</td>
+                <td>77</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>구글 지도 게시물에 임베드 하기</td>
+                <td>아임웹</td>
+                <td>2019-12-16</td>
+                <td>99</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>구글 지도 게시물에 임베드 하기</td>
+                <td>아임웹</td>
+                <td>2019-12-16</td>
+                <td>50</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>구글 지도 게시물에 임베드 하기</td>
+                <td>아임웹</td>
+                <td>2019-12-16</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>구글 지도 게시물에 임베드 하기</td>
+                <td>아임웹</td>
+                <td>2019-12-16</td>
+                <td>9015</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>구글 지도 게시물에 임베드 하기</td>
+                <td>아임웹</td>
+                <td>2019-12-16</td>
+                <td>60</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>구글 지도 게시물에 임베드 하기</td>
+                <td>아임웹</td>
+                <td>2019-12-16</td>
+                <td>111560</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>구글 지도 게시물에 임베드 하기</td>
+                <td>아임웹</td>
+                <td>2019-12-16</td>
+                <td>1105</td>
+              </tr>
+            </tbody>
+          </table>
 
-									<tr>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td><span class="material-symbols-outlined">edit
-											</span></td> 
-									</tr><tr>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td><span class="material-symbols-outlined">edit
-											</span></td> 
-									</tr><tr>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td><span class="material-symbols-outlined">edit
-											</span></td> 
-									</tr><tr>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td><span class="material-symbols-outlined">edit
-											</span></td> 
-									</tr><tr>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td><span class="material-symbols-outlined">edit
-											</span></td> 
-									</tr><tr>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td><span class="material-symbols-outlined">edit
-											</span></td> 
-									</tr>
 
+          <div class="pagination">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+          </div>
 
+          <div style="display: flex;">
+            <a href="<%= contextPath %>/views/board/boardInsertForm.jsp" class="write-btn" style="margin-left: auto;">글쓰기</a>
+          </div>
 
-								</tbody>
-							
-							
-							<!-- 추가 공지사항은 여기에 삽입 -->
-							</table>
+        </div>
+        <!-- 자유게시판 끝 -->
 						</div>
 
 

@@ -1,5 +1,16 @@
+<%@page import="com.kh.board.model.vo.Attachment"%>
+<%@page import="com.kh.board.model.vo.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<% String contextPath=request.getContextPath(); %>
+<% 
+		String contextPath=request.getContextPath(); 
+
+		// 글번호, 닉네임, 제목, 내용, 조회수, 작성일
+		Board b = (Board)request.getAttribute("b");
+		
+		// 첨부파일이 없다면 null
+		// 첨부파일이 있다면 파일번호, 원본명, 수정명, 저장경로
+		Attachment at = (Attachment)request.getAttribute("at"); 
+%>
 
 		<!DOCTYPE html>
 		<html lang="en">
@@ -8,6 +19,8 @@
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<title>Document1</title>
+			<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 			<!-- <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="content.css">
   <link rel="stylesheet" href="footer.css"> -->
@@ -292,7 +305,7 @@
 				}
 
 				.set-header{
-					padding-left: 720px;
+					/* padding-left: 720px; */
 				}
 
 
@@ -367,19 +380,17 @@
 
 				<div class="post-container">
 					<div class="post-header">
-						<h2>제목 들어갈 공간 <span class="label">팔로우</span></h2>
+						<h2><%=b.getBoardTitle() %><span class="label">팔로우</span></h2>
 						<span class="set-header"><button>수정</button> | <button>삭제</button></span>
 						
 						<p class="post-meta">
-							작성자: 작성자2 | 2025.02.18 | 조회수: 50
+							작성자: <%=b.getBoardWriter() %> | <%=b.getWriteDate() %> | 조회수: <%=b.getCount() %>
 						</p>
 					</div>
 
 					<div class="post-content">
 						<p>
-							내용 들어갈 공간이야 흘러간다 근데 자기 싫다ㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㅁㄴㅇㅁㄴㅇㄴㅁㅇㅁㄴㅇㄴㅁㅇㅁㄴㅇㅇㅁㄴㅇㄴㅁㅇ이것만 마무리 짓아야한다.지금은 2025년02월 23일 일요일
-							오전12시26분이다.오전 2시라 세벽이겠지?그럼 00시까지 해야하나??
-							어디까지 써야하지?조교님도 이만히 보신다 할까마지막이 좋을 것 같기도 하고,,,
+						<%=b.getBoardContent() %>
 						</p>
 					</div>
 

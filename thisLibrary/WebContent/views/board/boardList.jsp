@@ -3,6 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
   <% 
   	String contextPath=request.getContextPath();
+  
+		// 글번호, 닉네임, 제목, 내용, 조회수, 작성일
   	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
   %>
 
@@ -13,7 +15,11 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Document1</title>
-
+			
+			<script
+    		src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+			</script>
+			
       <style>
         @font-face {
           font-family: 'Gyeonggi_Batang_Regular';
@@ -292,8 +298,13 @@
               <%} %>
             </tbody>
           </table>
-         
-
+					<script>
+						$(function(){
+							$(".board-container tbody>tr").click(function(){
+								location.href="<%= contextPath %>/detail.bo?bno="+ $(this).children().eq(0).text();
+							})
+						})
+					</script>
 
           <div class="pagination">
             <span><</span>
@@ -338,6 +349,7 @@
         function signin() {
           location.href = "<%=contextPath%>/views/member/signin.jsp";
         }
+
       </script>
       <!-- -------------------------------------------------------------------- -->
     </body>

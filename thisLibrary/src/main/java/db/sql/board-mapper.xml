@@ -16,4 +16,34 @@
 		ORDER
 		   BY BOARD_NO DESC
 	</entry>
+	
+  <entry key="increaseCount">
+  UPDATE BOARD
+	   SET COUNT = COUNT + 1
+	 WHERE BOARD_NO = ?
+	   AND STATUS = 'Y'
+  </entry>
+  
+   <entry key="selectBoard">
+  SELECT 
+	       BOARD_NO
+	     , NICKNAME
+	     , BOARD_TITLE
+	     , BOARD_CONTENT
+       , COUNT
+	     , TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
+	  FROM BOARD
+	  JOIN MEMBER USING(MEM_NO)
+	 WHERE BOARD_NO = ?
+  </entry>
+  
+   <entry key="selectAttachment">
+ 	SELECT
+	       FILE_NO
+	     , ORIGIN_NAME
+	     , CHANGE_NAME
+	     , FILE_PATH
+	  FROM ATTACHMENT
+	 WHERE WRITE_NO = ?
+  </entry>
 </properties>

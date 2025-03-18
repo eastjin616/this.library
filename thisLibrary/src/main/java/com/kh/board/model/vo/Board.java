@@ -68,7 +68,7 @@ public class Board {
 	}
 	
 	public String getBoardWriter() {
-		return boardContent;
+		return boardWriter;
 	}
 
 	public void setBoardWriter(String boardWriter) {

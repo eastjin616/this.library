@@ -46,14 +46,7 @@ public class MemberService {
 	}
 
 //=================================================
-public boolean isExistingMember(String email){
-	Connection conn = getConnection();
-	console.log(email);
-	boolean result = new MemberDao().isExistingMember(conn, email);
 
-<<<<<<< HEAD
-	return result;
-=======
 	public int findpwd(String name, String id, String email) {
 		Connection conn = getConnection();
 		int result = new MemberDao().findPwd(conn, name,id,email);
@@ -83,13 +76,19 @@ public boolean isExistingMember(String email){
 	}
 //=================================================
 	
-	public int findIdPage(String name, String email) {
+	public String findIdPage(String name, String email) {
 		Connection conn = getConnection();
 		
-		int result = new MemberDao().findIdPage(conn, name, email);
+		String memberId = new MemberDao().findIdPage(conn, name, email);
+		if(memberId.equals(null)) {
+			rollback(conn);
+		}else {
+			commit(conn);
+		}
 		
+		close(conn);
+		return memberId;
 		
 	}
->>>>>>> 6792497bf230a7ba2f0bcf173efdac51a1c69c12
 
 }

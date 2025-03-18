@@ -36,7 +36,15 @@ public class findIdPageControllor extends HttpServlet {
 //		System.out.println("name: " + name);
 //		System.out.println("email: " + email);
 		
-		int result = new MemberService().findIdPage(name, email);
+		String memberId = new MemberService().findIdPage(name, email);
+		
+		if (memberId.equals(null)) { 
+			request.setAttribute("errorMsg", "회원정보가 일치하지 않습니다.");
+			request.getRequestDispatcher("/views/common/errorPage.jsp").forward(request, response);
+		} else { // 불일치
+			 request.getSession().setAttribute("alertMsg", "당신의 아이디는 " + memberId + "입니다.");//이거 왜 안되냐
+	            response.sendRedirect(request.getContextPath() + "/views/member/loginform.jsp");
+		}
 		
 	}
 

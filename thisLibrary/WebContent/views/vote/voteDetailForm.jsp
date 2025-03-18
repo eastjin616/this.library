@@ -297,6 +297,20 @@
 					/* padding-left: 720px; */
 				}
 
+				.vote {
+					display: flex;
+					justify-content: center;
+				}
+
+				#vs {
+					align-content: center;
+					padding-left: 50px;
+					padding-right: 50px;
+				}
+
+
+
+
 
 
 				/* ==============footer======================================= */
@@ -378,23 +392,31 @@
 
 					<div class="post-content">
 						<p>
-							어떤 살아남기가 더 재밌었나요?
+							<center>어떤 살아남기가 더 재밌었나요?</center>
+							<br>
 
-						<div id="content_2_1">
-							<div id="content_2_1_1">
-								<img src="<%= contextPath %>/resources/assets/book3.jpg" alt="">
+						<div class="vote">
+							<div id="book1">
+								<img src="<%= contextPath %>/resources/assets/book3.jpg" width="350" height="500">
+								<center>
+									<div><input type="radio" name="vote" value="1"></div>
+								</center>
 							</div>
-							<div id="content_2_1_2"><input type="radio" name="vote"></div>
-						</div>
-						
-						<div id="content_2_2"><img src="<%= contextPath %>/resources/assets/vs.png" alt=""></div>
 
-						<div id="content_2_3">
-							<div id="content_2_3_1">
-								<img src="<%= contextPath %>/resources/assets/book5.jpg" alt="">
+							<div id="vs"><img src="<%= contextPath %>/resources/assets/vs.png" alt=""></div>
+
+							<div id="book2">
+								<img src="<%= contextPath %>/resources/assets/book5.jpg" width="350" height="500">
+								<center>
+									<div><input type="radio" name="vote" value="2"></div>
+								</center>
 							</div>
-							<div id="content_2_3_2"><input type="radio" name="vote"></div>
+
 						</div>
+
+
+
+
 
 						</p>
 					</div>
@@ -466,14 +488,13 @@
 					</div>
 
 					<div class="pagination">
-						<span>
-							<< /span>
-								<span>1</span>
-								<span>2</span>
-								<span>3</span>
-								<span>4</span>
-								<span>5</span>
-								<span>></span>
+							<span><</span>
+							<span>1</span>
+							<span>2</span>
+							<span>3</span>
+							<span>4</span>
+							<span>5</span>
+							<span>></span>
 					</div>
 				</div>
 

@@ -511,11 +511,7 @@
 									style="height: 100%; width: 100%;"></a>
 						</div>
 						<div id="navigator">
-<<<<<<< HEAD
-							<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="">자유게시판</a>
-=======
 							<a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="">자유게시판</a>
->>>>>>> myPageForm
 							<a href="">마이페이지</a> <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
 						</div>
 						<div id="header_login_btn" style="height: 100%; width: 9%;">
@@ -536,46 +532,16 @@
 
 				<div class="wrap2">
 					<div class="container">
-<<<<<<< HEAD
-						<div class="container1"></div>
-						<div class="container2">
-=======
 						<div class="container1">
 
 
 						</div>
 						<div class="container2">
 							<!-- --------------------------------mtpage -->
->>>>>>> myPageForm
 							<div id="mypageMainContent1">
 								<span>My Page</span>
 							</div>
 							<div id="mypageMainContent2">
-<<<<<<< HEAD
-								<div id="mypageProfilBox">
-								</div>
-							</div>
-						</div>
-
-
-					</div>
-				</div>
-
-
-				<!-- -------------------------------------------------------------------- -->
-				<div id="footer" style="background-color: #fdf5f1;">
-					<div id="footer_1">
-						<div id="footer_1_1">
-							<img src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt="">
-						</div>
-						<div id="navigator" class="navigator">
-							<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="">자유게시판</a>
-							<a href="">마이페이지</a> <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
-						</div>
-					</div>
-					<div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
-				</div>
-=======
 								<div id="mypageMainContent2ProfilPhoto">
 									<div id="userPhoto"><img src="../../resources/assets/chill.png" alt=""></div>
 								</div>
@@ -691,7 +657,6 @@
 				</div>
 				<div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
 			</div>
->>>>>>> myPageForm
 			</div>
 
 			<script>

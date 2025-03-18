@@ -267,8 +267,11 @@
                   style="height: 100%; width: 100%;"></a>
             </div>
             <div id="navigator">
-              <a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="">자유게시판</a>
-              <a href="">마이페이지</a> <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+              <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a>
+              <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a>
+              <a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a>
+              <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a>
+              <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
             </div>
             <div id="header_login_btn" style="height: 100%; width: 9%;">
               <button class="btn" id="login" onclick="location.href='<%=contextPath%>/views/jinsloginform.jsp'">Log

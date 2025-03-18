@@ -93,6 +93,7 @@ public class MemberDao {
 	
 //	==============================================
 	
+<<<<<<< HEAD
 	public int naverInsert(Connection conn, String id, String nickname, String email, String moblie) {
 
 		int result = 0;
@@ -145,5 +146,7 @@ public boolean isExistingMember(Connection conn, String email){
 
 
 
+=======
+>>>>>>> 4465d2da68c3504421dd153f1bbb05d397407145
 }
 

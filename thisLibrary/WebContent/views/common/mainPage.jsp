@@ -85,8 +85,9 @@
       justify-content: center;
       align-items: center;
     }
+    
     #login {
-      width: 300px;
+      width: 50%;
       height: 50%;
       border-radius: 5px;
       background-color: #ea916e;
@@ -95,7 +96,7 @@
     }
 
     #signin {
-      width: 70%;
+      width: 50%;
       height: 50%;
       border-radius: 5px;
       background-color: #ea916e;
@@ -106,15 +107,15 @@
     /* ---------------------------------------------- */
     #mypage {
       border-radius: 50%;
-      width: 50%;
-      height: 50%;
+      width: 40%;
+      height: 60%;
       background-color: #ea916e;
       border: none;
     }
 
     #mypage>img {
-      width: 90%;
-      height: 60%;
+      width: 100%;
+      height: 100%;
     }
 
     /* ---------------------------------------------- */
@@ -440,8 +441,8 @@ a{
             <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
             <a href="">온라인투표</a>
             <a href="<%= contextPath %>/views/board/boardList.jsp">자유게시판</a>
-            <a href="">마이페이지</a>
-            <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
+            <a href="<%= contextPath %>/views/board/boardList.jsp">마이페이지</a>
+            <a href="<%= contextPath %>/views/member/myPage.jsp">고객센터</a>
           </div>
           <div id="header_login_btn" style="height: 100%; width: 9%;">
             <button class="btn" id="login" onclick="login()">Log In</button>
@@ -543,7 +544,7 @@ a{
           <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
           <a href="">온라인투표</a>
           <a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a>
-          <a href="">마이페이지</a>
+          <a href="<%= contextPath %>/views/board/boardList.jsp">마이페이지</a>
           <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
         </div>
       </div>

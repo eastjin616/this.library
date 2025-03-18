@@ -43,20 +43,6 @@ public class MemberService {
 	
 //	==========================================
 	
-	public int naverInsert(String id,String nickname, String email,String moblie) {
-		Connection conn = getConnection();
-		int result = new MemberDao().naverInsert(conn, id, nickname, email, moblie);
-	
-		if(result > 0) {
-			commit(conn);
-		}else {
-			rollback(conn);
-		}
-		
-		close(conn);
-		
-		return result;
-	}
 
 //=================================================
 public boolean isExistingMember(String email){

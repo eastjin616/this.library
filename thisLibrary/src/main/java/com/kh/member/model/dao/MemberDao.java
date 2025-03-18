@@ -173,8 +173,9 @@ public class MemberDao {
 		}
 		return result;
 	}
+
+//	==============================================
 	
-<<<<<<< HEAD
 	public int naverInsert(Connection conn, String id, String nickname, String email, String moblie) {
 
 		int result = 0;
@@ -200,34 +201,39 @@ public class MemberDao {
 	}
 
 
+
+
 //	==============================================
-public boolean isExistingMember(Connection conn, String email){
-	
 
-}
+	public String findIdPage(Connection conn, String name, String email) {
+		
+		String memberId = "";
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("findIdPage");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				memberId = rset.getString("mem_id");
+				System.out.println(memberId);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return memberId;
+	}
 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> 4465d2da68c3504421dd153f1bbb05d397407145
 }
 

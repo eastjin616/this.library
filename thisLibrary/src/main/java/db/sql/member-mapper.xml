@@ -66,4 +66,10 @@
 			SET MEM_PWD = ?
 			WHERE MEM_ID = ?
 	</entry>
+	<entry key="findIdPage">
+		SELECT MEM_ID
+		  FROM MEMBER
+		 WHERE MEM_NAME = ?
+		   AND EMAIL = ?
+	</entry>
 </properties>

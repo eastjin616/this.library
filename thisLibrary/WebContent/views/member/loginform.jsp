@@ -89,6 +89,7 @@
 					border: none;
 				}
 
+<<<<<<< HEAD
 				#signin {
 					width: 50%;
 					height: 50%;
@@ -97,6 +98,296 @@
 					color: white;
 					border: none;
 				}
+=======
+#signin {
+	width: 70%;
+	height: 50%;
+	border-radius: 5px;
+	background-color: #ea916e;
+	color: white;
+	border: none;
+}
+
+/* ---------------------------------------------- */
+#mypage {
+	border-radius: 50%;
+	width: 50%;
+	height: 50%;
+	background-color: #ea916e;
+	border: none;
+}
+
+#mypage>img {
+	width: 90%;
+	height: 60%;
+}
+
+/* ---------------------------------------------- */
+.btn:hover {
+	opacity: 0.7;
+	color: white;
+	cursor: pointer;
+}
+
+/*-------------------------------------------------------------  */
+.login {
+	width: 700px;
+	height: 600px;
+	border-radius: 20px;
+	margin: auto;
+	border: 1px solid;
+	margin: 150px auto;
+}
+
+#loginTitle {
+	color: rgb(187, 114, 63);
+	font-size: 2em;
+	margin-top: 100px;
+}
+
+.sns_login li {
+	list-style: none;
+}
+
+.sns_login {
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+#googleIcon {
+	width: 19px;
+	height: 19px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	border-radius: 50px;
+	background: white;
+	color: rgb(187, 114, 63);
+	text-decoration-line: none;
+	font-size: 20px;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4), -3px -3px 5px
+		rgba(0, 0, 0, 0.1);
+	margin-left: 15px;
+}
+
+/* -===============================================----- */
+/* -===============================================----- */
+
+/* -===============================================----- */
+
+/* -===============================================----- */
+
+/* -===============================================----- */
+.sns_login>li {
+	padding: 0px 15px;
+	margin-right: 10px;
+}
+
+#goodgleLoginTag {
+	width: 104px;
+	height: 72.2px;
+	background-color: white;
+}
+
+.sns_login a {
+	width: 19px;
+	height: 19px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	border-radius: 50px;
+	background: white;
+	color: rgb(187, 114, 63);
+	text-decoration-line: none;
+	font-size: 20px;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4), -3px -3px 5px
+		rgba(0, 0, 0, 0.1);
+}
+
+.login_id {
+	margin-top: 20px;
+	width: 500px;
+	margin-left: 50px;
+}
+
+.login_pw {
+	margin-top: 20px;
+	width: 500px;
+	margin-left: 50px;
+}
+
+.login_id input {
+	width: 500px;
+	height: 50px;
+	border-radius: 30px;
+	padding: 0px 20px;
+	border: 1px solid rgb(187, 114, 63);
+}
+
+.login_pw input {
+	width: 100%;
+	height: 50px;
+	border-radius: 30px;
+	padding: 0px 20px;
+	border: 1px solid rgb(187, 114, 63);
+}
+
+.login_etc {
+	padding: 10px;
+	width: 400px;
+	font-size: 14px;
+	display: flex;
+	justify-content: space-between;
+	font-weight: bold;
+	margin: auto;
+}
+
+.submit {
+	width: 450px;
+	margin: auto;
+}
+
+.submit input {
+	width: 100%;
+	height: 50px;
+	border: 0;
+	outline: none;
+	border-radius: 40px;
+	background: rgb(187, 114, 63);
+	color: white;
+	font-size: 1.2em;
+	letter-spacing: 2px;
+	cursor: pointer;
+}
+
+.submit:hover {
+	opacity: 0.7;
+}
+
+/* ==============footer======================================= */
+#footer_1 {
+	width: 100%;
+	height: 65%;
+}
+
+#footer_1>div {
+	float: left;
+}
+
+#footer_1_1 {
+	height: 100%;
+	width: 20%;
+}
+
+#footer_1_1 img {
+	display: flex;
+	margin: auto;
+	width: 60%;
+	height: 60%;
+	margin-top: 20%;
+}
+
+#footer_2 {
+	width: 100%;
+	height: 35%;
+	text-align: center;
+	margin-top: 2%;
+}
+
+/* ----------------------------------------------------------------- */
+</style>
+</head>
+<meta charset="UTF-8">
+<!-- ------------------------------------------------------------------ -->
+
+<body>
+	<% 
+    if (alertMsg != null) {
+        session.removeAttribute("alertMsg"); // 세션에서 값 삭제 (한 번만 보여주기 위해)
+%>
+	<script>
+        alert("<%= alertMsg %>");
+    </script>
+	<% 
+    }
+%>
+
+	<script src="https://kit.fontawesome.com/53a8c415f1.js"
+		crossorigin="anonymous"></script>
+	<div class="wrap">
+		<div id="header">
+			<div id="header_1">
+				<!-- <div id="header_1_1"> -->
+				<div id="header_1_1_1">
+					<a href="<%=contextPath%>/views/common/mainPage.jsp"><img
+						src="<%=contextPath%>/resources/assets/This_서고 로고.png" alt=""
+						style="height: 100%; width: 100%;"></a>
+				</div>
+				<div id="navigator">
+					<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a
+						href="">온라인투표</a> <a
+						href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a> <a
+						href="">마이페이지</a> <a
+						href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+				</div>
+				<div id="header_login_btn" style="height: 100%; width: 9%;">
+					<button class="btn" id="login"
+						onclick="location.href='<%=contextPath%>/views/member/loginform.jsp'">Log
+						In</button>
+				</div>
+				<div id="header_signin_btn" style="height: 100%; width: 9%;">
+					<button class="btn" id="signin" onclick="signin()">Sign In</button>
+				</div>
+				<div id="header_mypage_btn" style="height: 100%; width: 7%;">
+					<button class="btn" id="mypage">
+						<img src="<%=contextPath%>/resources/assets/user01.png" alt="">
+					</button>
+				</div>
+				<!-- </div> -->
+
+			</div>
+		</div>
+		<!-- -------------------------------------------------------------------- -->
+
+		<div class="login">
+			<h2 id="loginTitle" align="center">로그인</h2>
+			<div class="login_id">
+			
+			<form id="form" action="<%= contextPath %>/login.me" method="post">
+					<h4>ID</h4>
+					<input type="text" name="memId" id="" placeholder="아이디를 입력하세요요">
+				</div>
+				<div class="login_pw">
+					<h4>Password</h4>
+					<input type="password" name="memPwd" id="" placeholder="비밀번호를 입력하세요">
+				</div>
+			
+			
+			
+			<div class="login_etc">
+				<div class="checkbox">
+					<input type="checkbox" name="" id=""> 로그인 정보 저장
+				</div>
+				
+				<div class="forgot_pw">
+					<a href="<%=contextPath%>/views/member/findIdPage.jsp">아이디</a> / 
+					<a href="<%=contextPath%>/views/member/findPwdPage.jsp">비밀번호 찾기</a>
+				</div>
+			
+			
+			</div>
+			<div class="sns_login">
+				<li><a href="javascript:void(0);" onclick="naver()"
+					style="background-color: green; color: white; font-weight: 1000;">
+						N</i>
+				</a></li>
+				<li><a href="javascript:loginWithKakao()"
+					style="background-color: yellow; color: black"
+					class="fas fa-comment"></i></a></li>
+>>>>>>> book
 
 
 				/* ---------------------------------------------- */
@@ -140,6 +431,7 @@
 					list-style: none;
 				}
 
+<<<<<<< HEAD
 				.sns_login {
 					padding: 20px;
 					display: flex;
@@ -164,6 +456,15 @@
 
 				/* -===============================================----- */
 				/* -===============================================----- */
+=======
+			</div>
+			<div class="submit">
+				<input type="submit" value="로그인">
+			</div>
+		</div>
+
+</form>
+>>>>>>> book
 
 				/* -===============================================----- */
 

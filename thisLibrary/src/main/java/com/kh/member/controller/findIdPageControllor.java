@@ -38,11 +38,11 @@ public class findIdPageControllor extends HttpServlet {
 		
 		String memberId = new MemberService().findIdPage(name, email);
 		
-		if (memberId.equals(null)) { 
-			request.setAttribute("errorMsg", "회원정보가 일치하지 않습니다.");
+		if (memberId.equals("")) { 
+			request.setAttribute("errorMsg", "없는 아이디 입니다.");
 			request.getRequestDispatcher("/views/common/errorPage.jsp").forward(request, response);
 		} else { // 불일치
-			 request.getSession().setAttribute("alertMsg", "당신의 아이디는 " + memberId + "입니다.");//이거 왜 안되냐
+			 request.getSession().setAttribute("alertMsg", "당신의 아이디는 " + memberId + "입니다.");
 	            response.sendRedirect(request.getContextPath() + "/views/member/loginform.jsp");
 		}
 		

@@ -189,7 +189,7 @@ body * {
 					<button class="btn" id="signin" onclick="signin()">Sign In</button>
 				</div>
 				<div id="header_mypage_btn" style="height: 100%; width: 7%;">
-					<button class="btn" id="mypage">
+					<button class="btn" id="mypage" onclick="mypage()">
 						<img src="<%=contextPath%>/views/common/assets/user01.png"
 							alt="">
 					</button>
@@ -228,12 +228,13 @@ body * {
 	     location.href="<%=contextPath%>/views/member/loginform.jsp";
 	   }
 
-  </script>
-
-	<script>
   function signin() {
 	     location.href="<%=contextPath%>/views/member/signin.jsp";
 		}
+
+		function mypage() {
+	     location.href="<%= contextPath %>/views/member/myPage.jsp";
+	   }
 	</script>
 	<!-- -------------------------------------------------------------------- -->
 </body>

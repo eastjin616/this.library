@@ -419,10 +419,6 @@ function validatePassword() {
   return true; // 모든 조건이 충족되면 true 반환
 }
 
-	
-  </script>
-
-<script>
 	function checkpwd(){
 			var pwd1 = document.getElementById('password').value
 			var pwd2 = document.getElementById('checkPassword').value
@@ -430,7 +426,7 @@ function validatePassword() {
 			
 			if (pwd1 == pwd2) {
 				result.innerHTML = '비밀번호가 일치합니다.'; // 일치하면 '일치합니다.' 출력
-				result.style.color = 'blue'; // 초록색
+				result.style.color = 'blue'; // 파란색
 			
 			} else {
 				result.innerHTML = '비밀번호가 일치하지 않습니다.'; // 일치하지 않으면 '일치하지 않습니다.' 출력

@@ -224,7 +224,9 @@
             >Sign In</button>
 				</div>
           <div id="header_mypage_btn" style="height: 100%; width: 7%;">
-            <button class="btn" id="mypage"><img src="<%= contextPath %>/views/common/assets/user01.png" alt=""></button>
+            <button class="btn" id="mypage">
+							<img src="<%= contextPath %>/views/common/assets/user01.png" alt="">
+						</button>
           </div>
       
       </div>

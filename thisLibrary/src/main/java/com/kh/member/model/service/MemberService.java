@@ -80,6 +80,8 @@ public class MemberService {
 		Connection conn = getConnection();
 		
 		int result = new MemberDao().findIdPage(conn, name, email);
+		
+		
 	}
 
 }

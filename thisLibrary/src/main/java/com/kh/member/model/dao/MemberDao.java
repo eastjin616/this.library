@@ -173,6 +173,12 @@ public class MemberDao {
 		}
 		return result;
 	}
-	
+
+//	==============================================
+
+	public int findIdPage(Connection conn, String id, String email) {
+		
+	}
+
 }
 

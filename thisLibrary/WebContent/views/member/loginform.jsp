@@ -305,16 +305,68 @@ body * {
     }
 %>
 
-	<script src="https://kit.fontawesome.com/53a8c415f1.js"
-		crossorigin="anonymous"></script>
-	<div class="wrap">
-		<div id="header">
-			<div id="header_1">
-				<!-- <div id="header_1_1"> -->
-				<div id="header_1_1_1">
-					<a href="<%=contextPath%>/views/common/mainPage.jsp"><img
-						src="<%=contextPath%>/resources/assets/This_서고 로고.png" alt=""
-						style="height: 100%; width: 100%;"></a>
+				#footer_1>div {
+					float: left;
+				}
+
+				#footer_1_1 {
+					height: 100%;
+					width: 20%;
+				}
+
+				#footer_1_1 img {
+					display: flex;
+					margin: auto;
+					width: 60%;
+					height: 60%;
+					margin-top: 20%;
+				}
+
+				#footer_2 {
+					width: 100%;
+					height: 35%;
+					text-align: center;
+					margin-top: 2%;
+				}
+
+				/* ----------------------------------------------------------------- */
+			</style>
+		</head>
+		<meta charset="UTF-8">
+		<!-- ------------------------------------------------------------------ -->
+
+		<body>
+			<script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
+			<div class="wrap">
+				<div id="header">
+					<div id="header_1">
+						<!-- <div id="header_1_1"> -->
+						<div id="header_1_1_1">
+							<a href="<%=contextPath%>/views/common/mainPage.jsp"><img
+									src="<%=contextPath%>/resources/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;"></a>
+						</div>
+						<div id="navigator">
+							<a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
+							<a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
+							<a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a>
+							<a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
+							<a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+						</div>
+						<div id="header_login_btn" style="height: 100%; width: 9%;">
+							<button class="btn" id="login" onclick="location.href='<%=contextPath%>/views/member/loginform.jsp'">Log
+								In</button>
+						</div>
+						<div id="header_signin_btn" style="height: 100%; width: 9%;">
+							<button class="btn" id="signin" onclick="signin()">Sign In</button>
+						</div>
+						<div id="header_mypage_btn" style="height: 100%; width: 7%;">
+							<button class="btn" id="mypage">
+								<img src="<%=contextPath%>/resources/assets/user01.png" alt="">
+							</button>
+						</div>
+						<!-- </div> -->
+
+					</div>
 				</div>
 				<div id="navigator">
 					<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a

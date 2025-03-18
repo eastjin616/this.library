@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% String contextPath = request.getContextPath(); %>
+<% 
+   String contextPath = request.getContextPath(); 
+%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -216,7 +219,7 @@
                 </div>
             </div>
 
-          <form id="form" action="createUser.do" method="post">
+          <form id="form" action="<%= contextPath %>/updatePwd.me" method="post" accept-charset="UTF-8">
               <div class="col-sm-6-col-md-offset-3">
 
                   <div class="form-group">
@@ -226,7 +229,7 @@
 
                   <div class="form-group">
                     <label for="Inputpassword">비밀번호</label>
-                    <input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해주세요">
+                    <input type="password" class="form-control" name="newPwd" placeholder="비밀번호를 입력해주세요">
                 </div>
                 <div class="form-group">
                     <label for="Inputpassword">비밀번호 확인</label>

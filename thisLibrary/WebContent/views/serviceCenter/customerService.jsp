@@ -301,25 +301,38 @@
 						<div id="content2_1">
 							<div id="content2_1_1">
 								<div id="contentDiv1_1">
-									<img src="<%=contextPath%>/resources/assets/interview_15747273.gif">
+									<a href="<%=contextPath%>/views/serviceCenter/customerServiceDetail.jsp" style="border: none;">
+										<img src="<%=contextPath%>/resources/assets/interview_15747273.gif">
+									</a>
 								</div>
 								<div id="contentDiv1_2">
 									<p>
-										<b>1:1 문의 접수</b>
+										<a href="<%=contextPath%>/views/serviceCenter/customerServiceDetail.jsp" style="text-decoration-line: none;">
+											<b>1:1 문의 접수</b>
+										</a>
 									</p>
 								</div>
-								<div id="contentDiv1_3">고객센터에 문의글 접수중입니다.</div>
+								<div id="contentDiv1_3">
+									<a>고객센터에 문의글 접수중입니다.</a>
+								</div>
 							</div>
 							<div id="content2_1_2">
 								<div id="contentDiv2_1">
-									<img src="<%=contextPath%>/resources/assets/faq_12205153.gif">
+									<a href="<%=contextPath%>/views/serviceCenter/fnaList.jsp">
+										<img src="<%=contextPath%>/resources/assets/faq_12205153.gif">
+									</a>	
 								</div>
 								<div id="contentDiv2_2">
 									<p>
-										<b>F&A</b>
+										<a href="<%=contextPath%>/views/serviceCenter/fnaList.jsp"
+											style="text-decoration-line: none;">
+											<b>F&A</b>
+										</a>
 									</p>
 								</div>
-								<div id="contentDiv2_3">자주 문의되는 질문에 대한 답변을 보실 수 있습니다.</div>
+								<div id="contentDiv2_3">
+									자주 문의되는 질문에 대한 답변을 보실 수 있습니다.
+								</div>
 							</div>
 						</div>
 						<div id="content2_2">
@@ -329,7 +342,7 @@
 								</div>
 								<div id="contentDiv3_2">
 									<p>
-										<b>1:1 문의 내역</b>
+										<a><b>1:1 문의 내역</b></a>
 									</p>
 								</div>
 								<div id="contentDiv3_3">사용자가 문의한 글 내역을 확인합니다.</div>
@@ -340,7 +353,7 @@
 								</div>
 								<div id="contentDiv4_2">
 									<p>
-										<b>전화 상담</b>
+										<a><b>전화 상담</b></a>
 									</p>
 								</div>
 								<div id="contentDiv4_3">고객 센터에 연결되어 상담자와 연결이 됩니다.</div>

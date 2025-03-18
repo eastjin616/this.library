@@ -79,7 +79,7 @@
 				}
 
 				#login {
-					width: 50%;
+					width: 70%;
 					height: 50%;
 					border-radius: 5px;
 					background-color: #ea916e;
@@ -88,7 +88,7 @@
 				}
 
 				#signin {
-					width: 50%;
+					width: 70%;
 					height: 50%;
 					border-radius: 5px;
 					background-color: #ea916e;
@@ -99,15 +99,15 @@
 				/* ---------------------------------------------- */
 				#mypage {
 					border-radius: 50%;
-					width: 40%;
-					height: 60%;
+					width: 50%;
+					height: 50%;
 					background-color: #ea916e;
 					border: none;
 				}
 
 				#mypage>img {
-					width: 100%;
-					height: 100%;
+					width: 90%;
+					height: 60%;
 				}
 
 				/* ---------------------------------------------- */
@@ -144,8 +144,8 @@
 					justify-content: center;
 				}
 
-				#googleIcon {
-					width: 19px;
+			#googleIcon{
+				width: 19px;
 					height: 19px;
 					display: flex;
 					align-items: center;
@@ -158,7 +158,7 @@
 					font-size: 20px;
 					box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4), -3px -3px 5px rgba(0, 0, 0, 0.1);
 					margin-left: 15px;
-				}
+			}
 
 				/* -===============================================----- */
 				/* -===============================================----- */
@@ -182,7 +182,7 @@
 					background-color: white;
 				}
 
-
+				
 
 				.sns_login a {
 					width: 19px;
@@ -349,181 +349,189 @@
 						</div>
 					</div>
 					<div class="sns_login">
-						<li><a href="javascript:void(0);" onclick="naver()"
-								style="background-color: green; color: white; font-weight: 1000;"> N</i></a></li>
-						<li><a href="javascript:loginWithKakao()" style="background-color: yellow; color: black"
-								class="fas fa-comment"></i></a></li>
-
-
-
+						<li><a href="javascript:void(0);" onclick="naver()" style="background-color: green; color: white; font-weight: 1000;"> N</i></a></li>
+						<li><a href="javascript:loginWithKakao()" style="background-color: yellow; color: black"    class="fas fa-comment"></i></a></li>
+						
+						
+						
 						<!--  -->
 						<div id="goodgleLoginTag">
 
-							<div class="login">
-								<h2 id="loginTitle" align="center">로그인</h2>
-								<div class="sns_login">
-									<li><a href="javascript:void(0);" onclick="naver()">N</i></a></li>
-									<li><a href="javascript:loginWithKakao()"><i class="fas fa-comment"></i></a></li>
-									<li><a href=""><i class="fab fa-google"></i></a></li>
-								</div>
-								<div class="login_id">
-									<h4>ID</h4>
-									<input type="email" name="" id="" placeholder="아이디를 입력하세요요">
-								</div>
-								<div class="login_pw">
-									<h4>Password</h4>
-									<input type="password" name="" id="" placeholder="비밀번호를 입력하세요">
-								</div>
-								<div class="login_etc">
-									<div class="checkbox">
-										<input type="checkbox" name="" id=""> 로그인 정보 저장
-									</div>
+							<div id="g_id_onload"
+								data-client_id="92235338763-ljnuftbgbj6nn3ol95bno95j36v9hsci.apps.googleusercontent.com"
+								data-context="signin" data-ux_mode="popup"
+								data-login_uri="http://localhost:8777/this/GoogleLogin" data-itp_support="true">
+							</div>
+
+							<div class="g_id_signin" id="googleIcon" data-type="icon" data-shape="circle" data-theme="outline" data-text="signin_with"
+								data-size="70px">
+							</div>
+						</div>
+						
+						
+						
+						
+					</div>
+					<div class="submit">
+						<input type="submit" value="로그인">
+					</div>
+				</div>
 
 
-									<!------------------------------ 카카오 로그인 부분 ------------------------>
-									<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+				<!------------------------------ 카카오 로그인 부분 ------------------------>
+				<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
-									<script>
-										// 카카오 초기화
-										Kakao.init('93a0920238e62f6613575ad15d4e692c');
+				<script>
+					// 카카오 초기화
+					Kakao.init('93a0920238e62f6613575ad15d4e692c');
 
-										//카카오 로그인 후 토근 값 저장.
-										function loginWithKakao() {
-											Kakao.Auth.login({
-												success: function (authObj) {
-													console.log(authObj); // access토큰 값
-													Kakao.Auth.setAccessToken(authObj.access_token); // access토큰값 저장
+					//카카오 로그인 후 토근 값 저장.
+					function loginWithKakao() {
+						Kakao.Auth.login({
+							success: function (authObj) {
+								console.log(authObj); // access토큰 값
+								Kakao.Auth.setAccessToken(authObj.access_token); // access토큰값 저장
 
-													getInfo();
-												},
-												fail: function (err) {
-													console.log(err);
-												}
-											});
-										}
+								getInfo();
+							},
+							fail: function (err) {
+								console.log(err);
+							}
+						});
+					}
 
-										// 엑세스 토큰을 발급받고, 아래 함수를 호출시켜서 사용자 정보를 받아옴.
-										function getInfo() {
-											Kakao.API.request({
-												url: '/v2/user/me',
-												success: function (res) {
-													console.log(res);
-													// 이메일, 성별, 닉네임, 프로필이미지
-													var email = res.kakao_account.email;
-													var nickName = res.kakao_account.profile.nickname;
-													var key = res.id;
+					// 엑세스 토큰을 발급받고, 아래 함수를 호출시켜서 사용자 정보를 받아옴.
+					function getInfo() {
+						Kakao.API.request({
+							url: '/v2/user/me',
+							success: function (res) {
+								console.log(res);
+								// 이메일, 성별, 닉네임, 프로필이미지
+								var email = res.kakao_account.email;
+								var nickName = res.kakao_account.profile.nickname;
+								var key = res.id;
 
-													window.location.href = "<%= contextPath %>/kakaoSignin.me?email=" + email + "&nickName=" + nickName + "&key=" + key
+								window.location.href = "<%= contextPath %>/kakaoSignin.me?email=" + email + "&nickName=" + nickName + "&key=" + key
 
-												},
-												fail: function (error) {
-													alert('카카오 로그인에 실패했습니다. 관리자에게 문의하세요.' + JSON.stringify(error));
-												}
-											});
-										}
+							},
+							fail: function (error) {
+								alert('카카오 로그인에 실패했습니다. 관리자에게 문의하세요.' + JSON.stringify(error));
+							}
+						});
+					}
 
-										// 로그아웃 기능 - 카카오 서버에 접속하는 엑세스 토큰을 만료, 사용자 어플리케이션의 로그아웃은 따로 진행.
-										function kakaoLogout() {
-											if (!Kakao.Auth.getAccessToken()) {
-												alert('Not logged in.');
-												return;
-											}
-											Kakao.Auth.logout(function () {
-												alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken());
-											});
-										}
-									</script>
-									<!-------------------------------------- 여기까지가 카카오 로그인--------------------------- -->
-									<!-------------------------------------- 구글 소셜 로그인 스크립트--------------------------- -->
-									<script>
-										function handleCredentialResponse(response) {
-											console.log("JWT ID Token:", response.credential);
+					// 로그아웃 기능 - 카카오 서버에 접속하는 엑세스 토큰을 만료, 사용자 어플리케이션의 로그아웃은 따로 진행.
+					function kakaoLogout() {
+						if (!Kakao.Auth.getAccessToken()) {
+							alert('Not logged in.');
+							return;
+						}
+						Kakao.Auth.logout(function () {
+							alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken());
+						});
+					}
+				</script>
+				<!-------------------------------------- 여기까지가 카카오 로그인--------------------------- -->
+				<!-------------------------------------- 구글 소셜 로그인 스크립트--------------------------- -->
+				<script>
+					function handleCredentialResponse(response) {
+						console.log("JWT ID Token:", response.credential);
 
-											// 구글에서 받은 ID 토큰을 서버로 전송
-											$.ajax({
-												url: "GoogleLogin",
-												type: "POST",
-												data: { id_token: response.credential },
-												success: function (data) {
-													console.log(data);
-													console.log("서버 응답:", data);
-													if (data.status === "success") {
-														alert("로그인 성공! " + data.name);
-														window.location.href = "welcome.jsp";
-
-													} else {
-														alert("로그인 실패: " + data.message);
-													}
-												},
-												error: function (err) {
-													console.error("로그인 실패:", err);
-													alert("로그인 중 오류 발생");
-												}
-											});
-										}
-									</script>
-
-
-
-
-									<!-------------------------------------- 여기까지가 구글 소셜 로그인 스크립트--------------------------- -->
+						// 구글에서 받은 ID 토큰을 서버로 전송
+						$.ajax({
+							url: "GoogleLogin",
+							type: "POST",
+							data: { id_token: response.credential },
+							success: function (data) {
+								console.log(data);
+								console.log("서버 응답:", data);
+								if (data.status === "success") {
+									alert("로그인 성공! " + data.name);
+									window.location.href = "welcome.jsp";
+									
+								} else {
+									alert("로그인 실패: " + data.message);
+								}
+							},
+							error: function (err) {
+								console.error("로그인 실패:", err);
+								alert("로그인 중 오류 발생");
+							}
+						});
+					}
+				</script>
 
 
 
 
-									<!-- -------------------------------------------------------------------- -->
-									<div id="footer" style="background-color: #fdf5f1;">
-										<div id="footer_1">
-											<div id="footer_1_1"><a href="<%= contextPath %>/views/common/mainPage.jsp"><img
-														src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""></a></div>
-											<div id="navigator" class="navigator">
-												<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a
-													href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a> <a href="">마이페이지</a> <a
-													href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
-											</div>
-										</div>
-										<div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
-									</div>
-								</div>
+				<!-------------------------------------- 여기까지가 구글 소셜 로그인 스크립트--------------------------- -->
 
 
-								<!-- -------------------------------------------------------------------- -->
-
-								<script>
-									function naver() {
-										location.href = "<%=contextPath%>/views/common/jins/naverlogin.jsp";
-									}
-								</script>
-
-								<script>
-									function login() {
-										location.href = "<%=contextPath%>/views/member/loginform.jsp";
-									}
 
 
-								</script>
-								<script>
-									function signin() {
-										location.href = "<%=contextPath%>/views/member/signin.jsp";
-									}
+				<!-- -------------------------------------------------------------------- -->
+				<div id="footer" style="background-color: #fdf5f1;">
+					<div id="footer_1">
+						<div id="footer_1_1"><a href="<%= contextPath %>/views/common/mainPage.jsp"><img
+									src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""></a></div>
+						<div id="navigator" class="navigator">
+							<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a
+								href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a> <a href="">마이페이지</a> <a
+								href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+						</div>
+					</div>
+					<div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
+				</div>
+			</div>
 
 
-									function handleCredentialResponse(response) {
-										console.log("JWT ID Token:", response.credential);
-									}
-										
-											function naver() {
-												location.href = "<%=contextPath%>/views/common/jins/naverlogin.jsp"
-											}
-											function login() {
-												location.href = "<%=contextPath%>/views/member/loginform.jsp"
-											}
+			<!-- -------------------------------------------------------------------- -->
 
-											function signin() {
-												location.href = "<%=contextPath%>/views/member/signin.jsp"
-											}
-										</script>
-								
+			<script>
+				function naver() {
+					location.href = "<%=contextPath%>/views/common/jins/naverlogin.jsp";
+				}
+			</script>
+
+			<script>
+				function login() {
+					location.href = "<%=contextPath%>/views/member/loginform.jsp";
+				}
+
+
+			</script>
+			<script>
+				function signin() {
+					location.href = "<%=contextPath%>/views/member/signin.jsp";
+				}
+
+
+				function handleCredentialResponse(response) {
+					console.log("JWT ID Token:", response.credential);
+
+					// 구글에서 받은 ID 토큰을 서버로 전송
+					$.ajax({
+						url: "GoogleLogin",
+						type: "POST",
+						data: { id_token: response.credential },
+						success: function (data) {
+							console.log("서버 응답:", data);
+							if (data.status === "success") {
+								alert("로그인 성공! " + data.name);
+								window.location.href = "welcome.jsp";
+							} else {
+								alert("로그인 실패: " + data.message);
+							}
+						},
+						error: function (err) {
+							console.error("로그인 실패:", err);
+							alert("로그인 중 오류 발생");
+						}
+					});
+				}
+
+			</script>
+
 		</body>
 
 		</html>

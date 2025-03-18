@@ -16,14 +16,14 @@
 					<!-- <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="content.css">
   <link rel="stylesheet" href="footer.css"> -->
-
-					<style>
-						@font-face {
-							font-family: 'Chosunilbo_myungjo';
-							src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
-							font-weight: normal;
-							font-style: normal;
-						}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<style>
+	@font-face {
+        font-family: 'Chosunilbo_myungjo';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
 
 						body * {
 							font-family: 'Chosunilbo_myungjo';
@@ -171,9 +171,9 @@
 							margin: auto;
 						}
 
-						.form-group #addressbtn {
-							margin-left: 235px;
-						}
+.form-group .addressbtn {
+	margin-left: 235px;
+}
 
 						.container {
 							width: 1000px !important;
@@ -184,33 +184,33 @@
 				<meta charset="UTF-8">
 				<!-- ------------------------------------------------------------------ -->
 
-				<body>
+<body>
+	<form id="form" action="<%= contextPath %>/signin.me" method="post" onsubmit="return validatePassword();">
 
-
-					<% if(alertMsg !=null){ %>
-						<script>
-							alert('<%=alertMsg%>');
-						</script>
-
-						<% } %>
-							<div class="wrap">
-								<div id="header">
-									<div id="header_1">
-										<div id="header_1_1_1">
-											<a href="<%= contextPath %>/views/common/mainPage.jsp"><img
-													src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""
-													style="height: 100%; width: 100%;"></a>
-										</div>
-										<div id="navigator">
-											<a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
-											<a href="">온라인투표</a>
-											<a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a>
-											<a href="">마이페이지</a>
-											<a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
-										</div>
-										<div id="header_login_btn" style="height: 100%; width: 9%;">
-											<button class="btn" id="login"
-												onclick="location.href='<%= contextPath %>/views/member/loginform.jsp'" style="display: flex;
+	
+	<% if(alertMsg != null){ %>
+				<script>
+					alert('<%=alertMsg%>');
+				</script>
+				
+	<% } %>
+  <div class="wrap">
+    <div id="header">
+      <div id="header_1">
+          <div id="header_1_1_1">
+						<a href="<%= contextPath %>/views/common/mainPage.jsp"><img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;"></a>
+          </div>
+          <div id="navigator">
+            <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
+            <a href="">온라인투표</a>
+            <a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a>
+            <a href="">마이페이지</a>
+            <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
+          </div>
+          <div id="header_login_btn" style="height: 100%; width: 9%;">
+            <button class="btn" id="login"
+						onclick="location.href='<%= contextPath %>/views/member/loginform.jsp'" 
+            style="display: flex;
             justify-content: center;
             align-items: center;">LogIn</button>
 										</div>
@@ -245,34 +245,55 @@
 										<div class="col-md-6 col-md-offset-3"></div>
 									</div>
 
-									<form id="form" action="<%= contextPath %>/signin.me" method="post">
-										<div class="col-sm-6-col-md-offset-3">
+					<div class="form-group">
+						<label for="inputName" >이름</label> <input type="text"
+							class="form-control" name="name" placeholder="이름을 입력해 주세요" required>
+					</div>
 
-											<div class="form-group">
-												<label for="inputName">이름</label> <input type="text" class="form-control" name="name"
-													placeholder="이름을 입력해 주세요">
-											</div>
+					<div class="form-group">
+						<label for="inputName">아이디</label> <input type="text"
+							class="form-control" name="id" placeholder="아이디를 입력해 주세요" required>
+						<button class="btn btn-default addressbtn" type="button" onClick="idCheck()"
+							id="dupl_btn">중복확인</button>
+					</div>
 
-											<div class="form-group">
-												<label for="inputName">아이디</label> <input type="text" class="form-control" name="id"
-													placeholder="아이디를 입력해 주세요">
-												<button class="btn btn-default" type="button" onClick="" id="addressbtn">중복확인</button>
-											</div>
+					<div class="form-group">
+						<label for="inputPassword" >닉네임</label> <label for=""></label><input
+							type="text" class="form-control" name="nickname"
+							placeholder="닉네임을 입력해주세요" required>
+					</div>
 
-											<div class="form-group">
-												<label for="inputPassword">닉네임</label> <label for=""></label><input type="text"
-													class="form-control" name="nickname" placeholder="닉네임을 입력해주세요">
-											</div>
+					<div class="form-group">
+						<label for="inputPassword">비밀번호</label> <label for=""></label><input
+							type="password" class="form-control" name="password"
+							placeholder="비밀번호를 입력해주세요" required>
+					</div>
 
-											<div class="form-group">
-												<label for="inputPassword">비밀번호</label> <label for=""></label><input type="password"
-													class="form-control" name="password" placeholder="비밀번호를 입력해주세요">
-											</div>
+					<div class="form-group">
+						<label for="inputPassword">비밀번호 확인</label> <input type="password"
+							class="form-control" placeholder="비밀번호를 입력해주세요" required>
+					</div>
 
-											<div class="form-group">
-												<label for="inputPassword">비밀번호 확인</label> <input type="password" class="form-control"
-													placeholder="비밀번호를 입력해주세요">
-											</div>
+                   
+                   <div class="form-group">
+                       <label>주소</label>
+                       <input type="text" class="form-control" id="zipNo" name="post" placeholder="우편번호" >
+                       <button class="btn btn-default addressbtn" type="button" onClick="goPopup();" id="address_btn"><i class="fa fa-search" ></i>주소검색</button>
+                   </div>
+                   
+                   <div class="form-group" style="margin-top:0px;">
+                       <input type="text" class="form-control" id="roadFullAddr" name="address" placeholder="상세주소"/>
+                   </div>
+
+					<div class="form-group">
+						<label for="phone">PHONE</label> <input type="tel" 
+							class="form-control" name="phone" placeholder="ex) 010-1234-5678" required>
+					</div>
+
+					<div class="form-group">
+						<label for="InputEmail">이메일 주소</label> <input type="email"
+							class="form-control" name="email" placeholder="이메일 주소를 입력해주세요">
+					</div>
 
 
 											<div class="form-group">
@@ -348,13 +369,70 @@
 							</div>
 							</div>
 
-							<script>
-								function login() {
-									location.href = "<%= contextPath %>/views/member/loginform.jsp";
-								}
+	<script>
+	function login() {
+		location.href="<%= contextPath %>/views/member/loginform.jsp";
+	}
+  
+	//===================================================================
+	function idCheck(){
+		//아이디 입력하는 input 요소 객체
+		const $idInput = $("input[name=id]"); 
+		$.ajax({
+			url:"<%=contextPath%>/idCheck.me",
+			//data:{키값:벨류값},
+			data:{
+				checkId: $idInput.val()
+			},
+			type:"get",
+			success:function(result){
+				if(result == 'NNNNN'){//사용불가능일 경우
+					alert("이미 존재하거나 탈퇴한 회원의 아이디입니다.")
+					$idInput.focus();//다시 입력할수 있도록 유도
+					
+				}else{//사용 가능일 경우
+					
+					if(confirm("사용 가능한 아이디입니다. 사용하시겠습니까?")){
+						$idInput.attr("readonly", true);
+						$("#enroll-form :submit").removeAttr("disabled");
+					}else{
+						$idInput.focus();//다시 입력할수 있도록 유도
+					}
+				}
+			},
+			error:function(){
+				console.log("아이디 중복체크용 ajax 통신 실패");
+			}
+		});
+	}
+	
+// --------------------------------------------------------
 
-							</script>
-							<!-- -------------------------------------------------------------------- -->
-				</body>
+function validatePassword() {
+  const password = document.querySelector("input[name='password']").value;
+  const passwordCheck = document.querySelector("input[placeholder='비밀번호를 입력해주세요']").value;
+
+  // 비밀번호 유효성 검사 정규표현식
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,16}$/;
+
+  if (!passwordRegex.test(password)) {
+    alert("비밀번호는 영문, 숫자, 특수문자를 포함한 8~16자여야 합니다.");
+    return false;
+  }
+
+  if (password !== passwordCheck) {
+    alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+    return false;
+  }
+
+  return true; // 모든 조건이 충족되면 true 반환
+}
+
+	
+  </script>
+
+	
+	<!-- -------------------------------------------------------------------- -->
+</body>
 
 				</html>

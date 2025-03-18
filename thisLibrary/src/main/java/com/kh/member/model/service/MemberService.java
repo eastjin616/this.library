@@ -59,6 +59,11 @@ public class MemberService {
 	}
 
 //=================================================
+public boolean isExistingMember(String email){
+	Connection conn = getConnection();
+	console.log(email);
+	boolean result = new MemberDao().isExistingMember(conn, email);
 
+	return result;
 
 }

@@ -116,5 +116,34 @@ public class MemberDao {
 		
 		return result;
 	}
+
+
+//	==============================================
+public boolean isExistingMember(Connection conn, String email){
+	
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 

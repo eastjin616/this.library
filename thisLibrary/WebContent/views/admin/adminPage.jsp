@@ -131,12 +131,12 @@
     cursor: pointer;
     margin: auto;
     margin-top: 200px;
-    transition: transform 0.75s; /* 애니메이션 시간 설정 */
+    transition: transform 0.75s; 
 }
 
 .card:hover {
-    transform: scale(1.1); /* 마우스 오버 시 크기 증가 */
-    border-radius: 50%; /* 원형으로 변경 */
+    transform: scale(1.1); 
+    border-radius: 50%; 
 }
         .card img {
             width: 100%;
@@ -163,7 +163,6 @@
 
 <body>
   <div class="wrap">
-<<<<<<< HEAD
     <div id="header">
       <div id="header_1">
         <!-- <div id="header_1_1"> -->
@@ -207,14 +206,6 @@
           <a href="">자유게시판</a>
           <a href="">마이페이지</a>
           <a href="">고객센터</a>
-=======
-    <div class="content1"><div id="content1_text">관리자 페이지</div> </div>
-    <div class="content2">
-      <div id="main-content1">
-        <div id="profile-photo">
-          <div id="photo"></div>
-          <div id="userName">여기는 관리자 아이디가 올 자리입니다. </div>
->>>>>>> adminPage
         </div>
         <div id="tab1">
           <div id="tab1_1"></div>

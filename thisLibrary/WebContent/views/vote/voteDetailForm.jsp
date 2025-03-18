@@ -475,7 +475,7 @@
 					<div id="content_2">
 						<div id="content_2_1">
 							<div id="content_2_1_1">
-								<img src="WebContent/resources/assets/book3.jpg" alt="">
+								<img src="/WebContent/resources/assets/book3.jpg" alt="">
 							</div>
 							<div id="content_2_1_2"><input type="radio"></div>
 

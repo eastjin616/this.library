@@ -185,7 +185,7 @@
         .board-container tbody tr:hover{
           background-color: lightgrey;
           cursor: pointer;
-        }
+        } 
 
         
 
@@ -231,7 +231,7 @@
                   style="height: 100%; width: 100%;"></a>
             </div>
             <div id="navigator">
-              <a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> <a href="<%= contextPath %>/views/board/boardList.jsp">자유게시판</a>
+              <a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="<%= contextPath %>/views/board/boardList.jsp">자유게시판</a>
               <a href="">마이페이지</a> <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
             </div>
             <div id="header_login_btn" style="height: 100%; width: 9%;">
@@ -252,7 +252,7 @@
 
         <!-- 자유게시판 -->
         <div class="board-container">
-          <h2>자유게시판</h2>
+          <h2>온라인투표 게시판</h2>
           <table>
             <thead>
               <tr>
@@ -264,7 +264,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr onclick="window.location.href='<%= contextPath %>/views/board/boardDetail.jsp'">
+              <tr onclick="window.location.href='<%= contextPath %>/views/vote/voteDetailForm.jsp'">
                 <td>10</td>
                 <td>네이버 지도(v5) 임베드asdasdasdasdasdsadasdasdasdadasd</td>
                 <td>아임웹</td>
@@ -349,7 +349,7 @@
           </div>
 
           <div style="display: flex;">
-            <a href="<%= contextPath %>/views/board/boardInsertForm.jsp" class="write-btn" style="margin-left: auto;">글쓰기</a>
+            <a href="<%= contextPath %>/views/vote/voteInsertForm.jsp" class="write-btn" style="margin-left: auto;">글쓰기</a>
           </div>
 
         </div>

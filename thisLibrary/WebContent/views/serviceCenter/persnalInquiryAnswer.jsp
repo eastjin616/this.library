@@ -151,6 +151,9 @@
 
         #form-group-content {
           min-height: 300px;
+          background-img: url('이미지 위치');
+          background-repeat: no-repeat;
+          backgroupd-size: 13px;
         }
 
         label {
@@ -210,8 +213,18 @@
           display: flex;
         }
 
-        #beCarefulText1 {
-          width: 15%;
+        .beCarefulText {
+          font-size: 12px;
+          color: rgb(110, 104, 104);
+          width: 95%;
+          height: 120px;
+          background-color: #f9f9f9;
+          border-radius: 4px;
+          padding: 15px;
+        }
+
+        .beCarefulText>li {
+          margin-bottom: 2%;
         }
 
         #submitTag {
@@ -223,6 +236,25 @@
           color: white;
           border-radius: 1em;
           cursor: pointer;
+        }
+
+        #dividing {
+          display: flex;
+        }
+
+        #title {
+          width: 100%;
+        }
+
+        #dividing>div {
+          width: 30%;
+          margin-right: 10%;
+        }
+
+        #attachedFile {
+          width: 250px;
+          line-height: 150px;
+          text-align: center;
         }
 
         /* ==============footer======================================= */
@@ -258,6 +290,7 @@
     </head>
     <meta charset="UTF-8">
     <!-- -------------------------------------------------------------------->
+
     <body>
       <div class="wrap">
         <div id="header">
@@ -290,33 +323,54 @@
 
         <div>
           <div id="noticeBoardBackgraound">
-            <div id="kk"> 공지사항 관리하기</div>
+            <div id="kk"> 1:1 문의글 답변하기.(관리자)</div>
             <form class="container">
 
-              
-              <div class="form-group">
-                <label for="title">제목 </label>
-                <input type="text" id="title" placeholder="새로운 게시글 제목입니다.">
-              </div>
 
               <div class="form-group">
-                <label for="content">내용 </label>
-                <textarea id="form-group-content" placeholder="새로운 게시글 내용입니다."></textarea>
-              </div>
-              <div id="content5">
-                <div id="beCarefulText1">첨부파일</div>
-                <div id="beCarefulText2">
-                  <li>개인정보를 포함한 이미지는 첨부 파일에 업로드할 수 없습니다. </li>
-                  <li> 개인정보 - 이름, 주민등록번호, 운전면허번호, 주소, 전화번호, 생년월일, 출생지, 본적지, 성별, 국적</li>
-                  <li>이를 어기고 개인정보가 포함된 파일을 업로드된 사실이 확인시 불이익을 받으실수 있습니다.</li>
+
+                <div id="dividing">
+                  <div>
+                    <label for="title">문의자 이름 </label>
+                    <input type="text" id="title" placeholder="새로운 게시글 제목입니다.">
+                  </div>
+                  <div>
+                    <label for="title">문의자 전화번호 </label>
+                    <input type="text" id="title" placeholder="새로운 게시글 제목입니다.">
+                  </div>
+                  <div>
+                    <label for="title">문의자 이메일 </label>
+                    <input type="text" id="title" placeholder="새로운 게시글 제목입니다.">
+                  </div>
                 </div>
-              </div>
-              <input type="file" id="fileUpload" hidden />
-              <label for="fileUpload" id="submitTag">파일 선택</label>
-              <div class="buttons">
-                <button type="submit">저장</button>
-                <button type="button">뒤로</button>
-              </div>
+                <br><br>
+
+
+                <label for="title">제목 </label>
+                <input type="text" id="title" placeholder="새로운 게시글 제목입니다.">
+
+                <br><br><br><br>
+                <div class="form-group">
+                  <label for="content">문의 내용 </label>
+                  <textarea id="form-group-content" placeholder="새로운 게시글 내용입니다."></textarea>
+                  <br><br><br>
+                  <label for="content">문의 답변내용 (관리자) </label>
+                  <textarea id="form-group-content" placeholder="새로운 게시글 내용입니다."></textarea>
+                </div>
+                <div id="content5" class="content">
+                  <div class="label" id="attachedFile">첨부파일 </div>
+                  <div class="beCarefulText">
+                    <li>개인정보를 포함한 이미지는 첨부 파일에 업로드할 수 없습니다. </li>
+                    <li> 개인정보 - 이름, 주민등록번호, 운전면허번호, 주소, 전화번호, 생년월일, 출생지, 본적지, 성별, 국적</li>
+                    <li>이를 어기고 개인정보가 포함된 파일을 업로드된 사실이 확인시 불이익을 받으실수 있습니다.</li>
+                  </div>
+                </div>
+                <input type="file" id="fileUpload" hidden />
+                <label for="fileUpload" id="submitTag">파일 선택</label>
+                <div class="buttons">
+                  <button type="submit">저장</button>
+                  <button type="button">뒤로</button>
+                </div>
             </form>
           </div>
         </div>

@@ -78,36 +78,36 @@
                 }
 
                 #login {
-      width: 50%;
-      height: 50%;
-      border-radius: 5px;
-      background-color: #ea916e;
-      color: white;
-      border: none;
-    }
+                    width: 50%;
+                    height: 50%;
+                    border-radius: 5px;
+                    background-color: #ea916e;
+                    color: white;
+                    border: none;
+                }
 
-    #signin {
-      width: 50%;
-      height: 50%;
-      border-radius: 5px;
-      background-color: #ea916e;
-      color: white;
-      border: none;
-    }
+                #signin {
+                    width: 50%;
+                    height: 50%;
+                    border-radius: 5px;
+                    background-color: #ea916e;
+                    color: white;
+                    border: none;
+                }
 
-    /* ---------------------------------------------- */
-    #mypage {
-      border-radius: 50%;
-      width: 40%;
-      height: 60%;
-      background-color: #ea916e;
-      border: none;
-    }
+                /* ---------------------------------------------- */
+                #mypage {
+                    border-radius: 50%;
+                    width: 40%;
+                    height: 60%;
+                    background-color: #ea916e;
+                    border: none;
+                }
 
-    #mypage>img {
-      width: 100%;
-      height: 100%;
-    }
+                #mypage>img {
+                    width: 100%;
+                    height: 100%;
+                }
 
                 /* ---------------------------------------------- */
                 .btn:hover {
@@ -271,10 +271,11 @@
                                     alt="" style="height: 100%; width: 100%;"></a>
                         </div>
                         <div id="navigator">
-                            <a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a
-                                href="<%= contextPath %>/views/board/boardList.jsp">자유게시판</a>
-                            <a href="">마이페이지</a> <a
-                                href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+                            <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a>
+                            <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a>
+                            <a href="<%= contextPath %>/list.bo">자유게시판</a>
+                            <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a>
+                            <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
                         </div>
                         <div id="header_login_btn" style="height: 100%; width: 9%;">
                             <button class="btn" id="login"
@@ -328,10 +329,11 @@
                             <img src="<%=contextPath%>/resources/assets/This_서고 로고.png" alt="">
                         </div>
                         <div id="navigator" class="navigator">
-                            <a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a
-                                href="">자유게시판</a>
-                            <a href="">마이페이지</a> <a
-                                href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+                            <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
+                            <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
+                            <a href="<%= contextPath %>/list.bo">자유게시판</a>
+                            <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
+                            <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
                         </div>
                     </div>
                     <div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>

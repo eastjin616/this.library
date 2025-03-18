@@ -5,10 +5,10 @@
       <html lang="en">
 
       <head>
-         <meta charset="UTF-8">
-         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <title>Document1</title>
-         <!-- <link rel="stylesheet" href="header.css">
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<title>Document1</title>
+	<!-- <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="content.css">
   <link rel="stylesheet" href="footer.css"> -->
 
@@ -520,16 +520,18 @@
 				<div id="header">
 					<div id="header_1">
 						<div id="header_1_1_1">
-							<a href="<%=contextPath%>"><img src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt=""
+							<a href="<%=contextPath%>"><img src="<%=contextPath%>/resources/assets/This_서고 로고.png" alt=""
 									style="height: 100%; width: 100%;"></a>
 						</div>
 						<div id="navigator">
-=======
-							<a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="">자유게시판</a>
-							<a href="">마이페이지</a> <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+							<a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
+							<a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
+							<a href="<%= contextPath %>/list.bo">자유게시판</a>
+							<a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
+							<a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
 						</div>
 						<div id="header_login_btn" style="height: 100%; width: 9%;">
-							<button class="btn" id="login" onclick="location.href='<%=contextPath%>/views/jinsloginform.jsp'">Log
+							<button class="btn" id="login" onclick="location.href='<%=contextPath%>/views/member/loginform.jsp'">Log
 								In</button>
 						</div>
 						<div id="header_signin_btn" style="height: 100%; width: 9%;">
@@ -537,7 +539,7 @@
 						</div>
 						<div id="header_mypage_btn" style="height: 100%; width: 7%;">
 							<button class="btn" id="mypage">
-								<img src="<%=contextPath%>/views/common/assets/user01.png" alt="">
+								<img src="<%=contextPath%>/resources/assets/user01.png" alt="">
 							</button>
 						</div>
 					</div>
@@ -691,11 +693,14 @@
 			<div id="footer" style="background-color: #fdf5f1;">
 				<div id="footer_1">
 					<div id="footer_1_1">
-						<img src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt="">
+						<img src="<%=contextPath%>/resources/assets/This_서고 로고.png" alt="">
 					</div>
 					<div id="navigator" class="navigator">
-						<a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="">자유게시판</a>
-						<a href="">마이페이지</a> <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+						<a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
+						<a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
+						<a href="<%= contextPath %>/list.bo">자유게시판</a>
+						<a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
+						<a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
 					</div>
 				</div>
 				<div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
@@ -725,4 +730,8 @@
     </script>
 		</body>
 
+<<<<<<< HEAD
 		</html>
+=======
+</html>
+>>>>>>> 44359ee49f7bde6d702f716f8b0199ba74ffbf10

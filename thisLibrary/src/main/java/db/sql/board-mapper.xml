@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectList">
+	SELECT
+		      BOARD_NO
+		    , NICKNAME
+		    , BOARD_TITLE
+		    , BOARD_CONTENT
+		    , COUNT
+		    , TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
+		 FROM BOARD B
+		 JOIN MEMBER USING(MEM_NO)
+		WHERE B.STATUS = 'Y'
+		ORDER
+		   BY BOARD_NO DESC
+	</entry>
+</properties>

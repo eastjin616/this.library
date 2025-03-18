@@ -143,16 +143,23 @@
           background-color: #f4f4f4;
         }
 
-        .pagination {
-          text-align: center;
-          margin-top: 20px;
-        }
+				.pagination {
+					text-align: center;
+					margin-top: 15px;
+				}
 
-        .pagination a {
-          margin: 0 5px;
-          text-decoration: none;
-          color: #333;
-        }
+				.pagination span {
+					display: inline-block;
+					padding: 5px 10px;
+					margin: 2px;
+					cursor: pointer;
+					border: 1px solid #ddd;
+					border-radius: 3px;
+				}
+
+				.pagination span:hover {
+					background: #f0f0f0;
+				}
 
         .write-btn {
           display: block;
@@ -178,7 +185,7 @@
         .board-container tbody tr:hover{
           background-color: lightgrey;
           cursor: pointer;
-        }
+        } 
 
         
 
@@ -248,7 +255,7 @@
 
         <!-- 자유게시판 -->
         <div class="board-container">
-          <h2>1:1 문의글 리스트</h2>
+          <h2>온라인투표 게시판</h2>
           <table>
             <thead>
               <tr>
@@ -260,7 +267,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr onclick="window.location.href='<%= contextPath %>/views/board/boardDetail.jsp'">
+              <tr onclick="window.location.href='<%= contextPath %>/views/vote/voteDetailForm.jsp'">
                 <td>10</td>
                 <td>네이버 지도(v5) 임베드asdasdasdasdasdsadasdasdasdadasd</td>
                 <td>아임웹</td>
@@ -335,15 +342,17 @@
 
 
           <div class="pagination">
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
+            <span><</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>></span>
           </div>
 
           <div style="display: flex;">
-            <a href="<%= contextPath %>/views/board/boardInsertForm.jsp" class="write-btn" style="margin-left: auto;">글쓰기</a>
+            <a href="<%= contextPath %>/views/vote/voteInsertForm.jsp" class="write-btn" style="margin-left: auto;">글쓰기</a>
           </div>
 
         </div>

@@ -46,7 +46,14 @@ public class MemberService {
 	}
 
 //=================================================
+public boolean isExistingMember(String email){
+	Connection conn = getConnection();
+	console.log(email);
+	boolean result = new MemberDao().isExistingMember(conn, email);
 
+<<<<<<< HEAD
+	return result;
+=======
 	public int findpwd(String name, String id, String email) {
 		Connection conn = getConnection();
 		int result = new MemberDao().findPwd(conn, name,id,email);
@@ -83,5 +90,6 @@ public class MemberService {
 		
 		
 	}
+>>>>>>> 6792497bf230a7ba2f0bcf173efdac51a1c69c12
 
 }

@@ -131,12 +131,12 @@
     cursor: pointer;
     margin: auto;
     margin-top: 200px;
-    transition: transform 0.75s; /* 애니메이션 시간 설정 */
+    transition: transform 0.75s; 
 }
 
 .card:hover {
-    transform: scale(1.1); /* 마우스 오버 시 크기 증가 */
-    border-radius: 50%; /* 원형으로 변경 */
+    transform: scale(1.1); 
+    border-radius: 50%; 
 }
         .card img {
             width: 100%;

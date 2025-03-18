@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<% String contextPath=request.getContextPath(); %>
+   <% String contextPath=request.getContextPath(); %>
 
-		<!DOCTYPE html>
-		<html lang="en">
+      <!DOCTYPE html>
+      <html lang="en">
 
-		<head>
-			<meta charset="UTF-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>Document1</title>
-			<!-- <link rel="stylesheet" href="header.css">
+      <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Document1</title>
+         <!-- <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="content.css">
   <link rel="stylesheet" href="footer.css"> -->
 
@@ -512,10 +512,12 @@
 						</div>
 						<div id="navigator">
 <<<<<<< HEAD
+
 							<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="">자유게시판</a>
 =======
+=======
+>>>>>>> 6792497bf230a7ba2f0bcf173efdac51a1c69c12
 							<a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="">자유게시판</a>
->>>>>>> myPageForm
 							<a href="">마이페이지</a> <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
 						</div>
 						<div id="header_login_btn" style="height: 100%; width: 9%;">
@@ -536,46 +538,16 @@
 
 				<div class="wrap2">
 					<div class="container">
-<<<<<<< HEAD
-						<div class="container1"></div>
-						<div class="container2">
-=======
 						<div class="container1">
 
 
 						</div>
 						<div class="container2">
 							<!-- --------------------------------mtpage -->
->>>>>>> myPageForm
 							<div id="mypageMainContent1">
 								<span>My Page</span>
 							</div>
 							<div id="mypageMainContent2">
-<<<<<<< HEAD
-								<div id="mypageProfilBox">
-								</div>
-							</div>
-						</div>
-
-
-					</div>
-				</div>
-
-
-				<!-- -------------------------------------------------------------------- -->
-				<div id="footer" style="background-color: #fdf5f1;">
-					<div id="footer_1">
-						<div id="footer_1_1">
-							<img src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt="">
-						</div>
-						<div id="navigator" class="navigator">
-							<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="">자유게시판</a>
-							<a href="">마이페이지</a> <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
-						</div>
-					</div>
-					<div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
-				</div>
-=======
 								<div id="mypageMainContent2ProfilPhoto">
 									<div id="userPhoto"><img src="../../resources/assets/chill.png" alt=""></div>
 								</div>
@@ -691,7 +663,6 @@
 				</div>
 				<div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
 			</div>
->>>>>>> myPageForm
 			</div>
 
 			<script>
@@ -710,3 +681,4 @@
 		</body>
 
 		</html>
+>>>>>>> 4465d2da68c3504421dd153f1bbb05d397407145

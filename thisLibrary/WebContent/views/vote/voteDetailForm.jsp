@@ -360,7 +360,7 @@
 					background-color: transparent;
 				}
 
-				#content_3_4_1_3 button:hover{
+				#content_3_4_1_3 button:hover {
 					cursor: pointer;
 					opacity: 0.7;
 				}
@@ -376,10 +376,13 @@
 				}
 
 
-				pre{margin-left: 5%;}
+				pre {
+					margin-left: 5%;
+				}
 
 				.pagination {
-					height: 5%; ;
+					height: 5%;
+					;
 					text-align: center;
 				}
 
@@ -539,35 +542,15 @@
 						</div>
 						<div id="content_3_4">
 							<div id="content_3_4_1">
-								<div id="content_3_4_1_1">
-									<div id="userId">작성자:작성자2 &nbsp;&nbsp;&nbsp; | <div id="date">2025.02.18</div>
-									</div>
-								</div>
-								<div id="content_3_4_1_2">
-									<button>팔로우</button>
-								</div>
-								<div id="content_3_4_1_3">
-									<button>수정</button> | <button>삭제</button>
-								</div>
-
+								
+							
+								
 							</div>
-							<pre id="content_3_4_2">
-어우 완전 책 내용 오지고 지리고 렛잇고~렛잇비~
-엄청난걸요 ~ 소 익사이팅~
-댓츠 롸잇 정확해~!
-				</pre>
 						</div>
-					</div>
-							<div class="pagination">
-								<a href="#">1</a>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#">4</a>
-								<a href="#">5</a>
 					</div>
 				</div>
 
-				<div id="etc"></div>
+
 
 
 

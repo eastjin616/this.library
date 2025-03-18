@@ -25,8 +25,8 @@
       position: absolute;
       right: 50px;
       bottom: 10px;
-      color: white; /* 글자 색상을 흰색으로 설정 */
-      font-size: 20px; /* 글자 크기 증가 (원하는 크기로 조정 가능) */
+      color: white;
+      font-size: 20px;
 
     }
     .content2{

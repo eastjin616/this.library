@@ -6,8 +6,10 @@ import static com.kh.common.JDBCTemplate.getConnection;
 import static com.kh.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import com.kh.member.model.dao.MemberDao;
+import com.kh.member.model.vo.Attachment;
 import com.kh.member.model.vo.Member;
 
 public class MemberService {
@@ -90,5 +92,26 @@ public class MemberService {
 		return memberId;
 		
 	}
+	
+	public int insertphoto(Member b, ArrayList<Attachment> list) {
+
+		Connection conn = getConnection();
+
+		int result1 = new MemberDao().insertThBoard(conn, b);
+
+		int result2 = new MemberDao().insertAttachmentList(conn, list);
+
+		if (result2 > 0 && result1 > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+
+		return result1 * result2;
+
+	}
+	
+	
+	
 
 }

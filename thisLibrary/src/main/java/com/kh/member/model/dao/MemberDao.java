@@ -6,21 +6,23 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 import static com.kh.common.JDBCTemplate.*;
 
+import com.kh.member.model.vo.Attachment;
 import com.kh.member.model.vo.Member;
 
 public class MemberDao {
 
 	// 2. service, dao 껍데기 파일 만들기 (전역변수로)
-	private Properties prop = new Properties(); 
-	
+	private Properties prop = new Properties();
+
 	public MemberDao() {
 		// 실제론 src폴더에 만들었지만 WebContent에 있는 WEB-INF에 있음
 		// 그중 MemberDao가 가지고있는 class의 소스
 		String filePath = MemberDao.class.getResource("/db/sql/member-mapper.xml").getPath();
-		
+
 		try {
 			// 4. dao, xml 연결하기 -> 기본생성자!!!!!!!!!!!!
 			prop.loadFromXML(new FileInputStream(filePath)); // 파일을 읽는다!
@@ -28,41 +30,33 @@ public class MemberDao {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public Member loginMember(Connection conn, String memId, String memPwd) {
 		Member m = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("loginMember");
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memId);
 			pstmt.setString(2, memPwd);
-			
+
 			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				m = new Member(rset.getInt("mem_no"),
-						       rset.getString("mem_name"),
-						       rset.getString("mem_id"),
-						       rset.getString("mem_pwd"),
-						       rset.getString("nickname"),
-						       rset.getString("address"),
-						       rset.getString("email"),
-						       rset.getString("profile"),
-						       rset.getString("phone"),
-						       rset.getString("status"),
-						       rset.getString("sns_key"));
+
+			if (rset.next()) {
+				m = new Member(rset.getInt("mem_no"), rset.getString("mem_name"), rset.getString("mem_id"),
+						rset.getString("mem_pwd"), rset.getString("nickname"), rset.getString("address"),
+						rset.getString("email"), rset.getString("profile"), rset.getString("phone"),
+						rset.getString("status"), rset.getString("sns_key"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close(rset);
 			close(pstmt);
 		}
-		
-		
+
 		return m;
 	}
 
@@ -80,102 +74,102 @@ public class MemberDao {
 			pstmt.setString(6, m.getEmail());
 			pstmt.setString(7, m.getPhone());
 			pstmt.setString(8, m.getSnsKey());
-			
+
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close(pstmt);
 		}
-		
+
 		return result;
 	}
-	
+
 //	==============================================
 	public int idCheck(Connection conn, String checkId) {
-		//select문 -> resultset => int 
-		
-		int count =0;
+		// select문 -> resultset => int
+
+		int count = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		
+
 		String sql = prop.getProperty("idCheck");
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, checkId);
-			
+
 			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
+
+			if (rset.next()) {
 				count = rset.getInt("count");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close(rset);
 			close(pstmt);
 		}
 		return count;
 	}
-	
+
 //	==============================================
-	
+
 	public int findPwd(Connection conn, String name, String id, String email) {
-		//select문 -> resultset => int 
-		
+		// select문 -> resultset => int
+
 		int result = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		
+
 		String sql = prop.getProperty("findPwd");
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, name);
 			pstmt.setString(2, id);
 			pstmt.setString(3, email);
-			
+
 			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				 result = rset.getInt(1);
-				 System.out.println(result);
+
+			if (rset.next()) {
+				result = rset.getInt(1);
+				System.out.println(result);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close(rset);
 			close(pstmt);
 		}
 		return result;
-		
+
 	}
 //	==============================================
 
 	public int updatePwd(Connection conn, String id, String newPwd) {
-		
+
 		int result = 0;
 		PreparedStatement pstmt = null;
-		
+
 		String sql = prop.getProperty("updatePwd");
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, newPwd);
 			pstmt.setString(2, id);
-			
-			result = pstmt.executeUpdate(); 
+
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close(pstmt);
 		}
 		return result;
 	}
 
 //	==============================================
-	
+
 	public int naverInsert(Connection conn, String id, String nickname, String email, String moblie) {
 
 		int result = 0;
@@ -183,57 +177,96 @@ public class MemberDao {
 		String sql = prop.getProperty("naverInsert");
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setString(1, nickname);
 			pstmt.setString(2, email);
 			pstmt.setString(3, nickname);
 			pstmt.setString(4, id);
-			
+
 			result = pstmt.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close(pstmt);
 		}
-		
+
 		return result;
 	}
-
-
-
 
 //	==============================================
 
 	public String findIdPage(Connection conn, String name, String email) {
-		
+
 		String memberId = "";
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		
+
 		String sql = prop.getProperty("findIdPage");
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, name);
 			pstmt.setString(2, email);
-			
+
 			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
+
+			if (rset.next()) {
 				memberId = rset.getString("mem_id");
 				System.out.println(memberId);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close(rset);
 			close(pstmt);
 		}
-		
+
 		return memberId;
 	}
 
-}
 
+	
+	
+public int insertAttachmentList(Connection conn, ArrayList<Attachment> list) {
+		
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertAttachmentList");
+		
+		try {
+			for(Attachment at:list) {
+//				미완성된 sql문을 담은 pstmt 가 생성되었다.
+				pstmt = conn.prepareStatement(sql);//미완성쿼리
+				
+//				완성된 형태로 변환해주어야 한다.
+				
+				pstmt.setString(1, at.getOriginName());
+				pstmt.setString(2, at.getChangeName());
+				pstmt.setString(3, at.getFilePath());
+				
+//				실행
+				result = pstmt.executeUpdate();
+			
+//				얼마나 대입이 되나? 모른다. 파일의 크기만큼 돈다.
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			
+		}
+		return result;
+		
+	}
+	
+	
+	
+	
+
+}

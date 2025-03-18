@@ -216,7 +216,7 @@
                 </div>
             </div>
 
-          <form id="form" action="createUser.do" method="post">
+          <form id="form" action="<%= contextPath %>/findPwd.me" method="post">
               <div class="col-sm-6-col-md-offset-3">
                           
                   <div class="form-group">

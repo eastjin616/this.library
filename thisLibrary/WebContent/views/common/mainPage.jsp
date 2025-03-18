@@ -440,7 +440,7 @@ a{
           <div id="navigator">
             <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
             <a href="<%= contextPath %>/views/vote/voteList.jsp">온라인투표</a>
-            <a href="<%= contextPath %>/views/board/boardList.jsp">자유게시판</a>
+            <a href="<%= contextPath %>/list.bo">자유게시판</a>
             <a href="<%= contextPath %>/views/member/myPage.jsp">마이페이지</a>
             <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
           </div>
@@ -543,7 +543,7 @@ a{
         <div id="navigator">
           <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
           <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
-          <a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a>
+          <a href="<%= contextPath %>/list.bo">자유게시판</a>
           <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
           <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
         </div>

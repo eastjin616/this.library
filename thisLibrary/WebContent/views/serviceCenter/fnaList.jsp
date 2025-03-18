@@ -334,11 +334,11 @@
                 style="height: 100%; width: 100%;">
             </div>
             <div id="navigator">
-              <a a href="<%= contextPath %>/views/common.mainPage.jsp">Home</a>
-              <a href="">온라인투표</a>
-              <a href="">자유게시판</a>
-              <a href="">마이페이지</a>
-              <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
+              <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
+              <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
+              <a href="<%= contextPath %>/list.bo">자유게시판</a>
+              <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
+              <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
             </div>
             <div id="header_login_btn" style="height: 100%; width: 9%;">
               <button class="btn" id="login" onclick="login()">Log
@@ -409,11 +409,11 @@
         <div id="footer" style="background-color: #fdf5f1;">
           <div id="footer_1">
             <div id="footer_1_1"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt=""></div>
-            <div id="navigator">
-              <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a>
-              <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a>
-              <a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a>
-              <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a>
+            <div id="navigator" class="navigator">
+              <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
+              <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
+              <a href="<%= contextPath %>/list.bo">자유게시판</a>
+              <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
               <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
             </div>
           </div>

@@ -1,5 +1,10 @@
+<%@page import="com.kh.board.model.vo.Board"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-  <% String contextPath=request.getContextPath(); %>
+  <% 
+  	String contextPath=request.getContextPath();
+  	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
+  %>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -233,7 +238,7 @@
             <div id="navigator">
               <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
               <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
-              <a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a>
+              <a href="<%= contextPath %>/list.bo">자유게시판</a>
               <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
               <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
             </div>
@@ -267,78 +272,27 @@
               </tr>
             </thead>
             <tbody>
-              <tr onclick="window.location.href='<%= contextPath %>/views/board/boardDetail.jsp'">
-                <td>10</td>
-                <td>네이버 지도(v5) 임베드asdasdasdasdasdsadasdasdasdadasd</td>
-                <td>아임웹</td>
-                <td>2019-12-17</td>
-                <td>120</td>
-              </tr>
-              <tr>
-                <td>9</td>
-                <td>제목</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>160</td>
-              </tr>
-              <tr>
-                <td>8</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>77</td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>99</td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>50</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>9015</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>60</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>111560</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>1105</td>
-              </tr>
+     				<% if(list == null) { %>
+						<!-- case1. 게시글이 없을 경우 -->
+							<tr>
+								<td colspan="5">조회된 게시글이 없습니다.</td>
+							</tr>
+						<% }else{ %>
+							
+							<!-- case2. 게시글이 있을 경우 -->
+	            <%for(Board b : list){ %>
+		              <tr>
+		                <td><%=b.getBoardNo() %></td>
+		                <td><%=b.getBoardTitle() %></td>
+		                <td><%=b.getBoardWriter() %></td>
+		                <td><%=b.getWriteDate() %></td>
+		                <td><%=b.getCount() %></td>
+		              </tr>
+	              <%} %>
+              <%} %>
             </tbody>
           </table>
+         
 
 
           <div class="pagination">
@@ -363,8 +317,11 @@
           <div id="footer_1">
             <div id="footer_1_1"><a href="<%= contextPath %>/views/common/mainPage.jsp"><img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""></a></div>
             <div id="navigator" class="navigator">
-              <a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a>
-              <a href="">마이페이지</a> <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+              <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
+              <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
+              <a href="<%= contextPath %>/list.bo">자유게시판</a>
+              <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
+              <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
             </div>
           </div>
           <div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>

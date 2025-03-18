@@ -1,529 +1,320 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%
-String contextPath = request.getContextPath();
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+  <!DOCTYPE html>
+  <html lang="en">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document1</title>
-<!-- <link rel="stylesheet" href="header.css">
-  <link rel="stylesheet" href="content.css">
-  <link rel="stylesheet" href="footer.css"> -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=favorite" />
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지</title>
 
-<style>
-@font-face {
-	font-family: 'Gyeonggi_Batang_Regular';
-	src:
-		url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff')
-		format('woff');
-	font-weight: 400;
-	font-style: normal;
-}
+    <style>
+      .wrap {
+        width: 1800px;
+        margin: auto;
+        height: auto;
+        overflow: hidden;
+        border: 1px solid;
+      }
 
-body * {
-	font-family: 'Gyeonggi_Batang_Regular';
-}
+      .content1 {
+        height: 100px;
+        background-color: #d88634;
+        position: relative;
+      }
 
-/* div {box-sizing: border-box;border: 1px solid red;} */
-.wrap {
-	width: 1500px;
-	margin: auto;
-	height: auto;
-	overflow: hidden;
-}
+      #content1_text {
+        position: absolute;
+        right: 50px;
+        bottom: 10px;
+        color: white;
+        font-size: 20px;
 
-#header {
-	height: 50px;
-}
+      }
 
-#wrapContent {
-  height: 1500px;
-  width: 1500px;
-  display: flex;
-	justify-content: center;
-	align-items: center;
- }
+      .content2 {
+        display: flex;
+        height: 1000px;
+      }
 
-#footer {
-	height: 150px;
-}
+      #main-content1 {
+        width: 25%;
+        border: 1px solid;
+        background-color: rgb(248, 215, 220);
+      }
 
-#header>div {
-	height: 100%;
-}
+      #main-content2 {
+        width: 75%;
+        border: 1px solid;
+      }
 
-#header_1>div, #header_1_3>div {
-	float: left;
-}
+      #profile-photo {
+        height: 40%;
+        border: 1px solid;
+      }
 
-#header_1_1_1 {
-	width: 15%;
-	height: 100%;
-}
+      #photo {
+        height: 90%;
+        border-radius: 50%;
+      }
 
-#navigator {
-	position: relative;
-	width: 60%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-}
+      #userName {
+        text-align: center;
+        height: 10%;
+        box-sizing: border-box;
+      }
 
-#navigator>a {
-	text-decoration: none;
-	color: black;
-	font-size: 13px;
-}
+      #tab1,
+      #tab2 {
+        display: flex;
+        width: 100%;
+        height: 12%;
+        box-sizing: border-box;
+        cursor: pointer;
+      }
 
-/*-------------------------------------------------------------  */
-#header_mypage_btn, #header_login_btn, #header_signin_btn {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
+      #tab1:hover,
+      #tab2:hover {
+        background-color: orange;
+      }
 
-#login {
-	width: 50%;
-	height: 50%;
-	border-radius: 5px;
-	background-color: #ea916e;
-	color: white;
-	border: none;
-}
+      #tab1:active {
+        background-color: orange;
+      }
 
-#signin {
-	width: 50%;
-	height: 50%;
-	border-radius: 5px;
-	background-color: #ea916e;
-	color: white;
-	border: none;
-}
+      #tab1_1 {
+        width: 10px;
+      }
 
-/* ---------------------------------------------- */
-#mypage {
-	border-radius: 50%;
-	width: 40%;
-	height: 60%;
-	background-color: #ea916e;
-	border: none;
-}
+      #tab1_2 {
+        width: 20px;
+        background-color: #d88634;
+      }
 
-#mypage>img {
-	width: 90%;
-	height: 60%;
-}
+      #tab1_3 {
+        width: 100px;
+        margin: auto;
+      }
 
-/* ---------------------------------------------- */
-.btn:hover {
-	opacity: 0.7;
-	color: white;
-	cursor: pointer;
-}
+      #tab1_4 {
+        width: 300px;
+        margin: auto;
+      }
 
-/*-------------------------------------------------------------  */
+      #tab1_3>img {
+        width: 90px;
+      }
 
 
-#content{
-  height: 90%; width: 90%;
-  display: flex;
-}
-#content_1{height: 100%; width: 25%; }
-#content_1_1{
-  margin-top: 30px;
-  margin-left: 60px;
-  width: 70%;
-  height: 73%;
-  border-radius: 10px;
-  border: 1px solid lightgray;
-}
-
-#genreTitle{
-  margin-top: 5px;
-  width: 90%;
-  height: 2%;
-  border-radius: 5px;
-  margin-left: 5%;
-}
-
-#spare{height: 1%;border:none;}
-
-#checkBox{
-  width: 90%;
-  height: 90%;
-  float: left;
-  margin-left: 5%;
-  border-radius: 5px;
-  
-}
-#genreBtn{
-  margin-left: 65%;
-  border: none;
-}
 
 
-#content>#content_2{
-  height: 100%; 
-  width: 75%;
-}
+      #tab2_1 {
+        width: 100px;
+      }
 
-#content_2_2{
-  height: 100%;
-}
-
-#content_2_2_0{
-  margin-top: 30px;
-  margin-left: 60px;
-  width: 90%;
-  height: 98%;
-  border-radius: 10px;
-  border: none;
-}
-
-#content_2_2_1,#content_2_2_2,#content_2_2_3,#content_2_2_4{
-  width: 100%;
-  height: 23%;
-  display: flex;
-}
-#book1,#book2,#book3,#book4{
-  height: 100%;
-  width: 30%;
-  display: flex;
-	justify-content: center;
-	align-items: center;
-}
-#bookcon1,#bookcon2,#bookcon3,#bookcon4{
-  height: 100%;
-  width: 70%;
-  display: flex;
-}
-
-#book1>img,#book2>img,#book3>img,#book4>img{
-  width: 90%;
-  height: 90%;
-}
-
-.spare1{
-  height: 100%;
-  width: 25%;
-}
-
-.bookinfo{
-  height: 100%;
-  width: 50%;
-}
-
-.heart{
-  height: 100%;
-  width: 25%;
-  position: relative;
-}
-
-i{
-  margin-top: 5px;
-}
-
-i:hover{
-  cursor: pointer;
-  background: lightgray;
-  color: red;
-  background-color: transparent;
-  overflow: hidden;
-}
+      #photo {
+        background-image: url("../assets/chill.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
 
 
-.pagination{
-  display: flex;
-	justify-content: center;
-	align-items: center;
-}
 
-.pagination span {
-  display: inline-block;
-  padding: 5px 10px;
-  margin: 2px;
-  cursor: pointer;
-  border: 1px solid #ddd;
-  border-radius: 3px;
- }
+      .userInfo {
+        width: 1200px;
+        ;
+        margin: auto;
+        height: 800px;
+        border-radius: 10%;
+        margin-top: 100px;
+      }
 
-hr{
-  width: 90%;
-  margin-left: 0%;
-}
+      .container {
+        width: 80%;
+        margin: 20px auto;
+        display: flex;
+      }
 
-/* ==============footer======================================= */
-#footer_1 {
-	width: 100%;
-	height: 65%;
-}
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
 
-#footer_1>div {
-	float: left;
-}
+      .table th,
+      .table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+      }
 
-#footer_1_1 {
-	height: 100%;
-	width: 20%;
-}
+      .table th {
+        background-color: #f4f4f4;
+      }
 
-#footer_1_1>img {
-	display: flex;
-	margin: auto;
-	width: 60%;
-	height: 60%;
-	margin-top: 20%;
-}
+      .user-img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
 
-#footer_2 {
-	width: 100%;
-	height: 35%;
-	text-align: center;
-	margin-top: 2%;
-}
-</style>
-</head>
-<meta charset="UTF-8">
-<!-- ------------------------------------------------------------------ -->
+      .btn {
+        background-color: #f4a261;
+        color: white;
+        padding: 8px 12px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        justify-items: right;
+      }
 
-<body>
-  <script src="https://kit.fontawesome.com/53a8c415f1.js"
-		crossorigin="anonymous"></script>
-	<div class="wrap">
-		<div id="header">
-			<div id="header_1">
-				<div id="header_1_1_1">
-					<a href="<%=contextPath%>"><img
-						src="<%=contextPath%>/resources/assets/This_서고 로고.png" alt=""
-						style="height: 100%; width: 100%;"></a>
-				</div>
-				<div id="navigator">
-					<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a
-						href="">온라인투표</a> <a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a> <a href="">마이페이지</a> <a
-						href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
-				</div>
-				<div id="header_login_btn" style="height: 100%; width: 9%;">
-					<button class="btn" id="login"
-						onclick="location.href='<%=contextPath%>/views/jinsloginform.jsp'">Log
-						In</button>
-				</div>
-				<div id="header_signin_btn" style="height: 100%; width: 9%;">
-					<button class="btn" id="signin" onclick="signin()">Sign In</button>
-				</div>
-				<div id="header_mypage_btn" style="height: 100%; width: 7%;">
-					<button class="btn" id="mypage">
-						<img src="<%=contextPath%>/resources/assets/user01.png"
-							alt="">
-					</button>
-				</div>
+      .pagination {
+        margin-top: 10px;
+        text-align: center;
+      }
 
-			</div>
-		</div>
-		<!-- -------------------------------------------------------------------- -->
+      .pagination button {
+        padding: 5px 10px;
+        margin: 3px;
+        border: 1px solid #ddd;
+        background-color: white;
+        cursor: pointer;
+      }
 
-		
+      .pagination .active {
+        background-color: #6c5ce7;
+        color: white;
+      }
 
-    <div id="wrapContent">
-      <div id="content">
-        <div id="content_1">
-          <div id="content_1_1">
-            <div id="genreTitle">
-              장르 <button id="genreBtn">▼</button>
-            </div>
-            <div id="spare"></div>
-            <div id="checkBox">
-                <input type="checkbox" value="">소설<br><br>
-                <input type="checkbox" value="">에세이/시/회곡<br><br>
-                <input type="checkbox" value="">인문<br><br>
-                <input type="checkbox" value="">자기계발<br><br>
-                <input type="checkbox" value="">경제/경영<br><br>
-                <input type="checkbox" value="">가정/취미/실용<br><br>
-                <input type="checkbox" value="">의학/건강<br><br>
-                <input type="checkbox" value="">여행/지리<br><br>
-                <input type="checkbox" value="">과학/기술<br><br>
-                <input type="checkbox" value="">사회과학<br><br>
-                <input type="checkbox" value="">종교<br><br>
-                <input type="checkbox" value="">역사/문학<br><br>
-                <input type="checkbox" value="">인물/평전<br><br>
-                <input type="checkbox" value="">예술/대중문화<br><br>
-                <input type="checkbox" value="">외국어<br><br>
-                <input type="checkbox" value="">컴퓨터<br><br>
-                <input type="checkbox" value="">수험서/자격증/취업<br><br>
-                <input type="checkbox" value="">사전<br><br>
-                <input type="checkbox" value="">만화<br><br>
-                <input type="checkbox" value="">잡지<br><br>
-                <input type="checkbox" value="">유아<br><br>
-                <input type="checkbox" value="">어린이<br><br>
-                <input type="checkbox" value="">청소년<br><br>
-                <input type="checkbox" value="">성인<br><br>
-                <input type="checkbox" value="">부모<br><br>
-            </div>
-          </div>
-        </div>
-        <div id="content_2">
-          <div id="content_2_2">
-            <div id="content_2_2_0">
-              <hr>
-              <div id="content_2_2_1">
-                <div id="book1">
-                  <img src="/thisLibrary/WebContent/resources/assets/book1.jpg" alt="">
-                </div>
-                <div id="bookcon1">
-                  <div class="spare1"></div>
-                  <div class="bookinfo">
-                    <p>[국내도서]</p>
-                    <p style="font-size: 20px;"><b> 마이클센델 정의란 무엇인가</b></p>
-                    <hr style="width: 70px; margin-left: 0%;">
-                    <p style="font-size: 15px;">마이클 센델 저자(글) | 김명철 번역 | 김선욱 감수</p>
-                    <p style="font-size: 15px;">와이즈베리 2014년 11월 20일</p>
-                    <br><br><br>
+      .card {
+        width: 30%;
+        aspect-ratio: 2 / 3;
+        background: #c0ddfa;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        margin: auto;
+        margin-top: 200px;
+        transition: transform 0.75s;
+        position: relative;
+      }
 
-                    <div style="display: flex;">
-                      <p><i class="fas fa-star" style="color: #085ae7;"></i></p>
-                      <p style="margin-left: 5px; margin-top: 20;">4.84</p>
-                      <p style="margin-left: 5px; margin-top: 20;">(350reviews)</p>
-                    </div>
-                  </div>
-                  <div class="heart">
-                    <i class="fas fa-heart"></i>
-                    <i class="fas fa-heart" style="color: #ec1818;"></i>
-                  </div>
-                </div>
-              </div>
-<!-- ================================================================== -->
-              <hr>
-              <div id="content_2_2_2">
-                <div id="book2">
-                  <img src="/thisLibrary/WebContent/resources/assets/book1.jpg" alt="">
-                </div>
-                <div id="bookcon2">
-                  <div class="spare1"></div>
-                  <div class="bookinfo">
-                    <p>[국내도서]</p>
-                    <p style="font-size: 20px;"><b> 마이클센델 정의란 무엇인가</b></p>
-                    <hr style="width: 70px; margin-left: 0%;">
-                    <p style="font-size: 15px;">마이클 센델 저자(글) | 김명철 번역 | 김선욱 감수</p>
-                    <p style="font-size: 15px;">와이즈베리 2014년 11월 20일</p>
-                    <br><br><br>
+      .upload-icon {
+        font-size: 24px;
+        color: #999;
+      }
 
-                    <div style="display: flex;">
-                      <p><i class="fas fa-star" style="color: #085ae7;"></i></p>
-                      <p style="margin-left: 5px; margin-top: 20;">4.84</p>
-                      <p style="margin-left: 5px; margin-top: 20;">(350reviews)</p>
-                    </div>
-                  </div>
-                  <div class="heart">
-                    <i class="fas fa-heart"></i>
-                    <i class="fas fa-heart" style="color: #ec1818;"></i>
-                  </div>
-                </div>
-              </div>
-              <hr>
-              <div id="content_2_2_3">
-                <div id="book3">
-                  <img src="/thisLibrary/WebContent/resources/assets/book1.jpg" alt="">
-                </div>
-                <div id="bookcon3">
-                  <div class="spare1"></div>
-                  <div class="bookinfo">
-                    <p>[국내도서]</p>
-                    <p style="font-size: 20px;"><b> 마이클센델 정의란 무엇인가</b></p>
-                    <hr style="width: 70px; margin-left: 0%;">
-                    <p style="font-size: 15px;">마이클 센델 저자(글) | 김명철 번역 | 김선욱 감수</p>
-                    <p style="font-size: 15px;">와이즈베리 2014년 11월 20일</p>
-                    <br><br><br>
+      .card:hover {
+        transform: scale(1.1);
+        border-radius: 50%;
+      }
 
-                    <div style="display: flex;">
-                      <p><i class="fas fa-star" style="color: #085ae7;"></i></p>
-                      <p style="margin-left: 5px; margin-top: 20;">4.84</p>
-                      <p style="margin-left: 5px; margin-top: 20;">(350reviews)</p>
-                    </div>
-                  </div>
-                  <div class="heart">
-                    <i class="fas fa-heart"></i>
-                    <i class="fas fa-heart" style="color: #ec1818;"></i>
-                  </div>
-                </div>
-              </div>
-              <hr>
-              <div id="content_2_2_4">
-                <div id="book4">
-                  <img src="/thisLibrary/WebContent/resources/assets/book1.jpg" alt="">
-                </div>
-                <div id="bookcon3">
-                  <div class="spare1"></div>
-                  <div class="bookinfo">
-                    <p>[국내도서]</p>
-                    <p style="font-size: 20px;"><b> 마이클센델 정의란 무엇인가</b></p>
-                    <hr style="width: 70px; margin-left: 0%;">
-                    <p style="font-size: 15px;">마이클 센델 저자(글) | 김명철 번역 | 김선욱 감수</p>
-                    <p style="font-size: 15px;">와이즈베리 2014년 11월 20일</p>
-                    <br><br><br>
+      .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        margin-right: 10px;
+      }
 
-                    <div style="display: flex;">
-                      <p><i class="fas fa-star" style="color: #085ae7;"></i></p>
-                      <p style="margin-left: 5px; margin-top: 20;">4.84</p>
-                      <p style="margin-left: 5px; margin-top: 20;">(350reviews)</p>
-                    </div>
-                  </div>
-                  <div class="heart">
-                    <i class="fas fa-heart"></i>
-                    <i class="fas fa-heart" style="color: #ec1818;" id="tlqkf"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="pagination">
-                <span><</span>
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
-                <span>></span>
-            </div>
-            </div>
-          </div>
-        </div>
-       </div>
+      .upload-icon {
+        position: absolute;
+        font-size: 24px;
+        color: #6c757d;
+        z-index: 1;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+    </style>
+  </head>
+  <meta charset="UTF-8">
+
+
+  <body>
+    <div class="wrap">
+      <div class="content1">
+        <div id="content1_text">관리자 페이지</div>
       </div>
+      <div class="content2">
+        <div id="main-content1">
+          <div id="profile-photo">
+            <div id="photo"></div>
+            <div id="userName">여기는 관리자 아이디가 올 자리입니다. </div>
+          </div>
+          <div id="tab1">
+            <div id="tab1_1"></div>
+            <div id="tab1_2"></div>
+            <div id="tab1_3"><img src="../assets/book.png" alt=""></div>
+            <div id="tab1_4">모든 회원 정보</div>
+          </div>
+          <br>
+          <div id="tab2">
+            <div id="tab1_1"></div>
+            <div id="tab1_2"></div>
+            <div id="tab1_3"><img src="../assets/facebook.png" alt=""></div>
+            <div id="tab1_4"> 관리자 PICK</div>
+          </div>
+
+        </div>
+        <div id="main-content2">
+
+          <div class="container">
+            <div class="card" onclick="uploadImage(0)">
+              <span class="upload-icon">➕</span>
+              <input type="button" accept="image">
+            </div>
+            <div class="card" onclick="uploadImage(1)">
+              <span class="upload-icon">➕</span>
+              <input type="button" accept="image">
+            </div>
+            <div class="card" onclick="uploadImage(2)">
+              <span class="upload-icon">➕</span>
+              <input type="button" accept="image">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+     <script>
+    function uploadImage(index) {
+        let input = document.createElement("input");
+        input.type = "file";
+        input.accept = "image/*";
+
+        input.onchange = function (event) {
+            let file = event.target.files[0];
+            if (file) {
+            	console.log(file);
+                let reader = new FileReader();
+                reader.onload = function (e) {
+                	console.log(e.target.result);
+                    let cards = document.querySelectorAll(".card");
+                    cards[index].style.backgroundImage = `url('${e.target.result}')`;
+                    cards[index].style.backgroundSize = "cover";
+                    cards[index].style.backgroundPosition = "center";
+                    cards[index].innerHTML = ""; // "+" 아이콘 제거
+                    // 카드에 이미지가 추가된 후, 카드에 텍스트를 추가할 수 있습니다.
+                    // 예: cards[index].innerHTML = "<span>이미지 업로드 완료</span>";
+                };
+                reader.readAsDataURL(file);
+            }
+        };
+
+        input.click();
+    }
+</script>
 
 
-		<!-- -----------------------------footer---------------------------------- -->
-		<div id="footer" style="background-color: #fdf5f1;">
-			<div id="footer_1">
-				<div id="footer_1_1">
-					<img src="<%=contextPath%>/resources/assets/This_서고 로고.png"
-						alt="">
-				</div>
-				<div id="navigator" class="navigator">
-					<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a
-						href="">온라인투표</a> <a href="">자유게시판</a> <a href="">마이페이지</a> <a
-						href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
-				</div>
-			</div>
-			<div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
-		</div>
-	</div>
 
-	<script>
-  function login() {
-	     location.href="<%=contextPath%>/views/member/loginform.jsp";
-	   }
+  </body>
 
-  </script>
-
-	<script>
-  function signin() {에스프레소
-	     location.href="<%=contextPath%>/views/member/signin.jsp";
-		}
-	</script>
-	<!-- -------------------------------------------------------------------- -->
-</body>
-
-</html>
+  </html>

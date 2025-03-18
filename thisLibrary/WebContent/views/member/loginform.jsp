@@ -345,21 +345,29 @@ body * {
 		<div class="login">
 			<h2 id="loginTitle" align="center">로그인</h2>
 			<div class="login_id">
-				<h4>ID</h4>
-				<input type="email" name="" id="" placeholder="아이디를 입력하세요요">
-			</div>
-			<div class="login_pw">
-				<h4>Password</h4>
-				<input type="password" name="" id="" placeholder="비밀번호를 입력하세요">
-			</div>
+			
+			<form id="form" action="<%= contextPath %>/login.me" method="post">
+					<h4>ID</h4>
+					<input type="text" name="memId" id="" placeholder="아이디를 입력하세요요">
+				</div>
+				<div class="login_pw">
+					<h4>Password</h4>
+					<input type="password" name="memPwd" id="" placeholder="비밀번호를 입력하세요">
+				</div>
+			
+			
+			
 			<div class="login_etc">
 				<div class="checkbox">
 					<input type="checkbox" name="" id=""> 로그인 정보 저장
 				</div>
+				
 				<div class="forgot_pw">
-					<a href="<%=contextPath%>/views/member/findIdPage.jsp">아이디</a> / <a
-						href="<%=contextPath%>/views/member/findPwdPage.jsp">비밀번호 찾기</a>
+					<a href="<%=contextPath%>/views/member/findIdPage.jsp">아이디</a> / 
+					<a href="<%=contextPath%>/views/member/findPwdPage.jsp">비밀번호 찾기</a>
 				</div>
+			
+			
 			</div>
 			<div class="sns_login">
 				<li><a href="javascript:void(0);" onclick="naver()"
@@ -388,13 +396,13 @@ body * {
 
 
 
-
 			</div>
 			<div class="submit">
 				<input type="submit" value="로그인">
 			</div>
 		</div>
 
+</form>
 
 		<!------------------------------ 카카오 로그인 부분 ------------------------>
 		<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>

@@ -28,6 +28,7 @@ public class MemberDao {
 			e.printStackTrace();
 		}
 	}
+//	============================================================================
 	
 	public Member loginMember(Connection conn, String memId, String memPwd) {
 		Member m = null;
@@ -65,7 +66,7 @@ public class MemberDao {
 		
 		return m;
 	}
-
+//	============================================================================
 	public int insertMember(Connection conn, Member m) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -234,6 +235,9 @@ public class MemberDao {
 		
 		return memberId;
 	}
+//	==============================================
+	
+	
 
 }
 

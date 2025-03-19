@@ -362,13 +362,13 @@
 						<div id="content2_1">
 							<div id="content2_1_1">
 								<div id="contentDiv1_1">
-									<a href="<%=contextPath%>/views/serviceCenter/customerServiceDetail.jsp" style="border: none;">
+									<a href="<%=contextPath%>/views/serviceCenter/persnalInquiry.jsp"  style="border: none;">
 										<img src="<%=contextPath%>/resources/assets/interview_15747273.gif">
 									</a>
 								</div>
 								<div id="contentDiv1_2">
 									<p>
-										<a href="<%=contextPath%>/views/serviceCenter/customerServiceDetail.jsp" style="text-decoration-line: none;">
+										<a href="<%=contextPath%>/views/serviceCenter/persnalInquiry.jsp"  style="text-decoration-line: none;">
 											<b>1:1 문의 접수</b>
 										</a>
 									</p>
@@ -399,11 +399,14 @@
 						<div id="content2_2">
 							<div id="content2_1_3">
 								<div id="contentDiv3_1">
+									<a href="<%=contextPath%>/views/serviceCenter/persnalInquiryList.jsp" style="border: none;">
 									<img src="<%=contextPath%>/resources/assets/conversation_15578485.gif">
+									</a>
 								</div>
 								<div id="contentDiv3_2">
 									<p>
-										<a><b>1:1 문의 내역</b></a>
+										<a href="<%=contextPath%>/views/serviceCenter/persnalInquiryList.jsp" style="text-decoration-line: none;">
+										<b>1:1 문의 내역</b></a>
 									</p>
 								</div>
 								<div id="contentDiv3_3">사용자가 문의한 글 내역을 확인합니다.</div>
@@ -543,7 +546,7 @@
 						<div id="navigator" class="navigator">
 							<a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
 							<a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
-							<a href="<%= contextPath %>/list.bo">자유게시판</a>
+							<a href="<%=contextPath%>/list.bo">자유게시판</a>
 							<a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
 							<a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
 						</div>

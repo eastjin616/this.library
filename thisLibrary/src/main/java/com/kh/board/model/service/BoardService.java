@@ -59,4 +59,23 @@ public class BoardService {
 		return at;
 	}
 
+	public int insertBoard(Board b, Attachment at) {
+		Connection conn = getConnection();
+		
+		int result1 = new BoardDao().insertBoard(conn, b);
+		int result2 = 1;
+		
+		if(at != null) {
+			result2 = new BoardDao().insertAttachment(conn, at);
+		}
+		
+		if(result1 > 0 && result2 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		return result1 * result2;
+	}
+
 }

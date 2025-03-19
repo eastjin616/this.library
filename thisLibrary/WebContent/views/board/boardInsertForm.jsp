@@ -1,5 +1,9 @@
+<%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <% String contextPath=request.getContextPath(); %>
+<% 
+    String contextPath=request.getContextPath(); 
+		Member loginMember= (Member)session.getAttribute("loginMember");
+%>
 
         <!DOCTYPE html>
         <html lang="en">
@@ -298,7 +302,8 @@
                 <div class="post-container">
                     <h2>글쓰기</h2>
                     <hr>
-                    <form action="#" method="POST" enctype="multipart/form-data">
+                    <form action="<%=contextPath%>/insert.bo" method="POST" enctype="multipart/form-data">
+                    		<input type=hidden name="userNo" value="<%= loginMember.getMemNo() %>">
                         <label for="title" id="title">제목</label>
                         <input type="text" id="title" name="title" style="width: 980px; margin-bottom: 10px;" required>
 
@@ -313,7 +318,7 @@
 
                             <div class="button-group">
                                 <button onclick="goBack()">뒤로가기</button>
-                                <button onclick="location.href='<%=contextPath%>/insert.bo'">작성하기</button>
+                                <button type="submit">작성하기</button>
                             </div>
                         </div>
                         <p style="margin-top: 5px;" id="fileName">선택된 파일 없음</p>

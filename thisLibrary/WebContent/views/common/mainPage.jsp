@@ -859,7 +859,7 @@ a {
 				<div id="navigator" class="navigator">
 					<a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a> <a
 						href="">온라인투표</a> <a
-						href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a> <a
+						href="<%= contextPath %>/list.bo?cpage=1">자유게시판</a> <a
 						href="<%= contextPath %>/views/book/bestSeller.jsp">베스트셀러</a>  <a
 						href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
 				</div>

@@ -65,8 +65,9 @@ body * {
 }
 
 #header_1_1_1 {
-	width: 15%;
+	width: 10%;
 	height: 100%;
+	margin-top: 5px;
 }
 
 /* ========================================================== */
@@ -78,6 +79,7 @@ body * {
 /* Slideshow container */
 .slideshow-container {
   height: 400px;
+	width: 70%;
   position: relative;
   margin: auto;
 }
@@ -206,21 +208,21 @@ body * {
 }
 
 #login {
-	width: 50%;
-	height: 50%;
-	border-radius: 5px;
-	background-color: #ea916e;
-	color: white;
-	border: none;
-}
+      width: 50%;
+      height: 50%;
+      border-radius: 5px;
+      color: burlywood;
+      border: none;
+			cursor: pointer;
+    }
 
 #signin {
 	width: 50%;
 	height: 50%;
 	border-radius: 5px;
-	background-color: #ea916e;
-	color: white;
+	color: burlywood;
 	border: none;
+	cursor: pointer;
 }
 
 /* ---------------------------------------------- */
@@ -247,6 +249,7 @@ body * {
 /* ================================================================ */
 #header_1_2 {
 	text-align: center;
+	margin-top: 20px;
 }
 
 /* #header_1_3{border: 1px solid;} */
@@ -264,8 +267,9 @@ a {
 	width: 700px; /* 부모 요소 크기에 맞춤 */
 	height: 50px; /* 높이를 #header_1_3_2 크기에 맞춤 */
 	background-color: white;
-	border: 1px solid;
+	border: 1px solid lightgray;
 	margin: auto;
+	margin-top: 20px;
 }
 
 #search-filter {
@@ -700,10 +704,10 @@ a {
 
 				<% if(loginMember== null){ %>
 					<div id="header_login_btn" style="height: 100%; width: 9%;">
-						<button class="btn" id="login" onclick="login()">Log In</button>
+						<a  id="login" onclick="login()"><b>Log In</b></a>
 					</div>
 					<div id="header_signin_btn" style="height: 100%; width: 9%;">
-						<button class="btn" id="signin" onclick="signin()">Sign In</button>
+						<a  id="signin" onclick="signin()"><b>Sign In</b></a>
 					</div>
 				<%}else{ %>
 					<div>
@@ -748,17 +752,17 @@ a {
 			 <!-- Full-width images with number and caption text -->
 			 <div class="mySlides fade">
         <div class="numbertext">1 / 3</div>
-        <img src="<%= contextPath %>/resources/assets/1.png" style="width:100%">
+        <img src="<%= contextPath %>/resources/assets/교보문고1.jpg" style="width:100%">
       </div>
 
       <div class="mySlides fade">
         <div class="numbertext">2 / 3</div>
-        <img src="<%= contextPath %>/resources/assets/2.png" style="width:100%">
+        <img src="<%= contextPath %>/resources/assets/how.jpg" style="width:100%">
       </div>
 
       <div class="mySlides fade">
         <div class="numbertext">3 / 3</div>
-        <img src="<%= contextPath %>/resources/assets/3.png" style="width:100%">
+        <img src="<%= contextPath %>/resources/assets/brunch.jpg" style="width:100%">
       </div>
 
 

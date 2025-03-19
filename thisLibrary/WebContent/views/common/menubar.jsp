@@ -8,9 +8,8 @@
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<title>Document1</title>
-			<!-- <link rel="stylesheet" href="header.css">
-  <link rel="stylesheet" href="content.css">
-  <link rel="stylesheet" href="footer.css"> -->
+
+
 
 			<style>
 				@font-face {
@@ -37,9 +36,7 @@
 					height: 50px;
 				}
 
-				#footer {
-					height: 150px;
-				}
+
 
 				#header>div {
 					height: 100%;
@@ -51,8 +48,9 @@
 				}
 
 				#header_1_1_1 {
-					width: 15%;
+					width: 10%;
 					height: 100%;
+					margin-top: 5px;
 				}
 
 				#headnavigator {
@@ -65,21 +63,13 @@
 					box-sizing: border-box;
 				}
 
-				#footernavigator {
-					position: relative;
-					width: 60%;
-					height: 100%;
-					display: flex;
-					align-items: center;
-					justify-content: space-around;
-				}
+
 
 				#headnavigator>div {
 					position: relative;
 				}
 
-				#headnavigator a,
-				#footernavigator>a {
+				#headnavigator a {
 					text-decoration: none;
 					color: black;
 					font-size: 13px;
@@ -161,19 +151,19 @@
 					width: 50%;
 					height: 50%;
 					border-radius: 5px;
-					background-color: #ea916e;
-					color: white;
+					color: burlywood;
 					border: none;
-				}
+					cursor: pointer;
+    }
 
-				#signin {
-					width: 50%;
-					height: 50%;
-					border-radius: 5px;
-					background-color: #ea916e;
-					color: white;
-					border: none;
-				}
+		#signin {
+			width: 50%;
+			height: 50%;
+			border-radius: 5px;
+			color: burlywood;
+			border: none;
+			cursor: pointer;
+}
 
 				/* ---------------------------------------------- */
 				#mypage {
@@ -206,36 +196,7 @@
 
 
 
-
-				/* ==============footer======================================= */
-				#footer_1 {
-					width: 100%;
-					height: 65%;
-				}
-
-				#footer_1>div {
-					float: left;
-				}
-
-				#footer_1_1 {
-					height: 100%;
-					width: 20%;
-				}
-
-				#footer_1_1>img {
-					display: flex;
-					margin: auto;
-					width: 60%;
-					height: 60%;
-					margin-top: 20%;
-				}
-
-				#footer_2 {
-					width: 100%;
-					height: 35%;
-					text-align: center;
-					margin-top: 2%;
-				}
+			
 			</style>
 		</head>
 		<meta charset="UTF-8">
@@ -246,8 +207,9 @@
 				<div id="header">
 					<div id="header_1">
 						<div id="header_1_1_1">
-							<a href="<%=contextPath%>"><img src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt=""
-									style="height: 100%; width: 100%;"></a>
+							<a href="<%= contextPath %>/views/common/mainPage.jsp"><img
+								src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""
+								style="height: 100%; width: 100%;"></a>
 						</div>
 						<div id="headnavigator">
 							<a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a>
@@ -281,15 +243,15 @@
 							</div>
 						</div>
 						<div id="header_login_btn" style="height: 100%; width: 9%;">
-							<button class="btn" id="login" onclick="location.href='<%=contextPath%>/views/jinsloginform.jsp'">Log
-								In</button>
+							<a class="btn" id="login" onclick="location.href='<%=contextPath%>/views/jinsloginform.jsp'">Log
+								In</a>
 						</div>
 						<div id="header_signin_btn" style="height: 100%; width: 9%;">
-							<button class="btn" id="signin" onclick="signin()">Sign In</button>
+							<a class="btn" id="signin" onclick="signin()">Sign In</a>
 						</div>
 						<div id="header_mypage_btn" style="height: 100%; width: 7%;">
 							<button class="btn" id="mypage" onclick="mypage()">
-								<img src="<%=contextPath%>/views/common/assets/user01.png" alt="">
+								<img src="<%= contextPath %>/resources/assets/user01.png" alt="">
 							</button>
 						</div>
 
@@ -303,23 +265,10 @@
 
 
 				<!-- -----------------------------footer---------------------------------- -->
-				<div id="footer" style="background-color: #fdf5f1;">
-					<div id="footer_1">
-						<div id="footer_1_1">
-							<img src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt="">
-						</div>
-						<div id="footernavigator" class="navigator">
-							<a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a>
-							<a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a>
-							<a href="<%= contextPath %>/list.bo">자유게시판</a>
-							<a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a>
-							<a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
-						</div>
-					</div>
-					<div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
-				</div>
-			</div>
+				<div style="background-color: white; height: 300px;"></div>
+<!-- 헤드 서브 메뉴 보이기용으로 놔둠 컨텐츠 추가 제작시 이거는 지워도 됨-->
 
+<!-- --------------------------------------------------------------------------------->
 			<script>
 				function login() {
 					location.href = "<%=contextPath%>/views/member/loginform.jsp";

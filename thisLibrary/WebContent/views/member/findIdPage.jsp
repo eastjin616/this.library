@@ -203,7 +203,7 @@ body * {
 						In</button>
 				</div>
 				<div id="header_mypage_btn" style="height: 100%; width: 7%;">
-					<button class="btn" id="mypage"
+					<button class="btn" id="mypage" onclick="mypage()"
 						style="display: flex; justify-content: center; align-items: center;">
 						<img src="<%= contextPath %>/views/common/assets/user01.png"
 							alt="">
@@ -283,6 +283,11 @@ body * {
   function signin() {
 	     location.href="<%= contextPath %>/views/member/signin.jsp";
 	   }
+
+	function mypage() {
+	     location.href="<%= contextPath %>/views/member/myPage.jsp";
+	   }
+
   function findId() {
 	  	 System.out.print("a");
 	     location.href="<%= contextPath %>/views/member/findIdResult.jsp";

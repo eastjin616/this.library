@@ -592,25 +592,6 @@ a {
 
 
 <body>
-<<<<<<< HEAD
-  <div class="wrap">
-    <div id="header">
-      <div id="header_1">
-          <div id="header_1_1_1">
-           <a href="<%= contextPath %>/views/common/mainPage.jsp"><img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;"></a>
-          </div>
-          <div id="navigator">
-            <a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
-            <a href="<%= contextPath %>/views/vote/voteList.jsp">온라인투표</a>
-            <a href="<%= contextPath %>/list.bo">자유게시판</a>
-            <a href="<%= contextPath %>/views/member/myPage.jsp">마이페이지</a>
-            <a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
-          </div>
-          <div id="header_login_btn" style="height: 100%; width: 9%;">
-            <button class="btn" id="login" onclick="login()">Log In</button>
-          </div>
-          <div id="header_signin_btn" style="height: 100%; width: 9%;">
-=======
 	<div class="wrap">
 		<div id="header">
 			<div id="header_1">
@@ -623,11 +604,10 @@ a {
 				<div id="navigator">
 					<a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a> <a
 						href="<%= contextPath %>/views/vote/voteDetailForm.jsp">온라인투표</a>
-					<a href="<%= contextPath %>/views/board/boardList.jsp">자유게시판</a> <a
-						href="<%= contextPath %>/views/member/myPage.jsp">마이페이지</a> <a
-						href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
+					<a href="<%= contextPath %>/list.bo">자유게시판</a> 
+					<a href="<%= contextPath %>/views/member/myPage.jsp">마이페이지</a> 
+					<a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
 				</div>
->>>>>>> book
 
 				<% if(loginMember== null){ %>
 					<div id="header_login_btn" style="height: 100%; width: 9%;">
@@ -648,8 +628,9 @@ a {
 				<%} %>
 
 				<div id="header_mypage_btn" style="height: 100%; width: 7%;">
-					<button class="btn" id="mypage">
-						<img src="<%= contextPath %>/resources/assets/user01.png" alt="">
+					
+					<button class="btn" id="mypage" onclick="mypage()">
+							<img src="<%= contextPath %>/resources/assets/user01.png" alt="">
 					</button>
 				</div>
 
@@ -718,47 +699,6 @@ a {
 				</div>
 			</div>
 
-<<<<<<< HEAD
-    <div id="content_3">
-      <div id="content_3_1">
-        <img src="<%= contextPath %>/resources/assets/brown.png" alt="" id="brown">
-      </div>
-      <div id="content_3_2">
-      <div id="content_3_2_1">
-        <img src="<%= contextPath %>/resources/assets/book5.jpg" alt="" id="book5">
-      </div>
-      <div id="content_3_2_2"></div>
-      </div>
-      <div id="content_3_3">
-        <div id="content_3_3_1"></div>
-        <div id="content_3_3_2">
-          <img src="<%= contextPath %>/resources/assets/book6.jpg" alt="" id="book6">
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="spaceContent"></div>
-    <!-- -------------------------------------------------------------------- -->
-    <div id="footer" style="background-color: #fdf5f1;">
-      <div id="footer_1">
-        <div id="footer_1_1"><a href="<%= contextPath %>/views/common/mainPage.jsp"><img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""></a></div>
-        <div id="navigator">
-          <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
-          <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
-          <a href="<%= contextPath %>/list.bo">자유게시판</a>
-          <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
-          <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
-        </div>
-      </div>
-      <div id="footer_2">
-        © 2025 YourCompany. All Rights Reserved.
-      </div>
-    </div>
-  </div>
-  <!-- -------------------------------------------------------------------- -->
-  
-  <script>
-=======
 			<div id="content_3">
 				<div id="content_3_1">
 					<img src="<%= contextPath %>/resources/assets/brown.png" alt=""
@@ -792,7 +732,7 @@ a {
 					<a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a> <a
 						href="">온라인투표</a> <a
 						href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a> <a
-						href="<%= contextPath %>/views/board/boardList.jsp">마이페이지</a> <a
+						href="<%= contextPath %>/views/member/myPage.jsp">마이페이지</a> <a
 						href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
 				</div>
 			</div>
@@ -802,13 +742,16 @@ a {
 	<!-- -------------------------------------------------------------------- -->
 
 	<script>
->>>>>>> book
   function login() {
 	     	location.href="<%= contextPath %>/views/member/loginform.jsp";
 	   }
   
   function signin() {
 	     location.href="<%= contextPath %>/views/member/signin.jsp";
+	   }
+
+		 function mypage() {
+	     location.href="<%= contextPath %>/views/member/myPage.jsp";
 	   }
   </script>
 

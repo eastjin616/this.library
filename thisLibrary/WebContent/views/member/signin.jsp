@@ -269,7 +269,7 @@ body * {
 				<div class="form-group">
 					<label for="inputPassword">비밀번호</label> <label for=""></label><input
 						type="password" class="form-control" name="password" id="password"
-						placeholder="비밀번호를 입력해주세요" required>
+						placeholder="영문,숫자,특수문자 포함 8~16자" required>
 				</div>
 
 				<div class="form-group">
@@ -343,22 +343,22 @@ body * {
 
 
 
-							<!-- -------------------------------------------------------------------- -->
-							<div id="footer" style="background-color: #fdf5f1;">
-								<div id="footer_1">
-									<div id="footer_1_1"><a href="<%= contextPath %>/views/common/mainPage.jsp"><img
-												src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""></a></div>
-									<div id="navigator" class="navigator">
-										<a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
-										<a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
-										<a href="<%= contextPath %>/list.bo">자유게시판</a>
-										<a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
-										<a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
-									</div>
-								</div>
-								<div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
-							</div>
-							</div>
+<!-- -------------------------------------------------------------------- -->
+<div id="footer" style="background-color: #fdf5f1;">
+	<div id="footer_1">
+		<div id="footer_1_1"><a href="<%= contextPath %>/views/common/mainPage.jsp"><img
+					src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""></a></div>
+		<div id="navigator" class="navigator">
+			<a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
+			<a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
+			<a href="<%= contextPath %>/list.bo">자유게시판</a>
+			<a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
+			<a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+		</div>
+	</div>
+	<div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
+</div>
+</div>
 
 	<script>
 	function login() {

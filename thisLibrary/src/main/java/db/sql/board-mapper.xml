@@ -3,18 +3,25 @@
 <properties>
 
 	<entry key="selectList">
-	SELECT
-		      BOARD_NO
-		    , NICKNAME
-		    , BOARD_TITLE
-		    , BOARD_CONTENT
-		    , COUNT
-		    , TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
-		 FROM BOARD B
-		 JOIN MEMBER USING(MEM_NO)
-		WHERE B.STATUS = 'Y'
-		ORDER
-		   BY BOARD_NO DESC
+	SELECT *
+		FROM (
+		       SELECT ROWNUM RNUM, A.*
+		       FROM (
+                  SELECT
+                          BOARD_NO
+                        , NICKNAME
+                        , BOARD_TITLE
+                        , BOARD_CONTENT
+                        , COUNT
+                        , TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
+                     FROM BOARD B
+                     JOIN MEMBER USING(MEM_NO)
+                    WHERE B.STATUS = 'Y'
+                    ORDER
+                       BY BOARD_NO DESC
+		            ) A
+		     )
+	WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
   <entry key="increaseCount">
@@ -70,7 +77,7 @@
 	  INTO ATTACHMENT
 	     (
 	       FILE_NO
-	     , REF_BNO
+	     , WRITE_NO
 	     , ORIGIN_NAME
 	     , CHANGE_NAME
 	     , FILE_PATH
@@ -83,5 +90,91 @@
 	     , ?
 	     , ?
 	     )
+  </entry>
+  
+  <entry key="deleteBoard">
+	UPDATE BOARD
+	   SET STATUS = 'N'
+	 WHERE BOARD_NO = ?
+  </entry>
+  
+  <entry key="deleteAttachment">
+  UPDATE ATTACHMENT
+	   SET STATUS = 'N'
+	 WHERE WRITE_NO = ?
+  </entry>
+  
+  <entry key="updateBoard">
+  UPDATE BOARD
+	   SET BOARD_TITLE = ?
+	     , BOARD_CONTENT = ?
+	 WHERE BOARD_NO = ?
+  </entry>
+  
+  <entry key="updateAttachment">
+  UPDATE ATTACHMENT
+     SET ORIGIN_NAME = ?
+       , CHANGE_NAME = ?
+       , FILE_PATH = ?
+   WHERE FILE_NO = ?
+  </entry>
+  
+  <entry key="insertNewAttachment">
+  INSERT
+	  INTO ATTACHMENT
+	     (
+	       FILE_NO
+	     , WRITE_NO
+	     , ORIGIN_NAME
+	     , CHANGE_NAME
+	     , FILE_PATH
+	     )
+	VALUES
+	     (
+	       SEQ_FILE_NO.NEXTVAL
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     )
+  </entry>
+  
+ 	<entry key="selectListCount">
+	SELECT 
+	       COUNT(*) COUNT
+	  FROM BOARD
+	 WHERE STATUS = 'Y'
+	</entry>
+	
+	<entry key="insertReply">
+  INSERT
+	  INTO BOARD_ANSWER
+	  (
+	    B_ANSWER_NO
+      , MEM_NO
+      , BOARD_NO
+	 		, ANSWER_CONTENT
+	  )
+	VALUES
+		(
+		   SEQ_B_ANSWER_NO.NEXTVAL
+		 , ?
+		 , ?
+		 , ?
+		 )
+  </entry>
+  
+    <entry key="selectReplyList">
+  SELECT
+	       B_ANSWER_NO
+	     , ANSWER_CONTENT
+	     , NICKNAME
+	     , TO_CHAR(ANSWER_DATE, 'YY/MM/DD HH:MI') "ANSWER_DATE"
+	  FROM BOARD_ANSWER BA
+	  JOIN MEMBER USING(MEM_NO)
+	 WHERE BA.STATUS = 'Y'
+	   AND BOARD_NO = ?
+	 ORDER
+	    BY B_ANSWER_NO DESC
   </entry>
 </properties>

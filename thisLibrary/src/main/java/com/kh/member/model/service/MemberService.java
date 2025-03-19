@@ -95,40 +95,12 @@ public class MemberService {
 		return memberId;
 		
 	}
-<<<<<<< HEAD
-	
-	public int insertphoto(Member b, ArrayList<Attachment> list) {
-
-		Connection conn = getConnection();
-
-		int result1 = new MemberDao().insertThBoard(conn, b);
-
-		int result2 = new MemberDao().insertAttachmentList(conn, list);
-
-		if (result2 > 0 && result1 > 0) {
-			commit(conn);
-		} else {
-			rollback(conn);
-		}
-
-		return result1 * result2;
-
-	}
 	
 	
-	
-=======
-//=================================================
-
-<<<<<<< HEAD
->>>>>>> 77c105623c4d6489fc391caf875bcc4a780442d1
-
-=======
 	public int nickCheck(String nickname) {
 		Connection conn = getConnection();
 		int count = new MemberDao().nickCheck(conn, nickname);
 		close(conn);
 		return count;
 	}
->>>>>>> book
 }

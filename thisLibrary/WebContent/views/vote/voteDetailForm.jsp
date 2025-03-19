@@ -415,6 +415,8 @@
 
 						</div>
 
+						<button class="submit-btn" style="margin-left: 47%;">투표하기</button>
+
 
 
 

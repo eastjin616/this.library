@@ -592,7 +592,7 @@
 				}
 
 				.btn:hover {
-					background-color: #0056b3;
+					background-color: #ea916e;
 				}
 
 				/* =========================================== jjim */

@@ -283,7 +283,7 @@
           </div>
 
 
-          <form action="<%contextPath>/src/main/java/com/kh/">
+          <form action="<%=contextPath%>/Inquiry.in">
             <div class="content4">
               <div id="content4_1" class="content">
                 <div class="label">이름 </div>
@@ -306,6 +306,7 @@
                 <div class="input-container">
                   <textarea name="" id="" placeholder="문의내용 최대 1000자를 입력해주세요." maxlength="1000" required></textarea>
                 </div>
+              </div>
               </div>
           </form>
 

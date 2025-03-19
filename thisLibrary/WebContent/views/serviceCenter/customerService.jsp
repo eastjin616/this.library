@@ -362,13 +362,13 @@
 						<div id="content2_1">
 							<div id="content2_1_1">
 								<div id="contentDiv1_1">
-									<a href="<%=contextPath%>/views/serviceCenter/persnalInquiry.jsp" style="border: none;">
+									<a href="<%=contextPath%>/views/serviceCenter/persnalInquiry.jsp"  style="border: none;">
 										<img src="<%=contextPath%>/resources/assets/interview_15747273.gif">
 									</a>
 								</div>
 								<div id="contentDiv1_2">
 									<p>
-										<a href="<%=contextPath%>/views/serviceCenter/persnalInquiry.jsp" style="text-decoration-line: none;">
+										<a href="<%=contextPath%>/views/serviceCenter/persnalInquiry.jsp"  style="text-decoration-line: none;">
 											<b>1:1 문의 접수</b>
 										</a>
 									</p>

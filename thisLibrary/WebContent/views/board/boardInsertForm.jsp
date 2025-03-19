@@ -313,7 +313,7 @@
 
                             <div class="button-group">
                                 <button onclick="goBack()">뒤로가기</button>
-                                <button onclick="submitPost()">작성하기</button>
+                                <button onclick="location.href='<%=contextPath%>/insert.bo'">작성하기</button>
                             </div>
                         </div>
                         <p style="margin-top: 5px;" id="fileName">선택된 파일 없음</p>
@@ -352,7 +352,7 @@
                 }
 
                 function goBack() {
-                    location.href = "<%= contextPath %>/views/board/boardList.jsp"
+                    location.href = "<%= contextPath %>/list.bo"
                 }
 
                 document.getElementById("fileUpload").addEventListener("change", function () {

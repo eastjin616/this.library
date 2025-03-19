@@ -76,7 +76,6 @@
 
 				#headnavigator>div {
 					position: relative;
-					border: 1px solid;
 				}
 
 				#headnavigator a,

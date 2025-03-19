@@ -120,6 +120,15 @@ public class MemberService {
 =======
 //=================================================
 
+<<<<<<< HEAD
 >>>>>>> 77c105623c4d6489fc391caf875bcc4a780442d1
 
+=======
+	public int nickCheck(String nickname) {
+		Connection conn = getConnection();
+		int count = new MemberDao().nickCheck(conn, nickname);
+		close(conn);
+		return count;
+	}
+>>>>>>> book
 }

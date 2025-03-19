@@ -30,12 +30,7 @@ public class MemberDao {
 			e.printStackTrace();
 		}
 	}
-<<<<<<< HEAD
-
-=======
-//	============================================================================
 	
->>>>>>> 77c105623c4d6489fc391caf875bcc4a780442d1
 	public Member loginMember(Connection conn, String memId, String memPwd) {
 		Member m = null;
 		PreparedStatement pstmt = null;
@@ -259,47 +254,5 @@ public class MemberDao {
 		return count;
 	}
 
-
-	
-	
-public int insertAttachmentList(Connection conn, ArrayList<Attachment> list) {
-		
-		
-		int result = 0;
-		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("insertAttachmentList");
-		
-		try {
-			for(Attachment at:list) {
-//				미완성된 sql문을 담은 pstmt 가 생성되었다.
-				pstmt = conn.prepareStatement(sql);//미완성쿼리
-				
-//				완성된 형태로 변환해주어야 한다.
-				
-				pstmt.setString(1, at.getOriginName());
-				pstmt.setString(2, at.getChangeName());
-				pstmt.setString(3, at.getFilePath());
-				
-//				실행
-				result = pstmt.executeUpdate();
-			
-//				얼마나 대입이 되나? 모른다. 파일의 크기만큼 돈다.
-				
-			}
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-			
-		}
-		return result;
-		
-	}
-	
-	
-	
-	
 
 }

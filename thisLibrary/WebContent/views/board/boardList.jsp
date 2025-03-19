@@ -1,3 +1,5 @@
+<%@page import="com.kh.common.model.vo.PageInfo"%>
+<%@page import="com.kh.member.model.vo.Member"%>
 <%@page import="com.kh.board.model.vo.Board"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -6,6 +8,17 @@
   
 		// 글번호, 닉네임, 제목, 내용, 조회수, 작성일
   	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
+  
+  	String alertMsg = (String)session.getAttribute("alertMsg");
+  	
+  	Member loginMember= (Member)session.getAttribute("loginMember");
+  	
+		PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+		int currentPage = pi.getCurrentPage();
+		int startPage = pi.getStartPage();
+		int endPage = pi.getEndPage();
+		int maxPage = pi.getMaxPage();
   %>
 
     <!DOCTYPE html>
@@ -233,6 +246,12 @@
     </head>
 
     <body>
+    		<% if(alertMsg != null){ %>
+					<script>
+						alert("<%= alertMsg %>");
+					</script>
+						<% session.removeAttribute("alertMsg"); %> <!-- 이걸 안해주면 다른 곳 가도 한번 더 읽혀서 창이 계속 뜸 -->
+				<% } %>
       <div class="wrap">
         <div id="header">
           <!-- 기존 헤더 내용 -->
@@ -307,19 +326,28 @@
 					</script>
 
           <div class="pagination">
-            <span><</span>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
-            <span>></span>
+	          <!-- 페이징바 -->
+						<% if(currentPage != 1){ %>
+								<span onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage - 1 %>'">&lt;</span>
+						<% } %>
+						<% for(int p=startPage; p<=endPage; p++){ %>					
+								<% if(p == currentPage){ %>
+										<button disabled><%= p %></button>
+								<% }else{ %>
+										<span onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= p %>'"><%= p %></span>
+								<% } %>
+						<% } %>
+						
+						<% if(currentPage != maxPage){ %>
+								<span onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage + 1 %>'">&gt;</span>
+						<% } %>
           </div>
-
+					
+					<%if(loginMember != null){ %>
           <div style="display: flex;">
             <a href="<%= contextPath %>/views/board/boardInsertForm.jsp" class="write-btn" style="margin-left: auto;">글쓰기</a>
           </div>
-
+					<%} %>
         </div>
         <!-- 자유게시판 끝 -->
 

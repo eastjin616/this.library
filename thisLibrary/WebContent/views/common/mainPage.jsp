@@ -70,10 +70,99 @@ body * {
 }
 
 /* ========================================================== */
-#firstbar {
-	height: 100px;
+
+#firstbar{
+	height: 50px;
 }
 
+/* Slideshow container */
+.slideshow-container {
+  height: 400px;
+  position: relative;
+  margin: auto;
+}
+.slideshow-container .mySlides img {
+  height: 400px;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: black;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+	font-weight: 1000;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+/* --------------------------------------------------- */
 #content {
 	height: 700px;
 }
@@ -652,9 +741,44 @@ a {
 			<button id="search-btn">검색</button>
 		</div>
 
+<!-- -------------------------------------------------------------------------- -->
 		<div id="firstbar"></div>
 
+		<div class="slideshow-container">
+			 <!-- Full-width images with number and caption text -->
+			 <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+        <img src="<%= contextPath %>/resources/assets/1.png" style="width:100%">
+      </div>
 
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 3</div>
+        <img src="<%= contextPath %>/resources/assets/2.png" style="width:100%">
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">3 / 3</div>
+        <img src="<%= contextPath %>/resources/assets/3.png" style="width:100%">
+      </div>
+
+
+      
+
+      <!-- Next and previous buttons -->
+      <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
+      <a class="next" onclick="moveSlides(1)">&#10095;</a>
+    </div>
+    <br/>
+
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(0)"></span>
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+		</div>
+
+		<div id="firstbar"></div>
+<!-- -------------------------------------------------------------------------- -->
 		<div id="content">
 			<div id="content_1">
 				<div id="content_1_1">
@@ -753,6 +877,59 @@ a {
 		 function mypage() {
 	     location.href="<%= contextPath %>/views/member/myPage.jsp";
 	   }
+// -----------------------------------------------------------------------
+
+var slideIndex = 0; //slide index
+
+// HTML 로드가 끝난 후 동작
+window.onload=function(){
+  showSlides(slideIndex);
+
+  // Auto Move Slide
+  var sec = 3000;
+  setInterval(function(){
+    slideIndex++;
+    showSlides(slideIndex);
+
+  }, sec);
+}
+
+
+// Next/previous controls
+function moveSlides(n) {
+  slideIndex = slideIndex + n
+  showSlides(slideIndex);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  slideIndex = n;
+  showSlides(slideIndex);
+}
+
+function showSlides(n) {
+
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  var size = slides.length;
+
+  if ((n+1) > size) {
+    slideIndex = 0; n = 0;
+  }else if (n < 0) {
+    slideIndex = (size-1);
+    n = (size-1);
+  }
+
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+
+  slides[n].style.display = "block";
+  dots[n].className += " active";
+}
   </script>
 
 </body>

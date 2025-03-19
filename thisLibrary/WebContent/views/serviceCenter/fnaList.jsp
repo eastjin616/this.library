@@ -480,11 +480,6 @@
           location.href = "<%=contextPath%>/views/member/signin.jsp";
         }
 
-<<<<<<< HEAD
-        function mypage() {
-	     location.href="<%= contextPath %>/views/member/myPage.jsp";
-	   }
-=======
 
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -527,7 +522,6 @@
 
 
         document.getElementById("replyDate").innerText = new Date().toLocaleDateString();
->>>>>>> Modal
       </script>
       <!-- -------------------------------------------------------------------- -->
     </body>

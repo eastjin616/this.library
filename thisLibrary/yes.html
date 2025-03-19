@@ -119,9 +119,108 @@ div {box-sizing: border-box;border: 1px solid red;}
 	cursor: pointer;
 }
 
-/*-------------------------------------------------------------  */
+#firstbar{
+	height: 200px;
+}
+/* ---------------------------------------------- */
+/* ---content 나누기--- */
+#mainContent{
+	height: 2500px;
+}
 
+#sidebar{
+	height: auto;
+	float: left;
+	
+}
 
+#bookContent{
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#bookInfo{
+	width: 100%;
+	margin-bottom: 500px;
+	
+}
+
+#bookExplan{
+	position: absolute; /* 또는 relative */
+    bottom: 0; /* 하단으로 이동 */
+}
+
+/* ---------이제 디테일--------- */
+
+#bookImg{
+	width: 50%;
+	float: left;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-right: 30px;
+}
+#bookIntroduce{
+	float: left;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-right: 30px;
+}
+
+#bookSimple img{
+	width: 50%;
+}
+
+#bookPhoto img{
+	width: 50%;
+}
+
+/*--------사이드바---------------------------------------------  */
+
+#sidebar {
+    width: 200px;
+    background-color: #fff7eb; 
+    border: 2px solid #a56b2a;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Gyeonggi_Batang_Regular';
+
+	margin-top: 50;
+    margin-left: 50;
+    margin-right: 50;
+}
+
+#sidebar h3 {
+    font-size: 18px;
+    color: #5a3e1b;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #d9a066;
+}
+
+.book-list {
+    list-style: none;
+    padding: 0;
+}
+
+.book-list li {
+    font-size: 14px;
+    color: #333;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.book-list li:hover {
+    background-color: #d9a066;
+    color: white;
+    font-weight: bold;
+    transform: scale(1.05);
+    cursor: pointer;
+}
 
 
 /* ==============footer======================================= */
@@ -198,19 +297,53 @@ div {box-sizing: border-box;border: 1px solid red;}
         <div id="content">
 					
             <div id="mainContent">
-							<div id="sidebar"></div>
-							<div id="bookContent">
-								<div id="booktitle">
-									<div></div>
-								</div>
-								<div id="bookexplan"></div>
+				<div id="sidebar">
+					<h3>개인서재 제목</h3>
+					<ul class="book-list">
+						<li>선재 업고 튀어</li>
+						<li>호석의 뉴질랜드</li>
+						<li>동진이의 영국여행</li>
+					</ul>
+				</div>
+				<!-- ------------------------------------------------ -->
+				<div id="bookContent">
+					<div id="bookInfo">
+						<div id="booktitle" style="text-align: center;"><h1>책 제목이 올겁니다.</h1></div>
+
+						<div id="bookImg">
+							<img src="../thisLibrary/WebContent/resources/assets/book1.jpg" alt="">
+						</div>
+						<div id="bookIntroduce">
+
+							<div id="bookSimple">
+								<img src="../thisLibrary/WebContent/resources/assets/book1.jpg" alt="">
+							</div>
+							
+							<div id="bookPhoto">
+								<img src="../thisLibrary/WebContent/resources/assets/book1.jpg" alt="">
 							</div>
 						</div>
-
-            <div id="preview"></div>
-
-						<div id="review"></div>
 					</div>
+				<!-- ----------------------------------------------- -->
+				<div id="bookExplan">
+					<div id="authorTitle">
+						<h1>책 제목이 올겁니다.</h1>
+					</div>
+					<div id="authorInfo">
+						<h1>책 제목이 올겁니다.</h1>
+					</div>
+					<div id="translator">
+						<h1>책 제목이 올겁니다.</h1>
+					</div>
+					<div id="Table_of_Contents"></div>
+				</div>
+			</div>
+		</div>
+
+				<div id="preview"></div>
+
+			<div id="review"></div>
+		</div>
 
 
 

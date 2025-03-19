@@ -78,6 +78,7 @@ body * {
 /* Slideshow container */
 .slideshow-container {
   height: 400px;
+	width: 70%;
   position: relative;
   margin: auto;
 }
@@ -748,17 +749,17 @@ a {
 			 <!-- Full-width images with number and caption text -->
 			 <div class="mySlides fade">
         <div class="numbertext">1 / 3</div>
-        <img src="<%= contextPath %>/resources/assets/1.png" style="width:100%">
+        <img src="<%= contextPath %>/resources/assets/교보문고1.jpg" style="width:100%">
       </div>
 
       <div class="mySlides fade">
         <div class="numbertext">2 / 3</div>
-        <img src="<%= contextPath %>/resources/assets/2.png" style="width:100%">
+        <img src="<%= contextPath %>/resources/assets/how.jpg" style="width:100%">
       </div>
 
       <div class="mySlides fade">
         <div class="numbertext">3 / 3</div>
-        <img src="<%= contextPath %>/resources/assets/3.png" style="width:100%">
+        <img src="<%= contextPath %>/resources/assets/brunch.jpg" style="width:100%">
       </div>
 
 

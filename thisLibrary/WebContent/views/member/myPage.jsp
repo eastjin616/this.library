@@ -427,27 +427,7 @@
 					padding-left: 20px;
 					box-sizing: border-box;
 				}
-				.modal{
-            position:absolute;
-            display:none;
-            
-            justify-content: center;
-            top:0;
-            left:0;
-
-<<<<<<< HEAD
-            width:100%;
-            height:100%;
-
-            
-
-            background-color: rgba(0,0,0,0.4);
-=======
-				div>button {
-					cursor: pointer;
-				}
-
-				/* 마이페이지 개인정보 수정 버튼 모달 css */
+				/* ================================================마이페이지 개인정보 수정 버튼 모달 css */
 				.modal {
 					position: absolute;
 					display: none;
@@ -483,7 +463,7 @@
 					cursor: pointer;
 				}
 
-				/* 코멘터리(감상문) 목록보기 버튼 모달 css */
+				/* ================================================코멘터리(감상문) 목록보기 버튼 모달 css */
 				.modalC {
 					position: absolute;
 					display: none;
@@ -519,7 +499,7 @@
 					cursor: pointer;
 				}
 
-				/* 읽기목표설정하기 목록보기 버튼 모달 css */
+				/* ================================================읽기목표설정하기 목록보기 버튼 모달 css */
 				.modalR {
 					position: absolute;
 					display: none;
@@ -554,59 +534,67 @@
 					font-weight: bold;
 					cursor: pointer;
 				}
+
 				table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
+					width: 100%;
+					border-collapse: collapse;
+					margin-top: 10px;
+				}
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: center;
-        }
+				th,
+				td {
+					border: 1px solid #ddd;
+					padding: 10px;
+					text-align: center;
+				}
 
-        th {
-            background-color: #f4f4f4;
-        }
+				th {
+					background-color: #f4f4f4;
+				}
+
 				.user-info {
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            text-align: center;
-        }
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            background-color: #f0f0f0;
-        }
-        .user-info input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-top: 5px;
-						
-        }
-        .btn {
-            margin-top: 10px;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            background-color: #ea916e;
-            color: white;
-            cursor: pointer;
-        }
-				div>input{
+					border: 1px solid #ddd;
+					padding: 15px;
+					margin-bottom: 10px;
+					border-radius: 5px;
+					text-align: center;
+				}
+
+				.profile-img {
+					width: 200px;
+					height: 200px;
+					border-radius: 50%;
+					object-fit: cover;
+					background-color: #f0f0f0;
+				}
+
+				.user-info input {
+					width: 100%;
+					padding: 8px;
+					border: 1px solid #ccc;
+					border-radius: 5px;
+					margin-top: 5px;
+
+				}
+
+				.btn {
+					margin-top: 10px;
+					padding: 8px 15px;
+					border: none;
+					border-radius: 5px;
+					background-color: #ea916e;
+					color: white;
+					cursor: pointer;
+				}
+
+				div>input {
 					box-sizing: border-box;
 				}
-        .btn:hover {
-            background-color: #0056b3;
->>>>>>> Modal
-        }
+
+				.btn:hover {
+					background-color: #0056b3;
+				}
+
 				/* =========================================== jjim */
 				#mypageMainContent5 {
 					align-items: center;
@@ -642,7 +630,7 @@
 				#jjim2:hover,
 				#jjim3:hover,
 				#jjim4:hover,
-				div>button{
+				div>button {
 					cursor: pointer;
 				}
 
@@ -733,46 +721,46 @@
 											<div id="saveBtn">
 												<button class="btn-open-modal">수정하기</button>
 												<div class="modal">
-														<div class="modal_body">
-																<span class="close-btn">&times;</span> <!-- 'X' 버튼 -->
-																<h2>사용자 정보 변경</h2>
-								
-																<!-- 프로필 사진 -->
-																<div class="user-info">
-																		<img src="https://via.placeholder.com/200" alt="프로필 사진" class="profile-img">
-																		<button class="btn">변경하기</button>
-																</div>
-								
-																<!-- 비밀번호 변경 -->
-																<div class="user-info">
-																		<div>비밀번호</div>
-																		<input type="password" placeholder="새 비밀번호 입력">
-																</div>
-								
-																<!-- 닉네임 변경 -->
-																<div class="user-info">
-																		<div>닉네임</div>
-																		<input type="text" placeholder="새 닉네임 입력">
-																</div>
-								
-																<!-- 이메일 변경 -->
-																<div class="user-info">
-																		<div>이메일</div>
-																		<input type="email" placeholder="새 이메일 입력">
-																</div>
-								
-																<!-- 전화번호 변경 -->
-																<div class="user-info">
-																		<div>전화번호</div>
-																		<input type="text" placeholder="새 전화번호 입력">
-																</div>
-								
-																<button class="btn">저장하기</button>
-														</div>
-												</div>
-										</div>
+													<div class="modal_body">
+														<span class="close-btn">&times;</span> <!-- 'X' 버튼 -->
+														<h2>사용자 정보 변경</h2>
 
-											
+														<!-- 프로필 사진 -->
+														<div class="user-info">
+															<img src="https://via.placeholder.com/200" alt="프로필 사진" class="profile-img">
+															<button class="btn">변경하기</button>
+														</div>
+
+														<!-- 비밀번호 변경 -->
+														<div class="user-info">
+															<div>비밀번호</div>
+															<input type="password" placeholder="새 비밀번호 입력">
+														</div>
+
+														<!-- 닉네임 변경 -->
+														<div class="user-info">
+															<div>닉네임</div>
+															<input type="text" placeholder="새 닉네임 입력">
+														</div>
+
+														<!-- 이메일 변경 -->
+														<div class="user-info">
+															<div>이메일</div>
+															<input type="email" placeholder="새 이메일 입력">
+														</div>
+
+														<!-- 전화번호 변경 -->
+														<div class="user-info">
+															<div>전화번호</div>
+															<input type="text" placeholder="새 전화번호 입력">
+														</div>
+
+														<button class="btn">저장하기</button>
+													</div>
+												</div>
+											</div>
+
+
 
 											<button id="mypageBtn">탈퇴</button>
 										</div>
@@ -802,78 +790,45 @@
 									</div>
 
 									<div id="saveBtn">
-<<<<<<< HEAD
-
-										<div class="modal">
-											<div class="modal_body">
-													<h2>모달창 제목</h2>
-													<p>모달창 내용 </p>
-											</div>
-									</div>
-										<button class="btn-open-modal">목록보기</button>
-
-										
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
 										<button class="btn-open-modalC">목록보기</button>
->>>>>>> Modal
 										<button>저장하기</button>
 										<div class="modalC">
-												<div class="modal_bodyC">
-														<span class="close-btnC">&times;</span> <!-- 'X' 버튼 -->
-														<h2>게시판 리스트</h2>
-														<table>
-																<thead>
-																		<tr>
-																				<th>글 번호</th>
-																				<th>제목</th>
-																				<th>저자</th>
-																				<th>작성 날짜</th>
-																		</tr>
-																</thead>
-																<tbody>
-																		<tr>
-																				<td>1</td>
-																				<td>첫 번째 글</td>
-																				<td>홍길동</td>
-																				<td>2025-03-18</td>
-																		</tr>
-																		<tr>
-																				<td>2</td>
-																				<td>두 번째 글</td>
-																				<td>김철수</td>
-																				<td>2025-03-17</td>
-																		</tr>
-																		<tr>
-																				<td>3</td>
-																				<td>세 번째 글</td>
-																				<td>이영희</td>
-																				<td>2025-03-16</td>
-																		</tr>
-																</tbody>
-														</table>
-												</div>
+											<div class="modal_bodyC">
+												<span class="close-btnC">&times;</span> <!-- 'X' 버튼 -->
+												<h2>게시판 리스트</h2>
+												<table>
+													<thead>
+														<tr>
+															<th>글 번호</th>
+															<th>제목</th>
+															<th>저자</th>
+															<th>작성 날짜</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>1</td>
+															<td>첫 번째 글</td>
+															<td>홍길동</td>
+															<td>2025-03-18</td>
+														</tr>
+														<tr>
+															<td>2</td>
+															<td>두 번째 글</td>
+															<td>김철수</td>
+															<td>2025-03-17</td>
+														</tr>
+														<tr>
+															<td>3</td>
+															<td>세 번째 글</td>
+															<td>이영희</td>
+															<td>2025-03-16</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
 										</div>
-								</div>
+									</div>
 
 
 
@@ -898,42 +853,42 @@
 										<button class="btn-open-modalR">목록보기</button>
 										<button>저장하기</button>
 										<div class="modalR">
-												<div class="modal_bodyR">
-														<span class="close-btnR">&times;</span> <!-- 'X' 버튼 -->
-														<h2>게시판 리스트</h2>
-														<table>
-																<thead>
-																		<tr>
-																				<th>글 번호</th>
-																				<th>제목</th>
-																				<th>저자</th>
-																				<th>작성 날짜</th>
-																		</tr>
-																</thead>
-																<tbody>
-																		<tr>
-																				<td>1</td>
-																				<td>첫 번째 글</td>
-																				<td>홍길동</td>
-																				<td>2025-03-18</td>
-																		</tr>
-																		<tr>
-																				<td>2</td>
-																				<td>두 번째 글</td>
-																				<td>김철수</td>
-																				<td>2025-03-17</td>
-																		</tr>
-																		<tr>
-																				<td>3</td>
-																				<td>세 번째 글</td>
-																				<td>이영희</td>
-																				<td>2025-03-16</td>
-																		</tr>
-																</tbody>
-														</table>
-												</div>
+											<div class="modal_bodyR">
+												<span class="close-btnR">&times;</span> <!-- 'X' 버튼 -->
+												<h2>게시판 리스트</h2>
+												<table>
+													<thead>
+														<tr>
+															<th>글 번호</th>
+															<th>제목</th>
+															<th>저자</th>
+															<th>작성 날짜</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>1</td>
+															<td>첫 번째 글</td>
+															<td>홍길동</td>
+															<td>2025-03-18</td>
+														</tr>
+														<tr>
+															<td>2</td>
+															<td>두 번째 글</td>
+															<td>김철수</td>
+															<td>2025-03-17</td>
+														</tr>
+														<tr>
+															<td>3</td>
+															<td>세 번째 글</td>
+															<td>이영희</td>
+															<td>2025-03-16</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
 										</div>
-								</div>
+									</div>
 
 
 
@@ -1007,8 +962,8 @@
 				}
 
 				function mypage() {
-	     location.href="<%= contextPath %>/views/member/myPage.jsp";
-	   }
+					location.href = "<%= contextPath %>/views/member/myPage.jsp";
+				}
 			</script>
 
 			<script>
@@ -1070,23 +1025,6 @@
 				});
 			</script>
 
-			<!-- -------------------------------------------------------------------- -->
-			<script>
-        const modal = document.querySelector('.modal');
-        const btnOpenModal=document.querySelector('.btn-open-modal');
-
-        btnOpenModal.addEventListener("click", ()=>{
-            modal.style.display="flex";
-        });
-    </script>
 		</body>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 		</html>
-=======
-</html>
->>>>>>> 44359ee49f7bde6d702f716f8b0199ba74ffbf10
-=======
-		</html>
->>>>>>> Modal

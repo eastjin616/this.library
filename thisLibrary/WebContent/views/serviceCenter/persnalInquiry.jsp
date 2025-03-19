@@ -123,8 +123,9 @@
 
         /*-------------------------------------------------------------  */
         .wrap2 {
-          width: 100%;
+          width: 60%;
           box-sizing: border-box;
+          margin: auto;
         }
 
         .wrap2>div {
@@ -247,10 +248,10 @@
                   style="height: 100%; width: 100%;"></a>
             </div>
             <div id="navigator">
-              <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
-              <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
+              <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a>
+              <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a>
               <a href="<%= contextPath %>/list.bo">자유게시판</a>
-              <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
+              <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a>
               <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
             </div>
             <div id="header_login_btn" style="height: 100%; width: 9%;">
@@ -281,65 +282,68 @@
             <hr>
           </div>
 
-          <div class="content4">
 
-            <div id="content4_1" class="content">
-              <div class="label">이름 </div>
-              <div class="input-container"><input type="text" placeholder="이름 입력" required></div>
-            </div>
-            <div id="content4_2" class="content">
-              <div class="label">이메일</div>
-              <div class="input-container"><input type="text" placeholder="이메일 입력" required></div>
-            </div>
-            <div id="content4_3" class="content">
-              <div class="label">전화번호</div>
-              <div class="input-container"><input type="text" placeholder="전화번호 입력" required></div>
-            </div>
-            <div id="content4_4" class="content">
-              <div class="label">제목</div>
-              <div class="input-container"><input type="text" placeholder="제목 입력" required></div>
-            </div>
-            <div id="content4_5" class="content">
-              <div class="label">내용</div>
-              <div class="input-container">
-                <textarea name="" id="" placeholder="문의내용 최대 1000자를 입력해주세요." maxlength="1000" required  ></textarea>
+          <form action="<%contextPath>/src/main/java/com/kh/">
+            <div class="content4">
+              <div id="content4_1" class="content">
+                <div class="label">이름 </div>
+                <div class="input-container"><input type="text" placeholder="이름 입력" required></div>
               </div>
-            </div>
-            <br>
-            <hr>
-            <br>
-            <div id="content5" class="content">
-              <div class="label">첨부파일 </div>
-              <div class="beCarefulText">
-                <li>개인정보를 포함한 이미지는 첨부 파일에 업로드할 수 없습니다. </li>
-                <li> 개인정보 - 이름, 주민등록번호, 운전면허번호, 주소, 전화번호, 생년월일, 출생지, 본적지, 성별, 국적</li>
-                <li>이를 어기고 개인정보가 포함된 파일을 업로드된 사실이 확인시 불이익을 받으실수 있습니다.</li>
+              <div id="content4_2" class="content">
+                <div class="label">이메일</div>
+                <div class="input-container"><input type="text" placeholder="이메일 입력" required></div>
               </div>
+              <div id="content4_3" class="content">
+                <div class="label">전화번호</div>
+                <div class="input-container"><input type="text" placeholder="전화번호 입력" required></div>
+              </div>
+              <div id="content4_4" class="content">
+                <div class="label">제목</div>
+                <div class="input-container"><input type="text" placeholder="제목 입력" required></div>
+              </div>
+              <div id="content4_5" class="content">
+                <div class="label">내용</div>
+                <div class="input-container">
+                  <textarea name="" id="" placeholder="문의내용 최대 1000자를 입력해주세요." maxlength="1000" required></textarea>
+                </div>
+              </div>
+          </form>
 
+          <br>
+          <hr>
+          <br>
+          <div id="content5" class="content">
+            <div class="label">첨부파일 </div>
+            <div class="beCarefulText">
+              <li>개인정보를 포함한 이미지는 첨부 파일에 업로드할 수 없습니다. </li>
+              <li> 개인정보 - 이름, 주민등록번호, 운전면허번호, 주소, 전화번호, 생년월일, 출생지, 본적지, 성별, 국적</li>
+              <li>이를 어기고 개인정보가 포함된 파일을 업로드된 사실이 확인시 불이익을 받으실수 있습니다.</li>
             </div>
-            <input type="submit" id="submitTag" value="첨부하기">
 
           </div>
-
+          <input type="submit" id="submitTag" value="첨부하기">
 
         </div>
 
-        <!-- -------------------------------------------------------------------- -->
-        <div id="footer" style="background-color: #fdf5f1;">
-          <div id="footer_1">
-            <div id="footer_1_1">
-              <img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="">
-            </div>
-            <div id="navigator" class="navigator">
-              <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
-              <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
-              <a href="<%= contextPath %>/list.bo">자유게시판</a>
-              <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
-              <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
-            </div>
+
+      </div>
+
+      <!-- -------------------------------------------------------------------- -->
+      <div id="footer" style="background-color: #fdf5f1;">
+        <div id="footer_1">
+          <div id="footer_1_1">
+            <img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="">
           </div>
-          <div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
+          <div id="navigator" class="navigator">
+            <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a>
+            <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a>
+            <a href="<%= contextPath %>/list.bo">자유게시판</a>
+            <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a>
+            <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+          </div>
         </div>
+        <div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
+      </div>
       </div>
 
       <script>
@@ -352,12 +356,12 @@
         }
 
         function mypage() {
-	     location.href="<%= contextPath %>/views/member/myPage.jsp";
-	   }
+          location.href = "<%= contextPath %>/views/member/myPage.jsp";
+        }
 
       </script>
       <!-- -------------------------------------------------------------------- -->
-    <!-- -=======1:1 문의 내용(content) 적을때, 글자수 세는 기능, 글자수 제한 기능) jsp
+      <!-- -=======1:1 문의 내용(content) 적을때, 글자수 세는 기능, 글자수 제한 기능) jsp
     $('#textBox').keyup(function (e) {
 	let content = $(this).val();
     
@@ -379,7 +383,7 @@
 출처: https://anerim.tistory.com/160 [디발자 뚝딱:티스토리]  
     
     -->
-    
+
     </body>
 
 

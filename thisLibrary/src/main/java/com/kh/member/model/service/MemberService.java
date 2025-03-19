@@ -95,7 +95,6 @@ public class MemberService {
 		return memberId;
 		
 	}
-<<<<<<< HEAD
 	
 	public int insertphoto(Member b, ArrayList<Attachment> list) {
 
@@ -117,9 +116,5 @@ public class MemberService {
 	
 	
 	
-=======
-//=================================================
-
->>>>>>> 77c105623c4d6489fc391caf875bcc4a780442d1
 
 }

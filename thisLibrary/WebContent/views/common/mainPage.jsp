@@ -697,7 +697,7 @@ a {
 				<div id="navigator">
 					<a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a> <a
 						href="<%= contextPath %>/views/vote/voteDetailForm.jsp">온라인투표</a>
-					<a href="<%= contextPath %>/list.bo">자유게시판</a> 
+					<a href="<%= contextPath %>/list.bo?cpage=1">자유게시판</a> 
 					<a href="<%= contextPath %>/views/book/bestSeller.jsp">베스트셀러</a> 
 					<a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
 				</div>

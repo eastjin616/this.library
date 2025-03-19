@@ -29,7 +29,7 @@ body * {
 	font-family: 'Gyeonggi_Batang_Regular';
 }
 
-/* div {box-sizing: border-box;border: 1px solid red;} */
+div {box-sizing: border-box;border: 1px solid red;}
 .wrap {
 	width: 1500px;
 	margin: auto;
@@ -84,8 +84,7 @@ body * {
       width: 50%;
       height: 50%;
       border-radius: 5px;
-      background-color: #ea916e;
-      color: white;
+      color: burlywood;
       border: none;
     }
 
@@ -93,7 +92,7 @@ body * {
       width: 50%;
       height: 50%;
       border-radius: 5px;
-      background-color: #ea916e;
+      background-color: burlywood;
       color: white;
       border: none;
     }
@@ -181,9 +180,9 @@ body * {
 					<a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
 				</div>
 				<div id="header_login_btn" style="height: 100%; width: 9%;">
-					<button class="btn" id="login"
+					<a id="login"
 						onclick="location.href='<%=contextPath%>/views/jinsloginform.jsp'">Log
-						In</button>
+						In</a>
 				</div>
 				<div id="header_signin_btn" style="height: 100%; width: 9%;">
 					<button class="btn" id="signin" onclick="signin()">Sign In</button>
@@ -199,8 +198,13 @@ body * {
 		</div>
 <!-- -------------------------------------------------------------------- -->
 
-		
+		<div id="firstbar"></div>
 
+        <div id="content">
+            <div id="booktitle_and_img"></div>
+            <div id="bookexplan"></div>
+            <div id="preview"></div>
+        </div>
 
 
 

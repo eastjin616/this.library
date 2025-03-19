@@ -1,599 +1,355 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<% String contextPath=request.getContextPath(); %>
+	<!DOCTYPE html>
+	<html lang="en">
 
-		<!DOCTYPE html>
-		<html lang="en">
-
-		<head>
-			<meta charset="UTF-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>Document1</title>
-			<!-- <link rel="stylesheet" href="header.css">
-  <link rel="stylesheet" href="content.css">
-  <link rel="stylesheet" href="footer.css"> -->
-
-			<style>
-				@font-face {
-					font-family: 'Gyeonggi_Batang_Regular';
-					src:
-						url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff') format('woff');
-					font-weight: 400;
-					font-style: normal;
-				}
-
-				body * {
-					font-family: 'Gyeonggi_Batang_Regular';
-				}
-
-				/* div {box-sizing: border-box;border: 1px solid red;} */
-				.wrap {
-					width: 1500px;
-					margin: auto;
-					height: auto;
-					overflow: hidden;
-				}
-
-				#header {
-					height: 50px;
-				}
-
-				#footer {
-					height: 150px;
-				}
-
-				#header>div {
-					height: 100%;
-				}
-
-				#header_1>div,
-				#header_1_3>div {
-					float: left;
-				}
-
-				#header_1_1_1 {
-					width: 15%;
-					height: 100%;
-				}
-
-				#navigator {
-					position: relative;
-					width: 60%;
-					height: 100%;
-					display: flex;
-					align-items: center;
-					justify-content: space-around;
-				}
-
-				#navigator>a {
-					text-decoration: none;
-					color: black;
-					font-size: 13px;
-				}
-
-				/*-------------------------------------------------------------  */
-				#header_mypage_btn,
-				#header_login_btn,
-				#header_signin_btn {
-					display: flex;
-					justify-content: center;
-					align-items: center;
-				}
-
-				#login {
-					width: 70%;
-					height: 50%;
-					border-radius: 5px;
-					background-color: #ea916e;
-					color: white;
-					border: none;
-				}
-
-				#signin {
-					width: 70%;
-					height: 50%;
-					border-radius: 5px;
-					background-color: #ea916e;
-					color: white;
-					border: none;
-				}
-
-				/* ---------------------------------------------- */
-				#mypage {
-					border-radius: 50%;
-					width: 50%;
-					height: 50%;
-					background-color: #ea916e;
-					border: none;
-				}
-
-				#mypage>img {
-					width: 90%;
-					height: 60%;
-				}
-
-				/* ---------------------------------------------- */
-				.btn:hover {
-					opacity: 0.7;
-					color: white;
-					cursor: pointer;
-				}
-
-				/*-------------------------------------------------------------  */
-				/* div {box-sizing: border-box;border: 1px solid red;}
-				#content{border: 1px solid red; height: 1000px;} */
-				/* -------------------------------------------------------------- */
-
-				#content_1 {
-					height: 11%;
-				}
-
-
-				/* -------------------------------------------------------------- */
-
-				#content_2 {
-					height: 30%;
-				}
-
-				#content_2_1 {
-					width: 35%;
-					height: 100%;
-					float: left;
-				}
-
-				#content_2_1_1 {
-					height: 90%;
-				}
-
-				#content_2_1_1>img {
-					height: 243.8px;
-					width: 210px;
-					margin-left: 60%;
-				}
-
-				#content_2_1_2>input {
-					margin-left: 78%;
-				}
-
-				#content_2_3_1>img {
-					height: 100%;
-					width: 40%;
-				}
-
-				#content_2_3_2>input {
-					margin-left: 18%;
-				}
-
-				#content_2_1_2 {
-					height: 10%;
-				}
-
-
-				#content_2_2 {
-					width: 30%;
-					height: 100%;
-					float: left;
-					position: relative;
-					display: flex;
-					justify-content: center;
-					align-items: center;
-				}
-
-				#content_2_2 img {
-					position: absolute;
-					width: 20%;
-				}
-
-				#content_2_3 {
-					width: 35%;
-					height: 100%;
-					float: left;
-				}
-
-				#content_2_3_1 {
-					height: 90%;
-				}
-
-				#content_2_3_2 {
-					height: 10%;
-				}
-
-				/* -------------------------------------------------------------- */
-
-				#content_3 {
-					height: 59%;
-				}
-
-				#content_3_1 {
-					height: 5%;
-				}
-
-				#content_3_2 {
-					height: 10%;
-				}
-
-				#content_3_2_1 {
-					height: 100%;
-					width: 20%;
-					float: left;
-				}
-
-				#content_3_2_1>h1 {
-					margin-left: 20%;
-				}
-
-				#content_3_2_2 {
-					height: 100%;
-					width: 60%;
-					float: left;
-				}
-
-				#content_3_2_3 {
-					height: 100%;
-					width: 20%;
-					float: left;
-				}
-
-				#content_3_2_3>button {
-					width: 70px;
-					height: 30px;
-					margin-left: 50%;
-					border-radius: 5px;
-					margin-top: 20px;
-					background-color: #ea916e;
-					color: white;
-				}
-
-
-				.comment-box {
-					width: 90%;
-					height: 80%;
-					max-width: 1500x;
-					border: 1px solid #ccc;
-					border-radius: 10px;
-					padding: 10px;
-					position: relative;
-				}
-
-				.comment-box textarea {
-					width: 100%;
-					height: 80px;
-					border: none;
-					outline: none;
-					resize: none;
-					font-size: 14px;
-					color: #333;
-					font-family: Arial, sans-serif;
-				}
-
-				.comment-box textarea::placeholder {
-					color: #bbb;
-				}
-
-				.comment-box .char-count {
-					text-align: right;
-					font-size: 12px;
-					color: #999;
-					margin-left: auto;
-				}
-
-				.char-count {
-					width: 100px;
-				}
-
-				#content_3_3 {
-					width: 1500px;
-					height: 30%;
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					flex-direction: column;
-					margin: auto;
-				}
-
-				#content_3_3>input {
-					height: 80%;
-					width: 90%;
-					border-radius: 10px;
-				}
-
-
-				#content_3_4 {
-					height: 25%;
-
-				}
-
-				#content_3_4_1,
-				#content_3_4_2 {
-					width: 100%;
-					height: 20%;
-					float: left;
-				}
-
-				#content_3_4_1_1,
-				#content_3_4_1_2,
-				#content_3_4_1_3 {
-					float: left;
-				}
-
-				#content_3_4_1_1 {
-					width: 20%;
-					height: 100%;
-					text-align: right;
-					float: left;
-					margin-left: 5%;
-				}
-
-
-
-				#userId {
-					width: 70%;
-					text-align: left;
-				}
-
-				#date {
-					width: 30%;
-					float: right;
-				}
-
-				#content_3_4_2 {
-					text-align: left;
-				}
-
-				#content_3_4_1_2 {
-					width: 30%;
-					height: 100%;
-					margin-right: auto;
-				}
-
-				#content_3_4_1_2 button {
-					margin-left: 5%;
-				}
-
-				#content_3_4_1_3 {
-					width: 40%;
-					height: 100%;
-					text-align: right;
-				}
-
-				#content_3_4_1_3 button {
-					border: 0;
-					background-color: transparent;
-				}
-
-				#content_3_4_1_4 {
-
-					height: 75%;
-				}
-
-				#content_3_4_2 {
-					height: 80%;
-					width: 100%;
-				}
-
-
-				pre{margin-left: 5%;}
-
-				.pagination {
-					height: 5%; ;
-					text-align: center;
-				}
-
-				.pagination a {
-					margin: 0 5px;
-					text-decoration: none;
-					color: #333;
-				}
-
-				#etc {
-					height: 10%;
-				}
-
-				/* -------------------------------------------------------------- */
-
-
-				/* ==============footer======================================= */
-				#footer_1 {
-					width: 100%;
-					height: 65%;
-				}
-
-				#footer_1>div {
-					float: left;
-				}
-
-				#footer_1_1 {
-					height: 100%;
-					width: 20%;
-				}
-
-				#footer_1_1>img {
-					display: flex;
-					margin: auto;
-					width: 60%;
-					height: 60%;
-					margin-top: 20%;
-				}
-
-				#footer_2 {
-					width: 100%;
-					height: 35%;
-					text-align: center;
-					margin-top: 2%;
-				}
-			</style>
-		</head>
+	<head>
 		<meta charset="UTF-8">
-		<!-- ------------------------------------------------------------------ -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>관리자 페이지</title>
 
-		<body>
-			<div class="wrap">
-				<div id="header">
-					<div id="header_1">
-						<div id="header_1_1_1">
-							<a href="<%=contextPath%>"><img src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt=""
-									style="height: 100%; width: 100%;"></a> alt="" style="height:
-							100%; width: 100%;">
-						</div>
-						<div id="navigator">
-							<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="">자유게시판</a>
-							<a href="">마이페이지</a> <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
-						</div>
-						<div id="header_login_btn" style="height: 100%; width: 9%;">
-							<button class="btn" id="login" onclick="location.href='<%=contextPath%>/views/jinsloginform.jsp'">Log
-								In</button>
-						</div>
-						<div id="header_signin_btn" style="height: 100%; width: 9%;">
-							<button class="btn" id="signin" onclick="signin()">Sign In</button>
-						</div>
-						<div id="header_mypage_btn" style="height: 100%; width: 7%;">
-							<button class="btn" id="mypage">
-								<img src="<%=contextPath%>/views/common/assets/user01.png" alt="">
-							</button>
-						</div>
+		<style>
+			.wrap {
+				width: 1800px;
+				margin: auto;
+				height: auto;
+				overflow: hidden;
+				border: 1px solid;
+			}
 
+			.content1 {
+				height: 100px;
+				background-color: #d88634;
+				position: relative;
+			}
+
+			#content1_text {
+				position: absolute;
+				right: 50px;
+				bottom: 10px;
+				color: white;
+				font-size: 20px;
+
+			}
+
+			.content2 {
+				display: flex;
+				height: 1000px;
+			}
+
+			#main-content1 {
+				width: 25%;
+				border: 1px solid;
+				background-color: rgb(248, 215, 220);
+			}
+
+			#main-content2 {
+				width: 75%;
+				border: 1px solid;
+			}
+
+			#profile-photo {
+				height: 40%;
+				border: 1px solid;
+			}
+
+			#photo {
+				height: 90%;
+				border-radius: 50%;
+			}
+
+			#userName {
+				text-align: center;
+				height: 10%;
+				box-sizing: border-box;
+			}
+
+			#tab1,
+			#tab2 {
+				display: flex;
+				width: 100%;
+				height: 12%;
+				box-sizing: border-box;
+				cursor: pointer;
+			}
+
+			#tab1:hover,
+			#tab2:hover {
+				background-color: orange;
+			}
+
+			#tab1:active {
+				background-color: orange;
+			}
+
+			#tab1_1 {
+				width: 10px;
+			}
+
+			#tab1_2 {
+				width: 20px;
+				background-color: #d88634;
+			}
+
+			#tab1_3 {
+				width: 100px;
+				margin: auto;
+			}
+
+			#tab1_4 {
+				width: 300px;
+				margin: auto;
+			}
+
+			#tab1_3>img {
+				width: 90px;
+			}
+
+
+
+
+			#tab2_1 {
+				width: 100px;
+			}
+
+			#photo {
+				background-image: url("../assets/chill.png");
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+
+
+
+			.userInfo {
+				width: 1200px;
+				;
+				margin: auto;
+				height: 800px;
+				border-radius: 10%;
+				margin-top: 100px;
+			}
+
+			.container {
+				width: 80%;
+				margin: 20px auto;
+				display: flex;
+			}
+
+			.table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-top: 10px;
+			}
+
+			.table th,
+			.table td {
+				border: 1px solid #ddd;
+				padding: 10px;
+				text-align: left;
+			}
+
+			.table th {
+				background-color: #f4f4f4;
+			}
+
+			.user-img {
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+				margin-right: 10px;
+			}
+
+			.btn {
+				background-color: #f4a261;
+				color: white;
+				padding: 8px 12px;
+				border: none;
+				cursor: pointer;
+				border-radius: 5px;
+				justify-items: right;
+			}
+
+			.pagination {
+				margin-top: 10px;
+				text-align: center;
+			}
+
+			.pagination button {
+				padding: 5px 10px;
+				margin: 3px;
+				border: 1px solid #ddd;
+				background-color: white;
+				cursor: pointer;
+			}
+
+			.pagination .active {
+				background-color: #6c5ce7;
+				color: white;
+			}
+
+			.card {
+				width: 30%;
+				aspect-ratio: 2 / 3;
+				background: #c0ddfa;
+				border-radius: 20px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+				overflow: hidden;
+				cursor: pointer;
+				margin: auto;
+				margin-top: 200px;
+				transition: transform 0.75s;
+				position: relative;
+			}
+
+			.upload-icon {
+				font-size: 24px;
+				color: #999;
+			}
+
+			.card:hover {
+				transform: scale(1.1);
+				border-radius: 50%;
+			}
+
+			.card img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				position: absolute;
+				margin-right: 10px;
+			}
+
+			.upload-icon {
+				position: absolute;
+				font-size: 24px;
+				color: #6c757d;
+				z-index: 1;
+			}
+
+			input[type="file"] {
+				display: none;
+			}
+		</style>
+	</head>
+	<meta charset="UTF-8">
+
+
+	<body>
+		<div class="wrap">
+			<div class="content1">
+				<div id="content1_text">관리자 페이지</div>
+			</div>
+			<div class="content2">
+				<div id="main-content1">
+					<div id="profile-photo">
+						<div id="photo"></div>
+						<div id="userName">여기는 관리자 아이디가 올 자리입니다. </div>
 					</div>
+					<div id="tab1">
+						<div id="tab1_1"></div>
+						<div id="tab1_2"></div>
+						<div id="tab1_3"><img src="../assets/book.png" alt=""></div>
+						<div id="tab1_4">모든 회원 정보</div>
+					</div>
+					<br>
+					<div id="tab2">
+						<div id="tab1_1"></div>
+						<div id="tab1_2"></div>
+						<div id="tab1_3"><img src="../assets/facebook.png" alt=""></div>
+						<div id="tab1_4"> 관리자 PICK</div>
+					</div>
+
 				</div>
-				<!-- -------------------------------------------------------------------- -->
+				<div id="main-content2">
 
-
-				<div id="content">
-					<div id="content_1">
-						<center>
-							<h1>투표 제목</h1>
-						</center>
-						<center>
-							<h2>어떤 살아남기가 더 재미있었나요?</h2>
-						</center>
-					</div>
-
-					<!-- ---------------------------------------------------------------------- -->
-					<div id="content_2">
-						<div id="content_2_1">
-							<div id="content_2_1_1">
-								<img src="WebContent/resources/assets/book3.jpg" alt="">
-							</div>
-							<div id="content_2_1_2"><input type="radio"></div>
-
+					<div class="container">
+						<div class="card" onclick="uploadImage(0)">
+							<span class="upload-icon">➕</span>
+							<input type="button" accept="image">
 						</div>
-						<div id="content_2_2"><img src="WebContent/resources/assets/vs.png" alt=""></div>
-						<div id="content_2_3">
-							<div id="content_2_3_1">
-								<img src="WebContent/resources/assets/book5.jpg" alt="">
-							</div>
-							<div id="content_2_3_2"><input type="radio"></div>
+						<div class="card" onclick="uploadImage(1)">
+							<span class="upload-icon">➕</span>
+							<input type="button" accept="image">
+						</div>
+						<div class="card" onclick="uploadImage(2)">
+							<span class="upload-icon">➕</span>
+							<input type="button" accept="image">
 						</div>
 					</div>
-					<!-- ---------------------------------------------------------------------- -->
 
-					<hr>
-					<div id="content_3">
-						<div id="content_3_1"></div>
-
-
-						<div id="content_3_2">
-							<div id="content_3_2_1">
-								<h1>댓글</h1>
-							</div>
-							<div id="content_3_2_2"></div>
-							<div id="content_3_2_3">
-								<button>작성하기</button>
-							</div>
-						</div>
-
-
-						<div id="content_3_3">
-							<div class="comment-box">
-								<textarea placeholder="댓글을 작성해 주세요 (여기에 커서가 있어요!)" maxlength="300"></textarea>
-								<div class="char-count" align="right">0 / 300 자</div>
-							</div>
-						</div>
-
-						<hr>
-
-						<div id="content_3_4">
-							<div id="content_3_4_1">
-
-								<div id="content_3_4_1_1">
-									<div id="userId">작성자:작성자2 &nbsp;&nbsp;&nbsp; | <div id="date">2025.02.18</div>
-									</div>
-								</div>
-
-								<div id="content_3_4_1_2">
-									<button>팔로우</button>
-								</div>
-								<div id="content_3_4_1_3">
-									<button>수정&nbsp; &nbsp;|</button> <button>삭제</button>
-								</div>
-							</div>
-							<pre id="content_3_4_2">
-어우 완전 책 내용 오지고 지리고 렛잇고~렛잇비~
-엄청난걸요 ~ 소 익사이팅~
-댓츠 롸잇 정확해~!
-			</pre>
-
-						</div>
-						<div id="content_3_4">
-							<div id="content_3_4_1">
-								<div id="content_3_4_1_1">
-									<div id="userId">작성자:작성자2 &nbsp;&nbsp;&nbsp; | <div id="date">2025.02.18</div>
-									</div>
-								</div>
-								<div id="content_3_4_1_2">
-									<button>팔로우</button>
-								</div>
-								<div id="content_3_4_1_3">
-									<button>수정 &nbsp; &nbsp; |</button> <button>삭제</button>
-								</div>
-
-							</div>
-							<pre id="content_3_4_2">
-어우 완전 책 내용 오지고 지리고 렛잇고~렛잇비~
-엄청난걸요 ~ 소 익사이팅~
-댓츠 롸잇 정확해~!
-				</pre>
-						</div>
-					</div>
-							<div class="pagination">
-								<a href="#">1</a>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#">4</a>
-								<a href="#">5</a>
-					</div>
-				</div>
-
-				<div id="etc"></div>
-
-
-
-				<!-- -------------------------------------------------------------------- -->
-				<div id="footer" style="background-color: #fdf5f1;">
-					<div id="footer_1">
-						<div id="footer_1_1">
-							<img src="<%=contextPath%>/views/common/assets/This_서고 로고.png" alt="">
-						</div>
-						<div id="navigator" class="navigator">
-							<a a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a href="">온라인투표</a> <a href="">자유게시판</a>
-							<a href="">마이페이지</a> <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
-						</div>
-					</div>
-					<div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
 				</div>
 			</div>
+		</div>
+		<!--
+<script>
+    let tap1Active = false;
 
-			<script>
-				function login() {
-					location.href = "<%=contextPath%>/views/member/loginform.jsp";
-				}
+    document.getElementById('tap1').addEventListener('click', function() {
+        if (!tap1Active) {
+            this.classList.add('active');
+            tap1Active = true;
+        }
+    });
 
-			</script>
+    document.getElementById('tap2').addEventListener('click', function() {
+        // tap1의 배경색을 유지하고 tap2의 배경색을 변경할 수 있습니다.
+        document.getElementById('tap1').classList.remove('active'); // tap1의 배경색을 원래대로 되돌림
+        this.classList.add('active'); // tap2의 배경색을 변경
+        tap1Active = false; // tap1의 상태를 초기화
+    });
+</script>
+좌측에 프로필 사진 밑에 위치한 tab1(모든회원정보), tab2(관리자PICK) 을 클릭시, 색이 변하고, 
+다른 탭을 클릭할때 까지 색이 변하지 않고 그대로 고정하고 싶었다. 
+하지만 CSS 에서는 불가능하다고 함. 
+하여, SCRIPT 를 적어보았습니다만, 완벽하지 않으니 주의 바람.-호
+-->
+		<script>
+			function uploadImage(index) {
+				let input = document.createElement("input");
+				input.type = "file";
+				input.accept = "image/*";
 
-			<script>
-				function signin() {
-					location.href = "<%=contextPath%>/views/member/signin.jsp";
-				}
-			</script>
-			<!-- -------------------------------------------------------------------- -->
-		</body>
+				// 파일 선택 시 실행될 이벤트 리스너 추가
+				input.onchange = function (event) {
+					let file = event.target.files[0];
+					if (file) {
+						let reader = new FileReader();
+						reader.onload = function (e) {
+							// Base64 문자열을 서버로 전송
+							sendBase64ToServer(e.target.result, index);
+						};
+						reader.readAsDataURL(file);  // 이미지를 Base64로 읽기
+					}
+				};
 
-		</html>
+				input.click(); // 파일 선택 창 열기
+			}
+
+			function sendBase64ToServer(base64String, index) {
+				// AJAX를 사용하여 Base64 데이터를 서버에 전송
+				let xhr = new XMLHttpRequest();
+				xhr.open('POST', 'uploadImage.jsp', true);
+				xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+				xhr.onload = function () {
+					if (xhr.status == 200) {
+						// 서버에서 응답이 오면, 성공적으로 처리된 이미지 경로로 배경 설정
+						let cards = document.querySelectorAll(".card");
+						cards[index].style.backgroundImage = `url('${base64String}')`;
+						cards[index].style.backgroundSize = "cover";
+						cards[index].style.backgroundPosition = "center";
+						cards[index].innerHTML = "";  // "+" 아이콘 제거
+					}
+				};
+				xhr.send('imageData=' + encodeURIComponent(base64String)); // Base64 이미지 데이터 전송
+			}
+
+
+		</script>
+
+
+	</body>
+
+	</html>

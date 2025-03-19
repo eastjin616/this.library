@@ -304,7 +304,7 @@
 					<meta charset="UTF-8">
 					<!-- ------------------------------------------------------------------ -->
 
-					<body>
+
 						<script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
 						<div class="wrap">
 							<div id="header">

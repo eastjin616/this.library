@@ -95,5 +95,10 @@ public class MemberService {
 	}
 //=================================================
 
-
+	public int nickCheck(String nickname) {
+		Connection conn = getConnection();
+		int count = new MemberDao().nickCheck(conn, nickname);
+		close(conn);
+		return count;
+	}
 }

@@ -17,8 +17,8 @@
 <!-- <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="content.css">
   <link rel="stylesheet" href="footer.css"> -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <style>
 @font-face {
 	font-family: 'Chosunilbo_myungjo';
@@ -193,37 +193,38 @@ body * {
 		<script>
 					alert('<%=alertMsg%>');
 				</script>
-				
-	<% } %>
-  <div class="wrap">
-    <div id="header">
-      <div id="header_1">
-          <div id="header_1_1_1">
-						<a href="<%= contextPath %>/views/common/mainPage.jsp"><img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;"></a>
-          </div>
-          <div id="navigator">
-						<a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
-						<a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
-						<a href="<%= contextPath %>/list.bo">자유게시판</a>
-						<a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
-						<a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+
+		<% } %>
+		<div class="wrap">
+			<div id="header">
+				<div id="header_1">
+					<div id="header_1_1_1">
+						<a href="<%= contextPath %>/views/common/mainPage.jsp"><img
+							src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""
+							style="height: 100%; width: 100%;"></a>
 					</div>
-          <div id="header_login_btn" style="height: 100%; width: 9%;">
-            <button class="btn" id="login"
-						onclick="location.href='<%= contextPath %>/views/member/loginform.jsp'" 
-            style="display: flex;
-            justify-content: center;
-            align-items: center;">LogIn</button>
-										</div>
-										<div id="header_signin_btn" style="height: 100%; width: 9%;">
-											<button class="btn" id="signin" onclick="signin()" style="display: flex;
-            justify-content: center;
-            align-items: center;">Sign In</button>
-										</div>
-										<div id="header_mypage_btn" style="height: 100%; width: 7%;">
-											<button class="btn" id="mypage"><img src="<%= contextPath %>/resources/assets/user01.png"
-													alt=""></button>
-										</div>
+					<div id="navigator">
+						<a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a
+							href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> <a
+							href="<%= contextPath %>/list.bo">자유게시판</a> <a
+							href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> <a
+							href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+					</div>
+					<div id="header_login_btn" style="height: 100%; width: 9%;">
+						<button class="btn" id="login"
+							onclick="location.href='<%= contextPath %>/views/member/loginform.jsp'"
+							style="display: flex; justify-content: center; align-items: center;">LogIn</button>
+					</div>
+					<div id="header_signin_btn" style="height: 100%; width: 9%;">
+						<button class="btn" id="signin" onclick="signin()"
+							style="display: flex; justify-content: center; align-items: center;">Sign
+							In</button>
+					</div>
+					<div id="header_mypage_btn" style="height: 100%; width: 7%;">
+						<button class="btn" id="mypage">
+							<img src="<%= contextPath %>/resources/assets/user01.png" alt="">
+						</button>
+					</div>
 
 				</div>
 			</div>
@@ -255,15 +256,18 @@ body * {
 
 				<div class="form-group">
 					<label for="inputName">아이디</label> <input type="text"
-						class="form-control" name="id" placeholder="아이디를 입력해 주세요" required>
+						class="form-control" name="id"
+						placeholder="4~12자의 영문 대소문자와 숫자로만 입력" required>
 					<button class="btn btn-default addressbtn" type="button"
-						onClick="idCheck()" id="dupl_btn">중복확인</button>
+						onclick="idCheck()" id="dupl_btn">중복확인</button>
 				</div>
 
 				<div class="form-group">
 					<label for="inputPassword">닉네임</label> <label for=""></label><input
-						type="text" class="form-control" name="nickname"
-						placeholder="닉네임을 입력해주세요" required>
+						type="text" class="form-control" name="nickname" id="nickname"
+						placeholder="닉네임을 2글자 이상 입력해주세요" required>
+					<button class="btn btn-default addressbtn" type="button"
+						onclick="checkNick()" id="dupl_btn">중복확인</button>
 				</div>
 
 				<div class="form-group">
@@ -273,12 +277,11 @@ body * {
 				</div>
 
 				<div class="form-group">
-					<label for="inputPassword">비밀번호 확인</label> <input
-						type="password" class="form-control"  name="checkPassword" id="checkPassword"
+					<label for="inputPassword">비밀번호 확인</label> <input type="password"
+						class="form-control" name="checkPassword" id="checkPassword"
 						placeholder="비밀번호를 입력해주세요" oninput="checkpwd()" required>
 				</div>
-						 <span id="pwd-result" style="margin-left: 25%;"></span>
-				<br>
+				<span id="pwd-result" style="margin-left: 25%;"></span> <br>
 				<div class="form-group">
 					<label>주소</label> <input type="text" class="form-control"
 						id="zipNo" name="post" placeholder="우편번호">
@@ -343,22 +346,24 @@ body * {
 
 
 
-<!-- -------------------------------------------------------------------- -->
-<div id="footer" style="background-color: #fdf5f1;">
-	<div id="footer_1">
-		<div id="footer_1_1"><a href="<%= contextPath %>/views/common/mainPage.jsp"><img
-					src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""></a></div>
-		<div id="navigator" class="navigator">
-			<a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
-			<a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
-			<a href="<%= contextPath %>/list.bo">자유게시판</a>
-			<a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
-			<a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+	<!-- -------------------------------------------------------------------- -->
+	<div id="footer" style="background-color: #fdf5f1;">
+		<div id="footer_1">
+			<div id="footer_1_1">
+				<a href="<%= contextPath %>/views/common/mainPage.jsp"><img
+					src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""></a>
+			</div>
+			<div id="navigator" class="navigator">
+				<a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> <a
+					href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> <a
+					href="<%= contextPath %>/list.bo">자유게시판</a> <a
+					href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> <a
+					href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+			</div>
 		</div>
+		<div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
 	</div>
-	<div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
-</div>
-</div>
+	</div>
 
 	<script>
 	function login() {
@@ -419,21 +424,79 @@ function validatePassword() {
   return true; // 모든 조건이 충족되면 true 반환
 }
 
-	function checkpwd(){
-			var pwd1 = document.getElementById('password').value
-			var pwd2 = document.getElementById('checkPassword').value
-			var result = document.getElementById('pwd-result');
-			
-			if (pwd1 == pwd2) {
-				result.innerHTML = '비밀번호가 일치합니다.'; // 일치하면 '일치합니다.' 출력
-				result.style.color = 'blue'; // 파란색
-			
-			} else {
-				result.innerHTML = '비밀번호가 일치하지 않습니다.'; // 일치하지 않으면 '일치하지 않습니다.' 출력
-				result.style.color = 'red'; // 빨간색
-			}
+function checkpwd(){
+	var pwd1 = document.getElementById('password').value
+	var pwd2 = document.getElementById('checkPassword').value
+	var result = document.getElementById('pwd-result');
+	
+	if (pwd1 == pwd2) {
+		result.innerHTML = '비밀번호가 일치합니다.'; // 일치하면 '일치합니다.' 출력
+		result.style.color = 'blue'; // 파란색
+	
+	} else {
+		result.innerHTML = '비밀번호가 일치하지 않습니다.'; // 일치하지 않으면 '일치하지 않습니다.' 출력
+		result.style.color = 'red'; // 빨간색
+	}
 }
 </script>
+	<!-- ---------------------------------------------------------------------- -->
+<script>
+<script>
+function checkNick() {
+    var nickname = document.getElementById('nickname').value.trim(); // 공백 제거
+    var nickLength = 0;
+
+    var specialCheck = /[`~!@#$%^&*|\\"';:/?]/gi; // 특수문자 검사
+
+    // 닉네임 길이 계산
+    for (var i = 0; i < nickname.length; i++) {
+        var nick = nickname.charAt(i);
+        if (encodeURIComponent(nick).length > 4) {
+            nickLength += 2; // 한글 1자 = 2byte
+        } else {
+            nickLength += 1; // 영문, 숫자 1자 = 1byte
+        }
+    }
+
+    if (nickname === "") {
+        alert("닉네임 입력은 필수입니다.");
+    } else if (/\s/.test(nickname)) {
+        alert("닉네임은 빈 칸을 포함할 수 없습니다.");
+    } else if (nickLength < 2 || nickLength > 20) {
+        alert("닉네임은 한글 1~10자, 영문 및 숫자 2~20자 입니다.");
+    } else if (specialCheck.test(nickname)) {
+        alert("닉네임은 특수문자를 포함할 수 없습니다.");
+    } else {
+        // Ajax를 통한 닉네임 중복 체크
+        const $nickInput = $("input[name=nickname]");
+        $.ajax({
+            url: "<%=contextPath%>/nickCheck.me",
+            data: { nickname: $nickInput.val() },
+            type: "post",
+            success: function(result) {
+                if (result === 'NNNNN') { // 사용 불가능할 경우
+                    alert("이미 존재하는 회원의 닉네임입니다.");
+                    $nickInput.focus(); // 다시 입력할 수 있도록 유도
+                } else { // 사용 가능할 경우
+                    if (confirm("사용 가능한 닉네임입니다. 사용하시겠습니까?")) {
+                        $nickInput.attr("readonly", true);
+                        $("#enroll-form :submit").removeAttr("disabled");
+                    } else {
+                        $nickInput.focus(); // 다시 입력할 수 있도록 유도
+                    }
+                }
+            },
+            error: function() {
+                console.log("닉네임 중복 체크 Ajax 통신 실패");
+            }
+        });
+    }
+}
+</script>
+
+
+
+
 	<!-- -------------------------------------------------------------------- -->
 
 	<!-- -------------------------------------------------------------------- -->

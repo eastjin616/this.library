@@ -72,4 +72,10 @@
 		 WHERE MEM_NAME = ?
 		   AND EMAIL = ?
 	</entry>
+	<entry key="nickCheck">
+		SELECT 
+		       COUNT(*) AS COUNT
+		  FROM MEMBER
+		 WHERE NICKNAME = ?
+	</entry>
 </properties>

@@ -10,6 +10,8 @@ String contextPath = request.getContextPath();
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document1</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <!-- <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="content.css">
   <link rel="stylesheet" href="footer.css"> -->
@@ -326,7 +328,6 @@ hr{
 			</div>
 		</div>
 		<!-- -------------------------------------------------------------------- -->
-
 		
 
     <div id="wrapContent">
@@ -334,7 +335,7 @@ hr{
         <div id="content_1">
           <div id="content_1_1">
             <div id="genreTitle">
-              장르 <button id="genreBtn">▼</button>
+              장르 <button id="genreBtn" type="to" >▼</button>
             </div>
             <div id="spare"></div>
             <div id="checkBox">
@@ -511,19 +512,22 @@ hr{
 		</div>
 	</div>
 
-	<script>
+<script type="text/javascript">
+  $(document).ready(function() {
+   $('#checkBox').hide();
+   $('#genreBtn').click(function() {
+      $('#checkBox').slideToggle("fast");
+   });
+  });
+  
   function login() {
 	     location.href="<%=contextPath%>/views/member/loginform.jsp";
 	   }
 
-  </script>
-
-	<script>
-  function signin() {에스프레소
+  function signin() {
 	     location.href="<%=contextPath%>/views/member/signin.jsp";
 		}
-	</script>
+  </script>
 	<!-- -------------------------------------------------------------------- -->
 </body>
-
 </html>

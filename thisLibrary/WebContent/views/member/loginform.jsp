@@ -508,16 +508,12 @@
 							function naver() {
 								location.href = "<%=contextPath%>/views/common/jins/naverlogin.jsp";
 							}
-						</script>
-
-						<script>
+						
 							function login() {
 								location.href = "<%=contextPath%>/views/member/loginform.jsp";
 							}
 
 
-						</script>
-						<script>
 							function signin() {
 								location.href = "<%=contextPath%>/views/member/signin.jsp";
 							}

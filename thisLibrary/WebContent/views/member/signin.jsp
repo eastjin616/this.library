@@ -263,7 +263,7 @@ body * {
 				</div>
 
 				<div class="form-group">
-					<label for="inputPassword">닉네임</label> <label for=""></label><input
+					<label for="inputPassword">닉네임</label><input
 						type="text" class="form-control" name="nickname" id="nickname"
 						placeholder="닉네임을 2글자 이상 입력해주세요" required>
 					<button class="btn btn-default addressbtn" type="button"
@@ -441,12 +441,13 @@ function checkpwd(){
 </script>
 	<!-- ---------------------------------------------------------------------- -->
 <script>
-<script>
 function checkNick() {
     var nickname = document.getElementById('nickname').value.trim(); // 공백 제거
-    var nickLength = 0;
 
+    var engCheck = /[a-z]/;
+    var numCheck = /[0-9]/;
     var specialCheck = /[`~!@#$%^&*|\\"';:/?]/gi; // 특수문자 검사
+    var nickLength = 0;
 
     // 닉네임 길이 계산
     for (var i = 0; i < nickname.length; i++) {
@@ -493,9 +494,6 @@ function checkNick() {
     }
 }
 </script>
-
-
-
 
 	<!-- -------------------------------------------------------------------- -->
 

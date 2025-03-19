@@ -291,6 +291,13 @@
           background-color: #c9302c;
         }
 
+        .reply-box,
+        #btnContainer {
+          max-height: 0;
+          opacity: 0;
+          overflow: hidden;
+          transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
+        }
 
 
         /* ==============footer======================================= */
@@ -334,10 +341,10 @@
                 style="height: 100%; width: 100%;">
             </div>
             <div id="navigator">
-              <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
-              <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
+              <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a>
+              <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a>
               <a href="<%= contextPath %>/list.bo">자유게시판</a>
-              <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
+              <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a>
               <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
             </div>
             <div id="header_login_btn" style="height: 100%; width: 9%;">
@@ -366,9 +373,9 @@
               </div>
 
 
-              <div id="questionBox1" class="questionBox1">
+              <div class="questionBox1">
                 <a href="#">검색이 되지 않거나 품절 / 절판이 된 도서는 구입할 수 없나요?</a>
-                  <span class="material-symbols-outlined">keyboard_double_arrow_down</span>
+                <span class="material-symbols-outlined">keyboard_double_arrow_down</span>
               </div>
               <!-- 관리자 답변 입력 영역 -->
               <div id="fnqReply" class="reply-box">
@@ -383,18 +390,56 @@
                 <button id="adminDeleteBtn">삭제하기</button>
               </div>
 
-              <div id="questionBox1" class="questionBox1"><a href="">This.서재에 없는 책은 무엇인가요?</a><span
+              <div class="questionBox1"><a href="">This.서재에 없는 책은 무엇인가요?</a><span class="material-symbols-outlined">
+                  keyboard_double_arrow_down
+                </span></div>
+                <!-- 관리자 답변 입력 영역 -->
+              <div id="fnqReply" class="reply-box">
+                <p><strong>작성자:</strong> admin</p>
+                <p><strong>작성일자:</strong> <span id="replyDate"></span></p>
+                <textarea id="adminReply" placeholder="답변을 입력하세요..."></textarea>
+              </div>
+
+              <!-- 버튼 컨테이너 -->
+              <div id="btnContainer">
+                <button id="adminEnrollBtn">작성하기</button>
+                <button id="adminDeleteBtn">삭제하기</button>
+              </div>
+
+
+              <div class="questionBox1"><a href="">도서카테고리 별 분류는 어디서 볼수 있는 건가요?</a><span
                   class="material-symbols-outlined">
                   keyboard_double_arrow_down
-                </span></div><br>
-              <div id="questionBox1" class="questionBox1"><a href="">도서카테고리 별 분류는 어디서 볼수 있는 건가요?</a><span
-                  class="material-symbols-outlined">
-                  keyboard_double_arrow_down
-                </span></div><br>
-              <div id="questionBox1" class="questionBox1"><a href="">아 저기서 여기서 이렇게 하면 되는거라구요? 예?!? 왜? 어쨰서?
+                </span></div>
+                <!-- 관리자 답변 입력 영역 -->
+              <div id="fnqReply" class="reply-box">
+                <p><strong>작성자:</strong> admin</p>
+                <p><strong>작성일자:</strong> <span id="replyDate"></span></p>
+                <textarea id="adminReply" placeholder="답변을 입력하세요..."></textarea>
+              </div>
+
+              <!-- 버튼 컨테이너 -->
+              <div id="btnContainer">
+                <button id="adminEnrollBtn">작성하기</button>
+                <button id="adminDeleteBtn">삭제하기</button>
+              </div>
+
+              <div class="questionBox1"><a href="">아 저기서 여기서 이렇게 하면 되는거라구요? 예?!? 왜? 어쨰서?
                   오류떠요?!</a><span class="material-symbols-outlined">
                   keyboard_double_arrow_down
                 </span>
+              </div>
+              <!-- 관리자 답변 입력 영역 -->
+              <div id="fnqReply" class="reply-box">
+                <p><strong>작성자:</strong> admin</p>
+                <p><strong>작성일자:</strong> <span id="replyDate"></span></p>
+                <textarea id="adminReply" placeholder="답변을 입력하세요..."></textarea>
+              </div>
+
+              <!-- 버튼 컨테이너 -->
+              <div id="btnContainer">
+                <button id="adminEnrollBtn">작성하기</button>
+                <button id="adminDeleteBtn">삭제하기</button>
               </div>
               <br><br>
             </div>
@@ -410,10 +455,10 @@
           <div id="footer_1">
             <div id="footer_1_1"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt=""></div>
             <div id="navigator" class="navigator">
-              <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
-              <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
+              <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a>
+              <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a>
               <a href="<%= contextPath %>/list.bo">자유게시판</a>
-              <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
+              <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a>
               <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
             </div>
           </div>
@@ -423,20 +468,62 @@
         </div>
       </div>
 
-        <script>
-         
+      <script>
+
 
         function login() {
-          location.href="<%=contextPath%>/views/member/loginform.jsp";
+          location.href = "<%=contextPath%>/views/member/loginform.jsp";
         }
 
       </script>
 
       <script>
         function signin() {
-          location.href="<%=contextPath%>/views/member/signin.jsp";
+          location.href = "<%=contextPath%>/views/member/signin.jsp";
         }
 
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const toggles = document.querySelectorAll(".material-symbols-outlined");
+
+          toggles.forEach((toggle) => {
+            toggle.addEventListener("click", function () {
+              const questionBox = this.parentElement;
+              const replyBox = questionBox.nextElementSibling;
+              const btnContainer = replyBox ? replyBox.nextElementSibling : null;
+
+              if (replyBox && btnContainer) {
+                const isVisible = replyBox.style.maxHeight !== "0px";
+
+                if (isVisible) {
+                  // 위로 올려 숨겨버리기
+                  replyBox.style.opacity = "0";
+                  btnContainer.style.opacity = "0";
+
+                  setTimeout(() => {
+                    replyBox.style.maxHeight = "0px";
+                    btnContainer.style.maxHeight = "0px";
+                  }, 100); // 0.3초 후 높이를 0으로 변경
+                } else {
+                  // 아래로 내려 보여버리기
+                  replyBox.style.maxHeight = "200px"; // 원하는 높이 설정 (내용에 따라 조정 가능)
+                  btnContainer.style.maxHeight = "50px"; // 버튼 컨테이너 높이 설정
+
+                  setTimeout(() => {
+                    replyBox.style.opacity = "1";
+                    btnContainer.style.opacity = "1";
+                  }, 100);
+                }
+              }
+            });
+          });
+        });
+
+
+
+
+        document.getElementById("replyDate").innerText = new Date().toLocaleDateString();
       </script>
       <!-- -------------------------------------------------------------------- -->
     </body>

@@ -126,11 +126,8 @@
 					background-image:
 						url("<%=contextPath%>/resources/assets/Container81.png");
 					background-size: cover;
-					/* 이미지를 요소 크기에 맞게 채움 */
 					background-position: center;
-					/* 중앙 정렬 */
 					background-repeat: no-repeat;
-					/* 이미지 반복 방지 */
 				}
 
 				#content1 {
@@ -216,7 +213,6 @@
 						'GRAD' 0,
 						'opsz' 24
 				}
-			/* 자유게시판 스타일 */
 			.board-container {
           max-width: 1000px;
           margin: 120px auto;
@@ -352,7 +348,7 @@
 					<div id="content1">
 						<div id="textcontent">
 							<pre>
-              어떤 어려운이 있으신가요? 
+              어떤 어려움이 있으신가요? 
               <b>고객센터 입니다.</b>
               </pre>
 						</div>

@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <% 
 		// 글번호, 닉네임, 제목, 내용, 조회수, 작성일
-		Board b = (Board)request.getAttribute("b");
+	Board b = (Board)request.getAttribute("b");
 		
 	  Attachment at = (Attachment)request.getAttribute("at");
 	  //at에 뭐가있을까? 

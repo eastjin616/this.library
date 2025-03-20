@@ -1,8 +1,6 @@
 <%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
 <%
-	String alertMsg = (String)session.getAttribute("alertMsg");
 	String contextPath=request.getContextPath(); 
 	Member loginMember = (Member)session.getAttribute("loginMember");
 %>
@@ -187,12 +185,7 @@
 		<meta charset="UTF-8">
 		<!-- ------------------------------------------------------------------ -->
 		<body>
-				<% if(alertMsg != null){ %>
-					<script>
-						alert("<%= alertMsg %>");
-					</script>
-						<% session.removeAttribute("alertMsg"); %> <!-- 이걸 안해주면 다른 곳 가도 한번 더 읽혀서 창이 계속 뜸 -->
-				<% } %>
+
 			<div class="wrap">
 				<div id="header">
 					<div id="header_1">

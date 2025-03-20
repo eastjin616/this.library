@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+ <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 
     <!DOCTYPE html>
@@ -152,41 +152,9 @@
     <!-- ------------------------------------------------------------------ -->
 
     <body>
-<<<<<<< HEAD
     <%@ include file="../common/menubar.jsp" %>
     
              
-=======
-      <div class="wrap">
-        <div id="header">
-          <div id="header_1">
-            <div id="header_1_1_1">
-              <a href="<%= contextPath %>"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt=""
-                  style="height: 100%; width: 100%;"></a>
-            </div>
-            <div id="navigator">
-              <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a>
-              <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a>
-              <a href="<%=contextPath%>/list.bo">자유게시판</a>
-              <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a>
-              <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
-            </div>
-            <div id="header_login_btn" style="height: 100%; width: 9%;">
-              <button class="btn" id="login" onclick="location.href='<%= contextPath %>/views/member/loginform.jsp'">Log
-                In</button>
-            </div>
-            <div id="header_signin_btn" style="height: 100%; width: 9%;">
-              <button class="btn" id="signin" onclick="signin()">Sign In</button>
-            </div>
-            <div id="header_mypage_btn" style="height: 100%; width: 7%;">
-              <button class="btn" id="mypage" onclick="mypage()">
-                <img src="<%= contextPath %>/views/common/assets/user01.png" alt="">
-              </button>
-            </div>
-
-          </div>
-        </div>
->>>>>>> cb76d17e5b62b0467cf05384029bd77007ed8b6e
         <!-- -------------------------------------------------------------------- -->
 
         <div class="wrap2">
@@ -246,7 +214,6 @@
               <label for="submitTag" class="custom-file-label">파일 선택</label>
 
             </div>
-<<<<<<< HEAD
 
           </div>
           <input type="submit" id="submitTag" value="첨부하기">
@@ -257,44 +224,6 @@
       </div>
 
      
-=======
-            <div id="writeAndSubmit">
-              <input type="submit" value="글 작성하기">
-            </div>
-            </div>
-          </form>
-      <!-- -------------------------------------------------------------------- -->
-      <div id="footer" style="background-color: #fdf5f1;">
-        <div id="footer_1">
-          <div id="footer_1_1">
-            <img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="">
-          </div>
-          <div id="navigator" class="navigator">
-            <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a>
-            <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a>
-            <a href="<%= contextPath %>/list.bo">자유게시판</a>
-            <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a>
-            <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
-          </div>
-        </div>
-        <div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
-      </div>
-
-      <script>
-        function login() {
-          location.href = "<%= contextPath %>/views/member/loginform.jsp";
-        }
-
-        function signin() {
-          location.href = "<%= contextPath %>/views/member/signin.jsp";
-        }
-
-        function mypage() {
-          location.href = "<%= contextPath %>/views/member/myPage.jsp";
-        }
-
-      </script>
->>>>>>> cb76d17e5b62b0467cf05384029bd77007ed8b6e
       <!-- -------------------------------------------------------------------- -->
       <!-- -=======1:1 문의 내용(content) 적을때, 글자수 세는 기능, 글자수 제한 기능) jsp
     $('#textBox').keyup(function (e) {

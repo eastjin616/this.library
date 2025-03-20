@@ -574,7 +574,7 @@
 											<option value="languague">언어별선택</option>
 											<option value="author">작가별선택</option>
 										</select> <input type="text" id="search-bar" placeholder="검색어를 입력하세요">
-										<button id="search-btn">검색</button>
+										<button id="search-btn" onclick="search()">검색</button>
 									</div>
 
 									<!-- -------------------------------------------------------------------------- -->
@@ -686,6 +686,10 @@
 													showSlides(slideIndex);
 
 												}, sec);
+											}
+
+											function search(){
+												location.href = "<%=contextPath%>/views/book/bookDetail.jsp";
 											}
 
 											// Next/previous controls

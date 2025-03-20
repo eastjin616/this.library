@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
+
 		<!DOCTYPE html>
 		<html lang="en">
 
@@ -217,8 +218,7 @@
 		<!-- ------------------------------------------------------------------ -->
 
 		<body>
-		<%@ include file="../common/menubar.jsp" %>
-			
+			<%@ include file="../common/menubar.jsp" %>
 				<!-- -------------------------------------------------------------------- -->
 
 
@@ -342,6 +342,7 @@
 							<span>></span>
 					</div>
 				</div>
+
 
 
 				

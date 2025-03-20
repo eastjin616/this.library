@@ -151,9 +151,7 @@
 
         #form-group-content {
           min-height: 300px;
-          background-img: url('이미지 위치');
           background-repeat: no-repeat;
-          backgroupd-size: 13px;
         }
 
         label {

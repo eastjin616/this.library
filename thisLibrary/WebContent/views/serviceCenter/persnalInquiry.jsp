@@ -154,7 +154,6 @@
           width: 100%;
           display: flex;
           margin-bottom: 10px;
-          /* 각 content 사이의 간격 */
         }
 
         .label {
@@ -197,16 +196,40 @@
         }
 
         #submitTag {
-          width: 80px;
-          background-color: #ea916e;
-          color: white;
-          border-radius: 1em;
-          cursor: pointer;
-          resize: none;
-          border: none;
+          display: none;
         }
 
-        
+        .custom-file-label {
+          display: inline-block;
+          width: 120px;
+          background-color: #ea916e;
+          color: white;
+          text-align: center;
+          padding: 10px 15px;
+          border-radius: 1em;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: bold;
+          transition: background 0.3s ease-in-out;
+        }
+
+        .custom-file-label:hover {
+          background-color: #d46b4b;
+        }
+
+
+        #writeAndSubmit {
+          cursor: pointer;
+          font-size: 14px;
+          border-radius: 5%;
+        }
+
+        #writeAndSubmit>input {
+          width: 120px;
+          margin-left: 50%;
+          border-color: lightgray;
+          font-weight: 800;
+        }
 
         /* ==============footer======================================= */
         #footer_1 {
@@ -286,52 +309,56 @@
           </div>
 
 
-          <form action="<%=contextPath%>/Inquiry.in">
-            <div class="content4">
-              <div id="content4_1" class="content">
-                <div class="label">이름 </div>
-                <div class="input-container"><input type="text" placeholder="이름 입력" required></div>
-              </div>
-              <div id="content4_2" class="content">
-                <div class="label">이메일</div>
-                <div class="input-container"><input type="text" placeholder="이메일 입력" required></div>
-              </div>
-              <div id="content4_3" class="content">
-                <div class="label">전화번호</div>
-                <div class="input-container"><input type="text" placeholder="전화번호 입력" required></div>
-              </div>
-              <div id="content4_4" class="content">
-                <div class="label">제목</div>
-                <div class="input-container"><input type="text" placeholder="제목 입력" required></div>
-              </div>
-              <div id="content4_5" class="content">
-                <div class="label">내용</div>
-                <div class="input-container">
-                  <textarea name="" id="" placeholder="문의내용 최대 1000자를 입력해주세요." maxlength="1000" required></textarea>
+        <form action="<%=contextPath%>/Inquiry.in">
+            <input type="hidden" name="userNo" value="">
+              <div class="content4">
+                <div id="content4_1" class="content">
+                  <div class="label">이름 </div>
+                  <div class="input-container"><input type="text" placeholder="이름 입력" name="userName" required></div>
+                </div>
+                <div id="content4_2" class="content">
+                  <div class="label">이메일</div>
+                  <div class="input-container"><input type="text" placeholder="이메일 입력" name="userEmail" required></div>
+                </div>
+                <div id="content4_3" class="content">
+                  <div class="label">전화번호</div>
+                  <div class="input-container"><input type="text" placeholder="전화번호 입력" name="phone" required></div>
+                </div>
+                <div id="content4_4" class="content">
+                  <div class="label">제목</div>
+                  <div class="input-container"><input type="text" placeholder="제목 입력" name="title" required></div>
+                </div>
+                <div id="content4_5" class="content">
+                  <div class="label">내용</div>
+                  <div class="input-container">
+                    <textarea name="content" id="" placeholder="문의내용 최대 1000자를 입력해주세요." maxlength="1000"
+                      required></textarea>
+                  </div>
                 </div>
               </div>
+
+
+              <br>
+              <hr>
+              <br>
+              <div id="content5" class="content">
+                <div class="label">첨부파일 </div>
+                <div class="beCarefulText">
+                  <li>개인정보를 포함한 이미지는 첨부 파일에 업로드할 수 없습니다. </li>
+                  <li> 개인정보 - 이름, 주민등록번호, 운전면허번호, 주소, 전화번호, 생년월일, 출생지, 본적지, 성별, 국적</li>
+                  <li>이를 어기고 개인정보가 포함된 파일을 업로드된 사실이 확인시 불이익을 받으실수 있습니다.</li>
+                </div>
+
               </div>
-          </form>
+              <input type="file" id="submitTag">
+              <label for="submitTag" class="custom-file-label">파일 선택</label>
 
-          <br>
-          <hr>
-          <br>
-          <div id="content5" class="content">
-            <div class="label">첨부파일 </div>
-            <div class="beCarefulText">
-              <li>개인정보를 포함한 이미지는 첨부 파일에 업로드할 수 없습니다. </li>
-              <li> 개인정보 - 이름, 주민등록번호, 운전면허번호, 주소, 전화번호, 생년월일, 출생지, 본적지, 성별, 국적</li>
-              <li>이를 어기고 개인정보가 포함된 파일을 업로드된 사실이 확인시 불이익을 받으실수 있습니다.</li>
             </div>
-
-          </div>
-          <input type="submit" id="submitTag" value="첨부하기">
-
-        </div>
-
-
-      </div>
-
+            <div id="writeAndSubmit">
+              <input type="submit" value="글 작성하기">
+            </div>
+            </div>
+          </form>
       <!-- -------------------------------------------------------------------- -->
       <div id="footer" style="background-color: #fdf5f1;">
         <div id="footer_1">
@@ -347,7 +374,6 @@
           </div>
         </div>
         <div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
-      </div>
       </div>
 
       <script>

@@ -1,8 +1,18 @@
+<%@page import="com.kh.board.model.vo.Board"%>
+<%@page import="com.kh.board.model.vo.Attachment"%>
 <%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <% 
     String contextPath=request.getContextPath(); 
 		Member loginMember= (Member)session.getAttribute("loginMember");
+		
+		// 글번호, 닉네임, 제목, 내용, 조회수, 작성일
+		Board b = (Board)request.getAttribute("b");
+		
+	  Attachment at = (Attachment)request.getAttribute("at");
+	  //at에 뭐가있을까? 
+	  // 첨부 有 : 파일번호, 원본명, 수정명, 저장경로 
+	  // 첨부 無 : null
 %>
 
         <!DOCTYPE html>
@@ -266,6 +276,7 @@
         </head>
 
         <body>
+        
             <div class="wrap">
                 <div id="header">
                     <!-- 기존 헤더 내용 -->
@@ -277,7 +288,7 @@
                         <div id="navigator">
                             <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a>
                             <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a>
-                            <a href="<%= contextPath %>/list.bo?cpage=1">자유게시판</a>
+                            <a href="<%= contextPath %>/list.bo">자유게시판</a>
                             <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a>
                             <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
                         </div>
@@ -302,14 +313,14 @@
                 <div class="post-container">
                     <h2>글쓰기</h2>
                     <hr>
-                    <form action="<%=contextPath%>/insert.bo" method="POST" enctype="multipart/form-data">
-                    		<input type=hidden name="userNo" value="<%= loginMember.getMemNo() %>">
-                        <label for="title" id="title">제목</label>
-                        <input type="text" id="title" name="title" style="width: 980px; margin-bottom: 10px;" required>
+                    <form action="<%=contextPath%>/update.bo" method="POST" enctype="multipart/form-data">
+                    		<input type="hidden" name="bno" value="<%= b.getBoardNo()%>">
+                        <label for="title" id="title" >제목</label>
+                        <input type="text" id="title" name="title" value="<%=b.getBoardTitle() %>" style="width: 980px; margin-bottom: 10px;" required>
 
                         <label for="content" id="content">내용</label>
                         <textarea id="content" name="content" style="width: 980px; height: 300px; margin-bottom: 10px; "
-                            required></textarea>
+                            required><%= b.getBoardContent() %></textarea>
 
                         <div class="file-upload-container">
                             <label for="fileUpload" class="custom-file-label">첨부파일</label>
@@ -318,10 +329,15 @@
 
                             <div class="button-group">
                                 <button onclick="goBack()">뒤로가기</button>
-                                <button type="submit">작성하기</button>
+                                <button type="submit">수정하기</button>
                             </div>
                         </div>
+                        <% if(at != null){ %>
+                       <p style="margin-top: 5px;" id="fileName"><%= at.getOriginName()  %></p>
+                       <input type="hidden" name="originFileNo" value="<%= at.getFileNo() %>">
+                       <%}else{ %>
                         <p style="margin-top: 5px;" id="fileName">선택된 파일 없음</p>
+                       <%} %>
                     </form>
                 </div>
 
@@ -336,7 +352,7 @@
                         <div id="navigator" class="navigator">
                             <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a> 
                             <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a> 
-                            <a href="<%= contextPath %>/list.bo?cpage=1">자유게시판</a>
+                            <a href="<%= contextPath %>/list.bo">자유게시판</a>
                             <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a> 
                             <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
                         </div>

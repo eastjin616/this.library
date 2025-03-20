@@ -94,7 +94,7 @@ public class MemberService {
 		return memberId;
 		
 	}
-//=================================================
+
 	public int nickCheck(String nickname) {
 		Connection conn = getConnection();
 		int count = new MemberDao().nickCheck(conn, nickname);

@@ -1,3 +1,4 @@
+<%@page import="com.kh.member.model.vo.Member"%>
 <%@page import="com.kh.board.model.vo.Attachment"%>
 <%@page import="com.kh.board.model.vo.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -10,6 +11,13 @@
 		// 첨부파일이 없다면 null
 		// 첨부파일이 있다면 파일번호, 원본명, 수정명, 저장경로
 		Attachment at = (Attachment)request.getAttribute("at"); 
+		
+		Member loginMember= (Member)session.getAttribute("loginMember");
+		
+		String alertMsg = (String)session.getAttribute("alertMsg");
+		
+
+		
 %>
 
 		<!DOCTYPE html>
@@ -19,6 +27,7 @@
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<title>Document1</title>
+			
 			<script
     src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 			<!-- <link rel="stylesheet" href="header.css">
@@ -301,7 +310,7 @@
 				}
 
 				.set-comment{
-					padding-left: 770px;
+					/* padding-left: 770px; */
 				}
 
 				.set-header{
@@ -345,6 +354,12 @@
 		<!-- ------------------------------------------------------------------ -->
 
 		<body>
+			<% if(alertMsg != null){ %>
+				<script>
+					alert("<%= alertMsg %>");
+				</script>
+					<% session.removeAttribute("alertMsg"); %> <!-- 이걸 안해주면 다른 곳 가도 한번 더 읽혀서 창이 계속 뜸 -->
+			<% } %>
 			<div class="wrap">
 				<div id="header">
 					<div id="header_1">
@@ -381,8 +396,12 @@
 				<div class="post-container">
 					<div class="post-header">
 						<h2><%=b.getBoardTitle() %><span class="label">팔로우</span></h2>
-						<span class="set-header"><button>수정</button> | <button>삭제</button></span>
-						
+						<% if(loginMember != null && loginMember.getNickname().equals(b.getBoardWriter())){ %>
+						<span class="set-header">
+						<button onclick="location.href='<%= contextPath %>/updateForm.bo?bno=<%= b.getBoardNo() %>'">수정</button> | 
+						<button onclick="location.href='<%= contextPath %>/delete.bo?bno=<%= b.getBoardNo() %>'">삭제</button>
+						</span>
+						<%} %>
 						<p class="post-meta">
 							작성자: <%=b.getBoardWriter() %> | <%=b.getWriteDate() %> | 조회수: <%=b.getCount() %>
 						</p>
@@ -393,73 +412,93 @@
 						<%=b.getBoardContent() %>
 						</p>
 					</div>
+					
 
 					<div class="comment-section">
+					<%if(at != null){ %>
+					첨부파일 : <a download="<%= at.getOriginName() %>" href="<%= contextPath %>/<%= at.getFilePath() + at.getChangeName()%>"><%= at.getOriginName() %></a> <!-- attachment 테이블에 origin 컬럼에 있음 -->
+					<%} else{ %>
+						첨부파일 없음
+					<%} %>
 						<h3 class="comment-count">댓글 5</h3>
-
+	
 						<div class="comment-form">
 							<div class="comment-form-header">
 								<h4>댓글 작성하기</h4>
-								<button class="submit-btn">작성하기</button>
+								<button class="submit-btn" onclick="insertReply()">작성하기</button>
 							</div>
-							<textarea placeholder="댓글을 입력하세요..." maxlength="300" style="width: 1000px;"></textarea>
+							<textarea id="replyContent" placeholder="댓글을 입력하세요..." maxlength="300" style="width: 1000px;"></textarea>
 							<div class="char-count">0 / 300 자</div>
 						</div>
 
 						<div class="comment-list">
-							<div class="comment">
-								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18 <span class="label">팔로우</span>
-									<span class="set-comment"><button>수정</button> | <button>삭제</button></span>
-								</p>
-								<p class="comment-text">
-									이왕 하면 내용 멋지고 지리고 맛있고 ~ 멋있네
-									~ㅁㅇㅁㄴㅇㄴㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ히히
-									완전완전 ~ 총 익시어야죠 ~
-								</p>
-							</div>
-							<div class="comment">
-								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18 <span class="label">팔로우</span>
-									<span class="set-comment"><button>수정</button> | <button>삭제</button></span>
-								</p>
-								<p class="comment-text">
-									이왕 하면 내용 멋지고 지리고 맛있고 ~ 멋있네
-									~ㅁㅇㅁㄴㅇㄴㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ히히
-									완전완전 ~ 총 익시어야죠 ~
-								</p>
-							</div>
-							<div class="comment">
-								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18 <span class="label">팔로우</span>
-									<span class="set-comment"><button>수정</button> | <button>삭제</button></span>
-								</p>
-								<p class="comment-text">
-									이왕 하면 내용 멋지고 지리고 맛있고 ~ 멋있네
-									~ㅁㅇㅁㄴㅇㄴㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ히히
-									완전완전 ~ 총 익시어야죠 ~
-								</p>
-							</div>
-							<div class="comment">
-								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18 <span class="label">팔로우</span>
-									<span class="set-comment"><button>수정</button> | <button>삭제</button></span>
-								</p>
-								<p class="comment-text">
-									이왕 하면 내용 멋지고 지리고 맛있고 ~ 멋있네
-									~ㅁㅇㅁㄴㅇㄴㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ히히
-									완전완전 ~ 총 익시어야죠 ~
-								</p>
-							</div>
-							<div class="comment">
-								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18 <span class="label">팔로우</span>
-									<span class="set-comment"><button>수정</button> | <button>삭제</button></span>
-								</p>
-								<p class="comment-text">
-									이왕 하면 내용 멋지고 지리고 맛있고 ~ 멋있네
-									~ㅁㅇㅁㄴㅇㄴㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ히히
-									완전완전 ~ 총 익시어야죠 ~
-								</p>
-							</div>
+							
+						
+							
 						</div>
 					</div>
 
+					<script>
+								$(function(){// 화면이 다 로드되고 나서 하는 행위
+									// 댓글조회
+									selectReplyList();
+								
+									// setInterval(주기적으로 실행할 함수, ms단위 시간);
+									setInterval(selectReplyList, 1000); // 1초에 한번씩 새로고침
+								})
+								
+								// ajax으로 댓글 작성용 함수
+								function insertReply(){
+									$.ajax({
+										url:"rinsert.bo",
+										data:{
+											content:$("#replyContent").val(),
+											bno:<%= b.getBoardNo() %>,
+										},
+										type:"post",
+										success:function(result){
+											if(result > 0){ // 댓글 작성 성공 => 갱신된 댓글 리스트 조회
+												selectReplyList();
+												$("#replyContent").val("");
+											}else{ // 댓글 작성 실패
+												
+											}
+										},error:function(){
+											console.log("댓글 작성용 ajax 통신 실패")
+										}
+									})
+								}
+								
+								// ajax으로 해당 게시글에 딸린 댓글 목록 조회용 함수
+								function selectReplyList(){
+									$.ajax({
+										url:"rlist.bo",
+										data:{bno:<%= b.getBoardNo() %>},
+										success:function(rlist){
+											let value = ""
+											for(let i=0; i<rlist.length; i++){
+												value += "<div class='comment'>"
+													 + "<p class='comment-meta'><strong>" + rlist[i].memNo + "</strong> | "  + rlist[i].answerDate+ "<span class='label'> 팔로우 </span>"
+													 + "<span class='set-comment'><button style='margin-left:0px'> 수정 </button> | <button> 삭제 </button></span>"
+													 + "</p>"
+													 + "<p class='comment-text'>"
+													 + rlist[i].answerContent
+													 + "</p>"
+												   + "</div>"
+												
+												   $(".comment-list").html(value)
+												
+										
+											}
+											
+										},error:function(){
+											console.log("댓글목록 조회용 ajax 통신 실패");
+										}
+										
+									})
+								}
+								
+						</script>
 					<div class="pagination">
 						<span><</span>
 						<span>1</span>

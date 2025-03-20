@@ -13,6 +13,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import com.kh.board.model.service.BoardService;
 import com.kh.board.model.vo.Attachment;
 import com.kh.board.model.vo.Board;
+import com.kh.common.MyFileRenamePolicy;
 import com.oreilly.servlet.MultipartRequest;
 
 /**
@@ -106,13 +107,11 @@ request.setCharacterEncoding("UTF-8"); // POST 방식일때는 인코딩 해줘�
 			// 3. DB에 기록할 데이터들 뽑아서 VO에 주섬주섬 담기
 			// 	  > 카테고리 번호, 제목, 내용, 작성자회원번호 뽑아서 Board 테이블 insert
 		    //    > 넘어온 첨부파일이 있다면 원본명, 수정명, 저장경로 Attachment 테이블 insert
-			String category = multiRequest.getParameter("category");
 			String boardTitle = multiRequest.getParameter("title");
 			String boardContent = multiRequest.getParameter("content");
 			String boardWriter = multiRequest.getParameter("userNo");
 			
 			Board b = new Board();
-			b.setCategory(category);
 			b.setBoardTitle(boardTitle);
 			b.setBoardContent(boardContent);
 			b.setBoardWriter(boardWriter);
@@ -129,6 +128,7 @@ request.setCharacterEncoding("UTF-8"); // POST 방식일때는 인코딩 해줘�
 			
 			// 4. 서비스 요청 (요청처리)
 			int result = new BoardService().insertBoard(b, at);
+			
 			// 5. 응답뷰 지정
 			// 성공 => /jsp/list.bo?cpage=1 url 재요청 => 목록페이지 
 			if(result > 0) {

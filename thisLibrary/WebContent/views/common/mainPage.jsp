@@ -554,106 +554,13 @@
 			</head>
 			<meta charset="UTF-8">
 			<!-- ------------------------------------------------------------------ -->
-						<body>
-							<%@ include file="menubar.jsp" %>
-								<div class="wrap">
-									<!-- -------------------------------------------------------------------- -->
-									<div id="header_1_2">
-										<img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt="">
-									</div>
-.book-item p {
-	margin-top: 10px;
-	font-size: 14px;
-	font-weight: bold;
-}
-
-/* ================================================================ */
-/* ---------------------footer-------------------------------------*/
-#footer_1 {
-	width: 100%;
-	height: 65%;
-}
-
-#footer_1>div {
-	float: left;
-}
-
-#footer_1_1 {
-	height: 100%;
-	width: 20%;
-}
-
-#footer_1_1 img {
-	display: flex;
-	margin: auto;
-	width: 60%;
-	height: 60%;
-	margin-top: 20%;
-}
-
-#footer_2 {
-	width: 100%;
-	height: 35%;
-	text-align: center;
-	margin-top: 2%;
-}
-</style>
-</head>
-<meta charset="UTF-8">
+			<body>
+				<%@ include file="menubar.jsp" %>
+					
 <!-- ------------------------------------------------------------------ -->
 
-<% if(alertMsg != null){ %>
-<script>
-					alert('<%=alertMsg%>');
-				</script>
-<% session.removeAttribute("alertMsg"); %>
-<% } %>
 
 
-<body>
-	<div class="wrap">
-		<div id="header">
-			<div id="header_1">
-				<div id="header_1_1_1">
-					<a href="<%= contextPath %>/views/common/mainPage.jsp"><img
-						src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""
-						style="height: 100%; width: 100%;"></a>
-				</div>
-				
-				<div id="navigator">
-					<a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a> <a
-						href="<%= contextPath %>/views/vote/voteDetailForm.jsp">온라인투표</a>
-					<a href="<%= contextPath %>/list.bo?cpage=1">자유게시판</a> 
-					<a href="<%= contextPath %>/views/book/bestSeller.jsp">베스트셀러</a> 
-					<a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
-				</div>
-
-				<% if(loginMember== null){ %>
-					<div id="header_login_btn" style="height: 100%; width: 9%;">
-						<a  id="login" onclick="login()"><b>Log In</b></a>
-					</div>
-					<div id="header_signin_btn" style="height: 100%; width: 9%;">
-						<a  id="signin" onclick="signin()"><b>Sign In</b></a>
-					</div>
-				<%}else{ %>
-					<div>
-						<br>
-						 <b><%= loginMember.getMemName()%>님 </b>의 방문을 환영합니다.		
-					</div>
-					
-					<div id="header_login_btn" style="height: 100%; width: 9%;">
-						<button class="btn" id="login"><a href="<%= contextPath %>/logout.me">로그아웃</a></button>
-					</div>
-				<%} %>
-
-				<div id="header_mypage_btn" style="height: 100%; width: 7%;">
-					
-					<button class="btn" id="mypage" onclick="mypage()">
-							<img src="<%= contextPath %>/resources/assets/user01.png" alt="">
-					</button>
-				</div>
-			</div>
-		</div>
 		<!-- -------------------------------------------------------------------- -->
 		<div id="header_1_2">
 			<img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt="">

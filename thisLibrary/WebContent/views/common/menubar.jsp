@@ -225,14 +225,28 @@
 								</div>
 							</div>
 						</div>
+						<% if(loginMember== null){ %>
 						<div id="header_login_btn" style="height: 100%; width: 9%;">
-							<a class="btn" id="login" onclick="location.href='<%=contextPath%>/views/member/loginform.jsp'">Log
-								In</a>
+							<a class="btn" id="login" onclick="location.href='<%=contextPath%>/views/member/loginform.jsp'">LogIn</a>
 						</div>
+						
 						<div id="header_signin_btn" style="height: 100%; width: 9%;">
 							<a class="btn" id="signin" onclick="signin()">Sign In</a>
 						</div>
+
+						<%}else{ %>
+							<div>
+								<br>
+								 <b><%= loginMember.getMemName()%>님 </b>의 방문을 환영합니다.		
+							</div>
+							
+							<div id="header_login_btn" style="height: 100%; width: 9%;">
+								<button class="btn" id="login"><a href="<%= contextPath %>/logout.me">로그아웃</a></button>
+							</div>
+						<%} %>
+
 						<div id="header_mypage_btn" style="height: 100%; width: 7%;">
+							
 							<button class="btn" id="mypage" onclick="mypage()">
 								<img src="<%= contextPath %>/resources/assets/user01.png" alt="">
 							</button>

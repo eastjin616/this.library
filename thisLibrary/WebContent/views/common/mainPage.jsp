@@ -726,7 +726,6 @@ a {
 							<img src="<%= contextPath %>/resources/assets/user01.png" alt="">
 					</button>
 				</div>
-
 			</div>
 		</div>
 		<!-- -------------------------------------------------------------------- -->

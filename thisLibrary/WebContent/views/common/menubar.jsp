@@ -1,5 +1,9 @@
+<%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<% String contextPath=request.getContextPath(); %>
+	<%
+	String contextPath=request.getContextPath(); 
+	Member loginMember = (Member)session.getAttribute("loginMember");
+	%>
 
 		<!DOCTYPE html>
 		<html lang="en">
@@ -8,9 +12,6 @@
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<title>Document1</title>
-
-
-
 			<style>
 				@font-face {
 					font-family: 'Gyeonggi_Batang_Regular';
@@ -36,8 +37,6 @@
 					height: 50px;
 				}
 
-
-
 				#header>div {
 					height: 100%;
 				}
@@ -62,8 +61,6 @@
 					justify-content: space-around;
 					box-sizing: border-box;
 				}
-
-
 
 				#headnavigator>div {
 					position: relative;
@@ -137,7 +134,6 @@
 					transition-delay: 0.2s;
 				}
 
-
 				/*-------------------------------------------------------------  */
 				#header_mypage_btn,
 				#header_login_btn,
@@ -164,7 +160,6 @@
 			border: none;
 			cursor: pointer;
 }
-
 				/* ---------------------------------------------- */
 				#mypage {
 					border-radius: 50%;
@@ -185,24 +180,12 @@
 					color: white;
 					cursor: pointer;
 				}
-
-				/*-------------------------------------------------------------  */
-
-
-
-
-
-
-
-
-
-			
 			</style>
 		</head>
 		<meta charset="UTF-8">
 		<!-- ------------------------------------------------------------------ -->
-
 		<body>
+
 			<div class="wrap">
 				<div id="header">
 					<div id="header_1">
@@ -218,7 +201,7 @@
 								<a href="#">게시판</a>
 								<div class="submenu">
 									<a href="<%=contextPath%>/views/vote/voteList.jsp">온라인 투표</a>
-									<a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a>
+									<a href="<%=contextPath%>/list.bo?cpage=1">자유게시판</a>
 								</div>
 							</div>
 
@@ -243,7 +226,7 @@
 							</div>
 						</div>
 						<div id="header_login_btn" style="height: 100%; width: 9%;">
-							<a class="btn" id="login" onclick="location.href='<%=contextPath%>/views/jinsloginform.jsp'">Log
+							<a class="btn" id="login" onclick="location.href='<%=contextPath%>/views/member/loginform.jsp'">Log
 								In</a>
 						</div>
 						<div id="header_signin_btn" style="height: 100%; width: 9%;">
@@ -264,9 +247,6 @@
 
 
 
-				<!-- -----------------------------footer---------------------------------- -->
-				<div style="background-color: white; height: 300px;"></div>
-<!-- 헤드 서브 메뉴 보이기용으로 놔둠 컨텐츠 추가 제작시 이거는 지워도 됨-->
 
 <!-- --------------------------------------------------------------------------------->
 			<script>

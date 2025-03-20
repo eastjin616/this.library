@@ -1,10 +1,14 @@
 <%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<<<<<<< HEAD
 	<%
 	String alertMsg = (String)session.getAttribute("alertMsg");
+=======
+<%
+>>>>>>> book
 	String contextPath=request.getContextPath(); 
 	Member loginMember = (Member)session.getAttribute("loginMember");
-	%>
+%>
 
 		<!DOCTYPE html>
 		<html lang="en">
@@ -204,7 +208,7 @@
 							<a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a>
 
 							<div class="naviDiv">
-								<a href="#">게시판</a>
+								<a href="<%=contextPath%>/list.bo?cpage=1">게시판</a>
 								<div class="submenu">
 									<a href="<%=contextPath%>/views/vote/voteList.jsp">온라인 투표</a>
 									<a href="<%=contextPath%>/list.bo?cpage=1">자유게시판</a>
@@ -214,19 +218,19 @@
 							<div class="naviDiv">
 								<a href="#">전체도서</a>
 								<div class="submenu">
-									<a href="<%=contextPath%>/views/books/bestSellers.jsp">인기도서</a>
+									<a href="<%=contextPath%>/views/book/bestSeller.jsp">인기도서</a>
 									<a href="#" onclick="scrollToSection('content_2_1')">오늘의 픽</a>
 									<a href="#" onclick="scrollToSection('content_2_5')">관리자의 픽</a>
 								</div>
 							</div>
 
 							<div class="naviDiv">
-								<a href="#">고객센터</a>
+								<a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
 								<div class="submenu">
 									<a href="<%=contextPath%>/views/serviceCenter/persnalInquiry.jsp">1:1 문의하기</a>
 									<a href="<%=contextPath%>/views/serviceCenter/persnalInquiryList.jsp">1:1 문의 내역</a>
-									<a href="<%=contextPath%>/views/serviceCenter/faqList.jsp">F&Q 질문 내역</a>
-									<a href="<%=contextPath%>/views/serviceCenter/customerSerivce.jsp">전화상담</a>
+									<a href="<%=contextPath%>/views/serviceCenter/fnaList.jsp">F&Q 질문 내역</a>
+									<a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">전화상담</a>
 									<a href="<%=contextPath%>/views/serviceCenter/notice.jsp">공지사항</a>
 								</div>
 							</div>

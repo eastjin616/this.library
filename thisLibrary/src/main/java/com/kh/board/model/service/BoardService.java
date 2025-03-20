@@ -114,14 +114,11 @@ public class BoardService {
 			
 			if(at.getFileNo() != 0) { // 기존의 첨부파일이 있었을 경우 => Update Attachment
 				result2 = new BoardDao().updateAttachment(conn, at);
-				System.out.println("r1 서비스" + result1);
 			}else { // 기존의 첨부파일 없었을 경우 => Insert Attachment
 				result2 = new BoardDao().insertNewAttachment(conn, at);
-				System.out.println("r2 서비스" + result2);
 			}
 		}
 		
-		System.out.println("r1, r2 서비스" + result1 + result2);
 		if(result1 > 0 && result2 > 0) {
 			commit(conn);
 		}else {
@@ -165,5 +162,23 @@ public class BoardService {
 		close(conn);
 		
 		return list;
+	}
+
+	public int boardAnswerCount(int boardNo) {
+		Connection conn = getConnection();
+		
+		int baCount = new BoardDao().boardAnswerCount(conn, boardNo);
+		
+		close(conn);
+		
+		return baCount;
+	}
+
+	public int deleteBoardAnswer(int rno) {
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().deleteBoardAnswer(conn, rno);
+		
+		return result;
 	}
 }

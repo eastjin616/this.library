@@ -302,8 +302,6 @@ private Properties prop = new Properties();
 			close(pstmt);
 		}
 		
-		System.out.println("dao 인서트 result" + result);
-		
 		return result;
 	}
 
@@ -380,6 +378,49 @@ private Properties prop = new Properties();
 		}
 		
 		return list;
+	}
+
+	public int boardAnswerCount(Connection conn, int boardNo) {
+		int baCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("boardAnswerCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				baCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return baCount;
+	}
+
+	public int deleteBoardAnswer(Connection conn, int rno) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteBoardAnswer");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rno);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 	
 }

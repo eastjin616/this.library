@@ -7,21 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.kh.board.model.service.BoardService;
-import com.kh.board.model.vo.Attachment;
-import com.kh.board.model.vo.Board;
 
 /**
- * Servlet implementation class BoardDetailController
+ * Servlet implementation class AjaxReplyCountController
  */
-@WebServlet("/detail.bo")
-public class BoardDetailController extends HttpServlet {
+@WebServlet("/rCount.bo")
+public class AjaxReplyCountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardDetailController() {
+    public AjaxReplyCountController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,26 +29,13 @@ public class BoardDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		int boardNo = Integer.parseInt(request.getParameter("bno"));
 		
-int boardNo = Integer.parseInt(request.getParameter("bno"));
+		int rCount = new BoardService().boardAnswerCount(boardNo);
 		
-		BoardService bService = new BoardService();
-		
-		int result = bService.increaseCount(boardNo);
-		if(result > 0) { // 유효한 게시글 => 게시글, 첨부파일 조회
-			Board b = bService.selectBoard(boardNo);
-			Attachment at = bService.selectAttachment(boardNo);
-			
-			request.setAttribute("b", b);
-			request.setAttribute("at", at);
-			
-			request.getRequestDispatcher("views/board/boardDetail.jsp").forward(request, response);
-		}else {
-			request.setAttribute("errorMsg", "일반게시판 조회 실패");
-			
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-		}
-		
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(rCount, response.getWriter());
 	}
 
 	/**

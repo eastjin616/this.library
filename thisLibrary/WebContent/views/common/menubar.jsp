@@ -67,9 +67,12 @@
 					position: relative;
 				}
 
+				a {
+						text-decoration-line: none;
+						color: black;
+				}
+					
 				#headnavigator a {
-					text-decoration: none;
-					color: black;
 					font-size: 13px;
 					padding: 10px 15px;
 					display: block;

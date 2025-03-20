@@ -208,7 +208,7 @@
 					<%} else{ %>
 						첨부파일 없음
 					<%} %>
-						<h3 class="comment-count">댓글 5</h3>
+						<h3 class="comment-count">댓글 </h3>
 	
 						<div class="comment-form">
 							<div class="comment-form-header">
@@ -226,11 +226,15 @@
 
 					<script>
 								$(function(){// 화면이 다 로드되고 나서 하는 행위
+									// 댓글 개수 조회
+									selectBoardAnswerCount();
+									
 									// 댓글조회
 									selectReplyList();
 								
 									// setInterval(주기적으로 실행할 함수, ms단위 시간);
 									setInterval(selectReplyList, 1000); // 1초에 한번씩 새로고침
+									setInterval(selectBoardAnswerCount, 100); 
 								})
 								
 								// ajax으로 댓글 작성용 함수
@@ -265,7 +269,13 @@
 											for(let i=0; i<rlist.length; i++){
 												value += "<div class='comment'>"
 													 + "<p class='comment-meta'><strong>" + rlist[i].memNo + "</strong> | "  + rlist[i].answerDate+ "<span class='label'> 팔로우 </span>"
-													 + "<span class='set-comment'><button style='margin-left:0px'> 수정 </button> | <button> 삭제 </button></span>"
+													 + "<span class='set-comment'>" 
+													 + "<button style='margin-left:0px'> 수정 </button> | "
+													 + "<button onclick="
+													 + "location.href=\'"
+													 + "<%=contextPath%>/rDelete.bo?rno="
+													 + rlist[i].bAnswerNo + "'>"
+													 + "삭제 </button></span>"
 													 + "</p>"
 													 + "<p class='comment-text'>"
 													 + rlist[i].answerContent
@@ -276,6 +286,18 @@
 											}
 										},error:function(){
 											console.log("댓글목록 조회용 ajax 통신 실패");
+										}
+									})
+								}
+								
+								function selectBoardAnswerCount(){
+									$.ajax({
+										url:"rCount.bo",
+										data:{bno:<%=b.getBoardNo()%>},
+										success:function(rCount){
+											$(".comment-count").text("댓글 " + rCount);
+										},error:function(){
+											console.log("댓글 갯수 조회용 ajax 통신 실패");
 										}
 									})
 								}

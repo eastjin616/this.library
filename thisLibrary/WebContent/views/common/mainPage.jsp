@@ -144,10 +144,6 @@
 					}
 
 					/* #header_1_3{border: 1px solid;} */
-					a {
-						text-decoration-line: none;
-						color: black;
-					}
 
 					#search-container {
 						display: flex;
@@ -556,15 +552,7 @@
 			<!-- ------------------------------------------------------------------ -->
 			<body>
 				<%@ include file="menubar.jsp" %>
-					
-<!-- ------------------------------------------------------------------ -->
-
-
-
 		<!-- -------------------------------------------------------------------- -->
-		<div id="header_1_2">
-			<img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt="">
-		</div>
 
 									<div id="search-container">
 										<select id="search-filter">
@@ -670,7 +658,7 @@
 									</div>
 									<div id="spaceContent"></div>
 									<!-- -------------------------------------------------------------------- -->
-									<%@ include file="footerbar.jsp" %>
+									
 										<!-- -------------------------------------------------------------------- -->
 										<script>
 											var slideIndex = 0; //slide index
@@ -724,5 +712,6 @@
 												dots[n].className += " active";
 											}
 										</script>
+										<%@ include file="../common/footerbar.jsp" %>
 						</body>
 			</html>

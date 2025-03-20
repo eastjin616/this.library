@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <% 
 
-		String alertMsg = (String)session.getAttribute("alertMsg");
+		
 		// 글번호, 닉네임, 제목, 내용, 조회수, 작성일
 		Board b = (Board)request.getAttribute("b");
 		
@@ -179,12 +179,7 @@
 		</head>
 		<body>
 		
-		 		<% if(alertMsg != null){ %>
-					<script>
-						alert("<%= alertMsg %>");
-					</script>
-						<% session.removeAttribute("alertMsg"); %> <!-- 이걸 안해주면 다른 곳 가도 한번 더 읽혀서 창이 계속 뜸 -->
-				<% } %>
+		 	
 				<%@ include file="../common/menubar.jsp" %>
 
 				<div class="post-container" style="margin-top: 120px;margin-bottom: 120px;">

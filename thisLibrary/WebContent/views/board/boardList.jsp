@@ -8,9 +8,6 @@
 		// 글번호, 닉네임, 제목, 내용, 조회수, 작성일
   	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
   
-		String alertMsg = (String)session.getAttribute("alertMsg");
-  	
-  	
 		PageInfo pi = (PageInfo)request.getAttribute("pi");
 	
 		int currentPage = pi.getCurrentPage();
@@ -104,13 +101,6 @@
  
     		<%@ include file="../common/menubar.jsp" %>
 	    		
-				<% if(alertMsg != null){ %>
-					<script>
-						alert("<%= alertMsg %>");
-					</script>
-						<% session.removeAttribute("alertMsg"); %> <!-- 이걸 안해주면 다른 곳 가도 한번 더 읽혀서 창이 계속 뜸 -->
-				<% } %>
-	
         <div class="board-container">
           <h2>자유게시판</h2>
           <table>

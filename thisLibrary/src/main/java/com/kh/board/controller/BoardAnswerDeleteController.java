@@ -30,18 +30,16 @@ public class BoardAnswerDeleteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int rno = Integer.parseInt(request.getParameter("rno"));
-		
-		int result = new BoardService().deleteBoardAnswer(rno);
-		System.out.println("result : " + result);
-		if(result > 0) { // 댓글 삭제 성공
-			request.getSession().setAttribute("alertMsg", "성공적으로 댓글이 삭제 되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/boardDetail.jsp");
-		}else {
-			request.setAttribute("errorMsg", "댓글 삭제 실패!");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-		}
-	}
+		int bno = Integer.parseInt(request.getParameter("bno"));
 
+		int result = new BoardService().deleteBoardAnswer(rno);
+		
+		if(result > 0) {
+	        response.getWriter().write("{\"status\": \"success\"}");
+	    } else {
+	        response.getWriter().write("{\"status\": \"fail\"}");
+	    }
+	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

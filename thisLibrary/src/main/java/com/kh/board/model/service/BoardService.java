@@ -179,6 +179,12 @@ public class BoardService {
 		
 		int result = new BoardDao().deleteBoardAnswer(conn, rno);
 		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
 		return result;
 	}
 }

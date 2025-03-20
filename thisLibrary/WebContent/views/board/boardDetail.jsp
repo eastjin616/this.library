@@ -208,7 +208,7 @@
 					<%} else{ %>
 						첨부파일 없음
 					<%} %>
-						<h3 class="comment-count">댓글 </h3>
+						<h3 class="comment-count"></h3>
 	
 						<div class="comment-form">
 							<div class="comment-form-header">
@@ -234,7 +234,7 @@
 								
 									// setInterval(주기적으로 실행할 함수, ms단위 시간);
 									setInterval(selectReplyList, 1000); // 1초에 한번씩 새로고침
-									setInterval(selectBoardAnswerCount, 100); 
+									setInterval(selectBoardAnswerCount, 1000); 
 								})
 								
 								// ajax으로 댓글 작성용 함수
@@ -267,20 +267,22 @@
 										success:function(rlist){
 											let value = ""
 											for(let i=0; i<rlist.length; i++){
+												let r = rlist[i].bAnswerNo; // 댓글 번호
+				                let writer = rlist[i].memNo; // 댓글 작성자
 												value += "<div class='comment'>"
 													 + "<p class='comment-meta'><strong>" + rlist[i].memNo + "</strong> | "  + rlist[i].answerDate+ "<span class='label'> 팔로우 </span>"
-													 + "<span class='set-comment'>" 
-													 + "<button style='margin-left:0px'> 수정 </button> | "
-													 + "<button onclick="
-													 + "location.href=\'"
-													 + "<%=contextPath%>/rDelete.bo?rno="
-													 + rlist[i].bAnswerNo + "'>"
-													 + "삭제 </button></span>"
-													 + "</p>"
+													 + "<span class='set-comment'>";
+													 
+													 if("<%=loginMember.getNickname()%>" == writer){
+															 value += "<button style='margin-left:0px'> 수정 </button> | " 
+															 + "<button onclick='hideReply(" + r + ")'> 삭제 </button>";
+													 }
+													 
+													 value += "</span></p>"
 													 + "<p class='comment-text'>"
 													 + rlist[i].answerContent
 													 + "</p>"
-												   + "</div>"
+												   + "</div>";
 												
 												   $(".comment-list").html(value)
 											}
@@ -288,6 +290,23 @@
 											console.log("댓글목록 조회용 ajax 통신 실패");
 										}
 									})
+								}
+								
+								// 삭제 버튼 클릭 시 실행될 함수
+								function hideReply(rno) {
+								    $.ajax({
+								        url: "<%=contextPath%>/rDelete.bo", // 서블릿 URL
+								        type: "POST", // UPDATE는 보통 POST 방식 사용
+								        data: { 
+								        	rno: rno,
+								        	bno: <%= b.getBoardNo() %>
+								        }, // 댓글 번호 전송
+								        success:function(response){
+								        	alert("댓글이 성공적으로 삭제되었습니다.");
+								        },error:function(){
+								        	alert("댓글 삭제에 실패했습니다.");
+								        }
+								    });
 								}
 								
 								function selectBoardAnswerCount(){

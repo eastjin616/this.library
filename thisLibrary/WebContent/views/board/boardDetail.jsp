@@ -500,7 +500,6 @@
 								
 						</script>
 					<div class="pagination">
-					
 						<span><</span>
 						<span>1</span>
 						<span>2</span>

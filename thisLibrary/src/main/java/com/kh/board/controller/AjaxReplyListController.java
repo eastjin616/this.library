@@ -35,6 +35,7 @@ public class AjaxReplyListController extends HttpServlet {
 		
 		int boardNo = Integer.parseInt(request.getParameter("bno"));
 		
+		
 		ArrayList<BoardAnswer> list = new BoardService().selectReplyList(boardNo);
 	
 		

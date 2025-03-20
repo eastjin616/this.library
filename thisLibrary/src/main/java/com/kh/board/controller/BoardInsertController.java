@@ -71,7 +71,6 @@ request.setCharacterEncoding("UTF-8"); // POST 방식일때는 인코딩 해줘�
 			
 			String savePath = request.getSession().getServletContext().getRealPath("/resources/board_upfiles/");
 			// 리퀘스트에서 세션얻고 세션에서 애플리케이션얻고 그 주소를 얻는다 (webcontent안에 resources안에 board_upfiles 파일)
-			System.out.println(savePath);
 //			C:\05_server-workspace2\jspProject\WebContent\resources\board_upfiles
 			
 			/*

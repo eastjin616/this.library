@@ -1,5 +1,10 @@
+<%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<% String contextPath=request.getContextPath(); %>
+	<%
+	String alertMsg = (String)session.getAttribute("alertMsg");
+	String contextPath=request.getContextPath(); 
+	Member loginMember = (Member)session.getAttribute("loginMember");
+	%>
 
 		<!DOCTYPE html>
 		<html lang="en">
@@ -8,9 +13,6 @@
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<title>Document1</title>
-
-
-
 			<style>
 				@font-face {
 					font-family: 'Gyeonggi_Batang_Regular';
@@ -36,8 +38,6 @@
 					height: 50px;
 				}
 
-
-
 				#header>div {
 					height: 100%;
 				}
@@ -62,8 +62,6 @@
 					justify-content: space-around;
 					box-sizing: border-box;
 				}
-
-
 
 				#headnavigator>div {
 					position: relative;
@@ -137,7 +135,6 @@
 					transition-delay: 0.2s;
 				}
 
-
 				/*-------------------------------------------------------------  */
 				#header_mypage_btn,
 				#header_login_btn,
@@ -164,7 +161,6 @@
 			border: none;
 			cursor: pointer;
 }
-
 				/* ---------------------------------------------- */
 				#mypage {
 					border-radius: 50%;
@@ -185,24 +181,17 @@
 					color: white;
 					cursor: pointer;
 				}
-
-				/*-------------------------------------------------------------  */
-
-
-
-
-
-
-
-
-
-			
 			</style>
 		</head>
 		<meta charset="UTF-8">
 		<!-- ------------------------------------------------------------------ -->
-
 		<body>
+				<% if(alertMsg != null){ %>
+					<script>
+						alert("<%= alertMsg %>");
+					</script>
+						<% session.removeAttribute("alertMsg"); %> <!-- 이걸 안해주면 다른 곳 가도 한번 더 읽혀서 창이 계속 뜸 -->
+				<% } %>
 			<div class="wrap">
 				<div id="header">
 					<div id="header_1">
@@ -218,7 +207,7 @@
 								<a href="#">게시판</a>
 								<div class="submenu">
 									<a href="<%=contextPath%>/views/vote/voteList.jsp">온라인 투표</a>
-									<a href="<%=contextPath%>/views/board/boardList.jsp">자유게시판</a>
+									<a href="<%=contextPath%>/list.bo?cpage=1">자유게시판</a>
 								</div>
 							</div>
 
@@ -242,14 +231,28 @@
 								</div>
 							</div>
 						</div>
+						<% if(loginMember== null){ %>
 						<div id="header_login_btn" style="height: 100%; width: 9%;">
-							<a class="btn" id="login" onclick="location.href='<%=contextPath%>/views/jinsloginform.jsp'">Log
-								In</a>
+							<a class="btn" id="login" onclick="location.href='<%=contextPath%>/views/member/loginform.jsp'">LogIn</a>
 						</div>
+						
 						<div id="header_signin_btn" style="height: 100%; width: 9%;">
 							<a class="btn" id="signin" onclick="signin()">Sign In</a>
 						</div>
+
+						<%}else{ %>
+							<div>
+								<br>
+								 <b><%= loginMember.getMemName()%>님 </b>의 방문을 환영합니다.		
+							</div>
+							
+							<div id="header_login_btn" style="height: 100%; width: 9%;">
+								<button class="btn" id="login"><a href="<%= contextPath %>/logout.me">로그아웃</a></button>
+							</div>
+						<%} %>
+
 						<div id="header_mypage_btn" style="height: 100%; width: 7%;">
+							
 							<button class="btn" id="mypage" onclick="mypage()">
 								<img src="<%= contextPath %>/resources/assets/user01.png" alt="">
 							</button>
@@ -264,9 +267,6 @@
 
 
 
-				<!-- -----------------------------footer---------------------------------- -->
-				<div style="background-color: white; height: 300px;"></div>
-<!-- 헤드 서브 메뉴 보이기용으로 놔둠 컨텐츠 추가 제작시 이거는 지워도 됨-->
 
 <!-- --------------------------------------------------------------------------------->
 			<script>

@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document1</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=favorite" />
 
 <style>
@@ -101,14 +101,14 @@ body * {
   height: 23%;
   display: flex;
 }
-#book1,#book2,#book3,#book4{
+#book1{
   height: 100%;
   width: 30%;
   display: flex;
 	justify-content: center;
 	align-items: center;
 }
-#bookcon1,#bookcon2,#bookcon3,#bookcon4{
+#bookcon1{
   height: 100%;
   width: 70%;
   display: flex;
@@ -167,6 +167,8 @@ hr{
   width: 90%;
   margin-left: 0%;
 }
+
+
 
 </style>
 </head>
@@ -232,8 +234,9 @@ hr{
                   <div class="bookinfo">
                     <p style="font-size: 20px;"><b></b></p>
                     <hr style="width: 70px; margin-left: 0%;">
-                    <p style="font-size: 15px;"> | | </p>
-                    <p style="font-size: 15px;"> | </p>
+                    지은이 : <p style="font-size: 15px; display: inline;"> </p> &nbsp;|&nbsp; 옮긴이 : <p style="font-size: 15px; display: inline;"></p>
+                    <br><br>
+                    출판사 : <p style="font-size: 15px; display: inline;"></p>&nbsp;|&nbsp; 출판일 :<p style="font-size: 15px; display: inline;"></p>
                     <br><br><br>
 
                     <div style="display: flex;">
@@ -293,10 +296,9 @@ hr{
 	        const books = data.response.docs;
 
 	        books.forEach((book, index) => {
-	            if (index < 1) { // 첫 번째 책만 적용
+	            if (index < 98) { // 첫 번째 책만 적용
 	                console.log("📖 책 데이터 구조:", book);
 
-	                // `book.doc`가 배열인지 확인하고 처리
 	                let doc = Array.isArray(book.doc) ? book.doc[0] : book.doc;
 
 	                if (!doc) {
@@ -310,7 +312,6 @@ hr{
 	                let publisher = doc.publisher || "출판사 정보 없음";
 	                let pubYear = doc.publication_year || "출판일 정보 없음";
 
-	                // ✅ 작가명 추출 방식 개선
 	                let author = "작가 정보 없음";
 	                let translator = "번역가 정보 없음";
 
@@ -324,7 +325,7 @@ hr{
 	                    translator = parts[1].split(";")[0].trim();
 	                }
 
-	                // ✅ 이미지 변경
+	                // 이미지 변경
 	                let bookImageSelector = `#book${index + 1} img`;
 	                if ($(bookImageSelector).length) {
 	                    $(bookImageSelector).attr("src", imageURL);
@@ -332,20 +333,20 @@ hr{
 	                    console.error(`❌ 이미지 태그를 찾을 수 없습니다: ${bookImageSelector}`);
 	                }
 
-	                // ✅ bookinfo 업데이트
+	                // bookinfo 업데이트
 	                let bookInfoSelector = `#bookcon${index + 1} .bookinfo`;
-	                
+	                console.log($(bookImageSelector)); // 이미지 선택자 확인
+	                console.log($(bookInfoSelector));  // bookinfo 선택자 확인
 	                if ($(bookInfoSelector).length) {
 	                    console.log("✅ bookinfo 업데이트 진행!");
+	                    console.log("출판년도:", author);
 	                    
-	                    // ✅ `.empty()` 대신 `.html()`로 한 번에 교체
-	                    $(bookInfoSelector).html(`
-	                        <p style="font-size: 20px;"><b>${title}</b></p>
-	                        <hr style="width: 70px; margin-left: 0%;">
-	                        <p style="font-size: 15px;">지은이: ${author} | 옮긴이: ${translator}</p>
-	                        <p style="font-size: 15px;">${publisher} | ${pubYear}</p>
-	                        
-	                    `);
+	                    // bookinfo 업데이트
+	                    $(bookInfoSelector).find('p:eq(0)').text(title);
+	                    $(bookInfoSelector).find('p:eq(1)').text(author);
+	                    $(bookInfoSelector).find('p:eq(2)').text(translator);
+	                    $(bookInfoSelector).find('p:eq(3)').text(publisher);
+	                    $(bookInfoSelector).find('p:eq(4)').text(pubYear);
 	                } else {
 	                    console.error(`❌ bookinfo 요소를 찾을 수 없습니다: ${bookInfoSelector}`);
 	                }
@@ -354,9 +355,8 @@ hr{
 	    }).fail(function (jqXHR, textStatus, errorThrown) {
 	        console.error(`❌ API 요청 실패: ${textStatus}, 오류: ${errorThrown}`);
 	    });
+
 	});
-
-
     </script>
 
 	<!-- -------------------------------------------------------------------- -->

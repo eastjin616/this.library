@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 import static com.kh.common.JDBCTemplate.*;
 
-import com.kh.member.model.vo.Attachment;
 import com.kh.member.model.vo.Member;
 
 public class MemberDao {

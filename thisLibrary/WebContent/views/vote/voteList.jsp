@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+  <% %>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -9,23 +10,6 @@
       <title>Document1</title>
 
       <style>
-        @font-face {
-          font-family: 'Gyeonggi_Batang_Regular';
-          src:
-            url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff') format('woff');
-          font-weight: 400;
-          font-style: normal;
-        }
-
-        body * {
-          font-family: 'Gyeonggi_Batang_Regular';
-        }
-
-        /* div {box-sizing: border-box;border: 1px solid red;} */
-        
-
-        /* ---------------------------------------------- */
-
         /* 자유게시판 스타일 */
         .board-container {
           max-width: 1000px;
@@ -41,7 +25,8 @@
           border-collapse: collapse;
         }
 
-        th,td {
+        th,
+        td {
           border-bottom: 1px solid #ddd;
           padding: 10px;
           text-align: left;
@@ -51,23 +36,23 @@
           background-color: #f4f4f4;
         }
 
-				.pagination {
-					text-align: center;
-					margin-top: 15px;
-				}
+        .pagination {
+          text-align: center;
+          margin-top: 15px;
+        }
 
-				.pagination span {
-					display: inline-block;
-					padding: 5px 10px;
-					margin: 2px;
-					cursor: pointer;
-					border: 1px solid #ddd;
-					border-radius: 3px;
-				}
+        .pagination span {
+          display: inline-block;
+          padding: 5px 10px;
+          margin: 2px;
+          cursor: pointer;
+          border: 1px solid #ddd;
+          border-radius: 3px;
+        }
 
-				.pagination span:hover {
-					background: #f0f0f0;
-				}
+        .pagination span:hover {
+          background: #f0f0f0;
+        }
 
         .write-btn {
           display: block;
@@ -81,29 +66,24 @@
           text-decoration: none;
         }
 
-        .write-btn:hover{
+        .write-btn:hover {
           opacity: 0.7;
-          
+
         }
 
         div .write-btn>a {
           text-align: right;
         }
 
-        .board-container tbody tr:hover{
+        .board-container tbody tr:hover {
           background-color: lightgrey;
           cursor: pointer;
-        } 
-
-        
-
-        
+        }
       </style>
     </head>
 
     <body>
       <%@ include file="../common/menubar.jsp" %>
-
         <!-- 자유게시판 -->
         <div class="board-container">
           <h2>온라인투표 게시판</h2>
@@ -193,24 +173,22 @@
 
 
           <div class="pagination">
-            <span><</span>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
-            <span>></span>
+            		<span><</span>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>></span>
           </div>
 
           <div style="display: flex;">
-            <a href="<%= contextPath %>/views/vote/voteInsertForm.jsp" class="write-btn" style="margin-left: auto;">글쓰기</a>
+            <a href="<%= contextPath %>/views/vote/voteInsertForm.jsp" class="write-btn"
+              style="margin-left: auto;">글쓰기</a>
           </div>
 
         </div>
         <!-- 자유게시판 끝 -->
-
-        
-      <!-- -------------------------------------------------------------------- -->
         <%@ include file="../common/footerbar.jsp" %>
     </body>
 

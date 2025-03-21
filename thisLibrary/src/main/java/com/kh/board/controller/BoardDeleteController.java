@@ -40,7 +40,7 @@ public class BoardDeleteController extends HttpServlet {
 			int result1 = new BoardService().deleteBoard(boardNo);	
 			Attachment at = new BoardService().selectAttachment(boardNo);
 			String savePath = request.getSession().getServletContext().getRealPath("/resources/board_upfiles/");
-//			System.out.println(savePath);
+
 			if(result1 > 0) { // 게시글 삭제 성공
 				if(at != null) {
 					new BoardService().deleteAttachment(boardNo);

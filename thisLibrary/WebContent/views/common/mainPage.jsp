@@ -1,9 +1,19 @@
 <%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <% 
 %>
-
+<%
+    String alertMsg = (String) session.getAttribute("alertMsg");
+    if (alertMsg != null) {
+%>
+        <script>
+            alert("<%= alertMsg %>");
+        </script>
+<%
+        session.removeAttribute("alertMsg"); // 한 번만 출력 후 세션에서 삭제
+    }
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,719 +24,719 @@
 <title>Document1</title>
 <style>
 #firstbar {
-	height: 50px;
+   height: 50px;
 }
 
 /* Slideshow container */
 .slideshow-container {
-	height: 400px;
-	width: 70%;
-	position: relative;
-	margin: auto;
+   height: 400px;
+   width: 70%;
+   position: relative;
+   margin: auto;
 }
 
 .slideshow-container .mySlides img {
-	height: 400px;
+   height: 400px;
 }
 
 /* Hide the images by default */
 .mySlides {
-	display: none;
+   display: none;
 }
 
 /* Next & previous buttons */
 .prev, .next {
-	cursor: pointer;
-	position: absolute;
-	top: 50%;
-	width: auto;
-	margin-top: -22px;
-	padding: 16px;
-	color: white;
-	font-weight: bold;
-	font-size: 18px;
-	transition: 0.6s ease;
-	border-radius: 0 3px 3px 0;
-	user-select: none;
+   cursor: pointer;
+   position: absolute;
+   top: 50%;
+   width: auto;
+   margin-top: -22px;
+   padding: 16px;
+   color: white;
+   font-weight: bold;
+   font-size: 18px;
+   transition: 0.6s ease;
+   border-radius: 0 3px 3px 0;
+   user-select: none;
 }
 
 /* Position the "next button" to the right */
 .next {
-	right: 0;
-	border-radius: 3px 0 0 3px;
+   right: 0;
+   border-radius: 3px 0 0 3px;
 }
 
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
-	background-color: rgba(0, 0, 0, 0.8);
+   background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* Caption text */
 
 /* Number text (1/3 etc) */
 .numbertext {
-	color: black;
-	font-size: 12px;
-	padding: 8px 12px;
-	position: absolute;
-	top: 0;
-	font-weight: 1000;
+   color: black;
+   font-size: 12px;
+   padding: 8px 12px;
+   position: absolute;
+   top: 0;
+   font-weight: 1000;
 }
 
 /* The dots/bullets/indicators */
 .dot {
-	cursor: pointer;
-	height: 15px;
-	width: 15px;
-	margin: 0 2px;
-	background-color: #bbb;
-	border-radius: 50%;
-	display: inline-block;
-	transition: background-color 0.6s ease;
+   cursor: pointer;
+   height: 15px;
+   width: 15px;
+   margin: 0 2px;
+   background-color: #bbb;
+   border-radius: 50%;
+   display: inline-block;
+   transition: background-color 0.6s ease;
 }
 
 .active, .dot:hover {
-	background-color: #717171;
+   background-color: #717171;
 }
 
 /* Fading animation */
 .fade {
-	-webkit-animation-name: fade;
-	-webkit-animation-duration: 1.5s;
-	animation-name: fade;
-	animation-duration: 1.5s;
+   -webkit-animation-name: fade;
+   -webkit-animation-duration: 1.5s;
+   animation-name: fade;
+   animation-duration: 1.5s;
 }
 
 @
 -webkit-keyframes fade {from { opacity:.4
-	
+   
 }
 
 to {
-	opacity: 1
+   opacity: 1
 }
 
 }
 @
 keyframes fade {from { opacity:.4
-	
+   
 }
 
 to {
-	opacity: 1
+   opacity: 1
 }
 
 }
 
 /* --------------------------------------------------- */
 #content {
-	height: 700px;
+   height: 700px;
 }
 
 #spaceContent {
-	height: 200px;
+   height: 200px;
 }
 
 #header_1_1>div {
-	float: left;
+   float: left;
 }
 
 #header_1_2>div {
-	float: left;
+   float: left;
 }
 
 /* ================================================================ */
 #header_1_2 {
-	text-align: center;
-	margin-top: 20px;
+   text-align: center;
+   margin-top: 20px;
 }
 
 /* #header_1_3{border: 1px solid;} */
 a {
-	text-decoration-line: none;
-	color: black;
+   text-decoration-line: none;
+   color: black;
 }
 
 #search-container {
-	display: flex;
-	align-items: center;
-	border: 1px solid #ccc;
-	border-radius: 30px;
-	overflow: hidden;
-	width: 700px;
-	/* 부모 요소 크기에 맞춤 */
-	height: 50px;
-	/* 높이를 #header_1_3_2 크기에 맞춤 */
-	background-color: white;
-	border: 1px solid lightgray;
-	margin: auto;
-	margin-top: 20px;
+   display: flex;
+   align-items: center;
+   border: 1px solid #ccc;
+   border-radius: 30px;
+   overflow: hidden;
+   width: 700px;
+   /* 부모 요소 크기에 맞춤 */
+   height: 50px;
+   /* 높이를 #header_1_3_2 크기에 맞춤 */
+   background-color: white;
+   border: 1px solid lightgray;
+   margin: auto;
+   margin-top: 20px;
 }
 
 #search-filter {
-	height: 100%;
-	width: 20%;
-	border: none;
-	background-color: white;
-	color: black;
-	font-size: 14px;
-	padding: 5px;
-	cursor: pointer;
+   height: 100%;
+   width: 20%;
+   border: none;
+   background-color: white;
+   color: black;
+   font-size: 14px;
+   padding: 5px;
+   cursor: pointer;
 }
 
 #search-bar {
-	flex: 1;
-	height: 100%;
-	border: none;
-	padding: 5px;
-	font-size: 16px;
-	outline: none;
+   flex: 1;
+   height: 100%;
+   border: none;
+   padding: 5px;
+   font-size: 16px;
+   outline: none;
 }
 
 #search-btn {
-	height: 100%;
-	width: 15%;
-	border: none;
-	background-color: burlywood;
-	color: black;
-	font-size: 14px;
-	cursor: pointer;
+   height: 100%;
+   width: 15%;
+   border: none;
+   background-color: burlywood;
+   color: black;
+   font-size: 14px;
+   cursor: pointer;
 }
 
 #search-btn:hover {
-	opacity: 0.7;
+   opacity: 0.7;
 }
 
 /* ================================================================ */
 #content>div {
-	height: 100%;
-	float: left;
+   height: 100%;
+   float: left;
 }
 
 #content_1 {
-	width: 40%;
-	height: 100%;
+   width: 40%;
+   height: 100%;
 }
 
 #content_2 {
-	width: 20%;
-	height: 100%
+   width: 20%;
+   height: 100%
 }
 
 #content_3 {
-	width: 40%;
-	height: 100%
+   width: 40%;
+   height: 100%
 }
 
 /* -------------------------------------------------------- */
 #content_1_1 {
-	width: 100%;
-	height: 22%;
-	position: relative;
+   width: 100%;
+   height: 22%;
+   position: relative;
 }
 
 #content_1_2 {
-	width: 100%;
-	height: 41%;
-	position: relative;
+   width: 100%;
+   height: 41%;
+   position: relative;
 }
 
 #content_1_3 {
-	width: 100%;
-	height: 37%;
-	position: relative;
+   width: 100%;
+   height: 37%;
+   position: relative;
 }
 
 #content_1_2_1 {
-	width: 100%;
-	height: 79%;
-	position: relative;
+   width: 100%;
+   height: 79%;
+   position: relative;
 }
 
 #content_1_2_2 {
-	width: 100%;
-	height: 21%;
-	position: relative;
+   width: 100%;
+   height: 21%;
+   position: relative;
 }
 
 #content_1_3_1 {
-	width: 100%;
-	height: 20%;
-	position: relative;
+   width: 100%;
+   height: 20%;
+   position: relative;
 }
 
 #content_1_3_2 {
-	width: 100%;
-	height: 80%;
-	position: relative;
+   width: 100%;
+   height: 80%;
+   position: relative;
 }
 
 /* -------------------------------------------------------- */
 #content_2_1 {
-	width: 100%;
-	height: 8%;
+   width: 100%;
+   height: 8%;
 }
 
 #content_2_2 {
-	width: 100%;
-	height: 8%;
-	position: relative;
+   width: 100%;
+   height: 8%;
+   position: relative;
 }
 
 #content_2_3 {
-	width: 100%;
-	height: 38.5%;
-	position: relative;
+   width: 100%;
+   height: 38.5%;
+   position: relative;
 }
 
 #content_2_4 {
-	width: 100%;
-	height: 8%;
-	position: relative;
+   width: 100%;
+   height: 8%;
+   position: relative;
 }
 
 #content_2_5 {
-	width: 100%;
-	height: 37.5%;
+   width: 100%;
+   height: 37.5%;
 }
 
 #content_2_5_1 {
-	width: 100%;
-	height: 20%;
-	position: relative;
+   width: 100%;
+   height: 20%;
+   position: relative;
 }
 
 #content_2_5_2 {
-	width: 100%;
-	height: 80%;
-	position: relative;
+   width: 100%;
+   height: 80%;
+   position: relative;
 }
 
 /* -------------------------------------------------------- */
 #content_3_1 {
-	width: 100%;
-	height: 22%;
-	position: relative;
+   width: 100%;
+   height: 22%;
+   position: relative;
 }
 
 #content_3_2 {
-	width: 100%;
-	height: 41%;
-	position: relative;
+   width: 100%;
+   height: 41%;
+   position: relative;
 }
 
 #content_3_3 {
-	width: 100%;
-	height: 37%;
-	position: relative;
+   width: 100%;
+   height: 37%;
+   position: relative;
 }
 
 #content_3_2_1 {
-	width: 100%;
-	height: 79%;
-	position: relative;
+   width: 100%;
+   height: 79%;
+   position: relative;
 }
 
 #content_3_2_2 {
-	width: 100%;
-	height: 21%;
-	position: relative;
+   width: 100%;
+   height: 21%;
+   position: relative;
 }
 
 #content_3_3_1 {
-	width: 100%;
-	height: 20%;
-	position: relative;
+   width: 100%;
+   height: 20%;
+   position: relative;
 }
 
 #content_3_3_2 {
-	width: 100%;
-	height: 80%;
-	position: relative;
+   width: 100%;
+   height: 80%;
+   position: relative;
 }
 
 /* -------------------------------------------------------- */
 .pick-button {
-	width: 100%;
-	border-radius: 300%;
+   width: 100%;
+   border-radius: 300%;
 }
 
 /* -------------------------------------------------------- */
 #content_1_1>#silver {
-	position: absolute;
-	margin-right: 35%;
-	right: 0;
-	bottom: 7%;
-	height: 23%;
+   position: absolute;
+   margin-right: 35%;
+   right: 0;
+   bottom: 7%;
+   height: 23%;
 }
 
 #content_1_2_1>#book1 {
-	position: absolute;
-	margin-top: 1%;
-	margin-right: 22%;
-	right: 0;
-	bottom: 0;
-	top: 0;
-	height: 100%;
-	width: 35%;
+   position: absolute;
+   margin-top: 1%;
+   margin-right: 22%;
+   right: 0;
+   bottom: 0;
+   top: 0;
+   height: 100%;
+   width: 35%;
 }
 
 #content_1_3_2>#book2 {
-	position: absolute;
-	margin-top: 5%;
-	margin-right: 22%;
-	right: 0;
-	bottom: 0;
-	top: 0;
-	height: 100%;
-	width: 35%;
+   position: absolute;
+   margin-top: 5%;
+   margin-right: 22%;
+   right: 0;
+   bottom: 0;
+   top: 0;
+   height: 100%;
+   width: 35%;
 }
 
 /* -------------------------------------------------------- */
 #content_2_2>#gold {
-	width: 15%;
-	height: 70%;
-	margin-top: 6%;
+   width: 15%;
+   height: 70%;
+   margin-top: 6%;
 }
 
 #content_2_3>#book3 {
-	position: absolute;
-	margin-left: 15%;
-	margin-top: 5%;
-	width: 210px;
+   position: absolute;
+   margin-left: 15%;
+   margin-top: 5%;
+   width: 210px;
 }
 
 #content_2_4>button {
-	position: absolute;
-	bottom: 0;
-	right: 10%;
+   position: absolute;
+   bottom: 0;
+   right: 10%;
 }
 
 #content_2_5_2>#book4 {
-	position: absolute;
-	margin-top: 8%;
-	margin-left: 15%;
-	height: 100%;
-	width: 210px;
+   position: absolute;
+   margin-top: 8%;
+   margin-left: 15%;
+   height: 100%;
+   width: 210px;
 }
 
 /* -------------------------------------------------------- */
 #content_3_1>#brown {
-	position: absolute;
-	margin-right: 57%;
-	right: 0;
-	bottom: 0;
-	height: 23%;
+   position: absolute;
+   margin-right: 57%;
+   right: 0;
+   bottom: 0;
+   height: 23%;
 }
 
 #content_3_2_1>#book5 {
-	position: absolute;
-	margin-top: 2%;
-	margin-right: 43%;
-	right: 0;
-	bottom: 0;
-	top: 0;
-	height: 95%;
-	width: 35%;
+   position: absolute;
+   margin-top: 2%;
+   margin-right: 43%;
+   right: 0;
+   bottom: 0;
+   top: 0;
+   height: 95%;
+   width: 35%;
 }
 
 #content_3_3_2>#book6 {
-	position: absolute;
-	margin-top: 5%;
-	margin-right: 43%;
-	right: 0;
-	bottom: 0;
-	top: 0;
-	height: 100%;
-	width: 35%;
+   position: absolute;
+   margin-top: 5%;
+   margin-right: 43%;
+   right: 0;
+   bottom: 0;
+   top: 0;
+   height: 100%;
+   width: 35%;
 }
 
 /* -------------------------------------------------------- */
 #content_1_2>img {
-	height: 90%;
-	display: block;
+   height: 90%;
+   display: block;
 }
 
 #content_1_3>img {
-	width: 28%;
-	height: 100%;
-	display: block;
+   width: 28%;
+   height: 100%;
+   display: block;
 }
 
 #content_2_2>img {
-	height: 90%;
-	margin: auto;
-	display: block;
+   height: 90%;
+   margin: auto;
+   display: block;
 }
 
 #content_2_3>img {
-	height: 90%;
-	margin: auto;
-	display: block;
+   height: 90%;
+   margin: auto;
+   display: block;
 }
 
 #content_2_5>img {
-	height: 100%;
-	margin: auto;
-	display: block;
+   height: 100%;
+   margin: auto;
+   display: block;
 }
 
 #content_3_1>img {
-	height: 23%;
+   height: 23%;
 }
 
 #content_3_2>img {
-	height: 90%;
-	display: block;
+   height: 90%;
+   display: block;
 }
 
 #content_3_3>img {
-	height: 98%;
-	display: block;
+   height: 98%;
+   display: block;
 }
 
 /* ---------------------------------------- */
 .today-pick-container {
-	display: flex;
-	justify-content: center;
-	/* 가로 중앙 정렬 */
-	align-items: center;
-	/* 세로 중앙 정렬 (필요할 경우) */
-	height: 100%;
-	/* 부모 요소 높이를 100%로 설정 */
+   display: flex;
+   justify-content: center;
+   /* 가로 중앙 정렬 */
+   align-items: center;
+   /* 세로 중앙 정렬 (필요할 경우) */
+   height: 100%;
+   /* 부모 요소 높이를 100%로 설정 */
 }
 
 .pick-button {
-	display: block;
-	margin: 0 auto;
-	padding: 10px 20px;
-	font-size: 18px;
-	font-weight: bold;
-	color: #4A4A4A;
-	background-color: #f8f9fa;
-	border: 2px solid #4A4A4A;
-	border-radius: 13px;
-	cursor: pointer;
-	transition: all 0.3s ease;
+   display: block;
+   margin: 0 auto;
+   padding: 10px 20px;
+   font-size: 18px;
+   font-weight: bold;
+   color: #4A4A4A;
+   background-color: #f8f9fa;
+   border: 2px solid #4A4A4A;
+   border-radius: 13px;
+   cursor: pointer;
+   transition: all 0.3s ease;
 }
 
 .pick-button:hover {
-	background-color: #4A4A4A;
-	color: white;
+   background-color: #4A4A4A;
+   color: white;
 }
 
 .book-list {
-	display: flex;
-	justify-content: center;
-	gap: 20px;
-	margin-top: 20px;
+   display: flex;
+   justify-content: center;
+   gap: 20px;
+   margin-top: 20px;
 }
 
 .book-item {
-	text-align: center;
+   text-align: center;
 }
 
 .book-item img {
-	width: 120px;
-	height: 180px;
-	border-radius: 8px;
-	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+   width: 120px;
+   height: 180px;
+   border-radius: 8px;
+   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .book-item p {
-	margin-top: 10px;
-	font-size: 14px;
-	font-weight: bold;
+   margin-top: 10px;
+   font-size: 14px;
+   font-weight: bold;
 }
 </style>
 </head>
 <meta charset="UTF-8">
 <!-- ------------------------------------------------------------------ -->
 <body>
-	<%@ include file="menubar.jsp"%>
+   <%@ include file="menubar.jsp"%>
 
-	<!-- ------------------------------------------------------------------ -->
+   <!-- ------------------------------------------------------------------ -->
 
 
 
-	<!-- -------------------------------------------------------------------- -->
-	<div id="header_1_2">
-		<img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt="">
-	</div>
+   <!-- -------------------------------------------------------------------- -->
+   <div id="header_1_2">
+      <img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt="">
+   </div>
 
-	<div id="search-container">
-		<select id="search-filter">
-			<option value="all">통합검색</option>
-			<option value="genre">장르별검색</option>
-			<option value="national">국가별검색</option>
-			<option value="languague">언어별선택</option>
-			<option value="author">작가별선택</option>
-		</select> <input type="text" id="search-bar" placeholder="검색어를 입력하세요">
-		<button id="search-btn" onclick="search()">검색</button>
-	</div>
+   <div id="search-container">
+      <select id="search-filter">
+         <option value="all">통합검색</option>
+         <option value="genre">장르별검색</option>
+         <option value="national">국가별검색</option>
+         <option value="languague">언어별선택</option>
+         <option value="author">작가별선택</option>
+      </select> <input type="text" id="search-bar" placeholder="검색어를 입력하세요">
+      <button id="search-btn" onclick="search()">검색</button>
+   </div>
 
-	<!-- -------------------------------------------------------------------------- -->
-	<div id="firstbar"></div>
+   <!-- -------------------------------------------------------------------------- -->
+   <div id="firstbar"></div>
 
-	<div class="slideshow-container">
-		<!-- Full-width images with number and caption text -->
-		<div class="mySlides fade">
-			<div class="numbertext">1 / 3</div>
-			<img src="<%= contextPath %>/resources/assets/교보문고1.jpg"
-				style="width: 100%">
-		</div>
+   <div class="slideshow-container">
+      <!-- Full-width images with number and caption text -->
+      <div class="mySlides fade">
+         <div class="numbertext">1 / 3</div>
+         <img src="<%= contextPath %>/resources/assets/교보문고1.jpg"
+            style="width: 100%">
+      </div>
 
-		<div class="mySlides fade">
-			<div class="numbertext">2 / 3</div>
-			<img src="<%= contextPath %>/resources/assets/how.jpg"
-				style="width: 100%">
-		</div>
+      <div class="mySlides fade">
+         <div class="numbertext">2 / 3</div>
+         <img src="<%= contextPath %>/resources/assets/how.jpg"
+            style="width: 100%">
+      </div>
 
-		<div class="mySlides fade">
-			<div class="numbertext">3 / 3</div>
-			<img src="<%= contextPath %>/resources/assets/brunch.jpg"
-				style="width: 100%">
-		</div>
+      <div class="mySlides fade">
+         <div class="numbertext">3 / 3</div>
+         <img src="<%= contextPath %>/resources/assets/brunch.jpg"
+            style="width: 100%">
+      </div>
 
-		<!-- Next and previous buttons -->
-		<a class="prev" onclick="moveSlides(-1)">&#10094;</a> <a class="next"
-			onclick="moveSlides(1)">&#10095;</a>
-	</div>
-	<br />
+      <!-- Next and previous buttons -->
+      <a class="prev" onclick="moveSlides(-1)">&#10094;</a> <a class="next"
+         onclick="moveSlides(1)">&#10095;</a>
+   </div>
+   <br />
 
-	<!-- The dots/circles -->
-	<div style="text-align: center">
-		<span class="dot" onclick="currentSlide(0)"></span> <span class="dot"
-			onclick="currentSlide(1)"></span> <span class="dot"
-			onclick="currentSlide(2)"></span>
-	</div>
+   <!-- The dots/circles -->
+   <div style="text-align: center">
+      <span class="dot" onclick="currentSlide(0)"></span> <span class="dot"
+         onclick="currentSlide(1)"></span> <span class="dot"
+         onclick="currentSlide(2)"></span>
+   </div>
 
-	<div id="firstbar"></div>
-	<!-- -------------------------------------------------------------------------- -->
-	<div id="content">
-		<div id="content_1">
-			<div id="content_1_1">
-				<img src="<%= contextPath %>/resources/assets/silver.png" alt=""
-					id="silver">
-			</div>
-			<div id="content_1_2">
-				<div id="content_1_2_1">
-					<img src="<%= contextPath %>/resources/assets/book1.jpg" alt=""
-						id="book1">
-				</div>
-				<div id="content_1_2_2"></div>
-			</div>
-			<div id="content_1_3">
-				<div id="content_1_3_1"></div>
-				<div id="content_1_3_2">
-					<img src="<%= contextPath %>/resources/assets/book2.jpg" alt=""
-						id="book2">
-				</div>
-			</div>
-		</div>
+   <div id="firstbar"></div>
+   <!-- -------------------------------------------------------------------------- -->
+   <div id="content">
+      <div id="content_1">
+         <div id="content_1_1">
+            <img src="<%= contextPath %>/resources/assets/silver.png" alt=""
+               id="silver">
+         </div>
+         <div id="content_1_2">
+            <div id="content_1_2_1">
+               <img src="<%= contextPath %>/resources/assets/book1.jpg" alt=""
+                  id="book1">
+            </div>
+            <div id="content_1_2_2"></div>
+         </div>
+         <div id="content_1_3">
+            <div id="content_1_3_1"></div>
+            <div id="content_1_3_2">
+               <img src="<%= contextPath %>/resources/assets/book2.jpg" alt=""
+                  id="book2">
+            </div>
+         </div>
+      </div>
 
-		<div id="content_2">
-			<div id="content_2_1">
-				<button class="pick-button">오늘의 Pick</button>
-			</div>
-			<div id="content_2_2">
-				<img src="<%= contextPath %>/resources/assets/gold.png" alt=""
-					id="gold">
-			</div>
-			<div id="content_2_3">
-				<img src="<%= contextPath %>/resources/assets/book3.jpg" alt=""
-					id="book3">
-			</div>
-			<div id="content_2_4"></div>
-			<div id="content_2_5">
-				<button class="pick-button">관리자의 Pick</button>
-				<div id="content_2_5_2">
-					<img src="<%= contextPath %>/resources/assets/book4.jpg" alt=""
-						id="book4">
-				</div>
-			</div>
-		</div>
+      <div id="content_2">
+         <div id="content_2_1">
+            <button class="pick-button">오늘의 Pick</button>
+         </div>
+         <div id="content_2_2">
+            <img src="<%= contextPath %>/resources/assets/gold.png" alt=""
+               id="gold">
+         </div>
+         <div id="content_2_3">
+            <img src="<%= contextPath %>/resources/assets/book3.jpg" alt=""
+               id="book3">
+         </div>
+         <div id="content_2_4"></div>
+         <div id="content_2_5">
+            <button class="pick-button">관리자의 Pick</button>
+            <div id="content_2_5_2">
+               <img src="<%= contextPath %>/resources/assets/book4.jpg" alt=""
+                  id="book4">
+            </div>
+         </div>
+      </div>
 
-		<div id="content_3">
-			<div id="content_3_1">
-				<img src="<%= contextPath %>/resources/assets/brown.png" alt=""
-					id="brown">
-			</div>
-			<div id="content_3_2">
-				<div id="content_3_2_1">
-					<img src="<%= contextPath %>/resources/assets/book5.jpg" alt=""
-						id="book5">
-				</div>
-				<div id="content_3_2_2"></div>
-			</div>
-			<div id="content_3_3">
-				<div id="content_3_3_1"></div>
-				<div id="content_3_3_2">
-					<img src="<%= contextPath %>/resources/assets/book6.jpg" alt=""
-						id="book6">
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="spaceContent"></div>
-	<!-- -------------------------------------------------------------------- -->
-	<%@ include file="footerbar.jsp"%>
-	<!-- -------------------------------------------------------------------- -->
-	<script>
-											var slideIndex = 0; //slide index
+      <div id="content_3">
+         <div id="content_3_1">
+            <img src="<%= contextPath %>/resources/assets/brown.png" alt=""
+               id="brown">
+         </div>
+         <div id="content_3_2">
+            <div id="content_3_2_1">
+               <img src="<%= contextPath %>/resources/assets/book5.jpg" alt=""
+                  id="book5">
+            </div>
+            <div id="content_3_2_2"></div>
+         </div>
+         <div id="content_3_3">
+            <div id="content_3_3_1"></div>
+            <div id="content_3_3_2">
+               <img src="<%= contextPath %>/resources/assets/book6.jpg" alt=""
+                  id="book6">
+            </div>
+         </div>
+      </div>
+   </div>
+   <div id="spaceContent"></div>
+   <!-- -------------------------------------------------------------------- -->
+   <%@ include file="footerbar.jsp"%>
+   <!-- -------------------------------------------------------------------- -->
+   <script>
+                                 var slideIndex = 0; //slide index
 
-											// HTML 로드가 끝난 후 동작
-											window.onload = function () {
-												showSlides(slideIndex);
+                                 // HTML 로드가 끝난 후 동작
+                                 window.onload = function () {
+                                    showSlides(slideIndex);
 
-												// Auto Move Slide
-												var sec = 3000;
-												setInterval(function () {
-													slideIndex++;
-													showSlides(slideIndex);
+                                    // Auto Move Slide
+                                    var sec = 3000;
+                                    setInterval(function () {
+                                       slideIndex++;
+                                       showSlides(slideIndex);
 
-												}, sec);
-											}
+                                    }, sec);
+                                 }
 
-											function search(){
-												location.href = "<%=contextPath%>/views/book/bookDetail.jsp";
-											}
+                                 function search(){
+                                    location.href = "<%=contextPath%>/views/book/bookDetail.jsp";
+                                 }
 
-											// Next/previous controls
-											function moveSlides(n) {
-												slideIndex = slideIndex + n
-												showSlides(slideIndex);
-											}
+                                 // Next/previous controls
+                                 function moveSlides(n) {
+                                    slideIndex = slideIndex + n
+                                    showSlides(slideIndex);
+                                 }
 
-											// Thumbnail image controls
-											function currentSlide(n) {
-												slideIndex = n;
-												showSlides(slideIndex);
-											}
+                                 // Thumbnail image controls
+                                 function currentSlide(n) {
+                                    slideIndex = n;
+                                    showSlides(slideIndex);
+                                 }
 
-											function showSlides(n) {
+                                 function showSlides(n) {
 
-												var slides = document.getElementsByClassName("mySlides");
-												var dots = document.getElementsByClassName("dot");
-												var size = slides.length;
+                                    var slides = document.getElementsByClassName("mySlides");
+                                    var dots = document.getElementsByClassName("dot");
+                                    var size = slides.length;
 
-												if ((n + 1) > size) {
-													slideIndex = 0; n = 0;
-												} else if (n < 0) {
-													slideIndex = (size - 1);
-													n = (size - 1);
-												}
+                                    if ((n + 1) > size) {
+                                       slideIndex = 0; n = 0;
+                                    } else if (n < 0) {
+                                       slideIndex = (size - 1);
+                                       n = (size - 1);
+                                    }
 
-												for (i = 0; i < slides.length; i++) {
-													slides[i].style.display = "none";
-												}
-												for (i = 0; i < dots.length; i++) {
-													dots[i].className = dots[i].className.replace(" active", "");
-												}
+                                    for (i = 0; i < slides.length; i++) {
+                                       slides[i].style.display = "none";
+                                    }
+                                    for (i = 0; i < dots.length; i++) {
+                                       dots[i].className = dots[i].className.replace(" active", "");
+                                    }
 
-												slides[n].style.display = "block";
-												dots[n].className += " active";
-											}
-										</script>
+                                    slides[n].style.display = "block";
+                                    dots[n].className += " active";
+                                 }
+                              </script>
 </body>
 </html>

@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<% 
+%>
 
 		<!DOCTYPE html>
 		<html lang="en">
@@ -9,23 +11,6 @@
 			<title>Document1</title>
 
 			<style>
-				@font-face {
-					font-family: 'Gyeonggi_Batang_Regular';
-					src:
-						url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff') format('woff');
-					font-weight: 400;
-					font-style: normal;
-				}
-
-				body * {
-					font-family: 'Gyeonggi_Batang_Regular';
-				}
-
-				/* div {box-sizing: border-box;border: 1px solid red;} */
-				
-
-				/*-------------------------------------------------------------  */
-
 				.post-container {
 					width: 70%;
 					margin: 30px auto;
@@ -254,7 +239,6 @@
 					margin-left: 90%;
 					gap: 10px;
 					/* 버튼 간격 */
-					
 				}
 
 				button:hover {
@@ -271,27 +255,11 @@
 					font-size: 14px;
 					width: 85px;
 					justify-content: right;
-
 				}
-			
-
-
-
-
-
-				
 			</style>
 		</head>
-		<meta charset="UTF-8">
-		<!-- ------------------------------------------------------------------ -->
-
 		<body>
-		<%@ include file="../common/menubar.jsp" %>
-			
-				<!-- -------------------------------------------------------------------- -->
-
-
-
+				<%@ include file="../common/menubar.jsp" %>
 				<div class="post-container">
 					<div class="post-header">
 						<h2>제목<input type="text" style="width: 985px; margin-left: 10px;"></h2>
@@ -324,13 +292,7 @@
 						</div>
 					</div>
 				</div>
-
-
-
-				<!-- -----------------------------footer---------------------------------- -->
-				
-			<!-- -------------------------------------------------------------------- -->
-			<%@ include file="../common/footerbar.jsp" %>
+				<%@ include file="../common/footerbar.jsp" %>
 		</body>
 
 		</html>

@@ -7,21 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.kh.board.model.service.BoardService;
-import com.kh.board.model.vo.BoardAnswer;
-import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class AjaxReplyInsertController
+ * Servlet implementation class AjaxReplyCountController
  */
-@WebServlet("/rinsert.bo")
-public class AjaxReplyInsertController extends HttpServlet {
+@WebServlet("/rCount.bo")
+public class AjaxReplyCountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxReplyInsertController() {
+    public AjaxReplyCountController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,21 +29,13 @@ public class AjaxReplyInsertController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String replyContent = request.getParameter("content");
+
 		int boardNo = Integer.parseInt(request.getParameter("bno"));
 		
-		int userNo = ((Member)request.getSession().getAttribute("loginMember")).getMemNo();
-
-		BoardAnswer ba = new BoardAnswer();
-		ba.setAnswerContent(replyContent);
-		ba.setBoardNo(boardNo);
-		ba.setMemNo(String.valueOf(userNo));
+		int rCount = new BoardService().boardAnswerCount(boardNo);
 		
-		int result = new BoardService().insertReply(ba);
-		
-		response.getWriter().print(result);
-	
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(rCount, response.getWriter());
 	}
 
 	/**

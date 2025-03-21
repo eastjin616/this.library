@@ -177,4 +177,17 @@
 	 ORDER
 	    BY B_ANSWER_NO DESC
   </entry>
+  
+  <entry key="boardAnswerCount">
+  SELECT COUNT(*) "COUNT"
+	  FROM BOARD_ANSWER
+	 WHERE BOARD_NO = ?
+	   AND STATUS = 'Y'
+  </entry>
+  
+  <entry key="deleteBoardAnswer">
+  UPDATE BOARD_ANSWER
+	   SET STATUS = 'N'
+	 WHERE B_ANSWER_NO = ?
+  </entry>
 </properties>

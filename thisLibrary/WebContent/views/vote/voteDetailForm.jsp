@@ -1,4 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<<<<<<< HEAD
+<%  
+%>
+=======
+
+>>>>>>> 4473cf8cb9db20279657ec4579e528fb4d0f05ef
 
 		<!DOCTYPE html>
 		<html lang="en">
@@ -10,21 +16,6 @@
 
 
 			<style>
-				@font-face {
-					font-family: 'Gyeonggi_Batang_Regular';
-					src:
-						url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff') format('woff');
-					font-weight: 400;
-					font-style: normal;
-				}
-
-				body * {
-					font-family: 'Gyeonggi_Batang_Regular';
-				}
-
-				/* div {box-sizing: border-box;border: 1px solid red;} */
-
-
 				.post-container {
 					width: 70%;
 					margin: 30px auto;
@@ -210,19 +201,13 @@
 					padding-left: 50px;
 					padding-right: 50px;
 				}
-				
 			</style>
 		</head>
 		<meta charset="UTF-8">
 		<!-- ------------------------------------------------------------------ -->
 
 		<body>
-		<%@ include file="../common/menubar.jsp" %>
-			
-				<!-- -------------------------------------------------------------------- -->
-
-
-
+				<%@ include file="../common/menubar.jsp" %>
 				<div class="post-container">
 					<div class="post-header">
 						<h2>투표제목앙기모자리하하하한글로하면좀더너비가한글로공백포함46자커지네글자수제한83자<span class="label">팔로우</span></h2>
@@ -258,10 +243,6 @@
 						</div>
 
 						<button class="submit-btn" style="margin-left: 47%;">투표하기</button>
-
-
-
-
 
 						</p>
 					</div>
@@ -342,11 +323,7 @@
 							<span>></span>
 					</div>
 				</div>
-
-
-				
-			<!-- -------------------------------------------------------------------- -->
-			<%@ include file="../common/footerbar.jsp" %>
+				<%@ include file="../common/footerbar.jsp" %>
 		</body>
 
 		</html>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
+	<% %>
 
 		<!DOCTYPE html>
 		<html lang="en">
@@ -13,29 +13,17 @@
   <link rel="stylesheet" href="footer.css"> -->
 
 			<style>
-				@font-face {
-					font-family: 'Gyeonggi_Batang_Regular';
-					src:
-						url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff') format('woff');
-					font-weight: 400;
-					font-style: normal;
-				}
-
-				body * {
-					font-family: 'Gyeonggi_Batang_Regular';
-				}
-
-				/* div {box-sizing: border-box;border: 1px solid red;} */
 				
-			
-			
+
 				/*-------------------------------------------------------------  */
 				.wrap2 {
 					width: 1000px;
 					border: 1px solid;
 					background-color: #964b00;
 					box-sizing: border-box;
-
+					margin-left: 15%;
+					margin-top: 5%;
+					margin-bottom: 5%;
 				}
 
 				/* 
@@ -486,6 +474,7 @@
 
 				}
 
+	
 
 				div>input {
 					box-sizing: border-box;
@@ -538,9 +527,8 @@
 		<!-- ------------------------------------------------------------------ -->
 
 		<body>
-
-		<%@ include file="../common/menubar.jsp" %>		
-		<!-- -------------------------------------------------------------------- -->
+			<%@ include file="../common/menubar.jsp" %>
+				<!-- -------------------------------------------------------------------- -->
 
 				<div class="wrap2">
 					<div class="container">
@@ -733,9 +721,6 @@
 										</div>
 									</div>
 
-
-
-
 								</div>
 								<div id="mypageMainContent4">
 									<div id="readGoal1">
@@ -775,9 +760,6 @@
 					location.href = "<%= contextPath %>/views/member/loginform.jsp";
 				}
 			</script>
-
-
-			<!-- -------------------------------------------------------------------- -->
 
 			<script>
 				// ============================================== 마이페이지 유저정보 '수정하기'버튼 모달 스크립트
@@ -837,7 +819,7 @@
 					}
 				});
 			</script>
-<%@ include file="../common/footerbar.jsp" %>
-		</body>
 
+		<%@ include file="../common/footerbar.jsp"%>
+		</body>
 		</html>

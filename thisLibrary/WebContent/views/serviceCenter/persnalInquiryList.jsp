@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<% 
+	String alertMsg=(String) session.getAttribute("alertMsg"); 
+%>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -116,69 +119,6 @@
                 <td>2019-12-17</td>
                 <td>120</td>
               </tr>
-              <tr>
-                <td>9</td>
-                <td>제목</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>160</td>
-              </tr>
-              <tr>
-                <td>8</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>77</td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>99</td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>50</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>9015</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>60</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>111560</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>1105</td>
-              </tr>
             </tbody>
           </table>
 
@@ -192,7 +132,7 @@
           </div>
 
           <div style="display: flex;">
-            <a href="<%= contextPath %>/views/board/boardInsertForm.jsp" class="write-btn" style="margin-left: auto;">글쓰기</a>
+            <a href="<%= contextPath %>/views/serviceCenter/persnalInquiry.jsp" class="write-btn" style="margin-left: auto;">글쓰기</a>
           </div>
 
         </div>

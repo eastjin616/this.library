@@ -31,14 +31,11 @@ public class AjaxReplyInsertController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("a");
 		String replyContent = request.getParameter("content");
 		int boardNo = Integer.parseInt(request.getParameter("bno"));
 		
 		int userNo = ((Member)request.getSession().getAttribute("loginMember")).getMemNo();
-		System.out.println("userno2 : " + userNo);
-		System.out.println(boardNo);
-		System.out.println(replyContent);
+
 		BoardAnswer ba = new BoardAnswer();
 		ba.setAnswerContent(replyContent);
 		ba.setBoardNo(boardNo);

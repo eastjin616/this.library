@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +9,6 @@
 <title>Document1</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-<!-- <link rel="stylesheet" href="header.css">
-  <link rel="stylesheet" href="content.css">
-  <link rel="stylesheet" href="footer.css"> -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=favorite" />
 
 <style>
@@ -234,10 +230,10 @@ hr{
                 <div id="bookcon1">
                   <div class="spare1"></div>
                   <div class="bookinfo">
-                    <p style="font-size: 20px;"><b> 마이클센델 정의란 무엇인가</b></p>
+                    <p style="font-size: 20px;"><b></b></p>
                     <hr style="width: 70px; margin-left: 0%;">
-                    <p style="font-size: 15px;">마이클 센델 저자(글) | 김명철 번역 | 김선욱 감수</p>
-                    <p style="font-size: 15px;">와이즈베리 2014년 11월 20일</p>
+                    <p style="font-size: 15px;"> | | </p>
+                    <p style="font-size: 15px;"> | </p>
                     <br><br><br>
 
                     <div style="display: flex;">
@@ -269,6 +265,8 @@ hr{
         </div>
        </div>
       </div>
+      
+      
 <%@ include file="../common/footerbar.jsp" %>
 
 <script type="text/javascript">
@@ -281,31 +279,84 @@ hr{
   </script>
   
   <script>
-        $(document).ready(function () {
-            const apiURL = "http://data4library.kr/api/loanItemSrch?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&format=json";
+  $(document).ready(function () {
+	    const apiURL = "http://data4library.kr/api/loanItemSrch?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&format=json";
 
-            $.getJSON(apiURL, function (data) {
-                const books = data.response.docs;
+	    $.getJSON(apiURL, function (data) {
+	        console.log("📢 API 응답 전체:", data);
 
-                books.forEach((book, index) => {
-                    if (index < 1) { // 1개의 책만 변경
-                        let imageURL = book.doc.bookImageURL;
-                        $(`#book${index + 1} img`).attr("src", imageURL);
-                        let title = book.doc.bookname || "제목 없음";
-                        let author = book.doc.authors || "작가 정보 없음";
-                        let publisher = book.doc.publisher || "출판사 정보 없음";
-                        let pubYear = book.doc.publication_year || "출판일 정보 없음";
+	        if (!data.response || !data.response.docs || data.response.docs.length === 0) {
+	            console.error("❌ API에서 책 데이터가 없습니다!");
+	            return;
+	        }
 
-                        console.log("API 전체 응답:", data);
-                        console.log("책 데이터:", data.response.docs);
-                        console.log("첫 번째 책 데이터:", data.response.docs[0]);
-                        console.log("첫 번째 책 doc:", data.response.docs[0].doc);
-                    }
-                });
-            }).fail(function () {
-                console.error("API 데이터 불러오기 실패");
-            });
-        });
+	        const books = data.response.docs;
+
+	        books.forEach((book, index) => {
+	            if (index < 1) { // 첫 번째 책만 적용
+	                console.log("📖 책 데이터 구조:", book);
+
+	                // `book.doc`가 배열인지 확인하고 처리
+	                let doc = Array.isArray(book.doc) ? book.doc[0] : book.doc;
+
+	                if (!doc) {
+	                    console.error(`❌ book.doc가 없습니다. book 데이터:`, book);
+	                    return;
+	                }
+
+	                let imageURL = doc.bookImageURL || "https://via.placeholder.com/150";
+	                let title = doc.bookname || "제목 없음";
+	                let authorFull = doc.authors || "작가 정보 없음";
+	                let publisher = doc.publisher || "출판사 정보 없음";
+	                let pubYear = doc.publication_year || "출판일 정보 없음";
+
+	                // ✅ 작가명 추출 방식 개선
+	                let author = "작가 정보 없음";
+	                let translator = "번역가 정보 없음";
+
+	                if (authorFull.includes("지은이:")) {
+	                    let parts = authorFull.split("지은이:");
+	                    author = parts[1].split(";")[0].trim();
+	                }
+
+	                if (authorFull.includes("옮긴이:")) {
+	                    let parts = authorFull.split("옮긴이:");
+	                    translator = parts[1].split(";")[0].trim();
+	                }
+
+	                // ✅ 이미지 변경
+	                let bookImageSelector = `#book${index + 1} img`;
+	                if ($(bookImageSelector).length) {
+	                    $(bookImageSelector).attr("src", imageURL);
+	                } else {
+	                    console.error(`❌ 이미지 태그를 찾을 수 없습니다: ${bookImageSelector}`);
+	                }
+
+	                // ✅ bookinfo 업데이트
+	                let bookInfoSelector = `#bookcon${index + 1} .bookinfo`;
+	                
+	                if ($(bookInfoSelector).length) {
+	                    console.log("✅ bookinfo 업데이트 진행!");
+	                    
+	                    // ✅ `.empty()` 대신 `.html()`로 한 번에 교체
+	                    $(bookInfoSelector).html(`
+	                        <p style="font-size: 20px;"><b>${title}</b></p>
+	                        <hr style="width: 70px; margin-left: 0%;">
+	                        <p style="font-size: 15px;">지은이: ${author} | 옮긴이: ${translator}</p>
+	                        <p style="font-size: 15px;">${publisher} | ${pubYear}</p>
+	                        
+	                    `);
+	                } else {
+	                    console.error(`❌ bookinfo 요소를 찾을 수 없습니다: ${bookInfoSelector}`);
+	                }
+	            }
+	        });
+	    }).fail(function (jqXHR, textStatus, errorThrown) {
+	        console.error(`❌ API 요청 실패: ${textStatus}, 오류: ${errorThrown}`);
+	    });
+	});
+
+
     </script>
 
 	<!-- -------------------------------------------------------------------- -->

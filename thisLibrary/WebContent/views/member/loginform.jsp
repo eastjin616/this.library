@@ -1,7 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<% 
-	String alertMsg=(String) session.getAttribute("alertMsg"); 
+<%
+    String alertMsg = (String) session.getAttribute("alertMsg");
+    if (alertMsg != null) {
+%>
+        <script>
+            alert("<%= alertMsg %>");
+        </script>
+<%
+        session.removeAttribute("alertMsg"); // 한 번만 출력 후 세션에서 삭제
+    }
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -162,34 +170,23 @@ body * {
 	opacity: 0.7;
 }
 
-/* ==============footer======================================= */
 
-/* ----------------------------------------------------------------- */
-</style>
-</head>
-<meta charset="UTF-8">
-<!-- ------------------------------------------------------------------ -->
-
-<body>
-	<% if (alertMsg !=null) { session.removeAttribute("alertMsg"); // 세션에서 값 삭제 (한 번만 보여주기 위해) %>
-	<script>
-					alert("<%= alertMsg %>");
-				</script>
-	<% } %>
 
 	</style>
 </head>
-<meta charset="UTF-8">
-<!-- ------------------------------------------------------------------ -->
+
+
+
+
+
+
 
 <body>
 <%@ include file="../common/menubar.jsp" %>
 	<script src="https://kit.fontawesome.com/53a8c415f1.js"
 		crossorigin="anonymous"></script>
 	
-		<!-- -------------------------------------------------------------------- -->
 
-							<!-- -------------------------------------------------------------------- -->
 
 		<div class="login">
 			<h2 id="loginTitle" align="center">로그인</h2>

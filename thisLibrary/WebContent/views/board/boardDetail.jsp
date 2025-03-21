@@ -175,6 +175,61 @@
 						cursor: pointer;
 						opacity: 0.7;
 				}
+				
+				/* -------------------- 모달 ------------------------*/
+				h2{
+		   		 text-align: center;
+				}
+				.modal_btn {
+				    display: block;
+				    margin: 40px auto;
+				    padding: 10px 20px;
+				    background-color: royalblue;
+				    border: none;
+				    border-radius: 5px;
+				    color: #fff;
+				    cursor: pointer;
+				    transition: box-shadow 0.2s;
+				}
+				.modal_btn:hover {
+				    box-shadow: 3px 4px 11px 0px #00000040;
+				}
+				
+				/*모달 팝업 영역 스타일링*/
+				.modal {
+				/*팝업 배경*/
+					display: none; /*평소에는 보이지 않도록*/
+				    position: absolute;
+				    top:0;
+				    left: 0;
+				    width: 100%;
+				    height: 100vh;
+				    overflow: hidden;
+				    background: rgba(0,0,0,0.5);
+				}
+				.modal .modal_popup {
+				/*팝업*/
+				    position: absolute;
+				    top: 50%;
+				    left: 50%;
+				    transform: translate(-50%, -50%);
+				    padding: 20px;
+				    background: #ffffff;
+				    border-radius: 20px;
+				}
+				.modal .modal_popup .close_btn {
+				    display: block;
+				    padding: 10px 20px;
+				    background-color: rgb(116, 0, 0);
+				    border: none;
+				    border-radius: 5px;
+				    color: #fff;
+				    cursor: pointer;
+				    transition: box-shadow 0.2s;
+				}
+				.modal.on {
+   				  display: block;
+				}		
 			</style>
 		</head>
 		<body>
@@ -223,6 +278,16 @@
 							
 						</div>
 					</div>
+					
+					<!--모달 팝업-->
+					<div class="modal">
+					    <div class="modal_popup">
+					        <h3>모달 팝업 타이틀 입니다!</h3>
+					        <textarea id="update_content" style="width:1000px; height: 100px;"></textarea>
+					        <button type="button" class="close_btn">닫기</button>
+					    </div>
+					</div>
+					<!--end 모달 팝업-->
 
 					<script>
 								$(function(){// 화면이 다 로드되고 나서 하는 행위
@@ -233,8 +298,8 @@
 									selectReplyList();
 								
 									// setInterval(주기적으로 실행할 함수, ms단위 시간);
-									setInterval(selectReplyList, 1000); // 1초에 한번씩 새로고침
-									setInterval(selectBoardAnswerCount, 1000); 
+									// setInterval(selectReplyList, 1000); // 1초에 한번씩 새로고침
+									// setInterval(selectBoardAnswerCount, 1000); 
 								})
 								
 								// ajax으로 댓글 작성용 함수
@@ -265,24 +330,18 @@
 										url:"rlist.bo",
 										data:{bno:<%= b.getBoardNo() %>},
 										success:function(rlist){
-											let value = ""
+											let value = "";
+											 let answerContent1 = "";
 											for(let i=0; i<rlist.length; i++){
 												let r = rlist[i].bAnswerNo; // 댓글 번호
 				                let writer = rlist[i].memNo; // 댓글 작성자
-												value += "<div class='comment'>"
-													 + "<p class='comment-meta'><strong>" + rlist[i].memNo + "</strong> | "  + rlist[i].answerDate+ "<span class='label'> 팔로우 </span>"
-													 + "<span class='set-comment'>";
+												value += `<div class="comment"><p class="comment-meta"><strong>\${rlist[i].memNo}</strong> | \${rlist[i].answerDate}<span class="label"> 팔로우 </span><span class="set-comment">`;
 													 
 													 if("<%=loginMember.getNickname()%>" == writer){
-															 value += "<button style='margin-left:0px'> 수정 </button> | " 
-															 + "<button onclick='hideReply(" + r + ")'> 삭제 </button>";
+															 value += `<button class="update" style="margin-left:0px"> 수정 </button> | <button onclick="hideReply(\${r})"> 삭제 </button>`;
 													 }
 													 
-													 value += "</span></p>"
-													 + "<p class='comment-text'>"
-													 + rlist[i].answerContent
-													 + "</p>"
-												   + "</div>";
+													 value += `</span></p><p class="comment-text">\${rlist[i].answerContent}</p></div>`;
 												
 												   $(".comment-list").html(value)
 											}
@@ -300,13 +359,18 @@
 								        data: { 
 								        	rno: rno,
 								        	bno: <%= b.getBoardNo() %>
-								        }, // 댓글 번호 전송
+								        }, // 댓글 번호, 게시글 번호 전송
 								        success:function(response){
 								        	alert("댓글이 성공적으로 삭제되었습니다.");
 								        },error:function(){
 								        	alert("댓글 삭제에 실패했습니다.");
 								        }
 								    });
+								}
+								
+								function updateReply(rno){
+									alert(rno)
+									
 								}
 								
 								function selectBoardAnswerCount(){
@@ -320,6 +384,8 @@
 										}
 									})
 								}
+								
+								
 						</script>
 				</div>
 				<%@ include file="../common/footerbar.jsp" %>

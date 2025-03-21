@@ -2,7 +2,6 @@
 <%@page import="com.kh.board.model.vo.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <% 
-
 		
 		// 글번호, 닉네임, 제목, 내용, 조회수, 작성일
 		Board b = (Board)request.getAttribute("b");
@@ -10,6 +9,8 @@
 		// 첨부파일이 없다면 null
 		// 첨부파일이 있다면 파일번호, 원본명, 수정명, 저장경로
 		Attachment at = (Attachment)request.getAttribute("at"); 
+		
+		
 		
 %>
 
@@ -237,6 +238,8 @@
 		 	
 				<%@ include file="../common/menubar.jsp" %>
 
+				<% String loginNickname = (loginMember != null) ? loginMember.getNickname() : null; %>
+				
 				<div class="post-container" style="margin-top: 120px;margin-bottom: 120px;">
 					<div class="post-header">
 						<h2><%=b.getBoardTitle() %><span class="label">팔로우</span></h2>
@@ -282,9 +285,13 @@
 					<!--모달 팝업-->
 					<div class="modal">
 					    <div class="modal_popup">
-					        <h3>모달 팝업 타이틀 입니다!</h3>
+					        <h3>댓글 수정하기</h3>
+					        <form action="<%=contextPath%>/rUpdate.bo" method="GET">
 					        <textarea id="update_content" style="width:1000px; height: 100px;"></textarea>
 					        <button type="button" class="close_btn">닫기</button>
+					        <button type="submit" class="close_btn">수정하기</button>
+					        <div id="hidden_area"></div>
+					        </form>
 					    </div>
 					</div>
 					<!--end 모달 팝업-->
@@ -298,8 +305,8 @@
 									selectReplyList();
 								
 									// setInterval(주기적으로 실행할 함수, ms단위 시간);
-									// setInterval(selectReplyList, 1000); // 1초에 한번씩 새로고침
-									// setInterval(selectBoardAnswerCount, 1000); 
+									setInterval(selectReplyList, 1000); // 1초에 한번씩 새로고침
+									setInterval(selectBoardAnswerCount, 1000); 
 								})
 								
 								// ajax으로 댓글 작성용 함수
@@ -331,14 +338,23 @@
 										data:{bno:<%= b.getBoardNo() %>},
 										success:function(rlist){
 											let value = "";
-											 let answerContent1 = "";
+											let loginNickname = "<%= loginNickname %>"; // JSP에서 가져온 로그인 닉네임 (null 가능)
 											for(let i=0; i<rlist.length; i++){
 												let r = rlist[i].bAnswerNo; // 댓글 번호
 				                let writer = rlist[i].memNo; // 댓글 작성자
+				                let content = rlist[i].answerContent; // 댓글 내용
+				              
+				                /*
+				                // 나 진짜 개천재인듯 ㅋ
+				                if(isNaN(content)){
+				                	content = `'\${content}'` // content가 숫자일때만 값이 잘 넘겨져서 한글일때는 빽틱 이용해서 양쪽에 홑따음표 달아줌
+				                }
+				                */
+				               
 												value += `<div class="comment"><p class="comment-meta"><strong>\${rlist[i].memNo}</strong> | \${rlist[i].answerDate}<span class="label"> 팔로우 </span><span class="set-comment">`;
-													 
-													 if("<%=loginMember.getNickname()%>" == writer){
-															 value += `<button class="update" style="margin-left:0px"> 수정 </button> | <button onclick="hideReply(\${r})"> 삭제 </button>`;
+													
+													 if(loginNickname && loginNickname == writer){
+															 value += `<button class="update" style="margin-left:0px" onclick="updateReply(\${r})"> 수정 </button> | <button onclick="hideReply(\${r})"> 삭제 </button>`;
 													 }
 													 
 													 value += `</span></p><p class="comment-text">\${rlist[i].answerContent}</p></div>`;
@@ -369,7 +385,37 @@
 								}
 								
 								function updateReply(rno){
-									alert(rno)
+									
+									const modal = document.querySelector('.modal');
+									const modalOpen = document.querySelector('.modal_btn');
+									const modalClose = document.querySelector('.close_btn');
+									
+									//열기 버튼을 눌렀을 때 모달팝업이 열림
+									$(".comment-list").on('click', '.update',function(){
+									let rContent2 = $(this).closest('.comment').find('.comment-text').text();
+									let value = `<input type="hidden" name="rno" value="\${rno}"></input>`
+									$("#hidden_area").html(value);
+									value = `<input type="hidden" name="bno" value="<%=b.getBoardNo()%>"></input>`
+									$("#hidden_area").append(value);
+									  	//'on' class 추가
+									    modal.classList.add('on');
+									  	$("#update_content").text(rContent2);
+									
+									  
+									  	
+									  	$("#update_content").on("input", function () {
+									        let updatedContent = $(this).val(); // textarea의 변경된 값
+									        // hidden 영역에 업데이트된 rcontent 값을 저장
+									        $("#hidden_area").find("input[name='rcontent']").remove(); // 기존 값 제거
+									        value = `<input type="hidden" name="rcontent" value="\${updatedContent}">`;
+									        $("#hidden_area").append(value);
+									    });
+									});
+									//닫기 버튼을 눌렀을 때 모달팝업이 닫힘
+									modalClose.addEventListener('click',function(){
+									    //'on' class 제거
+									    modal.classList.remove('on');
+									});
 									
 								}
 								
@@ -385,7 +431,7 @@
 									})
 								}
 								
-								
+						
 						</script>
 				</div>
 				<%@ include file="../common/footerbar.jsp" %>

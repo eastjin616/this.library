@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-  <% String contextPath=request.getContextPath(); %>
+ <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 
     <!DOCTYPE html>
     <html lang="en">
@@ -27,99 +27,13 @@
         }
 
         /* div {box-sizing: border-box;border: 1px solid red;} */
-        .wrap {
-          width: 1500px;
-          margin: auto;
-          height: auto;
-          overflow: hidden;
-        }
-
-        #header {
-          height: 50px;
-          margin-bottom: 10%;
-        }
-
-        #footer {
-          margin-top: 10%;
-          height: 150px;
-        }
-
-        #header>div {
-          height: 100%;
-        }
-
-        #header_1>div,
-        #header_1_3>div {
-          float: left;
-        }
-
-        #header_1_1_1 {
-          width: 15%;
-          height: 100%;
-        }
-
-        #navigator {
-          position: relative;
-          width: 60%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: space-around;
-        }
-
-        #navigator>a {
-          text-decoration: none;
-          color: black;
-          font-size: 13px;
-        }
-
+       
+        
+       
         /*-------------------------------------------------------------  */
-        #header_mypage_btn,
-        #header_login_btn,
-        #header_signin_btn {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
+        
 
-        #login {
-          width: 70%;
-          height: 50%;
-          border-radius: 5px;
-          background-color: #ea916e;
-          color: white;
-          border: none;
-        }
-
-        #signin {
-          width: 70%;
-          height: 50%;
-          border-radius: 5px;
-          background-color: #ea916e;
-          color: white;
-          border: none;
-        }
-
-        /* ---------------------------------------------- */
-        #mypage {
-          border-radius: 50%;
-          width: 50%;
-          height: 50%;
-          background-color: #ea916e;
-          border: none;
-        }
-
-        #mypage>img {
-          width: 90%;
-          height: 60%;
-        }
-
-        /* ---------------------------------------------- */
-        .btn:hover {
-          opacity: 0.7;
-          color: white;
-          cursor: pointer;
-        }
+      
 
         /*-------------------------------------------------------------  */
         .wrap2 {
@@ -154,7 +68,6 @@
           width: 100%;
           display: flex;
           margin-bottom: 10px;
-          /* 각 content 사이의 간격 */
         }
 
         .label {
@@ -197,78 +110,51 @@
         }
 
         #submitTag {
-          width: 80px;
-          background-color: black;
+          display: none;
+        }
+
+        .custom-file-label {
+          display: inline-block;
+          width: 120px;
+          background-color: #ea916e;
           color: white;
+          text-align: center;
+          padding: 10px 15px;
           border-radius: 1em;
           cursor: pointer;
-          resize: none;
+          font-size: 14px;
+          font-weight: bold;
+          transition: background 0.3s ease-in-out;
         }
 
-        /* ==============footer======================================= */
-        #footer_1 {
-          width: 100%;
-          height: 65%;
+        .custom-file-label:hover {
+          background-color: #d46b4b;
         }
 
-        #footer_1>div {
-          float: left;
+
+        #writeAndSubmit {
+          cursor: pointer;
+          font-size: 14px;
+          border-radius: 5%;
         }
 
-        #footer_1_1 {
-          height: 100%;
-          width: 20%;
+        #writeAndSubmit>input {
+          width: 120px;
+          margin-left: 50%;
+          border-color: lightgray;
+          font-weight: 800;
         }
 
-        #footer_1_1>img {
-          display: flex;
-          margin: auto;
-          width: 60%;
-          height: 60%;
-          margin-top: 20%;
-        }
-
-        #footer_2 {
-          width: 100%;
-          height: 35%;
-          text-align: center;
-          margin-top: 2%;
-        }
+        
       </style>
     </head>
     <meta charset="UTF-8">
     <!-- ------------------------------------------------------------------ -->
 
     <body>
-      <div class="wrap">
-        <div id="header">
-          <div id="header_1">
-            <div id="header_1_1_1">
-              <a href="<%= contextPath %>"><img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt=""
-                  style="height: 100%; width: 100%;"></a>
-            </div>
-            <div id="navigator">
-              <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a>
-              <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a>
-              <a href="<%= contextPath %>/list.bo">자유게시판</a>
-              <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a>
-              <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
-            </div>
-            <div id="header_login_btn" style="height: 100%; width: 9%;">
-              <button class="btn" id="login" onclick="location.href='<%= contextPath %>/views/member/loginform.jsp'">Log
-                In</button>
-            </div>
-            <div id="header_signin_btn" style="height: 100%; width: 9%;">
-              <button class="btn" id="signin" onclick="signin()">Sign In</button>
-            </div>
-            <div id="header_mypage_btn" style="height: 100%; width: 7%;">
-              <button class="btn" id="mypage" onclick="mypage()">
-                <img src="<%= contextPath %>/views/common/assets/user01.png" alt="">
-              </button>
-            </div>
-
-          </div>
-        </div>
+    <%@ include file="../common/menubar.jsp" %>
+    
+             
         <!-- -------------------------------------------------------------------- -->
 
         <div class="wrap2">
@@ -283,42 +169,50 @@
           </div>
 
 
-          <form action="<%=contextPath%>/Inquiry.in">
-            <div class="content4">
-              <div id="content4_1" class="content">
-                <div class="label">이름 </div>
-                <div class="input-container"><input type="text" placeholder="이름 입력" required></div>
-              </div>
-              <div id="content4_2" class="content">
-                <div class="label">이메일</div>
-                <div class="input-container"><input type="text" placeholder="이메일 입력" required></div>
-              </div>
-              <div id="content4_3" class="content">
-                <div class="label">전화번호</div>
-                <div class="input-container"><input type="text" placeholder="전화번호 입력" required></div>
-              </div>
-              <div id="content4_4" class="content">
-                <div class="label">제목</div>
-                <div class="input-container"><input type="text" placeholder="제목 입력" required></div>
-              </div>
-              <div id="content4_5" class="content">
-                <div class="label">내용</div>
-                <div class="input-container">
-                  <textarea name="" id="" placeholder="문의내용 최대 1000자를 입력해주세요." maxlength="1000" required></textarea>
+        <form action="<%=contextPath%>/Inquiry.in">
+            <input type="hidden" name="userNo" value="">
+              <div class="content4">
+                <div id="content4_1" class="content">
+                  <div class="label">이름 </div>
+                  <div class="input-container"><input type="text" placeholder="이름 입력" name="userName" required></div>
+                </div>
+                <div id="content4_2" class="content">
+                  <div class="label">이메일</div>
+                  <div class="input-container"><input type="text" placeholder="이메일 입력" name="userEmail" required></div>
+                </div>
+                <div id="content4_3" class="content">
+                  <div class="label">전화번호</div>
+                  <div class="input-container"><input type="text" placeholder="전화번호 입력" name="phone" required></div>
+                </div>
+                <div id="content4_4" class="content">
+                  <div class="label">제목</div>
+                  <div class="input-container"><input type="text" placeholder="제목 입력" name="title" required></div>
+                </div>
+                <div id="content4_5" class="content">
+                  <div class="label">내용</div>
+                  <div class="input-container">
+                    <textarea name="content" id="" placeholder="문의내용 최대 1000자를 입력해주세요." maxlength="1000"
+                      required></textarea>
+                  </div>
                 </div>
               </div>
-              </div>
-          </form>
 
-          <br>
-          <hr>
-          <br>
-          <div id="content5" class="content">
-            <div class="label">첨부파일 </div>
-            <div class="beCarefulText">
-              <li>개인정보를 포함한 이미지는 첨부 파일에 업로드할 수 없습니다. </li>
-              <li> 개인정보 - 이름, 주민등록번호, 운전면허번호, 주소, 전화번호, 생년월일, 출생지, 본적지, 성별, 국적</li>
-              <li>이를 어기고 개인정보가 포함된 파일을 업로드된 사실이 확인시 불이익을 받으실수 있습니다.</li>
+
+              <br>
+              <hr>
+              <br>
+              <div id="content5" class="content">
+                <div class="label">첨부파일 </div>
+                <div class="beCarefulText">
+                  <li>개인정보를 포함한 이미지는 첨부 파일에 업로드할 수 없습니다. </li>
+                  <li> 개인정보 - 이름, 주민등록번호, 운전면허번호, 주소, 전화번호, 생년월일, 출생지, 본적지, 성별, 국적</li>
+                  <li>이를 어기고 개인정보가 포함된 파일을 업로드된 사실이 확인시 불이익을 받으실수 있습니다.</li>
+                </div>
+
+              </div>
+              <input type="file" id="submitTag">
+              <label for="submitTag" class="custom-file-label">파일 선택</label>
+
             </div>
 
           </div>
@@ -329,38 +223,7 @@
 
       </div>
 
-      <!-- -------------------------------------------------------------------- -->
-      <div id="footer" style="background-color: #fdf5f1;">
-        <div id="footer_1">
-          <div id="footer_1_1">
-            <img src="<%= contextPath %>/views/common/assets/This_서고 로고.png" alt="">
-          </div>
-          <div id="navigator" class="navigator">
-            <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a>
-            <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a>
-            <a href="<%= contextPath %>/list.bo">자유게시판</a>
-            <a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a>
-            <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
-          </div>
-        </div>
-        <div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
-      </div>
-      </div>
-
-      <script>
-        function login() {
-          location.href = "<%= contextPath %>/views/member/loginform.jsp";
-        }
-
-        function signin() {
-          location.href = "<%= contextPath %>/views/member/signin.jsp";
-        }
-
-        function mypage() {
-          location.href = "<%= contextPath %>/views/member/myPage.jsp";
-        }
-
-      </script>
+     
       <!-- -------------------------------------------------------------------- -->
       <!-- -=======1:1 문의 내용(content) 적을때, 글자수 세는 기능, 글자수 제한 기능) jsp
     $('#textBox').keyup(function (e) {
@@ -384,7 +247,7 @@
 출처: https://anerim.tistory.com/160 [디발자 뚝딱:티스토리]  
     
     -->
-
+<%@ include file="../common/footerbar.jsp" %>
     </body>
 
 

@@ -480,9 +480,7 @@
 					box-sizing: border-box;
 				}
 
-				.btn:hover {
-					background-color: #ea916e;
-				}
+
 
 				/* =========================================== jjim */
 				#mypageMainContent5 {
@@ -522,36 +520,7 @@
 				div>button {
 					cursor: pointer;
 				}
-
-				/* ==============footer======================================= */
-				#footer_1 {
-					width: 100%;
-					height: 65%;
-				}
-
-				#footer_1>div {
-					float: left;
-				}
-
-				#footer_1_1 {
-					height: 100%;
-					width: 20%;
-				}
-
-				#footer_1_1>img {
-					display: flex;
-					margin: auto;
-					width: 60%;
-					height: 60%;
-					margin-top: 20%;
-				}
-
-				#footer_2 {
-					width: 100%;
-					height: 35%;
-					text-align: center;
-					margin-top: 2%;
-				}
+			
 			</style>
 		</head>
 		<meta charset="UTF-8">

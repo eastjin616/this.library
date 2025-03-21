@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<<<<<<< HEAD
 <%  
 %>
+=======
+
+>>>>>>> 4473cf8cb9db20279657ec4579e528fb4d0f05ef
 
 		<!DOCTYPE html>
 		<html lang="en">
@@ -9,9 +13,7 @@
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<title>Document1</title>
-			<!-- <link rel="stylesheet" href="header.css">
-  <link rel="stylesheet" href="content.css">
-  <link rel="stylesheet" href="footer.css"> -->
+
 
 			<style>
 				.post-container {

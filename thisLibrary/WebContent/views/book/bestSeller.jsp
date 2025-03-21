@@ -229,12 +229,11 @@ hr{
               <hr>
               <div id="content_2_2_1">
                 <div id="book1">
-                  <img src="/thisLibrary/WebContent/resources/assets/book1.jpg" alt="">
+                  <img src="" alt="">
                 </div>
                 <div id="bookcon1">
                   <div class="spare1"></div>
                   <div class="bookinfo">
-                    <p>[국내도서]</p>
                     <p style="font-size: 20px;"><b> 마이클센델 정의란 무엇인가</b></p>
                     <hr style="width: 70px; margin-left: 0%;">
                     <p style="font-size: 15px;">마이클 센델 저자(글) | 김명철 번역 | 김선욱 감수</p>
@@ -255,86 +254,7 @@ hr{
               </div>
 <!-- ================================================================== -->
               <hr>
-              <div id="content_2_2_2">
-                <div id="book2">
-                  <img src="/thisLibrary/WebContent/resources/assets/book1.jpg" alt="">
-                </div>
-                <div id="bookcon2">
-                  <div class="spare1"></div>
-                  <div class="bookinfo">
-                    <p>[국내도서]</p>
-                    <p style="font-size: 20px;"><b> 마이클센델 정의란 무엇인가</b></p>
-                    <hr style="width: 70px; margin-left: 0%;">
-                    <p style="font-size: 15px;">마이클 센델 저자(글) | 김명철 번역 | 김선욱 감수</p>
-                    <p style="font-size: 15px;">와이즈베리 2014년 11월 20일</p>
-                    <br><br><br>
-
-                    <div style="display: flex;">
-                      <p><i class="fas fa-star" style="color: #085ae7;"></i></p>
-                      <p style="margin-left: 5px; margin-top: 20;">4.84</p>
-                      <p style="margin-left: 5px; margin-top: 20;">(350reviews)</p>
-                    </div>
-                  </div>
-                  <div class="heart">
-                    <i class="fas fa-heart"></i>
-                    <i class="fas fa-heart" style="color: #ec1818;"></i>
-                  </div>
-                </div>
-              </div>
-              <hr>
-              <div id="content_2_2_3">
-                <div id="book3">
-                  <img src="/thisLibrary/WebContent/resources/assets/book1.jpg" alt="">
-                </div>
-                <div id="bookcon3">
-                  <div class="spare1"></div>
-                  <div class="bookinfo">
-                    <p>[국내도서]</p>
-                    <p style="font-size: 20px;"><b> 마이클센델 정의란 무엇인가</b></p>
-                    <hr style="width: 70px; margin-left: 0%;">
-                    <p style="font-size: 15px;">마이클 센델 저자(글) | 김명철 번역 | 김선욱 감수</p>
-                    <p style="font-size: 15px;">와이즈베리 2014년 11월 20일</p>
-                    <br><br><br>
-
-                    <div style="display: flex;">
-                      <p><i class="fas fa-star" style="color: #085ae7;"></i></p>
-                      <p style="margin-left: 5px; margin-top: 20;">4.84</p>
-                      <p style="margin-left: 5px; margin-top: 20;">(350reviews)</p>
-                    </div>
-                  </div>
-                  <div class="heart">
-                    <i class="fas fa-heart"></i>
-                    <i class="fas fa-heart" style="color: #ec1818;"></i>
-                  </div>
-                </div>
-              </div>
-              <hr>
-              <div id="content_2_2_4">
-                <div id="book4">
-                  <img src="/thisLibrary/WebContent/resources/assets/book1.jpg" alt="">
-                </div>
-                <div id="bookcon3">
-                  <div class="spare1"></div>
-                  <div class="bookinfo">
-                    <p>[국내도서]</p>
-                    <p style="font-size: 20px;"><b> 마이클센델 정의란 무엇인가</b></p>
-                    <hr style="width: 70px; margin-left: 0%;">
-                    <p style="font-size: 15px;">마이클 센델 저자(글) | 김명철 번역 | 김선욱 감수</p>
-                    <p style="font-size: 15px;">와이즈베리 2014년 11월 20일</p>
-                    <br><br><br>
-
-                    <div style="display: flex;">
-                      <p><i class="fas fa-star" style="color: #085ae7;"></i></p>
-                      <p style="margin-left: 5px; margin-top: 20;">4.84</p>
-                      <p style="margin-left: 5px; margin-top: 20;">(350reviews)</p>
-                    </div>
-                  </div>
-                  <div class="heart">
-                    <i class="fas fa-heart"></i>
-                    <i class="fas fa-heart" style="color: #ec1818;" id="tlqkf"></i>
-                  </div>
-                </div>
-              </div>
+              
               <div class="pagination">
                 <span><</span>
                 <span>1</span>
@@ -358,8 +278,35 @@ hr{
       $('#checkBox').slideToggle("fast");
    });
   });
-  
   </script>
+  
+  <script>
+        $(document).ready(function () {
+            const apiURL = "http://data4library.kr/api/loanItemSrch?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&format=json";
+
+            $.getJSON(apiURL, function (data) {
+                const books = data.response.docs;
+
+                books.forEach((book, index) => {
+                    if (index < 1) { // 1개의 책만 변경
+                        let imageURL = book.doc.bookImageURL;
+                        $(`#book${index + 1} img`).attr("src", imageURL);
+                        let title = book.doc.bookname || "제목 없음";
+                        let author = book.doc.authors || "작가 정보 없음";
+                        let publisher = book.doc.publisher || "출판사 정보 없음";
+                        let pubYear = book.doc.publication_year || "출판일 정보 없음";
+
+                        console.log("API 전체 응답:", data);
+                        console.log("책 데이터:", data.response.docs);
+                        console.log("첫 번째 책 데이터:", data.response.docs[0]);
+                        console.log("첫 번째 책 doc:", data.response.docs[0].doc);
+                    }
+                });
+            }).fail(function () {
+                console.error("API 데이터 불러오기 실패");
+            });
+        });
+    </script>
 
 	<!-- -------------------------------------------------------------------- -->
 </body>

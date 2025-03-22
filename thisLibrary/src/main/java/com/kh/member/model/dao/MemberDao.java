@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 import static com.kh.common.JDBCTemplate.*;
 
-import com.kh.member.model.vo.Attachment;
 import com.kh.member.model.vo.Member;
 
 public class MemberDao {
@@ -252,6 +251,34 @@ public class MemberDao {
 			close(pstmt);
 		}
 		return count;
+	}
+
+	public Member selectSnsKey(Connection conn, String kakaoKey) {
+		Member loginMember = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectSnsKey");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, kakaoKey);
+			
+			rset = pstmt.executeQuery();
+			
+			if (rset.next()) {
+				loginMember = new Member(rset.getInt("mem_no"), rset.getString("mem_name"), rset.getString("mem_id"),
+						rset.getString("mem_pwd"), rset.getString("nickname"), rset.getString("address"),
+						rset.getString("email"), rset.getString("profile"), rset.getString("phone"),
+						rset.getString("status"), rset.getString("sns_key"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return loginMember;
 	}
 
 

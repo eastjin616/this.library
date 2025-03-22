@@ -267,16 +267,21 @@
 						첨부파일 없음
 					<%} %>
 						<h3 class="comment-count"></h3>
-	
-						<div class="comment-form">
-							<div class="comment-form-header">
-								<h4>댓글 작성하기</h4>
-								<button class="submit-btn" onclick="insertReply()">작성하기</button>
-							</div>
-							<textarea id="replyContent" placeholder="댓글을 입력하세요..." maxlength="300" style="width: 1000px;"></textarea>
-							<div class="char-count">0 / 300 자</div>
-						</div>
-
+						<div style="border-bottom: 2px solid #eee"></div>
+						
+						<% if(loginMember == null){ %>
+						
+						<% }else{ %>
+								<div class="comment-form">
+		
+									<div class="comment-form-header">
+										<h4>댓글 작성하기</h4>
+										<button class="submit-btn" onclick="insertReply()">작성하기</button>
+									</div>
+									<textarea id="replyContent" placeholder="댓글을 입력하세요..." maxlength="300" style="width: 1000px;"></textarea>
+									<div class="char-count">0 / 300 자</div>
+								</div>
+						<% } %>
 						<div class="comment-list">
 							
 						</div>

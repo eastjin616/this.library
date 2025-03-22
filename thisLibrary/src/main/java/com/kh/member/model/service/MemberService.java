@@ -101,4 +101,14 @@ public class MemberService {
 		close(conn);
 		return count;
 	}
+
+	public Member selectSnsKey(String kakaoKey) {
+		Connection conn = getConnection();
+		Member loginMember = new MemberDao().selectSnsKey(conn, kakaoKey);
+		
+		close(conn);
+		
+		return loginMember;
+	}
+	
 }

@@ -302,6 +302,21 @@
 					<!--end 모달 팝업-->
 
 					<script>
+					<!-- 댓글 수 카운트-->
+			        const replyContent = document.getElementById('replyContent');
+			        const charCountDisplay = document.querySelector('.char-count');
+			        const maxChars = 300;
+
+			        replyContent.addEventListener('input', () => {
+			            const currentLength = replyContent.value.length;
+			            charCountDisplay.innerHTML = `\${currentLength} / <span id="maxChars">\${maxChars}</span> 자`;
+
+			        });
+			   	<!-- 여기까지 댓글 수 카운트 스크립트 -->
+					
+					
+					
+					
 								$(function(){// 화면이 다 로드되고 나서 하는 행위
 									// 댓글 개수 조회
 									selectBoardAnswerCount();
@@ -316,24 +331,31 @@
 								
 								// ajax으로 댓글 작성용 함수
 								function insertReply(){
-									$.ajax({
-										url:"rinsert.bo",
-										data:{
-											content:$("#replyContent").val(),
-											bno:<%= b.getBoardNo() %>,
-										},
-										type:"post",
-										success:function(result){
-											if(result > 0){ // 댓글 작성 성공 => 갱신된 댓글 리스트 조회
-												selectReplyList();
-												$("#replyContent").val("");
-											}else{ // 댓글 작성 실패
-												
-											}
-										},error:function(){
-											console.log("댓글 작성용 ajax 통신 실패")
-										}
-									})
+									const content = replyContent.value.trim();
+						            if (content.length === 0) {
+						                alert('댓글을 입력하세요.');
+						                return;
+						            }else{
+														$.ajax({
+															url:"rinsert.bo",
+															data:{
+																content:$("#replyContent").val(),
+																bno:<%= b.getBoardNo() %>,
+															},
+															type:"post",
+															success:function(result){
+																if(result > 0){ // 댓글 작성 성공 => 갱신된 댓글 리스트 조회
+																	selectReplyList();
+																	$("#replyContent").val("");
+														            charCountDisplay.innerHTML = `0 / <span id="maxChars">\${maxChars}</span> 자`;
+																}else{ // 댓글 작성 실패
+																	
+																}
+															},error:function(){
+																console.log("댓글 작성용 ajax 통신 실패")
+															}
+														})
+						            }
 								}
 								
 								// ajax으로 해당 게시글에 딸린 댓글 목록 조회용 함수

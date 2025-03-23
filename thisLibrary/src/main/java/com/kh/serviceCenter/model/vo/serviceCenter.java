@@ -4,6 +4,7 @@ public class serviceCenter {
 	
 	private int inquiryNo;
 	private int memNo;
+	private String title;
 	private String content;
 	private String answer;
 	private String inquiryDate;
@@ -12,17 +13,17 @@ public class serviceCenter {
 	private String name;
 	private String email;
 	private String phone;
-	private String title;
 	
 	public serviceCenter() {}
 
 	
 
-	public serviceCenter(int inquiryNo, int memNo, String content, String answer, String inquiryDate, String answerDate,
-			String status, String name, String email, String phone, String title) {
+	public serviceCenter(int inquiryNo, int memNo, String title, String content, String answer, String inquiryDate, String answerDate,
+			String status, String name, String email, String phone) {
 		super();
 		this.inquiryNo = inquiryNo;
 		this.memNo = memNo;
+		this.title = title;
 		this.content = content;
 		this.answer = answer;
 		this.inquiryDate = inquiryDate;
@@ -31,7 +32,7 @@ public class serviceCenter {
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
-		this.title = title;
+		
 	}
 
 
@@ -39,11 +40,11 @@ public class serviceCenter {
 	public serviceCenter(int memNo, String content, String name, String email, String phone, String title) {
 		super();
 		this.memNo = memNo;
+		this.title = title;
 		this.content = content;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
-		this.title = title;
 	}
 
 	public String getName() {

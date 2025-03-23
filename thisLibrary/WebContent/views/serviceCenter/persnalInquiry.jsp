@@ -1,4 +1,5 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 
 
     <!DOCTYPE html>
@@ -27,13 +28,7 @@
         }
 
         /* div {box-sizing: border-box;border: 1px solid red;} */
-       
-        
-       
-        /*-------------------------------------------------------------  */
-        
 
-      
 
         /*-------------------------------------------------------------  */
         .wrap2 {
@@ -144,24 +139,19 @@
           border-color: lightgray;
           font-weight: 800;
         }
-
-        
       </style>
     </head>
     <meta charset="UTF-8">
     <!-- ------------------------------------------------------------------ -->
 
     <body>
-    <%@ include file="../common/menubar.jsp" %>
-    
-             
-        <!-- -------------------------------------------------------------------- -->
 
+      <%@ include file="../common/menubar.jsp" %>
         <div class="wrap2">
           <div class="content1">고객센터</div>
           <div class="content2">
             <div>공지사항</div>
-            <div>F&Q</div>
+            <div>FnQ</div>
             <div style="color: blue;">1:1 문의</div>
           </div>
           <div class="content3">모든항목을 반드시 입력해 주셔야 문의접수가 가능합니다.
@@ -169,63 +159,63 @@
           </div>
 
 
-        <form action="<%=contextPath%>/Inquiry.in">
-            <input type="hidden" name="userNo" value="">
-              <div class="content4">
-                <div id="content4_1" class="content">
-                  <div class="label">이름 </div>
-                  <div class="input-container"><input type="text" placeholder="이름 입력" name="userName" required></div>
-                </div>
-                <div id="content4_2" class="content">
-                  <div class="label">이메일</div>
-                  <div class="input-container"><input type="text" placeholder="이메일 입력" name="userEmail" required></div>
-                </div>
-                <div id="content4_3" class="content">
-                  <div class="label">전화번호</div>
-                  <div class="input-container"><input type="text" placeholder="전화번호 입력" name="phone" required></div>
-                </div>
-                <div id="content4_4" class="content">
-                  <div class="label">제목</div>
-                  <div class="input-container"><input type="text" placeholder="제목 입력" name="title" required></div>
-                </div>
-                <div id="content4_5" class="content">
-                  <div class="label">내용</div>
-                  <div class="input-container">
-                    <textarea name="content" id="" placeholder="문의내용 최대 1000자를 입력해주세요." maxlength="1000"
-                      required></textarea>
-                  </div>
+          <form action="<%=contextPath%>/Inquiry.in">
+            <input type="hidden" name="memNo" value=<%= loginMember.getMemNo() %>>
+            
+            <div class="content4">
+              <div id="content4_1" class="content">
+                <div class="label">이름 </div>
+                <div class="input-container"><input type="text" placeholder="이름 입력" name="userName" required></div>
+              </div>
+              <div id="content4_2" class="content">
+                <div class="label">이메일</div>
+                <div class="input-container"><input type="text" placeholder="이메일 입력" name="userEmail" required></div>
+              </div>
+              <div id="content4_3" class="content">
+                <div class="label">전화번호</div>
+                <div class="input-container"><input type="text" placeholder="전화번호 입력" name="phone" required></div>
+              </div>
+              <div id="content4_4" class="content">
+                <div class="label">제목</div>
+                <div class="input-container"><input type="text" placeholder="제목 입력" name="title" required></div>
+              </div>
+              <div id="content4_5" class="content">
+                <div class="label">내용</div>
+                <div class="input-container">
+                  <textarea name="content" id="" placeholder="문의내용 최대 1000자를 입력해주세요." maxlength="1000"
+                    required></textarea>
                 </div>
               </div>
-
-
-              <br>
-              <hr>
-              <br>
-              <div id="content5" class="content">
-                <div class="label">첨부파일 </div>
-                <div class="beCarefulText">
+            </div>
+            <br>
+            <hr><br>
+            <div id="content5" class="content">
+              <div class="label">첨부파일 </div>
+              <div class="beCarefulText">
+                <ul>
                   <li>개인정보를 포함한 이미지는 첨부 파일에 업로드할 수 없습니다. </li>
                   <li> 개인정보 - 이름, 주민등록번호, 운전면허번호, 주소, 전화번호, 생년월일, 출생지, 본적지, 성별, 국적</li>
                   <li>이를 어기고 개인정보가 포함된 파일을 업로드된 사실이 확인시 불이익을 받으실수 있습니다.</li>
-                </div>
-
+                </ul>
               </div>
-              <input type="file" id="submitTag">
-              <label for="submitTag" class="custom-file-label">파일 선택</label>
 
             </div>
-
-          </div>
-          <input type="submit" id="submitTag" value="첨부하기">
-
+            <input type="file" id="submitTag">
+            <label for="submitTag" class="custom-file-label">파일 선택</label>
+            <div id="writeAndSubmit">
+              <input type="submit" value="글 작성하기">
+            </div>
+          </form>
         </div>
 
 
-      </div>
 
-     
-      <!-- -------------------------------------------------------------------- -->
-      <!-- -=======1:1 문의 내용(content) 적을때, 글자수 세는 기능, 글자수 제한 기능) jsp
+
+
+
+
+        <!-- -------------------------------------------------------------------- -->
+        <!-- -=======1:1 문의 내용(content) 적을때, 글자수 세는 기능, 글자수 제한 기능) jsp
     $('#textBox').keyup(function (e) {
 	let content = $(this).val();
     
@@ -247,7 +237,7 @@
 출처: https://anerim.tistory.com/160 [디발자 뚝딱:티스토리]  
     
     -->
-<%@ include file="../common/footerbar.jsp" %>
+        <%@ include file="../common/footerbar.jsp" %>
     </body>
 
 

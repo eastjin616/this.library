@@ -32,28 +32,25 @@ public class InquiryController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 
-		 int memNo = Integer.parseInt(request.getParameter("userNo"));
+		 int memNo = Integer.parseInt(request.getParameter("memNo"));
 		String name = request.getParameter("userName");
 	    String email = request.getParameter("userEmail");
 	    String phone = request.getParameter("phone");
 	    String title = request.getParameter("title");
 	    String content = request.getParameter("content");
 	    
-	    serviceCenter sc = new serviceCenter(memNo, name, email, phone, title, content);
+	    serviceCenter sc = new serviceCenter(memNo, title,content,name, email, phone);
 	    
 	    
 		int result = new ServiceCenterService().insertInquiry(sc);
-	    
+
+		
 		if(result > 0) {
 			request.getSession().setAttribute("alertMsg", "1:1 문의가 등록되었습니다.");
-			response.sendRedirect(request.getContextPath()+ "/persnalInquiry.jsp");
+			response.sendRedirect(request.getContextPath()+ "/views/serviceCenter/customerService.jsp");
+
 		}else {
-			// 실패 => 첨부파일 있었다면 업로드된 파일 찾아서 삭제시킨 후 => 에러페이지
-			// 이거 안하면 실패해도 폴더에 의미없는 파일 계속 남아있음 (매우 거슬림,,,)
-			if(at != null) {
-				new File(savePath + at.getChangeName()).delete();
-			}
-			
+				
 			request.setAttribute("errorMsg", "일반게시판 등록 실패!");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,16 +13,16 @@
 
 <style>
 @font-face {
-	font-family: 'Gyeonggi_Batang_Regular';
-	src:
-		url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff')
-		format('woff');
-	font-weight: 400;
-	font-style: normal;
+   font-family: 'Gyeonggi_Batang_Regular';
+   src:
+      url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff')
+      format('woff');
+   font-weight: 400;
+   font-style: normal;
 }
 
 body * {
-	font-family: 'Gyeonggi_Batang_Regular';
+   font-family: 'Gyeonggi_Batang_Regular';
 }
 
 /* div {box-sizing: border-box;border: 1px solid red;} */
@@ -32,8 +32,8 @@ body * {
   height: 1500px;
   width: 1500px;
   display: flex;
-	justify-content: center;
-	align-items: center;
+   justify-content: center;
+   align-items: center;
  }
 
 
@@ -105,8 +105,8 @@ body * {
   height: 100%;
   width: 30%;
   display: flex;
-	justify-content: center;
-	align-items: center;
+   justify-content: center;
+   align-items: center;
 }
 #bookcon1{
   height: 100%;
@@ -148,10 +148,10 @@ i:hover{
 }
 
 
-.pagination{
+ .pagination{
   display: flex;
-	justify-content: center;
-	align-items: center;
+   justify-content: center;
+   align-items: center;
 }
 
 .pagination span {
@@ -161,7 +161,7 @@ i:hover{
   cursor: pointer;
   border: 1px solid #ddd;
   border-radius: 3px;
- }
+ } 
 
 hr{
   width: 90%;
@@ -179,21 +179,21 @@ hr{
   <%@ include file="../common/menubar.jsp" %>
   
   <script src="https://kit.fontawesome.com/53a8c415f1.js"
-		crossorigin="anonymous"></script>
+      crossorigin="anonymous"></script>
 
-		<!-- -------------------------------------------------------------------- -->
-		
+      <!-- -------------------------------------------------------------------- -->
+      
 
-    <div id="wrapContent">
-      <div id="content">
-        <div id="content_1">
-          <div id="content_1_1">
-            <div id="genreTitle">
-              장르 <button id="genreBtn" type="to">▼</button>
-            </div>
-            <div id="spare"></div>
-            <div id="checkBox">
-                <input type="checkbox" value="">소설<br><br>
+     <div id="wrapContent">
+    <div id="content">
+      <div id="content_1">
+        <div id="content_1_1">
+          <div id="genreTitle">
+            장르 <button id="genreBtn" type="to">▼</button>
+          </div>
+          <div id="spare"></div>
+          <div id="checkBox">
+            <input type="checkbox" value="">소설<br><br>
                 <input type="checkbox" value="">에세이/시/회곡<br><br>
                 <input type="checkbox" value="">인문<br><br>
                 <input type="checkbox" value="">자기계발<br><br>
@@ -218,41 +218,18 @@ hr{
                 <input type="checkbox" value="">청소년<br><br>
                 <input type="checkbox" value="">성인<br><br>
                 <input type="checkbox" value="">부모<br><br>
-            </div>
           </div>
         </div>
-        <div id="content_2">
-          <div id="content_2_2">
-            <div id="content_2_2_0">
-              <hr>
-              <div id="content_2_2_1">
-                <div id="book1">
-                  <img src="" alt="">
-                </div>
-                <div id="bookcon1">
-                  <div class="spare1"></div>
-                  <div class="bookinfo">
-                    <p style="font-size: 20px;"><b></b></p>
-                    <hr style="width: 70px; margin-left: 0%;">
-                    지은이 : <p style="font-size: 15px; display: inline;"> </p> &nbsp;|&nbsp; 옮긴이 : <p style="font-size: 15px; display: inline;"></p>
-                    <br><br>
-                    출판사 : <p style="font-size: 15px; display: inline;"></p>&nbsp;|&nbsp; 출판일 :<p style="font-size: 15px; display: inline;"></p>
-                    <br><br><br>
-
-                    <div style="display: flex;">
-                      <p><i class="fas fa-star" style="color: #085ae7;"></i></p>
-                      <p style="margin-left: 5px; margin-top: 20;">4.84</p>
-                      <p style="margin-left: 5px; margin-top: 20;">(350reviews)</p>
-                    </div>
-                  </div>
-                  <div class="heart">
-                    <i class="fas fa-heart"></i>
-                    <i class="fas fa-heart" style="color: #ec1818;"></i>
-                  </div>
-                </div>
-              </div>
-<!-- ================================================================== -->
-              <hr>
+      </div>
+      <div id="content_2">
+        <div id="content_2_2">
+          <!-- 책 정보 동적 생성 -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<hr>
               
               <div class="pagination">
                 <span><</span>
@@ -268,11 +245,14 @@ hr{
         </div>
        </div>
       </div>
-      
-      
-<%@ include file="../common/footerbar.jsp" %>
+  
+   <br><br><br><br>
 
-<script type="text/javascript">
+  <%@ include file="../common/footerbar.jsp" %>
+
+  <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
   $(document).ready(function() {
    $('#checkBox').hide();
    $('#genreBtn').click(function() {
@@ -283,82 +263,85 @@ hr{
   
   <script>
   $(document).ready(function () {
-	    const apiURL = "http://data4library.kr/api/loanItemSrch?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&format=json";
+     const apiURL = "http://data4library.kr/api/loanItemSrch?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&format=json";
 
-	    $.getJSON(apiURL, function (data) {
-	        console.log("📢 API 응답 전체:", data);
+     $.getJSON(apiURL, function (data) {
+       console.log("API 응답 데이터:", data); // API 응답 데이터 확인
 
-	        if (!data.response || !data.response.docs || data.response.docs.length === 0) {
-	            console.error("❌ API에서 책 데이터가 없습니다!");
-	            return;
-	        }
+       if (!data.response || !data.response.docs || data.response.docs.length === 0) {
+         console.error("❌ API에서 책 데이터가 없습니다!");
+         return;
+       }
 
-	        const books = data.response.docs;
+       const books = data.response.docs;
 
-	        books.forEach((book, index) => {
-	            if (index < 98) { // 첫 번째 책만 적용
-	                console.log("📖 책 데이터 구조:", book);
+       // 한 페이지에 4개의 책 정보만 표시
+       for (let i = 0; i < 4; i++) {
+         if (i >= books.length) break;
 
-	                let doc = Array.isArray(book.doc) ? book.doc[0] : book.doc;
+         let doc = Array.isArray(books[i].doc) ? books[i].doc[0] : books[i].doc;
 
-	                if (!doc) {
-	                    console.error(`❌ book.doc가 없습니다. book 데이터:`, book);
-	                    return;
-	                }
+         if (!doc) {
+           console.error(`❌ books[${i}].doc가 없습니다. book 데이터:`, books[i]);
+           continue;
+         }
 
-	                let imageURL = doc.bookImageURL || "https://via.placeholder.com/150";
-	                let title = doc.bookname || "제목 없음";
-	                let authorFull = doc.authors || "작가 정보 없음";
-	                let publisher = doc.publisher || "출판사 정보 없음";
-	                let pubYear = doc.publication_year || "출판일 정보 없음";
+         let imageURL = doc.bookImageURL || "https://via.placeholder.com/150";
+         let title = doc.bookname || "제목 없음";
+         let authorFull = doc.authors || "작가 정보 없음";
+         let publisher = doc.publisher || "출판사 정보 없음";
+         let pubYear = doc.publication_year || "출판일 정보 없음";
 
-	                let author = "작가 정보 없음";
-	                let translator = "번역가 정보 없음";
+         // 작가와 번역가 정보 추출
+         let author = "작가 정보 없음";
+         let translator = "번역가 정보 없음";
 
-	                if (authorFull.includes("지은이:")) {
-	                    let parts = authorFull.split("지은이:");
-	                    author = parts[1].split(";")[0].trim();
-	                }
+         if (authorFull.includes("지은이:")) {
+           author = authorFull.split("지은이:")[1].split(";")[0].trim();
+         }
+         if (authorFull.includes("옮긴이:")) {
+           translator = authorFull.split("옮긴이:")[1].split(";")[0].trim();
+         }
 
-	                if (authorFull.includes("옮긴이:")) {
-	                    let parts = authorFull.split("옮긴이:");
-	                    translator = parts[1].split(";")[0].trim();
-	                }
+         // 책 정보 HTML 생성
+         let bookHTML = `
+           <hr>
+           <div id="content_2_2_${i + 1}" class="content_2_2_book">
+             <div id="book${i + 1}" class="book">
+               <img src="${imageURL}" alt="${title}">
+             </div>
+             <div id="bookcon${i + 1}" class="bookcon">
+               <div class="spare1"></div>
+               <div class="bookinfo">
+                 <p style="font-size: 20px;"><b>${title}</b></p>
+                 <hr style="width: 70px; margin-left: 0%;">
+                 지은이 : <p style="font-size: 15px; display: inline;">${author}</p> &nbsp;|&nbsp; 옮긴이 : <p style="font-size: 15px; display: inline;">${translator}</p>
+                 <br><br>
+                 출판사 : <p style="font-size: 15px; display: inline;">${publisher}</p>&nbsp;|&nbsp; 출판일 :<p style="font-size: 15px; display: inline;">${pubYear}</p>
+                 <br><br><br>
+                 <div style="display: flex;">
+                   <p><i class="fas fa-star" style="color: #085ae7;"></i></p>
+                   <p style="margin-left: 5px; margin-top: 20;">4.84</p>
+                   <p style="margin-left: 5px; margin-top: 20;">(350reviews)</p>
+                 </div>
+               </div>
+               <div class="heart">
+                 <i class="fas fa-heart"></i>
+                 <i class="fas fa-heart" style="color: #ec1818;"></i>
+               </div>
+             </div>
+           </div>
+         `;
 
-	                // 이미지 변경
-	                let bookImageSelector = `#book${index + 1} img`;
-	                if ($(bookImageSelector).length) {
-	                    $(bookImageSelector).attr("src", imageURL);
-	                } else {
-	                    console.error(`❌ 이미지 태그를 찾을 수 없습니다: ${bookImageSelector}`);
-	                }
+         console.log("생성된 HTML:", bookHTML); // 생성된 HTML 확인
 
-	                // bookinfo 업데이트
-	                let bookInfoSelector = `#bookcon${index + 1} .bookinfo`;
-	                console.log($(bookImageSelector)); // 이미지 선택자 확인
-	                console.log($(bookInfoSelector));  // bookinfo 선택자 확인
-	                if ($(bookInfoSelector).length) {
-	                    console.log("✅ bookinfo 업데이트 진행!");
-	                    console.log("출판년도:", author);
-	                    
-	                    // bookinfo 업데이트
-	                    $(bookInfoSelector).find('p:eq(0)').text(title);
-	                    $(bookInfoSelector).find('p:eq(1)').text(author);
-	                    $(bookInfoSelector).find('p:eq(2)').text(translator);
-	                    $(bookInfoSelector).find('p:eq(3)').text(publisher);
-	                    $(bookInfoSelector).find('p:eq(4)').text(pubYear);
-	                } else {
-	                    console.error(`❌ bookinfo 요소를 찾을 수 없습니다: ${bookInfoSelector}`);
-	                }
-	            }
-	        });
-	    }).fail(function (jqXHR, textStatus, errorThrown) {
-	        console.error(`❌ API 요청 실패: ${textStatus}, 오류: ${errorThrown}`);
-	    });
-
-	});
-    </script>
-
-	<!-- -------------------------------------------------------------------- -->
+         // 책 정보 HTML 추가
+         $("#content_2_2").append(bookHTML);
+       }
+     }).fail(function (jqXHR, textStatus, errorThrown) {
+       console.error(`❌ API 요청 실패: ${textStatus}, 오류: ${errorThrown}`);
+     });
+   });
+  </script>
 </body>
 </html>

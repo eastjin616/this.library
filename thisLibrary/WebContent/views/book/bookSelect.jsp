@@ -29,7 +29,7 @@ body * {
 
 /* div {box-sizing: border-box;border: 1px solid red;} */
 #wrapContent {
-   height: 1500px;
+   height: auto;
    width: 1500px;
    display: flex;
    justify-content: center;
@@ -112,7 +112,7 @@ body * {
 
 .book img {
     width: 200px;/* 씨부레 책 이미지 크기 */
-    height: 400px;/* 씨부레 책 이미지 크기 */
+    height: 250px;/* 씨부레 책 이미지 크기 */
     object-position: center;
     mix-blend-mode: multiply; /* 이미지 배색 개선 */
 }
@@ -224,8 +224,19 @@ hr {
 
 
    <script type="text/javascript">
-   $(document).ready(function () {
-        const apiURL = "http://data4library.kr/api/loanItemSrch?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&format=json";
+      $(document).ready(function () {
+         let urlParams = new URLSearchParams(window.location.search);
+         let keyword = urlParams.get("keyword"); // URL에서 keyword 값 가져오기
+
+         if (!keyword || keyword.trim() === "") {
+            alert("검색어가 없습니다!");
+            return;
+         }
+
+
+      let apiURL = "https://data4library.kr/api/srchBooks?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67" 
+                  + "&keyword=" + encodeURIComponent(keyword) 
+                   + "&format=json";
 
         $.getJSON(apiURL, function (data) {
           console.log("API 응답 데이터:", data);
@@ -238,7 +249,7 @@ hr {
           const books = data.response.docs;
 
           // 한 페이지에 4개의 책 정보만 표시
-          for (let i = 0; i < 4; i++) {
+          for (let i = 0; i < 100; i++) {
             let doc = books[i].doc;
 
             if (!doc) {

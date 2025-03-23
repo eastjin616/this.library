@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-
+   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -145,7 +145,7 @@ body * {
 
 .book img {
     width: 200px;/* 씨부레 책 이미지 크기 */
-    height: 400px;/* 씨부레 책 이미지 크기 */
+    height: 250px;/* 씨부레 책 이미지 크기 */
     object-position: center;
     mix-blend-mode: multiply; /* 이미지 배색 개선 */
 }
@@ -272,22 +272,15 @@ hr {
          <div id="content_2">
             <div id="content_2_2" class="content_2_2">
     <!-- 책 정보가 여기에 추가될 것입니다. -->
-</div>
+    
+         </div>
          </div>
       </div>
    </div>
 
    <hr>
 
-   <div class="pagination">
-      <span><</span> <span>1</span> <span>2</span> <span>3</span> <span>4</span>
-      <span>5</span> <span>></span>
-   </div>
-   </div>
-   </div>
-   </div>
-   </div>
-   </div>
+<div class="pagination"></div>
 
    <br>
    <br>
@@ -299,86 +292,142 @@ hr {
 
    <script type="text/javascript">
    $(document).ready(function () {
-        const apiURL = "http://data4library.kr/api/loanItemSrch?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&format=json";
+       const apiURL = "http://data4library.kr/api/loanItemSrch?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&format=json";
 
-        $.getJSON(apiURL, function (data) {
-          console.log("API 응답 데이터:", data);
+       $.getJSON(apiURL, function (data) {
+           console.log("API 응답 데이터:", data);
 
-          if (!data || !data.response || !data.response.docs || data.response.docs.length === 0) {
-            console.error("❌ API에서 책 데이터가 없습니다!");
-            return;
-          }
+           if (!data || !data.response || !data.response.docs || data.response.docs.length === 0) {
+               console.error("❌ API에서 책 데이터가 없습니다!");
+               return;
+           }
 
-          const books = data.response.docs;
+           const books = data.response.docs;
+           const totalBooks = 40; // 책의 총 개수
+           const booksPerPage = 4; // 한 페이지당 표시할 책 수
+           const totalPages = Math.ceil(totalBooks / booksPerPage); // 총 페이지 수
 
-          // 한 페이지에 4개의 책 정보만 표시
-          for (let i = 0; i < 4; i++) {
-            let doc = books[i].doc;
+           let currentPage = 1; // 현재 페이지 (기본값 1)
 
-            if (!doc) {
-              console.error(`❌ books[${i}].doc가 없습니다. book 데이터:`, books[i]);
-              continue;
-            }
+           function loadBooks(page) {
+               // 페이지가 변경될 때마다 책을 불러오는 함수
+               let startIndex = (page - 1) * booksPerPage;
+               let endIndex = startIndex + booksPerPage;
 
-            let imageURL = doc.bookImageURL || "https://via.placeholder.com/150"; // 기본 이미지 사용
-            let title = doc.bookname || "제목 없음";
-            let authorFull = doc.authors || "작가 정보 없음";
-            let publisher = doc.publisher || "출판사 정보 없음";
-            let pubYear = doc.publication_year || "출판일 정보 없음";
+               // 책 정보 초기화
+               $("#content_2_2").empty();
+               
+               
 
-            // 작가와 번역가 정보 추출
-            let author = "작가 정보 없음";
-            let translator = "번역가 정보 없음";
+               // 현재 페이지에 맞는 책들만 표시
+               for (let i = startIndex; i < endIndex && i < totalBooks; i++) {
+                   let doc = books[i].doc;
 
-            if (authorFull.includes("지은이:")) {
-              author = authorFull.split("지은이:")[1].split(";")[0].trim();
-            }
-            if (authorFull.includes("옮긴이:")) {
-              translator = authorFull.split("옮긴이:")[1].split(";")[0].trim();
-            }
+                   if (!doc) {
+                       console.error(`❌ books[${i}].doc가 없습니다. book 데이터:`, books[i]);
+                       continue;
+                   }
 
-            // 책 정보 HTML 생성
-            console.log("변수 값:", {i, imageURL, title, author, translator, publisher, pubYear});
+                   let imageURL = doc.bookImageURL || "https://via.placeholder.com/150"; // 기본 이미지 사용
+                   let title = doc.bookname || "제목 없음";
+                   let authorFull = doc.authors || "작가 정보 없음";
+                   let publisher = doc.publisher || "출판사 정보 없음";
+                   let pubYear = doc.publication_year || "출판일 정보 없음";
 
-            let bookHTML = 
-              '<hr>'+
-              '<div id="content_2_2_'+(i + 1)+'" class="content_2_2_book">'+
-                '<div id="book'+(i + 1)+'" class="book">'+
-                  '<img src="'+imageURL+'" alt="'+title+'">'+
-                '</div>'+
-                '<div id="bookcon'+(i + 1)+'" class="bookcon">'+
-                  '<div class="spare1"></div>'+
-                  '<div class="bookinfo">'+
-                    '<p style="font-size: 20px;"><b>'+title+'</b></p>'+
-                    '<hr style="width: 70px; margin-left: 0%;">'+
-                    '지은이 : <span style="font-size: 15px;">'+author+'</span> &nbsp;|&nbsp; 옮긴이 : <span style="font-size: 15px;">'+translator+'</span>'+
-                    '<br><br>'+
-                    '출판사 : <span style="font-size: 15px;">'+publisher+'</span>&nbsp;|&nbsp; 출판일 :<span style="font-size: 15px;">'+pubYear+'</span>'+
-                    '<br><br><br>'+
-                    '<div style="display: flex;">'+
-                      '<p><i class="fas fa-star" style="color: #085ae7;"></i></p>'+
-                      '<p style="margin-left: 5px; margin-top: 20;">4.84</p>'+
-                      '<p style="margin-left: 5px; margin-top: 20;">(350reviews)</p>'+
-                    '</div>'+
-                  '</div>'+
-                  '<div class="heart">'+
-                    '<i class="fas fa-heart"></i>'+
-                    '<i class="fas fa-heart" style="color: #ec1818;"></i>'+
-                  '</div>'+
-                '</div>'+
-              '</div>';
+                   let author = "작가 정보 없음";
+                   let translator = "번역가 정보 없음";
 
-            console.log("생성된 HTML:", bookHTML);
+                   if (authorFull.includes("지은이:")) {
+                       author = authorFull.split("지은이:")[1].split(";")[0].trim();
+                   }
+                   if (authorFull.includes("옮긴이:")) {
+                       translator = authorFull.split("옮긴이:")[1].split(";")[0].trim();
+                   }
 
-            // 책 정보 HTML 추가
-            $("#content_2_2").append(bookHTML);
+                   let bookHTML = 
+                       '<hr>'+
+                       '<div id="content_2_2_'+(i + 1)+'" class="content_2_2_book">'+
+                           '<div id="book'+(i + 1)+'" class="book" onclick="window.location.href=\'bookDetail.jsp\';" style="cursor: pointer;">'+
+                               '<img src="'+imageURL+'" alt="'+title+'">'+
+                           '</div>'+
+                           '<div id="bookcon'+(i + 1)+'" class="bookcon">'+
+                               '<div class="spare1"></div>'+
+                               '<div class="bookinfo">'+
+                                   '<p style="font-size: 20px; cursor: pointer;" onclick="window.location.href=\'bookDetail.jsp\';"><b>'+title+'</b></p>'+
+                                   '<hr style="width: 70px; margin-left: 0%;">'+
+                                   '지은이 : <span style="font-size: 15px;">'+author+'</span> &nbsp;|&nbsp; 옮긴이 : <span style="font-size: 15px;">'+translator+'</span>'+
+                                   '<br><br>'+
+                                   '출판사 : <span style="font-size: 15px;">'+publisher+'</span>&nbsp;|&nbsp; 출판일 :<span style="font-size: 15px;">'+pubYear+'</span>'+
+                                   '<br><br><br>'+
+                                   '<div style="display: flex;">'+
+                                       '<p><i class="fas fa-star" style="color: #085ae7;"></i></p>'+
+                                       '<p style="margin-left: 5px; margin-top: 20;">4.84</p>'+
+                                       '<p style="margin-left: 5px; margin-top: 20;">(350reviews)</p>'+
+                                   '</div>'+
+                               '</div>'+
+                               '<div class="heart">'+
+                                   '<i class="fas fa-heart"></i>'+
+                                   '<i class="fas fa-heart" style="color: #ec1818;"></i>'+
+                               '</div>'+
+                           '</div>'+
+                       '</div>';
 
-          }
-        }).fail(function (jqXHR, textStatus, errorThrown) {
-          console.error(`❌ API 요청 실패: ${textStatus}, 오류: ${errorThrown}`);
-          console.log(jqXHR); // 실패한 응답을 추가로 확인
-        });
-      });
+                   $("#content_2_2").append(bookHTML);
+               }
+           }
+//=====================================================================
+           function updatePagination() {
+               // pagination 업데이트
+               $(".pagination").empty(); // 기존 페이지네이션 초기화
+
+               // 이전 버튼
+               $(".pagination").append('<span class="prev">＜</span>');
+
+               // 페이지 번호 버튼 생성
+               for (let i = 1; i <= totalPages; i++) {
+                   $(".pagination").append('<span class="page">'+i+'</span>');
+               }
+
+               // 다음 버튼
+               $(".pagination").append('<span class="next">＞</span>');
+
+               // 현재 페이지 하이라이트
+               $(".pagination .page").eq(currentPage - 1).css("font-weight", "bold");
+
+               // 페이지 버튼 클릭 이벤트
+               $(".pagination .page").click(function () {
+                   currentPage = parseInt($(this).text());
+                   loadBooks(currentPage);
+                   updatePagination(); // 페이지 변경 시 페이지네이션 업데이트
+               });
+
+               // 이전 버튼 클릭 이벤트
+               $(".pagination .prev").click(function () {
+                   if (currentPage > 1) {
+                       currentPage--;
+                       loadBooks(currentPage);
+                       updatePagination();
+                   }
+               });
+
+               // 다음 버튼 클릭 이벤트
+               $(".pagination .next").click(function () {
+                   if (currentPage < totalPages) {
+                       currentPage++;
+                       loadBooks(currentPage);
+                       updatePagination();
+                   }
+               });
+           }
+
+           loadBooks(currentPage);  // 첫 페이지 책 로딩
+           updatePagination(); // 첫 페이지네이션 업데이트
+       }).fail(function (jqXHR, textStatus, errorThrown) {
+           console.error(`❌ API 요청 실패: ${textStatus}, 오류: ${errorThrown}`);
+           console.log(jqXHR);
+       });
+   });
+//=====================================================================================
 
 
   $(document).ready(function () {

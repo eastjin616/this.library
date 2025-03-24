@@ -692,6 +692,22 @@ html {
    <%@ include file="footerbar.jsp"%>
    <!-- -------------------------------------------------------------------- -->
    <script>
+   function search(){
+       let keyword = document.getElementById("search-bar").value.trim();
+       let filter = document.getElementById("search-filter").value;
+       
+       if (keyword === "") {
+             alert("검색어를 입력하세요!");
+             return;
+       }
+
+       let searchURL = "/this/views/book/bookSelect.jsp?keyword=" + encodeURIComponent(keyword) + "&filter=" + encodeURIComponent(filter);
+       
+     
+       //window.open(searchURL, "_blank");
+       location.href = searchURL;
+    }
+//===============================================================================================================
       var slideIndex = 0; //slide index
 
       // HTML 로드가 끝난 후 동작
@@ -706,23 +722,7 @@ html {
 
          }, sec);
       }
-//===============================================================================================================
-            function search(){
-               let keyword = document.getElementById("search-bar").value.trim();
-               let filter = document.getElementById("search-filter").value;
-               
-               if (keyword === "") {
-                     alert("검색어를 입력하세요!");
-                     return;
-               }
-
-               let searchURL = "/this/views/book/bookSelect.jsp?keyword=" + encodeURIComponent(keyword) + "&filter=" + encodeURIComponent(filter);
-               
-             
-               //window.open(searchURL, "_blank");
-               location.href = searchURL;
-            }
-//===============================================================================================================
+            
 //===============================================================================================================
 
             // Next/previous controls

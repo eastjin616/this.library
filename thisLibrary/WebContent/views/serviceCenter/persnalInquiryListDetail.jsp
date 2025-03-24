@@ -211,15 +211,16 @@
 
                 <div class="comment-section">
                   <%if(at !=null){ %>
-                    첨부파일 : <a download="<%= at.getOriginName() %>"
-                      href="<%= contextPath %>/<%= at.getFilePath() + at.getChangeName()%>">
-                      <%= at.getOriginName() %>
-                    </a> <!-- attachment 테이블에 origin 컬럼에 있음 -->
-                    <%} else{ %>
+                    첨부파일 : <a download="<%= at.getOriginName() %>" href="<%= contextPath %>/<%= at.getFilePath() + at.getChangeName()%>"><%= at.getOriginName() %></a> <!-- attachment 테이블에 origin 컬럼에 있음 -->
+					<%} else{ %>
                       첨부파일 없음
                       <%} %>
                         <h3 class="comment-count"></h3>
-
+								<div style="border-bottom: 2px solid #eee"></div>
+						
+										<% if(loginMember == null){ %>
+						
+										<% }else{ %>
                         <div class="comment-form">
                           <div class="comment-form-header">
                             <h4>댓글 작성하기</h4>
@@ -229,11 +230,16 @@
                           maxlength="300" style="width: 100%; box-sizing: border-box;"></textarea>
                           <div class="char-count">0 / 300 자</div>
                         </div>
+                        	<% } %>
 
                         <div class="comment-list">
 
                         </div>
                 </div>
+
+					
+				
+
 
                 <script>
                   $(function () {// 화면이 다 로드되고 나서 하는 행위

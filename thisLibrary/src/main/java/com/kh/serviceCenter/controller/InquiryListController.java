@@ -87,9 +87,7 @@ public class InquiryListController extends HttpServlet {
 				} else if (list.isEmpty()) {
 				    System.out.println("list는 비어 있습니다.");
 				} else {
-				    System.out.println("서블릿에서 list체크: " + list.size());
-				    System.out.println(list);
-				    System.out.println("됬을때 보여야 합니다.");
+				    System.out.println("listController서블릿에서 list체크: " + list.size());
 				}		
 				
 				

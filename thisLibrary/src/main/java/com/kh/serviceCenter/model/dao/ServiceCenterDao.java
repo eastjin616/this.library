@@ -42,7 +42,7 @@ public class ServiceCenterDao {
 	 * @return result
 	 */
 	public int insertInquiry(Connection conn,serviceCenter sc) {
-		
+		System.out.println("여긴 dao>insertInquiry");
 		
 		// insert문 =-> 처리된 행수 => 트랜잭션 처리 해야한다. (커밋을 해야한다.)
 				int result = 0;
@@ -56,6 +56,7 @@ public class ServiceCenterDao {
 					pstmt.setString(3, sc.getContent());
 
 					result = pstmt.executeUpdate();
+					System.out.println("여긴 dao>insertInquiry 쿼리 돌아감" + result);
 
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -63,6 +64,37 @@ public class ServiceCenterDao {
 					close(pstmt);
 				}
 				return result;
+	}
+	
+	/**
+	 * 1:1 문의글 작성(첨부파일)
+	 * @param conn
+	 * @param at
+	 * @return result
+	 */
+	public int insertAttachment(Connection conn, Attachment at) {
+		System.out.println("여긴 dao>insertAttachment");
+
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertAttachment");
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된 sql문
+			
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getFilePath());
+			
+			result = pstmt.executeUpdate();
+			System.out.println("여긴 dao>insertAttachment 쿼리 돌아감" + result);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 	
 	/**
@@ -193,6 +225,12 @@ public class ServiceCenterDao {
 	    return sc;
 	}
 
+	/**
+	 * 1:1 문의글 삭제
+	 * @param conn
+	 * @param scNO
+	 * @return result
+	 */
 	public int deleteBoard(Connection conn, int scNO) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -212,7 +250,12 @@ public class ServiceCenterDao {
 		return result;
 	}
 	
-	
+	/**
+	 * 1:1 문의글 업데이트
+	 * @param conn
+	 * @param sc
+	 * @return result
+	 */
 	public int updateBoard(Connection conn, serviceCenter sc) {
 		int result = 0;
 		
@@ -235,7 +278,12 @@ public class ServiceCenterDao {
 		return result;
 	}
 	
-	
+	/**
+	 *  1:1 문의글 상세 첨부파일 업데이트
+	 * @param conn
+	 * @param at
+	 * @return
+	 */
 	public int updateAttachment(Connection conn, Attachment at) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -258,7 +306,12 @@ public class ServiceCenterDao {
 		return result;
 	}
 	
-	
+	/**
+	 * 1:1 문의글 새로운 첨부파일 추가(update)
+	 * @param conn
+	 * @param at
+	 * @return result
+	 */
 	public int insertNewAttachment(Connection conn, Attachment at) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -280,4 +333,41 @@ public class ServiceCenterDao {
 		
 		return result;
 	}
+	
+	/**
+	 * 1:1 문의글 작성시 첨부한 첨부파일 조회
+	 * @param conn
+	 * @param boardNo
+	 * @return at
+	 */
+	public Attachment selectAttachment(Connection conn, int scNO) {
+		// select문 => ResultSet (한행) => Attachment 객체
+		Attachment at = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, scNO);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				at = new Attachment(); // 매개변수 생성자 만들기 싫으면 이것처럼 하면 됨
+				at.setFileNo(rset.getInt("file_no"));
+				at.setOriginName(rset.getString("origin_name"));
+				at.setChangeName(rset.getString("change_name"));
+				at.setFilePath(rset.getString("file_path"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return at;
+	}
+	
 }

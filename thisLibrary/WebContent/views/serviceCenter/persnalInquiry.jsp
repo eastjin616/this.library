@@ -159,7 +159,7 @@
           </div>
 
 
-          <form action="<%=contextPath%>/Inquiry.in">
+          <form action="<%=contextPath%>/Inquiry.in" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="memNo" value=<%= loginMember.getMemNo() %>>
             
             <div class="content4">
@@ -200,14 +200,23 @@
               </div>
 
             </div>
-            <input type="file" id="submitTag">
-            <label for="submitTag" class="custom-file-label">파일 선택</label>
+            <div class="file-upload-container">
+                            <label for="fileUpload" class="custom-file-label">첨부파일</label>
+                            <input type="file" id="fileUpload" class="hidden-file-input" name="upfile">
+</div>
             <div id="writeAndSubmit">
               <input type="submit" value="글 작성하기">
             </div>
           </form>
         </div>
-
+                        <!--게시글 작성 끝 -->
+        
+					<script>
+                document.getElementById("fileUpload").addEventListener("change", function () {
+                    let fileName = this.files.length > 0 ? this.files[0].name : "선택된 파일 없음";
+                    document.getElementById("fileName").textContent = fileName;
+                });
+            </script>
 
 
 

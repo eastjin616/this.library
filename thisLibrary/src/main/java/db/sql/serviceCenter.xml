@@ -86,6 +86,32 @@ INSERT
    WHERE FILE_NO = ?
   </entry>
   
+  
+    <entry key="insertAttachment">
+  INSERT
+	  INTO ATTACHMENT
+	     (
+	       FILE_NO
+	     , WRITE_NO
+	     , ORIGIN_NAME
+	     , CHANGE_NAME
+	     , FILE_PATH
+	     )
+	VALUES
+	     (
+	       SEQ_FILE_NO.NEXTVAL
+	     , SEQ_INQUIRY_NO.CURRVAL
+	     , ?
+	     , ?
+	     , ?
+	     )
+  </entry>
+  
+  
+  
+  
+  
+  
     <entry key="insertNewAttachment">
   INSERT
 	  INTO ATTACHMENT
@@ -105,40 +131,14 @@ INSERT
 	     , ?
 	     )
   </entry>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	 <entry key="selectAttachment">
+ 	SELECT
+	       FILE_NO
+	     , ORIGIN_NAME
+	     , CHANGE_NAME
+	     , FILE_PATH
+	  FROM ATTACHMENT
+	 WHERE WRITE_NO = ?
+  </entry>
 	
  </properties>

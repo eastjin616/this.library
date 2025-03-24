@@ -32,25 +32,24 @@ public class InquiryDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("서블릿 들어왔니");
+		System.out.println("detailController서블릿 들어왔니");
 		
 		
 		    // 1️⃣ 사용자가 클릭한 게시글 번호 가져오기
 
-			int scNO = Integer.parseInt(request.getParameter("bno").trim()); // ✅ 공백 제거!
-		    System.out.println(scNO);
+			int scNO = Integer.parseInt(request.getParameter("bno").trim()); //  공백 제거!
 		    
 		    
 		    
 		    // 2️⃣ 게시글 상세 정보 조회
 		    ServiceCenterService scService = new ServiceCenterService();
 		    serviceCenter sc = scService.selectBoard(scNO);
-//		    Attachment at = scService.selectAttachment(scNO);
+		    Attachment at = scService.selectAttachment(scNO);
 
 		    // 3️⃣ 조회된 데이터가 존재하면 JSP로 포워딩
 		    if (sc != null) {
 		        request.setAttribute("sc", sc);
-//		        request.setAttribute("at", at);
+		        request.setAttribute("at", at);
 		        request.getRequestDispatcher("views/serviceCenter/persnalInquiryListDetail.jsp").forward(request, response);
 		        System.out.println("나 detailController인데 sc 던질게");
 		    } else {

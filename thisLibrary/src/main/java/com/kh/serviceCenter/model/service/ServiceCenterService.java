@@ -26,20 +26,25 @@ public class ServiceCenterService {
 	 * @param sc
 	 * @return
 	 */
-	public int insertInquiry(serviceCenter sc) {
+	public int insertInquiry(serviceCenter sc, Attachment at) {
+		System.out.println("여긴 service단 dao로 보낼게");
 		Connection conn = getConnection();
 		
-		int result =  new ServiceCenterDao().insertInquiry(conn, sc);
+		int result1 = new ServiceCenterDao().insertInquiry(conn, sc);
+		int result2 = 1;
 		
-		if(result > 0) {
+		if(at != null) {
+			result2 = new ServiceCenterDao().insertAttachment(conn, at);
+		}
+		
+		if(result1 > 0 && result2 > 0) {
 			commit(conn);
+			System.out.println("여긴 서비스단,, 글, 첨부파일 잘 커밋한다. 오바");
 		}else {
 			rollback(conn);
 		}
 		
-		close(conn);
-		
-		return result;
+		return result1 * result2;
 	}
 	
 	/**
@@ -94,6 +99,13 @@ public class ServiceCenterService {
 		
 		return result;
 	}
+	
+	/**
+	 *  1:1 문의글 상세 페이지 첨부파일업데이트
+	 * @param sc
+	 * @param at
+	 * @return result1 * result2
+	 */
 	public int updateBoard(serviceCenter sc , Attachment at) {
 		Connection conn = getConnection();
 		int result1 = new ServiceCenterDao().updateBoard(conn, sc);
@@ -120,8 +132,15 @@ public class ServiceCenterService {
 	}
 	
 	
-	
-	
+	public Attachment selectAttachment(int scNO) {
+		Connection conn = getConnection();
+		
+		Attachment at = new ServiceCenterDao().selectAttachment(conn, scNO);
+		
+		close(conn);
+		
+		return at;
+	}
 	
 	
 	

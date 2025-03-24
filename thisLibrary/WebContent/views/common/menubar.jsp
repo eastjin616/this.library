@@ -230,8 +230,8 @@
                      <div class="naviDiv">
                         <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
                         <div class="submenu">
-                           <a href="<%=contextPath%>/list.sc?cpage=1">1:1 문의하기</a>
-                           <a href="<%=contextPath%>/views/serviceCenter/persnalInquiryList.jsp">1:1 문의 내역</a>
+                           <a href="<%=contextPath%>/views/serviceCenter/persnalInquiry.jsp">1:1 문의하기</a>
+                           <a href="<%=contextPath%>/list.sc?cpage=1">1:1 문의 내역</a>
                            <a href="<%=contextPath%>/views/serviceCenter/fnaList.jsp">F&Q 질문 내역</a>
                            <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">전화상담</a>
                            <a href="<%=contextPath%>/views/serviceCenter/notice.jsp">공지사항</a>

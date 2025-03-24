@@ -92,7 +92,7 @@
                 button:hover {
                     opacity: 0.7;
                 }
-
+	
 
                 .back-btn,
                 .button-group button {

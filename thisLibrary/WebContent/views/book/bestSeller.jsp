@@ -348,7 +348,7 @@ hr {
                    let bookHTML = 
                        '<hr>'+
                        '<div id="content_2_2_'+(i + 1)+'" class="content_2_2_book">'+
-                           '<div id="book'+(i + 1)+'" class="book" onclick="window.location.href=\'bookDetail.jsp\';" style="cursor: pointer;">'+
+                           '<div id="book'+(i + 1)+'" class="book" onclick="location.href=\'bookDetail.jsp?isbn='+isbn+'\';" style="cursor: pointer;">'+
                                '<img src="'+imageURL+'" alt="'+title+'">'+
                            '</div>'+
                            '<div id="bookcon'+(i + 1)+'" class="bookcon">'+

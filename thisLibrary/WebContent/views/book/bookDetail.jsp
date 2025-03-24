@@ -4,9 +4,10 @@
 	pageEncoding="UTF-8"%>
 
 <% 
-			String alertMsg=(String)session.getAttribute("alertMsg"); // 글번호, 닉네임, 제목, 내용, 조회수, 작성일 Board
-			Board b=(Board)request.getAttribute("b"); // 첨부파일이 없다면 null // 첨부파일이 있다면 파일번호, 원본명, 수정명, 저장경로 Attachment
-			Attachment at=(Attachment)request.getAttribute("at"); %>
+String alertMsg=(String)session.getAttribute("alertMsg"); // 글번호, 닉네임, 제목, 내용, 조회수, 작성일 Board
+Board b=(Board)request.getAttribute("b"); // 첨부파일이 없다면 null // 첨부파일이 있다면 파일번호, 원본명, 수정명, 저장경로 Attachment
+Attachment at=(Attachment)request.getAttribute("at"); 
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,10 +16,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document1</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-/>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" 
+integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" 
+crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- ------------------------------------------------------------------------------------------ -->
 <style>
 div {
 	box-sizing: border-box;
@@ -440,16 +444,16 @@ pre {
 				<div id="bookInfo">
 
 					<div id="bookImg">
-						<img src="../../resources/assets/book1.jpg" alt="">
+						<img src="" alt="" >
 					</div>
 					<div id="bookIntroduce">
 
 						<div id="bookSimple">
-							<img src="../../resources/assets/book1.jpg" alt="">
+							<img src="" alt="">
 						</div>
 
 						<div id="bookPhoto">
-							<img src="../../resources/assets/book1.jpg" alt="">
+							<img src="" alt="">
 						</div>
 					</div>
 				</div>
@@ -646,7 +650,104 @@ stars.forEach((star, index) => {
         });
     });
 });
+//====================================================================================================================================
+  
+$(document).ready(function () {
+    // URL에서 ISBN13 파라미터 추출
+    //http://localhost:8777/this/views/book/bookDetail.jsp?isbn=9788954654753(메인페이지 북 처음꺼 눌렀을 때)
+    var urlParams = new URLSearchParams(window.location.search);
+    console.log(urlParams);
+    var isbn = urlParams.get("isbn");//그냥 isbn이잖아 동진아 진짜 죽을래? 메인페이지에서 그냥 isbn으로 넘겼잖아 똑바로 생각 안할래?
+    console.log(isbn);//여튼 잘 받아왔어
+    
+    // API URL
+    const apiURL = "http://data4library.kr/api/srchDtlList?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&isbn13="
+    	+isbn+"&format=json";
+
+    // API 요청
+    $.getJSON(apiURL, function (data) {
+    	console.log("API 응답 데이터:", data);
+
+      // 응답 데이터 확인
+      if (!data.response || !data.response.detail || data.response.detail.length === 0) {//왜 여기서 에러가 뜨냐고
+        console.error("❌ API에서 책 데이터가 없습니다!");
+        return;
+      }
+
+      // 책 정보 추출
+      let book = data.response.detail;
+      console.log(book);
+      
+      if (!book) {
+        console.error("❌ 책 데이터가 없습니다!");
+        return;
+      }
+//-------------------------여기서 에러뜸 하 배열 -------------------------
+//book: {no: 1, bookname: '체리새우 :황영미 장편소설 ', authors: '지은이: 황영미', publisher: '문학동네', publication_date: '2019', …}
+      //let detail = Array.isArray(book.detail) ? book.detail[0] : book.detail;
+      let detail = Array.isArray(detail.book) ? detail.book[0] : detail.book; //설마..
+      
+      if (!detail) {
+        console.error("❌ book.detail이 없습니다. book 데이터:", book);
+        return;
+      }
+//------------------------------------------------------------
+ 
+ 
+ 
+      // 책 정보 추출
+      let imageURL = detail.bookImageURL || "https://via.placeholder.com/150";
+      console.log(imageURL);
+      let title = detail.bookname || "제목 없음";
+      let authorFull = detail.authors || "작가 정보 없음";
+      let publisher = detail.publisher || "출판사 정보 없음";
+      let pubYear = detail.publication_year || "출판일 정보 없음";
+
+      // 작가와 번역가 분리
+      let author = "작가 정보 없음";
+      let translator = "번역가 정보 없음";
+
+      if (authorFull.includes("지은이:")) {
+        let parts = authorFull.split("지은이:");
+        author = parts[1].split(";")[0].trim();
+      }
+
+      if (authorFull.includes("옮긴이:")) {
+        let parts = authorFull.split("옮긴이:");
+        translator = parts[1].split(";")[0].trim();
+      }
+
+      // 책 이미지 업데이트
+      let bookImageSelector = `#bookImg img`;
+      if ($(bookImageSelector).length) {
+          $(bookImageSelector).attr("src", imageURL);
+      } else {
+        console.error(`❌ 이미지 태그를 찾을 수 없습니다: ${bookImageSelector}`);
+      }
+
+      // 책 정보 업데이트
+      let bookInfoSelector = `#bookcon1 .bookinfo`;
+      if ($(bookInfoSelector).length) {
+        $(bookInfoSelector).find('p:eq(0)').text(title);       // 책 제목
+        $(bookInfoSelector).find('p:eq(1)').text(author);      // 작가
+        $(bookInfoSelector).find('p:eq(2)').text(translator);  // 번역가
+        $(bookInfoSelector).find('p:eq(3)').text(publisher);   // 출판사
+        $(bookInfoSelector).find('p:eq(4)').text(pubYear);     // 출판년도
+      } else {
+        console.error(`❌ bookinfo 요소를 찾을 수 없습니다: ${bookInfoSelector}`);
+      }
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+      console.error(`❌ API 요청 실패: ${textStatus}, 오류: ${errorThrown}`);
+    });
+  });
 </script>
+
+
+	
+	
+//====================================================================================================================================
+
+//====================================================================================================================================
 
 		<%@ include file="../common/footerbar.jsp"%>
 </body>

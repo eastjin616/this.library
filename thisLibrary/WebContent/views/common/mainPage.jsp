@@ -629,7 +629,7 @@ html {
                id="silver">
          </div>
          <div id="content_1_2">
-            <div id="content_1_2_1" style="cursor: pointer;" onclick="location.href='views/book/bookDetail.jsp'">
+            <div id="content_1_2_1" style="cursor: pointer;">
                <img src="" alt=""
                   id="book1">
             </div>
@@ -652,7 +652,7 @@ html {
             <img src="<%= contextPath %>/resources/assets/gold.png" alt=""
                id="gold">
          </div>
-         <div id="content_2_3" style="cursor: pointer;" onclick="location.href='views/book/bookDetail.jsp'">
+         <div id="content_2_3" style="cursor: pointer;">
             <img src="" alt=""
                id="book3">
          </div>
@@ -672,7 +672,7 @@ html {
                id="brown">
          </div>
          <div id="content_3_2">
-            <div id="content_3_2_1" style="cursor: pointer;" onclick="location.href='views/book/bookDetail.jsp'">
+            <div id="content_3_2_1" style="cursor: pointer;">
                <img src="" alt=""
                   id="book5" >
             </div>
@@ -768,15 +768,10 @@ html {
     var today = new Date();
     var formattedDate = today.toISOString().split("T")[0]; // YYYY-MM-DD 형식
     const apiURL = "https://data4library.kr/api/hotTrend?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&searchDt="
-    	+formattedDate
-    	+"&format=json";
-
-    //console.log("오늘 날짜:", formattedDate);
-    //console.log("API 요청 URL:", apiURL);
+        + formattedDate
+        + "&format=json";
 
     $.getJSON(apiURL, function (data) {
-        //console.log("📢 API 응답 전체:", data);
-
         if (!data.response || !data.response.results || data.response.results.length === 0) {
             console.error("❌ API에서 책 데이터가 없습니다!");
             return;
@@ -791,14 +786,13 @@ html {
             }
         });
 
-        //onsole.log("가져온 책 리스트:", books);
-
         if (books.length === 0) {
             console.error("❌ 책 데이터가 없습니다!");
             return;
         }
 
         const bookSelectors = ["#book1", "#book3", "#book5"]; // 각 책의 ID 리스트
+        const contentSelectors = ["#content_1_2_1", "#content_2_3", "#content_3_2_1"]; // 클릭 영역
 
         books.slice(0, bookSelectors.length).forEach((book, index) => {
             let doc = book.doc;
@@ -808,19 +802,40 @@ html {
             }
 
             let imageURL = doc.bookImageURL || "https://via.placeholder.com/150";
-            console.log(`📌 책 ${index + 1} 이미지 URL:`, imageURL);
+            let isbn = doc.isbn13 || "isbn 정보 없음";
 
             let bookImageSelector = bookSelectors[index];
+            let contentSelector = contentSelectors[index];
+
             if ($(bookImageSelector).length) {
                 $(bookImageSelector).attr("src", imageURL);
+                $(bookImageSelector).attr("data-isbn", isbn); // ✅ data-isbn 추가
             } else {
                 console.error(`❌ 이미지 태그를 찾을 수 없습니다: ${bookImageSelector}`);
+            }
+
+            if ($(contentSelector).length) {
+                $(contentSelector).attr("data-isbn", isbn); // ✅ 클릭 영역에도 data-isbn 추가
             }
         });
     }).fail(function (jqXHR, textStatus, errorThrown) {
         console.error(`❌ API 요청 실패: ${textStatus}, 오류: ${errorThrown}`);
     });
+
+    // 클릭 이벤트를 AJAX 요청 바깥에서 한 번만 설정
+    $("#content_1_2_1,#content_2_3,#content_3_2_1").click(function () {
+        let isbn = $(this).data("isbn") || $(this).find("img").data("isbn"); // 클릭한 요소에서 ISBN 가져오기
+
+        if (isbn && isbn !== "isbn 정보 없음") {
+            window.location.href = "views/book/bookDetail.jsp?isbn=" + isbn;
+        } else {
+            alert("ISBN 정보가 없습니다.");
+        }
+        
+        console.log(isbn);//여긴 잘 넘어가 
+    });
 });
+
 
 
     </script>

@@ -242,13 +242,13 @@ hr {
           console.log("API 응답 데이터:", data);
 
           if (!data || !data.response || !data.response.docs || data.response.docs.length === 0) {
+        	  alert( keyword +"라는 도서(작가)는 없습니다!");
             console.error("❌ API에서 책 데이터가 없습니다!");
             return;
           }
 
           const books = data.response.docs;
 
-          // 한 페이지에 4개의 책 정보만 표시
           for (let i = 0; i < 100; i++) {
             let doc = books[i].doc;
 

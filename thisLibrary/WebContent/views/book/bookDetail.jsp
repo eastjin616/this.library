@@ -15,6 +15,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document1</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+/>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <style>
@@ -385,6 +387,19 @@ pre {
 	cursor: pointer;
 	opacity: 0.7;
 }
+
+.star{
+   border: none;
+   background-color: #f9f9f9;
+}
+.star i {
+    color: white; /* 내부 색상을 흰색으로 설정 */
+    -webkit-text-stroke: 1px black; /* 테두리를 검은색으로 설정 */
+}
+.star:hover i,
+.star.active i {
+    color: yellow; /* 별 색 변경 */
+}
 </style>
 </head>
 <!-- ------------------------------------------------------------------ -->
@@ -393,7 +408,7 @@ pre {
 
 	<% if(alertMsg !=null){ %>
 	<script>
-							alert("<%= alertMsg %>");
+							// alert("<%= alertMsg %>");
 						</script>
 	<% session.removeAttribute("alertMsg"); %>
 	<!-- 이걸 안해주면 다른 곳 가도 한번 더 읽혀서 창이 계속 뜸 -->
@@ -595,14 +610,22 @@ ipsam nam.
 				<% } %>
 
 				<h3 class="comment-count">댓글 5</h3>
-
 				<div class="comment-form">
 					<div class="comment-form-header">
-						<h4>댓글 작성하기</h4>
+						<h4>댓글 작성하기
+                     <div class="starFather" style=" width: 170px; border-radius: 20px; padding-left: 5px; padding-bottom: 3px; float: right;">
+                        <button class="star"><i class="fa-solid fa-star"></i></button>
+                        <button class="star"><i class="fa-solid fa-star"></i></button>
+                        <button class="star"><i class="fa-solid fa-star"></i></button>
+                        <button class="star"><i class="fa-solid fa-star"></i></button>
+                        <button class="star"><i class="fa-solid fa-star"></i></button>
+                     </div>
+                  </h4>
+
 						<button class="submit-btn" onclick="insertReply()">작성하기</button>
 					</div>
 					<textarea id="replyContent" placeholder="댓글을 입력하세요..."
-						maxlength="300" style="width: 950px;"></textarea>
+						maxlength="300" style="width: 100%; box-sizing: border-box;"></textarea>
 					<div class="char-count">0 / 300 자</div>
 				</div>
 
@@ -612,57 +635,18 @@ ipsam nam.
 			</div>
 		</div>
 
-		<script>
-											$(function () {
-												selectReplyList();
-												setInterval(selectReplyList, 1000);
-											});
+<script>
+//====================================================================================================================================
+const stars = document.querySelectorAll('.star');
 
-											function insertReply() {
-												$.ajax({
-													url: "rinsert.bo",
-													data: {
-														content: $("#replyContent").val(),
-														bno: <%= (b != null) ? b.getBoardNo() : 0 %>,
-												},
-													type: "post",
-													success: function (result) {
-														if (result > 0) {
-															selectReplyList();
-															$("#replyContent").val("");
-														} else {
-															alert("댓글 작성에 실패했습니다.");
-														}
-													},
-													error: function () {
-														console.log("댓글 작성 AJAX 실패");
-													}
-					});
-			}
-
-											function selectReplyList() {
-												$.ajax({
-													url: "rlist.bo",
-													data: { bno: <%= (b != null) ? b.getBoardNo() : 0 %> },
-													success: function (rlist) {
-														let value = "";
-														for (let i = 0; i < rlist.length; i++) {
-															value += "<div class='comment'>"
-																+ "<p class='comment-meta'><strong>" + rlist[i].memNo + "</strong> | " + rlist[i].answerDate
-																+ "<span class='label'> 팔로우 </span>"
-																+ "<span class='set-comment'><button style='margin-left:0px'> 수정 </button> | <button> 삭제 </button></span>"
-																+ "</p>"
-																+ "<p class='comment-text'>" + rlist[i].answerContent + "</p>"
-																+ "</div>";
-														}
-														$(".comment-list").html(value);
-													},
-													error: function () {
-														console.log("댓글 목록 조회 AJAX 실패");
-													}
-					});
-			}
-										</script>
+stars.forEach((star, index) => {
+    star.addEventListener('click', () => {
+        stars.forEach((s, i) => {
+            s.classList.toggle('active', i <= index);
+        });
+    });
+});
+</script>
 
 		<%@ include file="../common/footerbar.jsp"%>
 </body>

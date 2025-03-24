@@ -23,6 +23,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document1</title>
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+</script>
+   
 <style>
 #firstbar {
    height: 50px;
@@ -625,8 +629,8 @@ html {
                id="silver">
          </div>
          <div id="content_1_2">
-            <div id="content_1_2_1">
-               <img src="<%= contextPath %>/resources/assets/book1.jpg" alt=""
+            <div id="content_1_2_1" style="cursor: pointer;" onclick="location.href='views/book/bookDetail.jsp'">
+               <img src="" alt=""
                   id="book1">
             </div>
             <div id="content_1_2_2"></div>
@@ -648,8 +652,8 @@ html {
             <img src="<%= contextPath %>/resources/assets/gold.png" alt=""
                id="gold">
          </div>
-         <div id="content_2_3">
-            <img src="<%= contextPath %>/resources/assets/book3.jpg" alt=""
+         <div id="content_2_3" style="cursor: pointer;" onclick="location.href='views/book/bookDetail.jsp'">
+            <img src="" alt=""
                id="book3">
          </div>
          <div id="content_2_4"></div>
@@ -668,9 +672,9 @@ html {
                id="brown">
          </div>
          <div id="content_3_2">
-            <div id="content_3_2_1">
-               <img src="<%= contextPath %>/resources/assets/book5.jpg" alt=""
-                  id="book5">
+            <div id="content_3_2_1" style="cursor: pointer;" onclick="location.href='views/book/bookDetail.jsp'">
+               <img src="" alt=""
+                  id="book5" >
             </div>
             <div id="content_3_2_2"></div>
          </div>
@@ -758,6 +762,67 @@ html {
                slides[n].style.display = "block";
                dots[n].className += " active";
             }
-         </script>
+//===============================================================================================================
+
+  $(document).ready(function () {
+    var today = new Date();
+    var formattedDate = today.toISOString().split("T")[0]; // YYYY-MM-DD 형식
+    const apiURL = "https://data4library.kr/api/hotTrend?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&searchDt="
+    	+formattedDate
+    	+"&format=json";
+
+    //console.log("오늘 날짜:", formattedDate);
+    //console.log("API 요청 URL:", apiURL);
+
+    $.getJSON(apiURL, function (data) {
+        //console.log("📢 API 응답 전체:", data);
+
+        if (!data.response || !data.response.results || data.response.results.length === 0) {
+            console.error("❌ API에서 책 데이터가 없습니다!");
+            return;
+        }
+
+        let books = [];
+
+        // results 배열을 순회하면서 'docs' 배열을 가져오기
+        data.response.results.forEach(result => {
+            if (result.result.docs && result.result.docs.length > 0) {
+                books = books.concat(result.result.docs);
+            }
+        });
+
+        //onsole.log("가져온 책 리스트:", books);
+
+        if (books.length === 0) {
+            console.error("❌ 책 데이터가 없습니다!");
+            return;
+        }
+
+        const bookSelectors = ["#book1", "#book3", "#book5"]; // 각 책의 ID 리스트
+
+        books.slice(0, bookSelectors.length).forEach((book, index) => {
+            let doc = book.doc;
+            if (!doc) {
+                console.error(`❌ book.doc가 없습니다. book 데이터:`, book);
+                return;
+            }
+
+            let imageURL = doc.bookImageURL || "https://via.placeholder.com/150";
+            console.log(`📌 책 ${index + 1} 이미지 URL:`, imageURL);
+
+            let bookImageSelector = bookSelectors[index];
+            if ($(bookImageSelector).length) {
+                $(bookImageSelector).attr("src", imageURL);
+            } else {
+                console.error(`❌ 이미지 태그를 찾을 수 없습니다: ${bookImageSelector}`);
+            }
+        });
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        console.error(`❌ API 요청 실패: ${textStatus}, 오류: ${errorThrown}`);
+    });
+});
+
+
+    </script>
 </body>
 </html>

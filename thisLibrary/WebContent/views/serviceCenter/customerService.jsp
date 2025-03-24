@@ -1,19 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-    String alertMsg = (String) session.getAttribute("alertMsg");
-    if (alertMsg != null) {
-%>
-        <script>
-            alert("<%= alertMsg %>");
-        </script>
-<%
-        session.removeAttribute("alertMsg"); // 한 번만 출력 후 세션에서 삭제
-    }
-%>
-	
-	
-	
+
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet"
@@ -234,7 +221,7 @@ div .write-btn>a {
 				<div id="content2_1_3">
 					<div id="contentDiv3_1">
 						<a
-							href="<%=contextPath%>/views/serviceCenter/persnalInquiryList.jsp"
+							href="<%=contextPath%>/list.sc?cpage=1"
 							style="border: none;"> <img
 							src="<%=contextPath%>/resources/assets/conversation_15578485.gif">
 						</a>
@@ -242,7 +229,7 @@ div .write-btn>a {
 					<div id="contentDiv3_2">
 						<p>
 							<a
-								href="<%=contextPath%>/views/serviceCenter/persnalInquiryList.jsp"
+								href="<%=contextPath%>/list.sc?cpage=1"
 								style="text-decoration-line: none;"> <b>1:1 문의 내역</b></a>
 						</p>
 					</div>

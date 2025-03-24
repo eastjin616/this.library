@@ -1,5 +1,15 @@
+<%@page import="com.kh.board.model.vo.Attachment"%>
+<%@page import="com.kh.serviceCenter.model.vo.serviceCenter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
+<% 
+		// 글번호, 닉네임, 제목, 내용, 조회수, 작성일
+	serviceCenter sc = (serviceCenter)request.getAttribute("sc");
+		
+	  Attachment at = (Attachment)request.getAttribute("at");
+	  //at에 뭐가있을까? 
+	  // 첨부 有 : 파일번호, 원본명, 수정명, 저장경로 
+	  // 첨부 無 : null
+%>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -10,9 +20,7 @@
       <title>Document1</title>
       <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=keyboard_double_arrow_down" />
-      <!-- <link rel="stylesheet" href="header.css">
-  <link rel="stylesheet" href="content.css">
-  <link rel="stylesheet" href="footer.css"> -->
+   
 
       <style>
         /* div {box-sizing: border-box;border: 1px solid red;} */
@@ -233,7 +241,7 @@
               </div>
 
 
-              <div class="questionBox1">
+              <div class="questionBox1"><!-- ================================================================================================첫번째 질의 -->
                 <a href="#">검색이 되지 않거나 품절 / 절판이 된 도서는 구입할 수 없나요?</a>
                 <span class="material-symbols-outlined">keyboard_double_arrow_down</span>
               </div>
@@ -241,19 +249,21 @@
               <div id="fnqReply" class="reply-box">
                 <p><strong>작성자:</strong> admin</p>
                 <p><strong>작성일자:</strong> <span id="replyDate"></span></p>
-                <textarea id="adminReply" placeholder="답변을 입력하세요..."></textarea>
+                <textarea id="adminReply" placeholder="답변을 입력하세요..."><%=contextPath %>/fnaSelect.sc?bno=1</textarea>
               </div>
 
               <!-- 버튼 컨테이너 -->
               <div id="btnContainer">
-                <button id="adminEnrollBtn">작성하기</button>
+                <button id="adminEnrollBtn" onclick="location.href='<%= contextPath %>/updateForm.sc?bno=<%= sc.getInquiryNo() %>'">작성하기</button>
+                  
+                        
                 <button id="adminDeleteBtn">삭제하기</button>
               </div>
 
-              <div class="questionBox1"><a href="">This.서재에 없는 책은 무엇인가요?</a><span class="material-symbols-outlined">
+              <div class="questionBox1"><a href="#">This.서재에 없는 책은 무엇인가요?</a><span class="material-symbols-outlined">
                   keyboard_double_arrow_down
-                </span></div>
-                <!-- 관리자 답변 입력 영역 -->
+                </span></div><!-- ================================================================================================두번째 질의 -->
+               <!-- 관리자 답변 입력 영역 -->
               <div id="fnqReply" class="reply-box">
                 <p><strong>작성자:</strong> admin</p>
                 <p><strong>작성일자:</strong> <span id="replyDate"></span></p>
@@ -267,10 +277,11 @@
               </div>
 
 
+
               <div class="questionBox1"><a href="">도서카테고리 별 분류는 어디서 볼수 있는 건가요?</a><span
                   class="material-symbols-outlined">
                   keyboard_double_arrow_down
-                </span></div>
+                </span></div><!-- ================================================================================================세번째 질의 -->
                 <!-- 관리자 답변 입력 영역 -->
               <div id="fnqReply" class="reply-box">
                 <p><strong>작성자:</strong> admin</p>
@@ -288,7 +299,7 @@
                   오류떠요?!</a><span class="material-symbols-outlined">
                   keyboard_double_arrow_down
                 </span>
-              </div>
+              </div><!-- ================================================================================================네번째 질의 -->
               <!-- 관리자 답변 입력 영역 -->
               <div id="fnqReply" class="reply-box">
                 <p><strong>작성자:</strong> admin</p>
@@ -356,6 +367,28 @@
 
 
         document.getElementById("replyDate").innerText = new Date().toLocaleDateString();
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            const memId = "<%= loginMember.getNickname() %>"; // JSP에서 가져온 로그인 사용자 ID
+
+            // 모든 버튼과 textarea 요소 가져오기
+            const enrollBtns = document.querySelectorAll("#adminEnrollBtn");
+            const deleteBtns = document.querySelectorAll("#adminDeleteBtn");
+            const replyTextareas = document.querySelectorAll("#adminReply");
+
+            if (memId === "admin") {
+                // 관리자일 경우 버튼 보이기, textarea 활성화
+                enrollBtns.forEach(btn => btn.style.display = "block");
+                deleteBtns.forEach(btn => btn.style.display = "block");
+                replyTextareas.forEach(textarea => textarea.readOnly = false);
+            } else {
+                // 일반 사용자일 경우 버튼 숨기기, textarea 비활성화
+                enrollBtns.forEach(btn => btn.style.display = "none");
+                deleteBtns.forEach(btn => btn.style.display = "none");
+                replyTextareas.forEach(textarea => textarea.readOnly = true);
+            }
+        });
+        
       </script>
       <!-- -------------------------------------------------------------------- -->
       <%@ include file="../common/footerbar.jsp" %>

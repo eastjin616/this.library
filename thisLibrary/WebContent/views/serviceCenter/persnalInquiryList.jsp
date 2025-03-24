@@ -1,146 +1,199 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<% 
-	String alertMsg=(String) session.getAttribute("alertMsg"); 
-%>
+<%@page import="com.kh.common.model.vo.PageInfo" %>
+  <%@page import="com.kh.serviceCenter.model.vo.serviceCenter" %>
+    <%@page import="java.util.ArrayList" %>
+      <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+        <% ArrayList<serviceCenter> list = (ArrayList<serviceCenter>)request.getAttribute("list");
+            PageInfo pi = (PageInfo)request.getAttribute("pi");
 
-    <!DOCTYPE html>
-    <html lang="en">
+            int currentPage = (pi != null) ? pi.getCurrentPage() : 1;
+            int startPage = (pi != null) ? pi.getStartPage() : 1;
+            int endPage = (pi != null) ? pi.getEndPage() : 1;
+            int maxPage = (pi != null) ? pi.getMaxPage() : 1;
 
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document1</title>
+            %>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-      <style>
-        @font-face {
-          font-family: 'Gyeonggi_Batang_Regular';
-          src:
-            url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff') format('woff');
-          font-weight: 400;
-          font-style: normal;
-        }
+            <!DOCTYPE html>
+            <html lang="en">
 
-        body * {
-          font-family: 'Gyeonggi_Batang_Regular';
-        }
+            <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Document1</title>
 
-        /* div {box-sizing: border-box;border: 1px solid red;} */
-        
+              <style>
+                @font-face {
+                  font-family: 'Gyeonggi_Batang_Regular';
+                  src:
+                    url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff') format('woff');
+                  font-weight: 400;
+                  font-style: normal;
+                }
 
-        /* ---------------------------------------------- */
+                body * {
+                  font-family: 'Gyeonggi_Batang_Regular';
+                }
 
-        /* 자유게시판 스타일 */
-        .board-container {
-          max-width: 1000px;
-          margin: 120px auto;
-          background: white;
-          padding: 20px;
-          border-radius: 10px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-
-        th,td {
-          border-bottom: 1px solid #ddd;
-          padding: 10px;
-          text-align: left;
-        }
-
-        th {
-          background-color: #f4f4f4;
-        }
-
-        .pagination {
-          text-align: center;
-          margin-top: 20px;
-        }
-
-        .pagination a {
-          margin: 0 5px;
-          text-decoration: none;
-          color: #333;
-        }
-
-        .write-btn {
-          display: block;
-          width: 80px;
-          padding: 10px;
-          /* margin: auto; */
-          background-color: #ea916e;
-          color: white;
-          text-align: center;
-          border-radius: 5px;
-          text-decoration: none;
-        }
-
-        .write-btn:hover{
-          opacity: 0.7;
-          
-        }
-
-        div .write-btn>a {
-          text-align: right;
-        }
-
-        .board-container tbody tr:hover{
-          background-color: lightgrey;
-          cursor: pointer;
-        }
+                /* div {box-sizing: border-box;border: 1px solid red;} */
 
 
-      </style>
-    </head>
+                /* ---------------------------------------------- */
 
-    <body>
-    <%@ include file="../common/menubar.jsp" %>
+                /* 자유게시판 스타일 */
+                .board-container {
+                  max-width: 1000px;
+                  margin: 120px auto;
+                  background: white;
+                  padding: 20px;
+                  border-radius: 10px;
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                }
 
-        <!-- 자유게시판 -->
-        <div class="board-container">
-          <h2>1:1 문의글 리스트</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>제목</th>
-                <th>글쓴이</th>
-                <th>작성일자</th>
-                <th>조회수</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr onclick="window.location.href='<%= contextPath %>/views/board/boardDetail.jsp'">
-                <td>10</td>
-                <td>네이버 지도(v5) 임베드asdasdasdasdasdsadasdasdasdadasd</td>
-                <td>아임웹</td>
-                <td>2019-12-17</td>
-                <td>120</td>
-              </tr>
-            </tbody>
-          </table>
+                table {
+                  width: 100%;
+                  border-collapse: collapse;
+                }
+
+                th,
+                td {
+                  border-bottom: 1px solid #ddd;
+                  padding: 10px;
+                  text-align: left;
+                }
+
+                th {
+                  background-color: #f4f4f4;
+                }
+
+                .pagination {
+                  text-align: center;
+                  margin-top: 20px;
+                }
+
+                .pagination a {
+                  margin: 0 5px;
+                  text-decoration: none;
+                  color: #333;
+                }
+
+                .write-btn {
+                  display: block;
+                  width: 80px;
+                  padding: 10px;
+                  /* margin: auto; */
+                  background-color: #ea916e;
+                  color: white;
+                  text-align: center;
+                  border-radius: 5px;
+                  text-decoration: none;
+                }
+
+                .write-btn:hover {
+                  opacity: 0.7;
+
+                }
+
+                div .write-btn>a {
+                  text-align: right;
+                }
+
+                .board-container tbody tr:hover {
+                  background-color: lightgrey;
+                  cursor: pointer;
+                }
+              </style>
+            </head>
+
+            <body>
+              <%@ include file="../common/menubar.jsp" %>
+
+                <!-- 자유게시판 -->
+                <div class="board-container">
+                  <h2>1:1 문의글 리스트</h2>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th>제목</th>
+                        <th>글쓴이</th>
+                        <th>작성일자</th>
+                        <th>조회수</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% if(list==null) { %>
+                        <!-- case1. 게시글이 없을 경우 -->
+                        <tr>
+                          <td colspan="5">조회된 게시글이 없습니다.</td>
+                        </tr>
+                        <% }else{ %>
+
+                          <!-- case2. 게시글이 있을 경우 -->
+                          <%for(serviceCenter sc : list){ %>
+                            <tr>
+                              <td>
+                                <%=sc.getInquiryNo() %>
+                              </td>
+                              <td>
+                                <%=sc.getTitle() %>
+                              </td>
+                              <td>
+                                <%=sc.getName() %>
+                              </td>
+                              <td>
+                                <%=sc.getInquiryDate() %>
+                              </td>
+                            </tr>
+                            <%} %>
+                              <%} %>
+                    </tbody>
+                  </table>
+                  <script>
+                    $(function () {
+                      $(".board-container tbody>tr").click(function () {
+                        location.href = "<%= contextPath %>/detail.sc?bno=" + $(this).children().eq(0).text();
+                      })
+                    })
+                  </script>
 
 
-          <div class="pagination">
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-          </div>
+                  <!--          <div class="pagination">-->
+                <!-- 페이징바 -->
+                  <div class="paging-area" align="center">
+                    <% if (currentPage !=1) { %>
+                      <button onclick="location.href='<%=contextPath%>/list.sc?cpage=<%=currentPage-1%>'">&lt;</button>
+                      <% } %>
 
-          <div style="display: flex;">
-            <a href="<%= contextPath %>/views/serviceCenter/persnalInquiry.jsp" class="write-btn" style="margin-left: auto;">글쓰기</a>
-          </div>
+                        <% for (int p=startPage; p <=endPage; p++) { %>
+                          <% if (p==currentPage) { %>
+                            <button disabled>
+                              <%= p %>
+                            </button>
+                            <% } else { %>
+                              <button onclick="location.href='<%=contextPath%>/list.sc?cpage=1'">
+                                <%= p %>
+                              </button>
+                              <% } %>
+                                <% } %>
+                                  <% if (currentPage !=maxPage) { %>
+                                    <button
+                                      onclick="location.href='<%=contextPath%>/list.sc?cpage=<%=currentPage+1%>'">&gt;</button>
+                                    <% } %>
+                  </div>
 
-        </div>
-        <!-- 자유게시판 끝 -->
+                  <div style="display: flex;">
+                    <a href="<%= contextPath %>/views/serviceCenter/persnalInquiry.jsp" class="write-btn"
+                      style="margin-left: auto;">글쓰기</a>
+                  </div>
 
-       
-      <!-- -------------------------------------------------------------------- -->
-      <%@ include file="../common/footerbar.jsp" %>
-    </body>
+                </div>
+                <!-- 자유게시판 끝 -->
 
-    </html>
+
+
+                <!-- -------------------------------------------------------------------- -->
+                <%@ include file="../common/footerbar.jsp" %>
+
+            </body>
+
+            </html>

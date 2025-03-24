@@ -188,7 +188,21 @@
       <meta charset="UTF-8">
       <!-- ------------------------------------------------------------------ -->
       <body>
+<<<<<<< HEAD
 
+=======
+             <%
+                String alertMsg = (String) session.getAttribute("alertMsg");
+                if (alertMsg != null) {
+               %>
+                 <script>
+                     alert("<%= alertMsg %>");
+                 </script>
+               <%
+                 session.removeAttribute("alertMsg"); // 한 번만 출력 후 세션에서 삭제
+                }
+               %>
+>>>>>>> inquiryUPDATE
          <div class="wrap">
             <div id="header">
                <div id="header_1">
@@ -221,7 +235,7 @@
                         <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
                         <div class="submenu">
                            <a href="<%=contextPath%>/views/serviceCenter/persnalInquiry.jsp">1:1 문의하기</a>
-                           <a href="<%=contextPath%>/views/serviceCenter/persnalInquiryList.jsp">1:1 문의 내역</a>
+                           <a href="<%=contextPath%>/list.sc?cpage=1">1:1 문의 내역</a>
                            <a href="<%=contextPath%>/views/serviceCenter/fnaList.jsp">F&Q 질문 내역</a>
                            <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">전화상담</a>
                            <a href="<%=contextPath%>/views/serviceCenter/notice.jsp">공지사항</a>

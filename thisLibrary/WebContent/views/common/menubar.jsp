@@ -212,8 +212,8 @@
                         <a href="#">전체도서</a>
                         <div class="submenu">
                            <a href="<%=contextPath%>/views/book/bestSeller.jsp">인기도서</a>
-                           <a href="#" onclick="scrollToSection('content_2_1')">오늘의 픽</a>
-                           <a href="#" onclick="scrollToSection('content_2_5')">관리자의 픽</a>
+                           <a href="#todayPickButton" onclick="scrollToSection('content_2_1')">오늘의 픽</a>
+                           <a href="#adminPickButton" onclick="scrollToSection('content_2_5')">관리자의 픽</a>
                         </div>
                      </div>
 

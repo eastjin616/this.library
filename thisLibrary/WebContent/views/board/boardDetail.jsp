@@ -282,6 +282,7 @@
 									<div class="char-count">0 / 300 자</div>
 								</div>
 						<% } %>
+						
 						<div class="comment-list">
 							
 						</div>
@@ -302,17 +303,7 @@
 					<!--end 모달 팝업-->
 
 					<script>
-					<!-- 댓글 수 카운트-->
-			        const replyContent = document.getElementById('replyContent');
-			        const charCountDisplay = document.querySelector('.char-count');
-			        const maxChars = 300;
-
-			        replyContent.addEventListener('input', () => {
-			            const currentLength = replyContent.value.length;
-			            charCountDisplay.innerHTML = `\${currentLength} / <span id="maxChars">\${maxChars}</span> 자`;
-
-			        });
-			   	<!-- 여기까지 댓글 수 카운트 스크립트 -->
+					
 					
 					
 					
@@ -457,6 +448,18 @@
 										}
 									})
 								}
+								
+								<!-- 댓글 수 카운트-->
+						        const replyContent = document.getElementById('replyContent');
+						        const charCountDisplay = document.querySelector('.char-count');
+						        const maxChars = 300;
+
+						        replyContent.addEventListener('input', () => {
+						            const currentLength = replyContent.value.length;
+						            charCountDisplay.innerHTML = `\${currentLength} / <span id="maxChars">\${maxChars}</span> 자`;
+
+						        });
+						   	<!-- 여기까지 댓글 수 카운트 스크립트 -->
 								
 						
 						</script>

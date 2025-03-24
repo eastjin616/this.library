@@ -27,7 +27,118 @@ INSERT
 	     , 'Y'
 	     )
 </entry>
+<entry key="selectList">
+	SELECT * 
+		FROM (
+		       SELECT ROWNUM RNUM, A.*
+		       FROM (
+                  SELECT
+                          INQUIRY_NO
+                        , MEM_NO
+                        , TITLE
+                        , CONTENT
+                        , ANSWER
+                        , TO_CHAR(INQUIRY_DATE, 'YYYY/MM/DD') "INQUIRY_DATE"
+                        , TO_CHAR(ANSWER_DATE, 'YYYY/MM/DD') "ANSWER_DATE"
+                     		, SC.STATUS
+                     FROM SERVICE_CENTER SC
+                     JOIN MEMBER USING(MEM_NO)
+                    WHERE SC.STATUS = 'Y'
+                    ORDER
+                       BY INQUIRY_NO DESC
+		            ) A
+		     )
+	WHERE RNUM BETWEEN ? AND ?
+	</entry>
+<entry key="selectListCount">
+	     SELECT COUNT(*) AS count
+	      FROM SERVICE_CENTER
 
-
-
+	</entry>
+	
+<entry key="selectListDetail">
+		SELECT *
+		FROM SERVICE_CENTER
+		JOIN MEMBER USING(MEM_NO)
+		WHERE INQUIRY_NO = ?
+  </entry>
+	
+	
+<entry key="deleteBoard">
+	UPDATE SERVICE_CENTER
+	   SET STATUS = 'N'
+	 WHERE INQUIRY_NO = ?
+</entry>
+	
+	  <entry key="updateBoard">
+  UPDATE SERVICE_CENTER
+	   SET TITLE = ?
+	     , CONTENT = ?
+	 WHERE INQUIRY_NO = ?
+  </entry>
+  
+  
+	<entry key="updateAttachment">
+  UPDATE ATTACHMENT
+     SET ORIGIN_NAME = ?
+       , CHANGE_NAME = ?
+       , FILE_PATH = ?
+   WHERE FILE_NO = ?
+  </entry>
+  
+    <entry key="insertNewAttachment">
+  INSERT
+	  INTO ATTACHMENT
+	     (
+	       FILE_NO
+	     , WRITE_NO
+	     , ORIGIN_NAME
+	     , CHANGE_NAME
+	     , FILE_PATH
+	     )
+	VALUES
+	     (
+	       SEQ_FILE_NO.NEXTVAL
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     )
+  </entry>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
  </properties>

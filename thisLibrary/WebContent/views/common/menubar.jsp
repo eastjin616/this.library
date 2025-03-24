@@ -1,7 +1,17 @@
 <%@page import="com.kh.member.model.vo.Member" %>
 	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 		<% String contextPath=request.getContextPath(); Member loginMember=(Member)session.getAttribute("loginMember"); %>
-
+<%
+    String alertMsg = (String) session.getAttribute("alertMsg");
+    if (alertMsg != null) {
+%>
+        <script>
+            alert("<%= alertMsg %>");
+        </script>
+<%
+        session.removeAttribute("alertMsg"); // 한 번만 출력 후 세션에서 삭제
+    }
+%>
 			<!DOCTYPE html>
 			<html lang="en">
 
@@ -63,25 +73,12 @@
 						position: relative;
 					}
 
-<<<<<<< HEAD
-				a {
+					a {
 						text-decoration-line: none;
 						color: black;
-				}
-					
-				#headnavigator a {
-					font-size: 13px;
-					padding: 10px 15px;
-					display: block;
-					font-weight: bold;
-					cursor: pointer;
-					height: 100%;
-					line-height: 50px;
-				}
-=======
+					}
+
 					#headnavigator a {
-						text-decoration: none;
-						color: black;
 						font-size: 13px;
 						padding: 10px 15px;
 						display: block;
@@ -90,7 +87,6 @@
 						height: 100%;
 						line-height: 50px;
 					}
->>>>>>> inquiryCRUD
 
 					.submenu {
 						position: absolute;
@@ -234,7 +230,7 @@
 									<a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
 									<div class="submenu">
 										<a href="<%=contextPath%>/views/serviceCenter/persnalInquiry.jsp">1:1 문의하기</a>
-										<a href="<%=contextPath%>/views/serviceCenter/persnalInquiryList.jsp">1:1 문의 내역</a>
+										<a href="<%=contextPath%>/list.sc?cpage=1">1:1 문의 내역</a>
 										<a href="<%=contextPath%>/views/serviceCenter/fnaList.jsp">F&Q 질문 내역</a>
 										<a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">전화상담</a>
 										<a href="<%=contextPath%>/views/serviceCenter/notice.jsp">공지사항</a>
@@ -273,8 +269,7 @@
 
 						</div>
 					</div>
-				</div>
-				<!-- -------------------------------------------------------------------- -->
+					<!-- -------------------------------------------------------------------- -->
 
 
 
@@ -282,45 +277,45 @@
 
 
 
-				<!-- --------------------------------------------------------------------------------->
-				<script>
-					function login() {
-						location.href = "<%=contextPath%>/views/member/loginform.jsp";
-					}
+					<!-- --------------------------------------------------------------------------------->
+					<script>
+						function login() {
+							location.href = "<%=contextPath%>/views/member/loginform.jsp";
+						}
 
-					function signin() {
-						location.href = "<%=contextPath%>/views/member/signin.jsp";
-					}
+						function signin() {
+							location.href = "<%=contextPath%>/views/member/signin.jsp";
+						}
 
-					function mypage() {
-						location.href = "<%= contextPath %>/views/member/myPage.jsp";
-					}
-				</script>
-				<!-- -------------------------------------------------------------------- -->
-				<!-- ------------------------메뉴바에서 오늘의픽, 관리자의 픽 클릭시 부드럽게 이동 -------------------------------------------- -->
+						function mypage() {
+							location.href = "<%= contextPath %>/views/member/myPage.jsp";
+						}
+					</script>
+					<!-- -------------------------------------------------------------------- -->
+					<!-- ------------------------메뉴바에서 오늘의픽, 관리자의 픽 클릭시 부드럽게 이동 -------------------------------------------- -->
 
-				<script>
-					let menuTimeout;
+					<script>
+						let menuTimeout;
 
-					document.querySelectorAll(".naviDiv").forEach((menu) => {
-						const submenu = menu.querySelector(".submenu");
+						document.querySelectorAll(".naviDiv").forEach((menu) => {
+							const submenu = menu.querySelector(".submenu");
 
-						menu.addEventListener("mouseenter", () => {
-							clearTimeout(menuTimeout); // 기존 타이머 제거
-							submenu.style.opacity = "1";
-							submenu.style.visibility = "visible";
-							submenu.style.transform = "translateY(0)";
+							menu.addEventListener("mouseenter", () => {
+								clearTimeout(menuTimeout); // 기존 타이머 제거
+								submenu.style.opacity = "1";
+								submenu.style.visibility = "visible";
+								submenu.style.transform = "translateY(0)";
+							});
+
+							menu.addEventListener("mouseleave", () => {
+								menuTimeout = setTimeout(() => {
+									submenu.style.opacity = "0";
+									submenu.style.visibility = "hidden";
+									submenu.style.transform = "translateY(-10px)";
+								}, 200); // 0.3초 후에 사라짐 (너무 빨리 사라지는 문제 해결)
+							});
 						});
-
-						menu.addEventListener("mouseleave", () => {
-							menuTimeout = setTimeout(() => {
-								submenu.style.opacity = "0";
-								submenu.style.visibility = "hidden";
-								submenu.style.transform = "translateY(-10px)";
-							}, 200); // 0.3초 후에 사라짐 (너무 빨리 사라지는 문제 해결)
-						});
-					});
-				</script>
+					</script>
 			</body>
 
 			</html>

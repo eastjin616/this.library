@@ -3,17 +3,6 @@
    pageEncoding="UTF-8"%>
 <% 
 %>
-<%
-    String alertMsg = (String) session.getAttribute("alertMsg");
-    if (alertMsg != null) {
-%>
-        <script>
-            alert("<%= alertMsg %>");
-        </script>
-<%
-        session.removeAttribute("alertMsg"); // 한 번만 출력 후 세션에서 삭제
-    }
-%>
 
 
 <!DOCTYPE html>

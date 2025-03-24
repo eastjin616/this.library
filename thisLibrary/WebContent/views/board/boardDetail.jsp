@@ -242,7 +242,7 @@
 				
 				<div class="post-container" style="margin-top: 120px;margin-bottom: 120px;">
 					<div class="post-header">
-						<h2><%=b.getBoardTitle() %><span class="label">팔로우</span></h2>
+						<h2><%=b.getBoardTitle() %><span class="label" id="follow-btn" data-following="false">팔로우</span></h2>
 						<% if(loginMember != null && loginMember.getNickname().equals(b.getBoardWriter())){ %>
 						<span class="set-header">
 						<button onclick="location.href='<%= contextPath %>/updateForm.bo?bno=<%= b.getBoardNo() %>'">수정</button> | 
@@ -418,7 +418,6 @@
 									  	//'on' class 추가
 									    modal.classList.add('on');
 									  	$("#update_content").text(rContent2);
-									
 									  
 									  	
 									  	$("#update_content").on("input", function () {
@@ -460,7 +459,42 @@
 
 						        });
 						   	<!-- 여기까지 댓글 수 카운트 스크립트 -->
+						   	
+						   	<!-- 팔로우 및 언팔로우 기능 -->
+						   	
+						   	$(document).ready(function () {
+						   	    $('#follow-btn').on('click', function () {
+						   	        const button = $(this);
+						   	        <!-- const userId = button.closest('.user-card').data('user-id');  이건 필요 없어 보임-->
+						   	        const isFollowing = button.data('following');
+
+						   	        // AJAX 요청
+						   	        $.ajax({
+						   	            url: '/follow', // 서버 API 경로
+						   	            method: 'POST',
+						   	            contentType: 'application/json',
+						   	            data: JSON.stringify({
+						   	            	<!-- userId: userId,-->
+						   	                action: isFollowing ? 'unfollow' : 'follow'
+						   	            }),
+						   	            success: function (response) {
+						   	                if (response.success) {
+						   	                    // 버튼 상태 업데이트
+						   	                    button.data('following', !isFollowing);
+						   	                    button.text(isFollowing ? 'Follow' : 'Unfollow');
+						   	                    button.toggleClass('unfollow');
+						   	                } else {
+						   	                    alert('Error: ' + response.message);
+						   	                }
+						   	            },
+						   	            error: function () {
+						   	                alert('Failed to communicate with the server.');
+						   	            }
+						   	        });
+						   	    });
+						   	});
 								
+						   	<!-- 여기까지가 팔로우 및 언팔로우 기능 -->
 						
 						</script>
 				</div>

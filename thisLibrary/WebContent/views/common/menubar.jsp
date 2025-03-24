@@ -188,7 +188,17 @@
       <meta charset="UTF-8">
       <!-- ------------------------------------------------------------------ -->
       <body>
-
+				 <%
+				    String alertMsg = (String) session.getAttribute("alertMsg");
+				    if (alertMsg != null) {
+					%>
+			        <script>
+			            alert("<%= alertMsg %>");
+			        </script>
+					<%
+			        session.removeAttribute("alertMsg"); // 한 번만 출력 후 세션에서 삭제
+				    }
+					%>
          <div class="wrap">
             <div id="header">
                <div id="header_1">

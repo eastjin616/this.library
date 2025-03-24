@@ -34,6 +34,7 @@
    <entry key="selectBoard">
   SELECT 
 	       BOARD_NO
+	     , MEM_NO
 	     , NICKNAME
 	     , BOARD_TITLE
 	     , BOARD_CONTENT
@@ -195,5 +196,29 @@
   UPDATE BOARD_ANSWER
 	   SET ANSWER_CONTENT = ?
 	 WHERE B_ANSWER_NO = ?
+  </entry>
+  
+  <entry key="insertFollow">
+  INSERT 
+	  INTO FOLLOW
+	VALUES
+	     (
+	       ?
+	     , ?
+	     )
+  </entry>
+  
+  <entry key="selectFollow">
+  SELECT
+	       FOLLOWER_ID
+	     , FOLLOWING_ID
+	  FROM FOLLOW
+  </entry>
+  
+  <entry key="deleteFollow">
+	DELETE
+	  FROM FOLLOW
+	 WHERE FOLLOWER_ID = ?
+	   AND FOLLOWING_ID = ?
   </entry>
 </properties>

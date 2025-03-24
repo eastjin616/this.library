@@ -188,6 +188,7 @@
       <meta charset="UTF-8">
       <!-- ------------------------------------------------------------------ -->
       <body>
+<<<<<<< HEAD
 				 <%
 				    String alertMsg = (String) session.getAttribute("alertMsg");
 				    if (alertMsg != null) {
@@ -219,6 +220,73 @@
                      </div>
 
                      <div class="naviDiv">
+                        <a href="#">전체도서</a>
+                        <div class="submenu">
+                           <a href="<%=contextPath%>/views/book/bestSeller.jsp">인기도서</a>
+                           <a href="#todayPickButton" onclick="scrollToSection('content_2_1')">오늘의 픽</a>
+                           <a href="#adminPickButton" onclick="scrollToSection('content_2_5')">관리자의 픽</a>
+=======
+
+         <div class="wrap">
+            <div id="header">
+               <div id="header_1">
+                  <div id="header_1_1_1">
+                     <a href="<%= contextPath %>/views/common/mainPage.jsp"><img
+                        src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt=""
+                        style="height: 100%; width: 100%;"></a>
+                  </div>
+                  <div id="headnavigator">
+                     <a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a>
+
+                     <div class="naviDiv">
+                        <a href="<%=contextPath%>/list.bo?cpage=1">게시판</a>
+                        <div class="submenu">
+                           <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인 투표</a>
+                           <a href="<%=contextPath%>/list.bo?cpage=1">자유게시판</a>
+>>>>>>> book
+                        </div>
+                     </div>
+
+                     <div class="naviDiv">
+<<<<<<< HEAD
+                        <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+                        <div class="submenu">
+                           <a href="<%=contextPath%>/views/serviceCenter/persnalInquiry.jsp">1:1 문의하기</a>
+                           <a href="<%=contextPath%>/views/serviceCenter/persnalInquiryList.jsp">1:1 문의 내역</a>
+                           <a href="<%=contextPath%>/views/serviceCenter/fnaList.jsp">F&Q 질문 내역</a>
+                           <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">전화상담</a>
+                           <a href="<%=contextPath%>/views/serviceCenter/notice.jsp">공지사항</a>
+                        </div>
+                     </div>
+                  </div>
+                  <% if(loginMember== null){ %>
+                  <div id="header_login_btn" style="height: 100%; width: 9%;">
+                     <a class="btn" id="login" onclick="location.href='<%=contextPath%>/views/member/loginform.jsp'">LogIn</a>
+                  </div>
+                  
+                  <div id="header_signin_btn" style="height: 100%; width: 9%;">
+                     <a class="btn" id="signin" onclick="signin()">Sign In</a>
+                  </div>
+
+                  <%}else{ %>
+                     <div>
+                        <br>
+                         <b><%= loginMember.getMemName()%>님 </b>의 방문을 환영합니다.      
+                     </div>
+                     
+                     <div id="header_login_btn" style="height: 100%; width: 9%;">
+                        <button class="btn" id="login"><a href="<%= contextPath %>/logout.me">로그아웃</a></button>
+                     </div>
+                  <%} %>
+
+                  <div id="header_mypage_btn" style="height: 100%; width: 7%;">
+                     
+                     <button class="btn" id="mypage" onclick="mypage()">
+                        <img src="<%= contextPath %>/resources/assets/user01.png" alt="">
+                     </button>
+                  </div>
+
+=======
                         <a href="#">전체도서</a>
                         <div class="submenu">
                            <a href="<%=contextPath%>/views/book/bestSeller.jsp">인기도서</a>
@@ -265,6 +333,7 @@
                      </button>
                   </div>
 
+>>>>>>> book
                </div>
             </div>
             <!-- -------------------------------------------------------------------- -->

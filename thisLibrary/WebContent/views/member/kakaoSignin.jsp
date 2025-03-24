@@ -195,6 +195,7 @@
 				</script>
 				
 	<% } %>
+	
   <div class="wrap">
     <div id="header">
       <div id="header_1">

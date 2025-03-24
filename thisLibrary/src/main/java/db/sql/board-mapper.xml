@@ -190,4 +190,10 @@
 	   SET STATUS = 'N'
 	 WHERE B_ANSWER_NO = ?
   </entry>
+  
+  <entry key="updateBoardAnswer">
+  UPDATE BOARD_ANSWER
+	   SET ANSWER_CONTENT = ?
+	 WHERE B_ANSWER_NO = ?
+  </entry>
 </properties>

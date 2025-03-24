@@ -34,7 +34,7 @@ public class InquiryListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("wow");
 		// --------------- 페이징 처리 -----------------
 				int listCount; 		// 현재 총 게시글 개수
 				int currentPage; 	// 현재 페이지 (즉, 사용자가 요청한 페이지)
@@ -80,6 +80,8 @@ public class InquiryListController extends HttpServlet {
 				
 				request.setAttribute("pi", pi);
 				request.setAttribute("list", list);
+				
+				
 				if (list == null) {
 				    System.out.println("list가 null입니다.");
 				} else if (list.isEmpty()) {
@@ -87,7 +89,12 @@ public class InquiryListController extends HttpServlet {
 				} else {
 				    System.out.println("서블릿에서 list체크: " + list.size());
 				    System.out.println(list);
-				}				
+				    System.out.println("됬을때 보여야 합니다.");
+				}		
+				
+				
+				
+				
 				request.getRequestDispatcher("views/serviceCenter/persnalInquiryList.jsp").forward(request, response);
 		
 	}

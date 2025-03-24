@@ -4,7 +4,6 @@
 
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -538,6 +537,10 @@ a {
    font-size: 14px;
    font-weight: bold;
 }
+
+html {
+    scroll-behavior: smooth;
+}
 </style>
 </head>
 <meta charset="UTF-8">
@@ -627,7 +630,7 @@ a {
 
       <div id="content_2">
          <div id="content_2_1">
-            <button class="pick-button">오늘의 Pick</button>
+            <button id="todayPickButton" class="pick-button">오늘의 Pick</button>
          </div>
          <div id="content_2_2">
             <img src="<%= contextPath %>/resources/assets/gold.png" alt=""
@@ -639,7 +642,7 @@ a {
          </div>
          <div id="content_2_4"></div>
          <div id="content_2_5">
-            <button class="pick-button">관리자의 Pick</button>
+            <button id="adminPickButton" class="pick-button">관리자의 Pick</button>
             <div id="content_2_5_2">
                <img src="<%= contextPath %>/resources/assets/book4.jpg" alt=""
                   id="book4">
@@ -673,60 +676,76 @@ a {
    <%@ include file="footerbar.jsp"%>
    <!-- -------------------------------------------------------------------- -->
    <script>
-                                 var slideIndex = 0; //slide index
+      var slideIndex = 0; //slide index
 
-                                 // HTML 로드가 끝난 후 동작
-                                 window.onload = function () {
-                                    showSlides(slideIndex);
+      // HTML 로드가 끝난 후 동작
+      window.onload = function () {
+         showSlides(slideIndex);
 
-                                    // Auto Move Slide
-                                    var sec = 3000;
-                                    setInterval(function () {
-                                       slideIndex++;
-                                       showSlides(slideIndex);
+         // Auto Move Slide
+         var sec = 3000;
+         setInterval(function () {
+            slideIndex++;
+            showSlides(slideIndex);
 
-                                    }, sec);
-                                 }
+         }, sec);
+      }
+//===============================================================================================================
+            function search(){
+               let keyword = document.getElementById("search-bar").value.trim();
+               let filter = document.getElementById("search-filter").value;
+               
+               if (keyword === "") {
+                     alert("검색어를 입력하세요!");
+                     return;
+               }
 
-                                 function search(){
-                                    location.href = "<%=contextPath%>/views/book/bookDetail.jsp";
-                                 }
+               let searchURL = "/this/views/book/bookSelect.jsp?keyword=" + encodeURIComponent(keyword) + "&filter=" + encodeURIComponent(filter);
+               
+             
+               //window.open(searchURL, "_blank");
+               location.href = searchURL;
+            }
+//===============================================================================================================
+//===============================================================================================================
 
-                                 // Next/previous controls
-                                 function moveSlides(n) {
-                                    slideIndex = slideIndex + n
-                                    showSlides(slideIndex);
-                                 }
+            // Next/previous controls
+            function moveSlides(n) {
+               slideIndex = slideIndex + n
+               showSlides(slideIndex);
+            }
 
-                                 // Thumbnail image controls
-                                 function currentSlide(n) {
-                                    slideIndex = n;
-                                    showSlides(slideIndex);
-                                 }
+//===============================================================================================================
+            // Thumbnail image controls
+            function currentSlide(n) {
+               slideIndex = n;
+               showSlides(slideIndex);
+            }
+//===============================================================================================================
 
-                                 function showSlides(n) {
+            function showSlides(n) {
 
-                                    var slides = document.getElementsByClassName("mySlides");
-                                    var dots = document.getElementsByClassName("dot");
-                                    var size = slides.length;
+               var slides = document.getElementsByClassName("mySlides");
+               var dots = document.getElementsByClassName("dot");
+               var size = slides.length;
 
-                                    if ((n + 1) > size) {
-                                       slideIndex = 0; n = 0;
-                                    } else if (n < 0) {
-                                       slideIndex = (size - 1);
-                                       n = (size - 1);
-                                    }
+               if ((n + 1) > size) {
+                  slideIndex = 0; n = 0;
+               } else if (n < 0) {
+                  slideIndex = (size - 1);
+                  n = (size - 1);
+               }
 
-                                    for (i = 0; i < slides.length; i++) {
-                                       slides[i].style.display = "none";
-                                    }
-                                    for (i = 0; i < dots.length; i++) {
-                                       dots[i].className = dots[i].className.replace(" active", "");
-                                    }
+               for (i = 0; i < slides.length; i++) {
+                  slides[i].style.display = "none";
+               }
+               for (i = 0; i < dots.length; i++) {
+                  dots[i].className = dots[i].className.replace(" active", "");
+               }
 
-                                    slides[n].style.display = "block";
-                                    dots[n].className += " active";
-                                 }
-                              </script>
+               slides[n].style.display = "block";
+               dots[n].className += " active";
+            }
+         </script>
 </body>
 </html>

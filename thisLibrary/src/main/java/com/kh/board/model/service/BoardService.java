@@ -185,6 +185,24 @@ public class BoardService {
 			rollback(conn);
 		}
 		
+		close(conn);
+		
+		return result;
+	}
+
+	public int updateBoardAnswer(int rno, String rcontent) {
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().updateBoardAnswer(conn, rno, rcontent);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
 		return result;
 	}
 }

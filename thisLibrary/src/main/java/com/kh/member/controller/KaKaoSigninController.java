@@ -1,11 +1,16 @@
 package com.kh.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.kh.member.model.service.MemberService;
+import com.kh.member.model.vo.Member;
 
 /**
  * Servlet implementation class KaKaoSigninController
@@ -35,7 +40,14 @@ public class KaKaoSigninController extends HttpServlet {
 		request.setAttribute("kakaoEmail", kakaoEmail);
 		request.setAttribute("kakaoKey",kakaoKey);
 		
-		request.getRequestDispatcher("views/member/kakaoSignin.jsp").forward(request, response);
+		Member loginMember = new MemberService().selectSnsKey(kakaoKey);
+		
+		if(loginMember == null) { // 카카오 로그인으로 회원가입 해본적 없는 사람 => 회원가입 폼으로 이동
+			request.getRequestDispatcher("views/member/kakaoSignin.jsp").forward(request, response);
+		}else {  // 카카오 로그인으로 한번이라도 회원가입 해본적 있는 사람 => 로그인 성공
+			request.getSession().setAttribute("loginMember", loginMember);
+			response.sendRedirect(request.getContextPath());
+		}
 		
 	}
 

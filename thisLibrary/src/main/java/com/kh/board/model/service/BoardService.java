@@ -9,7 +9,9 @@ import com.kh.board.model.dao.BoardDao;
 import com.kh.board.model.vo.Attachment;
 import com.kh.board.model.vo.Board;
 import com.kh.board.model.vo.BoardAnswer;
+import com.kh.common.model.vo.Follow;
 import com.kh.common.model.vo.PageInfo;
+import com.kh.member.model.vo.Member;
 
 public class BoardService {
 
@@ -194,6 +196,47 @@ public class BoardService {
 		Connection conn = getConnection();
 		
 		int result = new BoardDao().updateBoardAnswer(conn, rno, rcontent);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	public int insertFollow(Follow f) {
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().insertFollow(conn, f);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	public ArrayList<Follow> selectFollow() {
+		Connection conn = getConnection();
+		
+		ArrayList<Follow> flist = new BoardDao().selectFollow(conn);
+		
+		close(conn);
+		
+		return flist;
+	}
+
+	public int deleteFollow(Follow f) {
+		Connection conn = getConnection();
+		int result = new BoardDao().deleteFollow(conn, f);
 		
 		if(result > 0) {
 			commit(conn);

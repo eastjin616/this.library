@@ -34,6 +34,17 @@ public class Board {
 		this.count = count;
 		this.writeDate = writeDate;
 	}
+	
+	public Board(int boardNo, int memNo, String boardWriter, String boardTitle, String boardContent, int count, String writeDate) {
+		super();
+		this.boardNo = boardNo;
+		this.memNo = memNo;
+		this.boardWriter = boardWriter;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.count = count;
+		this.writeDate = writeDate;
+	}
 
 	public int getBoardNo() {
 		return boardNo;

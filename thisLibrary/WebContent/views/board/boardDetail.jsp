@@ -239,11 +239,18 @@
 				<%@ include file="../common/menubar.jsp" %>
 
 				<% String loginNickname = (loginMember != null) ? loginMember.getNickname() : null; %>
+				<% Integer loginMemNo = (loginMember != null) ? loginMember.getMemNo() : null; %>
 				
 				<div class="post-container" style="margin-top: 120px;margin-bottom: 120px;">
 					<div class="post-header">
-						<h2><%=b.getBoardTitle() %><span class="label" id="follow-btn" data-following="false">팔로우</span></h2>
-						<% if(loginMember != null && loginMember.getNickname().equals(b.getBoardWriter())){ %>
+						<h2><%=b.getBoardTitle() %>
+					<%if(loginMember != null && b.getMemNo() != loginMemNo){%> 
+						<span class="label btn btn-primary" id="follow-btn">
+						팔로우
+						</span>
+					<%} %>
+						</h2>
+						<% if(loginMember != null && loginNickname.equals(b.getBoardWriter())){ %>
 						<span class="set-header">
 						<button onclick="location.href='<%= contextPath %>/updateForm.bo?bno=<%= b.getBoardNo() %>'">수정</button> | 
 						<button onclick="location.href='<%= contextPath %>/delete.bo?bno=<%= b.getBoardNo() %>'">삭제</button>
@@ -303,22 +310,52 @@
 					<!--end 모달 팝업-->
 
 					<script>
-					
-					
-					
-					
-					
 								$(function(){// 화면이 다 로드되고 나서 하는 행위
 									// 댓글 개수 조회
 									selectBoardAnswerCount();
 									
 									// 댓글조회
 									selectReplyList();
-								
+									
 									// setInterval(주기적으로 실행할 함수, ms단위 시간);
 									setInterval(selectReplyList, 1000); // 1초에 한번씩 새로고침
 									setInterval(selectBoardAnswerCount, 1000); 
+									
 								})
+								
+								<!-- 실시간 팔로우 상태 -->
+								const followerId = <%= loginMemNo %>; // 로그인한 사용자 ID
+								const followingId = <%= b.getMemNo() %>; // 게시글 작성자 ID
+								
+								<%if(loginMember != null){ %>
+								// 페이지 로드 시 팔로우 상태 확인
+								$(document).ready(function () {
+								    $.ajax({
+								        url: 'follow/status', // 팔로우 상태를 확인하는 서버 API 경로
+								        method: 'GET',
+								        data: {
+								            followerId: followerId,
+								            followingId: followingId
+								        },
+								        success: function (response) {
+								            console.log("팔로우 상태 확인 응답:", response);
+								
+								            if (response == 1) { // 이미 팔로우 중인 경우
+								                $('#follow-btn').text("팔로잉").removeClass('btn-primary').addClass('btn-secondary');
+								            } else if (response == 0) { // 팔로우 안 돼있는 경우
+								                $('#follow-btn').text("팔로우").removeClass('btn-secondary').addClass('btn-primary');
+								            }
+								        },
+								        error: function () {
+								            alert('팔로우 상태를 확인하는 데 실패했습니다.');
+								        }
+								    });
+								});
+								<%}%>
+								
+								
+								<!-- 실시간 팔로우 상태 여기까지 -->
+								
 								
 								// ajax으로 댓글 작성용 함수
 								function insertReply(){
@@ -357,10 +394,13 @@
 										success:function(rlist){
 											let value = "";
 											let loginNickname = "<%= loginNickname %>"; // JSP에서 가져온 로그인 닉네임 (null 가능)
+											
+											
 											for(let i=0; i<rlist.length; i++){
 												let r = rlist[i].bAnswerNo; // 댓글 번호
-				                let writer = rlist[i].memNo; // 댓글 작성자
+				                let writer = rlist[i].nickName; // 댓글 작성자 닉네임
 				                let content = rlist[i].answerContent; // 댓글 내용
+				                let writerNo = rlist[i].memNo;
 				              
 				                /*
 				                // 나 진짜 개천재인듯 ㅋ
@@ -369,7 +409,9 @@
 				                }
 				                */
 				               
-												value += `<div class="comment"><p class="comment-meta"><strong>\${rlist[i].memNo}</strong> | \${rlist[i].answerDate}<span class="label"> 팔로우 </span><span class="set-comment">`;
+												value += `<div class="comment"><p class="comment-meta"><strong>\${writer}</strong> | \${rlist[i].answerDate}`;
+												
+														 value += `<span></span> <span class="set-comment">`;
 													
 													 if(loginNickname && loginNickname == writer){
 															 value += `<button class="update" style="margin-left:0px" onclick="updateReply(\${r})"> 수정 </button> | <button onclick="hideReply(\${r})"> 삭제 </button>`;
@@ -384,6 +426,9 @@
 										}
 									})
 								}
+								
+								
+								
 								
 								// 삭제 버튼 클릭 시 실행될 함수
 								function hideReply(rno) {
@@ -436,6 +481,8 @@
 									
 								}
 								
+								
+								
 								function selectBoardAnswerCount(){
 									$.ajax({
 										url:"rCount.bo",
@@ -461,40 +508,51 @@
 						   	<!-- 여기까지 댓글 수 카운트 스크립트 -->
 						   	
 						   	<!-- 팔로우 및 언팔로우 기능 -->
-						   	
-						   	$(document).ready(function () {
-						   	    $('#follow-btn').on('click', function () {
-						   	        const button = $(this);
-						   	        <!-- const userId = button.closest('.user-card').data('user-id');  이건 필요 없어 보임-->
-						   	        const isFollowing = button.data('following');
 
-						   	        // AJAX 요청
-						   	        $.ajax({
-						   	            url: '/follow', // 서버 API 경로
-						   	            method: 'POST',
-						   	            contentType: 'application/json',
-						   	            data: JSON.stringify({
-						   	            	<!-- userId: userId,-->
-						   	                action: isFollowing ? 'unfollow' : 'follow'
-						   	            }),
-						   	            success: function (response) {
-						   	                if (response.success) {
-						   	                    // 버튼 상태 업데이트
-						   	                    button.data('following', !isFollowing);
-						   	                    button.text(isFollowing ? 'Follow' : 'Unfollow');
-						   	                    button.toggleClass('unfollow');
-						   	                } else {
-						   	                    alert('Error: ' + response.message);
-						   	                }
-						   	            },
-						   	            error: function () {
-						   	                alert('Failed to communicate with the server.');
+						   	$('#follow-btn').on('click', function () {
+						   	    $.ajax({
+						   	        url: 'follow', // 팔로우를 처리하는 서버 API 경로
+						   	        method: 'POST',
+						   	        data: {
+						   	            followerId: followerId,
+						   	            followingId: followingId
+						   	        },
+						   	        success: function (result) {
+						   	        	console.log("팔로우 요청 응답:", result);
+
+						   	            if (result == 0) { // 팔로우가 되어있음
+						   	                alert("이미 팔로우 돼있음 ㅋ");
+
+						   	                // 팔로우 삭제 요청
+						   	                $.ajax({
+						   	                    url: 'deleteFollow',
+						   	                    method: 'POST',
+						   	                    data: {
+						   	                        followerId: followerId,
+						   	                        followingId: followingId
+						   	                    },
+						   	                    success: function (deleteResult) {
+						   	                        // 삭제 후 UI 업데이트 (예: 버튼 텍스트 변경)
+						   	                        $('#follow-btn').text("팔로우").removeClass('btn-secondary').addClass('btn-primary');
+						   	                    },
+						   	                    error: function() {
+						   	                        alert("서버와의 통신에 실패함");
+						   	                    }
+						   	                });
+						   	            } else if (result == 1) { // 팔로우성공
+						   	            	$('#follow-btn').text("팔로잉").removeClass('btn-primary').addClass('btn-secondary');
 						   	            }
-						   	        });
+						   	        },
+						   	        error: function () {
+						   	            alert('서버와의 통신에 실패했습니다.');
+						   	        }
 						   	    });
 						   	});
+
+								<!-- 여기까지가 팔로우 및 언팔로우 기능 -->
 								
-						   	<!-- 여기까지가 팔로우 및 언팔로우 기능 -->
+								
+								
 						
 						</script>
 				</div>

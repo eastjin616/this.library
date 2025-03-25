@@ -15,6 +15,7 @@ import java.util.Properties;
 import com.kh.board.model.vo.Attachment;
 import com.kh.board.model.vo.Board;
 import com.kh.board.model.vo.BoardAnswer;
+import com.kh.common.model.vo.Follow;
 import com.kh.common.model.vo.PageInfo;
 
 public class BoardDao {
@@ -111,6 +112,7 @@ private Properties prop = new Properties();
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
 				b = new Board(rset.getInt("board_no"),
+							  rset.getInt("mem_no"),
 							  rset.getString("nickname"),
 							  rset.getString("board_title"),
 							  rset.getString("board_content"),
@@ -338,7 +340,7 @@ private Properties prop = new Properties();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, Integer.parseInt(ba.getMemNo()));
+			pstmt.setInt(1, ba.getMemNo());
 			pstmt.setInt(2, ba.getBoardNo());
 			pstmt.setString(3, ba.getAnswerContent());
 			
@@ -365,6 +367,7 @@ private Properties prop = new Properties();
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				list.add(new BoardAnswer(rset.getInt("b_answer_no"),
+						 		   rset.getInt("mem_no"),
 								   rset.getString("nickname"),
 								   rset.getString("answer_content"),
 								   rset.getString("answer_date")
@@ -432,6 +435,69 @@ private Properties prop = new Properties();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, rcontent);
 			pstmt.setInt(2, rno);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int insertFollow(Connection conn, Follow f) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertFollow");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, f.getFollowerId());
+			pstmt.setInt(2, f.getFollowingId());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public ArrayList<Follow> selectFollow(Connection conn) {
+		ArrayList<Follow> flist = new ArrayList<Follow>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectFollow");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				flist.add(new Follow(rset.getInt("follower_id"),
+								     rset.getInt("following_id")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return flist;
+	}
+
+	public int deleteFollow(Connection conn, Follow f) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteFollow");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, f.getFollowerId());
+			pstmt.setInt(2, f.getFollowingId());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

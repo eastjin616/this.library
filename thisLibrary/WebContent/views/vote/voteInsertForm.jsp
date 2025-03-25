@@ -9,6 +9,8 @@
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<title>Document1</title>
+			<script
+   	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 			<style>
 				.post-container {
@@ -216,7 +218,7 @@
 					position: absolute;
 					font-size: 24px;
 					color: #6c757d;
-					z-index: 1;
+					z-index: 0;
 				}
 
 				input[type="file"] {
@@ -256,6 +258,73 @@
 					width: 85px;
 					justify-content: right;
 				}
+
+
+
+				.modalC {
+					position: absolute;
+					display: none;
+
+					justify-content: center;
+					top: 0;
+					left: 0;
+
+					width: 100%;
+					height: 1800px;
+					background-color: rgba(0, 0, 0, 0.4);
+				}
+
+				.modal_bodyC {
+					position: fixed;
+					top: 50%;
+					width: 800px;
+					height: 100%;
+					padding: 40px;
+					text-align: center;
+					background-color: rgb(255, 255, 255);
+					border-radius: 10px;
+					box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+					transform: translateY(-50%);
+					z-index: 1;
+					max-height: 80%; /* 최대 높이 설정 */
+    			overflow-y: auto; /* 세로 스크롤 가능 */
+				}
+
+				.close-btnC {
+					position: absolute;
+					top: 10px;
+					right: 15px;
+					font-size: 20px;
+					font-weight: bold;
+					cursor: pointer;
+				}
+
+				.search-form{
+					margin-bottom: 20px;
+				}
+
+				#search-bar{
+					width: 600px;
+					height: 20px;
+					border-radius: 5px;
+				}
+
+				.search-btn{
+					width: 50px;
+					height: 27px;
+					background: #ea916e;
+					color: white;
+					border: none;
+					border-radius: 5px;
+					margin-left: 10px;
+				}
+
+				.book img {
+						width: 200px;/* 씨부레 책 이미지 크기 */
+						height: 250px;/* 씨부레 책 이미지 크기 */
+						object-position: center;
+						mix-blend-mode: multiply; /* 이미지 배색 개선 */
+				}
 			</style>
 		</head>
 		<body>
@@ -274,13 +343,13 @@
 
 							<div class="container">
 
-								<div class="card" onclick="uploadImage(0)">
+								<div class="card btn-open-modalC">
 									<span class="upload-icon">➕</span>
-									<input type="file" accept="image">
+									<img src="" class="uploaded-image" id="selectBook1">
 								</div>
-								<div class="card" onclick="uploadImage(1)">
+								<div class="card btn-open-modalC" >
 									<span class="upload-icon">➕</span>
-									<input type="file" accept="image">
+									<img src="" class="uploaded-image" id="selectBook2">
 								</div>
 							</div>
 
@@ -292,6 +361,150 @@
 						</div>
 					</div>
 				</div>
+
+				<div class="modalC">
+					<div class="modal_bodyC">
+						<span class="close-btnC">&times;</span> <!-- 'X' 버튼 -->
+						
+						<div class="search-form">
+							<h2>책 조회</h2>
+							<input type="text" id="search-bar">
+							<button class="search-btn" onclick="search()">검색</button>
+						</div>
+
+						<div id="content_2">
+							<div id="content_2_2" class="content_2_2">
+						<!-- 책 정보가 여기에 추가될 것입니다. -->
+							</div>
+					 </div>
+
+					</div>
+				</div>
+
+				<script>
+
+					// modal
+					const modalC = document.querySelector('.modalC');
+					const btnOpenModalC = document.querySelectorAll('.btn-open-modalC');
+					const btnCloseModalC = document.querySelectorAll('.close-btnC');
+
+					btnOpenModalC.forEach(btn => {
+							btn.addEventListener("click", () => {
+									modalC.style.display = "flex";
+							});
+					});
+
+					btnCloseModalC.forEach(btn => {
+							btn.addEventListener("click", () => {
+									modalC.style.display = "none";
+							});
+					});
+
+					modalC.addEventListener("click", (event) => {
+						if (event.target === modalC) {
+							modalC.style.display = "none";
+						}
+					});
+
+
+// ====================================================================================
+
+			// search
+			function search(){
+						let keyword = document.getElementById("search-bar").value.trim();
+						
+						if (keyword === "") {
+									alert("검색어를 입력하세요!");
+									return;
+						}
+
+
+      let apiURL = "https://data4library.kr/api/srchBooks?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67" 
+                  + "&keyword=" + encodeURIComponent(keyword) 
+                   + "&format=json";
+
+        $.getJSON(apiURL, function (data) {
+          console.log("API 응답 데이터:", data);
+
+          if (!data || !data.response || !data.response.docs || data.response.docs.length === 0) {
+        	  alert( keyword +"라는 도서(작가)는 없습니다!");
+            console.error("❌ API에서 책 데이터가 없습니다!");
+            return;
+          }
+
+          const books = data.response.docs;
+
+					let bookHTML = "";
+					$("#content_2_2").html(bookHTML);
+
+          for (let i = 0; i < 100; i++) {
+            let doc = books[i].doc;
+
+            if (!doc) {
+              console.error(`❌ books[${i}].doc가 없습니다. book 데이터:`, books[i]);
+              continue;
+            }
+
+            let imageURL = doc.bookImageURL || "https://via.placeholder.com/150"; // 기본 이미지 사용
+            let title = doc.bookname || "제목 없음";
+            let authorFull = doc.authors || "작가 정보 없음";
+            let publisher = doc.publisher || "출판사 정보 없음";
+            let pubYear = doc.publication_year || "출판일 정보 없음";
+
+            // 작가와 번역가 정보 추출
+            let author = "작가 정보 없음";
+            let translator = "번역가 정보 없음";
+
+            if (authorFull.includes("지은이:")) {
+              author = authorFull.split("지은이:")[1].split(";")[0].trim();
+            }
+            if (authorFull.includes("옮긴이:")) {
+              translator = authorFull.split("옮긴이:")[1].split(";")[0].trim();
+            }
+
+            // 책 정보 HTML 생성
+            console.log("변수 값:", {i, imageURL, title, author, translator, publisher, pubYear});
+						
+            bookHTML = `
+												<hr>
+												<div id="content_2_2_\${i + 1}" class="content_2_2_book">
+													<div id="book\${i + 1}" class="book" onclick="selectBook('\${imageURL}')" style="cursor: pointer;">
+														<img src="\${imageURL}" alt="\${title}">
+													</div>
+													<div id="bookcon\${i + 1}" class="bookcon">
+														<div class="spare1"></div>
+														<div class="bookinfo">
+															<p style="font-size: 20px; cursor: pointer;"><b>\${title}</b></p>
+															지은이 : <span style="font-size: 15px;">\${author}</span> &nbsp;|&nbsp; 옮긴이 : <span style="font-size: 15px;">\${translator}</span>
+															<br><br>
+															출판사 : <span style="font-size: 15px;">\${publisher}</span>&nbsp;|&nbsp; 출판일 :<span style="font-size: 15px;">\${pubYear}</span>
+														</div>
+														<div class="heart">
+															<i class="fas fa-heart"></i>
+															<i class="fas fa-heart" style="color: #ec1818;"></i>
+														</div>
+													</div>
+												</div>
+											`;
+						
+            console.log("생성된 HTML:", bookHTML);
+
+            // 책 정보 HTML 추가
+            $("#content_2_2").append(bookHTML);
+
+          }
+					
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+          console.error(`❌ API 요청 실패: ${textStatus}, 오류: ${errorThrown}`);
+          console.log(jqXHR); // 실패한 응답을 추가로 확인
+        });
+      };
+				function selectBook(){
+					modalC.style.display = "none";
+					$("#selectBook1").src
+				}
+				</script>
+				
 				<%@ include file="../common/footerbar.jsp" %>
 		</body>
 

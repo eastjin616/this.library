@@ -1,10 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<<<<<<< HEAD
-<%  
-%>
-=======
-
->>>>>>> 4473cf8cb9db20279657ec4579e528fb4d0f05ef
 
 		<!DOCTYPE html>
 		<html lang="en">
@@ -184,7 +178,7 @@
 				}
 
 				.set-comment {
-					padding-left: 770px;
+					/* padding-left: 770px; */
 				}
 
 				.set-header {
@@ -261,7 +255,7 @@
 
 						<div class="comment-list">
 							<div class="comment">
-								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18 <span class="label">팔로우</span>
+								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18
 									<span class="set-comment"><button>수정</button> | <button>삭제</button></span>
 								</p>
 								<p class="comment-text">
@@ -271,7 +265,7 @@
 								</p>
 							</div>
 							<div class="comment">
-								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18 <span class="label">팔로우</span>
+								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18
 									<span class="set-comment"><button>수정</button> | <button>삭제</button></span>
 								</p>
 								<p class="comment-text">
@@ -281,7 +275,7 @@
 								</p>
 							</div>
 							<div class="comment">
-								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18 <span class="label">팔로우</span>
+								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18
 									<span class="set-comment"><button>수정</button> | <button>삭제</button></span>
 								</p>
 								<p class="comment-text">
@@ -291,7 +285,7 @@
 								</p>
 							</div>
 							<div class="comment">
-								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18 <span class="label">팔로우</span>
+								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18
 									<span class="set-comment"><button>수정</button> | <button>삭제</button></span>
 								</p>
 								<p class="comment-text">
@@ -301,7 +295,7 @@
 								</p>
 							</div>
 							<div class="comment">
-								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18 <span class="label">팔로우</span>
+								<p class="comment-meta"><strong>작성자3</strong> | 2025.02.18
 									<span class="set-comment"><button>수정</button> | <button>삭제</button></span>
 								</p>
 								<p class="comment-text">

@@ -219,7 +219,6 @@
 				    border-radius: 20px;
 				}
 				.modal .modal_popup .close_btn {
-				    display: block;
 				    padding: 10px 20px;
 				    background-color: rgb(116, 0, 0);
 				    border: none;
@@ -231,6 +230,7 @@
 				.modal.on {
    				  display: block;
 				}		
+
 			</style>
 		</head>
 		<body>

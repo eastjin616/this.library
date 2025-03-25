@@ -30,6 +30,7 @@
 
 			#footer {
 				height: 150px;
+				
 			}
 
 			#footernavigator {

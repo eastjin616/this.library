@@ -340,7 +340,7 @@ private Properties prop = new Properties();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, Integer.parseInt(ba.getMemNo()));
+			pstmt.setInt(1, ba.getMemNo());
 			pstmt.setInt(2, ba.getBoardNo());
 			pstmt.setString(3, ba.getAnswerContent());
 			
@@ -367,6 +367,7 @@ private Properties prop = new Properties();
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				list.add(new BoardAnswer(rset.getInt("b_answer_no"),
+						 		   rset.getInt("mem_no"),
 								   rset.getString("nickname"),
 								   rset.getString("answer_content"),
 								   rset.getString("answer_date")

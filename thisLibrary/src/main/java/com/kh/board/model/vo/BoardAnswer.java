@@ -2,7 +2,8 @@ package com.kh.board.model.vo;
 
 public class BoardAnswer {
 	private int bAnswerNo;
-	private String memNo; // 테이블에서는 작성자 회원번호지만 여기다가 작성자 닉네임 넣을거임
+	private int memNo; 
+	private String nickName;// 테이블에서는 작성자 회원번호지만 여기다가 작성자 닉네임 넣을거임
 	private int boardNo;
 	private String answerContent;
 	private String answerDate;
@@ -10,10 +11,12 @@ public class BoardAnswer {
 	
 	public BoardAnswer() {}
 
-	public BoardAnswer(int bAnswerNo, String memNo, int boardNo, String answerContent, String answerDate, String status) {
+	public BoardAnswer(int bAnswerNo, int memNo, String nickName, int boardNo, String answerContent, String answerDate,
+			String status) {
 		super();
 		this.bAnswerNo = bAnswerNo;
 		this.memNo = memNo;
+		this.nickName = nickName;
 		this.boardNo = boardNo;
 		this.answerContent = answerContent;
 		this.answerDate = answerDate;
@@ -22,10 +25,11 @@ public class BoardAnswer {
 	
 	
 
-	public BoardAnswer(int bAnswerNo, String memNo, String answerContent, String answerDate) {
+	public BoardAnswer(int bAnswerNo, int memNo, String nickName, String answerContent, String answerDate) {
 		super();
 		this.bAnswerNo = bAnswerNo;
 		this.memNo = memNo;
+		this.nickName = nickName;
 		this.answerContent = answerContent;
 		this.answerDate = answerDate;
 	}
@@ -38,12 +42,20 @@ public class BoardAnswer {
 		this.bAnswerNo = bAnswerNo;
 	}
 
-	public String getMemNo() {
+	public int getMemNo() {
 		return memNo;
 	}
 
-	public void setMemNo(String memNo) {
+	public void setMemNo(int memNo) {
 		this.memNo = memNo;
+	}
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public int getBoardNo() {
@@ -80,8 +92,9 @@ public class BoardAnswer {
 
 	@Override
 	public String toString() {
-		return "BoardAnswer [bAnswerNo=" + bAnswerNo + ", memNo=" + memNo + ", boardNo=" + boardNo + ", answerContent="
-				+ answerContent + ", answerDate=" + answerDate + ", status=" + status + "]";
+		return "BoardAnswer [bAnswerNo=" + bAnswerNo + ", memNo=" + memNo + ", nickName=" + nickName + ", boardNo="
+				+ boardNo + ", answerContent=" + answerContent + ", answerDate=" + answerDate + ", status=" + status
+				+ "]";
 	}
-	
+
 }

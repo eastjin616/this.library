@@ -39,7 +39,7 @@ public class AjaxReplyInsertController extends HttpServlet {
 		BoardAnswer ba = new BoardAnswer();
 		ba.setAnswerContent(replyContent);
 		ba.setBoardNo(boardNo);
-		ba.setMemNo(String.valueOf(userNo));
+		ba.setMemNo(userNo);
 		
 		int result = new BoardService().insertReply(ba);
 		

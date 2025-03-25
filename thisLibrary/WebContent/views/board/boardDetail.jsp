@@ -10,7 +10,7 @@
 		// 첨부파일이 있다면 파일번호, 원본명, 수정명, 저장경로
 		Attachment at = (Attachment)request.getAttribute("at"); 
 		
-		int count = 0;
+		
 		
 %>
 
@@ -318,9 +318,8 @@
 									selectReplyList();
 									
 									// setInterval(주기적으로 실행할 함수, ms단위 시간);
-									//setInterval(selectReplyList, 1000); // 1초에 한번씩 새로고침
-									//setInterval(selectBoardAnswerCount, 1000); 
-									//setInterval(followStatus, 1000);
+									setInterval(selectReplyList, 1000); // 1초에 한번씩 새로고침
+									setInterval(selectBoardAnswerCount, 1000); 
 									
 								})
 								
@@ -353,6 +352,7 @@
 								    });
 								});
 								<%}%>
+								
 								
 								<!-- 실시간 팔로우 상태 여기까지 -->
 								
@@ -394,10 +394,13 @@
 										success:function(rlist){
 											let value = "";
 											let loginNickname = "<%= loginNickname %>"; // JSP에서 가져온 로그인 닉네임 (null 가능)
+											
+											
 											for(let i=0; i<rlist.length; i++){
 												let r = rlist[i].bAnswerNo; // 댓글 번호
-				                let writer = rlist[i].memNo; // 댓글 작성자
+				                let writer = rlist[i].nickName; // 댓글 작성자 닉네임
 				                let content = rlist[i].answerContent; // 댓글 내용
+				                let writerNo = rlist[i].memNo;
 				              
 				                /*
 				                // 나 진짜 개천재인듯 ㅋ
@@ -406,7 +409,9 @@
 				                }
 				                */
 				               
-												value += `<div class="comment"><p class="comment-meta"><strong>\${rlist[i].memNo}</strong> | \${rlist[i].answerDate}<span class="label"> 팔로우 </span><span class="set-comment">`;
+												value += `<div class="comment"><p class="comment-meta"><strong>\${writer}</strong> | \${rlist[i].answerDate}`;
+												
+														 value += `<span></span> <span class="set-comment">`;
 													
 													 if(loginNickname && loginNickname == writer){
 															 value += `<button class="update" style="margin-left:0px" onclick="updateReply(\${r})"> 수정 </button> | <button onclick="hideReply(\${r})"> 삭제 </button>`;
@@ -421,6 +426,9 @@
 										}
 									})
 								}
+								
+								
+								
 								
 								// 삭제 버튼 클릭 시 실행될 함수
 								function hideReply(rno) {

@@ -751,9 +751,6 @@ html {
                slides[n].style.display = "block";
                dots[n].className += " active";
             }
-<<<<<<< HEAD
-         </script>
-=======
 //===============================================================================================================
 
   $(document).ready(function () {
@@ -816,6 +813,5 @@ html {
 
 
     </script>
->>>>>>> book
 </body>
 </html>

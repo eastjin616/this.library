@@ -67,18 +67,18 @@ div {
 	justify-content: center;
 }
 
-#bookImg img {
+#bookImg>img {
 	margin: auto;
 	display: block;
 	height: 100%;
 }
 
 #bookIntroduce {
-	width: 50%;
+	width: 70%;
 	margin: auto;
 }
 
-#bookIntroduce img {
+#bookIntroduce>img {
 	width: 50%;
 }
 
@@ -86,12 +86,17 @@ div {
 	margin-bottom: 130px;
 }
 
-#bookSimple img {
+#bookSimple {
 	margin-left: 15%;
 	height: 400px;
 }
 
-#bookPhoto img {
+#bookSimple > div{
+	margin-top: 20px;
+	font-size: large;
+}
+
+#bookPhoto>img {
 	margin-left: 15%;
 	height: 400px;
 }
@@ -122,12 +127,6 @@ div {
 	height: auto;
 }
 
-#translator {
-	background-color: rgb(235, 235, 235);
-	margin: 2%;
-	border-radius: 2%;
-	width: 70%;
-}
 
 #authorName {
 	margin-top: 30px;
@@ -145,22 +144,22 @@ div {
 
 #authorPhoto {
 	display: flex;
-	margin-left: 15px;
-	margin-bottom: 150px;
+	margin-left: 45px;
 }
 
-.authorBookImg, .translatorBookImg {
+.authorBookImg{
 	margin-left: 15px;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-	gap: 10px;
+	gap: 5px;
 	/* 사진 사이의 간격 설정 */
 	height: 300px;
-	margin-right: 5%;
+	align-items: stretch;
 }
 
-.authorBookImg>img, .translatorBookImg>img {
-	height: 300px;
+.authorBookImg img{
+	width: 200px;
+	height: 250px;
 }
 
 pre {
@@ -199,7 +198,7 @@ pre {
 
 /*--------사이드바---------------------------------------------  */
 #sidebar {
-	width: 80%;
+	width: 10%;
 	background-color: #fff7eb;
 	border: 2px solid #a56b2a;
 	border-radius: 15px;
@@ -207,9 +206,10 @@ pre {
 	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
 	font-family: 'Gyeonggi_Batang_Regular';
 	margin: auto;
+	position: fixed;
 }
 
-#sidebar h3 {
+#sidebar>h3 {
 	font-size: 18px;
 	color: #5a3e1b;
 	margin-bottom: 15px;
@@ -217,6 +217,8 @@ pre {
 	border-bottom: 2px solid #d9a066;
 }
 
+/* ----------------------- */
+/* ---------------------- */
 .book-list {
 	list-style: none;
 	padding: 0;
@@ -430,7 +432,7 @@ pre {
 					<h3>개인서재 제목</h3>
 					<ul class="book-list">
 						<li>선재 업고 튀어</li>
-						<li>호석의 뉴질랜드</li>
+						<li>호석군의 뉴질랜드</li>
 						<li>동진이의 영국여행</li>
 					</ul>
 				</div>
@@ -449,122 +451,67 @@ pre {
 					<div id="bookIntroduce">
 
 						<div id="bookSimple">
-							<img src="" alt="">
-						</div>
 
-						<div id="bookPhoto">
-							<img src="" alt="">
+							<div id="bookname"></div>
+								<br>
+							<div id="authors"></div>
+							<br>
+							<div id="translator"></div>
+								<br>
+							<div id="date"></div>
+								<br>
+							<div id="Year"></div>
+								<br>
+							<div id="description"></div>
+							<br>
 						</div>
+						<hr style="width: 80%;">
+						<div id="neyong" style="margin-left: 55px; font-size: large;">함께 대출된 도서</div>
+						<br>
+							<div id="authorPhoto">
+								<br>
+								<div class="authorBookImg">
+									<img src="../../resources/assets/book1.jpg" alt="">
+								</div>
+								<div class="authorBookImg">
+									<img src="../../resources/assets/book1.jpg" alt="">
+								</div>
+								<div class="authorBookImg">
+									<img src="../../resources/assets/book1.jpg" alt="">
+								</div>
+							</div>
 					</div>
 				</div>
+				<br>
 				<!-- ----------------------------------------------- -->
 				<div id="bookExplan">
 					<div id="authorTitle" style="text-align: left;">
-						<h1>작가정보</h1>
+						<h1>도서 소장 도서관 </h1>
 					</div>
 					<div id="authorInfo">
 						<div id="authorDetailInfo">
-							<div id="authorName">저자(글) 찰리 맥커시</div>
-							<br>
-							<div id="authorJob">만화가</div>
-							<br>
-							<div id="neyong">Lorem ipsum dolor sit amet consectetur
-								adipisicing elit. Molestias fuga provident reiciendis placeat,
-								rerum accusantium? Eligendi exercitationem unde minus numquam
-								sed error, excepturi tempora totam repudiandae dolore, quibusdam
-								iste asperiores. Aliquid expedita ea quas. Exercitationem, vero
-								inventore distinctio aut officia numquam laboriosam doloremque
-								commodi f ugiat, veritatis fuga quae, saepe earum illum nostrum
-								autem ! Commodi vel quod quis culpa harum modi. Magni, sequi.
-								Repudiandae, officia. Eius rem est nam, fug it, natus cumque
-								similique tempore a odio quis cum max ime. Libero autem omnis
-								laboriosam, obcaecati ducimus asperiores vero consectetur
-								incidunt ipsam nam.</div>
-							<br>
-							<div id="authorPhoto">
-
-								<div class="authorBookImg">
-									<img src="../../resources/assets/book1.jpg" alt="">
-								</div>
-								<div class="authorBookImg">
-									<img src="../../resources/assets/book1.jpg" alt="">
-								</div>
-								<div class="authorBookImg">
-									<img src="../../resources/assets/book1.jpg" alt="">
-								</div>
+					 <div id="authorName">지은이 :</div>
+								<br>
+					 <div id="translatorName">번역가 :</div>
+								<br>
+							<div>
 							</div>
+								<br>
+							<div>
+							</div>
+								<br>
 						</div>
 					</div>
 					<!-- ============================================================== -->
-					<div id="translator">
-						<div id="translatorDetail">
-							<div id="translatorName">저자(글) 찰리 맥커시</div>
-							<br>
-							<div id="translatorJob">만화가</div>
-							<br>
-							<div id="neyong">Lorem ipsum dolor sit amet consectetur
-								adipisicing elit. Molestias fuga provident reiciendis placeat,
-								rerum accusantium? Eligendi exercitationem unde minus numquam
-								sed error, excepturi tempora totam repudiandae dolore, quibusdam
-								iste asperiores. Aliquid expedita ea quas. Exercitationem, vero
-								inventore distinctio aut officia numquam laboriosam doloremque
-								commodi f ugiat, veritatis fuga quae, saepe earum illum nostrum
-								autem ! Commodi vel quod quis culpa harum modi. Magni, sequi.
-								Repudiandae, officia. Eius rem est nam, fug it, natus cumque
-								similique tempore a odio quis cum max ime. Libero autem omnis
-								laboriosam, obcaecati ducimus asperiores vero consectetur
-								incidunt ipsam nam.</div>
-							<br>
-							<div id="translatorPhoto">
-
-								<div class="translatorBookImg">
-									<img src="../../resources/assets/book1.jpg" alt="">
-								</div>
-								<div class="translatorBookImg">
-									<img src="../../resources/assets/book1.jpg" alt="">
-								</div>
-								<div class="translatorBookImg">
-									<img src="../../resources/assets/book1.jpg" alt="">
-								</div>
-							</div>
-						</div>
-					</div>
 					<div id="Table_of_Contents">
 						<pre style="font-size: 40px; line-height: 60px;">
-목차
-서언................2
-몬문................6
-감사의 말.........126
 						</pre>
 					</div>
 				</div>
 			</div>
 		</div>
 		<br>
-		<hr>
-		<br>
-		<div id="preview">
-			<div id="intoBook">
-				<h1 style="margin-left: 20px;">책 속으로</h1>
-				<pre id="intoPreview" style="font-size: 20px; line-height: 40px;">
-Lorem ipsum dolor sit amet consectetur
-adipisicing elit. Molestias fuga provident reiciendis placeat,
-rerum accusantium? Eligendi exercitationem unde minus numquam sed
-error, excepturi tempora totam repudiandae dolore, quibusdam iste
 
-asperiores. Aliquid expedita ea quas. Exercitationem, vero
-inventore distinctio aut officia numquam laboriosam doloremque
-commodi f ugiat, veritatis fuga quae, saepe earum illum nostrum
-autem ! Commodi vel quod quis culpa harum modi. Magni, sequi.
-
-Repudiandae, officia. Eius rem est nam, fug it, natus cumque
-similique tempore a odio quis cum max ime. Libero autem omnis
-laboriosam, obcaecati ducimus asperiores vero consectetur incidunt
-ipsam nam.
-				</pre>
-			</div>
-		</div>
-		<hr style="width: 70%;">
 
 		<div class="post-container"
 			style="margin-top: 120px; margin-bottom: 120px;">
@@ -683,25 +630,34 @@ $(document).ready(function () {
         return;
       }
 //-------------------------여기서 에러뜸 하 배열 -------------------------
+
+	
 //book: {no: 1, bookname: '체리새우 :황영미 장편소설 ', authors: '지은이: 황영미', publisher: '문학동네', publication_date: '2019', …}
       //let detail = Array.isArray(book.detail) ? book.detail[0] : book.detail;
-      let detail = Array.isArray(detail.book) ? detail.book[0] : detail.book; //설마..
+      let detail;
       
-      if (!detail) {
-        console.error("❌ book.detail이 없습니다. book 데이터:", book);
-        return;
-      }
+		if (Array.isArray(book)) {
+		    detail = book[0]; // 배열이면 첫 번째 요소 사용
+		} else {
+		    detail = book; // 배열이 아니면 book 자체 사용
+		}
+		
+		if (!detail) {
+		    console.error("❌ book.detail이 없습니다. book 데이터:", book);
+		    return;
+		}
 //------------------------------------------------------------
  
  
  
       // 책 정보 추출
-      let imageURL = detail.bookImageURL || "https://via.placeholder.com/150";
-      console.log(imageURL);
-      let title = detail.bookname || "제목 없음";
-      let authorFull = detail.authors || "작가 정보 없음";
-      let publisher = detail.publisher || "출판사 정보 없음";
-      let pubYear = detail.publication_year || "출판일 정보 없음";
+      let imageURL = detail.book.bookImageURL || "https://via.placeholder.com/150";
+      let title = detail.book.bookname || "제목 없음";
+      let authorFull = detail.book.authors || "작가 정보 없음";
+      let publisher = detail.book.publisher || "출판사 정보 없음";
+      let publicationYear = detail.book.publication_year || "출판일 정보 없음";
+      let pubYear = detail.book.pubYear || "출판년도 정보 없음";
+      let description = detail.book.description || "책 설명 정보 없음";
 
       // 작가와 번역가 분리
       let author = "작가 정보 없음";
@@ -716,7 +672,7 @@ $(document).ready(function () {
         let parts = authorFull.split("옮긴이:");
         translator = parts[1].split(";")[0].trim();
       }
-
+//--------------------------------------------------------------------------
       // 책 이미지 업데이트
       let bookImageSelector = `#bookImg img`;
       if ($(bookImageSelector).length) {
@@ -724,30 +680,46 @@ $(document).ready(function () {
       } else {
         console.error(`❌ 이미지 태그를 찾을 수 없습니다: ${bookImageSelector}`);
       }
-
+// ========================================================================
+	
+	
       // 책 정보 업데이트
-      let bookInfoSelector = `#bookcon1 .bookinfo`;
-      if ($(bookInfoSelector).length) {
-        $(bookInfoSelector).find('p:eq(0)').text(title);       // 책 제목
-        $(bookInfoSelector).find('p:eq(1)').text(author);      // 작가
-        $(bookInfoSelector).find('p:eq(2)').text(translator);  // 번역가
-        $(bookInfoSelector).find('p:eq(3)').text(publisher);   // 출판사
-        $(bookInfoSelector).find('p:eq(4)').text(pubYear);     // 출판년도
-      } else {
+      let bookInform = `#bookSimple`;
+      
+      let bookInfotitle = `#booktitle`;
+      
+      let bookInfoSelector = `#authorDetailInfo`;
+      
+      let intoBook = `#intoBook`
+      
+      if($(bookInfotitle).length){
+    	  $(bookInfotitle).find('h1:eq(0)').text(title)
+      }
+ //================================================================                   
+      if($(bookInform).length){
+				$(bookInform).find('div:eq(0)').text("제목 : "+title)
+    	  $(bookInform).find('div:eq(1)').text("지은이 : "+author)
+				$(bookInform).find('div:eq(2)').text("번역가 : " +translator)
+    	  $(bookInform).find('div:eq(3)').text("출판년도 : "+pubYear)
+    	  $(bookInform).find('div:eq(4)').text("출판일자 : "+publicationYear)
+    	  $(bookInform).find('div:eq(5)').text("책 속으로 : "+description)
+      }
+//================================================================  
+	if($(intoBook).length){
+		$(intoBook).find('p:eq(0)').text(description)
+	}else {
         console.error(`❌ bookinfo 요소를 찾을 수 없습니다: ${bookInfoSelector}`);
       }
     }).fail(function (jqXHR, textStatus, errorThrown) {
       console.error(`❌ API 요청 실패: ${textStatus}, 오류: ${errorThrown}`);
     });
   });
+  
+ 
 </script>
 
 
-	
-	
-//====================================================================================================================================
 
-//====================================================================================================================================
 
 		<%@ include file="../common/footerbar.jsp"%>
 </body>

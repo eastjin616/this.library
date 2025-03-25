@@ -597,8 +597,9 @@ stars.forEach((star, index) => {
         });
     });
 });
-//====================================================================================================================================
-  
+//================================================================    
+//================책 상세 정보======================================  
+	
 $(document).ready(function () {
     // URL에서 ISBN13 파라미터 추출
     //http://localhost:8777/this/views/book/bookDetail.jsp?isbn=9788954654753(메인페이지 북 처음꺼 눌렀을 때)
@@ -697,9 +698,9 @@ $(document).ready(function () {
       }
  //================================================================                   
       if($(bookInform).length){
-				$(bookInform).find('div:eq(0)').text("제목 : "+title)
+		  $(bookInform).find('div:eq(0)').text("제목 : "+title)
     	  $(bookInform).find('div:eq(1)').text("지은이 : "+author)
-				$(bookInform).find('div:eq(2)').text("번역가 : " +translator)
+		  $(bookInform).find('div:eq(2)').text("번역가 : " +translator)
     	  $(bookInform).find('div:eq(3)').text("출판년도 : "+pubYear)
     	  $(bookInform).find('div:eq(4)').text("출판일자 : "+publicationYear)
     	  $(bookInform).find('div:eq(5)').text("책 속으로 : "+description)
@@ -715,12 +716,78 @@ $(document).ready(function () {
     });
   });
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+//================================================================    
+//======================함께 대출된 도서=================================== 
+
+	$(document).ready(function () {
+    // URL에서 ISBN13 파라미터 추출
+    //http://localhost:8777/this/views/book/bookDetail.jsp?isbn=9788954654753(메인페이지 북 처음꺼 눌렀을 때)
+    var urlParams = new URLSearchParams(window.location.search);
+    console.log(urlParams);
+    var isbn = urlParams.get("isbn");//그냥 isbn이잖아 동진아 진짜 죽을래? 메인페이지에서 그냥 isbn으로 넘겼잖아 똑바로 생각 안할래?
+    console.log(isbn);//여튼 잘 받아왔어
+	
+ // API URL
+    const apiURL = "http://data4library.kr/api/usageAnalysisList?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&isbn13="
+    		+isbn
+    		+"&format=json";
+    
+    
+
+    // API 요청
+    $.getJSON(apiURL, function (data) {
+    	console.log("API 응답 데이터:", data);
+
+      // 응답 데이터 확인
+      if (!data.response || !data.response.coLoanBooks || data.response.coLoanBooks.length === 0) {//왜 여기서 에러가 뜨냐고
+        console.error("❌ API에서 책 데이터가 없습니다!");
+        return;
+      }
+
+      // 책 정보 추출
+      let book = data.response.coLoanBooks;
+      console.log(book);
+      
+      if (!book) {
+        console.error("❌ 책 데이터가 없습니다!");
+        return;
+      }
+	
+      let coLoanBooks;
+		if (Array.isArray(book)) {
+		    detail = book[0]; // 배열이면 첫 번째 요소 사용
+		} else {
+		    detail = book; // 배열이 아니면 book 자체 사용
+		}
+		
+		if (!detail) {
+		    console.error("❌ book.detail이 없습니다. book 데이터:", book);
+		    return;
+		}
  
+ 
+ 
+      // 책 정보 추출
+      let coLoanBooks = detail.book.coLoanBooks || "함께 대출된 도서가 없습니다.";
+    
+	}
+	
 </script>
-
-
-
-
 		<%@ include file="../common/footerbar.jsp"%>
 </body>
 

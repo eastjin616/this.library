@@ -228,7 +228,7 @@
                           
 													<% for(int i=1; i<6; i++) { %>
 														  <div class="questionBox1">
-														    <a href="#">질문 제목 <%= i %></a>
+														    <a href="#" >질문 제목 <%= i %></a>
 														    <button type="button" class="material-symbols-outlined" data-bno="<%= i %>">keyboard_double_arrow_down</button>
 														  </div>
 														
@@ -318,6 +318,7 @@
                     	          $(this).val(response[index].answer);
                     	        }
                     	      });
+                    	      
                     	    },
                     	    error: function(xhr, status, error) {
                     	      console.log("Ajax 요청 실패:", status, error);

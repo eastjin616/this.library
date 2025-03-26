@@ -328,6 +328,10 @@
 			</style>
 		</head>
 		<body>
+			<script>
+				let book1 = 0;
+				let book2 = 0;
+			</script>
 				<%@ include file="../common/menubar.jsp" %>
 				<div class="post-container">
 					<div class="post-header">
@@ -343,13 +347,13 @@
 
 							<div class="container">
 
-								<div class="card btn-open-modalC">
+								<div class="card btn-open-modalC" onclick="book1=1; book2=0;">
 									<span class="upload-icon">➕</span>
-									<img src="" class="uploaded-image" id="selectBook1">
+									<img class="uploaded-image" id="selectBook1">
 								</div>
-								<div class="card btn-open-modalC" >
+								<div class="card btn-open-modalC" onclick="book2=1; book1=0;">
 									<span class="upload-icon">➕</span>
-									<img src="" class="uploaded-image" id="selectBook2">
+									<img class="uploaded-image" id="selectBook2">
 								</div>
 							</div>
 
@@ -382,7 +386,7 @@
 				</div>
 
 				<script>
-
+					
 					// modal
 					const modalC = document.querySelector('.modalC');
 					const btnOpenModalC = document.querySelectorAll('.btn-open-modalC');
@@ -408,7 +412,7 @@
 
 
 // ====================================================================================
-
+			//let bookHTML = "";
 			// search
 			function search(){
 						let keyword = document.getElementById("search-bar").value.trim();
@@ -464,7 +468,6 @@
 
             // 책 정보 HTML 생성
             console.log("변수 값:", {i, imageURL, title, author, translator, publisher, pubYear});
-						
             bookHTML = `
 												<hr>
 												<div id="content_2_2_\${i + 1}" class="content_2_2_book">
@@ -499,10 +502,20 @@
           console.log(jqXHR); // 실패한 응답을 추가로 확인
         });
       };
-				function selectBook(){
+				function selectBook(image){
 					modalC.style.display = "none";
-					$("#selectBook1").src
+					if(book1 === 1){
+						$(".uploaded-image").eq(0).attr('src', image);
+						$("#search-bar").val("");
+						$("#content_2_2").text("");
+					}else if(book2 === 1){
+						$(".uploaded-image").eq(1).attr('src', image);
+						$("#search-bar").val("");
+						$("#content_2_2").text("");
+					}
 				}
+
+				
 				</script>
 				
 				<%@ include file="../common/footerbar.jsp" %>

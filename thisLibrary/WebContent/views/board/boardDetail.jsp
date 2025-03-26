@@ -455,11 +455,11 @@
 									
 									//열기 버튼을 눌렀을 때 모달팝업이 열림
 									$(".comment-list").on('click', '.update',function(){
-									let rContent2 = $(this).closest('.comment').find('.comment-text').text();
-									let value = `<input type="hidden" name="rno" value="\${rno}"></input>`
-									$("#hidden_area").html(value);
-									value = `<input type="hidden" name="bno" value="<%=b.getBoardNo()%>"></input>`
-									$("#hidden_area").append(value);
+											let rContent2 = $(this).closest('.comment').find('.comment-text').text();
+											let value = `<input type="hidden" name="rno" value="\${rno}"></input>`
+											$("#hidden_area").html(value);
+											value = `<input type="hidden" name="bno" value="<%=b.getBoardNo()%>"></input>`
+											$("#hidden_area").append(value);
 									  	//'on' class 추가
 									    modal.classList.add('on');
 									  	$("#update_content").text(rContent2);

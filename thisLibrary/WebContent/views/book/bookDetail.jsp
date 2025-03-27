@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 
 <% 
-String alertMsg=(String)session.getAttribute("alertMsg"); // 글번호, 닉네임, 제목, 내용, 조회수, 작성일 Board
+//String alertMsg=(String)session.getAttribute("alertMsg"); // 글번호, 닉네임, 제목, 내용, 조회수, 작성일 Board
 Board b=(Board)request.getAttribute("b"); // 첨부파일이 없다면 null // 첨부파일이 있다면 파일번호, 원본명, 수정명, 저장경로 Attachment
 Attachment at=(Attachment)request.getAttribute("at"); 
 %>
@@ -415,13 +415,7 @@ pre {
 
 <body>
 
-	<% if(alertMsg !=null){ %>
-	<script>
-							// alert("<%= alertMsg %>");
-						</script>
-	<% session.removeAttribute("alertMsg"); %>
-	<!-- 이걸 안해주면 다른 곳 가도 한번 더 읽혀서 창이 계속 뜸 -->
-	<% } %>
+	
 	<%@ include file="../common/menubar.jsp"%>
 	<!-- -------------------------------------------------------------------- -->
 

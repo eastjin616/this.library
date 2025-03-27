@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
@@ -816,7 +815,7 @@ html {
     </script>
 </body>
 </html>
-=======
+
 <%@page import="com.kh.member.model.vo.Member" %>
    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
       <% %>
@@ -1640,4 +1639,3 @@ html {
                </body>
 
                </html>
->>>>>>> fna

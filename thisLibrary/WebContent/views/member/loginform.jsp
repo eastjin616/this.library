@@ -293,33 +293,39 @@ body * {
 							</script>
 		<!-------------------------------------- 여기까지가 카카오 로그인--------------------------- -->
 		<!-------------------------------------- 구글 소셜 로그인 스크립트--------------------------- -->
-		<script>
-								function handleCredentialResponse(response) {
-									console.log("JWT ID Token:", response.credential);
+							<script>
+						  function handleCredentialResponse(response) {
+						    console.log("JWT ID Token:", response.credential);
+						
+						    // 구글에서 받은 ID 토큰을 서버로 전송
+						    $.ajax({
+						      url: "googleLogin.me", // ✅ 서버 서블릿 URL
+						      type: "POST",
+						      data: { id_token: response.credential },
+						      success: function (data) {
+						        console.log("서버 응답:", data);
+						
+						        if (data.status === "success") {
+						          alert("구글 로그인 성공!");
+						
+						          // ✅ 서버가 응답한 redirect 경로로 이동
+						          if (data.redirect) {
+						            window.location.href = data.redirect;
+						          } else {
+						            alert("이동할 페이지 정보가 없습니다.");
+						          }
+						        } else {
+						          alert("로그인 실패: " + data.message);
+						        }
+						      },
+						      error: function (err) {
+						        console.error("로그인 실패:", err);
+						        alert("로그인 중 오류 발생");
+						      }
+						    });
+						  }
+						</script>
 
-									// 구글에서 받은 ID 토큰을 서버로 전송
-									$.ajax({
-										url: "GoogleLogin",
-										type: "POST",
-										data: { id_token: response.credential },
-										success: function (data) {
-											console.log(data);
-											console.log("서버 응답:", data);
-											if (data.status === "success") {
-												alert("로그인 성공! " + data.name);
-												window.location.href = "welcome.jsp";
-
-											} else {
-												alert("로그인 실패: " + data.message);
-											}
-										},
-										error: function (err) {
-											console.error("로그인 실패:", err);
-											alert("로그인 중 오류 발생");
-										}
-									});
-								}
-							</script>
 
 
 

@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <% 
-	String alertMsg=(String)request.getAttribute("alertMsg"); 
 	//Member loginMember=(Member)session.getAttribute("Member"); 
 	String kakaoNickName=(String)request.getAttribute("kakaoNickName"); 
 	String kakaoEmail=(String)request.getAttribute("kakaoEmail"); 

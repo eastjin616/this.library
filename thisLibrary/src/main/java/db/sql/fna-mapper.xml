@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+<entry key="selectList">
+	SELECT *
+	FROM FNA
+</entry>
+
+<entry key="updateFna">
+UPDATE  FNA
+    SET ANSWER=?
+    WHERE FNA_NO=?
+</entry>
+
+<entry key="deleteFna">
+UPDATE  FNA
+    SET ANSWER='관리자가 아직 답변을 하지 않았습니다.  시일내에 답변 드리겠습니다. 이용에 불편함을 드려 죄송합니다. '
+    WHERE FNA_NO=?  
+
+</entry>
+
+
+
+</properties>

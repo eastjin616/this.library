@@ -20,11 +20,21 @@ public class Fna {
 		this.date = date;
 		this.status = status;
 	}
+	public Fna(int fna_no, String fna_title, String content, String answer, String date) {
+		super();
+		this.fna_no = fna_no;
+		this.fna_title = fna_title;
+		this.content = content;
+		this.answer = answer;
+		this.date = date;
+	}
+	public Fna(int fna_no, String answer) {
+		super();
+		this.answer = answer;
+		this.fna_no = fna_no;
+		
+	}
 
-	
-	
-	
-	
 	public int getFna_no() {
 		return fna_no;
 	}

@@ -228,9 +228,7 @@ div .write-btn>a {
 					</div>
 					<div id="contentDiv3_2">
 						<p>
-							<a
-								href="<%=contextPath%>/list.sc?cpage=1"
-								style="text-decoration-line: none;"> <b>1:1 문의 내역</b></a>
+							<a href="<%=contextPath%>/list.sc?cpage=1" style="text-decoration-line: none;"><b>1:1 문의 내역</b></a>
 						</p>
 					</div>
 					<div id="contentDiv3_3">사용자가 문의한 글 내역을 확인합니다.</div>

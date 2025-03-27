@@ -131,6 +131,7 @@
           cursor: pointer;
           font-size: 14px;
           border-radius: 5%;
+          margin-bottom: 200px;
         }
 
         #writeAndSubmit>input {
@@ -201,7 +202,6 @@
 
             </div>
             <div class="file-upload-container">
-                            <label for="fileUpload" class="custom-file-label">첨부파일</label>
                             <input type="file" id="fileUpload" class="hidden-file-input" name="upfile">
 </div>
             <div id="writeAndSubmit">

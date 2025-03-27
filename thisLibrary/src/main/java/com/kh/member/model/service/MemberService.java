@@ -111,4 +111,16 @@ public class MemberService {
 		return loginMember;
 	}
 	
+	
+	public Member selectMemberByName(Member loginMember) {
+		Connection conn = getConnection();
+		Member loginUser = new MemberDao().selectMemberByName(conn, loginMember);
+		
+		close(conn);
+		
+		return loginUser;
+		
+		
+		
+	}
 }

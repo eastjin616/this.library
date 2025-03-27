@@ -7,8 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document1</title>
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <link rel="stylesheet"
    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=favorite" />
@@ -237,13 +236,12 @@ hr {
       let apiURL = "https://data4library.kr/api/srchBooks?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67" 
                   + "&keyword=" + encodeURIComponent(keyword) 
                    + "&format=json";
-
+                   
         $.getJSON(apiURL, function (data) {
           console.log("API 응답 데이터:", data);
 
           if (!data || !data.response || !data.response.docs || data.response.docs.length === 0) {
         	  alert( keyword +"라는 도서(작가)는 없습니다!");
-            console.error("❌ API에서 책 데이터가 없습니다!");
             return;
           }
 
@@ -262,6 +260,7 @@ hr {
             let authorFull = doc.authors || "작가 정보 없음";
             let publisher = doc.publisher || "출판사 정보 없음";
             let pubYear = doc.publication_year || "출판일 정보 없음";
+            let isbn = doc.isbn13 || "isbn 정보 없음" ;
 
             // 작가와 번역가 정보 추출
             let author = "작가 정보 없음";
@@ -286,7 +285,7 @@ hr {
                 '<div id="bookcon'+(i + 1)+'" class="bookcon">'+
                   '<div class="spare1"></div>'+
                   '<div class="bookinfo">'+
-                    '<p style="font-size: 20px; cursor: "pointer;" onclick="window.location.href=\'bookDetail.jsp\';"><b>'+title+'</b></p>'+
+                    '<p style="font-size: 20px; cursor: "pointer;" onclick="location.href=\'bookDetail.jsp?isbn='+isbn+'\';"><b>'+title+'</b></p>'+
                     '<hr style="width: 70px; margin-left: 0%;">'+
                     '지은이 : <span style="font-size: 15px;">'+author+'</span> &nbsp;|&nbsp; 옮긴이 : <span style="font-size: 15px;">'+translator+'</span>'+
                     '<br><br>'+

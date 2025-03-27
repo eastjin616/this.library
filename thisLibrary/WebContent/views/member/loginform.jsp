@@ -52,6 +52,7 @@ body * {
 	padding: 20px;
 	display: flex;
 	justify-content: center;
+	
 }
 
 #googleIcon {
@@ -212,32 +213,40 @@ body * {
 				<li><a href="javascript:loginWithKakao()"
 					style="background-color: yellow; color: black"
 					class="fas fa-comment"></i></a></li>
-
-
-
-				<!--  -->
-				<div id="goodgleLoginTag">
-
-					<div id="g_id_onload"
-						data-client_id="92235338763-ljnuftbgbj6nn3ol95bno95j36v9hsci.apps.googleusercontent.com"
-						data-context="signin" data-ux_mode="popup"
-						data-login_uri="http://localhost:8777/this/GoogleLogin"
-						data-itp_support="true"></div>
-
-					<div class="g_id_signin" id="googleIcon" data-type="icon"
-						data-shape="circle" data-theme="outline" data-text="signin_with"
-						data-size="70px"></div>
+					
+					
+					
+					<!-- ✅ jQuery 먼저 추가 (AJAX를 위해 필요) -->
+					<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+					
+					<!-- ✅ Google Identity Services SDK 로드 -->
+					<script src="https://accounts.google.com/gsi/client" async defer></script>
+					
+					<!-- ✅ Google 로그인 버튼 영역 -->
+					<div id="goodgleLoginTag">
+					<!-- ✅ GSI 설정: client_id 정확하게 입력, login_uri 제거 -->
+					  <div id="g_id_onload"
+					       data-client_id="92235338763-ljnuftbgbj6nn3ol95bno95j36v9hsci.apps.googleusercontent.com"
+					       data-context="signin"
+					       data-ux_mode="popup"
+					       data-callback="handleCredentialResponse"
+					       data-itp_support="true">
+					  </div>
+					<div class="g_id_signin" id="googleIcon"
+					       data-type="icon"
+					       data-shape="circle"
+					       data-theme="outline"
+					       data-text="signin_with"
+					       data-size="70px">
+					  </div>
 				</div>
-
-
 
 			</div>
 			<div class="submit">
 				<input type="submit" value="로그인">
 			</div>
-		</div>
-		</form>
-
+		
+</div>
 		<!------------------------------ 카카오 로그인 부분 ------------------------>
 		<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
@@ -293,33 +302,40 @@ body * {
 							</script>
 		<!-------------------------------------- 여기까지가 카카오 로그인--------------------------- -->
 		<!-------------------------------------- 구글 소셜 로그인 스크립트--------------------------- -->
+		
 		<script>
-								function handleCredentialResponse(response) {
-									console.log("JWT ID Token:", response.credential);
+  function handleCredentialResponse(response) {
+    console.log("JWT ID Token:", response.credential);
 
-									// 구글에서 받은 ID 토큰을 서버로 전송
-									$.ajax({
-										url: "GoogleLogin",
-										type: "POST",
-										data: { id_token: response.credential },
-										success: function (data) {
-											console.log(data);
-											console.log("서버 응답:", data);
-											if (data.status === "success") {
-												alert("로그인 성공! " + data.name);
-												window.location.href = "welcome.jsp";
+    // 구글에서 받은 ID 토큰을 서버로 전송
+    $.ajax({
+    	url: "<%= request.getContextPath() %>/googleLogin.me",
+      type: "POST",
+      data: { id_token: response.credential },
+      success: function (data) {
+        console.log("서버 응답:", data);
 
-											} else {
-												alert("로그인 실패: " + data.message);
-											}
-										},
-										error: function (err) {
-											console.error("로그인 실패:", err);
-											alert("로그인 중 오류 발생");
-										}
-									});
-								}
-							</script>
+        if (data.status === "success") {
+          alert("구글 로그인 성공!");
+
+          // ✅ 서버가 응답한 redirect 경로로 이동
+          if (data.redirect) {
+            window.location.href = data.redirect;
+          } else {
+            alert("이동할 페이지 정보가 없습니다.");
+          }
+        } else {
+          alert("로그인 실패: " + data.message);
+        }
+      },
+      error: function (err) {
+        console.error("로그인 실패:", err);
+        alert("로그인 중 오류 발생");
+      }
+    });
+  }
+</script>
+
 
 
 
@@ -342,29 +358,6 @@ body * {
 						
 						
 
-							function handleCredentialResponse(response) {
-								console.log("JWT ID Token:", response.credential);
-
-								// 구글에서 받은 ID 토큰을 서버로 전송
-								$.ajax({
-									url: "GoogleLogin",
-									type: "POST",
-									data: { id_token: response.credential },
-									success: function (data) {
-										console.log("서버 응답:", data);
-										if (data.status === "success") {
-											alert("로그인 성공! " + data.name);
-											window.location.href = "welcome.jsp";
-										} else {
-											alert("로그인 실패: " + data.message);
-										}
-									},
-									error: function (err) {
-										console.error("로그인 실패:", err);
-										alert("로그인 중 오류 발생");
-									}
-								});
-							}
 
 						</script>
 <%@ include file="../common/footerbar.jsp" %>

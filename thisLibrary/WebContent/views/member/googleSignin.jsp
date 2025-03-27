@@ -1,10 +1,7 @@
 <%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<% 
-	String kakaoNickName=(String)request.getAttribute("kakaoNickName"); 
-	String kakaoEmail=(String)request.getAttribute("kakaoEmail"); 
-%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,6 +64,7 @@ body * {
 <!-- ------------------------------------------------------------------ -->
 
 <body>
+
 <%@ include file="../common/menubar.jsp" %>
 	<form id="form" action="<%= contextPath %>/signin.me" method="post"
 		onsubmit="return validatePassword();">
@@ -101,7 +99,7 @@ body * {
 
 				<div class="form-group">
 					<label for="inputName">이름</label> <input type="text"
-						class="form-control" name="name" placeholder="이름을 입력해 주세요"
+						class="form-control" name="name" value="name" placeholder="이름을 입력해 주세요"
 						required>
 				</div>
 
@@ -155,22 +153,25 @@ body * {
 
 				<div class="form-group">
 					<label for="InputEmail">이메일 주소</label> <input type="email"
-						class="form-control" name="email" placeholder="이메일 주소를 입력해주세요">
+						class="form-control" name="email" placeholder="이메일 주소를 입력해주세요" vlaue=email>
 				</div>
+					<input type="hidden" name="key" value=snsKey>
 
 
 
 				<div class="form-group text-center">
 					<button type="submit" id="join-submit"
 						class="btn btn-primary btn-space">
+						</button>
 						회원가입<i class="fa fa-check spaceLeft"></i>
 						<button type="button" class="btn btn-danger"
 							onClick="location.href='<%=contextPath%>/views/common/mainPage.jsp'">
 							취소<i class="fa fa-check spaceLeft"></i>
 						</button>
-	</form>
-	</div>
-	</article>
+						</div>
+						</form>
+						
+			</article>
 	<hr>
 
 	<script>
@@ -325,8 +326,22 @@ function checkNick() {
         });
     }
 }
+
 </script>
 
+<% 
+		String googleName = (String)request.getAttribute("googleName");
+		String googleEmail = (String)request.getAttribute("googleEmail");
+		String googleSnsKey = (String)request.getAttribute("googleSnsKey"); 
+%>
+
+<script>
+  window.onload = function() {
+    document.querySelector("input[name='name']").value = "<%= googleName %>";
+    document.querySelector("input[name='email']").value = "<%= googleEmail %>";
+    document.querySelector("input[name='snsKey']").value = "<%= googleSnsKey %>";
+  };
+</script>
 	<!-- -------------------------------------------------------------------- -->
 
 <%@ include file="../common/footerbar.jsp" %>

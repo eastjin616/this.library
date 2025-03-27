@@ -152,11 +152,10 @@ body * {
 				</div>
 
 				<div class="form-group">
-					<label for="InputEmail">이메일 주소</label> <input type="email"
-						class="form-control" name="email" placeholder="이메일 주소를 입력해주세요" vlaue=email>
+					<label for="InputEmail">이메일 주소</label> 
+						<input type="email" class="form-control" name="email" placeholder="이메일을 입력해주세요" required>
 				</div>
-					<input type="hidden" name="key" value=snsKey>
-
+							<input type="hidden" name="key" value="">
 
 
 				<div class="form-group text-center">
@@ -337,9 +336,9 @@ function checkNick() {
 
 <script>
   window.onload = function() {
-    document.querySelector("input[name='name']").value = "<%= googleName %>";
-    document.querySelector("input[name='email']").value = "<%= googleEmail %>";
-    document.querySelector("input[name='snsKey']").value = "<%= googleSnsKey %>";
+    document.querySelector("input[name='name']").value = "<%= googleName != null ? googleName : "" %>";
+    document.querySelector("input[name='email']").value = "<%= googleEmail != null ? googleEmail : "" %>";
+    document.querySelector("input[name='key']").value = "<%= googleSnsKey != null ? googleSnsKey : "" %>";
   };
 </script>
 	<!-- -------------------------------------------------------------------- -->

@@ -27,7 +27,7 @@ public class GoogleLoginToMainController extends HttpServlet {
         	
         	// 기존 회원 → mainPage.jsp 이동
             request.getRequestDispatcher("views/common/mainPage.jsp").forward(request, response);
-            System.out.println(dbMember);
+            
             
             
         } else {
@@ -37,6 +37,9 @@ public class GoogleLoginToMainController extends HttpServlet {
             request.setAttribute("googleEmail", loginMember.getEmail());
             request.setAttribute("googleSnsKey", loginMember.getSnsKey());
             request.getRequestDispatcher("views/member/googleSignin.jsp").forward(request, response);
+            System.out.println(loginMember.getMemName());
+            System.out.println(loginMember.getEmail());
+            System.out.println(loginMember.getSnsKey());
             
         }
     }

@@ -51,7 +51,7 @@ public class GoogleLoginController extends HttpServlet {
 				String email = payload.getEmail();
 				String name = (String) payload.get("name");
 				String googleUid   = payload.getSubject(); // 유니크 ID
-
+				System.out.println("googleUid : " + googleUid);
 				// ✅ 사용자 정보 세션에 저장
 				Member loginMember = new Member();
 				loginMember.setEmail(email);

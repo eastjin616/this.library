@@ -101,7 +101,7 @@ div {
 	height: 400px;
 }
 
-#authorDetailInfo {
+#libraryDetailInfo {
 	background-color: rgb(235, 235, 235);
 	margin: 2%;
 	border-radius: 2%;
@@ -123,31 +123,24 @@ div {
 	margin-left: 20px;
 }
 
-#authorInfo {
+#libraryInfo {
 	height: auto;
 }
 
 
-#authorName {
+#librarybox {
 	margin-top: 30px;
 	margin-left: 15px;
 }
 
-#authorJob {
-	margin-left: 15px;
-}
 
-#neyong {
-	margin-left: 15px;
-	margin-bottom: 15px;
-}
 
 #authorPhoto {
 	display: flex;
 	margin-left: 45px;
 }
 
-.authorBookImg{
+.authorBookImg1,.authorBookImg2,.authorBookImg3{
 	margin-left: 15px;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -157,7 +150,15 @@ div {
 	align-items: stretch;
 }
 
-.authorBookImg img{
+.authorBookImg1,.authorBookImg2,.authorBookImg3li:hover {
+	color: white;
+	font-weight: bold;
+	transform: scale(1.05);
+	cursor: pointer;
+}
+
+
+.authorBookImg1 img,.authorBookImg2 img,.authorBookImg3 img{
 	width: 200px;
 	height: 250px;
 }
@@ -216,6 +217,8 @@ pre {
 	padding-bottom: 8px;
 	border-bottom: 2px solid #d9a066;
 }
+
+
 
 /* ----------------------- */
 /* ---------------------- */
@@ -470,14 +473,17 @@ pre {
 						<br>
 							<div id="authorPhoto">
 								<br>
-								<div class="authorBookImg">
-									<img src="../../resources/assets/book1.jpg" alt="">
+								<div class="authorBookImg1">
+									<img src="" alt="">
+									<input type="hidden">
 								</div>
-								<div class="authorBookImg">
-									<img src="../../resources/assets/book1.jpg" alt="">
+								<div class="authorBookImg2">
+									<img src="" alt="">
+									<input type="hidden">
 								</div>
-								<div class="authorBookImg">
-									<img src="../../resources/assets/book1.jpg" alt="">
+								<div class="authorBookImg3">
+									<img src="" alt="">
+									<input type="hidden">
 								</div>
 							</div>
 					</div>
@@ -487,19 +493,19 @@ pre {
 				<div id="bookExplan">
 					<div id="authorTitle" style="text-align: left;">
 						<h1>도서 소장 도서관 </h1>
+						<select id="location" onchange="updateLibraryData()">
+							<option value="11">서울</option>
+							<option value="21">부산</option>
+							<option value="22">대구</option>
+							<option value="23">인천</option>
+						</select>
 					</div>
-					<div id="authorInfo">
-						<div id="authorDetailInfo">
-					 <div id="authorName">지은이 :</div>
-								<br>
-					 <div id="translatorName">번역가 :</div>
-								<br>
-							<div>
-							</div>
-								<br>
-							<div>
-							</div>
-								<br>
+
+					<div id="libraryInfo">
+						<div id="libraryDetailInfo">
+					 <div id="librarybox">
+
+					 </div>
 						</div>
 					</div>
 					<!-- ============================================================== -->
@@ -630,7 +636,7 @@ $(document).ready(function () {
         console.error("❌ 책 데이터가 없습니다!");
         return;
       }
-//-------------------------여기서 에러뜸 하 배열 -------------------------
+//---------------------------------------------------------------------
 
 	
 //book: {no: 1, bookname: '체리새우 :황영미 장편소설 ', authors: '지은이: 황영미', publisher: '문학동네', publication_date: '2019', …}
@@ -689,7 +695,7 @@ $(document).ready(function () {
       
       let bookInfotitle = `#booktitle`;
       
-      let bookInfoSelector = `#authorDetailInfo`;
+      let bookInfoSelector = `#libraryDetailInfo`;
       
       let intoBook = `#intoBook`
       
@@ -708,56 +714,165 @@ $(document).ready(function () {
 //================================================================  
 	if($(intoBook).length){
 		$(intoBook).find('p:eq(0)').text(description)
-	}else {
-        console.error(`❌ bookinfo 요소를 찾을 수 없습니다: ${bookInfoSelector}`);
-      }
+	}
+	
     }).fail(function (jqXHR, textStatus, errorThrown) {
       console.error(`❌ API 요청 실패: ${textStatus}, 오류: ${errorThrown}`);
     });
 
+// ===================================함께 대출된 책 img============================================
+	
+    const relatedBooksImgAPI = "http://data4library.kr/api/recommandList?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&isbn13="
+    		+isbn
+    		+ "&format=json";
+    		
+   	console.log(relatedBooksImgAPI);
+	
+	$.getJSON(relatedBooksImgAPI, function (data) {
+        console.log("API 응답 데이터:", data);
+
+        if (!data || !data.response || !data.response.docs || data.response.docs.length === 0) {
+            console.error("❌ API에서 책 데이터가 없습니다!");
+            return;
+        }
+        
+        console.log("되냐고")
+        
+        let books = data.response.docs.slice(0, 3); // 첫 번째부터 세 번째 책까지 가져오기
+
+        books.forEach((doc, index) => {
+            let book = doc.book;
+            let imageURL = book.bookImageURL || "https://via.placeholder.com/150";
+			let isbnrelatedBooks = book.isbn13 || "isbn이 없습니다."
+			console.log(isbnrelatedBooks)
+
+            console.log(`책 ${index + 1} 이미지 URL:`, imageURL);
+
+            let bookImage = `.authorBookImg\${index + 1} img`;  // 클래스명 동적으로 설정
+						let bookInput = `.authorBookImg\${index + 1} input`;
 
 
-		
-		// ===================================함께 대출된 책============================================
-		const relatedBooksAPI = "http://data4library.kr/api/loanItemSrch?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&isbn13=" + isbn + "&format=json";
+            console.log(index);  // 출력해서 실제 CSS 선택자가 맞는지 확인
+						
 
-		console.log(relatedBooksAPI);
+            // bookImage가 제대로 된 이미지 태그를 찾을 수 있는지 확인
+            if ($(bookImage).length) {
+                $(bookImage).attr("src", imageURL);  // 이미지 태그의 src를 업데이트
+								$(bookInput).attr("value", isbnrelatedBooks); 
 
-		$.getJSON(apiURL, function (data) {
-    	console.log("API2응답 데이터:", data);
-
-			if (!data.response || !data.response.detail || data.response.detail.length === 0) {//왜 여기서 에러가 뜨냐고
-        console.error("❌ API2에서 책 데이터가 없습니다!");
-        return;
-      }
-
-      // 책 정보 추출
-      let book = data.response.detail;
-      console.log(book);
-      
-      if (!book) {
-        console.error("❌ 책2 데이터가 없습니다!");
-        return;
-      }
-
-			let detail;
-      
-			if (Array.isArray(book)) {
-					detail = book[0]; // 배열이면 첫 번째 요소 사용
+            } else {
+                console.error(`❌ 이미지 태그를 찾을 수 없습니다: ${bookImage}`);  // 찾을 수 없을 경우 에러
+            }
+            
+        });
+				
+        // ================상세페이지로==================
+        $(".authorBookImg1,.authorBookImg2,.authorBookImg3").click(function () {
+				let isbn = $(this).attr("isbn") || $(this).find("input").val();
+				console.log("시발 : " + $(this))
+	
+			if (isbn && isbn !== "isbn 정보 없음") {
+					location.href = "bookDetail.jsp?isbn=" + isbn;
 			} else {
-					detail = book; // 배열이 아니면 book 자체 사용
+					alert("ISBN 정보가 없습니다.");
 			}
-			
-			if (!detail) {
-					console.error("❌ book.detail이 없습니다. book2 데이터:", book);
-					return;
-			}
-
-		
-      // 책 정보 추출
-      let imageURL = detail.book.bookImageURL || "https://via.placeholder.com/150";
+	
+			console.log("✅ 클릭된 ISBN:", isbn);
+			});
   })
+
+	
 });
+
+// =====================도서 소장 도서관 ===========================
+
+function updateLibraryData() {
+	var selectLocation = document.getElementById("location"); // 요소 가져오기
+	console.log(selectLocation); 
+
+
+    var urlParams = new URLSearchParams(window.location.search);
+    console.log(urlParams);
+    var isbn = urlParams.get("isbn"); 
+    console.log(isbn);
+
+
+    if (!selectLocation) {
+        console.error("❌ selectLocation 요소를 찾을 수 없습니다!");
+        return;
+    }
+
+
+
+    const libraryApi = "http://data4library.kr/api/libSrchByBook?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&isbn="
+        + isbn +
+        "&region="
+        + selectLocation.value + // 이제 selectLocation을 사용할 수 있음
+        "&format=json";
+    
+    console.log("📡 API 호출 URL:", libraryApi);
+
+		$("#librarybox").empty(); // 기존 데이터 제거
+
+    $.getJSON(libraryApi, function (data) {
+        console.log("libAPI 응답 데이터:", data);
+
+        if (!data.response || !data.response.libs || data.response.libs.length === 0) {
+            console.error("❌ API에서 도서관 데이터를 가져올 수 없습니다!");
+            return;
+        }
+
+        const librarys = data.response.libs;
+
+        for (let i = 0; i < 4; i++) {
+            let lib = librarys[i]?.lib; // ?.를 사용해 안전하게 접근
+
+            if (!lib) {
+                console.error(`❌ librarys[${i}].lib가 없습니다. library 데이터:`, librarys[i]);
+                continue;
+            }
+
+            let libName = lib.libName || "해당 도서관 이름 없음";
+            let address = lib.address || "해당 도서관 주소 없음";
+            let tel = lib.tel || "해당 도서관 전화번호 없음";
+            let fax = lib.fax || "해당 도서관 팩스 없음";
+            let homepage = lib.homepage || "해당 홈페이지 없음";
+            let closed = lib.closed || "휴무일 정보 없음";
+            let opentime = lib.opentime || "개장시간 정보 없음";
+
+						const regionEmojis = {
+								"11": "🏙️", // 서울
+								"21": "🌊", // 부산
+								"22": "🔥", // 대구
+								"23": "✈️"  // 인천
+						};
+
+						console.log(regionEmojis);
+
+						
+						let bookHtml = 
+						'<div id="lib'+(i+1)+'">' 
+							+'<div>'+ regionEmojis[selectLocation.value] +'</div> <br>'
+							+'<div id="libraryNames"> <b>도서관 명</b> : '+ libName +'</div> <br>'
+							+'<div> <b>도서관 주소</b> :'+address +'</div> <br>'
+							+'<div> <b>전화번호</b> :'+tel +'</div> <br>'
+							+'<div> <b>팩스번호</b> : '+fax +'</div> <br>'
+							+'<div> <b>홈페이지</b> : <a href="'+homepage +'">'+homepage+'</a></div> <br>'
+							+'<div> <b>마감시간</b> : '+closed +'</div> <br>'
+							+'<div> <b>오픈시간</b> : '+opentime +'</div> <br>'
+							+'<hr >'
+						'</div>'
+
+						console.log("생성된 HTML:", bookHtml);
+
+						$("#librarybox").append(bookHtml);
+
+        }
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        console.error("❌ API 요청 실패:", textStatus, errorThrown);
+    });
+};
+
 
 
 </script>

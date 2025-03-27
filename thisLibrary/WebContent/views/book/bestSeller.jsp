@@ -183,16 +183,14 @@ body * {
    position: relative;
 }
 
-i {
-   margin-top: 5px;
+.heart i {
+    color: gray; /* 기본 회색 */
+    cursor: pointer;
+    transition: color 0.3s;
 }
 
-i:hover {
-   cursor: pointer;
-   background: lightgray;
-   color: red;
-   background-color: transparent;
-   overflow: hidden;
+.heart.active i {
+    color: red; /* 클릭 시 빨간색 */
 }
 
 .pagination {
@@ -369,7 +367,6 @@ hr {
                                '</div>'+
                                '<div class="heart">'+
                                    '<i class="fas fa-heart"></i>'+
-                                   '<i class="fas fa-heart" style="color: #ec1818;"></i>'+
                                '</div>'+
                            '</div>'+
                        '</div>';
@@ -438,6 +435,25 @@ hr {
       $('#checkBox').slideToggle("fast");
     });
   });
+//=====================================================================================
+ 
+  
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOMContentLoaded!");
+    document.querySelectorAll(".heart").forEach(function (heart) {
+        heart.addEventListener("click", function () {
+            let icon = this.querySelector("i");
+            console.log(icon);  // 아이콘 요소가 제대로 선택되는지 확인
+            if (icon.classList.contains("active")) {
+                icon.style.color = "gray";
+                icon.classList.remove("active");
+            } else {
+                icon.style.color = "red";
+                icon.classList.add("active");
+            }
+        });
+    });
+});
 </script>
 
 

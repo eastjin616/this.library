@@ -236,7 +236,7 @@ hr {
       let apiURL = "https://data4library.kr/api/srchBooks?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67" 
                   + "&keyword=" + encodeURIComponent(keyword) 
                    + "&format=json";
-
+                   
         $.getJSON(apiURL, function (data) {
           console.log("API 응답 데이터:", data);
 

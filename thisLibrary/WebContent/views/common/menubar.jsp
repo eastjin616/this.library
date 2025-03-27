@@ -213,7 +213,7 @@
                      <div class="naviDiv">
                         <a href="<%=contextPath%>/list.bo?cpage=1">게시판</a>
                         <div class="submenu">
-                           <a href="<%=contextPath%>/views/vote/voteList.jsp">온라인 투표</a>
+                           <a href="<%=contextPath%>/list.vo?cpage=1">온라인 투표</a>
                            <a href="<%=contextPath%>/list.bo?cpage=1">자유게시판</a>
                         </div>
                      </div>

@@ -1,5 +1,18 @@
+<%@page import="com.kh.common.model.vo.PageInfo"%>
+<%@page import="com.kh.vote.model.vo.Vote"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-  <% %>
+<%
+	//글번호, 닉네임, 제목, 내용, 조회수, 작성일
+ 	ArrayList<Vote> list = (ArrayList<Vote>)request.getAttribute("list");
+ 
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -8,6 +21,9 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Document1</title>
+      <script
+    		src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+			</script>
 
       <style>
         /* 자유게시판 스타일 */
@@ -98,94 +114,58 @@
               </tr>
             </thead>
             <tbody>
-              <tr onclick="window.location.href='<%= contextPath %>/views/vote/voteDetailForm.jsp'">
-                <td>10</td>
-                <td>네이버 지도(v5) 임베드asdasdasdasdasdsadasdasdasdadasd</td>
-                <td>아임웹</td>
-                <td>2019-12-17</td>
-                <td>120</td>
-              </tr>
-              <tr>
-                <td>9</td>
-                <td>제목</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>160</td>
-              </tr>
-              <tr>
-                <td>8</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>77</td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>99</td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>50</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>9015</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>60</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>111560</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>구글 지도 게시물에 임베드 하기</td>
-                <td>아임웹</td>
-                <td>2019-12-16</td>
-                <td>1105</td>
-              </tr>
+              <% if(list == null) { %>
+						<!-- case1. 게시글이 없을 경우 -->
+							<tr>
+								<td colspan="5">조회된 게시글이 없습니다.</td>
+							</tr>
+						<% }else{ %>
+							
+							<!-- case2. 게시글이 있을 경우 -->
+	            <%for(Vote v : list){ %>
+		              <tr>
+		                <td><%=v.getVoteNo() %></td>
+		                <td><%=v.getVoteTitle() %></td>
+		                <td><%=v.getWriter() %></td>
+		                <td><%=v.getVoteStartDate() %></td>
+		                <td><%=v.getCount() %></td>
+		              </tr>
+	              <%} %>
+              <%} %>
             </tbody>
           </table>
+          <script>
+						$(function(){
+							$(".board-container tbody>tr").click(function(){
+								location.href="<%= contextPath %>/detail.vo?vno="+ $(this).children().eq(0).text();
+							})
+						})
+					</script>
 
 
           <div class="pagination">
-            		<span><</span>
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
-                <span>></span>
+	          <!-- 페이징바 -->
+						<% if(currentPage != 1){ %>
+								<span onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage - 1 %>'">&lt;</span>
+						<% } %>
+						<% for(int p=startPage; p<=endPage; p++){ %>					
+								<% if(p == currentPage){ %>
+										<button disabled><%= p %></button>
+								<% }else{ %>
+										<span onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= p %>'"><%= p %></span>
+								<% } %>
+						<% } %>
+						
+						<% if(currentPage != maxPage){ %>
+								<span onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage + 1 %>'">&gt;</span>
+						<% } %>
           </div>
-
+					
+					<%if(loginMember != null){ %>
           <div style="display: flex;">
-            <a href="<%= contextPath %>/views/vote/voteInsertForm.jsp" class="write-btn"
-              style="margin-left: auto;">글쓰기</a>
+            <a href="<%= contextPath %>/views/vote/voteInsertForm.jsp" class="write-btn" style="margin-left: auto;">글쓰기</a>
           </div>
+					<%} %>
 
         </div>
         <!-- 자유게시판 끝 -->

@@ -1,4 +1,4 @@
-package com.kh.board.controller;
+package com.kh.vote.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,18 +10,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.board.model.service.BoardService;
 import com.kh.board.model.vo.Attachment;
 import com.kh.board.model.vo.Board;
+import com.kh.vote.model.service.VoteService;
+import com.kh.vote.model.vo.Vote;
 
 /**
- * Servlet implementation class BoardDetailController
+ * Servlet implementation class VoteDetailController
  */
-@WebServlet("/detail.bo")
-public class BoardDetailController extends HttpServlet {
+@WebServlet("/detail.vo")
+public class VoteDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardDetailController() {
+    public VoteDetailController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,26 +32,23 @@ public class BoardDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int votedNo = Integer.parseInt(request.getParameter("vno"));
 		
-		int boardNo = Integer.parseInt(request.getParameter("bno"));
+		VoteService vService = new VoteService();
 		
-		BoardService bService = new BoardService();
-		
-		int result = bService.increaseCount(boardNo);
+		int result = vService.increaseCount(votedNo);
 		if(result > 0) { // 유효한 게시글 => 게시글, 첨부파일 조회
-			Board b = bService.selectBoard(boardNo);
-			Attachment at = bService.selectAttachment(boardNo);
+			Vote v = vService.selectVote(votedNo);
 			
-			request.setAttribute("b", b);
-			request.setAttribute("at", at);
+			request.setAttribute("v", v);
 			
-			request.getRequestDispatcher("views/board/boardDetail.jsp").forward(request, response);
+			request.getRequestDispatcher("views/vote/voteDetailForm.jsp").forward(request, response);
 		}else {
 			request.setAttribute("errorMsg", "일반게시판 조회 실패");
 			
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
-		
+	
 	}
 
 	/**

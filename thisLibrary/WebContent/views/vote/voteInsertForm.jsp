@@ -9,8 +9,7 @@
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<title>Document1</title>
-			<script
-   	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 			<style>
 				.post-container {
@@ -52,55 +51,6 @@
 					margin-bottom: 20px;
 				}
 
-				.comment-section {
-					border-top: 2px solid #ddd;
-					padding-top: 20px;
-				}
-
-				/* 댓글 개수 스타일 */
-				.comment-count {
-					font-size: 18px;
-					font-weight: bold;
-					margin-bottom: 10px;
-				}
-
-				/* 댓글 입력 영역 */
-				.comment-form {
-					background: #f9f9f9;
-					padding: 15px;
-					border-radius: 8px;
-					border: 1px solid #ddd;
-					display: flex;
-					flex-direction: column;
-					gap: 10px;
-					position: relative;
-				}
-
-
-				/* 댓글 작성하기 제목 + 버튼 */
-				.comment-form-header {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-				}
-
-
-				.comment-form-header h4 {
-					margin: 0;
-					font-size: 16px;
-					font-weight: bold;
-				}
-
-				/* 텍스트 입력 창 */
-				.comment-form textarea {
-					width: 100%;
-					height: 80px;
-					padding: 10px;
-					border: 1px solid #ddd;
-					border-radius: 5px;
-					resize: none;
-					font-size: 14px;
-				}
 
 				/* 글자 수 카운트 (0 / 300 자) */
 				.char-count {
@@ -122,59 +72,6 @@
 
 				.submit-btn:hover {
 					opacity: 0.7;
-				}
-
-				.comment {
-					border-bottom: 1px solid #eee;
-					padding: 10px 0;
-				}
-
-				.comment p {
-					margin: 5px 0;
-				}
-
-				.comment-meta {
-					font-size: 15px;
-					padding-bottom: 5px;
-				}
-
-				.comment-text {
-					line-height: 1.2;
-				}
-
-				.pagination {
-					text-align: center;
-					margin-top: 15px;
-				}
-
-				.pagination span {
-					display: inline-block;
-					padding: 5px 10px;
-					margin: 2px;
-					cursor: pointer;
-					border: 1px solid #ddd;
-					border-radius: 3px;
-				}
-
-				.pagination span:hover {
-					background: #f0f0f0;
-				}
-
-				.set-comment button,
-				.set-header button {
-					border: 0;
-					background-color: transparent;
-
-				}
-
-				.set-comment button:hover,
-				.set-header button:hover {
-					cursor: pointer;
-					opacity: 0.7;
-				}
-
-				.set-comment {
-					padding-left: 770px;
 				}
 
 				.vote {
@@ -333,15 +230,13 @@
 				let book2 = 0;
 			</script>
 				<%@ include file="../common/menubar.jsp" %>
-				<div class="post-container">
+				<form class="post-container" action="<%=contextPath %>/insert.vo">
 					<div class="post-header">
-						<h2>제목<input type="text" style="width: 985px; margin-left: 10px;"></h2>
+						<h2>제목<input type="text" name="title" style="width: 985px; margin-left: 10px;"></h2>
 					</div>
 
 					<div class="post-content">
-						<p>내용
-							<center><textarea style="width: 1040px; height: 400px; resize: none;"></textarea></center>
-							<br>
+						<p>
 
 						<div id="post-content2">
 
@@ -355,16 +250,23 @@
 									<span class="upload-icon">➕</span>
 									<img class="uploaded-image" id="selectBook2">
 								</div>
-							</div>
 
-							<div class="button-group">
-								<button onclick="submitPost()">작성하기</button>
 							</div>
-
-							</p>
+							<input type="hidden" name="imageUrl1" id="imageUrl1">
+							<input type="hidden" name="imageUrl2" id="imageUrl2">
+							<input type="hidden" name="book1" id="book1">
+							<input type="hidden" name="book2" id="book2">
+							<input type="hidden" name="userNo" id="userNo" value="<%=loginMember.getMemNo()%>">
+							<br>
+							투표 종료일 : <input type="date" name="deadline">
 						</div>
+							</p>
 					</div>
-				</div>
+					<div class="button-group">
+						<button onclick="submitPost()">작성하기</button>
+					</div>
+				</form>
+				
 
 				<div class="modalC">
 					<div class="modal_bodyC">
@@ -387,6 +289,15 @@
 
 				<script>
 					
+					// document.getElementsByClassName('post-container').onsubmit = function() {
+					// 		var imgSrc1 = document.getElementById('selectBook1').src;
+					// 		document.getElementById('imageUrl').value = imgSrc1;
+
+					// 		var imgSrc2 = document.getElementById('selectBook2').src;
+					// 		document.getElementById('imageUr2').value = imgSrc2;
+					// };
+
+
 					// modal
 					const modalC = document.querySelector('.modalC');
 					const btnOpenModalC = document.querySelectorAll('.btn-open-modalC');
@@ -471,7 +382,7 @@
             bookHTML = `
 												<hr>
 												<div id="content_2_2_\${i + 1}" class="content_2_2_book">
-													<div id="book\${i + 1}" class="book" onclick="selectBook('\${imageURL}')" style="cursor: pointer;">
+													<div id="book\${i + 1}" class="book" onclick="selectBook('\${imageURL}', '\${title}')" style="cursor: pointer;">
 														<img src="\${imageURL}" alt="\${title}">
 													</div>
 													<div id="bookcon\${i + 1}" class="bookcon">
@@ -502,14 +413,18 @@
           console.log(jqXHR); // 실패한 응답을 추가로 확인
         });
       };
-				function selectBook(image){
+				function selectBook(image, title){
 					modalC.style.display = "none";
 					if(book1 === 1){
 						$(".uploaded-image").eq(0).attr('src', image);
+						$("#imageUrl1").val(image);
+						$("#book1").val(title);
 						$("#search-bar").val("");
 						$("#content_2_2").text("");
 					}else if(book2 === 1){
 						$(".uploaded-image").eq(1).attr('src', image);
+						$("#imageUrl2").val(image);
+						$("#book2").val(title);
 						$("#search-bar").val("");
 						$("#content_2_2").text("");
 					}

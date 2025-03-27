@@ -1,5 +1,8 @@
+<%@page import="com.kh.vote.model.vo.Vote"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
+<%
+	Vote v = (Vote)request.getAttribute("v");
+%>
 		<!DOCTYPE html>
 		<html lang="en">
 
@@ -204,33 +207,37 @@
 				<%@ include file="../common/menubar.jsp" %>
 				<div class="post-container">
 					<div class="post-header">
-						<h2>투표제목앙기모자리하하하한글로하면좀더너비가한글로공백포함46자커지네글자수제한83자<span class="label">팔로우</span></h2>
+						<h2><%=v.getVoteTitle() %><span class="label">팔로우</span></h2>
 						<span class="set-header"><button>수정</button> | <button>삭제</button></span>
 
 						<p class="post-meta">
-							작성자: 작성자2 | 2025.02.18 | 조회수: 50
+							작성자: <%=v.getWriter() %> | <%=v.getVoteStartDate() %> | 조회수 : <%=v.getCount() %>
 						</p>
 					</div>
 
 					<div class="post-content">
 						<p>
-							<center>어떤 살아남기가 더 재밌었나요?</center>
+						
+							<center><h2>투표 종료일</h2></center>
+							<center><h3><%=v.getVoteEndDate() %></h3></center>
 							<br>
 
 						<div class="vote">
 							<div id="book1">
-								<img src="<%= contextPath %>/resources/assets/book3.jpg" width="350" height="500">
+								<img src="<%=v.getBook1Url() %>" width="350" height="500">
 								<center>
-									<div><input type="radio" name="vote" value="1"></div>
+									<div><%=v.getBook1() %></div>
+									<div><%=v.getVoteCount1() %></div>
 								</center>
 							</div>
 
 							<div id="vs"><img src="<%= contextPath %>/resources/assets/vs.png" alt=""></div>
 
 							<div id="book2">
-								<img src="<%= contextPath %>/resources/assets/book5.jpg" width="350" height="500">
+								<img src="<%=v.getBook2Url() %>" width="350" height="500">
 								<center>
-									<div><input type="radio" name="vote" value="2"></div>
+									<div><%=v.getBook2() %></div>
+									<div><%=v.getVoteCount2() %></div>
 								</center>
 							</div>
 

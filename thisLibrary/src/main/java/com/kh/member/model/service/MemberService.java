@@ -106,11 +106,15 @@ public class MemberService {
 	
 	public Member naverSnsKey(String naverKey) {
 		Connection conn = getConnection();
+<<<<<<< HEAD
 		Member naverLoginMember = new MemberDao().naverSnsKey(conn, naverKey);
+=======
+		Member loginMember = new MemberDao().selectSnsKey(conn, naverKey);
+>>>>>>> 2774b9f9b84e4e82305e4aa643c7f04f6102eee6
 		
 		close(conn);
 		
-		return naverLoginMember;
+		return loginMember;
 	}
 	
 //=================================================

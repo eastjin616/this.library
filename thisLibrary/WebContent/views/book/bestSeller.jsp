@@ -335,7 +335,7 @@ hr {
                        '<hr>'+
                        '<div id="content_2_2_'+(i + 1)+'" class="content_2_2_book">'+
                            '<div id="book'+(i + 1)+'" class="book" onclick="location.href=\'bookDetail.jsp?isbn='+isbn+'\';" style="cursor: pointer;">'+
-                               '<img src="'+imageURL+'" alt="'+title+'">'+
+                               '<img src="'+imageURL+'" alt="'+title+'" loading="lazy" >'+
                            '</div>'+
                            '<div id="bookcon'+(i + 1)+'" class="bookcon">'+
                                '<div class="spare1"></div>'+

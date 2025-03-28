@@ -442,7 +442,7 @@ pre {
 				<div id="bookInfo">
 
 					<div id="bookImg">
-						<img src="" alt="" >
+						<img src="" alt="" loading="lazy">
 					</div>
 					<div id="bookIntroduce">
 
@@ -467,15 +467,15 @@ pre {
 							<div id="authorPhoto">
 								<br>
 								<div class="authorBookImg1">
-									<img src="" alt="">
+									<img src="" alt="" loading="lazy">
 									<input type="hidden">
 								</div>
 								<div class="authorBookImg2">
-									<img src="" alt="">
+									<img src="" alt="" loading="lazy">
 									<input type="hidden">
 								</div>
 								<div class="authorBookImg3">
-									<img src="" alt="">
+									<img src="" alt="" loading="lazy">
 									<input type="hidden">
 								</div>
 							</div>

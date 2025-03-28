@@ -361,7 +361,7 @@
 
 	<script>
   function login() {
-	     location.href="<%= contextPath %>/views/member/loginform.jsp";
+	     location.href="<%= contextPath %>/views/member/NaverSignin.jsp";
 	   }
 
   </script>

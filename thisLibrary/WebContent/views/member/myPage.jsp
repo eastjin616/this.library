@@ -587,7 +587,8 @@
 
 
 
-											<button id="mypageBtn" onClick="location.href=`<%=contextPath%>/delete.me?no=34`">탈퇴</button>
+											<button id="mypageBtn" onclick="location.href='<%=contextPath%>/delete.me?no=34'">탈퇴</button>
+											
 										</div>
 									</div>
 									<div id="mypageEmpty"></div>

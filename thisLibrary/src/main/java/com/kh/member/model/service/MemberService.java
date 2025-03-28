@@ -106,7 +106,7 @@ public class MemberService {
 	
 	public Member naverSnsKey(String naverKey) {
 		Connection conn = getConnection();
-		Member naverLoginMember = new MemberDao().selectSnsKey(conn, naverKey);
+		Member naverLoginMember = new MemberDao().naverSnsKey(conn, naverKey);
 		
 		close(conn);
 		

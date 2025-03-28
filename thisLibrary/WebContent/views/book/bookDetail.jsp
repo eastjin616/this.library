@@ -92,7 +92,6 @@ div {
 }
 
 #bookSimple > div{
-	margin-top: 20px;
 	font-size: large;
 }
 

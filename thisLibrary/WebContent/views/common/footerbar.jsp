@@ -106,7 +106,7 @@
 						<a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
 					</div>
 				</div>
-				<div id="footer_2">© 2025 YourCompany. All Rights Reserved.</div>
+				<div id="footer_2">© 2025 This.서고Company. All Rights Reserved.</div>
 			</div>
 		</div>
 	</body>

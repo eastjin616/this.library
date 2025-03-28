@@ -31,10 +31,9 @@ public class GoogleLoginController extends HttpServlet {
 			throws ServletException, IOException {
 
 		String idTokenString = request.getParameter("id_token");
-		JsonObject result = new JsonObject(); // ✅ gson 객체 사용
+		JsonObject result = new JsonObject(); 
 
-		// ✅ 디버깅용 로그 출력
-		System.out.println("[GoogleLogin] 요청 도착: " + idTokenString);
+	
 
 		try {
 			GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(
@@ -51,20 +50,21 @@ public class GoogleLoginController extends HttpServlet {
 				String email = payload.getEmail();
 				String name = (String) payload.get("name");
 				String googleUid   = payload.getSubject(); // 유니크 ID
-				System.out.println("googleUid : " + googleUid);
+				
+				
+				
 				// ✅ 사용자 정보 세션에 저장
-				Member loginMember = new Member();
-				loginMember.setEmail(email);
-				loginMember.setMemName(name); // 필요시 Member 클래스 확인
-				loginMember.setSnsKey(googleUid);
+//				Member loginMember = new Member();
+//				loginMember.setEmail(email);
+//				loginMember.setMemName(name); // 필요시 Member 클래스 확인
+//				loginMember.setSnsKey(googleUid);
 
-				HttpSession session = request.getSession();
-				session.setAttribute("loginMember", loginMember);
+				
+//				request.setAttribute("loginMember", loginMember);
 
-				// ✅ 응답 JSON 구성
+				
 				result.addProperty("status", "success");
-				System.out.println("[GoogleLogin] 로그인 성공: " + name + ", " + email + ", " + googleUid);
-				result.addProperty("redirect", request.getContextPath() + "/main.me");
+				result.addProperty("redirect", request.getContextPath() + "/main.me?email="+email+"&name="+name+"&snskey="+googleUid);
 
 
 			} else {

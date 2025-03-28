@@ -1,8 +1,7 @@
 <%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<% 
-%>
+
 
 
 
@@ -678,6 +677,10 @@ html {
       </div>
    </div>
    <div id="spaceContent"></div>
+   <%
+   System.out.println("현재 세션 loginMember: 메인페이지" + session.getAttribute("loginMember"));
+%>
+   
    <!-- -------------------------------------------------------------------- -->
    <%@ include file="footerbar.jsp"%>
    <!-- -------------------------------------------------------------------- -->

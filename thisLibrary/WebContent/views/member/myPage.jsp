@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<% %>
-
+	<%@ page import="com.kh.member.model.vo.Member" %>
+	
+	
+	
 		<!DOCTYPE html>
 		<html lang="en">
 
@@ -8,13 +10,7 @@
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<title>Document1</title>
-			<!-- <link rel="stylesheet" href="header.css">
-  <link rel="stylesheet" href="content.css">
-  <link rel="stylesheet" href="footer.css"> -->
-
 			<style>
-				
-
 				/*-------------------------------------------------------------  */
 				.wrap2 {
 					width: 1000px;
@@ -182,6 +178,10 @@
 					margin-bottom: auto;
 					box-sizing: border-box;
 					height: 100%;
+					padding: 3%;
+				}
+				#commantaryContentTitle2:focus{
+					outline: none;
 				}
 
 				#commantaryContentTitle2>textarea {
@@ -191,7 +191,6 @@
 					box-sizing: border-box;
 					border: none;
 					resize: none;
-
 				}
 
 				#commantaryContentTitle1>input {
@@ -324,6 +323,7 @@
 					padding-left: 20px;
 					box-sizing: border-box;
 				}
+
 				/* ================================================마이페이지 개인정보 수정 버튼 모달 css */
 				.modal {
 					position: absolute;
@@ -342,7 +342,6 @@
 					position: fixed;
 					top: 50%;
 					width: 400px;
-					height: 600px;
 					padding: 40px;
 					text-align: center;
 					background-color: rgb(255, 255, 255);
@@ -474,7 +473,7 @@
 
 				}
 
-	
+
 
 				div>input {
 					box-sizing: border-box;
@@ -520,7 +519,6 @@
 				div>button {
 					cursor: pointer;
 				}
-			
 			</style>
 		</head>
 		<meta charset="UTF-8">
@@ -529,15 +527,13 @@
 		<body>
 			<%@ include file="../common/menubar.jsp" %>
 				<!-- -------------------------------------------------------------------- -->
-
 				<div class="wrap2">
 					<div class="container">
 						<div class="container1">
 
-
 						</div>
 						<div class="container2">
-							<!-- --------------------------------mtpage -->
+							<!-- --------------------------------mypage -->
 							<div id="mypageMainContent1">
 								<span>My Page</span>
 							</div>
@@ -552,48 +548,46 @@
 											<div id="saveBtn">
 												<button class="btn-open-modal">수정하기</button>
 												<div class="modal">
-													<div class="modal_body">
-														<span class="close-btn">&times;</span> <!-- 'X' 버튼 -->
-														<h2>사용자 정보 변경</h2>
 
-														<!-- 프로필 사진 -->
-														<div class="user-info">
-															<img src="https://via.placeholder.com/200" alt="프로필 사진" class="profile-img">
-															<button class="btn">변경하기</button>
+
+													<form action="<%=request.getContextPath()%>/update.me" method="post">
+														<div class="modal_body">
+															<span class="close-btn">&times;</span>
+															<h2>사용자 정보 변경</h2>
+
+															<!-- 프로필 사진 등 생략 가능 -->
+
+															<div class="user-info">
+																<div>비밀번호</div>
+																<input type="password" name="userPwd" placeholder="새 비밀번호 입력" required>
+															</div>
+
+															<div class="user-info">
+																<div>닉네임</div>
+																<input type="text" name="userNick" placeholder="새 닉네임 입력" required>
+															</div>
+
+															<div class="user-info">
+																<div>이메일</div>
+																<input type="email" name="userEmail" placeholder="새 이메일 입력" required>
+															</div>
+
+															<div class="user-info">
+																<div>전화번호</div>
+																<input type="text" name="userPhone" placeholder="새 전화번호 입력" required>
+															</div>
+
+															<input type="hidden" name="memNo" value="<%= loginMember.getMemNo() %>">
+
+															<button type="submit" class="btn">저장하기</button>
 														</div>
-
-														<!-- 비밀번호 변경 -->
-														<div class="user-info">
-															<div>비밀번호</div>
-															<input type="password" placeholder="새 비밀번호 입력">
-														</div>
-
-														<!-- 닉네임 변경 -->
-														<div class="user-info">
-															<div>닉네임</div>
-															<input type="text" placeholder="새 닉네임 입력">
-														</div>
-
-														<!-- 이메일 변경 -->
-														<div class="user-info">
-															<div>이메일</div>
-															<input type="email" placeholder="새 이메일 입력">
-														</div>
-
-														<!-- 전화번호 변경 -->
-														<div class="user-info">
-															<div>전화번호</div>
-															<input type="text" placeholder="새 전화번호 입력">
-														</div>
-
-														<button class="btn">저장하기</button>
-													</div>
+													</form>
 												</div>
 											</div>
 
 
 
-											<button id="mypageBtn">탈퇴</button>
+											<button id="mypageBtn" onClick="location.href=`<%=contextPath%>/delete.me?no=34`">탈퇴</button>
 										</div>
 									</div>
 									<div id="mypageEmpty"></div>
@@ -620,9 +614,10 @@
 										<span>- 제목 : </span> <input type="text" placeholder="제목을 입력해주세요.  ">
 									</div>
 
+
 									<div id="saveBtn">
 										<button class="btn-open-modalC">목록보기</button>
-										<button>저장하기</button>
+										<button  onClick="onSave()">저장하기</button>
 										<div class="modalC">
 											<div class="modal_bodyC">
 												<span class="close-btnC">&times;</span> <!-- 'X' 버튼 -->
@@ -667,76 +662,13 @@
 								<div id="boardarea">
 									<div id="mypageMainContent3">
 										<div id="commantaryContentTitle2">
-											<textarea name="commantary" id=""></textarea>
+											<textarea name="commantary" id="texta"></textarea>
 										</div>
 									</div>
 								</div>
 							</div>
 
 
-							<!-- ---------------------------읽기목표 설정하기 -->
-							<div id="readGaol">
-								<div id="divWrap">
-									<div><span id="readGoalTitle">읽기목표 설정하기</span></div>
-
-
-									<div id="saveBtn">
-										<button class="btn-open-modalR">목록보기</button>
-										<button>저장하기</button>
-										<div class="modalR">
-											<div class="modal_bodyR">
-												<span class="close-btnR">&times;</span> <!-- 'X' 버튼 -->
-												<h2>게시판 리스트</h2>
-												<table>
-													<thead>
-														<tr>
-															<th>글 번호</th>
-															<th>제목</th>
-															<th>저자</th>
-															<th>작성 날짜</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td>1</td>
-															<td>첫 번째 글</td>
-															<td>홍길동</td>
-															<td>2025-03-18</td>
-														</tr>
-														<tr>
-															<td>2</td>
-															<td>두 번째 글</td>
-															<td>김철수</td>
-															<td>2025-03-17</td>
-														</tr>
-														<tr>
-															<td>3</td>
-															<td>세 번째 글</td>
-															<td>이영희</td>
-															<td>2025-03-16</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										</div>
-									</div>
-
-								</div>
-								<div id="mypageMainContent4">
-									<div id="readGoal1">
-										<div id="redGaol1_1">목표 책 권수 : </div>
-										<div id="redGaol1_2">목표 시작일 : </div>
-										<div id="redGaol1_3">목표 종료일 : </div>
-
-									</div>
-									<div id="readGoal2">
-										<div id="redGaol2_1">2 </div>
-										<div id="redGaol2_2">2 </div>
-										<div id="redGaol2_3">2 </div>
-									</div>
-								</div>
-
-							</div>
 
 							<!-- ----------------------------찜목록 -->
 							<div>
@@ -753,73 +685,101 @@
 						</div>
 					</div>
 				</div>
-			</div>
+				</div>
 
-			<script>
-				function book1() {
-					location.href = "<%= contextPath %>/views/member/loginform.jsp";
-				}
-			</script>
+				<script>
+					function book1() {
+						location.href = "<%= contextPath %>/views/member/loginform.jsp";
+					}
+				</script>
 
-			<script>
-				// ============================================== 마이페이지 유저정보 '수정하기'버튼 모달 스크립트
-				const modal = document.querySelector('.modal');
-				const btnOpenModal = document.querySelector('.btn-open-modal');
-				const btnCloseModal = document.querySelector('.close-btn');
+				<script>
+					// ============================================== 유저 탈퇴 기능 함수(유효성 검사 추가됨 ㅎㅎㅎㅎ)
+					function onDelete() {
+						if (confirm("정말 탈퇴하시겠습니까?")) {
+							const memNo = "<%= session.getAttribute("loginMember") != null ? ((Member)session.getAttribute("loginMember")).getMemNo() : 0 %>";
+							
+							location.href = "<%=contextPath%>/;
+						}
 
-				btnOpenModal.addEventListener("click", () => {
-					modal.style.display = "flex";
-				});
+					}
 
-				btnCloseModal.addEventListener("click", () => {
-					modal.style.display = "none";
-				});
+					// ============================================== 
+						
+							function onSave(){
+								if(confirm("저장 하시겠습니까?")) {
+									const memNo = "<%= session.getAttribute("loginMember") != null ? ((Member)session.getAttribute("loginMember")).getMemNo() : 0 %>";
+										if(memNo === 0){
+											alert("로그인 정보가 유효하지않습니다.");
+											return;
+										}
+										location.href = "<%= request.getContextPath()%>/save.me?no="+memNo;								
+								}
+					}
+						
+						
 
-				modal.addEventListener("click", (event) => {
-					if (event.target === modal) {
+				
+
+					// ============================================== 마이페이지 유저정보 '수정하기'버튼 모달 스크립트
+					const modal = document.querySelector('.modal');
+					const btnOpenModal = document.querySelector('.btn-open-modal');
+					const btnCloseModal = document.querySelector('.close-btn');
+
+					btnOpenModal.addEventListener("click", () => {
+						modal.style.display = "flex";
+					});
+
+					btnCloseModal.addEventListener("click", () => {
 						modal.style.display = "none";
-					}
-				});
-				// ============================================== 마이페이지 유저정보 '수정하기'버튼 모달 스크립트
-				const modalC = document.querySelector('.modalC');
-				const btnOpenModalC = document.querySelector('.btn-open-modalC');
-				const btnCloseModalC = document.querySelector('.close-btnC');
+					});
 
-				btnOpenModalC.addEventListener("click", () => {
-					modalC.style.display = "flex";
-				});
+					modal.addEventListener("click", (event) => {
+						if (event.target === modal) {
+							modal.style.display = "none";
+						}
+					});
+					// ============================================== 마이페이지 유저정보 '수정하기'버튼 모달 스크립트
+					const modalC = document.querySelector('.modalC');
+					const btnOpenModalC = document.querySelector('.btn-open-modalC');
+					const btnCloseModalC = document.querySelector('.close-btnC');
 
-				btnCloseModalC.addEventListener("click", () => {
-					modalC.style.display = "none";
-				});
+					btnOpenModalC.addEventListener("click", () => {
+						modalC.style.display = "flex";
+					});
 
-				modalC.addEventListener("click", (event) => {
-					if (event.target === modalC) {
+					btnCloseModalC.addEventListener("click", () => {
 						modalC.style.display = "none";
-					}
-				});
+					});
+
+					modalC.addEventListener("click", (event) => {
+						if (event.target === modalC) {
+							modalC.style.display = "none";
+						}
+					});
 
 
-				// ============================================== 마이페이지 유저정보 '수정하기'버튼 모달 스크립트
-				const modalR = document.querySelector('.modalR');
-				const btnOpenModalR = document.querySelector('.btn-open-modalR');
-				const btnCloseModalR = document.querySelector('.close-btnR');
+					// ============================================== 마이페이지 유저정보 '수정하기'버튼 모달 스크립트
+					const modalR = document.querySelector('.modalR');
+					const btnOpenModalR = document.querySelector('.btn-open-modalR');
+					const btnCloseModalR = document.querySelector('.close-btnR');
 
-				btnOpenModalR.addEventListener("click", () => {
-					modalR.style.display = "flex";
-				});
+					btnOpenModalR.addEventListener("click", () => {
+						modalR.style.display = "flex";
+					});
 
-				btnCloseModalR.addEventListener("click", () => {
-					modalR.style.display = "none";
-				});
-
-				modalR.addEventListener("click", (event) => {
-					if (event.target === modalR) {
+					btnCloseModalR.addEventListener("click", () => {
 						modalR.style.display = "none";
-					}
-				});
-			</script>
+					});
 
-		<%@ include file="../common/footerbar.jsp"%>
+					modalR.addEventListener("click", (event) => {
+						if (event.target === modalR) {
+							modalR.style.display = "none";
+						}
+					});
+				</script>
+
+				<%@ include file="../common/footerbar.jsp" %>
 		</body>
+
 		</html>

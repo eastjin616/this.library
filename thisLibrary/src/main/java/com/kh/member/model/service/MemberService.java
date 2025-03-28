@@ -119,8 +119,53 @@ public class MemberService {
 		close(conn);
 		
 		return loginUser;
-		
-		
-		
 	}
+	
+	public int deleteMember(int memNo) {
+		Connection conn = getConnection();
+		int result = new MemberDao().deleteMember(conn, memNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+	
+	
+	public int updateUserInfo(Member byeMember) {
+		Connection conn = getConnection();
+		int result = new MemberDao().updateUserInfo(conn, byeMember);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

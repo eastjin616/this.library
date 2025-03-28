@@ -46,6 +46,17 @@ public class Member {
 		this.snsKey = snsKey;
 	}
 
+	
+	
+	public Member(int memNo, String memPwd, String nickname, String email, String phone) {
+		super();
+		this.memNo = memNo;
+		this.memPwd = memPwd;
+		this.nickname = nickname;
+		this.email = email;
+		this.phone = phone;
+	}
+
 	public int getMemNo() {
 		return memNo;
 	}

@@ -306,11 +306,6 @@ public class MemberDao {
 						rset.getString("status"),
 						rset.getString("sns_key"));
 			}
-			
-			System.out.println(1);
-
-			
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -320,5 +315,49 @@ public class MemberDao {
 		
 		return loginMember;
 	}
+	
+	public int deleteMember(Connection conn , int memNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+
+		String sql = prop.getProperty("deleteMember");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
+	public int updateUserInfo(Connection conn , Member byeMember) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+
+		String sql = prop.getProperty("updateUserInfo");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, byeMember.getMemPwd());
+			pstmt.setString(2, byeMember.getNickname());
+			pstmt.setString(3, byeMember.getEmail());
+			pstmt.setString(4, byeMember.getPhone());
+			pstmt.setInt(5, byeMember.getMemNo());
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 
 }

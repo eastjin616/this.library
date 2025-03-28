@@ -1,7 +1,9 @@
 <%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%
+	Member m = (Member)request.getAttribute("m");
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -328,17 +330,11 @@ function checkNick() {
 
 </script>
 
-<% 
-		String googleName = (String)request.getAttribute("googleName");
-		String googleEmail = (String)request.getAttribute("googleEmail");
-		String googleSnsKey = (String)request.getAttribute("googleSnsKey"); 
-%>
-
 <script>
   window.onload = function() {
-    document.querySelector("input[name='name']").value = "<%= googleName != null ? googleName : "" %>";
-    document.querySelector("input[name='email']").value = "<%= googleEmail != null ? googleEmail : "" %>";
-    document.querySelector("input[name='key']").value = "<%= googleSnsKey != null ? googleSnsKey : "" %>";
+    document.querySelector("input[name='name']").value = "<%= m.getMemName() != null ? m.getMemName() : "" %>";
+    document.querySelector("input[name='email']").value = "<%= m.getEmail() != null ? m.getEmail() : "" %>";
+    document.querySelector("input[name='key']").value = "<%= m.getSnsKey() != null ? m.getSnsKey() : "" %>";
   };
 </script>
 	<!-- -------------------------------------------------------------------- -->

@@ -111,4 +111,22 @@
 		  FROM MEMBER
 			WHERE SNS_KEY = ?
 	</entry>
+	
+	
+	<entry key="deleteMember">
+		UPDATE MEMBER
+			SET STATUS = 'N'
+			WHERE MEM_NO = ?
+	</entry>
+	
+	
+		
+	<entry key="updateUserInfo">
+				UPDATE MEMBER
+			SET MEM_PWD = ?
+			, NICKNAME = ?
+      ,  EMAIL = ?
+      ,  PHONE = ?
+			WHERE MEM_NO = ?
+	</entry>
 </properties>

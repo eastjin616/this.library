@@ -257,6 +257,9 @@
                         <button class="btn" id="login"><a href="<%= contextPath %>/logout.me">로그아웃</a></button>
                      </div>
                   <%} %>
+<%
+   System.out.println("현재 세션 loginMember: " + session.getAttribute("loginMember"));
+%>
 
                   <div id="header_mypage_btn" style="height: 100%; width: 7%;">
                      

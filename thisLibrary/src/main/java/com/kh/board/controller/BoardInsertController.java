@@ -131,7 +131,7 @@ request.setCharacterEncoding("UTF-8"); // POST 방식일때는 인코딩 해줘�
 			// 5. 응답뷰 지정
 			// 성공 => /jsp/list.bo?cpage=1 url 재요청 => 목록페이지 
 			if(result > 0) {
-				request.getSession().setAttribute("alertMsg", "일반게시판 등록 성공!");
+				request.getSession().setAttribute("alertMsg", "게시글 등록 성공!");
 				response.sendRedirect(request.getContextPath()+ "/list.bo?cpage=1");
 			}else {
 				// 실패 => 첨부파일 있었다면 업로드된 파일 찾아서 삭제시킨 후 => 에러페이지

@@ -37,16 +37,15 @@ public class NaverSignInController extends HttpServlet {
 		request.setAttribute("naverEmail", naverEmail);
 		request.setAttribute("naverKey",naverKey);
 		
-		Member naverLoginMember = new MemberService().naverSnsKey(naverKey);
+		Member loginMember = new MemberService().naverSnsKey(naverKey);
 		
-		if(naverLoginMember == null) { // 카카오 로그인으로 회원가입 해본적 없는 사람 => 회원가입 폼으로 이동
+		if(loginMember == null) { // 카카오 로그인으로 회원가입 해본적 없는 사람 => 회원가입 폼으로 이동
 			request.getRequestDispatcher("views/member/naverSignin.jsp").forward(request, response);
 		}else {  // 카카오 로그인으로 한번이라도 회원가입 해본적 있는 사람 => 로그인 성공
-			request.getSession().setAttribute("loginMember", naverLoginMember);
+			request.getSession().setAttribute("loginMember", loginMember);
 			response.sendRedirect(request.getContextPath());
 		}
 		
-	}
 	}
 
 	/**

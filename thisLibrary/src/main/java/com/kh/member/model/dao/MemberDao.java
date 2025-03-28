@@ -255,7 +255,7 @@ public class MemberDao {
 //==================================================================
 	
 	public Member naverSnsKey (Connection conn, String naverKey) {
-		Member naverLoginMember = null;
+		Member loginMember = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("naverSnsKey");
@@ -267,7 +267,7 @@ public class MemberDao {
 		rset = pstmt.executeQuery();
 		
 		if (rset.next()) {
-			naverLoginMember = new Member(rset.getInt("mem_no"), rset.getString("mem_name"), rset.getString("mem_id"),
+			loginMember = new Member(rset.getInt("mem_no"), rset.getString("mem_name"), rset.getString("mem_id"),
 					rset.getString("mem_pwd"), rset.getString("nickname"), rset.getString("address"),
 					rset.getString("email"), rset.getString("profile"), rset.getString("phone"),
 					rset.getString("status"), rset.getString("sns_key"));
@@ -279,7 +279,7 @@ public class MemberDao {
 		close(pstmt);
 	}
 	
-	return naverLoginMember;
+	return loginMember;
 }
 	
 //==================================================================	

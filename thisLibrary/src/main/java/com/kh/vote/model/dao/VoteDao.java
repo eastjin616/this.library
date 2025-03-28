@@ -186,5 +186,26 @@ public class VoteDao {
 		
 		return result;
 	}
+
+	public int vote(Connection conn, int vNo, int bNum) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		if(bNum == 1) {
+			sql = prop.getProperty("vote1");		
+		}else {
+			sql = prop.getProperty("vote2");		
+		}
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, vNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}close(pstmt);
+		
+		return result;
+	}
 		
 }

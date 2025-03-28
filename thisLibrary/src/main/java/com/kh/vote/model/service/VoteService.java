@@ -71,4 +71,14 @@ public class VoteService {
 		return result;
 	}
 
+	public int vote(int vNo, int bNum) {
+		Connection conn = getConnection();
+
+		int result = new VoteDao().vote(conn, vNo, bNum);
+		
+		close(conn);
+		
+		return result;
+	}
+
 }

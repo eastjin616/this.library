@@ -86,4 +86,16 @@
 	  JOIN MEMBER USING(MEM_NO)
 	 WHERE VOTE_NO = ?
   </entry>
+  
+  <entry key="vote1">
+  UPDATE VOTE
+	   SET VOTE_COUNT1 = VOTE_COUNT1 + 1
+	 WHERE VOTE_NO = ?
+  </entry>
+  
+    <entry key="vote2">
+  UPDATE VOTE
+	   SET VOTE_COUNT2 = VOTE_COUNT2 + 1
+	 WHERE VOTE_NO = ?
+  </entry>
 </properties>

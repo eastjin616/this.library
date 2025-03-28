@@ -10,7 +10,8 @@
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<title>Document1</title>
-
+						<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 			<style>
 				.post-container {
@@ -223,30 +224,79 @@
 							<br>
 
 						<div class="vote">
-							<div id="book1">
-								<img src="<%=v.getBook1Url() %>" width="350" height="500">
+							<div id="book1" onclick="voteSelect(1)">
+								<img id="selectBook1" src="<%=v.getBook1Url() %>" width="350" height="500">
 								<center>
 									<div><%=v.getBook1() %></div>
-									<div><%=v.getVoteCount1() %></div>
+									<div>현재 투표수 : <%=v.getVoteCount1() %></div>
 								</center>
 							</div>
 
 							<div id="vs"><img src="<%= contextPath %>/resources/assets/vs.png" alt=""></div>
 
-							<div id="book2">
-								<img src="<%=v.getBook2Url() %>" width="350" height="500">
+							<div id="book2" onclick="voteSelect(2)">
+								<img id="selectBook2" src="<%=v.getBook2Url() %>" width="350" height="500">
 								<center>
 									<div><%=v.getBook2() %></div>
-									<div><%=v.getVoteCount2() %></div>
+									<div>현재 투표수 : <%=v.getVoteCount2() %></div>
 								</center>
 							</div>
 
 						</div>
 
-						<button class="submit-btn" style="margin-left: 47%;">투표하기</button>
+						<button class="submit-btn" style="margin-left: 47%;" onclick="vote()">투표하기</button>
 
 						</p>
 					</div>
+
+					<script>
+					let bookNum = 0;
+					let selectBook1 = 0;
+					let selectBook2 = 0;
+					function voteSelect(bNum){
+						bookNum = bNum;
+						if(bNum == 1){
+								$("#selectBook2").css({
+									  "border": "0px",
+								});
+							$("#selectBook1").css({
+								  "border": "3px solid red",
+								  "border-radius": "5px" // 추가적으로 테두리 둥글게 설정
+							});
+						}else{
+								$("#selectBook1").css({
+									  "border": "0px",
+								});
+							$("#selectBook2").css({
+								  "border": "3px solid red",
+								  "border-radius": "5px" // 추가적으로 테두리 둥글게 설정
+							});
+						}
+					}
+
+					function vote(){
+						location.href="<%=contextPath%>/vote.vo?vNo=<%=v.getVoteNo()%>&bNum="+bookNum;
+					}
+						<!-- 
+						if(bookNum > 0){
+							$.ajax({
+								url : "<%=contextPath%>/vote.vo",
+								type : GET,
+								data : {
+									vNo : <%=v.getVoteNo()%>,
+									bNum : bookNum,
+								},
+								success:function(result){
+									console.log(result);
+								},error:function(){
+									console.log("실시간 투표수 조회용 ajax 통신 실패");
+								}
+							})
+							
+						}
+						 -->
+						
+					</script>
 
 					<div class="comment-section">
 						<h3 class="comment-count">댓글 5</h3>

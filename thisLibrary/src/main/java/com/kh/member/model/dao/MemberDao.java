@@ -252,7 +252,37 @@ public class MemberDao {
 		}
 		return count;
 	}
+//==================================================================
+	
+	public Member naverSnsKey (Connection conn, String naverKey) {
+		Member naverLoginMember = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("naverSnsKey");
 
+	try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, naverKey);
+		
+		rset = pstmt.executeQuery();
+		
+		if (rset.next()) {
+			naverLoginMember = new Member(rset.getInt("mem_no"), rset.getString("mem_name"), rset.getString("mem_id"),
+					rset.getString("mem_pwd"), rset.getString("nickname"), rset.getString("address"),
+					rset.getString("email"), rset.getString("profile"), rset.getString("phone"),
+					rset.getString("status"), rset.getString("sns_key"));
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}finally {
+		close(rset);
+		close(pstmt);
+	}
+	
+	return naverLoginMember;
+}
+	
+//==================================================================	
 	public Member selectSnsKey(Connection conn, String kakaoKey) {
 		Member loginMember = null;
 		PreparedStatement pstmt = null;

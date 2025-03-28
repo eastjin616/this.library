@@ -87,10 +87,10 @@
                 String mobile = (String) response1.get("mobile");
 
                 // 서블릿으로 사용자 정보 전달
-                request.setAttribute("id", id);
                 request.setAttribute("nickname", nickname);
                 request.setAttribute("email", email);
                 request.setAttribute("mobile", mobile);
+                request.setAttribute("NaverKey", id);
                 
 
                 // 서블릿으로 포워딩

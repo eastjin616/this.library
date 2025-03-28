@@ -258,6 +258,7 @@ a {
    width: 100%;
    height: 20%;
    position: relative;
+   margin-top: 15px;
 }
 
 #content_1_3_2 {
@@ -305,6 +306,7 @@ a {
    width: 100%;
    height: 80%;
    position: relative;
+   margin-top: 15px;
 }
 
 /* -------------------------------------------------------- */
@@ -342,6 +344,7 @@ a {
    width: 100%;
    height: 20%;
    position: relative;
+   margin-top: 15px;
 }
 
 #content_3_3_2 {
@@ -619,18 +622,22 @@ html {
                id="silver">
          </div>
          <div id="content_1_2">
+         
             <div id="content_1_2_1" style="cursor: pointer;">
-               <img src="" alt=""
-                  id="book1">
+               <img src="" alt=""id="book1">
             </div>
-            <div id="content_1_2_2"></div>
+            
+            <br>
+            <div id="content_1_2_2" style="text-align: center; margin-left: 60px;"><p></p></div>
          </div>
          <div id="content_1_3">
             <div id="content_1_3_1"></div>
-            <div id="content_1_3_2">
-               <img src="<%= contextPath %>/resources/assets/book2.jpg" alt=""
-                  id="book2">
+            
+            <div id="content_1_3_2" style="cursor: pointer;">
+               <img src="" alt=""id="book2">
             </div>
+            <br><br><br>
+            <div id="content_1_3_3" style="text-align: center; margin-left: 120px;"><p></p></div>
          </div>
       </div>
 
@@ -643,16 +650,21 @@ html {
                id="gold">
          </div>
          <div id="content_2_3" style="cursor: pointer;">
-            <img src="" alt=""
-               id="book3">
+            <img src="" alt=""id="book3">
          </div>
-         <div id="content_2_4"></div>
+
+
+         <div id="content_2_4" style="text-align: center;"><p></p></div>
          <div id="content_2_5">
-            <button id="adminPickButton" class="pick-button">관리자의 Pick</button>
-            <div id="content_2_5_2">
-               <img src="<%= contextPath %>/resources/assets/book4.jpg" alt=""
-                  id="book4">
+            <button id="adminPickButton" class="pick-button">마니아의 Pick</button>
+            
+            <div id="content_2_5_2" style="cursor: pointer;">
+               <img src="" alt="" id="book4">
             </div>
+
+            <br><br><br>
+
+            <div id="content_2_6" style="text-align: center;"><p></p></div>
          </div>
       </div>
 
@@ -663,17 +675,18 @@ html {
          </div>
          <div id="content_3_2">
             <div id="content_3_2_1" style="cursor: pointer;">
-               <img src="" alt=""
-                  id="book5" >
+               <img src="" alt="" id="book5" >
             </div>
-            <div id="content_3_2_2"></div>
+            <br>
+            <div id="content_3_2_2" style="text-align: left; margin-left: 170px;"><p></p></div>
          </div>
          <div id="content_3_3">
             <div id="content_3_3_1"></div>
-            <div id="content_3_3_2">
-               <img src="<%= contextPath %>/resources/assets/book6.jpg" alt=""
-                  id="book6">
+            <div id="content_3_3_2" style="cursor: pointer;">
+               <img src="" alt="" id="book6">
             </div>
+            <br><br><br>
+            <div id="content_3_2_3" style="text-align: left; margin-left: 150px;"><p></p></div>
          </div>
       </div>
    </div>
@@ -781,8 +794,9 @@ html {
             return;
         }
 
-        const bookSelectors = ["#book1", "#book3", "#book5"]; // 각 책의 ID 리스트
-        const contentSelectors = ["#content_1_2_1", "#content_2_3", "#content_3_2_1"]; // 클릭 영역
+        const bookSelectors = ["#book1", "#book3", "#book5", "#book2","#book4","#book6" ]; // 각 책의 ID 리스트
+        const contentSelectors = ["#content_1_2_1","#content_2_3","#content_3_2_1","#content_1_3_2","#content_2_5_2","#content_3_3_2",]; // 클릭 영역
+        const booktitle = ["#content_1_2_2","#content_1_3_3","#content_2_4","#content_2_6","#content_3_2_2","#content_3_2_3"]
 
         books.slice(0, bookSelectors.length).forEach((book, index) => {
             let doc = book.doc;
@@ -792,7 +806,10 @@ html {
             }
 
             let imageURL = doc.bookImageURL || "https://via.placeholder.com/150";
+            let title = doc.bookname || "title 정보 없음";
             let isbn = doc.isbn13 || "isbn 정보 없음";
+            
+            console.log(title);
 
             let bookImageSelector = bookSelectors[index];
             let contentSelector = contentSelectors[index];
@@ -807,17 +824,19 @@ html {
             if ($(contentSelector).length) {
                 $(contentSelector).attr("data-isbn", isbn); // ✅ 클릭 영역에도 data-isbn 추가
             }
+
+            $(booktitle[index]).text(title); //인덱스의 길이만큼 돌면서 책 제목 삽입
         });
     }).fail(function (jqXHR, textStatus, errorThrown) {
         console.error(`❌ API 요청 실패: ${textStatus}, 오류: ${errorThrown}`);
     });
 
     // 클릭 이벤트를 AJAX 요청 바깥에서 한 번만 설정
-    $("#content_1_2_1,#content_2_3,#content_3_2_1").click(function () {
+    $("#book1,#book2,#book3,#book4,#book5,#book6").click(function () {
         let isbn = $(this).data("isbn") || $(this).find("img").data("isbn"); // 클릭한 요소에서 ISBN 가져오기
 
         if (isbn && isbn !== "isbn 정보 없음") {
-            window.location.href = "views/book/bookDetail.jsp?isbn=" + isbn;
+            window.location.href = "<%=contextPath%>/views/book/bookDetail.jsp?isbn=" + isbn;
         } else {
             alert("ISBN 정보가 없습니다.");
         }
@@ -826,7 +845,7 @@ html {
     });
 });
 
-
+//=================================================================================================================
 
     </script>
 </body>

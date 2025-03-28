@@ -234,37 +234,21 @@ hr {
          <div id="content_1">
             <div id="content_1_1">
                <div id="genreTitle">
-                  장르
+                  종류
                   <button id="genreBtn" type="to">▼</button>
                </div>
                <div id="spare"></div>
                <div id="checkBox">
-                  <input type="checkbox" value="">소설<br>
-                  <br> <input type="checkbox" value="">에세이/시/회곡<br>
-                  <br> <input type="checkbox" value="">인문<br>
-                  <br> <input type="checkbox" value="">자기계발<br>
-                  <br> <input type="checkbox" value="">경제/경영<br>
-                  <br> <input type="checkbox" value="">가정/취미/실용<br>
-                  <br> <input type="checkbox" value="">의학/건강<br>
-                  <br> <input type="checkbox" value="">여행/지리<br>
-                  <br> <input type="checkbox" value="">과학/기술<br>
-                  <br> <input type="checkbox" value="">사회과학<br>
-                  <br> <input type="checkbox" value="">종교<br>
-                  <br> <input type="checkbox" value="">역사/문학<br>
-                  <br> <input type="checkbox" value="">인물/평전<br>
-                  <br> <input type="checkbox" value="">예술/대중문화<br>
-                  <br> <input type="checkbox" value="">외국어<br>
-                  <br> <input type="checkbox" value="">컴퓨터<br>
-                  <br> <input type="checkbox" value="">수험서/자격증/취업<br>
-                  <br> <input type="checkbox" value="">사전<br>
-                  <br> <input type="checkbox" value="">만화<br>
-                  <br> <input type="checkbox" value="">잡지<br>
-                  <br> <input type="checkbox" value="">유아<br>
-                  <br> <input type="checkbox" value="">어린이<br>
-                  <br> <input type="checkbox" value="">청소년<br>
-                  <br> <input type="checkbox" value="">성인<br>
-                  <br> <input type="checkbox" value="">부모<br>
-                  <br>
+                <br><input type="checkbox" value="0">&nbsp;총류<br>
+                  <br><input type="checkbox" value="1">&nbsp;철학<br>
+                  <br> <input type="checkbox" value="2">&nbsp;종교<br>
+                  <br> <input type="checkbox" value="3">&nbsp;사회과학<br>
+                  <br> <input type="checkbox" value="4">&nbsp;자연과학<br>
+                  <br> <input type="checkbox" value="5">&nbsp;기술과학<br>
+                  <br> <input type="checkbox" value="6">&nbsp;예술<br>
+                  <br> <input type="checkbox" value="7">&nbsp;언어<br>
+                  <br> <input type="checkbox" value="8">&nbsp;문학<br>
+                  <br> <input type="checkbox" value="9">&nbsp;역사<br>
                </div>
             </div>
          </div>
@@ -292,6 +276,7 @@ hr {
    <script type="text/javascript">
    $(document).ready(function () {
        const apiURL = "http://data4library.kr/api/loanItemSrch?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&format=json";
+   
 
        $.getJSON(apiURL, function (data) {
            console.log("API 응답 데이터:", data);
@@ -343,6 +328,8 @@ hr {
                    if (authorFull.includes("옮긴이:")) {
                        translator = authorFull.split("옮긴이:")[1].split(";")[0].trim();
                    }
+
+                   
 
                    let bookHTML = 
                        '<hr>'+

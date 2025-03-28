@@ -336,10 +336,57 @@ body * {
 </script>
 
 
-<script>
+<!-- <script>
 	function naver() {
 		location.href = "<%=contextPath%>/views/common/jins/naverlogin.jsp";
 	}
+</script> -->
+
+<!-- ================================================================================= -->
+<script type="text/javascript" src="https://developers.naver.com/sdk/js/naveridlogin_js_sdk.js"></script>
+
+<script>
+  // 네이버 로그인 API 초기화
+  var naverLogin = new naver.id.Login("mLwWunRgrPcHxEKgKNbc", "http://localhost:8777/this/views/common/jins/callback.jsp");
+
+  // 네이버 로그인 버튼 클릭 시
+  function naverLoginCallback(authResult) {
+    if (authResult.status === 'login') {
+      // 로그인 성공 시 처리하는 부분
+      var accessToken = authResult.access_token; // 로그인된 사용자의 access token
+
+      // 네이버에서 받은 정보를 서버로 전송 (서버에선 이 정보를 사용해 로그인 처리)
+      $.ajax({
+        url: "<%=contextPath%>/NaverLogin.me",
+        type: "POST",
+        data: {
+          accessToken: accessToken
+        },
+        success: function(response) {
+          if (response.status === "success") {
+            alert("네이버 로그인 성공!");
+            // 로그인 후 페이지 리디렉션
+            window.location.href = response.redirectUrl;  // 서버에서 전달받은 리디렉션 URL
+          } else {
+            alert("로그인 실패: " + response.message);
+          }
+        },
+        error: function(err) {
+          console.error("네이버 로그인 중 오류 발생:", err);
+          alert("네이버 로그인 실패");
+        }
+      });
+    } else {
+      alert("네이버 로그인에 실패했습니다.");
+    }
+  }
+
+  // 네이버 로그인 API 호출 (로그인 버튼 클릭 시)
+  function naver() {
+    naverLogin.getLoginStatus(function(authResult) {
+      naverLoginCallback(authResult);
+    });
+  }
 </script>
 
 <%@ include file="../common/footerbar.jsp" %>

@@ -13,7 +13,7 @@ import com.kh.member.model.vo.Member;
 /**
  * Servlet implementation class NaverSignInController
  */
-@WebServlet("/NaverSignIn.me")
+@WebServlet("/NaverLogin.me")
 public class NaverSignInController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

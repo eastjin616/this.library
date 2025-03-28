@@ -277,24 +277,6 @@
 					function vote(){
 						location.href="<%=contextPath%>/vote.vo?vNo=<%=v.getVoteNo()%>&bNum="+bookNum;
 					}
-						<!-- 
-						if(bookNum > 0){
-							$.ajax({
-								url : "<%=contextPath%>/vote.vo",
-								type : GET,
-								data : {
-									vNo : <%=v.getVoteNo()%>,
-									bNum : bookNum,
-								},
-								success:function(result){
-									console.log(result);
-								},error:function(){
-									console.log("실시간 투표수 조회용 ajax 통신 실패");
-								}
-							})
-							
-						}
-						 -->
 						
 					</script>
 

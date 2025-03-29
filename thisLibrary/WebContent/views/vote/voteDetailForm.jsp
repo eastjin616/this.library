@@ -181,14 +181,6 @@
 					opacity: 0.7;
 				}
 
-				.set-comment {
-					/* padding-left: 770px; */
-				}
-
-				.set-header {
-					/* padding-left: 720px; */
-				}
-
 				.vote {
 					display: flex;
 					justify-content: center;

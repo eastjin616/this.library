@@ -35,11 +35,17 @@ public class DeleteMemberController extends HttpServlet {
 
 		int result = new MemberService().deleteMember(memNo);
 		System.out.println("db 다녀온 result 입니다. : "+result);
+		
+		
+		
+		
+		
+		
 		if (result > 0) {
 			// 탈퇴 성공 → 세션 무효화 + 알림 메시지 + 메인 페이지 이동
-			request.getSession().invalidate();
-			request.setAttribute("alertMsg", "정상적으로 탈퇴가 완료되었습니다. 그동안 수고 많으셨습니다.");
 			request.getRequestDispatcher("views/common/mainPage.jsp").forward(request, response);
+			request.setAttribute("alertMsg", "정상적으로 탈퇴가 완료되었습니다. 그동안 수고 많으셨습니다.");
+			request.getSession().invalidate();
 		} else {
 			// 실패 시 → 마이페이지로 다시 이동
 			request.setAttribute("alertMsg", "회원 탈퇴에 실패했습니다. 다시 시도해주세요.");

@@ -206,8 +206,14 @@ body * {
 
 			</div>
 			<div class="sns_login">
+<<<<<<< HEAD
 				<li><a href="javascript:naverLoginCallback;" style="background-color: green; color: white; font-weight: 1000;">N</i>
 				
+=======
+				<li><a href="javascript:void(0);" onclick="naver()"
+					style="background-color: green; color: white; font-weight: 1000;">
+						N</i>
+>>>>>>> dd696788936e55fb8e636051caed6a948155b9db
 				</a></li>
 				<li><a href="javascript:loginWithKakao()"
 					style="background-color: yellow; color: black"
@@ -250,55 +256,55 @@ body * {
 		<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
 		<script>
-	// 카카오 초기화
-	Kakao.init('93a0920238e62f6613575ad15d4e692c');
+								// 카카오 초기화
+								Kakao.init('93a0920238e62f6613575ad15d4e692c');
 
-	//카카오 로그인 후 토근 값 저장.
-	function loginWithKakao() {
-		Kakao.Auth.login({
-			success: function (authObj) {
-				console.log(authObj); // access토큰 값
-				Kakao.Auth.setAccessToken(authObj.access_token); // access토큰값 저장
+								//카카오 로그인 후 토근 값 저장.
+								function loginWithKakao() {
+									Kakao.Auth.login({
+										success: function (authObj) {
+											console.log(authObj); // access토큰 값
+											Kakao.Auth.setAccessToken(authObj.access_token); // access토큰값 저장
 
-				getInfo();
-			},
-			fail: function (err) {
-				console.log(err);
-			}
-		});
-	}
+											getInfo();
+										},
+										fail: function (err) {
+											console.log(err);
+										}
+									});
+								}
 
-	// 엑세스 토큰을 발급받고, 아래 함수를 호출시켜서 사용자 정보를 받아옴.
-	function getInfo() {
-		Kakao.API.request({
-			url: '/v2/user/me',
-			success: function (res) {
-				console.log(res);
-				// 이메일, 성별, 닉네임, 프로필이미지
-				var email = res.kakao_account.email;
-				var nickName = res.kakao_account.profile.nickname;
-				var key = res.id;
+								// 엑세스 토큰을 발급받고, 아래 함수를 호출시켜서 사용자 정보를 받아옴.
+								function getInfo() {
+									Kakao.API.request({
+										url: '/v2/user/me',
+										success: function (res) {
+											console.log(res);
+											// 이메일, 성별, 닉네임, 프로필이미지
+											var email = res.kakao_account.email;
+											var nickName = res.kakao_account.profile.nickname;
+											var key = res.id;
 
-				window.location.href = "<%= contextPath %>/kakaoSignin.me?email=" + email + "&nickName=" + nickName + "&key=" + key
+											window.location.href = "<%= contextPath %>/kakaoSignin.me?email=" + email + "&nickName=" + nickName + "&key=" + key
 
-			},
-			fail: function (error) {
-				alert('카카오 로그인에 실패했습니다. 관리자에게 문의하세요.' + JSON.stringify(error));
-			}
-		});
-	}
+										},
+										fail: function (error) {
+											alert('카카오 로그인에 실패했습니다. 관리자에게 문의하세요.' + JSON.stringify(error));
+										}
+									});
+								}
 
-	// 로그아웃 기능 - 카카오 서버에 접속하는 엑세스 토큰을 만료, 사용자 어플리케이션의 로그아웃은 따로 진행.
-	function kakaoLogout() {
-		if (!Kakao.Auth.getAccessToken()) {
-			alert('Not logged in.');
-			return;
-		}
-		Kakao.Auth.logout(function () {
-			alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken());
-		});
-	}
-</script>
+								// 로그아웃 기능 - 카카오 서버에 접속하는 엑세스 토큰을 만료, 사용자 어플리케이션의 로그아웃은 따로 진행.
+								function kakaoLogout() {
+									if (!Kakao.Auth.getAccessToken()) {
+										alert('Not logged in.');
+										return;
+									}
+									Kakao.Auth.logout(function () {
+										alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken());
+									});
+								}
+							</script>
 		<!-------------------------------------- 여기까지가 카카오 로그인--------------------------- -->
 		<!-------------------------------------- 구글 소셜 로그인 스크립트--------------------------- -->
 		
@@ -336,49 +342,12 @@ body * {
 </script>
 
 
-<!-- <script>
-	function naver() {
-		location.href = "<%=contextPath%>/views/common/jins/naverlogin.jsp";
-	}
-</script> -->
-
-<!-- ================================================================================= -->
-<script type="text/javascript" src="https://developers.naver.com/sdk/js/naveridlogin_js_sdk.js"></script>
-
-<script>
-  // 네이버 로그인 API 초기화
-  var naverLogin = new naver.id.Login("mLwWunRgrPcHxEKgKNbc", "http://localhost:8777/this/views/common/jins/callback.jsp");
-
-  // 네이버 로그인 버튼 클릭 시
-  function naverLoginCallback(authResult) {
-    if (authResult.status === 'login') {
-        var accessToken = authResult.access_token; // 로그인된 사용자의 access token
-
-        $.ajax({
-            url: "<%=contextPath%>/NaverLogin.me",
-            type: "POST",
-            data: {
-                accessToken: accessToken
-            },
-            success: function(response) {
-                if (response.status === "success") {
-                    alert("네이버 로그인 성공!");
-                    window.location.href = response.redirectUrl;  // 서버에서 전달받은 리디렉션 URL
-                } else {
-                    alert("로그인 실패: " + response.message);
-                }
-            },
-            error: function(err) {
-                console.error("네이버 로그인 중 오류 발생:", err);
-                alert("네이버 로그인 실패");
-            }
-        });
-    } else {
-        alert("네이버 로그인에 실패했습니다.");
-    }
+	<script>
+function naver() {
+	location.href = "<%=contextPath%>/views/common/jins/naverlogin.jsp";
 }
-</script>
 
+</script>
 <%@ include file="../common/footerbar.jsp" %>
 </body>
 

@@ -160,10 +160,6 @@
 					line-height: 1.2;
 				}
 
-				.pagination {
-					text-align: center;
-					margin-top: 15px;
-				}
 
 
 				.set-comment button, .set-header button{

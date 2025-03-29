@@ -13,7 +13,7 @@
                         , BOARD_TITLE
                         , BOARD_CONTENT
                         , COUNT
-                        , TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
+                        , TO_CHAR(WRITE_DATE, 'YYYY-MM-DD') "WRITE_DATE"
                      FROM BOARD B
                      JOIN MEMBER USING(MEM_NO)
                     WHERE B.STATUS = 'Y'
@@ -39,7 +39,7 @@
 	     , BOARD_TITLE
 	     , BOARD_CONTENT
        , COUNT
-	     , TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
+	     , TO_CHAR(WRITE_DATE, 'YYYY-MM-DD') "WRITE_DATE"
 	  FROM BOARD
 	  JOIN MEMBER USING(MEM_NO)
 	 WHERE BOARD_NO = ?
@@ -165,7 +165,7 @@
 		 )
   </entry>
   
-    <entry key="selectReplyList">
+ 	<entry key="selectReplyList">
   SELECT
 	       B_ANSWER_NO
 	     , MEM_NO

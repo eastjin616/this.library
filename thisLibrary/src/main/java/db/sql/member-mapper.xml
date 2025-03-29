@@ -94,11 +94,7 @@
 		     , SNS_KEY
 		  FROM MEMBER
 		 WHERE SNS_KEY = ?
-<<<<<<< HEAD
 		   AND STATUS = 'Y'
-=======
-		 AND STATUS = 'Y'
->>>>>>> b68cfae3e2b64cde5f8b5d1ba8301d7143b1a4db
 	</entry>
 	<entry key="selectMemberByName">
 		SELECT 

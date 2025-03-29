@@ -12,9 +12,11 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.board.model.vo.Board;
+import com.kh.board.model.vo.BoardAnswer;
 import com.kh.common.model.vo.PageInfo;
 import com.kh.member.model.dao.MemberDao;
 import com.kh.vote.model.vo.Vote;
+import com.kh.vote.model.vo.VoteAnswer;
 
 public class VoteDao {
 
@@ -91,6 +93,7 @@ public class VoteDao {
 							     , rset.getString("nickname")
 							     , rset.getString("vote_title")
 							     , rset.getInt("count")
+							     , rset.getString("vote_startdate")
 						));
 			}
 		} catch (SQLException e) {
@@ -145,6 +148,7 @@ public class VoteDao {
 			if(rset.next()) {
 				v = new Vote(rset.getInt("vote_no"),
 							  rset.getString("nickname"),
+							  rset.getInt("mem_no"),
 							  rset.getString("vote_title"),
 							  rset.getString("book1"),
 							  rset.getString("book2"),
@@ -204,6 +208,166 @@ public class VoteDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}close(pstmt);
+		
+		return result;
+	}
+
+	public int updateVote(Connection conn, Vote v) {
+		System.out.println("dao 시작 전");
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateVote");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, v.getVoteTitle());
+			pstmt.setString(2, v.getBook1());
+			pstmt.setString(3, v.getBook2());
+			pstmt.setString(4, v.getVoteEndDate());
+			pstmt.setString(5, v.getBook1Url());
+			pstmt.setString(6, v.getBook2Url());
+			pstmt.setInt(7, v.getVoteNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		System.out.println("dao 시작 후" + result);
+		
+		return result;
+	}
+
+	public int deleteVote(Connection conn, int vNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteVote");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, vNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int insertReply(Connection conn, VoteAnswer va) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, va.getMemNo());
+			pstmt.setInt(2, va.getVoteNo());
+			pstmt.setString(3, va.getvAnswer());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int voteAnswerCount(Connection conn, int voteNo) {
+		int baCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("voteAnswerCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, voteNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				baCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return baCount;
+	}
+
+	public ArrayList<VoteAnswer> selectReplyList(Connection conn, int voteNo) {
+		ArrayList<VoteAnswer> list = new ArrayList<VoteAnswer>(); // []
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReplyList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, voteNo);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				list.add(new VoteAnswer(rset.getInt("v_answer_no"),
+							 		   rset.getString("nickname"),
+							 		   rset.getInt("mem_no"),
+									   rset.getString("v_answer"),
+									   rset.getString("answer_date")
+							));
+				}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
+	public int deleteVoteAnswer(Connection conn, int rno) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteVoteAnswer");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rno);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int updateVoteAnswer(Connection conn, int rno, String rcontent) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateVoteAnswer");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, rcontent);
+			pstmt.setInt(2, rno);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
 		
 		return result;
 	}

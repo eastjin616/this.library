@@ -37,13 +37,14 @@ public class Vote {
 		this.status = status;
 	}
 	
-	public Vote(int voteNo, int memNo, String writer, String voteTitle, int count) {
+	public Vote(int voteNo, int memNo, String writer, String voteTitle, int count, String voteStartDate) {
 		super();
 		this.voteNo = voteNo;
 		this.memNo = memNo;
 		this.writer = writer;
 		this.voteTitle = voteTitle;
 		this.count = count;
+		this.voteStartDate = voteStartDate;
 	}
 	
 	public Vote(int memNo, String voteTitle, String book1, String book2, String book1Url, String book2Url, String voteEndDate) {
@@ -75,12 +76,13 @@ public class Vote {
 
 	
 	
-	public Vote(int voteNo, String writer, String voteTitle, String book1, String book2, String voteStartDate,
+	public Vote(int voteNo, String writer, int memNo, String voteTitle, String book1, String book2, String voteStartDate,
 			String voteEndDate, int voteCount1, int voteCount2, String book1Url, String book2Url, int count,
 			String status) {
 		super();
 		this.voteNo = voteNo;
 		this.writer = writer;
+		this.memNo = memNo;
 		this.voteTitle = voteTitle;
 		this.book1 = book1;
 		this.book2 = book2;

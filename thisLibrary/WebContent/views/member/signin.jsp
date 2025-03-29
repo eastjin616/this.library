@@ -1,10 +1,6 @@
 <%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<% 
-	String kakaoNickName=(String)request.getAttribute("kakaoNickName"); 
-	String kakaoEmail=(String)request.getAttribute("kakaoEmail"); 
-%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -71,13 +67,6 @@ body * {
 	<form id="form" action="<%= contextPath %>/signin.me" method="post"
 		onsubmit="return validatePassword();">
 
-
-		<% if(alertMsg != null){ %>
-		<script>
-					alert('<%=alertMsg%>');
-				</script>
-
-		<% } %>
 		
 			<!-- -------------------------------------------------------------------- -->
 

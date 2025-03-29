@@ -106,13 +106,13 @@ public class MemberService {
 	
 	public Member naverSnsKey(String naverKey) {
 		Connection conn = getConnection();
-
 		Member loginMember = new MemberDao().naverSnsKey(conn, naverKey);
-		
 		close(conn);
-		
+
+		System.out.println("[네이버 로그인] 조회된 naverKey: " + naverKey);
 		return loginMember;
 	}
+
 	
 //=================================================
 	public Member selectSnsKey(String kakaoKey) {

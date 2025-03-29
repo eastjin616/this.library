@@ -1,11 +1,14 @@
 package com.kh.member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.member.model.service.MemberService;
 import com.kh.member.model.vo.Member;
@@ -13,47 +16,54 @@ import com.kh.member.model.vo.Member;
 /**
  * Servlet implementation class NaverSignInController
  */
-@WebServlet("/NaverLogin.me")
+@WebServlet("/naverLogin.me")
 public class NaverSignInController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
-    public NaverSignInController() {
-        // TODO Auto-generated constructor stub
-    }
+	public NaverSignInController() {}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 
-		String naverNickName = request.getParameter("nickName");
-		String naverEmail = request.getParameter("email");
-		String naverKey = request.getParameter("NaverKey");
+		String nickname = request.getParameter("nickName");
+		String email = request.getParameter("email");
+		String naverKey = request.getParameter("naverKey");
+		String mobile = request.getParameter("mobile");
+		
 
-		request.setAttribute("naverNickName", naverNickName);
-		request.setAttribute("naverEmail", naverEmail);
-		request.setAttribute("naverKey",naverKey);
-		
-		Member loginMember = new MemberService().naverSnsKey(naverKey);
-		
-		if(loginMember == null) { // 카카오 로그인으로 회원가입 해본적 없는 사람 => 회원가입 폼으로 이동
-			request.getRequestDispatcher("views/member/naverSignin.jsp").forward(request, response);
-		}else {  // 카카오 로그인으로 한번이라도 회원가입 해본적 있는 사람 => 로그인 성공
-			request.getSession().setAttribute("loginMember", loginMember);
-			response.sendRedirect(request.getContextPath());
+		// 유효성 검사
+		if (naverKey == null || naverKey.trim().isEmpty()) {
+			response.sendRedirect(request.getContextPath() + "/views/member/loginform.jsp");
+			return;
 		}
-		
+
+		// 회원 여부 확인
+		MemberService memberService = new MemberService();
+		Member loginMember = memberService.naverSnsKey(naverKey);
+
+		System.out.println("[네이버 로그인 시도] naverKey: " + naverKey);
+
+		if (loginMember == null) {
+			// 회원가입 유도
+			request.setAttribute("nickname", nickname);
+			request.setAttribute("email", email);
+			request.setAttribute("naverKey", naverKey);
+			request.setAttribute("mobile", mobile);
+			request.getRequestDispatcher("views/member/NaverSignin.jsp").forward(request, response);
+		} else {
+			// 로그인 처리
+			HttpSession session = request.getSession();
+			session.setAttribute("loginMember", loginMember);
+			session.setAttribute("alertMsg", loginMember.getMemId() + "님, 환영합니다!");
+
+			System.out.println("[네이버 로그인 성공] " + loginMember);
+
+			response.sendRedirect(request.getContextPath() + "/index.jsp");
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }
+

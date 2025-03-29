@@ -206,14 +206,9 @@ body * {
 
 			</div>
 			<div class="sns_login">
-<<<<<<< HEAD
-				<li><a href="javascript:naverLoginCallback;" style="background-color: green; color: white; font-weight: 1000;">N</i>
-				
-=======
 				<li><a href="javascript:void(0);" onclick="naver()"
 					style="background-color: green; color: white; font-weight: 1000;">
 						N</i>
->>>>>>> dd696788936e55fb8e636051caed6a948155b9db
 				</a></li>
 				<li><a href="javascript:loginWithKakao()"
 					style="background-color: yellow; color: black"

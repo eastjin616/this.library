@@ -76,29 +76,23 @@
             userInfoBr.close();
 
             // 사용자 정보 JSON 처리
-            if (userInfoResponseCode == 200) {
-                JSONObject userJson = (JSONObject) parser.parse(userInfoRes.toString());
-                JSONObject response1 = (JSONObject) userJson.get("response");
+             if (userInfoResponseCode == 200) {
+        JSONObject userJson = (JSONObject) parser.parse(userInfoRes.toString());
+        JSONObject response1 = (JSONObject) userJson.get("response");
 
-                // 사용자 정보 출력
-                String id = (String) response1.get("id");
-                String nickname = (String) response1.get("nickname");
-                String email = (String) response1.get("email");
-                String mobile = (String) response1.get("mobile");
+        // 사용자 정보 출력
+        String id = (String) response1.get("id"); // 네이버 고유 ID (sns_key)
+        String nickname = (String) response1.get("nickname");
+        String email = (String) response1.get("email");
+        String mobile = (String) response1.get("mobile");
 
-                // 서블릿으로 사용자 정보 전달
-                request.setAttribute("nickname", nickname);
-                request.setAttribute("email", email);
-                request.setAttribute("mobile", mobile);
-                request.setAttribute("NaverKey", id);
-                
-
-                // 서블릿으로 포워딩
-                RequestDispatcher dispatcher = request.getRequestDispatcher("naverSignin.jsp"); // 서블릿 경로로 변경
-                dispatcher.forward(request, response);
-            } else {
-                out.println("<p>사용자 정보 요청 실패. Error Code: " + userInfoResponseCode + "</p>");
-            }
+        // 서블릿으로 리다이렉트하면서 파라미터 전달
+        String redirectURL = "/naverLogin.me?NaverKey=" + id + "&nickName=" + URLEncoder.encode(nickname, "UTF-8") 
+                             + "&email=" + URLEncoder.encode(email, "UTF-8");
+        response.sendRedirect(redirectURL);
+    } else {
+        out.println("<p>사용자 정보 요청 실패. Error Code: " + userInfoResponseCode + "</p>");
+    }
         } else {
             out.println("<p>토큰 요청 실패. Error Code: " + responseCode + "</p>");
         }

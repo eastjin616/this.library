@@ -94,6 +94,7 @@
 		     , SNS_KEY
 		  FROM MEMBER
 		 WHERE SNS_KEY = ?
+		 AND STATUS = 'Y'
 	</entry>
 	<entry key="selectMemberByName">
 		SELECT 
@@ -110,6 +111,7 @@
 		     , SNS_KEY
 		  FROM MEMBER
 			WHERE SNS_KEY = ?
+			AND STATUS = 'Y'
 	</entry>
 	
 	

@@ -587,7 +587,7 @@
 
 
 
-											<button id="mypageBtn" onclick="location.href='<%=contextPath%>/delete.me?no=34'">탈퇴</button>
+											<button id="mypageBtn" onclick="onDelete()">탈퇴</button>
 											
 										</div>
 									</div>
@@ -686,7 +686,6 @@
 						</div>
 					</div>
 				</div>
-				</div>
 
 				<script>
 					function book1() {
@@ -700,7 +699,7 @@
 						if (confirm("정말 탈퇴하시겠습니까?")) {
 							const memNo = "<%= session.getAttribute("loginMember") != null ? ((Member)session.getAttribute("loginMember")).getMemNo() : 0 %>";
 							
-							location.href = "<%=contextPath%>/;
+							location.href = "<%=contextPath%>/delete.me?no="+memNo;
 						}
 
 					}

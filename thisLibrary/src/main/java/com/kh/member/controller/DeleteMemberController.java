@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.kh.member.model.service.MemberService;
 
@@ -36,13 +35,18 @@ public class DeleteMemberController extends HttpServlet {
 
 		int result = new MemberService().deleteMember(memNo);
 		System.out.println("db 다녀온 result 입니다. : "+result);
+		
+		
+		
+		
+		
+		
 		if (result > 0) {
-		    request.getSession().invalidate(); // 먼저 기존 세션 무효화 → 새로운 세션 생성 필요
-		    HttpSession newSession = request.getSession(); // 새 세션 시작
-		    newSession.setAttribute("alertMsg", "정상적으로 탈퇴가 완료되었습니다. 그동안 수고 많으셨습니다.");
-		    response.sendRedirect(request.getContextPath() + "/mainPage.jsp");
-		}
-		else {
+			// 탈퇴 성공 → 세션 무효화 + 알림 메시지 + 메인 페이지 이동
+			request.getRequestDispatcher("views/common/mainPage.jsp").forward(request, response);
+			request.setAttribute("alertMsg", "정상적으로 탈퇴가 완료되었습니다. 그동안 수고 많으셨습니다.");
+			request.getSession().invalidate();
+		} else {
 			// 실패 시 → 마이페이지로 다시 이동
 			request.setAttribute("alertMsg", "회원 탈퇴에 실패했습니다. 다시 시도해주세요.");
 			request.getRequestDispatcher("views/member/myPage.jsp").forward(request, response);

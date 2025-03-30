@@ -155,7 +155,7 @@ body * {
 
 				<div class="form-group">
 					<label for="InputEmail">이메일 주소</label> <input type="email"
-						class="form-control" name="email" placeholder="이메일 주소를 입력해주세요">
+						class="form-control" name="email" placeholder="이메일 주소를 입력해주세요" required>
 				</div>
 
 

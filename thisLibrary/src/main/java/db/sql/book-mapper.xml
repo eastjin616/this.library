@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+ 	<entry key="selectReplyList">
+  SELECT
+	       B_ANSWER_NO
+	     , MEM_NO
+	     , ANSWER_CONTENT
+	     , NICKNAME
+	     , TO_CHAR(ANSWER_DATE, 'YY/MM/DD HH:MI') "ANSWER_DATE"
+	  FROM BOARD_ANSWER BA
+	  JOIN MEMBER USING(MEM_NO)
+	 WHERE BA.STATUS = 'Y'
+	   AND BOARD_NO = ?
+	 ORDER
+	    BY B_ANSWER_NO DESC
+  </entry>
+</properties>

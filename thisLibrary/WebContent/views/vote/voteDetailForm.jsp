@@ -637,36 +637,7 @@
 		</body>
 		
 		<script>
-		
-		<!-- 실시간 팔로우 상태 -->
-		const followerId = <%= loginMemNo %>; // 로그인한 사용자 ID
-		const followingId = <%= v.getMemNo() %>; // 게시글 작성자 ID
-		
-		<%if(loginMember != null){ %>
-		// 페이지 로드 시 팔로우 상태 확인
-		$(document).ready(function () {
-		    $.ajax({
-		        url: 'follow/status', // 팔로우 상태를 확인하는 서버 API 경로
-		        method: 'GET',
-		        data: {
-		            followerId: followerId,
-		            followingId: followingId
-		        },
-		        success: function (response) {
-		            console.log("팔로우 상태 확인 응답:", response);
-		
-		            if (response == 1) { // 이미 팔로우 중인 경우
-		                $('#follow-btn').text("팔로잉").removeClass('btn-primary').addClass('btn-secondary');
-		            } else if (response == 0) { // 팔로우 안 돼있는 경우
-		                $('#follow-btn').text("팔로우").removeClass('btn-secondary').addClass('btn-primary');
-		            }
-		        },
-		        error: function () {
-		            alert('팔로우 상태를 확인하는 데 실패했습니다.');
-		        }
-		    });
-		});
-		<%}%>
+	
 		
 		
 		<!-- 실시간 팔로우 상태 여기까지 -->

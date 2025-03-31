@@ -1,8 +1,10 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 	<%@ page import="com.kh.member.model.vo.Member" %>
-	
-	
-	
+<%    List<String> jjimList = (List<String>) session.getAttribute("jjimList");
+ %>
+
+
 		<!DOCTYPE html>
 		<html lang="en">
 
@@ -173,25 +175,21 @@
 					display: flex;
 				}
 
-				#commantaryContentTitle2 {
+
+				#texta {
 					width: 100%;
-					margin-bottom: auto;
+					min-height: 100%;
+					/* 최소 높이 설정 */
+					resize: none;
+					overflow: hidden;
 					box-sizing: border-box;
-					height: 100%;
-					padding: 3%;
-				}
-				#commantaryContentTitle2:focus{
-					outline: none;
+					padding: 10px;
+					font-size: 16px;
+					line-height: 1.4;
+					border-radius: 10px;
+
 				}
 
-				#commantaryContentTitle2>textarea {
-					width: 100%;
-					height: 100%;
-					border-radius: 10px;
-					box-sizing: border-box;
-					border: none;
-					resize: none;
-				}
 
 				#commantaryContentTitle1>input {
 					border: none;
@@ -336,6 +334,7 @@
 					width: 100%;
 					height: 1800px;
 					background-color: rgba(0, 0, 0, 0.4);
+					z-index: 1;
 				}
 
 				.modal_body {
@@ -371,12 +370,13 @@
 					width: 100%;
 					height: 1800px;
 					background-color: rgba(0, 0, 0, 0.4);
+					z-index: 1;
 				}
 
 				.modal_bodyC {
 					position: fixed;
 					top: 50%;
-					width: 400px;
+					width: 1000px;
 					height: 600px;
 					padding: 40px;
 					text-align: center;
@@ -483,42 +483,40 @@
 
 				/* =========================================== jjim */
 				#mypageMainContent5 {
-					align-items: center;
 					width: 100%;
+					min-height: 400px;
 					border: 2px solid #ddd;
 					border-radius: 10px;
 					box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-					height: 200px;
 					margin-bottom: 40px;
 					box-sizing: border-box;
-					display: flex;
+					padding: 20px;
+					overflow: auto; /* 이미지 많을 경우 스크롤 */
 				}
 
-				#jjim1,
-				#jjim2,
-				#jjim3,
-				#jjim4 {
-					width: 20%;
-					height: 80%;
-					border: 1px solid;
-					margin: 2.5%;
-
+				.jjim {
+					display: grid;
+					grid-template-columns: repeat(2, 1fr); /* 2열 구성 */
+					gap: 20px;
 				}
 
-				#jjim1>img,
-				#jjim2>img,
-				#jjim3>img,
-				#jjim4>img {
-					margin-left: 30px;
-				}
-
-				#jjim1:hover,
-				#jjim2:hover,
-				#jjim3:hover,
-				#jjim4:hover,
-				div>button {
+				.jjim img {
+					width: 100%;
+					aspect-ratio: 1/1; /* 정사각형 유지 */
+					object-fit: contain;
+					border: 1px solid #ccc;
+					border-radius: 8px;
 					cursor: pointer;
+					transition: transform 0.2s ease-in-out;
 				}
+
+				.jjim img:hover {
+					transform: scale(1.05);
+				}
+
+
+
+
 			</style>
 		</head>
 		<meta charset="UTF-8">
@@ -543,7 +541,9 @@
 								</div>
 								<div id="mypagePInfo">
 									<div id="mypageName">
-										<div><span>이호석</span></div>
+										<div><span>
+												<%= loginMember.getMemName() %>
+											</span></div>
 										<div id="mypageNameEdit">
 											<div id="saveBtn">
 												<button class="btn-open-modal">수정하기</button>
@@ -588,7 +588,7 @@
 
 
 											<button id="mypageBtn" onclick="onDelete()">탈퇴</button>
-											
+
 										</div>
 									</div>
 									<div id="mypageEmpty"></div>
@@ -605,121 +605,121 @@
 										<div></div>
 									</div>
 								</div>
-								<!-- -------------------------commantary -->
 							</div>
-							<div id="commantary">
-								<div><span id="commantaryTitle">Commantary</span></div>
-								<div id="divWrap">
-									<div id="commantaryContentTitle1">
-										<span>- 저자 : </span> <input type="text" placeholder="저자를 입력해주세요. ">
-										<span>- 제목 : </span> <input type="text" placeholder="제목을 입력해주세요.  ">
-									</div>
-
-
-									<div id="saveBtn">
-										<button class="btn-open-modalC">목록보기</button>
-										<button  onClick="onSave()">저장하기</button>
-										<div class="modalC">
-											<div class="modal_bodyC">
-												<span class="close-btnC">&times;</span> <!-- 'X' 버튼 -->
-												<h2>게시판 리스트</h2>
-												<table>
-													<thead>
-														<tr>
-															<th>글 번호</th>
-															<th>제목</th>
-															<th>저자</th>
-															<th>작성 날짜</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td>1</td>
-															<td>첫 번째 글</td>
-															<td>홍길동</td>
-															<td>2025-03-18</td>
-														</tr>
-														<tr>
-															<td>2</td>
-															<td>두 번째 글</td>
-															<td>김철수</td>
-															<td>2025-03-17</td>
-														</tr>
-														<tr>
-															<td>3</td>
-															<td>세 번째 글</td>
-															<td>이영희</td>
-															<td>2025-03-16</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										</div>
-									</div>
-
-
-
+							
+							
+							 <%     int memNo = loginMember != null ? loginMember.getMemNo() : 0; %>
+											<form action="<%= contextPath %>/Save.me" method="post" onsubmit="return onSave(event);">
+							    <div id="commantary">
+							        <div><span id="commantaryTitle">Commantary</span></div>
+							
+							        <div id="divWrap">
+							            <div id="commantaryContentTitle1">
+															<input type="hidden" name="memNo" value="<%= memNo %>">
+							                <span>- 저자 : </span>
+							                <input type="text" name="author" placeholder="저자를 입력해주세요. " required>
+							                <span>- 제목 : </span>
+							                <input type="text" name="title" placeholder="제목을 입력해주세요.  " required>
+							            </div>
+							
+							            <div id="saveBtn">
+							                <button type="button" class="btn-open-modalC">목록보기</button>
+							                <button type="submit">저장하기</button>
+							            </div>
+							        </div>
+							
+							        <div id="boardarea">
+							            <textarea name="commantary" id="texta" placeholder="감상문을 작성해주세요." oninput="autoResize(this)" required></textarea>
+							        </div>
+							    </div>
+							</form>
+								
+								<!-- 모달 창 -->
+								<div class="modalC" id="modalC">
+								    <div class="modal_bodyC">
+								        <span class="close-btnC">&times;</span>
+								        <h2>게시판 리스트</h2>
+								        <table>
+								            <thead>
+								                <tr>
+								                    <th>글 번호</th>
+								                    <th>제목</th>
+								                    <th>저자</th>
+								                    <th>작성 날짜</th>
+								                </tr>
+								            </thead>
+								            <tbody id="commentaryListBody">
+								                <!-- 감상문 리스트가 여기에 Ajax로 삽입됨 -->
+								                
+								                
+								            </tbody>
+								        </table>
+								    </div>
 								</div>
-								<div id="boardarea">
-									<div id="mypageMainContent3">
-										<div id="commantaryContentTitle2">
-											<textarea name="commantary" id="texta"></textarea>
-										</div>
-									</div>
-								</div>
-							</div>
 
+
+
+
+							
 
 
 							<!-- ----------------------------찜목록 -->
 							<div>
 								<div><span id="JjimTitle">찜 목록</span></div>
-								<div id="mypageMainContent5">
-									<div class="jjim"></div>
-									<div id="jjim1"><img src="" alt="" onclick="book1()"></div>
-									<div id="jjim2"><img src="" alt="" onclick="book1()"></div>
-									<div id="jjim3"><img src="" alt="" onclick="book1()"></div>
-									<div id="jjim4"><img src="" alt="" onclick="book1()"></div>
 
+								<div id="mypageMainContent5">
+								  <div class="jjim" id="jjimContainer">
+								    <% 
+											    if (jjimList != null && !jjimList.isEmpty()) {
+											        for (String url : jjimList) {
+											%>
+											        <img src="<%= url %>" alt="찜 도서 이미지" />
+											<%
+											        }
+											    } else {
+											%>
+											    <p>찜한 도서가 없습니다.</p>
+											<% 
+											    } 
+											%>
+								  </div>
 								</div>
+
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<script>
-					function book1() {
-						location.href = "<%= contextPath %>/views/member/loginform.jsp";
-					}
-				</script>
+
+				
 
 				<script>
 					// ============================================== 유저 탈퇴 기능 함수(유효성 검사 추가됨 ㅎㅎㅎㅎ)
 					function onDelete() {
 						if (confirm("정말 탈퇴하시겠습니까?")) {
 							const memNo = "<%= session.getAttribute("loginMember") != null ? ((Member)session.getAttribute("loginMember")).getMemNo() : 0 %>";
-							
-							location.href = "<%=contextPath%>/delete.me?no="+memNo;
+
+							location.href = "<%=contextPath%>/delete.me?no=" + memNo;
 						}
 
 					}
 
 					// ============================================== 
-						
-							function onSave(){
-								if(confirm("저장 하시겠습니까?")) {
-									const memNo = "<%= session.getAttribute("loginMember") != null ? ((Member)session.getAttribute("loginMember")).getMemNo() : 0 %>";
-										if(memNo === 0){
-											alert("로그인 정보가 유효하지않습니다.");
-											return;
-										}
-										location.href = "<%= request.getContextPath()%>/save.me?no="+memNo;								
-								}
-					}
-						
-						
 
-				
+					function onSave() {
+						if (confirm("저장 하시겠습니까?")) {
+							const memNo = "<%= session.getAttribute("loginMember") != null ? ((Member)session.getAttribute("loginMember")).getMemNo() : 0 %>";
+							if (memNo === 0) {
+								alert("로그인 정보가 유효하지않습니다.");
+								return;
+							}
+							location.href = "<%= request.getContextPath()%>/Save.me?no=" + memNo;
+						}
+					}
+
+
+
+
 
 					// ============================================== 마이페이지 유저정보 '수정하기'버튼 모달 스크립트
 					const modal = document.querySelector('.modal');
@@ -739,24 +739,81 @@
 							modal.style.display = "none";
 						}
 					});
-					// ============================================== 마이페이지 유저정보 '수정하기'버튼 모달 스크립트
-					const modalC = document.querySelector('.modalC');
-					const btnOpenModalC = document.querySelector('.btn-open-modalC');
-					const btnCloseModalC = document.querySelector('.close-btnC');
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					// ============================================== 마이페이지 감상문 '목록보기'버튼 모달 스크립트
+					document.addEventListener("DOMContentLoaded", function () {
+    const contextPath = "<%= contextPath %>";
+    const modalC = document.querySelector(".modalC");
+    const btnOpenModalC = document.querySelector(".btn-open-modalC");
+    const btnCloseModalC = document.querySelector(".close-btnC");
 
-					btnOpenModalC.addEventListener("click", () => {
-						modalC.style.display = "flex";
-					});
+    // [1] 목록보기 버튼 클릭 시 → Ajax로 감상문 목록 조회 + 모달 열기
+    if (btnOpenModalC) {
+        btnOpenModalC.addEventListener("click", function () {
+            console.log("[클릭됨] 목록보기 버튼");
 
-					btnCloseModalC.addEventListener("click", () => {
-						modalC.style.display = "none";
-					});
+            fetch(contextPath + "/coList.my")
+                .then(response => {
+                    if (!response.ok) throw new Error("HTTP 에러");
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("[서버 응답]", data);
 
-					modalC.addEventListener("click", (event) => {
-						if (event.target === modalC) {
-							modalC.style.display = "none";
-						}
-					});
+                    const tbody = document.getElementById("commentaryListBody");
+                    tbody.innerHTML = "";
+
+                    if (data.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="4">감상문이 없습니다.</td></tr>';
+                    } else {
+                        data.forEach(item => {
+                            const row = `
+                                <tr>
+                                    <td>\${item.writeNo}</td>
+                                    <td>\${item.title}</td>
+                                    <td>\${item.author}</td>
+                                    <td>\${item.writeDate}</td>
+                                </tr>`;
+                            tbody.innerHTML += row;
+                        });
+                    }
+
+                    modalC.style.display = "flex"; // ✅ 데이터 불러온 뒤 모달 열기
+                })
+                .catch(error => {
+                    console.error("Fetch 오류", error);
+                    alert("감상문 목록을 불러오지 못했습니다.");
+                });
+        });
+    }
+
+    // [2] 모달 닫기 버튼 클릭
+    if (btnCloseModalC) {
+        btnCloseModalC.addEventListener("click", function () {
+            modalC.style.display = "none";
+        });
+    }
+
+    // [3] 모달 바깥쪽 클릭 시 닫기
+    modalC.addEventListener("click", function (event) {
+        if (event.target === modalC) {
+            modalC.style.display = "none";
+        }
+    });
+});
 
 
 					// ============================================== 마이페이지 유저정보 '수정하기'버튼 모달 스크립트
@@ -777,7 +834,67 @@
 							modalR.style.display = "none";
 						}
 					});
-				</script>
+					
+					
+					//인기도서 리스트에서 찜한 책 myPage 로 넘어오게 하는 구문
+					window.addEventListener('DOMContentLoaded', () => {
+				    const jjimList = JSON.parse(localStorage.getItem('jjimList')) || [];
+				    const container = document.getElementById('jjimContainer');
+				
+				    if (jjimList.length === 0) {
+				        container.innerHTML = "<p>찜한 책이 없습니다.</p>";
+				        return;
+				    }
+				
+				    jjimList.forEach(url => {
+				        const img = document.createElement('img');
+				        img.src = url;
+				        img.alt = "찜한 도서";
+				        img.style.width = "120px";
+				        img.style.margin = "10px";
+				        container.appendChild(img);
+				    });
+				});
+					
+					
+					
+					
+					function autoResize(textarea) {
+					    textarea.style.height = 'auto';
+					    textarea.style.height = textarea.scrollHeight + 'px';
+					}
+
+					// 저장 전 처리
+					function onSave(event) {
+					    event.preventDefault(); // 폼 기본 제출 막기
+					    if (confirm("저장 하시겠습니까?")) {
+					        const memNo = "<%= session.getAttribute("loginMember") != null ? ((Member)session.getAttribute("loginMember")).getMemNo() : 0 %>";
+					        if (memNo === "0") {
+					            alert("로그인 정보가 유효하지 않습니다.");
+					            return false;
+					        }
+					        // 폼 직접 제출
+					        event.target.closest('form').submit();
+					    }
+					    return false;
+					}
+					
+					
+			
+					
+					
+				
+
+					</script>
+					
+					
+				
+				
+				
+				
+				
+				
+				
 
 				<%@ include file="../common/footerbar.jsp" %>
 		</body>

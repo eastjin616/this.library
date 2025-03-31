@@ -1,6 +1,17 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
    
+   
+   <%
+    List<String> jjimList = (List<String>) session.getAttribute("jjimList");
+    if (jjimList == null) jjimList = new ArrayList<>();
+    String jjimJson = new com.google.gson.Gson().toJson(jjimList);
+%>
+<script>
+    const jjimList = <%= jjimJson %>;
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -212,10 +223,21 @@ hr {
    width: 90%;
    margin-left: 0%;
 }
+#heartIcon {
+  color: gray;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+#heartIcon.active {
+  color: red;
+}
 
 
 
 </style>
+
+
 </head>
 <meta charset="UTF-8">
 <!-- ------------------------------------------------------------------ -->
@@ -301,7 +323,9 @@ hr {
                // 책 정보 초기화
                $("#content_2_2").empty();
                
-               
+               let heartIcon = isLoggedIn
+               ? '<div class="heart"><i class="fas fa-heart" ></i></div>'
+               : '';
 
                // 현재 페이지에 맞는 책들만 표시
                for (let i = startIndex; i < endIndex && i < totalBooks; i++) {
@@ -329,15 +353,19 @@ hr {
                        translator = authorFull.split("옮긴이:")[1].split(";")[0].trim();
                    }
 
-                   
+                   const isJjim = jjimList.includes(imageURL);
+
+                   let heartColor = isJjim ? 'red' : 'gray';
+                   let heartClass = isJjim ? 'active' : '';
+
 
                    let bookHTML = 
                        '<hr>'+
                        '<div id="content_2_2_'+(i + 1)+'" class="content_2_2_book">'+
                            '<div id="book'+(i + 1)+'" class="book" onclick="location.href=\'bookDetail.jsp?isbn='+isbn+'\';" style="cursor: pointer;">'+
-                               '<img src="'+imageURL+'" alt="'+title+'">'+
+                               '<img src="'+ imageURL +'" alt="'+title+'">'+
                            '</div>'+
-                           '<div id="bookcon'+(i + 1)+'" class="bookcon">'+
+                           '<div id="bookcon'+(i + 1)+ heartIcon + ' " class="bookcon">'+
                                '<div class="spare1"></div>'+
                                '<div class="bookinfo">'+
                                    '<p style="font-size: 20px; cursor: pointer;" onclick="window.location.href=\'bookDetail.jsp\';"><b>'+title+'</b></p>'+
@@ -353,7 +381,7 @@ hr {
                                    '</div>'+
                                '</div>'+
                                '<div class="heart">'+
-                                   '<i class="fas fa-heart"></i>'+
+                               '<i class="fas fa-heart heart-icon ' + heartClass + '" style="color:' + heartColor + ';" onclick="toggleHeart(this)"></i>'+
                                '</div>'+
                            '</div>'+
                        '</div>';
@@ -423,25 +451,54 @@ hr {
     });
   });
 //=====================================================================================
- 
-  
-  document.addEventListener("DOMContentLoaded", function () {
-    console.log("DOMContentLoaded!");
-    document.querySelectorAll(".heart").forEach(function (heart) {
-        heart.addEventListener("click", function () {
-            let icon = this.querySelector("i");
-            console.log(icon);  // 아이콘 요소가 제대로 선택되는지 확인
-            if (icon.classList.contains("active")) {
-                icon.style.color = "gray";
-                icon.classList.remove("active");
-            } else {
-                icon.style.color = "red";
-                icon.classList.add("active");
+
+
+	
+	
+	
+	$(document).ready(function () {
+    const contextPath = '<%= request.getContextPath() %>';
+
+    function toggleHeart(element) {
+        const bookContainer = $(element).closest('.content_2_2_book');
+        const imageUrl = bookContainer.find('.book img').attr('src');
+        const isActive = element.classList.toggle('active');
+
+        element.style.color = isActive ? 'red' : 'gray';
+
+        $.ajax({
+            url: contextPath + '/jjimToggle.my',
+            type: 'POST',
+            data: {
+                imageUrl: imageUrl,
+                action: isActive ? 'add' : 'remove'
+            },
+            success: function () {
+                console.log(isActive ? "찜 추가됨" : "찜 제거됨");
+                console.log(imageUrl);  // ✅ 변수 오타 수정
+            },
+            error: function () {
+                element.classList.toggle('active');
+                element.style.color = isActive ? 'gray' : 'red';
+                alert("찜 처리 중 오류 발생");
             }
         });
+    }
+
+    // ✅ 하트 요소 클릭 시 함수 연결
+    $(document).on('click', '.heart-icon', function () {
+        toggleHeart(this);
     });
 });
+
+	
+	
+	
+	
+
 </script>
+
+
 
 
 </body>

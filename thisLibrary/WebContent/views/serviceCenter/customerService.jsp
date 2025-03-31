@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.kh.scvote.model.vo.scNoticeVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -248,10 +251,14 @@ div .write-btn>a {
 			</div>
 		</div>
 		<br> <br> <br>
+		
+		
+		
+						<!-- 공지사항 -->
+		       <!-- userNo, title, content, file 가져감 -->
 		<div id="content3">
-
 			<div class="notice-form">
-				<!-- 자유게시판 -->
+				<!-- 공지사항 -->
 				<div class="board-container">
 					<h2>공지사항</h2>
 					<table>
@@ -265,99 +272,46 @@ div .write-btn>a {
 							</tr>
 						</thead>
 						<tbody>
-							<tr
-								onclick="window.location.href='<%= contextPath %>/views/board/boardDetail.jsp'">
-								<td>10</td>
-								<td>네이버 지도(v5) 임베드asdasdasdasdasdsadasdasdasdadasd</td>
-								<td>아임웹</td>
-								<td>2019-12-17</td>
-								<td>120</td>
-							</tr>
-							<tr>
-								<td>9</td>
-								<td>제목</td>
-								<td>아임웹</td>
-								<td>2019-12-16</td>
-								<td>160</td>
-							</tr>
-							<tr>
-								<td>8</td>
-								<td>구글 지도 게시물에 임베드 하기</td>
-								<td>아임웹</td>
-								<td>2019-12-16</td>
-								<td>77</td>
-							</tr>
-							<tr>
-								<td>7</td>
-								<td>구글 지도 게시물에 임베드 하기</td>
-								<td>아임웹</td>
-								<td>2019-12-16</td>
-								<td>99</td>
-							</tr>
-							<tr>
-								<td>6</td>
-								<td>구글 지도 게시물에 임베드 하기</td>
-								<td>아임웹</td>
-								<td>2019-12-16</td>
-								<td>50</td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td>구글 지도 게시물에 임베드 하기</td>
-								<td>아임웹</td>
-								<td>2019-12-16</td>
-								<td>1</td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td>구글 지도 게시물에 임베드 하기</td>
-								<td>아임웹</td>
-								<td>2019-12-16</td>
-								<td>9015</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>구글 지도 게시물에 임베드 하기</td>
-								<td>아임웹</td>
-								<td>2019-12-16</td>
-								<td>60</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>구글 지도 게시물에 임베드 하기</td>
-								<td>아임웹</td>
-								<td>2019-12-16</td>
-								<td>111560</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>구글 지도 게시물에 임베드 하기</td>
-								<td>아임웹</td>
-								<td>2019-12-16</td>
-								<td>1105</td>
-							</tr>
+							<%
+								    ArrayList<scNoticeVO> list = (ArrayList<scNoticeVO>) request.getAttribute("noticeList");
+								    if (list != null && !list.isEmpty()) {
+								        for (scNoticeVO n : list) {
+								%>
+								<tr>
+								    <td><%= n.getNoticeNo() %></td>
+								    <td><%= n.getTitle() %></td>
+								    <td>admin</td>
+								    <td><%= n.getDate() %></td>
+								    <td>1</td>
+								</tr>
+								<%
+								        }
+								    } else {
+								%>
+								<tr><td colspan="5">공지사항이 없습니다.</td></tr>
+								<%
+								    }
+								%>
+
 						</tbody>
 					</table>
 
-
-					<div class="pagination">
-						<a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a>
-						<a href="#">5</a>
-					</div>
-
-					<div style="display: flex;">
-						<a href="<%= contextPath %>/views/board/boardInsertForm.jsp"
-							class="write-btn" style="margin-left: auto;">글쓰기</a>
-					</div>
+						<%if(loginMember.getMemId().equals("admin")){ %>
+          <div style="display: flex;">
+            <a href="<%= contextPath %>/views/serviceCenter/noticeInsertForm.jsp" class="write-btn" style="margin-left: auto;">글쓰기</a>
+          </div>
+					<%} %>
 
 				</div>
-				<!-- 자유게시판 끝 -->
+				
+				
+				
+				
+				
 			</div>
-
-
-
 		</div>
 	</div>
+	<!-- 공지사항 끝 -->
 <%@ include file="../common/footerbar.jsp" %>
 </body>
 

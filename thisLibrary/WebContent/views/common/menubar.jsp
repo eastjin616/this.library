@@ -228,8 +228,8 @@
                      </div>
 
                      <div class="naviDiv">
-                        <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
-                        <div class="submenu">
+													 <a href="<%= contextPath %>/select.nc">고객센터</a>
+													 <div class="submenu">
                            <a href="<%=contextPath%>/views/serviceCenter/persnalInquiry.jsp">1:1 문의하기</a>
                            <a href="<%=contextPath%>/list.sc?cpage=1">1:1 문의 내역</a>
                            <a href="<%=contextPath%>/views/serviceCenter/fnaList.jsp">F&Q 질문 내역</a>
@@ -262,14 +262,13 @@
                   <div id="header_mypage_btn" style="height: 100%; width: 7%;">
                      
                      <button class="btn" id="mypage" onclick="mypage()">
-                        <img src="<%= contextPath %>/resources/assets/user01.png" alt="">
+												<img src="<%= contextPath %>/resources/assets/user01.png" alt="user-icon" onclick="goToMyPage()" style="cursor: pointer;">
                      </button>
                   </div>
 
                </div>
             </div>
             <!-- -------------------------------------------------------------------- -->
-
 
 
 
@@ -286,8 +285,15 @@
                location.href = "<%=contextPath%>/views/member/signin.jsp";
             }
 
+            
+            
+            const isLoggedIn = <%= (session.getAttribute("loginMember") != null) ? "true" : "false" %>;
             function mypage() {
-               location.href = "<%= contextPath %>/views/member/myPage.jsp";
+                if (!isLoggedIn) {
+                    alert("해당 서비스는 로그인을 하신 후에 이용하실 수 있으십니다.");
+                    return;
+                }
+                location.href = "<%= contextPath %>/views/member/myPage.jsp";
             }
          </script>
          <!-- -------------------------------------------------------------------- -->

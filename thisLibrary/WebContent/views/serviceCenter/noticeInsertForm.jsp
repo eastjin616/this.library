@@ -1,7 +1,5 @@
-<%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<% 
-%>
+
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -122,13 +120,17 @@
         </head>
 
         <body>
-        
 								<%@ include file="../common/menubar.jsp" %>
+								
+								
+								
+								
+								
                 <!-- 자유게시판 게시글 작성 -->
                 <div class="post-container">
                     <h2>글쓰기</h2>
                     <hr>
-                    <form action="<%=contextPath%>/insert.bo" method="POST" enctype="multipart/form-data">
+                    <form action="<%=contextPath%>/insertform.nc" method="POST" >
                     		<input type=hidden name="userNo" value="<%= loginMember.getMemNo() %>">
                         <label for="title" id="title">제목</label>
                         <input type="text" id="title" name="title" style="width: 980px; margin-bottom: 10px;" required>

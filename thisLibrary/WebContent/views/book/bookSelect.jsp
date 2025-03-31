@@ -89,7 +89,6 @@ body * {
     justify-content: center;
     align-items: center;
     padding: 15px;
-    background: #f8f8f8; /* 배경색 추가 (선택사항) */
     border-radius: 5px;
 }
 
@@ -261,50 +260,43 @@ hr {
             let publisher = doc.publisher || "출판사 정보 없음";
             let pubYear = doc.publication_year || "출판일 정보 없음";
             let isbn = doc.isbn13 || "isbn 정보 없음" ;
+            let genre = doc.class_nm || "장르 정보가 없습니다."
 
-            // 작가와 번역가 정보 추출
-            let author = "작가 정보 없음";
-            let translator = "번역가 정보 없음";
-
-            if (authorFull.includes("지은이:")) {
-              author = authorFull.split("지은이:")[1].split(";")[0].trim();
-            }
-            if (authorFull.includes("옮긴이:")) {
-              translator = authorFull.split("옮긴이:")[1].split(";")[0].trim();
-            }
+	         // ";"를 기준으로 앞뒤로 나누기
+	         let parts = authorFull.split(";", 2);  // 최대 2개로 분할 (앞부분과 뒷부분)
+	         // 첫 번째 부분 (처음부터 ";" 전까지)
+	         let author = parts[0].trim() || "작가 정보 없음"; 
+	         // 두 번째 부분 (";" 이후부터 끝까지)
+	         let translator = parts.length > 1 ? parts[1].trim() : "" || "번역가 정보 없음"; 
+	
 
             // 책 정보 HTML 생성
-            console.log("변수 값:", {i, imageURL, title, author, translator, publisher, pubYear});
+            //console.log("변수 값:", {i, imageURL, title, author, translator, publisher, pubYear});
 
             let bookHTML = 
+              '<br>'+
               '<hr>'+
               '<div id="content_2_2_'+(i + 1)+'" class="content_2_2_book">'+
-                '<div id="book'+(i + 1)+'" class="book" onclick="window.location.href=\'bookDetail.jsp\';" style="cursor: pointer;">'+
+                '<div id="book'+(i + 1)+'" class="book" onclick="location.href=\'bookDetail.jsp?isbn='+isbn+'\';" style="cursor: pointer;">'+
                   '<img src="'+imageURL+'" alt="'+title+'" loading="lazy">'+
                 '</div>'+
                 '<div id="bookcon'+(i + 1)+'" class="bookcon">'+
                   '<div class="spare1"></div>'+
                   '<div class="bookinfo">'+
-                    '<p style="font-size: 20px; cursor: "pointer;" onclick="location.href=\'bookDetail.jsp?isbn='+isbn+'\';"><b>'+title+'</b></p>'+
+                    '<p style="font-size: 20px; cursor: pointer;" onclick="location.href=\'bookDetail.jsp?isbn='+isbn+'\';"><b>'+title+'</b></p>'+
                     '<hr style="width: 70px; margin-left: 0%;">'+
                     '지은이 : <span style="font-size: 15px;">'+author+'</span> &nbsp;|&nbsp; 옮긴이 : <span style="font-size: 15px;">'+translator+'</span>'+
                     '<br><br>'+
                     '출판사 : <span style="font-size: 15px;">'+publisher+'</span>&nbsp;|&nbsp; 출판일 :<span style="font-size: 15px;">'+pubYear+'</span>'+
                     '<br><br><br>'+
                     '<div style="display: flex;">'+
-                      '<p><i class="fas fa-star" style="color: #085ae7;"></i></p>'+
-                      '<p style="margin-left: 5px; margin-top: 20;">4.84</p>'+
-                      '<p style="margin-left: 5px; margin-top: 20;">(350reviews)</p>'+
+                      '<p style="margin-left: 5px; margin-top: 20;">'+genre+'</p>'+
                     '</div>'+
                   '</div>'+
-                  '<div class="heart">'+
-                    '<i class="fas fa-heart"></i>'+
-                    '<i class="fas fa-heart" style="color: #ec1818;"></i>'+
-                  '</div>'+
                 '</div>'+
-              '</div>';
+              '</div>'+
+              '<br>';
 
-            console.log("생성된 HTML:", bookHTML);
 
             // 책 정보 HTML 추가
             $("#content_2_2").append(bookHTML);

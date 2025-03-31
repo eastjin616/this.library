@@ -357,6 +357,7 @@ pre {
 	border-radius: 5px;
 	cursor: pointer;
 	font-size: 14px;
+	
 }
 
 .submit-btn:hover {
@@ -408,6 +409,31 @@ pre {
 .star.active i {
     color: yellow; /* 별 색 변경 */
 }
+
+
+
+#location {
+	width: 60px;
+	border-radius: 10px;
+	padding: 5px 6px;
+}
+#location:focus{
+	border: 1px solid #fff7eb;
+	box-sizing: border-box;
+	border-radius: 10px;
+	outline: 3px solid #d9a066;
+	border-radius: 10px;
+}
+
+
+<select id="location" onchange="updateLibraryData()">
+	<option value="">선택</option>
+	<option value="11">서울</option>
+	<option value="21">부산</option>
+	<option value="22">대구</option>
+	<option value="23">인천</option>
+</select>
+
 </style>
 </head>
 <!-- ------------------------------------------------------------------ -->
@@ -487,6 +513,7 @@ pre {
 					<div id="authorTitle" style="text-align: left;">
 						<h1>도서 소장 도서관 </h1>
 						<select id="location" onchange="updateLibraryData()">
+							<option value="0">선택</option>
 							<option value="11">서울</option>
 							<option value="21">부산</option>
 							<option value="22">대구</option>
@@ -496,9 +523,9 @@ pre {
 
 					<div id="libraryInfo">
 						<div id="libraryDetailInfo">
-					 <div id="librarybox">
-
-					 </div>
+							<div id="librarybox">
+								/* 도서관 정보가 들어올 자리 */
+							</div>
 						</div>
 					</div>
 					<!-- ============================================================== -->
@@ -779,9 +806,14 @@ $(document).ready(function () {
 
 // =====================도서 소장 도서관 ===========================
 
+window.onload = function(){
+	updateLibraryData(); 
+}
+
+
 function updateLibraryData() {
 	var selectLocation = document.getElementById("location"); // 요소 가져오기
-	console.log(selectLocation); 
+	let bookHtml = '';
 
 
     var urlParams = new URLSearchParams(window.location.search);
@@ -798,14 +830,22 @@ function updateLibraryData() {
 
 
     const libraryApi = "http://data4library.kr/api/libSrchByBook?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&isbn="
-        + isbn +
-        "&region="
-        + selectLocation.value + // 이제 selectLocation을 사용할 수 있음
-        "&format=json";
+			+ isbn +
+			"&region="
+			+ selectLocation.value + // 이제 selectLocation을 사용할 수 있음
+			"&format=json";
     
-    console.log("📡 API 호출 URL:", libraryApi);
+    /* console.log("📡 API 호출 URL:", libraryApi); */
 
 		$("#librarybox").empty(); // 기존 데이터 제거
+
+		if(selectLocation.value == 0){
+							bookHtml = '<div id="lib0">'
+                        + '<div style="text-align: center; font-size:25px;"> 📚도서관 지역을 선택해주세요📓 <br> 📙Please choose the library📒 </div><br><br>'
+                        + '</div>';
+												$("#librarybox").append(bookHtml);
+												return;
+						}
 
     $.getJSON(libraryApi, function (data) {
         console.log("libAPI 응답 데이터:", data);
@@ -815,7 +855,16 @@ function updateLibraryData() {
             return;
         }
 
+				
+				
         const librarys = data.response.libs;
+
+						const regionEmojis = {
+								"11": "🏙️", // 서울
+								"21": "🌊", // 부산
+								"22": "🔥", // 대구
+								"23": "✈️"  // 인천
+						};
 
         for (let i = 0; i < 4; i++) {
             let lib = librarys[i]?.lib; // ?.를 사용해 안전하게 접근
@@ -833,22 +882,12 @@ function updateLibraryData() {
             let closed = lib.closed || "휴무일 정보 없음";
             let opentime = lib.opentime || "개장시간 정보 없음";
 
-						const regionEmojis = {
-								"11": "🏙️", // 서울
-								"21": "🌊", // 부산
-								"22": "🔥", // 대구
-								"23": "✈️"  // 인천
-						};
-
-						console.log(regionEmojis);
-
-						
 						let bookHtml = 
 						'<div id="lib'+(i+1)+'">' 
 							+'<div>'+ regionEmojis[selectLocation.value] +'</div> <br>'
 							+'<div id="libraryNames"> <b>도서관 명</b> : '+ libName +'</div> <br>'
 							+'<div> <b>도서관 주소</b> :'+address +'</div> <br>'
-							+'<div> <b>전화번호</b> :'+tel +'</div> <br>'
+							+'<div> <b>전화번호</b> : '+tel +'</div> <br>'
 							+'<div> <b>팩스번호</b> : '+fax +'</div> <br>'
 							+'<div> <b>홈페이지</b> : <a href="'+homepage +'">'+homepage+'</a></div> <br>'
 							+'<div> <b>마감시간</b> : '+closed +'</div> <br>'

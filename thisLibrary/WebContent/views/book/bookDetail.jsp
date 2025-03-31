@@ -604,8 +604,8 @@ h2{
 			</div>
 		</div>
 		<br>
-
-
+		
+		
 		<div class="post-container" id="comment-form" style="margin-top: 120px; margin-bottom: 120px;">
 
 			<div class="comment-section">
@@ -659,6 +659,7 @@ h2{
 					<!--end 모달 팝업-->
 					
 		</div>
+		
 
 <script>
 //====================================================================================================================================

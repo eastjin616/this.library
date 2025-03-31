@@ -134,7 +134,6 @@ body * {
     justify-content: center;
     align-items: center;
     padding: 15px;
-    background: #f8f8f8; /* 배경색 추가 (선택사항) */
     border-radius: 5px;
 }
 
@@ -260,13 +259,11 @@ hr {
                   <button id="genreBtn" type="to">▼</button>
                </div>
                <div id="spare"></div>
-               <div id="checkBox">
+               <div id="genreFilter">
                 <br><input type="checkbox" value="0">&nbsp;총류<br>
                   <br><input type="checkbox" value="1">&nbsp;철학<br>
                   <br> <input type="checkbox" value="2">&nbsp;종교<br>
-                  <br> <input type="checkbox" value="3">&nbsp;사회과학<br>
                   <br> <input type="checkbox" value="4">&nbsp;자연과학<br>
-                  <br> <input type="checkbox" value="5">&nbsp;기술과학<br>
                   <br> <input type="checkbox" value="6">&nbsp;예술<br>
                   <br> <input type="checkbox" value="7">&nbsp;언어<br>
                   <br> <input type="checkbox" value="8">&nbsp;문학<br>
@@ -276,7 +273,7 @@ hr {
          </div>
          <div id="content_2">
             <div id="content_2_2" class="content_2_2">
-    <!-- 책 정보가 여기에 추가될 것입니다. -->
+   				 <!-- 책 정보 추가 -->
     
          </div>
          </div>
@@ -296,23 +293,39 @@ hr {
 
 
    <script type="text/javascript">
-   $(document).ready(function () {
-       const apiURL = "http://data4library.kr/api/loanItemSrch?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&format=json";
    
+   
+   
+   $(document).on('click', "input[type='checkbox']", function(){
+	    if(this.checked) {
+	        const checkboxes = $("input[type='checkbox']");
+	        for(let ind = 0; ind < checkboxes.length; ind++){
+	            checkboxes[ind].checked = false;
+	        }
+	        this.checked = true;
+	    } else {
+	        this.checked = false;
+	    }
+	});
+   
+ //=================================================================================== 
+   $(document).ready(function () {
+       const baseURL = "http://data4library.kr/api/loanItemSrch?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&pageNo=1&pageSize=10&format=json";
+       let currentPage = 1;
+       let totalPages = 1;
+       let currentBooks = [];
+       
+       function fetchBooks(kdcValue = "") {
+           let apiURL = baseURL;
 
-       $.getJSON(apiURL, function (data) {
-           console.log("API 응답 데이터:", data);
-
-           if (!data || !data.response || !data.response.docs || data.response.docs.length === 0) {
-               console.error("❌ API에서 책 데이터가 없습니다!");
-               return;
+           if (kdcValue) {
+               apiURL = baseURL.replace("&pageNo=1&pageSize=10&format=json", `&kdc=\${kdcValue}&pageNo=1&pageSize=10&format=json&format=json`);
            }
 
-           const books = data.response.docs;
-           const totalBooks = 20; // 책의 총 개수
-           const booksPerPage = 4; // 한 페이지당 표시할 책 수
-           const totalPages = Math.ceil(totalBooks / booksPerPage); // 총 페이지 수
+           $.getJSON(apiURL, function (data) {
+               console.log("📚 API 응답:", data);
 
+<<<<<<< HEAD
            let currentPage = 1; // 현재 페이지 (기본값 1)
 
            function loadBooks(page) {
@@ -387,71 +400,146 @@ hr {
                        '</div>';
 
                    $("#content_2_2").append(bookHTML);
+=======
+               if (!data || !data.response || !data.response.docs || data.response.docs.length === 0) {
+                   console.error("❌ 책 데이터가 없습니다.");
+                   $("#content_2_2").html("<p>책 데이터가 없습니다.</p>");
+                   $(".pagination").empty(); // 페이지네이션도 초기화
+                   return;
+>>>>>>> books
                }
+
+               currentBooks = data.response.docs.slice(0, 20);
+               totalPages = Math.ceil(currentBooks.length / 4);
+               currentPage = 1;
+
+               loadBooks(currentPage);
+               updatePagination();
+           }).fail(function (jqXHR, textStatus, errorThrown) {
+               console.error(`❌ API 요청 실패: ${textStatus}, 오류: ${errorThrown}`);
+               console.log(jqXHR);
+           });
+       }
+       
+       
+       
+//============= ====== =================
+       function loadBooks(page) {
+    	   const maxPage = 5
+           const booksPerPage = 4;
+           let startIndex = (page - 1) * booksPerPage;
+           let endIndex = startIndex + booksPerPage;
+
+           $("#content_2_2").empty();
+
+           for (let i = startIndex; i < endIndex && i < currentBooks.length; i++) {
+               let doc = currentBooks[i].doc;
+               if (!doc) continue;
+
+               let imageURL = doc.bookImageURL || "https://via.placeholder.com/150";
+               let title = doc.bookname || "제목 없음";
+               let authorFull = doc.authors || "작가 정보 없음";
+               let publisher = doc.publisher || "출판사 정보 없음";
+               let pubYear = doc.publication_year || "출판일 정보 없음";
+               let isbn = doc.isbn13 || "isbn 정보 없음";
+               let genre = doc.class_nm || "장르 정보 없음";
+
+               let parts = authorFull.split(";", 2);
+               let author = parts[0].trim();
+               let translator = parts.length > 1 ? parts[1].trim() : "번역가 정보 없음";
+
+               let bookHTML =
+            	   '<br>'+
+                   '<hr>' +
+                   '<div class="content_2_2_book">' +
+                       '<div class="book" onclick="location.href=\'bookDetail.jsp?isbn=' + isbn + '\';" style="cursor: pointer;">' +
+                           '<img src="' + imageURL + '" alt="' + title + '" loading="lazy">' +
+                       '</div>' +
+                       '<div class="bookcon">' +
+                           '<div class="bookinfo">' +
+                               '<p style="font-size: 20px; cursor: pointer;" onclick="window.location.href=\'bookDetail.jsp\';"><b>' + title + '</b></p>' +
+                               '<hr style="width: 70px; margin-left: 0%;">' +
+                               '지은이 : <span style="font-size: 15px;">' + author + '</span> &nbsp;|&nbsp; 옮긴이 : <span style="font-size: 15px;">' + translator + '</span>' +
+                               '<br><br>' +
+                               '출판사 : <span style="font-size: 15px;">' + publisher + '</span>&nbsp;|&nbsp; 출판일 :<span style="font-size: 15px;">' + pubYear + '</span>' +
+                               '<br><br><br>' +
+                               '<div style="display: flex;">' +
+                                   '<p style="margin-left: 5px; margin-top: 20px;">' + genre + '</p>' +
+                               '</div>' +
+                           '</div>' +
+                           '<div class="heart"><i class="fas fa-heart"></i></div>' +
+                       '</div>' +
+                   '</div>';
+
+               $("#content_2_2").append(bookHTML);
            }
-//=====================================================================
-           function updatePagination() {
-               // pagination 업데이트
-               $(".pagination").empty(); // 기존 페이지네이션 초기화
+       }
+       
+//=========== ========== ==============     
+       
+//===============================페이징 바===========================================================================================
+       function updatePagination() {
+           $(".pagination").empty();
 
-               // 이전 버튼
-               $(".pagination").append('<span class="prev">＜</span>');
+           $(".pagination").append('<span class="prev">＜</span>');
+           for (let i = 1; i <= totalPages; i++) {
+               $(".pagination").append('<span class="page">' + i + '</span>');
+           }
+           $(".pagination").append('<span class="next">＞</span>');
 
-               // 페이지 번호 버튼 생성
-               for (let i = 1; i <= totalPages; i++) {
-                   $(".pagination").append('<span class="page">'+i+'</span>');
-               }
+           $(".pagination .page").eq(currentPage - 1).css("font-weight", "bold");
 
-               // 다음 버튼
-               $(".pagination").append('<span class="next">＞</span>');
+           $(".pagination .page").click(function () {
+               currentPage = parseInt($(this).text());
+               loadBooks(currentPage);
+               updatePagination();
+           });
 
-               // 현재 페이지 하이라이트
-               $(".pagination .page").eq(currentPage - 1).css("font-weight", "bold");
-
-               // 페이지 버튼 클릭 이벤트
-               $(".pagination .page").click(function () {
-                   currentPage = parseInt($(this).text());
+           $(".pagination .prev").click(function () {
+               if (currentPage > 1) {
+                   currentPage--;
                    loadBooks(currentPage);
-                   updatePagination(); // 페이지 변경 시 페이지네이션 업데이트
-               });
+                   updatePagination();
+               }
+           });
 
-               // 이전 버튼 클릭 이벤트
-               $(".pagination .prev").click(function () {
-                   if (currentPage > 1) {
-                       currentPage--;
-                       loadBooks(currentPage);
-                       updatePagination();
-                   }
-               });
+           $(".pagination .next").click(function () {
+               if (currentPage < totalPages) {
+                   currentPage++;
+                   loadBooks(currentPage);
+                   updatePagination();
+               }
+           });
+       }
 
-               // 다음 버튼 클릭 이벤트
-               $(".pagination .next").click(function () {
-                   if (currentPage < totalPages) {
-                       currentPage++;
-                       loadBooks(currentPage);
-                       updatePagination();
-                   }
-               });
+       // ✅ 초기 데이터 로딩
+       fetchBooks();
+
+       // ✅ 체크박스 변경 시 자동 필터
+       $("#genreFilter input[type=checkbox]").on("change", function () {
+           const checked = $("#genreFilter input[type=checkbox]:checked");
+
+           if (checked.length === 0) {
+               fetchBooks(); // 기본 전체
+           } else {
+               const kdcValue = checked.first().val(); // 첫 번째 체크만 사용
+               fetchBooks(kdcValue);
            }
-
-           loadBooks(currentPage);  // 첫 페이지 책 로딩
-           updatePagination(); // 첫 페이지네이션 업데이트
-       }).fail(function (jqXHR, textStatus, errorThrown) {
-           console.error(`❌ API 요청 실패: ${textStatus}, 오류: ${errorThrown}`);
-           console.log(jqXHR);
        });
    });
+
 //=====================================================================================
 
 
   $(document).ready(function () {
-    $('#checkBox').hide();
+    $('#genreFilter').hide();
     $('#genreBtn').click(function () {
-      $('#checkBox').slideToggle("fast");
+      $('#genreFilter').slideToggle("fast");
     });
   });
 //=====================================================================================
 
+<<<<<<< HEAD
 
 	
 	
@@ -496,6 +584,8 @@ hr {
 	
 	
 
+=======
+>>>>>>> books
 </script>
 
 

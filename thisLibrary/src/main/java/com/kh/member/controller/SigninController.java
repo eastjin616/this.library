@@ -34,8 +34,8 @@ public class SigninController extends HttpServlet {
 		
 		String memName = request.getParameter("name");
 		String memId = request.getParameter("id");
-		String nickname = request.getParameter("password");
-		String memPwd = request.getParameter("nickname");
+		String nickname = request.getParameter("nickname");
+		String memPwd = request.getParameter("password");
 		String address = request.getParameter("address");
 		String phone = request.getParameter("email");
 		String email = request.getParameter("phone");
@@ -46,7 +46,7 @@ public class SigninController extends HttpServlet {
 		int result = new MemberService().insertMember(m);
 		
 		if(result > 0) { // 성공적으로 회원가입 완료 됨 (Member 테이블에 Insert 완료 됨)
-			request.getSession().setAttribute("Member", m);
+			request.getSession().setAttribute("loginMember", m);
 			request.getSession().setAttribute("alertMsg", "회원가입성공");
 			response.sendRedirect(request.getContextPath()+"/views/member/loginform.jsp");
 		}else {

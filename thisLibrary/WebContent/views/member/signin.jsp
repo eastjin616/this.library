@@ -123,7 +123,9 @@ body * {
 						class="form-control" name="checkPassword" id="checkPassword"
 						placeholder="비밀번호를 입력해주세요" oninput="checkpwd()" required>
 				</div>
+				
 				<span id="pwd-result" style="margin-left: 25%;"></span> <br>
+				
 				<div class="form-group">
 					<label>주소</label> <input type="text" class="form-control"
 						id="zipNo" name="post" placeholder="우편번호">
@@ -146,7 +148,7 @@ body * {
 
 				<div class="form-group">
 					<label for="InputEmail">이메일 주소</label> <input type="email"
-						class="form-control" name="email" placeholder="이메일 주소를 입력해주세요">
+						class="form-control" name="email" placeholder="이메일 주소를 입력해주세요" required>
 				</div>
 
 

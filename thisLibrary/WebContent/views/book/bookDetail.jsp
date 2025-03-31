@@ -45,7 +45,7 @@ div {
 }
 
 #sidebar {
-	height: auto;
+	height: 210px;
 	float: left;
 }
 
@@ -198,7 +198,7 @@ pre {
 
 /*--------사이드바---------------------------------------------  */
 #sidebar {
-	width: 10%;
+	width: 180px;
 	background-color: #fff7eb;
 	border: 2px solid #a56b2a;
 	border-radius: 15px;
@@ -405,7 +405,6 @@ pre {
    border: none;
    background-color: #f9f9f9;
 }
-<<<<<<< HEAD
 .stars i {
     color: white; /* 내부 색상을 흰색으로 설정 */
     -webkit-text-stroke: 1px black; /* 테두리를 검은색으로 설정 */
@@ -482,32 +481,6 @@ h2{
 
 
 
-=======
-
-
-
-#location {
-	width: 60px;
-	border-radius: 10px;
-	padding: 5px 6px;
-}
-#location:focus{
-	border: 1px solid #fff7eb;
-	box-sizing: border-box;
-	border-radius: 10px;
-	outline: 3px solid #d9a066;
-	border-radius: 10px;
-}
-
-
-<select id="location" onchange="updateLibraryData()">
-	<option value="">선택</option>
-	<option value="11">서울</option>
-	<option value="21">부산</option>
-	<option value="22">대구</option>
-	<option value="23">인천</option>
-</select>
->>>>>>> books
 
 </style>
 </head>

@@ -12,6 +12,7 @@
 <script>
     const jjimList = <%= jjimJson %>;
 </script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

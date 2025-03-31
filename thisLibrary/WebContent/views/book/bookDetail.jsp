@@ -243,6 +243,21 @@ pre {
 	cursor: pointer;
 }
 
+#location{
+	width: 70px;
+	height: 40px;
+	border: 1px solid #a56b2a;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: 400;
+}
+#location:focus{
+	border: 1px solid #fff7eb;
+	box-sizing: border-box;
+	border-radius: 10px;
+	outline: 3px solid #d9a066;
+}
+
 /* ==============preview======================================= */
 #preview {
 	margin-left: 10%;
@@ -537,6 +552,7 @@ h2{
 								<br>
 							<div id="description"></div>
 							<br>
+
 						</div>
 						<hr style="width: 80%;">
 						<div id="neyong" style="margin-left: 55px; font-size: large;">함께 대출된 도서</div>

@@ -285,7 +285,7 @@ hr {
                   '<div class="bookinfo">'+
                     '<p style="font-size: 20px; cursor: pointer;" onclick="location.href=\'bookDetail.jsp?isbn='+isbn+'\';"><b>'+title+'</b></p>'+
                     '<hr style="width: 70px; margin-left: 0%;">'+
-                    '지은이 : <span style="font-size: 15px;">'+author+'</span> &nbsp;|&nbsp; 옮긴이 : <span style="font-size: 15px;">'+translator+'</span>'+
+                    '지은이 : <span style="font-size: 15px;">'+author+'</span> &nbsp;|&nbsp; <span style="font-size: 15px;">'+translator+'</span>'+
                     '<br><br>'+
                     '출판사 : <span style="font-size: 15px;">'+publisher+'</span>&nbsp;|&nbsp; 출판일 :<span style="font-size: 15px;">'+pubYear+'</span>'+
                     '<br><br><br>'+

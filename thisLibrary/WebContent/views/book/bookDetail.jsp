@@ -1159,7 +1159,7 @@ $(function(){// 화면이 다 로드되고 나서 하는 행위
     })
  }
  
- <!-- 댓글 수 카운트-->
+//  <!-- 댓글 수 카운트-->
  const replyContent = document.getElementById('replyContent');
  const charCountDisplay = document.querySelector('.char-count');
  const maxChars = 300;
@@ -1169,7 +1169,7 @@ $(function(){// 화면이 다 로드되고 나서 하는 행위
      charCountDisplay.innerHTML = `\${currentLength} / <span id="maxChars">\${maxChars}</span> 자`;
  
  });
- <!-- 여기까지 댓글 수 카운트 스크립트 -->
+//  <!-- 여기까지 댓글 수 카운트 스크립트 -->
 
 
 </script>

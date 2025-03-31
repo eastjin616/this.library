@@ -399,11 +399,26 @@ pre {
     color: white; /* 내부 색상을 흰색으로 설정 */
     -webkit-text-stroke: 1px black; /* 테두리를 검은색으로 설정 */
 }
-.star:hover i,
-.star.active i {
-    color: yellow; /* 별 색 변경 */
+
+.stars{
+   border: none;
+   background-color: #f9f9f9;
+}
+.stars i {
+    color: white; /* 내부 색상을 흰색으로 설정 */
+    -webkit-text-stroke: 1px black; /* 테두리를 검은색으로 설정 */
 }
 
+
+
+
+
+.star.checked i {
+    color: gold;
+}
+.stars.checked i {
+    color: gold;
+}
 /* -------------------- 모달 ------------------------*/
 h2{
  		 text-align: center;
@@ -428,10 +443,10 @@ h2{
 /*팝업 배경*/
 	display: none; /*평소에는 보이지 않도록*/
     position: absolute;
-    top:0;
+    top:120%;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 150%;
     overflow: hidden;
     background: rgba(0,0,0,0.5);
 }
@@ -573,7 +588,7 @@ h2{
 		<br>
 
 
-		<div class="post-container" style="margin-top: 120px; margin-bottom: 120px;">
+		<div class="post-container" id="comment-form" style="margin-top: 120px; margin-bottom: 120px;">
 
 			<div class="comment-section">
 
@@ -584,7 +599,7 @@ h2{
 				<% if(loginMember == null){ %>
 				
 				<% }else{ %>
-				<div class="comment-form">
+				<div class="comment-form" >
 				
 					<div class="comment-form-header">
 						<h4>댓글 작성하기
@@ -595,6 +610,7 @@ h2{
                         <button class="star"><i class="fa-solid fa-star"></i></button>
                         <button class="star"><i class="fa-solid fa-star"></i></button>
                      </div>
+                     
                   </h4>
 
 						<button class="submit-btn" onclick="insertReply()">작성하기</button>
@@ -614,7 +630,7 @@ h2{
 					<div class="modal">
 					    <div class="modal_popup">
 					        <h3>댓글 수정하기</h3>
-					        <form action="<%=contextPath%>/rUpdate.bo" method="GET">
+					        <form action="<%=contextPath%>/rUpdate.bd" method="GET">
 					        <textarea id="update_content" style="width:1000px; height: 100px;"></textarea>
 					        <button type="button" class="close_btn">닫기</button>
 					        <button type="submit" class="close_btn">수정하기</button>
@@ -629,12 +645,15 @@ h2{
 <script>
 //====================================================================================================================================
 const stars = document.querySelectorAll('.star');
+let starValue = 0;
+var isbn = "";
 
-stars.forEach((star, index) => {
-    star.addEventListener('click', () => {
-        stars.forEach((s, i) => {
-            s.classList.toggle('active', i <= index);
-        });
+
+$(".star").on("click", function() {
+    let starIndex = $(this).index() + 1; // 선택한 별 개수 (1~5)
+    
+    $(".star").each(function(index) {
+        $(this).toggleClass("checked", index < starIndex);
     });
 });
 //================================================================    
@@ -645,7 +664,7 @@ $(document).ready(function () {
     //http://localhost:8777/this/views/book/bookDetail.jsp?isbn=9788954654753(메인페이지 북 처음꺼 눌렀을 때)
     var urlParams = new URLSearchParams(window.location.search);
     console.log(urlParams);
-    var isbn = urlParams.get("isbn");//그냥 isbn이잖아 동진아 진짜 죽을래? 메인페이지에서 그냥 isbn으로 넘겼잖아 똑바로 생각 안할래?
+   	isbn = urlParams.get("isbn");//그냥 isbn이잖아 동진아 진짜 죽을래? 메인페이지에서 그냥 isbn으로 넘겼잖아 똑바로 생각 안할래?
     console.log(isbn);//여튼 잘 받아왔어
     
     // API URL
@@ -818,171 +837,8 @@ $(document).ready(function () {
   
   // 여기다가 isbn 필요한거 가져와야항듯
   
-console.log("오오오오 : "+ isbn)
   
-	   $(function(){// 화면이 다 로드되고 나서 하는 행위
-	      // 댓글 개수 조회
-	      selectBoardAnswerCount();
-	      
-	      // 댓글조회
-	      selectReplyList();
-	      
-	      // setInterval(주기적으로 실행할 함수, ms단위 시간);
-	      //setInterval(selectReplyList, 1000); // 1초에 한번씩 새로고침
-	      //setInterval(selectBoardAnswerCount, 1000); 
-	      
-	   })
-	   
-	   // ajax으로 댓글 작성용 함수
-	   function insertReply(){
-	      const content = replyContent.value.trim();
-	       if (content.length === 0) {
-	           alert('댓글을 입력하세요.');
-	           return;
-	       }else{
-	                     $.ajax({
-	                        url:"rinsert.bd",
-	                        data:{
-	                           content:$("#replyContent").val(),
-	                           isbn:isbn,
-	                        },
-	                        type:"post",
-	                        success:function(result){
-	                           if(result > 0){ // 댓글 작성 성공 => 갱신된 댓글 리스트 조회
-	                              selectReplyList();
-	                              $("#replyContent").val("");
-	                                 charCountDisplay.innerHTML = `0 / <span id="maxChars">\${maxChars}</span> 자`;
-	                           }else{ // 댓글 작성 실패
-	                              
-	                           }
-	                        },error:function(){
-	                           console.log("댓글 작성용 ajax 통신 실패")
-	                        }
-	                     })
-	       }
-	   }
-	   
-	   // ajax으로 해당 게시글에 딸린 댓글 목록 조회용 함수
-	   function selectReplyList(){
-	      $.ajax({
-	         url:"rlist.bd",
-	         data:{isbn:isbn},
-	         success:function(rlist){
-	            let value = "";
-	            let loginNickname = "<%= loginNickname %>"; // JSP에서 가져온 로그인 닉네임 (null 가능)
-	            
-	            
-	            for(let i=0; i<rlist.length; i++){
-	               let r = rlist[i].bAnswerNo; // 댓글 번호
-	   let writer = rlist[i].nickName; // 댓글 작성자 닉네임
-	   let content = rlist[i].answerContent; // 댓글 내용
-	   let writerNo = rlist[i].memNo;
-	   
-	   /*
-	   // 나 진짜 개천재인듯 ㅋ
-	   if(isNaN(content)){
-	      content = `'\${content}'` // content가 숫자일때만 값이 잘 넘겨져서 한글일때는 빽틱 이용해서 양쪽에 홑따음표 달아줌
-	   }
-	   */
-	   
-	               value += `<div class="comment"><p class="comment-meta"><strong>\${writer}</strong> | \${rlist[i].answerDate}`;
-	               
-	                      value += `<span></span> <span class="set-comment">`;
-	                  
-	                   if(loginNickname && loginNickname == writer){
-	                         value += `<button class="update" style="margin-left:0px" onclick="updateReply(\${r})"> 수정 </button> | <button onclick="hideReply(\${r})"> 삭제 </button>`;
-	                   }
-	                   
-	                   value += `</span></p><p class="comment-text">\${rlist[i].answerContent}</p></div>`;
-	               
-	                  $(".comment-list").html(value)
-	            }
-	         },error:function(){
-	            console.log("댓글목록 조회용 ajax 통신 실패");
-	         }
-	      })
-	   }
-	   
-	   
-	   
-	   
-	   // 삭제 버튼 클릭 시 실행될 함수
-	   function hideReply(rno) {
-	       $.ajax({
-	           url: "<%=contextPath%>/rDelete.bd", // 서블릿 URL
-	           type: "POST", // UPDATE는 보통 POST 방식 사용
-	           data: { 
-	              rno: rno,
-	              isbn:isbn %>
-	           }, // 댓글 번호, 게시글 번호 전송
-	           success:function(response){
-	              alert("댓글이 성공적으로 삭제되었습니다.");
-	           },error:function(){
-	              alert("댓글 삭제에 실패했습니다.");
-	           }
-	       });
-	   }
-	   
-	   function updateReply(rno){
-	      
-	      const modal = document.querySelector('.modal');
-	      const modalOpen = document.querySelector('.modal_btn');
-	      const modalClose = document.querySelector('.close_btn');
-	      
-	      //열기 버튼을 눌렀을 때 모달팝업이 열림
-	      $(".comment-list").on('click', '.update',function(){
-	            let rContent2 = $(this).closest('.comment').find('.comment-text').text();
-	            let value = `<input type="hidden" name="rno" value="\${rno}"></input>`
-	            $("#hidden_area").html(value);
-	            value = `<input type="hidden" name="bno" value="<%=b.getBoardNo()%>"></input>`
-	            $("#hidden_area").append(value);
-	           //'on' class 추가
-	          modal.classList.add('on');
-	           $("#update_content").text(rContent2);
-	        
-	           
-	           $("#update_content").on("input", function () {
-	              let updatedContent = $(this).val(); // textarea의 변경된 값
-	              // hidden 영역에 업데이트된 rcontent 값을 저장
-	              $("#hidden_area").find("input[name='rcontent']").remove(); // 기존 값 제거
-	              value = `<input type="hidden" name="rcontent" value="\${updatedContent}">`;
-	              $("#hidden_area").append(value);
-	          });
-	      });
-	      //닫기 버튼을 눌렀을 때 모달팝업이 닫힘
-	      modalClose.addEventListener('click',function(){
-	          //'on' class 제거
-	          modal.classList.remove('on');
-	      });
-	      
-	   }
-	   
-	   
-	   
-	   function selectBoardAnswerCount(){
-	      $.ajax({
-	         url:"rCount.bd",
-	         data:{isbn:isbn},
-	         success:function(rCount){
-	            $(".comment-count").text("댓글 " + rCount);
-	         },error:function(){
-	            console.log("댓글 갯수 조회용 ajax 통신 실패");
-	         }
-	      })
-	   }
-	   
-	   <!-- 댓글 수 카운트-->
-	   const replyContent = document.getElementById('replyContent');
-	   const charCountDisplay = document.querySelector('.char-count');
-	   const maxChars = 300;
-	   
-	   replyContent.addEventListener('input', () => {
-	       const currentLength = replyContent.value.length;
-	       charCountDisplay.innerHTML = `\${currentLength} / <span id="maxChars">\${maxChars}</span> 자`;
-	   
-	   });
-	   <!-- 여기까지 댓글 수 카운트 스크립트 -->
-  
+	 
   
   
   
@@ -1085,6 +941,206 @@ function updateLibraryData() {
         console.error("❌ API 요청 실패:", textStatus, errorThrown);
     });
 };
+
+
+
+//ajax으로 댓글 작성용 함수
+function insertReply(){
+   const content = replyContent.value.trim();
+   if (starValue === 0) { // ⭐ 최소 별점 1개 이상 선택하도록 제한
+       alert("별점을 최소 1개 이상 선택하세요!");
+       return;
+   }
+    if (content.length === 0) {
+        alert('댓글을 입력하세요.');
+        return;
+    }else{
+      $.ajax({
+         url:"<%=contextPath%>/rinsert.bd",
+         data:{
+            content:$("#replyContent").val(),
+            isbn:isbn,
+            starValue:starValue,
+         },
+         type:"post",
+         success:function(result){
+            if(result > 0){ // 댓글 작성 성공 => 갱신된 댓글 리스트 조회
+               selectReplyList();
+               $("#replyContent").val("");
+               $(".star").removeClass("checked"); // 별점 초기화
+               startValue = 0;
+               charCountDisplay.innerHTML = `0 / <span id="maxChars">\${maxChars}</span> 자`;
+            }else{ // 댓글 작성 실패
+               
+            }
+         },error:function(){
+            console.log("댓글 작성용 ajax 통신 실패")
+         }
+      })
+    }
+}
+
+$(function(){// 화면이 다 로드되고 나서 하는 행위
+	   
+    // 댓글 개수 조회
+    selectBookAnswerCount();
+    
+    // 댓글조회
+    selectReplyList();
+    
+    // setInterval(주기적으로 실행할 함수, ms단위 시간);
+    //setInterval(selectReplyList, 1000); // 1초에 한번씩 새로고침
+    //setInterval(selectBoardAnswerCount, 1000); 
+    
+ })
+ 
+ startValue = 0;
+ $(".star").on("click", function(){
+	 
+  starValue = $(this).index() + 1; // 0부터 시작하므로 +1
+  
+  
+});
+ 
+ 
+ 
+ 
+ function selectReplyList() {
+	    $.ajax({
+	        url: "<%=contextPath%>/rlist.bd",
+	        data: { isbn: isbn },
+	        success: function (rlist) {
+	            let value = "";
+	            let loginNickname = "<%= loginNickname %>"; // JSP에서 가져온 로그인 닉네임 (null 가능)
+
+	            for (let i = 0; i < rlist.length; i++) {
+	                let r = rlist[i].bookAnswerNo; // 댓글 번호
+	                let writer = rlist[i].nickName; // 댓글 작성자 닉네임
+	                let content = rlist[i].answerContent; // 댓글 내용
+	                let writerNo = rlist[i].memNo;
+	                let starCount = rlist[i].star; // ⭐ 저장된 별점 값 (1~5)
+
+	                // ⭐ 별점 UI 동적 생성
+	                let starHtml = `<div class="starFather" style="width: 170px; border-radius: 20px; padding: 5px 0 3px 5px; float: right;">`;
+	                for (let j = 1; j <= 5; j++) {
+	                    if (j <= starCount) {
+	                        starHtml += `<button class="stars checked"><i class="fa-solid fa-star"></i></button>`; // ⭐ 선택된 별
+	                    } else {
+	                        starHtml += `<button class="stars"><i class="fa-solid fa-star"></i></button>`; // ⭐ 선택 안 된 별
+	                    }
+	                }
+	                starHtml += `</div>`;
+
+	                value += starHtml;
+	                value += `<div class="comment">
+	                            <p class="comment-meta">
+	                                <strong>\${writer}</strong> | \${rlist[i].answerDate}
+	                                <span class="set-comment">`;
+
+	                if (loginNickname && loginNickname === writer) {
+	                	value += `<button class="update" onclick="updateReply(\${r}); scrollToSection('comment-form', 200)">수정</button> | 
+	                        <button onclick="hideReply(\${r})">삭제</button>`;
+	                }
+
+	                value += `</span></p>
+	                          <p class="comment-text">\${content}</p>
+	                          </div>`;
+	            }
+	            
+	            $(".comment-list").html(value);
+	        },
+	        error: function () {
+	            console.log("댓글 목록 조회용 AJAX 실패");
+	        }
+	    });
+	}
+ 
+ function scrollToSection(id, offset = 100) { 
+	    let target = document.getElementById(id);
+	    if (target) {
+	        let targetPosition = target.getBoundingClientRect().top + window.scrollY; // 요소의 실제 위치 계산
+	        window.scrollTo({ top: targetPosition - offset, behavior: "smooth" }); // 원하는 만큼 위로 조정
+	    }
+	}
+ 
+ 
+ // 삭제 버튼 클릭 시 실행될 함수
+ function hideReply(rno) {
+     $.ajax({
+         url: "<%=contextPath%>/rDelete.bd", // 서블릿 URL
+         type: "POST", // UPDATE는 보통 POST 방식 사용
+         data: { 
+            rno: rno,
+         }, // 댓글 번호, 게시글 번호 전송
+         success:function(response){
+            alert("댓글이 성공적으로 삭제되었습니다.");
+         },error:function(){
+            alert("댓글 삭제에 실패했습니다.");
+         }
+     });
+ }
+ 
+
+ function updateReply(rno){
+     
+     const modal = document.querySelector('.modal');
+     const modalOpen = document.querySelector('.modal_btn');
+     const modalClose = document.querySelector('.close_btn');
+     
+     //열기 버튼을 눌렀을 때 모달팝업이 열림
+     $(".comment-list").on('click', '.update',function(){
+           let rContent2 = $(this).closest('.comment').find('.comment-text').text();
+           let value = `<input type="hidden" name="rno" value="\${rno}"></input>`
+           $("#hidden_area").html(value);
+           value = `<input type="hidden" name="isbn" value="\${isbn}"></input>`
+           $("#hidden_area").append(value);
+          //'on' class 추가
+         modal.classList.add('on');
+          $("#update_content").text(rContent2);
+       
+          
+          $("#update_content").on("input", function () {
+             let updatedContent = $(this).val(); // textarea의 변경된 값
+             // hidden 영역에 업데이트된 rcontent 값을 저장
+             $("#hidden_area").find("input[name='rcontent']").remove(); // 기존 값 제거
+             value = `<input type="hidden" name="rcontent" value="\${updatedContent}">`;
+             $("#hidden_area").append(value);
+         });
+     });
+     //닫기 버튼을 눌렀을 때 모달팝업이 닫힘
+     modalClose.addEventListener('click',function(){
+         //'on' class 제거
+         modal.classList.remove('on');
+     });
+     
+  } 
+
+ 
+ 
+ function selectBookAnswerCount(){
+    $.ajax({
+       url:"<%=contextPath%>/rCount.bd",
+       data:{isbn:isbn},
+       success:function(rCount){
+          $(".comment-count").text("댓글 " + rCount);
+       },error:function(){
+          console.log("댓글 갯수 조회용 ajax 통신 실패");
+       }
+    })
+ }
+ 
+ <!-- 댓글 수 카운트-->
+ const replyContent = document.getElementById('replyContent');
+ const charCountDisplay = document.querySelector('.char-count');
+ const maxChars = 300;
+ 
+ replyContent.addEventListener('input', () => {
+     const currentLength = replyContent.value.length;
+     charCountDisplay.innerHTML = `\${currentLength} / <span id="maxChars">\${maxChars}</span> 자`;
+ 
+ });
+ <!-- 여기까지 댓글 수 카운트 스크립트 -->
+
 
 </script>
 <!-- -----------------------------댓글 관련 스크립트----------------------------------  -->

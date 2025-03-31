@@ -1,29 +1,27 @@
 package com.kh.book.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
 import com.kh.book.model.service.BookService;
 import com.kh.book.model.vo.BookAnswer;
+import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class AjaxBookReplyListController
+ * Servlet implementation class AjaxBookReplyInsertController
  */
-@WebServlet("/rlist.bd")
-public class AjaxBookReplyListController extends HttpServlet {
+@WebServlet("/rinsert.bd")
+public class AjaxBookReplyInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxBookReplyListController() {
+    public AjaxBookReplyInsertController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,12 +30,20 @@ public class AjaxBookReplyListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String replyContent = request.getParameter("content");
 		String isbn = request.getParameter("isbn");
+		int starValue = Integer.parseInt(request.getParameter("starValue"));
+		int userNo = ((Member)request.getSession().getAttribute("loginMember")).getMemNo();
+
+		BookAnswer ba = new BookAnswer();
+		ba.setAnswerContent(replyContent);
+		ba.setIsbnNo(isbn);
+		ba.setMemNo(userNo);
+		ba.setStar(starValue);
 		
-		ArrayList<BookAnswer> list = new BookService().selectReplyList(isbn);
+		int result = new BookService().insertReply(ba);
 		
-		response.setContentType("application/json; charset=utf-8");
-		new Gson().toJson(list, response.getWriter());
+		response.getWriter().print(result);
 	}
 
 	/**

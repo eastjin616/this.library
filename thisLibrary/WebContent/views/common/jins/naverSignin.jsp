@@ -4,10 +4,10 @@
 <% String contextPath = request.getContextPath(); %>
 <%
 	String alertMsg = (String)request.getAttribute("alertMsg");
-	String id = (String)request.getAttribute("id");
 	String nickname = (String)request.getAttribute("nickname");
 	String email = (String)request.getAttribute("email");
 	String mobile = (String)request.getAttribute("mobile");
+	String NaverKey = (String)request.getAttribute("NaverKey");
 %>
 
 <!DOCTYPE html>
@@ -302,7 +302,7 @@
 							class="form-control" name="email" placeholder="이메일 주소를 입력해주세요" value="<%= email %>">
 					</div>
 					
-					<input type="hidden" name="key" value="<%= id %>">
+					<input type="hidden" name="key" value="<%= NaverKey %>">
 
 
 					<div class="form-group text-center">

@@ -325,88 +325,11 @@ hr {
            $.getJSON(apiURL, function (data) {
                console.log("📚 API 응답:", data);
 
-<<<<<<< HEAD
-           let currentPage = 1; // 현재 페이지 (기본값 1)
-
-           function loadBooks(page) {
-               // 페이지가 변경될 때마다 책을 불러오는 함수
-               let startIndex = (page - 1) * booksPerPage;
-               let endIndex = startIndex + booksPerPage;
-
-               // 책 정보 초기화
-               $("#content_2_2").empty();
-               
-               let heartIcon = isLoggedIn
-               ? '<div class="heart"><i class="fas fa-heart" ></i></div>'
-               : '';
-
-               // 현재 페이지에 맞는 책들만 표시
-               for (let i = startIndex; i < endIndex && i < totalBooks; i++) {
-                   let doc = books[i].doc;
-
-                   if (!doc) {
-                       console.error(`❌ books[${i}].doc가 없습니다. book 데이터:`, books[i]);
-                       continue;
-                   }
-
-                   let imageURL = doc.bookImageURL || "https://via.placeholder.com/150"; // 기본 이미지 사용
-                   let title = doc.bookname || "제목 없음";
-                   let authorFull = doc.authors || "작가 정보 없음";
-                   let publisher = doc.publisher || "출판사 정보 없음";
-                   let pubYear = doc.publication_year || "출판일 정보 없음";
-                   let isbn = doc.isbn13 || "isbn 정보 없음" ;
-
-                   let author = "작가 정보 없음";
-                   let translator = "번역가 정보 없음";
-
-                   if (authorFull.includes("지은이:")) {
-                       author = authorFull.split("지은이:")[1].split(";")[0].trim();
-                   }
-                   if (authorFull.includes("옮긴이:")) {
-                       translator = authorFull.split("옮긴이:")[1].split(";")[0].trim();
-                   }
-
-                   const isJjim = jjimList.includes(imageURL);
-
-                   let heartColor = isJjim ? 'red' : 'gray';
-                   let heartClass = isJjim ? 'active' : '';
-
-
-                   let bookHTML = 
-                       '<hr>'+
-                       '<div id="content_2_2_'+(i + 1)+'" class="content_2_2_book">'+
-                           '<div id="book'+(i + 1)+'" class="book" onclick="location.href=\'bookDetail.jsp?isbn='+isbn+'\';" style="cursor: pointer;">'+
-                               '<img src="'+ imageURL +'" alt="'+title+'">'+
-                           '</div>'+
-                           '<div id="bookcon'+(i + 1)+ heartIcon + ' " class="bookcon">'+
-                               '<div class="spare1"></div>'+
-                               '<div class="bookinfo">'+
-                                   '<p style="font-size: 20px; cursor: pointer;" onclick="window.location.href=\'bookDetail.jsp\';"><b>'+title+'</b></p>'+
-                                   '<hr style="width: 70px; margin-left: 0%;">'+
-                                   '지은이 : <span style="font-size: 15px;">'+author+'</span> &nbsp;|&nbsp; 옮긴이 : <span style="font-size: 15px;">'+translator+'</span>'+
-                                   '<br><br>'+
-                                   '출판사 : <span style="font-size: 15px;">'+publisher+'</span>&nbsp;|&nbsp; 출판일 :<span style="font-size: 15px;">'+pubYear+'</span>'+
-                                   '<br><br><br>'+
-                                   '<div style="display: flex;">'+
-                                       '<p><i class="fas fa-star" style="color: #085ae7;"></i></p>'+
-                                       '<p style="margin-left: 5px; margin-top: 20;">4.84</p>'+
-                                       '<p style="margin-left: 5px; margin-top: 20;">(350reviews)</p>'+
-                                   '</div>'+
-                               '</div>'+
-                               '<div class="heart">'+
-                               '<i class="fas fa-heart heart-icon ' + heartClass + '" style="color:' + heartColor + ';" onclick="toggleHeart(this)"></i>'+
-                               '</div>'+
-                           '</div>'+
-                       '</div>';
-
-                   $("#content_2_2").append(bookHTML);
-=======
                if (!data || !data.response || !data.response.docs || data.response.docs.length === 0) {
                    console.error("❌ 책 데이터가 없습니다.");
                    $("#content_2_2").html("<p>책 데이터가 없습니다.</p>");
                    $(".pagination").empty(); // 페이지네이션도 초기화
                    return;
->>>>>>> books
                }
 
                currentBooks = data.response.docs.slice(0, 20);
@@ -448,6 +371,12 @@ hr {
                let author = parts[0].trim();
                let translator = parts.length > 1 ? parts[1].trim() : "번역가 정보 없음";
 
+               const isJjim = jjimList.includes(imageURL);
+
+                let heartColor = isJjim ? 'red' : 'gray';
+                let heartClass = isJjim ? 'active' : '';
+
+
                let bookHTML =
             	   '<br>'+
                    '<hr>' +
@@ -467,7 +396,9 @@ hr {
                                    '<p style="margin-left: 5px; margin-top: 20px;">' + genre + '</p>' +
                                '</div>' +
                            '</div>' +
-                           '<div class="heart"><i class="fas fa-heart"></i></div>' +
+                          '<div class="heart">'+
+                               '<i class="fas fa-heart heart-icon ' + heartClass + '" style="color:' + heartColor + ';" onclick="toggleHeart(this)"></i>'+
+                               '</div>'+
                        '</div>' +
                    '</div>';
 
@@ -539,7 +470,6 @@ hr {
   });
 //=====================================================================================
 
-<<<<<<< HEAD
 
 	
 	
@@ -584,8 +514,6 @@ hr {
 	
 	
 
-=======
->>>>>>> books
 </script>
 
 

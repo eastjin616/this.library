@@ -29,7 +29,8 @@ public class UpdateUserInfo extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("UTF-8");
+
 		
 		String newUserPwd = request.getParameter("userPwd");
 	    String userNick = request.getParameter("userNick");

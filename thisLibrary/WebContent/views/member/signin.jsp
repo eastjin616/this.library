@@ -68,6 +68,8 @@ body * {
 
 <body>
 <%@ include file="../common/menubar.jsp" %>
+
+
 	<form id="form" action="<%= contextPath %>/signin.me" method="post"
 		onsubmit="return validatePassword();">
 
@@ -161,13 +163,12 @@ body * {
 
 
 				<div class="form-group text-center">
-					<button type="submit" id="join-submit"
-						class="btn btn-primary btn-space">
+					<button type="submit" id="join-submit" class="btn btn-primary btn-space">
 						회원가입<i class="fa fa-check spaceLeft"></i>
-						<button type="button" class="btn btn-danger"
-							onClick="location.href='<%=contextPath%>/views/common/mainPage.jsp'">
+						<button type="button" class="btn btn-danger" onClick="location.href='<%=contextPath%>/views/common/mainPage.jsp'">
 							취소<i class="fa fa-check spaceLeft"></i>
 						</button>
+						</div>
 	</form>
 	</div>
 	</article>

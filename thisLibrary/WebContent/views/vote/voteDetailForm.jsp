@@ -289,12 +289,36 @@
 
 						</div>
 
+						<!-- 투표 종료 메시지 -->
+						<p class="vote-message" style="display: none; color: red; text-align: center;">투표가 종료되었습니다.</p>
+						
+						<!-- 투표 버튼 -->
 						<button class="submit-btn" style="margin-left: 47%;" onclick="vote()">투표하기</button>
 
 						</p>
 					</div>
 
 					<script>
+					
+					window.onload = function() {
+					    // 🔹 JSP에서 투표 종료일 가져오기 (YYYY-MM-DD 형식)
+					    let voteEndDateStr = "<%=v.getVoteEndDate()%>"; 
+
+					    // 🔹 현재 날짜 가져오기 (시간을 00:00:00으로 설정)
+					    let today = new Date();
+					    today.setHours(0, 0, 0, 0); // 시간을 00:00:00으로 맞춰서 날짜만 비교
+
+					    // 🔹 문자열 날짜를 Date 객체로 변환
+					    let voteEndDate = new Date(voteEndDateStr);
+					    voteEndDate.setHours(0, 0, 0, 0); // 시간을 00:00:00으로 맞춰서 날짜만 비교
+
+					    // 🔹 투표 종료일이 오늘보다 "이전"이면 버튼 숨김
+					    if (today > voteEndDate) { // ⬅ 종료일이 오늘 이전이라면
+					        document.querySelector(".submit-btn").style.display = "none";  // 투표 버튼 숨기기
+					        document.querySelector(".vote-message").style.display = "block"; // "투표 종료" 메시지 보이기
+					    }
+					};
+					
 					let bookNum = 0;
 					let selectBook1 = 0;
 					let selectBook2 = 0;

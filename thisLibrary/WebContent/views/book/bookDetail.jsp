@@ -45,7 +45,7 @@ div {
 }
 
 #sidebar {
-	height: auto;
+	height: 210px;
 	float: left;
 }
 
@@ -198,7 +198,7 @@ pre {
 
 /*--------사이드바---------------------------------------------  */
 #sidebar {
-	width: 10%;
+	width: 180px;
 	background-color: #fff7eb;
 	border: 2px solid #a56b2a;
 	border-radius: 15px;
@@ -241,6 +241,21 @@ pre {
 	font-weight: bold;
 	transform: scale(1.05);
 	cursor: pointer;
+}
+
+#location{
+	width: 70px;
+	height: 40px;
+	border: 1px solid #a56b2a;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: 400;
+}
+#location:focus{
+	border: 1px solid #fff7eb;
+	box-sizing: border-box;
+	border-radius: 10px;
+	outline: 3px solid #d9a066;
 }
 
 /* ==============preview======================================= */
@@ -405,7 +420,6 @@ pre {
    border: none;
    background-color: #f9f9f9;
 }
-<<<<<<< HEAD
 .stars i {
     color: white; /* 내부 색상을 흰색으로 설정 */
     -webkit-text-stroke: 1px black; /* 테두리를 검은색으로 설정 */
@@ -482,32 +496,6 @@ h2{
 
 
 
-=======
-
-
-
-#location {
-	width: 60px;
-	border-radius: 10px;
-	padding: 5px 6px;
-}
-#location:focus{
-	border: 1px solid #fff7eb;
-	box-sizing: border-box;
-	border-radius: 10px;
-	outline: 3px solid #d9a066;
-	border-radius: 10px;
-}
-
-
-<select id="location" onchange="updateLibraryData()">
-	<option value="">선택</option>
-	<option value="11">서울</option>
-	<option value="21">부산</option>
-	<option value="22">대구</option>
-	<option value="23">인천</option>
-</select>
->>>>>>> books
 
 </style>
 </head>
@@ -564,6 +552,7 @@ h2{
 								<br>
 							<div id="description"></div>
 							<br>
+
 						</div>
 						<hr style="width: 80%;">
 						<div id="neyong" style="margin-left: 55px; font-size: large;">함께 대출된 도서</div>
@@ -1170,7 +1159,7 @@ $(function(){// 화면이 다 로드되고 나서 하는 행위
     })
  }
  
- <!-- 댓글 수 카운트-->
+//  <!-- 댓글 수 카운트-->
  const replyContent = document.getElementById('replyContent');
  const charCountDisplay = document.querySelector('.char-count');
  const maxChars = 300;
@@ -1180,7 +1169,7 @@ $(function(){// 화면이 다 로드되고 나서 하는 행위
      charCountDisplay.innerHTML = `\${currentLength} / <span id="maxChars">\${maxChars}</span> 자`;
  
  });
- <!-- 여기까지 댓글 수 카운트 스크립트 -->
+//  <!-- 여기까지 댓글 수 카운트 스크립트 -->
 
 
 </script>

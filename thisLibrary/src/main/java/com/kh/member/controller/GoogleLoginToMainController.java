@@ -16,7 +16,7 @@ public class GoogleLoginToMainController extends HttpServlet {
         // 세션에서 로그인된 회원 객체 꺼내오기
 //        HttpSession session = request.getSession();
 //        Member loginMember = (Member) session.getAttribute("loginMember");
-
+    	System.out.println("구글 로그인 간다.");
     	String email = request.getParameter("email");
        	String name = request.getParameter("name");
        	String snskey = request.getParameter("snskey");

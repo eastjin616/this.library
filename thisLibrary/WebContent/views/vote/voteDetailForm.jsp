@@ -1,304 +1,318 @@
 <%@page import="com.kh.vote.model.vo.Vote"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%
 	Vote v = (Vote)request.getAttribute("v");
 %>
-		<!DOCTYPE html>
-		<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-		<head>
-			<meta charset="UTF-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>Document1</title>
-						<script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/path/to/your/favicon.ico" type="image/x-icon">
+<title>Document1</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-			<style>
-				.post-container {
-					width: 70%;
-					margin: 30px auto;
-					padding: 20px;
-					background: white;
-					border-radius: 10px;
-					box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-				}
+<style>
+.post-container {
+	width: 70%;
+	margin: 30px auto;
+	padding: 20px;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-				.post-header {
-					border-bottom: 1px solid #ddd;
-					padding-bottom: 10px;
-					margin-bottom: 10px;
-				}
+.post-header {
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
 
-				.post-header h2 {
-					display: inline-block;
-					margin: 0;
-				}
+.post-header h2 {
+	display: inline-block;
+	margin: 0;
+}
 
-				.label {
-					background: #ff7f50;
-					color: white;
-					font-size: 12px;
-					padding: 3px 6px;
-					border-radius: 4px;
-					margin-left: 5px;
-				}
+.label {
+	background: #ff7f50;
+	color: white;
+	font-size: 12px;
+	padding: 3px 6px;
+	border-radius: 4px;
+	margin-left: 5px;
+}
 
-				.label:hover {
-					opacity: 0.7;
-				}
+.label:hover {
+	opacity: 0.7;
+}
 
-				.post-meta {
-					font-size: 14px;
-					color: #777;
-				}
+.post-meta {
+	font-size: 14px;
+	color: #777;
+}
+
+.post-content {
+	font-size: 16px;
+	line-height: 1.6;
+	margin-bottom: 20px;
+}
+
+.comment-section {
+	border-top: 2px solid #ddd;
+	padding-top: 20px;
+}
+
+/* 댓글 개수 스타일 */
+.comment-count {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+/* 댓글 입력 영역 */
+.comment-form {
+	background: #f9f9f9;
+	padding: 15px;
+	border-radius: 8px;
+	border: 1px solid #ddd;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	position: relative;
+}
+
+/* 댓글 작성하기 제목 + 버튼 */
+.comment-form-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.comment-form-header h4 {
+	margin: 0;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+/* 텍스트 입력 창 */
+.comment-form textarea {
+	width: 100%;
+	height: 80px;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	resize: none;
+	font-size: 14px;
+}
+
+/* 글자 수 카운트 (0 / 300 자) */
+.char-count {
+	font-size: 12px;
+	color: #777;
+	text-align: right;
+	padding-right: 5px;
+}
+
+.submit-btn {
+	padding: 6px 12px;
+	background-color: #ff7f50;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+.submit-btn:hover {
+	opacity: 0.7;
+}
+
+.comment {
+	border-bottom: 1px solid #eee;
+	padding: 10px 0;
+}
+
+.comment p {
+	margin: 5px 0;
+}
+
+.comment-meta {
+	font-size: 15px;
+	padding-bottom: 5px;
+}
+
+.comment-text {
+	line-height: 1.2;
+}
+
+.set-comment button, .set-header button {
+	border: 0;
+	background-color: transparent;
+}
+
+.set-comment button:hover, .set-header button:hover {
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.vote {
+	display: flex;
+	justify-content: center;
+}
+
+#vs {
+	align-content: center;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+/* -------------------- 모달 ------------------------*/
+h2 {
+	text-align: center;
+}
+
+.modal_btn {
+	display: block;
+	margin: 40px auto;
+	padding: 10px 20px;
+	background-color: royalblue;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	transition: box-shadow 0.2s;
+}
+
+.modal_btn:hover {
+	box-shadow: 3px 4px 11px 0px #00000040;
+}
+
+/*모달 팝업 영역 스타일링*/
+.modal {
+	/*팝업 배경*/
+	display: none; /*평소에는 보이지 않도록*/
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.modal .modal_popup {
+	/*팝업*/
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 20px;
+	background: #ffffff;
+	border-radius: 20px;
+}
+
+.modal .modal_popup .close_btn {
+	padding: 10px 20px;
+	background-color: rgb(116, 0, 0);
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	transition: box-shadow 0.2s;
+}
+
+.modal.on {
+	display: block;
+}
+</style>
+</head>
+<meta charset="UTF-8">
+<!-- ------------------------------------------------------------------ -->
+
+<body>
+	<%@ include file="../common/menubar.jsp"%>
 
 
+	<% String loginNickname = (loginMember != null) ? loginMember.getNickname() : null; %>
+	<% Integer loginMemNo = (loginMember != null) ? loginMember.getMemNo() : null; %>
 
-				.post-content {
-					font-size: 16px;
-					line-height: 1.6;
-					margin-bottom: 20px;
-				}
+	<div class="post-container">
+		<div class="post-header">
+			<h2><%=v.getVoteTitle() %>
+				<%if(loginMember != null && v.getMemNo() != loginMemNo){%>
+				<span class="label btn btn-primary" id="follow-btn"> 팔로우 </span>
+				<% } %>
+			</h2>
+			<% if(loginMember != null && loginNickname.equals(v.getWriter())){ %>
+			<span class="set-header">
+				<button onclick="updateForm()">수정</button> |
+				<button onclick="deleteVote()">삭제</button>
+			</span>
+			<%} %>
+			<p class="post-meta">
+				작성자:
+				<%=v.getWriter() %>
+				|
+				<%=v.getVoteStartDate() %>
+				| 조회수 :
+				<%=v.getCount() %>
+			</p>
+		</div>
 
-				.comment-section {
-					border-top: 2px solid #ddd;
-					padding-top: 20px;
-				}
+		<div class="post-content">
+			<p>
+			<center>
+				<h2>투표 종료일</h2>
+			</center>
+			<center>
+				<h3><%=v.getVoteEndDate() %></h3>
+			</center>
+			<br>
 
-				/* 댓글 개수 스타일 */
-				.comment-count {
-					font-size: 18px;
-					font-weight: bold;
-					margin-bottom: 10px;
-				}
+			<div class="vote">
+				<div id="book1" onclick="voteSelect(1)">
+					<img id="selectBook1" src="<%=v.getBook1Url() %>" width="350"
+						height="500">
+					<center>
+						<div><%=v.getBook1() %></div>
+						<div>
+							현재 투표수 :
+							<%=v.getVoteCount1() %></div>
+					</center>
+				</div>
 
-				/* 댓글 입력 영역 */
-				.comment-form {
-					background: #f9f9f9;
-					padding: 15px;
-					border-radius: 8px;
-					border: 1px solid #ddd;
-					display: flex;
-					flex-direction: column;
-					gap: 10px;
-					position: relative;
-				}
+				<div id="vs">
+					<img src="<%= contextPath %>/resources/assets/vs.png" alt="">
+				</div>
 
+				<div id="book2" onclick="voteSelect(2)">
+					<img id="selectBook2" src="<%=v.getBook2Url() %>" width="350"
+						height="500">
+					<center>
+						<div><%=v.getBook2() %></div>
+						<div>
+							현재 투표수 :
+							<%=v.getVoteCount2() %></div>
+					</center>
+				</div>
 
-				/* 댓글 작성하기 제목 + 버튼 */
-				.comment-form-header {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-				}
+			</div>
 
+			<!-- 투표 종료 메시지 -->
+			<p class="vote-message"
+				style="display: none; color: red; text-align: center;">투표가
+				종료되었습니다.</p>
 
-				.comment-form-header h4 {
-					margin: 0;
-					font-size: 16px;
-					font-weight: bold;
-				}
+			<!-- 투표 버튼 -->
+			<button class="submit-btn" style="margin-left: 47%;" onclick="vote()">투표하기</button>
 
-				/* 텍스트 입력 창 */
-				.comment-form textarea {
-					width: 100%;
-					height: 80px;
-					padding: 10px;
-					border: 1px solid #ddd;
-					border-radius: 5px;
-					resize: none;
-					font-size: 14px;
-				}
+			</p>
+		</div>
 
-				/* 글자 수 카운트 (0 / 300 자) */
-				.char-count {
-					font-size: 12px;
-					color: #777;
-					text-align: right;
-					padding-right: 5px;
-				}
-
-				.submit-btn {
-					padding: 6px 12px;
-					background-color: #ff7f50;
-					color: white;
-					border: none;
-					border-radius: 5px;
-					cursor: pointer;
-					font-size: 14px;
-				}
-
-				.submit-btn:hover {
-					opacity: 0.7;
-				}
-
-				.comment {
-					border-bottom: 1px solid #eee;
-					padding: 10px 0;
-				}
-
-				.comment p {
-					margin: 5px 0;
-				}
-
-				.comment-meta {
-					font-size: 15px;
-					padding-bottom: 5px;
-				}
-
-				.comment-text {
-					line-height: 1.2;
-				}
-
-
-				.set-comment button,
-				.set-header button {
-					border: 0;
-					background-color: transparent;
-
-				}
-
-				.set-comment button:hover,
-				.set-header button:hover {
-					cursor: pointer;
-					opacity: 0.7;
-				}
-
-				.vote {
-					display: flex;
-					justify-content: center;
-				}
-
-				#vs {
-					align-content: center;
-					padding-left: 50px;
-					padding-right: 50px;
-				}
-				
-				
-				/* -------------------- 모달 ------------------------*/
-				h2{
-		   		 text-align: center;
-				}
-				.modal_btn {
-				    display: block;
-				    margin: 40px auto;
-				    padding: 10px 20px;
-				    background-color: royalblue;
-				    border: none;
-				    border-radius: 5px;
-				    color: #fff;
-				    cursor: pointer;
-				    transition: box-shadow 0.2s;
-				}
-				.modal_btn:hover {
-				    box-shadow: 3px 4px 11px 0px #00000040;
-				}
-				
-				/*모달 팝업 영역 스타일링*/
-				.modal {
-				/*팝업 배경*/
-					display: none; /*평소에는 보이지 않도록*/
-				    position: absolute;
-				    top:0;
-				    left: 0;
-				    width: 100%;
-				    height: 100vh;
-				    overflow: hidden;
-				    background: rgba(0,0,0,0.5);
-				}
-				.modal .modal_popup {
-				/*팝업*/
-				    position: absolute;
-				    top: 50%;
-				    left: 50%;
-				    transform: translate(-50%, -50%);
-				    padding: 20px;
-				    background: #ffffff;
-				    border-radius: 20px;
-				}
-				.modal .modal_popup .close_btn {
-				    padding: 10px 20px;
-				    background-color: rgb(116, 0, 0);
-				    border: none;
-				    border-radius: 5px;
-				    color: #fff;
-				    cursor: pointer;
-				    transition: box-shadow 0.2s;
-				}
-				.modal.on {
-   				  display: block;
-				}		
-			</style>
-		</head>
-		<meta charset="UTF-8">
-		<!-- ------------------------------------------------------------------ -->
-
-		<body>
-				<%@ include file="../common/menubar.jsp" %>
-				
-				
-				<% String loginNickname = (loginMember != null) ? loginMember.getNickname() : null; %>
-				<% Integer loginMemNo = (loginMember != null) ? loginMember.getMemNo() : null; %>
-				
-				<div class="post-container">
-					<div class="post-header">
-						<h2><%=v.getVoteTitle() %>
-					<%if(loginMember != null && v.getMemNo() != loginMemNo){%> 
-						<span class="label btn btn-primary" id="follow-btn">
-						팔로우
-						</span>
-					<% } %>
-						</h2>
-						<% if(loginMember != null && loginNickname.equals(v.getWriter())){ %>
-						<span class="set-header">
-						<button onclick="updateForm()">수정</button> | 
-						<button onclick="deleteVote()">삭제</button>
-						</span>
-						<%} %>
-						<p class="post-meta">
-							작성자: <%=v.getWriter() %> | <%=v.getVoteStartDate() %> | 조회수 : <%=v.getCount() %>
-						</p>
-					</div>
-
-					<div class="post-content">
-						<p>
-						
-							<center><h2>투표 종료일</h2></center>
-							<center><h3><%=v.getVoteEndDate() %></h3></center>
-							<br>
-
-						<div class="vote">
-							<div id="book1" onclick="voteSelect(1)">
-								<img id="selectBook1" src="<%=v.getBook1Url() %>" width="350" height="500">
-								<center>
-									<div><%=v.getBook1() %></div>
-									<div>현재 투표수 : <%=v.getVoteCount1() %></div>
-								</center>
-							</div>
-
-							<div id="vs"><img src="<%= contextPath %>/resources/assets/vs.png" alt=""></div>
-
-							<div id="book2" onclick="voteSelect(2)">
-								<img id="selectBook2" src="<%=v.getBook2Url() %>" width="350" height="500">
-								<center>
-									<div><%=v.getBook2() %></div>
-									<div>현재 투표수 : <%=v.getVoteCount2() %></div>
-								</center>
-							</div>
-
-						</div>
-
-						<!-- 투표 종료 메시지 -->
-						<p class="vote-message" style="display: none; color: red; text-align: center;">투표가 종료되었습니다.</p>
-						
-						<!-- 투표 버튼 -->
-						<button class="submit-btn" style="margin-left: 47%;" onclick="vote()">투표하기</button>
-
-						</p>
-					</div>
-
-					<script>
+		<script>
 					
 					window.onload = function() {
 					    // 🔹 JSP에서 투표 종료일 가져오기 (YYYY-MM-DD 형식)
@@ -349,43 +363,42 @@
 						
 					</script>
 
-					<div class="comment-section">
-						<h3 class="comment-count">여기에 동적으로 실시간 댓글 수 들어갈거</h3>
-						<div style="border-bottom: 2px solid #eee"></div>
+		<div class="comment-section">
+			<h3 class="comment-count">여기에 동적으로 실시간 댓글 수 들어갈거</h3>
+			<div style="border-bottom: 2px solid #eee"></div>
 
-						<% if(loginMember == null){ %>
-						
-						<% }else{ %>
-								<div class="comment-form">
-		
-									<div class="comment-form-header">
-										<h4>댓글 작성하기</h4>
-										<button class="submit-btn" onclick="insertReply()">작성하기</button>
-									</div>
-									<textarea id="replyContent" placeholder="댓글을 입력하세요..." maxlength="300" style="width: 1000px;"></textarea>
-									<div class="char-count">0 / 300 자</div>
-								</div>
-						<% } %>
-						<div class="comment-list">
+			<% if(loginMember == null){ %>
 
-						</div>
-					</div>
-					
-					<!--모달 팝업-->
-					<div class="modal">
-					    <div class="modal_popup">
-					        <h3>댓글 수정하기</h3>
-					        <form action="<%=contextPath%>/rUpdate.vo" method="GET">
-					        <textarea id="update_content" style="width:1000px; height: 100px;"></textarea>
-					        <button type="button" class="close_btn">닫기</button>
-					        <button type="submit" class="close_btn">수정하기</button>
-					        <div id="hidden_area"></div>
-					        </form>
-					    </div>
-					</div>
-					<!--end 모달 팝업-->
-					
-					<script>
+			<% }else{ %>
+			<div class="comment-form">
+
+				<div class="comment-form-header">
+					<h4>댓글 작성하기</h4>
+					<button class="submit-btn" onclick="insertReply()">작성하기</button>
+				</div>
+				<textarea id="replyContent" placeholder="댓글을 입력하세요..."
+					maxlength="300" style="width: 1000px;"></textarea>
+				<div class="char-count">0 / 300 자</div>
+			</div>
+			<% } %>
+			<div class="comment-list"></div>
+		</div>
+
+		<!--모달 팝업-->
+		<div class="modal">
+			<div class="modal_popup">
+				<h3>댓글 수정하기</h3>
+				<form action="<%=contextPath%>/rUpdate.vo" method="GET">
+					<textarea id="update_content" style="width: 1000px; height: 100px;"></textarea>
+					<button type="button" class="close_btn">닫기</button>
+					<button type="submit" class="close_btn">수정하기</button>
+					<div id="hidden_area"></div>
+				</form>
+			</div>
+		</div>
+		<!--end 모달 팝업-->
+
+		<script>
 								$(function(){// 화면이 다 로드되고 나서 하는 행위
 									// 댓글 개수 조회
 									selectVoteAnswerCount();
@@ -394,8 +407,8 @@
 									selectReplyList();
 									
 									// setInterval(주기적으로 실행할 함수, ms단위 시간);
-									//setInterval(selectReplyList, 1000); // 1초에 한번씩 새로고침
-									//setInterval(selectBoardAnswerCount, 1000); 
+									setInterval(selectReplyList, 1000); // 1초에 한번씩 새로고침
+									setInterval(selectVoteAnswerCount, 1000); 
 									
 								})
 								
@@ -630,43 +643,14 @@
 								
 						
 						</script>
-					
-					
-				</div>
-				<%@ include file="../common/footerbar.jsp" %>
-		</body>
-		
-		<script>
-		
-		<!-- 실시간 팔로우 상태 -->
-		const followerId = <%= loginMemNo %>; // 로그인한 사용자 ID
-		const followingId = <%= v.getMemNo() %>; // 게시글 작성자 ID
-		
-		<%if(loginMember != null){ %>
-		// 페이지 로드 시 팔로우 상태 확인
-		$(document).ready(function () {
-		    $.ajax({
-		        url: 'follow/status', // 팔로우 상태를 확인하는 서버 API 경로
-		        method: 'GET',
-		        data: {
-		            followerId: followerId,
-		            followingId: followingId
-		        },
-		        success: function (response) {
-		            console.log("팔로우 상태 확인 응답:", response);
-		
-		            if (response == 1) { // 이미 팔로우 중인 경우
-		                $('#follow-btn').text("팔로잉").removeClass('btn-primary').addClass('btn-secondary');
-		            } else if (response == 0) { // 팔로우 안 돼있는 경우
-		                $('#follow-btn').text("팔로우").removeClass('btn-secondary').addClass('btn-primary');
-		            }
-		        },
-		        error: function () {
-		            alert('팔로우 상태를 확인하는 데 실패했습니다.');
-		        }
-		    });
-		});
-		<%}%>
+
+
+	</div>
+	<%@ include file="../common/footerbar.jsp"%>
+</body>
+
+<script>
+
 		
 		
 		<!-- 실시간 팔로우 상태 여기까지 -->
@@ -680,4 +664,4 @@
 		
 		</script>
 
-		</html>
+</html>

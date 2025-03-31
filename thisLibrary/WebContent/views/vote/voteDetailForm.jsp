@@ -643,16 +643,6 @@ h2 {
 								
 						
 						</script>
-<<<<<<< HEAD
-					
-					
-				</div>
-				<%@ include file="../common/footerbar.jsp" %>
-		</body>
-		
-		<script>
-	
-=======
 
 
 	</div>
@@ -661,7 +651,6 @@ h2 {
 
 <script>
 
->>>>>>> 381de2f9daf97ef80aafe18c63dac3a51a1a9d4a
 		
 		
 		<!-- 실시간 팔로우 상태 여기까지 -->

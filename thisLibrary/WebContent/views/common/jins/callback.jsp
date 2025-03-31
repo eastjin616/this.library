@@ -24,7 +24,7 @@
 <%
     String clientId = "mLwWunRgrPcHxEKgKNbc"; // 네이버 클라이언트 아이디
     String clientSecret = "OKdGAwmGNt"; // 네이버 클라이언트 시크릿
-    String redirectURI = URLEncoder.encode("http://localhost:8777/this/views/common/jins/callback.jsp", "UTF-8");
+    String redirectURI = URLEncoder.encode("http://192.168.20.49:8777/this/views/common/jins/callback.jsp", "UTF-8");
 
     String apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code"
             + "&client_id=" + clientId

@@ -316,8 +316,7 @@ body * {
         console.log("서버 응답:", data);
 
         if (data.status === "success") {
-          alert("구글 로그인 성공!");
-
+						alert("구글 로그인 성공 성공")
           // ✅ 서버가 응답한 redirect 경로로 이동
           if (data.redirect) {
             window.location.href = data.redirect;

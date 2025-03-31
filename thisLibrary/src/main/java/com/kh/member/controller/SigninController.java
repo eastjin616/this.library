@@ -29,7 +29,7 @@ public class SigninController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("..?");
 		request.setCharacterEncoding("UTF-8");
 		
 		String memName = request.getParameter("name");

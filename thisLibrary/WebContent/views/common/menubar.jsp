@@ -262,7 +262,7 @@
                   <div id="header_mypage_btn" style="height: 100%; width: 7%;">
                      
                      <button class="btn" id="mypage" onclick="mypage()">
-												<img src="<%= contextPath %>/resources/assets/user01.png" alt="user-icon" onclick="goToMyPage()" style="cursor: pointer;">
+												<img src="<%= contextPath %>/resources/assets/user01.png" alt="user-icon"  style="cursor: pointer;">
                      </button>
                   </div>
 

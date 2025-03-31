@@ -537,7 +537,7 @@
 							</div>
 							<div id="mypageMainContent2">
 								<div id="mypageMainContent2ProfilPhoto">
-									<div id="userPhoto"><img src="../../resources/assets/chill.png" alt=""></div>
+									<div id="userPhoto"><img src="<%=contextPath %>/resources/assets/chill.png" alt=""></div>
 								</div>
 								<div id="mypagePInfo">
 									<div id="mypageName">
@@ -592,13 +592,13 @@
 										</div>
 									</div>
 									<div id="mypageEmpty"></div>
-									<div id="mypageFollow">
-										<div>팔로우</div>
-										<div></div>
+									<div id="mypageFollower">
+										<div>팔로워</div>
+											<div id="follower"></div> 
 									</div>
-									<div id="mypageFolloing">
+									<div id="mypageFollwoing">
 										<div>팔로잉</div>
-										<div></div>
+											<div id="following"></div> 
 									</div>
 									<div id="mypageJjim">
 										<div>찜 목록</div>
@@ -608,7 +608,7 @@
 							</div>
 							
 							
-							 <%     int memNo = loginMember != null ? loginMember.getMemNo() : 0; %>
+							 <%int memNo = loginMember != null ? loginMember.getMemNo() : 0; %>
 											<form action="<%= contextPath %>/Save.me" method="post" onsubmit="return onSave(event);">
 							    <div id="commantary">
 							        <div><span id="commantaryTitle">Commantary</span></div>
@@ -742,17 +742,6 @@
 					
 					
 					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
 					// ============================================== 마이페이지 감상문 '목록보기'버튼 모달 스크립트
 					document.addEventListener("DOMContentLoaded", function () {
     const contextPath = "<%= contextPath %>";
@@ -880,7 +869,6 @@
 					}
 					
 					
-			
 					
 					
 				
@@ -888,13 +876,6 @@
 					</script>
 					
 					
-				
-				
-				
-				
-				
-				
-				
 
 				<%@ include file="../common/footerbar.jsp" %>
 		</body>

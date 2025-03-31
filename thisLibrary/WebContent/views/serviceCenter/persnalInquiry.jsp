@@ -74,7 +74,9 @@
         }
 
         .input-container {
-          width: 95%
+          width: 95%;
+          overflow-y: hidden; /* 스크롤 숨기고 자동 높이만 */
+				  resize: none;        /* 사용자가 드래그로 사이즈 못 바꾸게 */
         }
 
         input,
@@ -183,7 +185,7 @@
               <div id="content4_5" class="content">
                 <div class="label">내용</div>
                 <div class="input-container">
-                  <textarea name="content" id="" placeholder="문의내용 최대 1000자를 입력해주세요." maxlength="1000"
+                  <textarea name="content" id="autoResizeTextarea"  placeholder="문의내용 최대 1000자를 입력해주세요." maxlength="1000"
                     required></textarea>
                 </div>
               </div>
@@ -215,6 +217,15 @@
                 document.getElementById("fileUpload").addEventListener("change", function () {
                     let fileName = this.files.length > 0 ? this.files[0].name : "선택된 파일 없음";
                     document.getElementById("fileName").textContent = fileName;
+                });
+                
+                
+                
+                const textarea = document.getElementById("autoResizeTextarea");
+
+                textarea.addEventListener("input", function () {
+                  this.style.height = "auto"; // 높이 초기화
+                  this.style.height = this.scrollHeight + "px"; // 실제 콘텐츠 높이로 설정
                 });
             </script>
 

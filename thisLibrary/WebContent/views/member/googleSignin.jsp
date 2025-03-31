@@ -1,7 +1,9 @@
 <%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<% String contextPath = request.getContextPath(); %>
 <%
+String alertMsg = (String)request.getAttribute("alertMsg");
 	Member m = (Member)request.getAttribute("m");
 %>
 
@@ -31,7 +33,95 @@ body * {
 
 /* div {box-sizing: border-box;border: 1px solid red;} */
 
+.wrap {
+	width: 1500px;
+	margin: auto;
+	height: auto;
+	overflow: hidden;
+}
 
+#header {
+	height: 50px;
+}
+
+#footer {
+	height: 150px;
+}
+
+#header>div {
+	height: 100%;
+}
+
+#header_1>div, #header_1_3>div {
+	float: left;
+}
+
+#header_1_1_1 {
+	width: 15%;
+	height: 100%;
+}
+
+#navigator {
+	position: relative;
+	width: 60%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+#navigator>a {
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+}
+
+
+/*-------------------------------------------------------------  */
+#header_mypage_btn, #header_login_btn, #header_signin_btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#login {
+	width: 70%;
+	height: 50%;
+	border-radius: 5px;
+	background-color: #ea916e;
+	color: white;
+	border: none;
+}
+
+#signin {
+	width: 70%;
+	height: 50%;
+	border-radius: 5px;
+	background-color: #ea916e;
+	color: white;
+	border: none;
+}
+
+/* ---------------------------------------------- */
+#mypage {
+	border-radius: 50%;
+	width: 50%;
+	height: 50%;
+	background-color: #ea916e;
+	border: none;
+}
+
+#mypage>img {
+	width: 90%;
+	height: 60%;
+}
+
+/* ---------------------------------------------- */
+.btn:hover {
+	opacity: 0.7;
+	color: white;
+	cursor: pointer;
+}
 
 
 
@@ -66,18 +156,46 @@ body * {
 <!-- ------------------------------------------------------------------ -->
 
 <body>
-
-<%@ include file="../common/menubar.jsp" %>
-	<form id="form" action="<%= contextPath %>/signin.me" method="post"
-		onsubmit="return validatePassword();">
-
-
-		<% if(alertMsg != null){ %>
+	<% if(alertMsg != null){ %>
 		<script>
-					alert('<%=alertMsg%>');
-				</script>
-
-		<% } %>
+			alert('<%=alertMsg%>');
+		</script>
+		
+<% } %>
+		<div class="wrap">
+			<div id="header">
+				<div id="header_1">
+						<div id="header_1_1_1">
+							<a href="<%= contextPath %>"><img src="<%= contextPath %>/resources/assets/This_서고 로고.png" alt="" style="height: 100%; width: 100%;"></a>
+						</div>
+						<div id="navigator">
+							<a a href="<%= contextPath %>/views/common/mainPage.jsp">Home</a>
+							<a href="">온라인투표</a>
+							<a href="">자유게시판</a>
+							<a href="">마이페이지</a>
+							<a href="<%= contextPath %>/views/serviceCenter/customerService.jsp">고객센터</a>
+						</div>
+						<div id="header_login_btn" style="height: 100%; width: 9%;">
+							<button class="btn" id="login"
+							onclick="location.href='<%= contextPath %>/views/member/loginform.jsp'" 
+							style="display: flex;
+							justify-content: center;
+							align-items: center;"
+							>LogIn</button>
+					</div>
+					<div id="header_signin_btn" style="height: 100%; width: 9%;">
+						<button class="btn" id="signin" onclick="signin()"
+						style="display: flex;
+							justify-content: center;
+							align-items: center;"
+							>Sign In</button>
+					</div>
+						<div id="header_mypage_btn" style="height: 100%; width: 7%;">
+							<button class="btn" id="mypage"><img src="<%= contextPath %>/views/common/assets/user01.png" alt=""></button>
+						</div>
+				
+				</div>
+			</div>
 		
 			<!-- -------------------------------------------------------------------- -->
 
@@ -163,8 +281,8 @@ body * {
 				<div class="form-group text-center">
 					<button type="submit" id="join-submit"
 						class="btn btn-primary btn-space">
-						</button>
 						회원가입<i class="fa fa-check spaceLeft"></i>
+						</button>
 						<button type="button" class="btn btn-danger"
 							onClick="location.href='<%=contextPath%>/views/common/mainPage.jsp'">
 							취소<i class="fa fa-check spaceLeft"></i>

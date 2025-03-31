@@ -79,6 +79,23 @@
 		 WHERE NICKNAME = ?
 	</entry>
 	
+	<entry key = "naverSnsKey">
+		SELECT 
+		       MEM_NO
+		     , MEM_NAME
+		     , MEM_ID
+		     , MEM_PWD
+		     , NICKNAME
+		     , ADDRESS
+		     , EMAIL
+		     , PROFILE
+		     , PHONE
+		     , STATUS
+		     , SNS_KEY
+		  FROM MEMBER
+		 WHERE SNS_KEY = ?
+	</entry>
+	
 	<entry key="selectSnsKey">
 		SELECT 
 		       MEM_NO

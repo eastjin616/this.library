@@ -337,29 +337,12 @@ body * {
 </script>
 
 
-
-
-
-		<!-------------------------------------- 여기까지가 구글 소셜 로그인 스크립트--------------------------- -->
-
-
-
-
-		<!-- -------------------------------------------------------------------- -->
-		
-
-
-	<!-- -------------------------------------------------------------------- -->
-
 	<script>
-							function naver() {
-								location.href = "<%=contextPath%>/views/common/jins/naverlogin.jsp";
-							}
-						
-						
+function naver() {
+	location.href = "<%=contextPath%>/views/common/jins/naverlogin.jsp";
+}
 
-
-						</script>
+</script>
 <%@ include file="../common/footerbar.jsp" %>
 </body>
 

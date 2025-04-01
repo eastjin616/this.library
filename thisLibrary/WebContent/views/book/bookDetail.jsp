@@ -999,7 +999,7 @@ function insertReply(){
                selectReplyList();
                $("#replyContent").val("");
                $(".star").removeClass("checked"); // 별점 초기화
-               startValue = 0;
+               starValue = 0;
                charCountDisplay.innerHTML = `0 / <span id="maxChars">\${maxChars}</span> 자`;
             }else{ // 댓글 작성 실패
                
@@ -1020,8 +1020,8 @@ $(function(){// 화면이 다 로드되고 나서 하는 행위
     selectReplyList();
     
     // setInterval(주기적으로 실행할 함수, ms단위 시간);
-    //setInterval(selectReplyList, 1000); // 1초에 한번씩 새로고침
-    //setInterval(selectBoardAnswerCount, 1000); 
+    setInterval(selectReplyList, 1000); // 1초에 한번씩 새로고침
+    setInterval(selectBookAnswerCount, 1000); 
     
  })
  

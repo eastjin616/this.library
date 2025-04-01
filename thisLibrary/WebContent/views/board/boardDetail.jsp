@@ -158,6 +158,10 @@
 
 				.comment-text {
 					line-height: 1.2;
+				    word-wrap: break-word; /* 긴 단어를 다음 줄로 넘겨서 줄 바꿈 */
+				    overflow-wrap: break-word; /* 긴 단어를 넘어가지 않게 줄 바꿈 */
+				    white-space: normal; /* 공백을 적절히 처리 */
+				    word-break: break-all; /* 특수문자나 긴 단어가 줄을 넘지 않도록 */
 				}
 
 
@@ -200,14 +204,14 @@
 				    top:0;
 				    left: 0;
 				    width: 100%;
-				    height: 100vh;
+				    height: 150%;
 				    overflow: hidden;
 				    background: rgba(0,0,0,0.5);
 				}
 				.modal .modal_popup {
 				/*팝업*/
 				    position: absolute;
-				    top: 50%;
+				    top: 35%;
 				    left: 50%;
 				    transform: translate(-50%, -50%);
 				    padding: 20px;
@@ -275,7 +279,7 @@
 						<% if(loginMember == null){ %>
 						
 						<% }else{ %>
-								<div class="comment-form">
+								<div class="comment-form" id="comment-form">
 		
 									<div class="comment-form-header">
 										<h4>댓글 작성하기</h4>
@@ -296,7 +300,7 @@
 					    <div class="modal_popup">
 					        <h3>댓글 수정하기</h3>
 					        <form action="<%=contextPath%>/rUpdate.bo" method="GET">
-					        <textarea id="update_content" style="width:1000px; height: 100px;"></textarea>
+					        <textarea id="update_content" maxlength="300" style="width:1000px; height: 100px;"></textarea>
 					        <button type="button" class="close_btn">닫기</button>
 					        <button type="submit" class="close_btn">수정하기</button>
 					        <div id="hidden_area"></div>
@@ -405,25 +409,57 @@
 				                }
 				                */
 				               
+<<<<<<< HEAD
 												value += `<div class="comment"><p class="comment-meta"><strong>\${writer}</strong> | \${rlist[i].answerDate}`;
 												
 														 value += `<span></span> <span class="set-comment">`;
 													
 													 if(loginNickname && loginNickname == writer){
-															 value += `<button class="update" style="margin-left:0px" onclick="updateReply(\${r})"> 수정 </button> | <button onclick="hideReply(\${r})"> 삭제 </button>`;
+															 value += `<button class="update" style="margin-left:0px" onclick="updateReply(\${r}); scrollToSection('comment-form', 200)"> 수정 </button> | <button onclick="hideReply(\${r})"> 삭제 </button>`;
 													 }
 													 
 													 value += `</span></p><p class="comment-text">\${rlist[i].answerContent}</p></div>`;
 												
 												   $(".comment-list").html(value)
 											}
+=======
+										value += `<div class="comment"><p class="comment-meta"><strong>\${writer}</strong> | \${rlist[i].answerDate}`;
+										
+												 value += `<span></span> <span class="set-comment">`;
+											
+											 if(loginNickname && loginNickname == writer){
+													 value += `<button class="update" style="margin-left:0px" onclick="updateReply(\${r}); scrollToSection('comment-form', 200)"> 수정 </button> | <button onclick="hideReply(\${r})"> 삭제 </button>`;
+											 }
+											 
+											 value += `</span></p><p class="comment-text">\${rlist[i].answerContent}</p></div>`;
+										
+										   $(".comment-list").html(value)
+										}
+>>>>>>> e1ba150f36b1fd148b505fc851eb8dc45ab68c14
 										},error:function(){
 											console.log("댓글목록 조회용 ajax 통신 실패");
 										}
 									})
 								}
 								
+<<<<<<< HEAD
+							 function scrollToSection(id, offset = 100) { 
+								    let target = document.getElementById(id);
+								    if (target) {
+								        let targetPosition = target.getBoundingClientRect().top + window.scrollY; // 요소의 실제 위치 계산
+								        window.scrollTo({ top: targetPosition - offset, behavior: "smooth" }); // 원하는 만큼 위로 조정
+								    }
+								}
+=======
 								
+								 function scrollToSection(id, offset = 100) { 
+									    let target = document.getElementById(id);
+									    if (target) {
+									        let targetPosition = target.getBoundingClientRect().top + window.scrollY; // 요소의 실제 위치 계산
+									        window.scrollTo({ top: targetPosition - offset, behavior: "smooth" }); // 원하는 만큼 위로 조정
+									    }
+									}
+>>>>>>> e1ba150f36b1fd148b505fc851eb8dc45ab68c14
 								
 								
 								// 삭제 버튼 클릭 시 실행될 함수
@@ -455,6 +491,8 @@
 											let value = `<input type="hidden" name="rno" value="\${rno}"></input>`
 											$("#hidden_area").html(value);
 											value = `<input type="hidden" name="bno" value="<%=b.getBoardNo()%>"></input>`
+											$("#hidden_area").append(value);
+											value = `<input type="hidden" name="rcontent" value="\${rContent2}"></input>`
 											$("#hidden_area").append(value);
 									  	//'on' class 추가
 									    modal.classList.add('on');

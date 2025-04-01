@@ -395,6 +395,10 @@ pre {
 
 .comment-text {
 	line-height: 1.2;
+    word-wrap: break-word; /* 긴 단어를 다음 줄로 넘겨서 줄 바꿈 */
+    overflow-wrap: break-word; /* 긴 단어를 넘어가지 않게 줄 바꿈 */
+    white-space: normal; /* 공백을 적절히 처리 */
+    word-break: break-all; /* 특수문자나 긴 단어가 줄을 넘지 않도록 */
 }
 
 .set-comment button, .set-header button {
@@ -649,7 +653,7 @@ h2{
 					    <div class="modal_popup">
 					        <h3>댓글 수정하기</h3>
 					        <form action="<%=contextPath%>/rUpdate.bd" method="GET">
-					        <textarea id="update_content" style="width:1000px; height: 100px;"></textarea>
+					        <textarea id="update_content" maxlength="300" style="width:1000px; height: 100px;"></textarea>
 					        <button type="button" class="close_btn">닫기</button>
 					        <button type="submit" class="close_btn">수정하기</button>
 					        <div id="hidden_area"></div>
@@ -999,7 +1003,7 @@ function insertReply(){
                selectReplyList();
                $("#replyContent").val("");
                $(".star").removeClass("checked"); // 별점 초기화
-               startValue = 0;
+               starValue = 0;
                charCountDisplay.innerHTML = `0 / <span id="maxChars">\${maxChars}</span> 자`;
             }else{ // 댓글 작성 실패
                
@@ -1020,8 +1024,8 @@ $(function(){// 화면이 다 로드되고 나서 하는 행위
     selectReplyList();
     
     // setInterval(주기적으로 실행할 함수, ms단위 시간);
-    //setInterval(selectReplyList, 1000); // 1초에 한번씩 새로고침
-    //setInterval(selectBoardAnswerCount, 1000); 
+    setInterval(selectReplyList, 1000); // 1초에 한번씩 새로고침
+    setInterval(selectBookAnswerCount, 1000); 
     
  })
  
@@ -1125,6 +1129,8 @@ $(function(){// 화면이 다 로드되고 나서 하는 행위
            $("#hidden_area").html(value);
            value = `<input type="hidden" name="isbn" value="\${isbn}"></input>`
            $("#hidden_area").append(value);
+           value = `<input type="hidden" name="rcontent" value="\${rContent2}"></input>`
+			$("#hidden_area").append(value);
           //'on' class 추가
          modal.classList.add('on');
           $("#update_content").text(rContent2);

@@ -54,8 +54,8 @@ public class VoteInsertController extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+ "/list.vo?cpage=1");
 		}else {
 			
-			request.setAttribute("errorMsg", "투표 등록 실패!");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			request.getSession().setAttribute("alertMsg", "책을 골라주세요");
+			response.sendRedirect(request.getContextPath()+ "/views/vote/voteInsertForm.jsp");
 		}
 	}
 

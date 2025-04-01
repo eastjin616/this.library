@@ -271,21 +271,21 @@
                     	});
 														//작동구문. 버튼태그 내려가는거
                       document.addEventListener("DOMContentLoaded", function () {
-                        const memId = "<%= loginMember.getNickname() %>";
-                        const enrollBtns = document.querySelectorAll(".adminEnrollBtn");
-                        const deleteBtns = document.querySelectorAll(".adminDeleteBtn");
-                        const replyTextareas = document.querySelectorAll(".adminReply");
-
-                        if (memId === "admin") {
-                          enrollBtns.forEach(btn => btn.style.display = "block");
-                          deleteBtns.forEach(btn => btn.style.display = "block");
-                          replyTextareas.forEach(textarea => textarea.readOnly = false);
-                        } else {
-                          enrollBtns.forEach(btn => btn.style.display = "none");
-                          deleteBtns.forEach(btn => btn.style.display = "none");
-                          replyTextareas.forEach(textarea => textarea.readOnly = true);
-                        }
-                      });
+									    const memId = "<%= (loginMember != null) ? loginMember.getNickname() : "" %>";
+									    const enrollBtns = document.querySelectorAll(".adminEnrollBtn");
+									    const deleteBtns = document.querySelectorAll(".adminDeleteBtn");
+									    const replyTextareas = document.querySelectorAll(".adminReply");
+									
+									    if (memId === "admin") {
+									      enrollBtns.forEach(btn => btn.style.display = "block");
+									      deleteBtns.forEach(btn => btn.style.display = "block");
+									      replyTextareas.forEach(textarea => textarea.readOnly = false);
+									    } else {
+									      enrollBtns.forEach(btn => btn.style.display = "none");
+									      deleteBtns.forEach(btn => btn.style.display = "none");
+									      replyTextareas.forEach(textarea => textarea.readOnly = true);
+									    }
+									  });
 														
 													
 														

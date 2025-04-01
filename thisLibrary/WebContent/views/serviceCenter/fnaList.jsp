@@ -233,7 +233,7 @@
 														  </div>
 														
 														  <div class="fnqReply reply-box">
-														    <textarea class="adminReply" data-bno="<%= i %>"></textarea>
+														    <!-- <textarea class="adminReply" data-bno="<%= i %>"></textarea> -->
 														  </div>
 														
 														  <div class="btnContainer">
@@ -271,25 +271,23 @@
                     	});
 														//작동구문. 버튼태그 내려가는거
                       document.addEventListener("DOMContentLoaded", function () {
-									    const memId = "<%= (loginMember != null) ? loginMember.getNickname() : "" %>";
-									    const enrollBtns = document.querySelectorAll(".adminEnrollBtn");
-									    const deleteBtns = document.querySelectorAll(".adminDeleteBtn");
-									    const replyTextareas = document.querySelectorAll(".adminReply");
-									
-									    if (memId === "admin") {
-									      enrollBtns.forEach(btn => btn.style.display = "block");
-									      deleteBtns.forEach(btn => btn.style.display = "block");
-									      replyTextareas.forEach(textarea => textarea.readOnly = false);
-									    } else {
-									      enrollBtns.forEach(btn => btn.style.display = "none");
-									      deleteBtns.forEach(btn => btn.style.display = "none");
-									      replyTextareas.forEach(textarea => textarea.readOnly = true);
-									    }
-									  });
+                    	  const memId = "<%= (loginMember != null) ? loginMember.getNickname() : "" %>";
+                    	  const enrollBtns = document.querySelectorAll(".adminEnrollBtn");
+                        const deleteBtns = document.querySelectorAll(".adminDeleteBtn");
+                        const replyTextareas = document.querySelectorAll(".adminReply");
+
+                        if (memId === "admin") {
+                          enrollBtns.forEach(btn => btn.style.display = "block");
+                          deleteBtns.forEach(btn => btn.style.display = "block");
+                          replyTextareas.forEach(textarea => textarea.readOnly = false);
+                        } else {
+                          enrollBtns.forEach(btn => btn.style.display = "none");
+                          deleteBtns.forEach(btn => btn.style.display = "none");
+                          replyTextareas.forEach(textarea => textarea.readOnly = true);
+                        }
+                      });
 														
 													
-														
-														
                       // 토글 버튼 클릭 시
                       $(document).on("click", ".material-symbols-outlined", function () {
                         const bno = $(this).data("bno"); // 정확한 번호 추출
@@ -302,29 +300,26 @@
                       function fnaContent(bno) {
                     	  console.log("함수 호출 인자 (bno):", bno);
                     	  var url = "<%= request.getContextPath() %>/fnaSelect.fa";
-                    	  console.log("요청 URL:", url);
 
                     	  $.ajax({
                     	    url: url,
                     	    method: "GET",
                     	    data: { bno: bno },
                     	    success: function(response) {
-                    	      console.log("서버 응답:", response);
                     	      // response는 예를 들어, [{ answer: '답변1', ... }, { answer: '답변2', ... }, ...]와 같이 배열이라고 가정합니다.
                     	      
                     	      // HTML에 미리 있는 adminReply 클래스 textarea 5개에 순서대로 값을 채워줍니다.
-                    	      $('.adminReply').each(function(index) {
+                    	      $('.reply-box').each(function(index) {
                     	        if (index < response.length) {
-                    	          $(this).val(response[index].answer);
+                    	        	let content = "<div>문의내용 : " + response[index].content + "<br><br><br><br><br>" + "답변내용 : " + response[index].answer + "</div>"
+                    	        	$(this).html(content)                   	          
                     	        }
                     	      });
-                    	      
                     	    },
                     	    error: function(xhr, status, error) {
-                    	      console.log("Ajax 요청 실패:", status, error);
-                    	      console.log("xhr 상태 코드:", xhr.status);
                     	      alert("Ajax 요청 실패! 콘솔을 확인하세요.");
                     	    }
+                    	    
                     	  });
                     	}
                  
@@ -408,8 +403,6 @@
 													}
 												})
 		}
-//======================================================================================================                      
-                      
                     </script>
 
                     <%@ include file="../common/footerbar.jsp" %>

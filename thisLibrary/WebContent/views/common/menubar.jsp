@@ -187,30 +187,6 @@
       </head>
       <meta charset="UTF-8">
       <!-- ------------------------------------------------------------------ -->
-<<<<<<< HEAD
-      <body>
-             <%
-                String alertMsg = (String) session.getAttribute("alertMsg");
-                if (alertMsg != null) {
-               %>
-                 <script>
-                 if (!sessionStorage.getItem("alertDisplayed")) {
-                	 alert("<%= alertMsg %>");
-                	    sessionStorage.setItem("alertDisplayed", "true");
-                	}
-
-                	// 리스트 페이지로 이동 시 storage 초기화
-                	window.addEventListener("pageshow", function (event) {
-                	    if (event.persisted || window.performance.getEntriesByType("navigation")[0].type === "back_forward") {
-                	        sessionStorage.removeItem("alertDisplayed");
-                	    }
-                	});
-                 </script>
-               <%
-                 session.removeAttribute("alertMsg"); // 한 번만 출력 후 세션에서 삭제
-                }
-               %>
-=======
       <body> 
             <%
 			   String alertMsg = (String) session.getAttribute("alertMsg");
@@ -237,7 +213,6 @@
 			   }
 			%>
                
->>>>>>> 9491ae03a9f3fcd97e8e82000d1b73fe8d7c3276
          <div class="wrap">
             <div id="header">
                <div id="header_1">
@@ -261,13 +236,8 @@
                         <a href="#">전체도서</a>
                         <div class="submenu">
                            <a href="<%=contextPath%>/views/book/bestSeller.jsp">인기도서</a>
-<<<<<<< HEAD
                            <a href="#todayPickButton" onclick="scrollToSection('content_2_1')">오늘의 픽</a>
                            <a href="#adminPickButton" onclick="scrollToSection('content_2_5')">마니아의 픽</a>
-=======
-                           <a href="#todayPickButton" >오늘의 픽</a>
-                           <a href="#adminPickButton" >관리자의 픽</a>
->>>>>>> 9491ae03a9f3fcd97e8e82000d1b73fe8d7c3276
                         </div>
                      </div>
 

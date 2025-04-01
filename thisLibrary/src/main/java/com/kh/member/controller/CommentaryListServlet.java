@@ -33,9 +33,10 @@ public class CommentaryListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				response.setContentType("application/json; charset=UTF-8");
-        
-				ArrayList<Commantary> list = new CommantaryService().selectCommantaryList();
-				System.out.println(list);
+			    int memNo = Integer.parseInt(request.getParameter("memNo"));
+
+				
+				ArrayList<Commantary> list = new CommantaryService().selectCommantaryList(memNo);
 				new Gson().toJson(list, response.getWriter());
 	}
 

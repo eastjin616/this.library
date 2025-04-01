@@ -55,12 +55,6 @@ public class MemberService {
 		Connection conn = getConnection();
 		int result = new MemberDao().findPwd(conn, name,id,email);
 		
-		if(result > 0) {
-			commit(conn);
-		}else {
-			rollback(conn);
-		}
-		
 		close(conn);
 		return result;
 	}
@@ -85,11 +79,6 @@ public class MemberService {
 		Connection conn = getConnection();
 		
 		String memberId = new MemberDao().findIdPage(conn, name, email);
-		if(memberId.equals(null)) {
-			rollback(conn);
-		}else {
-			commit(conn);
-		}
 		
 		close(conn);
 		return memberId;

@@ -8,10 +8,6 @@
                 Attachment at = (Attachment)request.getAttribute("at");
                 
                 Fna fna = (Fna)request.getAttribute("fna");
-                
-                
-                
-                
                 %>
                 <!DOCTYPE html>
                 <html lang="en">

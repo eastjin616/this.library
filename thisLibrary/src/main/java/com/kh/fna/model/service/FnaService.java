@@ -24,13 +24,11 @@ public class FnaService {
 	
 	public int updateFna(String answer, int fnaNo ) {
 		Connection conn = getConnection();
-		System.out.println("ㅕservice test " );
+
 		int result = new FnaDao().updateFna(conn, answer, fnaNo);
-		System.out.println("ㅕservice test :: " + result);
 
 		if(result > 0) {
 			commit(conn);
-			System.out.println("ㅕservice test :: " + result);
 
 		}else {
 			rollback(conn);

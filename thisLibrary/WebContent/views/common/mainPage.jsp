@@ -103,7 +103,7 @@
 
 @
 -webkit-keyframes fade {from { opacity:.4
-	
+
 }
 
 to {
@@ -656,7 +656,7 @@ html {
 				<img src="<%=contextPath%>/resources/assets/gold.png" alt=""
 					id="gold">
 			</div>
-			<div id="content_2_3" style="cursor: pointer;">
+			<div id="content_2_3">
 				<img src="" alt="" id="book3">
 			</div>
 
@@ -667,7 +667,7 @@ html {
 			<div id="content_2_5">
 				<button id="adminPickButton" class="pick-button">마니아의 Pick</button>
 
-				<div id="content_2_5_2" style="cursor: pointer;">
+				<div id="content_2_5_2">
 					<img src="" alt="" id="book4">
 				</div>
 
@@ -819,25 +819,28 @@ html {
             return;
         }
 
-        const bookSelectors = ["#book1", "#book3", "#book5", "#book2","#book4","#book6" ]; // 각 책의 ID 리스트
-        const contentSelectors = ["#content_1_2_1","#content_2_3","#content_3_2_1","#content_1_3_2","#content_2_5_2","#content_3_3_2",]; // 클릭 영역
-        const booktitle = ["#content_1_2_2","#content_1_3_3","#content_2_4","#content_2_6","#content_3_2_2","#content_3_2_3"]
-
+        const bookSelectors = ["#book1", "#book3", "#book5","#book2","#book4","#book6"]; // 각 책의 ID 리스트
+        
+        const contentSelectors = ["#content_1_2_1","#content_2_3","#content_3_2_1","#content_1_3_2","#content_2_5_2","#content_3_3_2"]; // 클릭 영역
+        const booktitle = ["#content_1_2_2","#content_2_4","#content_3_2_2","#content_1_3_3","#content_2_6","#content_3_2_3"]
+        
         books.slice(0, bookSelectors.length).forEach((book, index) => {
             let doc = book.doc;
             if (!doc) {
                 console.error(`❌ book.doc가 없습니다. book 데이터:`, book);
                 return;
             }
+            
 
             let imageURL = doc.bookImageURL || "https://via.placeholder.com/150";
             let title = doc.bookname || "title 정보 없음";
             let isbn = doc.isbn13 || "isbn 정보 없음";
             
             console.log(title);
-
+			
             let bookImageSelector = bookSelectors[index];
             let contentSelector = contentSelectors[index];
+            
 
             if ($(bookImageSelector).length) {
                 $(bookImageSelector).attr("src", imageURL);
@@ -855,9 +858,11 @@ html {
     }).fail(function (jqXHR, textStatus, errorThrown) {
         console.error(`❌ API 요청 실패: ${textStatus}, 오류: ${errorThrown}`);
     });
+        
+        
 
     // 클릭 이벤트를 AJAX 요청 바깥에서 한 번만 설정
-    $("#book1,#book2,#book3,#book4,#book5,#book6").click(function () {
+    $("#book1,#book3,#book5,#book2,#book4,#book6").click(function () {
         let isbn = $(this).data("isbn") || $(this).find("img").data("isbn"); // 클릭한 요소에서 ISBN 가져오기
 
         if (isbn && isbn !== "isbn 정보 없음") {

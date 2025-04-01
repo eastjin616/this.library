@@ -134,11 +134,7 @@ th {
 	margin-top: 20px;
 }
 
-.pagination a {
-	margin: 0 5px;
-	text-decoration: none;
-	color: #333;
-}
+
 
 .write-btn {
 	display: block;
@@ -156,9 +152,7 @@ th {
 	opacity: 0.7;
 }
 
-div .write-btn>a {
-	text-align: right;
-}
+
 
 .board-container tbody tr:hover {
 	background-color: lightgrey;

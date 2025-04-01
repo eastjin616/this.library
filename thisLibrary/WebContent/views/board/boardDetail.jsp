@@ -201,17 +201,17 @@
 				/*팝업 배경*/
 					display: none; /*평소에는 보이지 않도록*/
 				    position: absolute;
-				    top:0;
+				    top:20%;
 				    left: 0;
 				    width: 100%;
-				    height: 150%;
+				    height: 1200px;
 				    overflow: hidden;
 				    background: rgba(0,0,0,0.5);
 				}
 				.modal .modal_popup {
 				/*팝업*/
 				    position: absolute;
-				    top: 35%;
+				    top: 45%;
 				    left: 50%;
 				    transform: translate(-50%, -50%);
 				    padding: 20px;
@@ -409,20 +409,6 @@
 				                }
 				                */
 				               
-<<<<<<< HEAD
-												value += `<div class="comment"><p class="comment-meta"><strong>\${writer}</strong> | \${rlist[i].answerDate}`;
-												
-														 value += `<span></span> <span class="set-comment">`;
-													
-													 if(loginNickname && loginNickname == writer){
-															 value += `<button class="update" style="margin-left:0px" onclick="updateReply(\${r}); scrollToSection('comment-form', 200)"> 수정 </button> | <button onclick="hideReply(\${r})"> 삭제 </button>`;
-													 }
-													 
-													 value += `</span></p><p class="comment-text">\${rlist[i].answerContent}</p></div>`;
-												
-												   $(".comment-list").html(value)
-											}
-=======
 										value += `<div class="comment"><p class="comment-meta"><strong>\${writer}</strong> | \${rlist[i].answerDate}`;
 										
 												 value += `<span></span> <span class="set-comment">`;
@@ -435,22 +421,12 @@
 										
 										   $(".comment-list").html(value)
 										}
->>>>>>> e1ba150f36b1fd148b505fc851eb8dc45ab68c14
 										},error:function(){
 											console.log("댓글목록 조회용 ajax 통신 실패");
 										}
 									})
 								}
 								
-<<<<<<< HEAD
-							 function scrollToSection(id, offset = 100) { 
-								    let target = document.getElementById(id);
-								    if (target) {
-								        let targetPosition = target.getBoundingClientRect().top + window.scrollY; // 요소의 실제 위치 계산
-								        window.scrollTo({ top: targetPosition - offset, behavior: "smooth" }); // 원하는 만큼 위로 조정
-								    }
-								}
-=======
 								
 								 function scrollToSection(id, offset = 100) { 
 									    let target = document.getElementById(id);
@@ -459,7 +435,6 @@
 									        window.scrollTo({ top: targetPosition - offset, behavior: "smooth" }); // 원하는 만큼 위로 조정
 									    }
 									}
->>>>>>> e1ba150f36b1fd148b505fc851eb8dc45ab68c14
 								
 								
 								// 삭제 버튼 클릭 시 실행될 함수

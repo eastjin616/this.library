@@ -117,7 +117,8 @@
         
         function mypage() {
             if (!isLoggedIn) {
-                alert("해당 서비스는 로그인후 사용 가능합니다.");
+               alert("해당 서비스는 로그인 후 사용 가능합니다. ")
+               return
             }
             location.href = "<%= contextPath %>/views/member/myPage.jsp";
         }

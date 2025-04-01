@@ -35,21 +35,13 @@ public class AjaxSelectController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int scNO = Integer.parseInt(request.getParameter("bno"));
-        System.out.println("fnaSelectController 도착 - bno: " + scNO);
 
         ArrayList<Fna> list = new FnaService().selectList(scNO);
 
         response.setContentType("application/json; charset=utf-8");
         new Gson().toJson(list, response.getWriter());
 
-        // 디버깅용
-        if (list == null) {
-            System.out.println("list가 null입니다.");
-        } else if (list.isEmpty()) {
-            System.out.println("list는 비어 있습니다.");
-        } else {
-            System.out.println("서블릿에서 list: " + list);
-        }
+        
     }	
 
 	/**

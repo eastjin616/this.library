@@ -200,14 +200,14 @@
 				    top:0;
 				    left: 0;
 				    width: 100%;
-				    height: 100vh;
+				    height: 150%;
 				    overflow: hidden;
 				    background: rgba(0,0,0,0.5);
 				}
 				.modal .modal_popup {
 				/*팝업*/
 				    position: absolute;
-				    top: 50%;
+				    top: 35%;
 				    left: 50%;
 				    transform: translate(-50%, -50%);
 				    padding: 20px;
@@ -275,7 +275,7 @@
 						<% if(loginMember == null){ %>
 						
 						<% }else{ %>
-								<div class="comment-form">
+								<div class="comment-form" id="comment-form">
 		
 									<div class="comment-form-header">
 										<h4>댓글 작성하기</h4>
@@ -410,7 +410,7 @@
 														 value += `<span></span> <span class="set-comment">`;
 													
 													 if(loginNickname && loginNickname == writer){
-															 value += `<button class="update" style="margin-left:0px" onclick="updateReply(\${r})"> 수정 </button> | <button onclick="hideReply(\${r})"> 삭제 </button>`;
+															 value += `<button class="update" style="margin-left:0px" onclick="updateReply(\${r}); scrollToSection('comment-form', 200)"> 수정 </button> | <button onclick="hideReply(\${r})"> 삭제 </button>`;
 													 }
 													 
 													 value += `</span></p><p class="comment-text">\${rlist[i].answerContent}</p></div>`;
@@ -424,6 +424,13 @@
 								}
 								
 								
+								 function scrollToSection(id, offset = 100) { 
+									    let target = document.getElementById(id);
+									    if (target) {
+									        let targetPosition = target.getBoundingClientRect().top + window.scrollY; // 요소의 실제 위치 계산
+									        window.scrollTo({ top: targetPosition - offset, behavior: "smooth" }); // 원하는 만큼 위로 조정
+									    }
+									}
 								
 								
 								// 삭제 버튼 클릭 시 실행될 함수
@@ -455,6 +462,8 @@
 											let value = `<input type="hidden" name="rno" value="\${rno}"></input>`
 											$("#hidden_area").html(value);
 											value = `<input type="hidden" name="bno" value="<%=b.getBoardNo()%>"></input>`
+											$("#hidden_area").append(value);
+											value = `<input type="hidden" name="rcontent" value="\${rContent2}"></input>`
 											$("#hidden_area").append(value);
 									  	//'on' class 추가
 									    modal.classList.add('on');

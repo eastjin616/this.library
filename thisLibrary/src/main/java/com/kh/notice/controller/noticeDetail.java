@@ -1,4 +1,4 @@
-package com.kh.board.controller;
+package com.kh.notice.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,18 +8,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.board.model.service.BoardService;
+import com.kh.board.model.vo.Attachment;
+import com.kh.board.model.vo.Board;
+import com.kh.notice.model.service.noticeService;
 
 /**
- * Servlet implementation class BoardAnswerUpdate
+ * Servlet implementation class noticeDetail
  */
-@WebServlet("/rUpdate.bo")
-public class BoardAnswerUpdate extends HttpServlet {
+@WebServlet("/noticeDetail.nc")
+public class noticeDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardAnswerUpdate() {
+    public noticeDetail() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,21 +31,31 @@ public class BoardAnswerUpdate extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int rno = Integer.parseInt(request.getParameter("rno"));
-		int bno = Integer.parseInt(request.getParameter("bno"));
-		String rcontent = request.getParameter("rcontent");
-		System.out.println("rno : " + rno);
-		System.out.println("bno : " + bno);
-		System.out.println("rcontent : " + rcontent);
-		int result = new BoardService().updateBoardAnswer(rno, rcontent);
 		
-		if(result > 0) {
-			response.sendRedirect(request.getContextPath() + "/detail.bo?bno=" + bno);
+		
+		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
+		
+		noticeService bService = new BoardService();
+		
+		int result = bService.increaseCount(noticeNo);
+		if(result > 0) { // 유효한 게시글 => 게시글, 첨부파일 조회
+			Board b = bService.selectBoard(noticeNo);
+			Attachment at = bService.selectAttachment(noticeNo);
+			
+			request.setAttribute("b", b);
+			request.setAttribute("at", at);
+			
+			request.getRequestDispatcher("views/board/boardDetail.jsp").forward(request, response);
 		}else {
-			request.setAttribute("alertMsg", "댓글수정실패");
+			request.setAttribute("errorMsg", "일반게시판 조회 실패");
 			
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
+		
+		
+		
+		
+		
 	}
 
 	/**

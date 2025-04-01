@@ -146,6 +146,10 @@
 
 .comment-text {
 	line-height: 1.2;
+    word-wrap: break-word; /* 긴 단어를 다음 줄로 넘겨서 줄 바꿈 */
+    overflow-wrap: break-word; /* 긴 단어를 넘어가지 않게 줄 바꿈 */
+    white-space: normal; /* 공백을 적절히 처리 */
+    word-break: break-all; /* 특수문자나 긴 단어가 줄을 넘지 않도록 */
 }
 
 .set-comment button, .set-header button {
@@ -195,10 +199,10 @@ h2 {
 	/*팝업 배경*/
 	display: none; /*평소에는 보이지 않도록*/
 	position: absolute;
-	top: 0;
+	top: 40%;
 	left: 0;
 	width: 100%;
-	height: 100vh;
+	height: 150%;
 	overflow: hidden;
 	background: rgba(0, 0, 0, 0.5);
 }
@@ -370,7 +374,7 @@ h2 {
 			<% if(loginMember == null){ %>
 
 			<% }else{ %>
-			<div class="comment-form">
+			<div class="comment-form" id="comment-form">
 
 				<div class="comment-form-header">
 					<h4>댓글 작성하기</h4>
@@ -452,25 +456,25 @@ h2 {
 						                alert('댓글을 입력하세요.');
 						                return;
 						            }else{
-														$.ajax({
-															url:"rinsert.vo",
-															data:{
-																content:$("#replyContent").val(),
-																vno:<%= v.getVoteNo() %>,
-															},
-															type:"post",
-															success:function(result){
-																if(result > 0){ // 댓글 작성 성공 => 갱신된 댓글 리스트 조회
-																	selectReplyList();
-																	$("#replyContent").val("");
-														            charCountDisplay.innerHTML = `0 / <span id="maxChars">\${maxChars}</span> 자`;
-																}else{ // 댓글 작성 실패
-																	
-																}
-															},error:function(){
-																console.log("댓글 작성용 ajax 통신 실패")
-															}
-														})
+										$.ajax({
+											url:"rinsert.vo",
+											data:{
+												content:$("#replyContent").val(),
+												vno:<%= v.getVoteNo() %>,
+											},
+											type:"post",
+											success:function(result){
+												if(result > 0){ // 댓글 작성 성공 => 갱신된 댓글 리스트 조회
+													selectReplyList();
+													$("#replyContent").val("");
+										            charCountDisplay.innerHTML = `0 / <span id="maxChars">\${maxChars}</span> 자`;
+												}else{ // 댓글 작성 실패
+													
+												}
+											},error:function(){
+												console.log("댓글 작성용 ajax 통신 실패")
+											}
+										})
 						            }
 								}
 								
@@ -502,7 +506,7 @@ h2 {
 														 value += `<span></span> <span class="set-comment">`;
 													
 													 if(loginNickname && loginNickname == writer){
-															 value += `<button class="update" style="margin-left:0px" onclick="updateReply(\${r})"> 수정 </button> | <button onclick="hideReply(\${r})"> 삭제 </button>`;
+															 value += `<button class="update" style="margin-left:0px" onclick="updateReply(\${r}); scrollToSection('comment-form', 200)"> 수정 </button> | <button onclick="hideReply(\${r})"> 삭제 </button>`;
 													 }
 													 
 													 value += `</span></p><p class="comment-text">\${rlist[i].vAnswer}</p></div>`;
@@ -515,6 +519,14 @@ h2 {
 									})
 								}
 								
+								
+								 function scrollToSection(id, offset = 100) { 
+									    let target = document.getElementById(id);
+									    if (target) {
+									        let targetPosition = target.getBoundingClientRect().top + window.scrollY; // 요소의 실제 위치 계산
+									        window.scrollTo({ top: targetPosition - offset, behavior: "smooth" }); // 원하는 만큼 위로 조정
+									    }
+									}
 								
 								
 								
@@ -547,6 +559,8 @@ h2 {
 											let value = `<input type="hidden" name="rno" value="\${rno}"></input>`
 											$("#hidden_area").html(value);
 											value = `<input type="hidden" name="vno" value="<%=v.getVoteNo()%>"></input>`
+											$("#hidden_area").append(value);
+											value = `<input type="hidden" name="rcontent" value="\${rContent2}"></input>`
 											$("#hidden_area").append(value);
 									  	//'on' class 추가
 									    modal.classList.add('on');

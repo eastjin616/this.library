@@ -138,11 +138,11 @@ public class ServiceCenterDao {
 							     , rset.getString("inquiry_date")
 							     , rset.getString("answer_date")
 							     , rset.getString("status")
+							     , rset.getString("name")
+							     
 						));
-				
-		
 			}
-			
+			System.out.println(list);
 			
 			
 		} catch (SQLException e) {

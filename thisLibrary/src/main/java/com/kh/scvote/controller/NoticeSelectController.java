@@ -2,7 +2,6 @@ package com.kh.scvote.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,11 +31,9 @@ public class NoticeSelectController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("aa");
 		ArrayList<scNoticeVO> list = new scNoticeService().selectNoticeList();
 		request.setAttribute("noticeList", list);
 
-		System.out.println("list : " + list);
 	      request.getRequestDispatcher("/views/serviceCenter/customerService.jsp").forward(request, response);
 	  }
 	/**

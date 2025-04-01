@@ -44,7 +44,7 @@ public class NoticeInsertForm extends HttpServlet {
 
 	        // 4. 결과에 따라 응답 제어
 	        if (result > 0) {
-	            response.sendRedirect(request.getContextPath() + "/views/serviceCenter/customerService.jsp");
+	            response.sendRedirect(request.getContextPath() + "/select.nc#content3");
 	        } else {
 	            request.setAttribute("msg", "공지사항 등록 실패");
 	            request.getRequestDispatcher("/views/common/errorPage.jsp").forward(request, response);

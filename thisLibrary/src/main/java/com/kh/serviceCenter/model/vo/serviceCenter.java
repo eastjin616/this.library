@@ -36,10 +36,12 @@ public class serviceCenter {
 	}
 
 	
+	
+
 
 
 	public serviceCenter(int inquiryNo, int memNo, String title, String content, String answer, String inquiryDate,
-			String answerDate, String status) {
+			String answerDate, String status, String name) {
 		super();
 		this.inquiryNo = inquiryNo;
 		this.memNo = memNo;
@@ -49,6 +51,22 @@ public class serviceCenter {
 		this.inquiryDate = inquiryDate;
 		this.answerDate = answerDate;
 		this.status = status;
+		this.name = name;
+	}
+
+
+
+	public serviceCenter(int inquiryNo, int memNo, String title, String content, String answer, String inquiryDate,
+			String answerDate, String name) {
+		super();
+		this.inquiryNo = inquiryNo;
+		this.memNo = memNo;
+		this.title = title;
+		this.content = content;
+		this.answer = answer;
+		this.inquiryDate = inquiryDate;
+		this.answerDate = answerDate;
+		this.name = name;
 	}
 
 
@@ -89,7 +107,7 @@ public class serviceCenter {
 		this.inquiryDate = inquiryDate;
 		this.name = name;
 	}
-
+	
 
 
 	public String getName() {

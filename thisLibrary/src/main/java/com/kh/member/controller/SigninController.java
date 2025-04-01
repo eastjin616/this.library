@@ -40,7 +40,12 @@ public class SigninController extends HttpServlet {
 		String email = request.getParameter("phone");
 		String snsKey = request.getParameter("key");
 		
+<<<<<<< HEAD
 		Member m = new Member(memName, memId, memPwd, nickname,  address, phone, email, snsKey);
+=======
+		Member m = new Member(memName, memId, memPwd,nickname, address, phone, email, snsKey);
+
+>>>>>>> bookss
 		
 		int result = new MemberService().insertMember(m);
 		

@@ -188,28 +188,30 @@
       <meta charset="UTF-8">
       <!-- ------------------------------------------------------------------ -->
       <body> 
-             <%
-                String alertMsg = (String) session.getAttribute("alertMsg");
-                if (alertMsg != null) {
-               %>
-                 <script>
-                 if (!sessionStorage.getItem("alertDisplayed")) {
-                	 	alert("<%= alertMsg %>");
-                	    sessionStorage.setItem("alertDisplayed", "true");
-                	}
-
-                	// 리스트 페이지로 이동 시 storage 초기화
-                	window.addEventListener("pageshow", function (event) {
-                	    if (event.persisted || window.performance.getEntriesByType("navigation")[0].type === "back_forward") {
-                	        sessionStorage.removeItem("alertDisplayed");
-                	    }
-                	});
-                     history.replaceState(null, "", location.href);  // 기존 기록 덮어쓰기
-                 </script>
-               <%
-                 session.removeAttribute("alertMsg"); // 한 번만 출력 후 세션에서 삭제
-                }
-               %>
+            <%
+			   String alertMsg = (String) session.getAttribute("alertMsg");
+			   if (alertMsg != null) {
+			%>
+			<script>
+			   // 새로운 alert를 띄우기 전에 기존 sessionStorage를 초기화
+			   sessionStorage.removeItem("alertDisplayed");
+			
+			   alert("<%= alertMsg %>");
+			   sessionStorage.setItem("alertDisplayed", "true");
+			
+			   // 뒤로 가기/앞으로 가기 시 alert가 반복되지 않도록 초기화
+			   window.addEventListener("pageshow", function (event) {
+			       if (event.persisted || window.performance.getEntriesByType("navigation")[0].type === "back_forward") {
+			           sessionStorage.removeItem("alertDisplayed");
+			       }
+			   });
+			
+			   history.replaceState(null, "", location.href);  // 기존 기록 덮어쓰기
+			</script>
+			<%
+			   session.removeAttribute("alertMsg"); // 한 번만 출력 후 세션에서 삭제
+			   }
+			%>
                
          <div class="wrap">
             <div id="header">

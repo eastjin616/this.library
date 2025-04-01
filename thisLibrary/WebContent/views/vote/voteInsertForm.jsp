@@ -232,7 +232,7 @@
 				<%@ include file="../common/menubar.jsp" %>
 				<form class="post-container" action="<%=contextPath %>/insert.vo">
 					<div class="post-header">
-						<h2>제목<input type="text" name="title" style="width: 985px; margin-left: 10px;"></h2>
+						<h2>제목<input type="text" name="title" maxlength="50" style="width: 985px; margin-left: 10px;" required></h2>
 					</div>
 
 					<div class="post-content">
@@ -258,7 +258,7 @@
 							<input type="hidden" name="book2" id="book2">
 							<input type="hidden" name="userNo" id="userNo" value="<%=loginMember.getMemNo()%>">
 							<br>
-							투표 종료일 : <input type="date" name="deadline" id="dateInput">
+							투표 종료일 : <input type="date" name="deadline" id="dateInput" required>
 						</div>
 							</p>
 					</div>

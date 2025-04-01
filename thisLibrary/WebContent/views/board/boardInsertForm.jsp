@@ -131,10 +131,10 @@
                     <form action="<%=contextPath%>/insert.bo" method="POST" enctype="multipart/form-data">
                     		<input type=hidden name="userNo" value="<%= loginMember.getMemNo() %>">
                         <label for="title" id="title">제목</label>
-                        <input type="text" id="title" name="title" style="width: 980px; margin-bottom: 10px;" required>
+                        <input type="text" id="title" name="title" maxlength="50" style="width: 980px; margin-bottom: 10px;" required>
 
                         <label for="content" id="content">내용</label>
-                        <textarea id="content" name="content" style="width: 980px; height: 300px; margin-bottom: 10px; "
+                        <textarea id="content" name="content" maxlength="1333" style="width: 980px; height: 300px; margin-bottom: 10px; "
                             required></textarea>
 
                         <div class="file-upload-container">

@@ -28,7 +28,7 @@
       <style>
         /* 자유게시판 스타일 */
         .board-container {
-          max-width: 1000px;
+          max-width: 1200px;
           margin: 120px auto;
           background: white;
           padding: 20px;

@@ -146,6 +146,10 @@
 
 .comment-text {
 	line-height: 1.2;
+    word-wrap: break-word; /* 긴 단어를 다음 줄로 넘겨서 줄 바꿈 */
+    overflow-wrap: break-word; /* 긴 단어를 넘어가지 않게 줄 바꿈 */
+    white-space: normal; /* 공백을 적절히 처리 */
+    word-break: break-all; /* 특수문자나 긴 단어가 줄을 넘지 않도록 */
 }
 
 .set-comment button, .set-header button {
@@ -389,7 +393,7 @@ h2 {
 			<div class="modal_popup">
 				<h3>댓글 수정하기</h3>
 				<form action="<%=contextPath%>/rUpdate.vo" method="GET">
-					<textarea id="update_content" style="width: 1000px; height: 100px;"></textarea>
+					<textarea id="update_content" maxlength="300" style="width: 1000px; height: 100px;"></textarea>
 					<button type="button" class="close_btn">닫기</button>
 					<button type="submit" class="close_btn">수정하기</button>
 					<div id="hidden_area"></div>

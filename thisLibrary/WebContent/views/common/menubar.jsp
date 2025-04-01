@@ -249,7 +249,7 @@
                            <a href="<%=contextPath%>/list.sc?cpage=1">1:1 문의 내역</a>
                            <a href="<%=contextPath%>/views/serviceCenter/fnaList.jsp">F&Q 질문 내역</a>
                            <a href="<%= contextPath %>/select.nc#content2">전화상담</a>
-													 <a href="<%= contextPath %>/select.nc#content3" >공지사항</a>
+													 <a href="<%= contextPath %>/select.nc#content3">공지사항</a>
                         </div>
                      </div>
                   </div>

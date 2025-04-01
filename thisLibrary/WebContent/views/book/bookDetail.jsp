@@ -1125,6 +1125,8 @@ $(function(){// 화면이 다 로드되고 나서 하는 행위
            $("#hidden_area").html(value);
            value = `<input type="hidden" name="isbn" value="\${isbn}"></input>`
            $("#hidden_area").append(value);
+           value = `<input type="hidden" name="rcontent" value="\${rContent2}"></input>`
+			$("#hidden_area").append(value);
           //'on' class 추가
          modal.classList.add('on');
           $("#update_content").text(rContent2);

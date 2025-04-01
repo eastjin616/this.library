@@ -103,7 +103,7 @@
 						<a href="<%=contextPath%>/list.vo?cpage=1"">온라인투표</a>
 						<a href="<%=contextPath%>/list.bo?cpage=1">자유게시판</a>
 						
-						<a href="#" onclick="mypage1()">마이페이지</a>
+						<a href="#" onclick="mypage()">마이페이지</a>
 						<a href="<%= contextPath %>/select.nc">고객센터</a>
 						
 						
@@ -117,7 +117,8 @@
         
         function mypage() {
             if (!isLoggedIn) {
-                
+               alert("해당 서비스는 로그인 후 사용 가능합니다. ")
+               return
             }
             location.href = "<%= contextPath %>/views/member/myPage.jsp";
         }

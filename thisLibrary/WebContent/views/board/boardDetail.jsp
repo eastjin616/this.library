@@ -410,7 +410,7 @@
 														 value += `<span></span> <span class="set-comment">`;
 													
 													 if(loginNickname && loginNickname == writer){
-															 value += `<button class="update" style="margin-left:0px" onclick="updateReply(\${r})"> 수정 </button> | <button onclick="hideReply(\${r})"> 삭제 </button>`;
+															 value += `<button class="update" style="margin-left:0px" onclick="updateReply(\${r}); scrollToSection('comment-form', 200)"> 수정 </button> | <button onclick="hideReply(\${r})"> 삭제 </button>`;
 													 }
 													 
 													 value += `</span></p><p class="comment-text">\${rlist[i].answerContent}</p></div>`;
@@ -423,7 +423,13 @@
 									})
 								}
 								
-								
+							 function scrollToSection(id, offset = 100) { 
+								    let target = document.getElementById(id);
+								    if (target) {
+								        let targetPosition = target.getBoundingClientRect().top + window.scrollY; // 요소의 실제 위치 계산
+								        window.scrollTo({ top: targetPosition - offset, behavior: "smooth" }); // 원하는 만큼 위로 조정
+								    }
+								}
 								
 								
 								// 삭제 버튼 클릭 시 실행될 함수

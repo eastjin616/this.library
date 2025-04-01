@@ -389,7 +389,7 @@ h2 {
 			<div class="modal_popup">
 				<h3>댓글 수정하기</h3>
 				<form action="<%=contextPath%>/rUpdate.vo" method="GET">
-					<textarea id="update_content" style="width: 1000px; height: 100px;"></textarea>
+					<textarea id="update_content" maxlength="300" style="width: 1000px; height: 100px;"></textarea>
 					<button type="button" class="close_btn">닫기</button>
 					<button type="submit" class="close_btn">수정하기</button>
 					<div id="hidden_area"></div>

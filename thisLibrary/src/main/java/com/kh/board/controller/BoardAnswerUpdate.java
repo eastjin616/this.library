@@ -39,9 +39,9 @@ public class BoardAnswerUpdate extends HttpServlet {
 		if(result > 0) {
 			response.sendRedirect(request.getContextPath() + "/detail.bo?bno=" + bno);
 		}else {
-			request.setAttribute("alertMsg", "댓글수정실패");
+			request.getSession().setAttribute("alertMsg", "댓글수정실패");
 			
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			response.sendRedirect(request.getContextPath() + "/detail.bo?bno=" + bno);
 		}
 	}
 

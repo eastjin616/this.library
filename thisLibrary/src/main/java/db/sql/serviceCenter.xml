@@ -38,9 +38,10 @@ INSERT
                         , TITLE
                         , CONTENT
                         , ANSWER
-                        , TO_CHAR(INQUIRY_DATE, 'YYYY/MM/DD') "INQUIRY_DATE"
-                        , TO_CHAR(ANSWER_DATE, 'YYYY/MM/DD') "ANSWER_DATE"
-                     		, SC.STATUS
+                        , TO_CHAR(INQUIRY_DATE, 'YYYY/MM/DD') AS INQUIRY_DATE
+                        , TO_CHAR(ANSWER_DATE, 'YYYY/MM/DD') AS  ANSWER_DATE
+                        , MEMBER.MEM_NAME AS NAME
+                        , SC.STATUS AS STATUS
                      FROM SERVICE_CENTER SC
                      JOIN MEMBER USING(MEM_NO)
                     WHERE SC.STATUS = 'Y'

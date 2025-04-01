@@ -33,13 +33,12 @@ body * {
 /* div {box-sizing: border-box;border: 1px solid red;} */
 
 /*-------------------------------------------------------------  */
-#content>#content1 {
-	background-image:
-		url("../../resources/assets/Container81.png");
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-}
+  #content>#content1 {
+    background-image: url("/this/resources/assets/Container81.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 
 #content1 {
 	width: 100%;
@@ -57,6 +56,8 @@ body * {
 #content3 {
 	width: 100%;
 	margin-bottom: 10px;
+ transition: opacity 0.4s ease-in-out, transform 0.2s ease-in-out;
+  transform: translateY(-10px);
 }
 
 #textcontent {
@@ -73,6 +74,7 @@ body * {
 
 #content2_1_1, #content2_1_2, #content2_1_3, #content2_1_4 {
 	width: 50%;
+	border: 1px solid;
 }
 
 #contentDiv1_1, #contentDiv2_1, #contentDiv3_1, #contentDiv4_1 {
@@ -89,7 +91,10 @@ body * {
 	text-align: center;
 	box-sizing: border-box;
 }
-
+#contentDiv4_2{
+transition: opacity 0.4s ease-in-out, transform 0.2s ease-in-out;
+               transform: translateY(-10px);
+}
 #contentDiv1_3, #contentDiv2_3, #contentDiv3_3, #contentDiv4_3 {
 	width: 100%;
 	height: 10%;
@@ -186,24 +191,31 @@ div .write-btn>a {
 		<br> <br> <br> <br> <br>
 		<div id="content2">
 			<div id="content2_1">
+			
+			
+			
 				<div id="content2_1_1">
-					<div id="contentDiv1_1">
-						<a href="<%=contextPath%>/views/serviceCenter/persnalInquiry.jsp"
-							style="border: none;"> <img
-							src="<%=contextPath%>/resources/assets/interview_15747273.gif">
-						</a>
-					</div>
-					<div id="contentDiv1_2">
-						<p>
-							<a href="<%=contextPath%>/views/serviceCenter/persnalInquiry.jsp"
-								style="text-decoration-line: none;"> <b>1:1 문의 접수</b>
-							</a>
-						</p>
-					</div>
-					<div id="contentDiv1_3">
-						<a>고객센터에 문의글 접수중입니다.</a>
-					</div>
+				  <div id="contentDiv2_1" style="cursor: pointer;">
+				  	<a href="#" onclick="inquiry()">
+				    <img src="<%=contextPath%>/resources/assets/interview_15747273.gif" />
+				    </a>
+				  </div>
+				
+				  <div id="contentDiv2_2" style="cursor: pointer;">
+				  <a href="#" onclick="inquiry()"><p><b>1:1 문의 접수</b></p></a>
+				    
+				  </div>
+				
+				  <div id="contentDiv2_3" onclick="inquiry()" style="cursor: pointer;">
+				    고객센터에 문의글 접수중입니다.
+				  </div>
 				</div>
+
+				
+				
+				
+				
+				
 				<div id="content2_1_2">
 					<div id="contentDiv2_1">
 						<a href="<%=contextPath%>/views/serviceCenter/fnaList.jsp"> <img
@@ -244,6 +256,7 @@ div .write-btn>a {
 					<div id="contentDiv4_2">
 						<p>
 							<a><b>전화 상담</b></a>
+							<div>02-950-0112</div>
 						</p>
 					</div>
 					<div id="contentDiv4_3">고객 센터에 연결되어 상담자와 연결이 됩니다.</div>
@@ -296,23 +309,39 @@ div .write-btn>a {
 						</tbody>
 					</table>
 
-						<%if(loginMember.getMemId().equals("admin")){ %>
-          <div style="display: flex;">
-            <a href="<%= contextPath %>/views/serviceCenter/noticeInsertForm.jsp" class="write-btn" style="margin-left: auto;">글쓰기</a>
-          </div>
-					<%} %>
+						<% 
+			  String memId = (loginMember != null) ? loginMember.getMemId() : "";
+			  if("admin".equals(memId)) { 
+			%>
+			    <div style="display: flex;">
+			      <a href="<%= contextPath %>/views/serviceCenter/noticeInsertForm.jsp" class="write-btn" style="margin-left: auto;">글쓰기</a>
+			    </div>
+			<% } %>
+
 
 				</div>
-				
-				
-				
-				
-				
 			</div>
 		</div>
 	</div>
 	<!-- 공지사항 끝 -->
 <%@ include file="../common/footerbar.jsp" %>
+
+<script>
+
+  
+  
+  
+
+  function inquiry() {
+	  if (!isLoggedIn) {
+	    alert("해당 서비스는 로그인한 회원만 사용가능합니다.");
+	    return ;
+	  }
+	  window.location.href = "<%= contextPath %>/views/serviceCenter/persnalInquiry.jsp";
+	}
+
+</script>
+
 </body>
 
 </html>

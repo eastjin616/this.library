@@ -6,15 +6,7 @@ import com.kh.scvote.model.dao.scNoticeDao;
 import com.kh.scvote.model.vo.scNoticeVO;
 
 import static com.kh.common.JDBCTemplate.*;
-
-import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.List;
-
-import com.kh.board.model.dao.BoardDao;
-import com.kh.board.model.vo.Board;
-import com.kh.common.model.vo.PageInfo;
-import com.kh.vote.model.vo.Vote;
 
 
 

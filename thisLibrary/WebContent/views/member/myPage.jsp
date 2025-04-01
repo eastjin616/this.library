@@ -202,6 +202,7 @@
 
 				#saveBtn {
 					margin-left: auto;
+					point : cursor;
 				}
 
 				#saveBtn>button {

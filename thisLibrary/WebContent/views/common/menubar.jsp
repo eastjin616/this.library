@@ -113,7 +113,7 @@
                visibility: visible;
                transform: translateY(-10px);
             }
-
+/* ======================================================= */
             @keyframes dropdown {
                0% {
                   opacity: 0;
@@ -222,19 +222,20 @@
                         <a href="#">전체도서</a>
                         <div class="submenu">
                            <a href="<%=contextPath%>/views/book/bestSeller.jsp">인기도서</a>
-                           <a href="#todayPickButton" onclick="scrollToSection('content_2_1')">오늘의 픽</a>
-                           <a href="#adminPickButton" onclick="scrollToSection('content_2_5')">관리자의 픽</a>
+                           <a href="#todayPickButton" >오늘의 픽</a>
+                           <a href="#adminPickButton" >관리자의 픽</a>
                         </div>
                      </div>
 
                      <div class="naviDiv">
 													 <a href="<%= contextPath %>/select.nc">고객센터</a>
 													 <div class="submenu">
-                           <a href="<%=contextPath%>/views/serviceCenter/persnalInquiry.jsp">1:1 문의하기</a>
+													 
+													 <a href="#" onclick="goToInquiryPage()">1:1 문의하기</a>
                            <a href="<%=contextPath%>/list.sc?cpage=1">1:1 문의 내역</a>
                            <a href="<%=contextPath%>/views/serviceCenter/fnaList.jsp">F&Q 질문 내역</a>
-                           <a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">전화상담</a>
-                           <a href="<%=contextPath%>/views/serviceCenter/notice.jsp">공지사항</a>
+                           <a href="<%= contextPath %>/select.nc#content2">전화상담</a>
+													 <a href="<%= contextPath %>/select.nc#content3" >공지사항</a>
                         </div>
                      </div>
                   </div>
@@ -288,6 +289,7 @@
             
             
             const isLoggedIn = <%= (session.getAttribute("loginMember") != null) ? "true" : "false" %>;
+            
             function mypage() {
                 if (!isLoggedIn) {
                     alert("해당 서비스는 로그인을 하신 후에 이용하실 수 있으십니다.");
@@ -295,7 +297,16 @@
                 }
                 location.href = "<%= contextPath %>/views/member/myPage.jsp";
             }
-         </script>
+					
+					    function goToInquiryPage() {
+					        if (!isLoggedIn) {
+					            alert("해당 서비스는 로그인을 하신 후에 이용하실 수 있습니다.");
+					            return ; // 링크 이동 막기
+					        }
+					        location.href = "<%= contextPath %>/views/serviceCenter/persnalInquiry.jsp";
+					    }
+				</script>
+         
          <!-- -------------------------------------------------------------------- -->
          <!-- ------------------------메뉴바에서 오늘의픽, 관리자의 픽 클릭시 부드럽게 이동 -------------------------------------------- -->
 
@@ -320,6 +331,7 @@
                   }, 200); // 0.3초 후에 사라짐 (너무 빨리 사라지는 문제 해결)
                });
             });
+
          </script>
       </body>
 

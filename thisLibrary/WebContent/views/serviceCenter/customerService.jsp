@@ -56,8 +56,6 @@ body * {
 #content3 {
 	width: 100%;
 	margin-bottom: 10px;
- transition: opacity 0.4s ease-in-out, transform 0.2s ease-in-out;
-  transform: translateY(-10px);
 }
 
 #textcontent {
@@ -74,7 +72,6 @@ body * {
 
 #content2_1_1, #content2_1_2, #content2_1_3, #content2_1_4 {
 	width: 50%;
-	border: 1px solid;
 }
 
 #contentDiv1_1, #contentDiv2_1, #contentDiv3_1, #contentDiv4_1 {
@@ -91,10 +88,7 @@ body * {
 	text-align: center;
 	box-sizing: border-box;
 }
-#contentDiv4_2{
-transition: opacity 0.4s ease-in-out, transform 0.2s ease-in-out;
-               transform: translateY(-10px);
-}
+
 #contentDiv1_3, #contentDiv2_3, #contentDiv3_3, #contentDiv4_3 {
 	width: 100%;
 	height: 10%;
@@ -290,7 +284,7 @@ div .write-btn>a {
 								    if (list != null && !list.isEmpty()) {
 								        for (scNoticeVO n : list) {
 								%>
-								<tr>
+								<tr onclick="location.href='customerNoticeDetail.jsp?noticeNo=<%=n.getNoticeNo()%>'" style="cursor:pointer;">
 								    <td><%= n.getNoticeNo() %></td>
 								    <td><%= n.getTitle() %></td>
 								    <td>admin</td>
@@ -327,10 +321,6 @@ div .write-btn>a {
 <%@ include file="../common/footerbar.jsp" %>
 
 <script>
-
-  
-  
-  
 
   function inquiry() {
 	  if (!isLoggedIn) {

@@ -100,14 +100,28 @@
 					</div>
 					<div id="footernavigator" class="navigator">
 						<a href="<%=contextPath%>/views/common/mainPage.jsp">Home</a>
-						<a href="<%=contextPath%>/views/vote/voteList.jsp">온라인투표</a>
-						<a href="<%= contextPath %>/list.bo?cpage=1">자유게시판</a>
-						<a href="<%=contextPath%>/views/member/myPage.jsp">마이페이지</a>
-						<a href="<%=contextPath%>/views/serviceCenter/customerService.jsp">고객센터</a>
+						<a href="<%=contextPath%>/list.vo?cpage=1"">온라인투표</a>
+						<a href="<%=contextPath%>/list.bo?cpage=1">자유게시판</a>
+						
+						<a href="#" onclick="mypage1()">마이페이지</a>
+						<a href="<%= contextPath %>/select.nc">고객센터</a>
+						
+						
 					</div>
 				</div>
 				<div id="footer_2">© 2025 This.서고Company. All Rights Reserved.</div>
 			</div>
 		</div>
+		<script>
+		const isLoggedIn = <%= (session.getAttribute("loginMember") != null) ? "true" : "false" %>;
+        
+        function mypage() {
+            if (!isLoggedIn) {
+                
+            }
+            location.href = "<%= contextPath %>/views/member/myPage.jsp";
+        }
+		</script>
+		 
 	</body>
 	</html>

@@ -387,7 +387,7 @@ hr {
                        '</div>' +
                        '<div class="bookcon">' +
                            '<div class="bookinfo">' +
-                               '<p style="font-size: 20px; cursor: pointer;" onclick="window.location.href=\'bookDetail.jsp\';"><b>' + title + '</b></p>' +
+                               '<p style="font-size: 20px; cursor: pointer;" onclick="location.href=\'bookDetail.jsp?isbn=' + isbn + '\';"><b>' + title + '</b></p>' +
                                '<hr style="width: 70px; margin-left: 0%;">' +
                                '지은이 : <span style="font-size: 15px;">' + author + '</span> &nbsp;|&nbsp; <span style="font-size: 15px;">' + translator + '</span>' +
                                '<br><br>' +

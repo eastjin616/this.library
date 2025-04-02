@@ -152,7 +152,6 @@
                
             #headnavigator a {
                font-size: 13px;
-               padding: 10px 15px;
                display: block;
                font-weight: bold;
                cursor: pointer;
@@ -296,7 +295,7 @@
                            <a href="<%=contextPath%>/list.bo?cpage=1">자유게시판</a>
                         </div>
                      </div>
-
+                     
                      <div class="naviDiv">
                         <a href="#">전체도서</a>
                         <div class="submenu">

@@ -47,7 +47,7 @@ public class SigninController extends HttpServlet {
 		if(result > 0) { // 성공적으로 회원가입 완료 됨 (Member 테이블에 Insert 완료 됨)
 			request.getSession().setAttribute("loginMember", m);
 			request.getSession().setAttribute("alertMsg", "회원가입성공");
-			response.sendRedirect(request.getContextPath()+"/views/member/loginform.jsp");
+			response.sendRedirect(request.getContextPath()+"/views/common/mainPage.jsp");
 		}else {
 			request.setAttribute("alertMsg", "회원가입실패");
 			request.getRequestDispatcher("views/member/signin.jsp").forward(request, response);

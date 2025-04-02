@@ -140,8 +140,8 @@ request.setCharacterEncoding("UTF-8"); // POST 방식일때는 인코딩 해줘�
 					new File(savePath + at.getChangeName()).delete();
 				}
 				
-				request.setAttribute("errorMsg", "일반게시판 등록 실패!");
-				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+				request.getSession().setAttribute("alertMsg", "게시글 등록 실패!");
+				response.sendRedirect(request.getContextPath()+ "/list.bo?cpage=1");
 			}
 			
 		}

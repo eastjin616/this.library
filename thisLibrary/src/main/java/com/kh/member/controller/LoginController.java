@@ -38,8 +38,8 @@ public class LoginController extends HttpServlet {
 		
 		Member loginMember = new MemberService().loginMember(memId, memPwd);
 		if(loginMember == null) {
-			request.setAttribute("errorMsg", "로그인 실패했습니다!");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);;
+			request.getSession().setAttribute("alertMsg", "회원정보가 일치하지 않습니다.");
+			response.sendRedirect(request.getContextPath() + "/views/member/loginform.jsp");
 		}else {		
 			HttpSession session =  request.getSession();
 			request.getSession().setAttribute("loginMember", loginMember);

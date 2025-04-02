@@ -258,7 +258,6 @@ body * {
 								function loginWithKakao() {
 									Kakao.Auth.login({
 										success: function (authObj) {
-											console.log(authObj); // access토큰 값
 											Kakao.Auth.setAccessToken(authObj.access_token); // access토큰값 저장
 
 											getInfo();
@@ -274,7 +273,6 @@ body * {
 									Kakao.API.request({
 										url: '/v2/user/me',
 										success: function (res) {
-											console.log(res);
 											// 이메일, 성별, 닉네임, 프로필이미지
 											var email = res.kakao_account.email;
 											var nickName = res.kakao_account.profile.nickname;
@@ -305,7 +303,6 @@ body * {
 		
 		<script>
   function handleCredentialResponse(response) {
-    console.log("JWT ID Token:", response.credential);
 
     // 구글에서 받은 ID 토큰을 서버로 전송
     $.ajax({
@@ -313,7 +310,6 @@ body * {
       type: "POST",
       data: { id_token: response.credential },
       success: function (data) {
-        console.log("서버 응답:", data);
 
         if (data.status === "success") {
 						alert("구글 로그인 성공 성공")
@@ -328,7 +324,6 @@ body * {
         }
       },
       error: function (err) {
-        console.error("로그인 실패:", err);
         alert("로그인 중 오류 발생");
       }
     });

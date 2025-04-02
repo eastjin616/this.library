@@ -245,7 +245,7 @@ h2 {
 
 	<div class="post-container">
 		<div class="post-header">
-			<h2><%=v.getVoteTitle() %>
+			<h2 style="text-align:left;"><%=v.getVoteTitle() %>
 				<%if(loginMember != null && v.getMemNo() != loginMemNo){%>
 				<span class="label btn btn-primary" id="follow-btn"> 팔로우 </span>
 				<% } %>
@@ -309,10 +309,11 @@ h2 {
 			<p class="vote-message"
 				style="display: none; color: red; text-align: center;">투표가
 				종료되었습니다.</p>
-
+			
+			<%if(loginMember != null){ %>
 			<!-- 투표 버튼 -->
 			<button class="submit-btn" style="margin-left: 47%;" onclick="vote()">투표하기</button>
-
+			<%} %>
 			</p>
 		</div>
 
@@ -393,7 +394,7 @@ h2 {
 			<div class="modal_popup">
 				<h3>댓글 수정하기</h3>
 				<form action="<%=contextPath%>/rUpdate.vo" method="GET">
-					<textarea id="update_content" maxlength="300" style="width: 1000px; height: 100px;"></textarea>
+					<textarea id="update_content" maxlength="300" style="width: 1000px; height: 100px;" required></textarea>
 					<button type="button" class="close_btn">닫기</button>
 					<button type="submit" class="close_btn">수정하기</button>
 					<div id="hidden_area"></div>
@@ -597,6 +598,7 @@ h2 {
 									})
 								}
 								
+								<%if(loginMember != null){ %>
 								<!-- 댓글 수 카운트-->
 						        const replyContent = document.getElementById('replyContent');
 						        const charCountDisplay = document.querySelector('.char-count');
@@ -608,7 +610,7 @@ h2 {
 
 						        });
 						   	<!-- 여기까지 댓글 수 카운트 스크립트 -->
-						   	
+						   	<% } %>
 						   	<!-- 팔로우 및 언팔로우 기능 -->
 
 						   	$('#follow-btn').on('click', function () {

@@ -789,7 +789,6 @@
 													modalC.style.display = "flex"; // ✅ 데이터 불러온 뒤 모달 열기
 												})
 												.catch(error => {
-													console.error("Fetch 오류", error);
 													alert("감상문 목록을 불러오지 못했습니다.");
 												});
 										});

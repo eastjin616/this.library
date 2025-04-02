@@ -271,7 +271,6 @@
 
                         }
                       }, error: function () {
-                        console.log("댓글 작성용 ajax 통신 실패")
                       }
                     })
                   }
@@ -304,7 +303,6 @@
                           $(".comment-list").html(value)
                         }
                       }, error: function () {
-                        console.log("댓글목록 조회용 ajax 통신 실패");
                       }
                     })
                   }
@@ -333,7 +331,6 @@
                       success: function (rCount) {
                         $(".comment-count").text("댓글 " + rCount);
                       }, error: function () {
-                        console.log("댓글 갯수 조회용 ajax 통신 실패");
                       }
                     })
                   }

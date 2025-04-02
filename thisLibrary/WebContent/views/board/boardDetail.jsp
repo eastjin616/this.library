@@ -243,7 +243,7 @@
 				
 				<div class="post-container" style="margin-top: 120px;margin-bottom: 120px;">
 					<div class="post-header">
-						<h2><%=b.getBoardTitle() %>
+						<h2 style="text-align:left;"><%=b.getBoardTitle() %>
 					<%if(loginMember != null && b.getMemNo() != loginMemNo){%> 
 						<span class="label btn btn-primary" id="follow-btn">
 						팔로우
@@ -300,7 +300,7 @@
 					    <div class="modal_popup">
 					        <h3>댓글 수정하기</h3>
 					        <form action="<%=contextPath%>/rUpdate.bo" method="GET">
-					        <textarea id="update_content" maxlength="300" style="width:1000px; height: 100px;"></textarea>
+					        <textarea id="update_content" maxlength="300" style="width:1000px; height: 100px;" required></textarea>
 					        <button type="button" class="close_btn">닫기</button>
 					        <button type="submit" class="close_btn">수정하기</button>
 					        <div id="hidden_area"></div>

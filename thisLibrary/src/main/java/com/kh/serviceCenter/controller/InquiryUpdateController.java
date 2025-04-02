@@ -37,8 +37,7 @@ public class InquiryUpdateController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("오 updateController 인데 잘 받음. 굿");
-request.setCharacterEncoding("UTF-8");
+			request.setCharacterEncoding("UTF-8");
 		
 		if(ServletFileUpload.isMultipartContent(request)) {
 			
@@ -77,7 +76,6 @@ request.setCharacterEncoding("UTF-8");
 				at.setChangeName(multiRequest.getFilesystemName("upfile"));
 				at.setFilePath("resources/board_upfiles/");
 				
-				System.out.println("컨트롤러 at" + at);
 				if(multiRequest.getParameter("originFileNo") != null) {
 					// 기존의 첨부파일이 있었을 경우 => Update Attachment (기존첨부파일번호 필요)
 					at.setFileNo(Integer.parseInt(multiRequest.getParameter("originFileNo")));
@@ -98,7 +96,6 @@ request.setCharacterEncoding("UTF-8");
 			if(result > 0) {
 				// 성공 => 기존에 봤었던 사엣조회 페이지
 				request.getSession().setAttribute("alertMsg", "성공적으로 게시판 수정 되었습니다.");
-				System.out.println("오 updateController 인데 , 수정 끝났어. 다시 던질게 굿?");
 				response.sendRedirect(request.getContextPath() + "/detail.sc?bno=" + scNo);
 				
 			}else {

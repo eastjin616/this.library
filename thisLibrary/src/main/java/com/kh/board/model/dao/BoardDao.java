@@ -281,7 +281,6 @@ private Properties prop = new Properties();
 		}finally {
 			close(pstmt);
 		}
-		System.out.println("dao 업데이트 result" + result);
 		return result;
 	}
 

@@ -27,7 +27,6 @@ public class ServiceCenterService {
 	 * @return
 	 */
 	public int insertInquiry(serviceCenter sc, Attachment at) {
-		System.out.println("여긴 service단 dao로 보낼게");
 		Connection conn = getConnection();
 		
 		int result1 = new ServiceCenterDao().insertInquiry(conn, sc);
@@ -39,7 +38,6 @@ public class ServiceCenterService {
 		
 		if(result1 > 0 && result2 > 0) {
 			commit(conn);
-			System.out.println("여긴 서비스단,, 글, 첨부파일 잘 커밋한다. 오바");
 		}else {
 			rollback(conn);
 		}
@@ -90,7 +88,6 @@ public class ServiceCenterService {
 		Connection conn = getConnection();
 		
 		int result = new ServiceCenterDao().deleteBoard(conn, scNO);
-		System.out.println("service 단에서 확인해보는 result :" + result);
 		if(result > 0) {
 			commit(conn);
 		}else {

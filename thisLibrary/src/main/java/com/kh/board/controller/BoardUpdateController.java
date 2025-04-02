@@ -63,7 +63,6 @@ public class BoardUpdateController extends HttpServlet {
 			b.setBoardContent(boardContent);
 			
 			Attachment at = null; // 처음으로 null로 초기화, 넘어온 새 첨부파일이 있을 경우 그때 생성
-			System.out.println("컨트롤러 at" + at);
 			
 			if(multiRequest.getOriginalFileName("upfile") != null) {
 				// 새로운 첨부파일이 있을경우
@@ -73,7 +72,6 @@ public class BoardUpdateController extends HttpServlet {
 				at.setChangeName(multiRequest.getFilesystemName("upfile"));
 				at.setFilePath("resources/board_upfiles/");
 				
-				System.out.println("컨트롤러 at" + at);
 				if(multiRequest.getParameter("originFileNo") != null) {
 					// 기존의 첨부파일이 있었을 경우 => Update Attachment (기존첨부파일번호 필요)
 					at.setFileNo(Integer.parseInt(multiRequest.getParameter("originFileNo")));

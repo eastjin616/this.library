@@ -42,7 +42,6 @@ public class ServiceCenterDao {
 	 * @return result
 	 */
 	public int insertInquiry(Connection conn,serviceCenter sc) {
-		System.out.println("여긴 dao>insertInquiry");
 		
 		// insert문 =-> 처리된 행수 => 트랜잭션 처리 해야한다. (커밋을 해야한다.)
 				int result = 0;
@@ -56,7 +55,6 @@ public class ServiceCenterDao {
 					pstmt.setString(3, sc.getContent());
 
 					result = pstmt.executeUpdate();
-					System.out.println("여긴 dao>insertInquiry 쿼리 돌아감" + result);
 
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -73,7 +71,6 @@ public class ServiceCenterDao {
 	 * @return result
 	 */
 	public int insertAttachment(Connection conn, Attachment at) {
-		System.out.println("여긴 dao>insertAttachment");
 
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -86,7 +83,6 @@ public class ServiceCenterDao {
 			pstmt.setString(3, at.getFilePath());
 			
 			result = pstmt.executeUpdate();
-			System.out.println("여긴 dao>insertAttachment 쿼리 돌아감" + result);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -142,7 +138,6 @@ public class ServiceCenterDao {
 							     
 						));
 			}
-			System.out.println(list);
 			
 			
 		} catch (SQLException e) {
@@ -302,7 +297,6 @@ public class ServiceCenterDao {
 		}finally {
 			close(pstmt);
 		}
-		System.out.println("dao 업데이트 result" + result);
 		return result;
 	}
 	

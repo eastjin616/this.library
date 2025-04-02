@@ -275,7 +275,6 @@ hr {
          <div id="content_2">
             <div id="content_2_2" class="content_2_2">
    				 <!-- 책 정보 추가 -->
-    
          </div>
          </div>
       </div>
@@ -309,7 +308,7 @@ hr {
 	    }
 	});
    
- //=================================================================================== 
+//=================================================================================== 
    $(document).ready(function () {
 	   const timestamp = new Date().getTime();
        const baseURL = "http://data4library.kr/api/loanItemSrch?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&pageNo=1&pageSize=10&format=json";
@@ -325,7 +324,6 @@ hr {
            }
 
            $.getJSON(apiURL, function (data) {
-               console.log("📚 API 응답:", data);
 
                if (!data || !data.response || !data.response.docs || data.response.docs.length === 0) {
                    console.error("❌ 책 데이터가 없습니다.");
@@ -342,7 +340,6 @@ hr {
                updatePagination();
            }).fail(function (jqXHR, textStatus, errorThrown) {
                console.error(`❌ API 요청 실패: ${textStatus}, 오류: ${errorThrown}`);
-               console.log(jqXHR);
            });
        }
        

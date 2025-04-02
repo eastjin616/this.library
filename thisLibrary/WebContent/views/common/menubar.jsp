@@ -302,7 +302,7 @@
 
             
             
-            const isLoggedIn = <%= (session.getAttribute("loginMember") != null) ? "true" : "false" %>;
+            let isLoggedIn = <%= (session.getAttribute("loginMember") != null) ? "true" : "false" %>;
             
             function mypage() {
                 if (!isLoggedIn) {

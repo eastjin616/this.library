@@ -143,7 +143,7 @@
 
 
                             <div class="button-group">
-                                <button onclick="goBack()">뒤로가기</button>
+                                <button type="button" onclick="location.href='<%=contextPath%>/list.bo?cpage=1'">뒤로가기</button>
                                 <button type="submit">작성하기</button>
                             </div>
                         </div>

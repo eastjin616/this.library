@@ -263,7 +263,7 @@
 							</p>
 					</div>
 					<div class="button-group">
-						<button onclick="goBack()">뒤로가기</button>
+						<button type="button" onclick="location.href='<%=contextPath%>/list.vo?cpage=1'">뒤로가기</button>
 						<button onclick="submitPost()">작성하기</button>
 					</div>
 				</form>

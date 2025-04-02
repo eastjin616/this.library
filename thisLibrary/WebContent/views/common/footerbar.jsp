@@ -113,7 +113,7 @@
 			</div>
 		</div>
 		<script>
-		const isLoggedIn = <%= (session.getAttribute("loginMember") != null) ? "true" : "false" %>;
+		isLoggedIn = <%= (session.getAttribute("loginMember") != null) ? "true" : "false" %>;
         
         function mypage() {
             if (!isLoggedIn) {

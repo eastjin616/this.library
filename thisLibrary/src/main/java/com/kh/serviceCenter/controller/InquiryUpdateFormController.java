@@ -32,15 +32,11 @@ public class InquiryUpdateFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("나 updateFormController인데 잘 받았음 ㅇㅇ");
 		int scNo = Integer.parseInt(request.getParameter("bno"));
 		ServiceCenterService service = new ServiceCenterService();
 		serviceCenter sc = service.selectBoard(scNo);
-//		Attachment at = service.selectAttachment(scNo);
 		
 		request.setAttribute("sc", sc);
-//		request.setAttribute("at", at);
-		System.out.println("서블렛에서 확인해보는 sc " +sc);
 		request.getRequestDispatcher("views/serviceCenter/persnalInquiryUpdateForm.jsp").forward(request, response);
 		
 		

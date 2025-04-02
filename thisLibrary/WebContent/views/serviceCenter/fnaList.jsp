@@ -361,7 +361,6 @@
 															
 														}
 													}, error:function(){
-														console.log("F&A Ajax 통신 실패 했습니다. ");
 													}
 												})
 		}
@@ -375,10 +374,10 @@
                           type: "POST",
                           data: { bno: bno},
                           success: function (res) {
-                            alert("수정 완료!");
+                            alert("삭제 완료!");
                           },
                           error: function () {
-                            alert("수정 실패!");
+                            alert("삭제 실패!");
                           }
                         });
                       });
@@ -399,10 +398,11 @@
 															
 														}
 													}, error:function(){
-														console.log("F&A Ajax 통신 실패 했습니다. ");
 													}
 												})
 		}
+//======================================================================================================                      
+                      
                     </script>
 
                     <%@ include file="../common/footerbar.jsp" %>

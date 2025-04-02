@@ -32,14 +32,7 @@ public class AjaxDeleteController extends HttpServlet {
 		
 		
 		int fnaNo = Integer.parseInt(request.getParameter("bno"));
-		
-
-		System.out.println("[delete.fna 서블릿]");
-	    System.out.println("받은 bno: " + fnaNo);
-		
-	    
 	    int result = new FnaService().deleteFna(fnaNo);
-	    System.out.println("여기는 [update.fna 서블릿] 쿼리 돌린 result 보낸다 오바");
 		response.getWriter().print(result);
 	}
 

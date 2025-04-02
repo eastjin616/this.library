@@ -34,12 +34,6 @@ public class DeleteMemberController extends HttpServlet {
 		int memNo = Integer.parseInt(request.getParameter("no"));
 
 		int result = new MemberService().deleteMember(memNo);
-		System.out.println("db 다녀온 result 입니다. : "+result);
-		
-		
-		
-		
-		
 		
 		if (result > 0) {
 		    request.getSession().invalidate();

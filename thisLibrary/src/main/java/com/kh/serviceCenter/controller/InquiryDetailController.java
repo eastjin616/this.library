@@ -32,7 +32,6 @@ public class InquiryDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("detailController서블릿 들어왔니");
 		
 		
 		    // 1️⃣ 사용자가 클릭한 게시글 번호 가져오기

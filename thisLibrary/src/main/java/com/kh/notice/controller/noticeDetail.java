@@ -35,7 +35,7 @@ public class noticeDetail extends HttpServlet {
 		
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		
-		noticeService bService = new BoardService();
+		noticeService nService = new noticeService(noticeNo);
 		
 		int result = bService.increaseCount(noticeNo);
 		if(result > 0) { // 유효한 게시글 => 게시글, 첨부파일 조회

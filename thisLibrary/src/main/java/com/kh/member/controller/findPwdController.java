@@ -36,10 +36,6 @@ public class findPwdController extends HttpServlet {
 		String name = request.getParameter("name");
 		String id = request.getParameter("id");
 		String email = request.getParameter("email");
-		
-//		System.out.println("name: " + name);
-//		System.out.println("id: " + id);
-//		System.out.println("email: " + email);
 
 		int result = new MemberService().findpwd(name, id, email);
 

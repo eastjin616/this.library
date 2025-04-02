@@ -71,7 +71,7 @@ INSERT
 	 WHERE INQUIRY_NO = ?
 </entry>
 	
-	  <entry key="updateBoard">
+	  <entry key="updateInquiry">
   UPDATE SERVICE_CENTER
 	   SET TITLE = ?
 	     , CONTENT = ?

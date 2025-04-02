@@ -51,7 +51,6 @@ public class InquiryListController extends HttpServlet {
 				
 				String cpageStr = request.getParameter("cpage");
 				if (cpageStr == null) {
-				    System.out.println("cpage 값이 null입니다. 기본값 1로 설정합니다.");
 				    currentPage = 1;
 				} else {
 				    currentPage = Integer.parseInt(cpageStr);

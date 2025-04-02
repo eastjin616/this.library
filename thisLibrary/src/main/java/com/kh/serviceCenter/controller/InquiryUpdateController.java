@@ -88,7 +88,7 @@ public class InquiryUpdateController extends HttpServlet {
 			
 			// 새로운 첨부파일이 없었다면 at는 여전히 null일거임
 			
-			int result = new ServiceCenterService().updateBoard(sc, at);
+			int result = new ServiceCenterService().updateInquiry(sc, at);
 			// 새로운 첨부파일 x						=>  b, null					=> Board Update
 			// 새로운 첨부파일 o 기존의 첨부파일 o			=>  b, fileNo가 담긴 at		=> Board Update, Attachment Update
 			// 새로운 첨부파일 o 기존의 첨부파일 x			=>  b, refBoardNo가 담긴 at	=> Board Update, Attachment Insert
@@ -100,15 +100,10 @@ public class InquiryUpdateController extends HttpServlet {
 				
 			}else {
 				// 실패 => 에러문구 담아서 에러페이지
-				request.setAttribute("errorMsg", "일반게시판 수정 실패!");
-				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+				request.getSession().setAttribute("alertMsg", "게시판 수정에 실패 하었습니다.");
+				response.sendRedirect(request.getContextPath() + "/detail.sc?bno=" + scNo);
 			}
 		}
-		
-		
-		
-		
-		
 	}
 
 	/**

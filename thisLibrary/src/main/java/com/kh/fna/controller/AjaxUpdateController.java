@@ -33,7 +33,7 @@ public class AjaxUpdateController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String answer = request.getParameter("content");
+		String answer = request.getParameter("answer");
 		int fnaNo = Integer.parseInt(request.getParameter("bno"));
 	    int result = new FnaService().updateFna(answer, fnaNo);
 		response.getWriter().print(result);

@@ -56,7 +56,6 @@ private Properties prop = new Properties();
 								, rset.getString("inquiry_date")
 								, rset.getString("status")
 						));
-				
 			}	
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -74,16 +73,14 @@ private Properties prop = new Properties();
 		PreparedStatement pstmt = null;
 
 		String sql = prop.getProperty("updateFna");
-		
-		
+	
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
-			
 			pstmt.setString(1, answer);
 			pstmt.setInt(2, fnaNo);
 			result = pstmt.executeUpdate();
-
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {

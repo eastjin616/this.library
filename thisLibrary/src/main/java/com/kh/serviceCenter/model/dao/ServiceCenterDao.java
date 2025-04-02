@@ -251,11 +251,11 @@ public class ServiceCenterDao {
 	 * @param sc
 	 * @return result
 	 */
-	public int updateBoard(Connection conn, serviceCenter sc) {
+	public int updateInquiry(Connection conn, serviceCenter sc) {
 		int result = 0;
 		
 		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("updateBoard");
+		String sql = prop.getProperty("updateInquiry");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

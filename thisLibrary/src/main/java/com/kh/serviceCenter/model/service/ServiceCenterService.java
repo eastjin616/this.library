@@ -103,9 +103,9 @@ public class ServiceCenterService {
 	 * @param at
 	 * @return result1 * result2
 	 */
-	public int updateBoard(serviceCenter sc , Attachment at) {
+	public int updateInquiry(serviceCenter sc , Attachment at) {
 		Connection conn = getConnection();
-		int result1 = new ServiceCenterDao().updateBoard(conn, sc);
+		int result1 = new ServiceCenterDao().updateInquiry(conn, sc);
 		
 		int result2 = 1;
 		if(at != null) { // 새로운 첨부파일이 있었을 경우

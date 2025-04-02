@@ -296,7 +296,6 @@ th {
 
 						</tbody>
 					</table>
-
 						<% 
 			  String memId = (loginMember != null) ? loginMember.getMemId() : "";
 			  if("admin".equals(memId)) { 

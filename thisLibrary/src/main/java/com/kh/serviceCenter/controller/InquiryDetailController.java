@@ -50,7 +50,6 @@ public class InquiryDetailController extends HttpServlet {
 		        request.setAttribute("sc", sc);
 		        request.setAttribute("at", at);
 		        request.getRequestDispatcher("views/serviceCenter/persnalInquiryListDetail.jsp").forward(request, response);
-		        System.out.println("나 detailController인데 sc 던질게");
 		    } else {
 		        request.setAttribute("errorMsg", "문의글을 조회할 수 없습니다.");
 		        request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);

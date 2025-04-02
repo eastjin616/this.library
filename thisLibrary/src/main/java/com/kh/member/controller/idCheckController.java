@@ -36,7 +36,6 @@ public class idCheckController extends HttpServlet {
 		}else { //존재하는 아이디가 없을경우 -> 사용가능 => "NNNNY"
 			response.getWriter().print("NNNNY"); 
 		}
-		//--> 얘가 success에 매개변수로 꼽힘
 	}
 
 

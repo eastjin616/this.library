@@ -41,7 +41,6 @@ public class findPwdController extends HttpServlet {
 
 		if (result > 0) { // 일치
 			response.sendRedirect(request.getContextPath() + "/views/member/findPwdResult.jsp?id=" + id);
-			System.out.println(id);
 		} else { // 불일치
 			request.getSession().setAttribute("alertMsg", "회원정보가 일치하지 않습니다.");
             response.sendRedirect(request.getContextPath() + "/views/member/findPwdPage.jsp");

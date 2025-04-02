@@ -98,7 +98,6 @@ public class MemberService {
 		Member loginMember = new MemberDao().naverSnsKey(conn, naverKey);
 		close(conn);
 
-		System.out.println("[네이버 로그인] 조회된 naverKey: " + naverKey);
 		return loginMember;
 	}
 

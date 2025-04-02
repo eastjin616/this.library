@@ -41,8 +41,6 @@ public class NaverSignInController extends HttpServlet {
 		MemberService memberService = new MemberService();
 		Member loginMember = memberService.naverSnsKey(naverKey);
 
-		System.out.println("[네이버 로그인 시도] naverKey: " + naverKey);
-
 		if (loginMember == null) {
 			// 회원가입 유도
 			request.setAttribute("nickname", nickname);
@@ -55,9 +53,7 @@ public class NaverSignInController extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginMember", loginMember);
 			session.setAttribute("alertMsg", loginMember.getMemId() + "님, 환영합니다!");
-
-			System.out.println("[네이버 로그인 성공] " + loginMember);
-
+			
 			response.sendRedirect(request.getContextPath() + "/index.jsp");
 		}
 	}

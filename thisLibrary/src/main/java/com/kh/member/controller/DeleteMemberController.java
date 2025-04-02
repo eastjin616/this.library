@@ -28,9 +28,6 @@ public class DeleteMemberController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		
-		
 		int memNo = Integer.parseInt(request.getParameter("no"));
 
 		int result = new MemberService().deleteMember(memNo);

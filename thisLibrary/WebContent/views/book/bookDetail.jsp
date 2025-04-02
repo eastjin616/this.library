@@ -686,9 +686,7 @@ $(document).ready(function () {
     // URL에서 ISBN13 파라미터 추출
     //http://localhost:8777/this/views/book/bookDetail.jsp?isbn=9788954654753(메인페이지 북 처음꺼 눌렀을 때)
     var urlParams = new URLSearchParams(window.location.search);
-    console.log(urlParams);
-   	isbn = urlParams.get("isbn");//그냥 isbn이잖아 동진아 진짜 죽을래? 메인페이지에서 그냥 isbn으로 넘겼잖아 똑바로 생각 안할래?
-    console.log(isbn);//여튼 잘 받아왔어
+   	isbn = urlParams.get("isbn");
     
     // API URL
     const apiURL = "http://data4library.kr/api/srchDtlList?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&isbn13="
@@ -696,7 +694,6 @@ $(document).ready(function () {
 
     // API 요청
     $.getJSON(apiURL, function (data) {
-    	console.log("API 응답 데이터:", data);
 
       // 응답 데이터 확인
       if (!data.response || !data.response.detail || data.response.detail.length === 0) {//왜 여기서 에러가 뜨냐고
@@ -706,7 +703,6 @@ $(document).ready(function () {
 
       // 책 정보 추출
       let book = data.response.detail;
-      console.log(book);
       
       if (!book) {
         console.error("❌ 책 데이터가 없습니다!");
@@ -726,7 +722,7 @@ $(document).ready(function () {
 		}
 		
 		if (!detail) {
-		    console.error("❌ book.detail이 없습니다. book 데이터:", book);
+		    console.error("❌ book.detail이 없습니다.");
 		    return;
 		}
 //------------------------------------------------------------
@@ -761,7 +757,7 @@ $(document).ready(function () {
       if ($(bookImageSelector).length) {
           $(bookImageSelector).attr("src", imageURL);
       } else {
-        console.error(`❌ 이미지 태그를 찾을 수 없습니다: ${bookImageSelector}`);
+        console.error("❌ 이미지 태그를 찾을 수 없습니다");
       }
 // ========================================================================
 	
@@ -802,17 +798,13 @@ $(document).ready(function () {
     		+isbn
     		+ "&format=json";
     		
-   	console.log(relatedBooksImgAPI);
-	
 	$.getJSON(relatedBooksImgAPI, function (data) {
-        console.log("API 응답 데이터:", data);
 
         if (!data || !data.response || !data.response.docs || data.response.docs.length === 0) {
             console.error("❌ API에서 책 데이터가 없습니다!");
             return;
         }
         
-        console.log("되냐고")
         
         let books = data.response.docs.slice(0, 3); // 첫 번째부터 세 번째 책까지 가져오기
 
@@ -820,16 +812,9 @@ $(document).ready(function () {
             let book = doc.book;
             let imageURL = book.bookImageURL || "https://via.placeholder.com/150";
 			let isbnrelatedBooks = book.isbn13 || "isbn이 없습니다."
-			console.log(isbnrelatedBooks)
-
-            console.log(`책 ${index + 1} 이미지 URL:`, imageURL);
 
             let bookImage = `.authorBookImg\${index + 1} img`;  // 클래스명 동적으로 설정
 						let bookInput = `.authorBookImg\${index + 1} input`;
-
-
-            console.log(index);  // 출력해서 실제 CSS 선택자가 맞는지 확인
-						
 
             // bookImage가 제대로 된 이미지 태그를 찾을 수 있는지 확인
             if ($(bookImage).length) {
@@ -837,7 +822,7 @@ $(document).ready(function () {
 								$(bookInput).attr("value", isbnrelatedBooks); 
 
             } else {
-                console.error(`❌ 이미지 태그를 찾을 수 없습니다: ${bookImage}`);  // 찾을 수 없을 경우 에러
+                console.error("❌ 이미지 태그를 찾을 수 없습니다");  // 찾을 수 없을 경우 에러
             }
             
         });
@@ -845,20 +830,16 @@ $(document).ready(function () {
         // ================상세페이지로==================
         $(".authorBookImg1,.authorBookImg2,.authorBookImg3").click(function () {
 				let isbn = $(this).attr("isbn") || $(this).find("input").val();
-				console.log("시발 : " + $(this))
 	
 			if (isbn && isbn !== "isbn 정보 없음") {
 					location.href = "bookDetail.jsp?isbn=" + isbn;
 			} else {
 					alert("ISBN 정보가 없습니다.");
 			}
-	
-			console.log("✅ 클릭된 ISBN:", isbn);
-			});
+		});
   })
 
   
-  // 여기다가 isbn 필요한거 가져와야항듯
   
   
 	 
@@ -889,10 +870,7 @@ function updateLibraryData() {
 
 
     var urlParams = new URLSearchParams(window.location.search);
-    console.log(urlParams);
     var isbn = urlParams.get("isbn"); 
-    console.log(isbn);
-
 
     if (!selectLocation) {
         console.error("❌ selectLocation 요소를 찾을 수 없습니다!");
@@ -906,8 +884,6 @@ function updateLibraryData() {
 			"&region="
 			+ selectLocation.value + // 이제 selectLocation을 사용할 수 있음
 			"&format=json";
-    
-    /* console.log("📡 API 호출 URL:", libraryApi); */
 
 		$("#librarybox").empty(); // 기존 데이터 제거
 
@@ -920,7 +896,6 @@ function updateLibraryData() {
 						}
 
     $.getJSON(libraryApi, function (data) {
-        console.log("libAPI 응답 데이터:", data);
 
         if (!data.response || !data.response.libs || data.response.libs.length === 0) {
             console.error("❌ API에서 도서관 데이터를 가져올 수 없습니다!");
@@ -942,7 +917,7 @@ function updateLibraryData() {
             let lib = librarys[i]?.lib; // ?.를 사용해 안전하게 접근
 
             if (!lib) {
-                console.error(`❌ librarys[${i}].lib가 없습니다. library 데이터:`, librarys[i]);
+                console.error(`❌ librarys[${i}].lib가 없습니다.`);
                 continue;
             }
 
@@ -967,13 +942,11 @@ function updateLibraryData() {
 							+'<hr >'
 						'</div>'
 
-						console.log("생성된 HTML:", bookHtml);
-
 						$("#librarybox").append(bookHtml);
 
         }
     }).fail(function (jqXHR, textStatus, errorThrown) {
-        console.error("❌ API 요청 실패:", textStatus, errorThrown);
+        console.error("❌ API 요청 실패:");
     });
 };
 

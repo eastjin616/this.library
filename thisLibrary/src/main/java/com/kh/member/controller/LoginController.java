@@ -40,8 +40,7 @@ public class LoginController extends HttpServlet {
 		if(loginMember == null) {
 			request.setAttribute("errorMsg", "로그인 실패했습니다!");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);;
-		}else {
-			
+		}else {		
 			HttpSession session =  request.getSession();
 			request.getSession().setAttribute("loginMember", loginMember);
 			response.sendRedirect(request.getContextPath());

@@ -29,7 +29,6 @@ public class nickNameCheckController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nickname = request.getParameter("nickname");
-		System.out.println("nickname : " + nickname);
 		
 		int count = new MemberService().nickCheck(nickname);
 		if(count > 0) {//존재하는 아이디가 있을경우 -> 사용 불가능 => "NNNNN"

@@ -60,7 +60,7 @@ public class CommantaryDao {
 		
 	}
 	
-	public ArrayList<Commantary> selectCommantaryList(Connection conn){
+	public ArrayList<Commantary> selectCommantaryList(Connection conn, int memNo){
 		
 		ArrayList<Commantary> list = new ArrayList<Commantary>();
 		PreparedStatement pstmt = null;
@@ -69,6 +69,7 @@ public class CommantaryDao {
 		System.out.println(sql);
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
 			
 			rset = pstmt.executeQuery();
 			while(rset.next()) {

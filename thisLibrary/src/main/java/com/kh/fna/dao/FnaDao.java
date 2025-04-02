@@ -39,7 +39,6 @@ private Properties prop = new Properties();
 	 * @return list
 	 */
 	public ArrayList<Fna> selectList(Connection conn, int scNO){
-		System.out.println("fnaDao 도착");
 		ArrayList<Fna> list = new ArrayList<Fna>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -59,7 +58,6 @@ private Properties prop = new Properties();
 						));
 				
 			}	
-			System.out.println("fnadao 끝 쿼리 결과 : " + list);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -91,7 +89,6 @@ private Properties prop = new Properties();
 		}finally {
 			close(pstmt);
 		}
-		System.out.println("돌았음 test :: " + result);
 
 		return result;
 	}
@@ -113,26 +110,6 @@ private Properties prop = new Properties();
 		}
 		return result;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

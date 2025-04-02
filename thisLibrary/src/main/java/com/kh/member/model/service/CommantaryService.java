@@ -34,10 +34,9 @@ public class CommantaryService {
 	}
 	
 	
-	public ArrayList<Commantary> selectCommantaryList(){
-		System.out.println("서비스단");
+	public ArrayList<Commantary> selectCommantaryList(int memNo){
 		Connection conn = getConnection();
-		ArrayList<Commantary> list = new CommantaryDao().selectCommantaryList(conn);
+		ArrayList<Commantary> list = new CommantaryDao().selectCommantaryList(conn, memNo);
 		close(conn);
 		
 		return list;

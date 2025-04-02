@@ -311,6 +311,7 @@ hr {
    
  //=================================================================================== 
    $(document).ready(function () {
+	   const timestamp = new Date().getTime();
        const baseURL = "http://data4library.kr/api/loanItemSrch?authKey=a111a214753e25635f54ae9ff411072670e715484fd9ff42afc5c103323cfc67&pageNo=1&pageSize=10&format=json";
        let currentPage = 1;
        let totalPages = 1;
@@ -398,11 +399,13 @@ hr {
                                '</div>' +
                            '</div>' +
                           '<div class="heart">'+
-                               '<i class="fas fa-heart heart-icon ' + heartClass + '" style="color:' + heartColor + ';" onclick="toggleHeart(this)"></i>'+
-                               '</div>'+
+                          '<div class="heart">' +
+                          `<% if (loginMember != null) { %>` +
+                              '<i class="fas fa-heart heart-icon ' + heartClass + '" style="color:' + heartColor + ';" onclick="toggleHeart(this)"></i>' +
+                          `<% } %>` +
+                           '</div>'+
                        '</div>' +
                    '</div>';
-
                $("#content_2_2").append(bookHTML);
            }
        }

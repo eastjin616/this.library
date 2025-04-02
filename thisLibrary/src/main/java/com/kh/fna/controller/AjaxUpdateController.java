@@ -35,21 +35,8 @@ public class AjaxUpdateController extends HttpServlet {
 	
 		String answer = request.getParameter("content");
 		int fnaNo = Integer.parseInt(request.getParameter("bno"));
-		
-
-		System.out.println("[update.fna 서블릿]");
-	    System.out.println("받은 bno: " + fnaNo);
-	    System.out.println("받은 content: " + answer);
-//		
-//	    Fna fna = new Fna();
-//	    fna.setAnswer(answer);
-//	    fna.setFna_no(fnaNo);
-	    
 	    int result = new FnaService().updateFna(answer, fnaNo);
-	    System.out.println("여기는 [update.fna 서블릿] 쿼리 돌린 result 보낸다 오바" + result);
 		response.getWriter().print(result);
-		
-
 	}
 
 	/**

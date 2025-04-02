@@ -43,6 +43,14 @@
 					display: inline-block;
 					margin: 0;
 				}
+				
+				.post-content{
+					line-height: 1.2;
+			    word-wrap: break-word; /* 긴 단어를 다음 줄로 넘겨서 줄 바꿈 */
+			    overflow-wrap: break-word; /* 긴 단어를 넘어가지 않게 줄 바꿈 */
+			    white-space: normal; /* 공백을 적절히 처리 */
+			    word-break: break-all; /* 특수문자나 긴 단어가 줄을 넘지 않도록 */
+				}
 
 				.label {
 					background: #ff7f50;
@@ -158,10 +166,10 @@
 
 				.comment-text {
 					line-height: 1.2;
-				    word-wrap: break-word; /* 긴 단어를 다음 줄로 넘겨서 줄 바꿈 */
-				    overflow-wrap: break-word; /* 긴 단어를 넘어가지 않게 줄 바꿈 */
-				    white-space: normal; /* 공백을 적절히 처리 */
-				    word-break: break-all; /* 특수문자나 긴 단어가 줄을 넘지 않도록 */
+			    word-wrap: break-word; /* 긴 단어를 다음 줄로 넘겨서 줄 바꿈 */
+			    overflow-wrap: break-word; /* 긴 단어를 넘어가지 않게 줄 바꿈 */
+			    white-space: normal; /* 공백을 적절히 처리 */
+			    word-break: break-all; /* 특수문자나 긴 단어가 줄을 넘지 않도록 */
 				}
 
 
@@ -503,7 +511,7 @@
 										}
 									})
 								}
-								
+								<%if(loginMember != null){ %>
 								<!-- 댓글 수 카운트-->
 						        const replyContent = document.getElementById('replyContent');
 						        const charCountDisplay = document.querySelector('.char-count');
@@ -515,7 +523,7 @@
 
 						        });
 						   	<!-- 여기까지 댓글 수 카운트 스크립트 -->
-						   	
+						   	<% } %>
 						   	<!-- 팔로우 및 언팔로우 기능 -->
 
 						   	$('#follow-btn').on('click', function () {

@@ -146,7 +146,7 @@
                         <input type="text" id="title" name="title" maxlength="50" value="<%=b.getBoardTitle() %>" style="width: 980px; margin-bottom: 10px;" required>
 
                         <label for="content" id="content">내용</label>
-                        <textarea id="content" name="content" style="width: 980px; height: 300px; margin-bottom: 10px; "
+                        <textarea id="content" name="content" maxlength="1333" style="width: 980px; height: 300px; margin-bottom: 10px; "
                             required><%= b.getBoardContent() %></textarea>
 
                         <div class="file-upload-container">
@@ -155,7 +155,7 @@
 
 
                             <div class="button-group">
-                                <button onclick="goBack()">뒤로가기</button>
+                                <button type="button" onclick="location.href='<%=contextPath%>/list.bo?cpage=1'">뒤로가기</button>
                                 <button type="submit">수정하기</button>
                             </div>
                         </div>

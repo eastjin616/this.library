@@ -36,6 +36,7 @@
 	margin: 0;
 }
 
+
 .label {
 	background: #ff7f50;
 	color: white;
@@ -363,7 +364,11 @@ h2 {
 					}
 
 					function vote(){
-						location.href="<%=contextPath%>/vote.vo?vNo=<%=v.getVoteNo()%>&bNum="+bookNum;
+						if(bookNum != 0){
+							location.href="<%=contextPath%>/vote.vo?vNo=<%=v.getVoteNo()%>&bNum="+bookNum;
+						}else{
+							alert("투표할 책을 골라주세요");
+						}
 					}
 						
 					</script>

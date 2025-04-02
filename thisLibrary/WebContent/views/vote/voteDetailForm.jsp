@@ -245,7 +245,7 @@ h2 {
 
 	<div class="post-container">
 		<div class="post-header">
-			<h2><%=v.getVoteTitle() %>
+			<h2 style="text-align:left;"><%=v.getVoteTitle() %>
 				<%if(loginMember != null && v.getMemNo() != loginMemNo){%>
 				<span class="label btn btn-primary" id="follow-btn"> 팔로우 </span>
 				<% } %>

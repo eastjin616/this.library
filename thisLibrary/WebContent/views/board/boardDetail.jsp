@@ -243,7 +243,7 @@
 				
 				<div class="post-container" style="margin-top: 120px;margin-bottom: 120px;">
 					<div class="post-header">
-						<h2><%=b.getBoardTitle() %>
+						<h2 style="text-align:left;"><%=b.getBoardTitle() %>
 					<%if(loginMember != null && b.getMemNo() != loginMemNo){%> 
 						<span class="label btn btn-primary" id="follow-btn">
 						팔로우

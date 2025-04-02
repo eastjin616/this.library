@@ -137,7 +137,7 @@
 
 				.button-group {
 					display: flex;
-					margin-left: 90%;
+					margin-left: 80%;
 					gap: 10px;
 					/* 버튼 간격 */
 				}
@@ -234,7 +234,7 @@
 				<%@ include file="../common/menubar.jsp" %>
 				<form class="post-container" action="<%=contextPath %>/update.vo">
 					<div class="post-header">
-						<h2>제목<input type="text" name="title" style="width: 985px; margin-left: 10px;" value="<%=v.getVoteTitle() %>"></h2>
+						<h2>제목<input type="text" name="title" maxlength="50" style="width: 985px; margin-left: 10px;" value="<%=v.getVoteTitle() %>"></h2>
 					</div>
 					
 					<div class="post-content">
@@ -267,6 +267,7 @@
 							</p>
 					</div>
 					<div class="button-group">
+						<button type="button" onclick="location.href='<%=contextPath%>/list.vo?cpage=1'">뒤로가기</button>
 						<button onclick="submitPost()">수정하기</button>
 					</div>
 				</form>

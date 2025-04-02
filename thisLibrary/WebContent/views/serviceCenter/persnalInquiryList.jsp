@@ -181,10 +181,12 @@
                                     <% } %>
                   </div>
 
+									<%if(loginMember != null){ %>
                   <div style="display: flex;">
                     <a href="<%= contextPath %>/views/serviceCenter/persnalInquiry.jsp" class="write-btn"
                       style="margin-left: auto;">글쓰기</a>
                   </div>
+                  <% } %>
 
                 </div>
                 <!-- 자유게시판 끝 -->

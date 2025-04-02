@@ -96,8 +96,8 @@ public class BoardUpdateController extends HttpServlet {
 				
 			}else {
 				// 실패 => 에러문구 담아서 에러페이지
-				request.setAttribute("errorMsg", "일반게시판 수정 실패!");
-				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+				request.getSession().setAttribute("alertMsg", "게시판 수정 실패!");
+				response.sendRedirect(request.getContextPath() + "/detail.bo?bno=" + boardNo);
 			}
 		}
 	}

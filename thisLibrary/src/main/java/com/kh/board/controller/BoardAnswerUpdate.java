@@ -31,9 +31,6 @@ public class BoardAnswerUpdate extends HttpServlet {
 		int rno = Integer.parseInt(request.getParameter("rno"));
 		int bno = Integer.parseInt(request.getParameter("bno"));
 		String rcontent = request.getParameter("rcontent");
-		System.out.println("rno : " + rno);
-		System.out.println("bno : " + bno);
-		System.out.println("rcontent : " + rcontent);
 		int result = new BoardService().updateBoardAnswer(rno, rcontent);
 		
 		if(result > 0) {

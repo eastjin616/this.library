@@ -143,7 +143,7 @@
                     <form action="<%=contextPath%>/update.bo" method="POST" enctype="multipart/form-data">
                     		<input type="hidden" name="bno" value="<%= b.getBoardNo()%>">
                         <label for="title" id="title" >제목</label>
-                        <input type="text" id="title" name="title" value="<%=b.getBoardTitle() %>" style="width: 980px; margin-bottom: 10px;" required>
+                        <input type="text" id="title" name="title" maxlength="50" value="<%=b.getBoardTitle() %>" style="width: 980px; margin-bottom: 10px;" required>
 
                         <label for="content" id="content">내용</label>
                         <textarea id="content" name="content" style="width: 980px; height: 300px; margin-bottom: 10px; "

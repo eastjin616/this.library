@@ -28,18 +28,9 @@ public class DeleteMemberController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		
-		
 		int memNo = Integer.parseInt(request.getParameter("no"));
 
 		int result = new MemberService().deleteMember(memNo);
-		System.out.println("db 다녀온 result 입니다. : "+result);
-		
-		
-		
-		
-		
 		
 		if (result > 0) {
 		    request.getSession().invalidate();

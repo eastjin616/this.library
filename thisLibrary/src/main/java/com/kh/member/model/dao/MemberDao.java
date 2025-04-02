@@ -133,7 +133,6 @@ public class MemberDao {
 
 			if (rset.next()) {
 				result = rset.getInt(1);
-				System.out.println(result);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -212,7 +211,6 @@ public class MemberDao {
 
 			if (rset.next()) {
 				memberId = rset.getString("mem_id");
-				System.out.println(memberId);
 			}
 
 		} catch (SQLException e) {
@@ -310,7 +308,7 @@ public class MemberDao {
 		
 		return loginMember;
 	}
-
+//==================================================================	s
 	public Member  selectMemberByName(Connection conn, Member loginMember) {
 		Member loginUser = null;
 		PreparedStatement pstmt = null;
@@ -345,7 +343,7 @@ public class MemberDao {
 		
 		return loginMember;
 	}
-	
+//==================================================================		
 	public int deleteMember(Connection conn , int memNo) {
 		int result = 0;
 		PreparedStatement pstmt = null;

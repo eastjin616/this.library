@@ -29,7 +29,6 @@ public class idCheckController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String checkId = request.getParameter("checkId");
-		System.out.println("checkId: " + checkId);
 				
 		int count = new MemberService().idCheck(checkId);
 		if(count > 0) {//존재하는 아이디가 있을경우 -> 사용 불가능 => "NNNNN"
@@ -37,7 +36,6 @@ public class idCheckController extends HttpServlet {
 		}else { //존재하는 아이디가 없을경우 -> 사용가능 => "NNNNY"
 			response.getWriter().print("NNNNY"); 
 		}
-		//--> 얘가 success에 매개변수로 꼽힘
 	}
 
 

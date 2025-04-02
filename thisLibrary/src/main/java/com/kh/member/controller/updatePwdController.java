@@ -32,9 +32,6 @@ public class updatePwdController extends HttpServlet {
 		String id = request.getParameter("id");
 	    String newPwd = request.getParameter("newPwd");
 	    
-	    System.out.println(id);
-	    System.out.println(newPwd);
-	    
 	    int result = new MemberService().updatePwd(id, newPwd);
 	    
 	    if (result > 0) { // 변경 성공
@@ -44,8 +41,6 @@ public class updatePwdController extends HttpServlet {
             request.setAttribute("errorMsg", "비밀번호 변경 실패");
             request.getRequestDispatcher("/views/common/errorPage.jsp").forward(request, response);
         }
-	    
-	    
 	}
 
 	/**

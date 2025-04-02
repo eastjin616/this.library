@@ -42,7 +42,6 @@ public class SigninController extends HttpServlet {
 
 		Member m = new Member(memName, memId, memPwd, nickname,  address, phone, email, snsKey);
 
-		
 		int result = new MemberService().insertMember(m);
 		
 		if(result > 0) { // 성공적으로 회원가입 완료 됨 (Member 테이블에 Insert 완료 됨)

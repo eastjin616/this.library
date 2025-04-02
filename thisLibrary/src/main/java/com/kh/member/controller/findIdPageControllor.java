@@ -33,9 +33,6 @@ public class findIdPageControllor extends HttpServlet {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		
-		System.out.println("name: " + name);
-		System.out.println("email: " + email);
-		
 		String memberId = new MemberService().findIdPage(name, email);
 		
 		if (memberId.equals("")) { 

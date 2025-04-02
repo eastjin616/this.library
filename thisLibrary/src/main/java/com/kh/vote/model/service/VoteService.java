@@ -85,7 +85,6 @@ public class VoteService {
 
 	public int updateVote(Vote v) {
 		Connection conn = getConnection();
-		System.out.println("서비스 시작 전");
 		int result = new VoteDao().updateVote(conn, v);
 		
 		if(result > 0) {
@@ -96,7 +95,6 @@ public class VoteService {
 		
 		close(conn);
 		
-		System.out.println("서비스 시작 후");
 		return result;
 	}
 

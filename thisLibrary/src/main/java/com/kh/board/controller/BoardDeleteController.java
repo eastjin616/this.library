@@ -44,7 +44,6 @@ public class BoardDeleteController extends HttpServlet {
 			if(result1 > 0) { // 게시글 삭제 성공
 				if(at != null) {
 					new BoardService().deleteAttachment(boardNo);
-					System.out.println(savePath);
 					new File(savePath + at.getChangeName()).delete();
 				}
 				request.getSession().setAttribute("alertMsg", "성공적으로 게시글이 삭제 되었습니다.");

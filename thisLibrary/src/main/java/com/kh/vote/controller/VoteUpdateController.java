@@ -47,19 +47,15 @@ public class VoteUpdateController extends HttpServlet {
 		v.setBook2Url(book2Url);
 		v.setVoteEndDate(endDate);
 		
-		System.out.println("컨트롤러 시작 전");
 		
 		int result = new VoteService().updateVote(v);
-		System.out.println("컨트롤러 시작 후");
 		
 		if(result > 0) {
-			System.out.println("result > 0 = " + result);
 			// 성공 => 기존에 봤었던 사엣조회 페이지
 			request.getSession().setAttribute("alertMsg", "성공적으로 투표가 수정 되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/detail.vo?vno=" + vNo);
 			
 		}else {
-			System.out.println(" ! result > 0 = " + result);
 			// 실패 => 에러문구 담아서 에러페이지
 			request.setAttribute("errorMsg", "투표 수정 실패!");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);

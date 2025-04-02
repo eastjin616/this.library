@@ -213,7 +213,6 @@ public class VoteDao {
 	}
 
 	public int updateVote(Connection conn, Vote v) {
-		System.out.println("dao 시작 전");
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("updateVote");
@@ -234,8 +233,6 @@ public class VoteDao {
 		}finally {
 			close(pstmt);
 		}
-		
-		System.out.println("dao 시작 후" + result);
 		
 		return result;
 	}

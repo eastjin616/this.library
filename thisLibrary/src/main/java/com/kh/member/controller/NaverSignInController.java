@@ -54,7 +54,7 @@ public class NaverSignInController extends HttpServlet {
 			session.setAttribute("loginMember", loginMember);
 			session.setAttribute("alertMsg", loginMember.getMemId() + "님, 환영합니다!");
 			
-			response.sendRedirect(request.getContextPath() + "/index.jsp");
+			response.sendRedirect(request.getContextPath()+"/views/common/mainPage.jsp");
 		}
 	}
 

@@ -712,9 +712,7 @@ html {
 		</div>
 	</div>
 	<div id="spaceContent"></div>
-	<%
-	System.out.println("현재 세션 loginMember: 메인페이지" + session.getAttribute("loginMember"));
-	%>
+
 
 	<!-- -------------------------------------------------------------------- -->
 	<%@ include file="footerbar.jsp"%>

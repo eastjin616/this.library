@@ -29,7 +29,6 @@ public class idCheckController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String checkId = request.getParameter("checkId");
-		System.out.println("checkId: " + checkId);
 				
 		int count = new MemberService().idCheck(checkId);
 		if(count > 0) {//존재하는 아이디가 있을경우 -> 사용 불가능 => "NNNNN"

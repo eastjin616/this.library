@@ -30,8 +30,7 @@ public class NoticeInsertForm extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		  request.setCharacterEncoding("UTF-8");
-		  System.out.println("제목: " + request.getParameter("title"));
-		  System.out.println("내용: " + request.getParameter("content"));
+		 
 	        // 1. 폼에서 넘어온 데이터 받기
 	        String title = request.getParameter("title");
 	        String content = request.getParameter("content");

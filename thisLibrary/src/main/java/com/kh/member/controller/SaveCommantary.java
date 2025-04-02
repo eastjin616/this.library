@@ -43,7 +43,7 @@ public class SaveCommantary extends HttpServlet {
 	    int result = new CommantaryService().insertCommantary(c);
 	    
 	    if (result > 0) {
-	        request.setAttribute("errorMsg", "감상문 저장 성고했습니다.");
+	        request.setAttribute("errorMsg", "감상문 저장 성공했습니다.");
 
 	    	response.sendRedirect(request.getContextPath() + "/views/member/myPage.jsp");
 	    } else {

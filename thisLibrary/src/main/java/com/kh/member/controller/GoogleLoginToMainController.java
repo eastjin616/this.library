@@ -13,10 +13,7 @@ public class GoogleLoginToMainController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 세션에서 로그인된 회원 객체 꺼내오기
-//        HttpSession session = request.getSession();
-//        Member loginMember = (Member) session.getAttribute("loginMember");
-    	System.out.println("구글 로그인 간다.");
+
     	String email = request.getParameter("email");
        	String name = request.getParameter("name");
        	String snskey = request.getParameter("snskey");
@@ -38,9 +35,7 @@ public class GoogleLoginToMainController extends HttpServlet {
         	
         	// 신규 회원 → googlesignin.jsp로 이동 (name, email 전달)
         	request.setAttribute("m", m);
-            request.getRequestDispatcher("views/member/googleSignin.jsp").forward(request, response);
-           
-            
+            request.getRequestDispatcher("views/member/googleSignin.jsp").forward(request, response);    
         }
     }
 }

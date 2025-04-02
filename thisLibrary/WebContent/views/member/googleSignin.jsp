@@ -349,7 +349,6 @@ body * {
 				}
 			},
 			error:function(){
-				console.log("아이디 중복체크용 ajax 통신 실패");
 			}
 		});
 	}
@@ -440,7 +439,6 @@ function checkNick() {
                 }
             },
             error: function() {
-                console.log("닉네임 중복 체크 Ajax 통신 실패");
             }
         });
     }

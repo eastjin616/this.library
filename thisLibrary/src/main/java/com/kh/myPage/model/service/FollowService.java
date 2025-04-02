@@ -19,7 +19,7 @@ public class FollowService {
 
 		if (at != null) {
 //				첨부파일이 존재하면~~
-			result2 = new BoardDao().insertAttachment(conn, memberId);
+			result2 = new FollowDao().insertAttachment(conn, memberId);
 		}
 		if (result1 > 0 && result2 > 0) {
 			commit(conn);

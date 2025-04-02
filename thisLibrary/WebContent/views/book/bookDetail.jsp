@@ -1139,6 +1139,7 @@ $(function(){// 화면이 다 로드되고 나서 하는 행위
     })
  }
  
+<% if(loginMember != null){%>
 //  <!-- 댓글 수 카운트-->
  const replyContent = document.getElementById('replyContent');
  const charCountDisplay = document.querySelector('.char-count');
@@ -1150,6 +1151,8 @@ $(function(){// 화면이 다 로드되고 나서 하는 행위
  
  });
 //  <!-- 여기까지 댓글 수 카운트 스크립트 -->
+
+<% }%>
 
 
 </script>

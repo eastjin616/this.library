@@ -237,7 +237,6 @@ hr {
                    + "&format=json";
                    
         $.getJSON(apiURL, function (data) {
-          console.log("API 응답 데이터:", data);
 
           if (!data || !data.response || !data.response.docs || data.response.docs.length === 0) {
         	  alert( keyword +"라는 도서(작가)는 없습니다!");
@@ -250,7 +249,7 @@ hr {
             let doc = books[i].doc;
 
             if (!doc) {
-              console.error(`❌ books[${i}].doc가 없습니다. book 데이터:`, books[i]);
+              console.error(`❌ books[${i}].doc가 없습니다. `);
               continue;
             }
 
@@ -271,7 +270,6 @@ hr {
 	
 
             // 책 정보 HTML 생성
-            //console.log("변수 값:", {i, imageURL, title, author, translator, publisher, pubYear});
 
             let bookHTML = 
               '<br>'+

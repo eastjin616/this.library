@@ -825,7 +825,7 @@ html {
         books.slice(0, bookSelectors.length).forEach((book, index) => {
             let doc = book.doc;
             if (!doc) {
-                console.error(`❌ book.doc가 없습니다. book 데이터:`, book);
+                console.error(`❌ book.doc가 없습니다.`);
                 return;
             }
             
@@ -833,8 +833,6 @@ html {
             let imageURL = doc.bookImageURL || "https://via.placeholder.com/150";
             let title = doc.bookname || "title 정보 없음";
             let isbn = doc.isbn13 || "isbn 정보 없음";
-            
-            console.log(title);
 			
             let bookImageSelector = bookSelectors[index];
             let contentSelector = contentSelectors[index];
@@ -868,8 +866,6 @@ html {
         } else {
             alert("ISBN 정보가 없습니다.");
         }
-        
-        console.log(isbn);//여긴 잘 넘어가 
     });
 });
 

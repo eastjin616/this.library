@@ -176,6 +176,7 @@ a {
 	font-size: 14px;
 	padding: 5px;
 	cursor: pointer;
+	display: none;
 }
 
 #search-bar {
@@ -572,7 +573,7 @@ html {
 			<option value="national">국가별검색</option>
 			<option value="languague">언어별선택</option>
 			<option value="author">작가별선택</option>
-		</select> <input type="text" id="search-bar" placeholder="검색어를 입력하세요">
+		</select> <input type="text" id="search-bar" placeholder="검색어를 입력해주세요" style="margin-left: 15px;">
 		<button id="search-btn" onclick="search()">검색</button>
 	</div>
 

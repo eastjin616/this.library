@@ -600,14 +600,6 @@
 													</div>
 												</div>
 												<div id="mypageEmpty"></div>
-												<div id="mypageFollower">
-													<div>팔로워</div>
-													<div id="follower"></div>
-												</div>
-												<div id="mypageFollwoing">
-													<div>팔로잉</div>
-													<div id="following"></div>
-												</div>
 												<div id="mypageJjim">
 													<div id="jjima">찜 목록</div>
 													<div id="jjimCount">

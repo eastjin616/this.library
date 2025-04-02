@@ -38,7 +38,7 @@ public class updatePwdController extends HttpServlet {
             request.getSession().setAttribute("alertMsg", "비밀번호 변경이 완료되었습니다.");//이거 왜 안되냐
             response.sendRedirect(request.getContextPath() + "/views/member/loginform.jsp");
         } else { // 실패
-            request.setAttribute("errorMsg", "비밀번호 변경 실패");
+        	request.getSession().setAttribute("alertMsg", "비밀번호 변경이 실패 다시 시도해주세요.");
             request.getRequestDispatcher("/views/common/errorPage.jsp").forward(request, response);
         }
 	}

@@ -40,7 +40,7 @@ public class findIdPageControllor extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/views/member/findIdPage.jsp");
 		} else { 
 			 request.getSession().setAttribute("alertMsg", "당신의 아이디는 " + memberId + "입니다.");
-	            response.sendRedirect(request.getContextPath() + "/views/member/loginform.jsp");
+	         response.sendRedirect(request.getContextPath() + "/views/member/loginform.jsp");
 		}
 	
 	}

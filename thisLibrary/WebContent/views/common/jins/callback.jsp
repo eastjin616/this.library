@@ -16,9 +16,6 @@
     String code = request.getParameter("code");
     String state = request.getParameter("state");
 
-    System.out.println("📌 [NAVER CALLBACK] 호출됨");
-    System.out.println("✅ code = " + code);
-    System.out.println("✅ state = " + state);
 %>
 <body>
 <%
@@ -100,13 +97,6 @@
                         + "&nickName=" + URLEncoder.encode(nickname, "UTF-8")
                         + "&email=" + URLEncoder.encode(email, "UTF-8")
                         + "&mobile=" + URLEncoder.encode(mobile, "UTF-8"); 
-
-                
-                System.out.println("✅ [리디렉트 예정] id = " + id);
-                System.out.println("✅ nickname = " + nickname);
-                System.out.println("✅ email = " + email);
-                System.out.println("✅ redirectURL = " + redirectURL);
-                System.out.println("📞 mobile = " + mobile);
                 
                 response.sendRedirect(redirectURL);
             } else {

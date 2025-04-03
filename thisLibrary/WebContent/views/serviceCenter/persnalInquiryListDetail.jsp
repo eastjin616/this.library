@@ -183,8 +183,7 @@
 
 
             <%@ include file="../common/menubar.jsp" %>
-				<% int loginMemNo = (loginMember != null) ? loginMember.getMemNo() : null; 
-						String loginMemName = (loginMember != null) ? loginMember.getMemName() : null; %>
+				<% 	String loginMemName = (loginMember != null) ? loginMember.getMemName() : null; %>
               <div class="post-container" style="margin-top: 120px;margin-bottom: 120px;">
                 <div class="post-header">
                   <h2>

@@ -35,7 +35,6 @@ public class AjaxSelectController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int scNO = Integer.parseInt(request.getParameter("bno"));
         ArrayList<Fna> list = new FnaService().selectList(scNO);
-        
         response.setContentType("application/json; charset=utf-8");
         new Gson().toJson(list, response.getWriter());
 

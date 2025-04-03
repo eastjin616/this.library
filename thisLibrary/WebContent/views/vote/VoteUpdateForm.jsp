@@ -256,7 +256,7 @@
 							</div>
 							<input type="hidden" name="vno" value="<%= v.getVoteNo() %>">
 							<input type="hidden" name="imageUrl1" id="imageUrl1" value="<%=v.getBook1Url()%>">
-							<input type="hidden" name="imageUrl2" id="imageUrl2" value="<%=v.getBook1Url()%>">
+							<input type="hidden" name="imageUrl2" id="imageUrl2" value="<%=v.getBook2Url()%>">
 							<input type="hidden" name="book1" id="book1" value="<%=v.getBook1()%>">
 							<input type="hidden" name="book2" id="book2" value="<%=v.getBook1()%>">
 							<input type="hidden" name="userNo" id="userNo" value="<%=loginMember.getMemNo()%>">

@@ -509,12 +509,6 @@ hr {
         toggleHeart(this);
     });
 });
-
-	
-	
-	
-	
-
 </script>
 
 

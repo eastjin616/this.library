@@ -248,7 +248,7 @@ body * {
 		
 </div>
 		<!------------------------------ 카카오 로그인 부분 ------------------------>
-		<script src="https://developers.kakao.com/sdk/js/kakao.js&"></script>
+		<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
 		<script>
 								// 카카오 초기화
@@ -278,7 +278,7 @@ body * {
 											var nickName = res.kakao_account.profile.nickname;
 											var key = res.id;
 
-											window.location.href = "<%= contextPath %>/kakaoSignin.me?email=" + email + "&nickName=" + nickName + "&key=" + key;
+											window.location.href = "<%= contextPath %>/kakaoSignin.me?email=" + email + "&nickName=" + nickName + "&key=" + key
 
 										},
 										fail: function (error) {
@@ -289,7 +289,6 @@ body * {
 
 								// 로그아웃 기능 - 카카오 서버에 접속하는 엑세스 토큰을 만료, 사용자 어플리케이션의 로그아웃은 따로 진행.
 								function kakaoLogout() {
-									
 									if (!Kakao.Auth.getAccessToken()) {
 										alert('Not logged in.');
 										return;

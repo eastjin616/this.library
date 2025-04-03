@@ -35,6 +35,7 @@ public class AjaxUpdateController extends HttpServlet {
 	
 		String answer = request.getParameter("answer");
 		int fnaNo = Integer.parseInt(request.getParameter("bno"));
+		System.out.println("에잇 : "+fnaNo);
 	    int result = new FnaService().updateFna(answer, fnaNo);
 		response.getWriter().print(result);
 	}

@@ -278,7 +278,7 @@ th {
 								    if (list != null && !list.isEmpty()) {
 								        for (scNoticeVO n : list) {
 								%>
-								<tr onclick="location.href='customerNoticeDetail.jsp?noticeNo=<%=n.getNoticeNo()%>'" style="cursor:pointer;">
+								<tr class="notice-row" style="cursor:pointer;" data-notice="<%=n.getNoticeNo()%>">
 								    <td><%= n.getNoticeNo() %></td>
 								    <td><%= n.getTitle() %></td>
 								    <td>admin</td>
@@ -304,26 +304,27 @@ th {
 			      <a href="<%= contextPath %>/views/serviceCenter/noticeInsertForm.jsp" class="write-btn" style="margin-left: auto;">글쓰기</a>
 			    </div>
 			<% } %>
-
-
 				</div>
+				
+				
+				
+				<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+				
+				<script>
+				  $(function () {
+				    $(".notice-row").click(function () {
+				      alert("해당 글은 업데이트중에 있습니다. 추후 열람 가능합니다.");
+				    });
+				  });
+				</script>
+
 			</div>
 		</div>
 	</div>
 	<!-- 공지사항 끝 -->
 <%@ include file="../common/footerbar.jsp" %>
 
-<script>
 
-  function inquiry() {
-	  if (!isLoggedIn) {
-	    alert("해당 서비스는 로그인한 회원만 사용가능합니다.");
-	    return ;
-	  }
-	  window.location.href = "<%= contextPath %>/views/serviceCenter/persnalInquiry.jsp";
-	}
-
-</script>
 
 </body>
 

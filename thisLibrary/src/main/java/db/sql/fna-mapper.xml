@@ -3,8 +3,17 @@
 <properties>
 
 <entry key="selectList">
-	SELECT *
-	FROM FNA
+SELECT
+        FNA_NO
+      , FNA_TITLE
+      , CONTENT
+      , ANSWER
+      , TO_CHAR(INQUIRY_DATE, 'YYYY-MM-DD') "INQUIRY_DATE"
+      , STATUS
+   FROM FNA B
+  WHERE B.STATUS = 'Y'
+  ORDER
+     BY FNA_NO ASC
 </entry>
 
 <entry key="updateFna">

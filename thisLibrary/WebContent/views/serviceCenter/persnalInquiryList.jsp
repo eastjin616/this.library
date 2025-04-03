@@ -117,7 +117,6 @@
                         <th>제목</th>
                         <th>글쓴이</th>
                         <th>작성일자</th>
-                        <th>조회수</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -130,7 +129,7 @@
 
                           <!-- case2. 게시글이 있을 경우 -->
                           <%for(serviceCenter sc : list){ %>
-                            <tr>
+                            <tr data-writer="<%= sc.getMemNo() %>">
                               <td>
                                 <%=sc.getInquiryNo() %>
                               </td>
@@ -148,12 +147,34 @@
                               <%} %>
                     </tbody>
                   </table>
-                  <script>
-                    $(function () {
-                      $(".board-container tbody>tr").click(function () {
-                        location.href = "<%= contextPath %>/detail.sc?bno=" + $(this).children().eq(0).text();
-                      })
-                    })
+										<%
+									  int loginMemNo = (loginMember != null) ? loginMember.getMemNo() : 0;
+									%>
+									<script>
+									  const loginMemNo = <%= loginMemNo %>;
+									</script>
+
+
+
+
+									<script>
+									
+									$(function () {
+										  $(".board-container tbody > tr").click(function () {
+										    const writerNo = $(this).data("writer"); // 글 작성자 번호
+										    const boardNo = $(this).children().eq(0).text(); // 글 번호
+
+										    if (loginMemNo !== 0 && loginMemNo === writerNo) {
+										      // 로그인했고, 글쓴이와 일치하면 이동
+										      location.href = "<%= contextPath %>/detail.sc?bno=" + boardNo;
+										    } else {
+										      // 아니면 alert 띄우고 list 페이지 유지
+										      alert("해당 글은 작성자만 확인할 수 있습니다.");
+										    }
+										  });
+										});
+
+                    
                   </script>
 
 

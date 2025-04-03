@@ -228,7 +228,7 @@
                         <% for(int i=1; i<6; i++) { %>
                           <div class="questionBox1">
                             <a href="#"> 질문내용 <%= i %></a>
-                            <button type="button" class="material-symbols-outlined" id="aa<%=i%>"
+                            <button type="button" class="material-symbols-outlined"
                               data-bno="<%= i %>">keyboard_double_arrow_down</button>
                           </div>
 
@@ -270,8 +270,6 @@
                 	  });
 
                 	  
-                      const isOpen = replyBox.classList.contains("open");
-
 
                 	  // 🔽 아래는 기존 코드 유지
                 	  const toggles = document.querySelectorAll(".material-symbols-outlined");
@@ -293,7 +291,7 @@
                 	    	    btnContainer.style.maxHeight = "0px";
                 	    	    btnContainer.style.opacity = 0;
                 	    	  } else {
-                	    		  replyBox.classList.add("active");
+                	    		 replyBox.classList.add("active");
                 	    		  btnContainer.classList.add("active");
 
                 	    		  // textarea 안의 높이 재계산 먼저 실행
@@ -319,12 +317,6 @@
                 	  });
 
                 	  // 로그인 ID 체크
-                	      document.querySelectorAll('.reply-box').forEach(box => {
-							        box.classList.remove("open");
-							        box.style.maxHeight = "0px";
-							        box.style.opacity = 0;
-							        box.innerHTML = ""; // ✅ 내용도 비움
-							      });
                 	  const memId = "<%= (loginMember != null) ? loginMember.getMemId() : "" %>";
                 	  const enrollBtns = document.querySelectorAll(".adminEnrollBtn");
                 	  const deleteBtns = document.querySelectorAll(".adminDeleteBtn");
@@ -342,17 +334,16 @@
                 	});
 
                     // 토글 버튼 클릭 시
-	                   $(document).on("click", ".material-symbols-outlined", function () {
-											  const toggleBtn = $(this); // 현재 클릭된 버튼 기억
-											  const bno = toggleBtn.data("bno");
-											
-											  fnaContent(bno, toggleBtn); // 클릭된 요소 함께 전달
-											});
-                    
+						                   $(document).on("click", ".material-symbols-outlined", function () {
+						  const toggleBtn = $(this); // 현재 클릭된 버튼 기억
+						  const bno = toggleBtn.data("bno");
+						
+						  fnaContent(bno, toggleBtn); // 클릭된 요소 함께 전달
+						});
 
                     //===================================================================================================		
                     //전체 F&Q 조회
-                    function fnaContent(bno,toggleBtn) {
+                    function fnaContent(bno) {
                       const memId = "<%= (loginMember != null) ? loginMember.getMemId() : "" %>";
                       var url = "<%= request.getContextPath() %>/fnaSelect.fa";
 
@@ -361,11 +352,6 @@
                         method: "GET",
                         data: { bno: bno },
                         success: function (response) {
-                        	
-                        	
-                        	
-                        	
-                        	
                           // admin 여부 확인
                           if (memId === 'admin') {
                         		  $('.reply-box').each(function (index) {
@@ -379,7 +365,7 @@
                         		   // textarea에 답변 내용 채우기
                                       $(this).find('.adminReply').val(response[index].answer);
                                       // 문의내용이 필요하다면 별도 표시
-                                      $(this).find('.question-text').html("문의내용 : " + response[index].content);
+                                      $(this).find('.questionBox1').html("문의내용 : " + response[index].content);
                         		    }
                         		  });
                         		
@@ -387,11 +373,10 @@
                         	  $('.reply-box').each(function (index) {
                         		    if (index < response.length) {
                         		    	let content =
-                        		    		 " <div>문의내용 : " + response[index].content + "<br><br><br><br><br>" + "답변내용 : " + response[index].answer + "</div>" ;
+                        		    		 " <div style=white-space: pre-wrap;>문의내용 : " + response[index].content + "<br><br><br><br><br>" + "답변내용 : " + response[index].answer + "</div>" ;
 																	$(this).html(content);
 
                         		      // ✅ reply-box 높이 자동 조절
-                        		      
                         		      const replyBox = this;
                         		      setTimeout(() => {
                         		        replyBox.style.maxHeight = replyBox.scrollHeight + 'px';
@@ -488,10 +473,10 @@
                       })
                     }
                     //======================================================================================================                      
-									$(document).on('input', '.adminReply', function () {
-									  this.style.height = 'auto';
-									  this.style.height = this.scrollHeight + 'px';
-									});
+$(document).on('input', '.adminReply', function () {
+  this.style.height = 'auto';
+  this.style.height = this.scrollHeight + 'px';
+});
 
                   </script>
 

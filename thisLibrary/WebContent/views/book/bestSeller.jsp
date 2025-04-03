@@ -273,7 +273,10 @@ hr {
             </div>
          </div>
          <div id="content_2">
-            <div id="content_2_2" class="content_2_2">
+
+             <div style="font-size: 40px; font-family: system-ui, sans-serif; margin-top: 27px;">🏆베스트 셀러</div>
+
+        <div id="content_2_2" class="content_2_2">
    				 <!-- 책 정보 추가 -->
          </div>
          </div>

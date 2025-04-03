@@ -402,6 +402,7 @@ a {
 	margin-left: 15%;
 	margin-top: 5%;
 	width: 210px;
+	cursor: pointer;
 }
 
 #content_2_4>button {
@@ -416,7 +417,9 @@ a {
 	margin-left: 15%;
 	height: 100%;
 	width: 210px;
+	cursor: pointer;
 }
+
 
 /* -------------------------------------------------------- */
 #content_3_1>#brown {
@@ -514,13 +517,7 @@ a {
 	background-color: #f8f9fa;
 	border: 2px solid #4A4A4A;
 	border-radius: 13px;
-	cursor: pointer;
 	transition: all 0.3s ease;
-}
-
-.pick-button:hover {
-	background-color: #4A4A4A;
-	color: white;
 }
 
 .book-list {

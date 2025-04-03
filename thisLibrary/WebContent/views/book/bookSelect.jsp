@@ -196,12 +196,13 @@ hr {
 
 
    <div id="wrapContent">
-      <div id="content">
-         
-         <div id="content_2">
-            <div id="content_2_2" class="content_2_2">
+      <div id="content_2">
+            <div id="content">
+               
+         <div id="content_2_2" class="content_2_2">
+            <div id="content22" style="margin-top: 55px; font-size: 40px; text-align: center; font-family: system-ui, sans-serif; margin-top: 27px;"></div>
     <!-- 책 정보가 여기에 추가될 것입니다. -->
-</div>
+			</div>
          </div>
       </div>
    </div>
@@ -242,6 +243,11 @@ hr {
         	  alert( keyword +"라는 도서(작가)는 없습니다!");
             return;
           }
+          
+          let titleHtml = 
+	        	 '<div>🔍'+keyword+'에 대한 검색 결과 입니다.</div>'
+	       $("#content22").append(titleHtml);
+
 
           const books = data.response.docs;
 
@@ -269,10 +275,11 @@ hr {
 	         let translator = parts.length > 1 ? parts[1].trim() : "" || "번역가 정보 없음"; 
 	
 
+	         
+	         
             // 책 정보 HTML 생성
 
             let bookHTML = 
-              '<br>'+
               '<hr>'+
               '<div id="content_2_2_'+(i + 1)+'" class="content_2_2_book">'+
                 '<div id="book'+(i + 1)+'" class="book" onclick="location.href=\'bookDetail.jsp?isbn='+isbn+'\';" style="cursor: pointer;">'+

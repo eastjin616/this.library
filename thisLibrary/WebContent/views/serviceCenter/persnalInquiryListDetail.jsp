@@ -183,20 +183,23 @@
 
 
             <%@ include file="../common/menubar.jsp" %>
-				<% Integer loginMemNo = (loginMember != null) ? loginMember.getMemNo() : null; %>
+				<% int loginMemNo = (loginMember != null) ? loginMember.getMemNo() : null; 
+						String loginMemName = (loginMember != null) ? loginMember.getMemName() : null; %>
               <div class="post-container" style="margin-top: 120px;margin-bottom: 120px;">
                 <div class="post-header">
                   <h2>
                     <%=sc.getTitle() %><span class="label">팔로우</span>
                   </h2>
                   
-                  
+						<% if(loginMember != null && loginMemName.equals(sc.getName())){ %>
+						
                     <span class="set-header">
                       <button
                         onclick="location.href='<%= contextPath %>/updateForm.sc?bno=<%= sc.getInquiryNo() %>'">수정</button> |
                       <button
                         onclick="location.href='<%= contextPath %>/delete.sc?bno=<%= sc.getInquiryNo() %>'">삭제</button>
                     </span>
+                    <%} %>
                       <p class="post-meta">
                         작성자: <%=sc.getName()%> | <%=sc.getInquiryDate()%>
                       </p>

@@ -564,7 +564,7 @@ h2{
 									<img src="" alt="" loading="lazy">
 									<input type="hidden">
 								</div>
-								<div class="authorBookImg3">
+								<div class="authorBookImg3" style="cursor: pointer;">
 									<img src="" alt="" loading="lazy">
 									<input type="hidden">
 								</div>

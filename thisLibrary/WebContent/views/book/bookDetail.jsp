@@ -53,7 +53,7 @@ div {
 	height: auto;
 	justify-content: center;
 	align-items: center;
-	width: 80%;
+	width: 90%;
 }
 
 #bookInfo {
@@ -71,6 +71,10 @@ div {
 	margin: auto;
 	display: block;
 	height: 100%;
+	overflow : hidden;
+	height: 750px;
+	width: 600px;
+	
 }
 
 #bookIntroduce {
@@ -149,17 +153,15 @@ div {
 	align-items: stretch;
 }
 
-.authorBookImg1,.authorBookImg2,.authorBookImg3li:hover {
+.authorBookImg1,.authorBookImg2,.authorBookImg3 i:hover {
 	color: white;
 	font-weight: bold;
-	transform: scale(1.05);
 	cursor: pointer;
 }
 
-
 .authorBookImg1 img,.authorBookImg2 img,.authorBookImg3 img{
-	width: 200px;
-	height: 250px;
+	width: 190px ; 
+	height: 240px ;
 }
 
 pre {
@@ -519,15 +521,6 @@ h2{
 
 		<div id="mainContent">
 			<div id="slideGem">
-
-				<div id="sidebar">
-					<h3>개인서재 제목</h3>
-					<ul class="book-list">
-						<li>선재 업고 튀어</li>
-						<li>호석군의 뉴질랜드</li>
-						<li>동진이의 영국여행</li>
-					</ul>
-				</div>
 			</div>
 
 			<!-- ------------------------------------------------ -->
@@ -559,7 +552,7 @@ h2{
 
 						</div>
 						<hr style="width: 80%;">
-						<div id="neyong" style="margin-left: 55px; font-size: large;">함께 대출된 도서</div>
+						<div id="neyong" style="margin-left: 55px; font-size: large;" >함께 대출된 도서</div>
 						<br>
 							<div id="authorPhoto">
 								<br>
@@ -775,14 +768,19 @@ $(document).ready(function () {
     	  $(bookInfotitle).find('h1:eq(0)').text(title)
       }
  //================================================================                   
-      if($(bookInform).length){
-		  $(bookInform).find('div:eq(0)').text("제목 : "+title)
-    	  $(bookInform).find('div:eq(1)').text("지은이 : "+author)
-		  $(bookInform).find('div:eq(2)').text("번역가 : " +translator)
-    	  $(bookInform).find('div:eq(3)').text("출판년도 : "+pubYear)
-    	  $(bookInform).find('div:eq(4)').text("출판일자 : "+publicationYear)
-    	  $(bookInform).find('div:eq(5)').text("책 속으로 : "+description)
-      }
+ if ($(bookInform).length) {
+    // HTML 특수문자 디코딩 함수
+    const decodeHTML = (str) => {
+        return $("<textarea>").html(str).text();
+    };
+
+    $(bookInform).find('div:eq(0)').html("<b>제목 :</b> " + title);
+    $(bookInform).find('div:eq(1)').html("<b>지은이 :</b> " + author);
+    $(bookInform).find('div:eq(2)').html("<b>번역가 :</b> " + translator);
+    $(bookInform).find('div:eq(3)').html("<b>출판년도 :</b> " + pubYear);
+    $(bookInform).find('div:eq(4)').html("<b>출판일자 :</b> " + publicationYear);
+    $(bookInform).find('div:eq(5)').html("<b>책 속으로 :</b> " + decodeHTML(description));
+}
 //================================================================  
 	if($(intoBook).length){
 		$(intoBook).find('p:eq(0)').text(description)

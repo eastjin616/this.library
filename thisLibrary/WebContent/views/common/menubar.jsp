@@ -236,8 +236,8 @@
                         <a href="#">전체도서</a>
                         <div class="submenu">
                            <a href="<%=contextPath%>/views/book/bestSeller.jsp">인기도서</a>
-                           <a href="#todayPickButton" onclick="scrollToSection('content_2_1')">오늘의 픽</a>
-                           <a href="#adminPickButton" onclick="scrollToSection('content_2_5')">마니아의 픽</a>
+                           <!-- <a href="#todayPickButton" onclick="scrollToSection('content_2_1')">오늘의 픽</a> -->
+                           <!-- <a href="#adminPickButton" onclick="scrollToSection('content_2_5')">마니아의 픽</a> -->
                         </div>
                      </div>
 
@@ -274,13 +274,18 @@
                   <%} %>
 
 
+  				<% if(loginMember== null){ %>
+  					<div></div>
+  				
+  				  <%}else{ %>
                   <div id="header_mypage_btn" style="height: 100%; width: 7%;">
                      
+                     
                      <button class="btn" id="mypage" onclick="mypage()">
-												<img src="<%= contextPath %>/resources/assets/user01.png" alt="user-icon"  style="cursor: pointer;">
+						<img src="<%= contextPath %>/resources/assets/user01.png" alt="user-icon"  style="cursor: pointer;">
                      </button>
                   </div>
-
+			<%} %>
                </div>
             </div>
             <!-- -------------------------------------------------------------------- -->

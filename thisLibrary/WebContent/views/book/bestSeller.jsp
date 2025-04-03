@@ -320,7 +320,7 @@ hr {
            let apiURL = baseURL;
 
            if (kdcValue) {
-               apiURL = baseURL.replace("&pageNo=1&pageSize=10&format=json", `&kdc=\${kdcValue}&pageNo=1&pageSize=10&format=json&format=json`);
+               apiURL = baseURL.replace("&pageNo=1&pageSize=10&format=json", `&pageNo=1&pageSize=10&kdc=\${kdcValue}&format=json&format=json`);
            }
 
            $.getJSON(apiURL, function (data) {

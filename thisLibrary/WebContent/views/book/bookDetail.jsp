@@ -677,7 +677,6 @@ $(".star").on("click", function() {
 	
 $(document).ready(function () {
     // URL에서 ISBN13 파라미터 추출
-    //http://localhost:8777/this/views/book/bookDetail.jsp?isbn=9788954654753(메인페이지 북 처음꺼 눌렀을 때)
     var urlParams = new URLSearchParams(window.location.search);
    	isbn = urlParams.get("isbn");
     

@@ -125,7 +125,7 @@
 	            <%for(Board b : list){ %>
 		              <tr>
 		                <td><%=b.getBoardNo() %></td>
-		                <td><%=b.getBoardTitle() %></td>
+		                <td width="645"><%=b.getBoardTitle() %></td>
 		                <td><%=b.getBoardWriter() %></td>
 		                <td><%=b.getWriteDate() %></td>
 		                <td><%=b.getCount() %></td>

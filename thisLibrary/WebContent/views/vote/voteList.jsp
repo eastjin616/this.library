@@ -125,7 +125,7 @@
 	            <%for(Vote v : list){ %>
 		              <tr>
 		                <td><%=v.getVoteNo() %></td>
-		                <td><%=v.getVoteTitle() %></td>
+		                <td width="645"><%=v.getVoteTitle() %></td>
 		                <td><%=v.getWriter() %></td>
 		                <td><%=v.getVoteStartDate() %></td>
 		                <td><%=v.getCount() %></td>

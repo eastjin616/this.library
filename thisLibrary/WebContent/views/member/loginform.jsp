@@ -195,7 +195,6 @@ body * {
 
 			<div class="login_etc">
 				<div class="checkbox">
-					<input type="checkbox" name="" id=""> 로그인 정보 저장
 				</div>
 
 				<div class="forgot_pw">

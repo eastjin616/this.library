@@ -216,7 +216,7 @@ ERD Cloud :
 <img src="[./thisLibrary/WebContent/resources/assets/
 This_서고.pdf]()" alt="최종보고서"/>
 
-<a href="[report.pdf](https://github.com/eastjin616/this.library/blob/main/thisLibrary/WebContent/resources/assets/This.%EC%84%9C%EA%B3%A0_%EC%B5%9C%EC%A2%85%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf)" download>📄 보고서 다운로드</a>
+<a href="./thisLibrary/WebContent/resources/assets/최종보고서.pdf" download>📄 보고서 다운로드</a>
 
 
 

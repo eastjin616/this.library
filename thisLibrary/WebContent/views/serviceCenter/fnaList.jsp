@@ -365,7 +365,7 @@
                         		   // textarea에 답변 내용 채우기
                                       $(this).find('.adminReply').val(response[index].answer);
                                       // 문의내용이 필요하다면 별도 표시
-                                      $(this).find('.questionBox1').html("문의내용 : " + response[index].content);
+                                      $(this).find('.question-text').html("문의내용 : " + response[index].content);
                         		    }
                         		  });
                         		

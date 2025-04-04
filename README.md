@@ -36,18 +36,18 @@
 
  <h2 style="border-bottom : none">🤎 조원 : 이호석</h2>
 
- - 찜하기 (소켓)
-- 로그인
-    - SNS 간편로그인 (Google)
-- 마이페이지(메뉴)
-    - 정보변경/탈퇴
-    - 찜하기
-    - 감상문
-- 고객센터
-    - 문의 
-    - 상담 
-    - FAQ 
-    - 공지사항
+  - 찜하기
+  - 로그인
+      - SNS 간편로그인 (Google)
+  - 마이페이지(메뉴)
+      - 정보변경/탈퇴
+      - 찜하기
+      - 감상문
+  - 고객센터
+      - 문의 
+      - 상담 
+      - FAQ 
+      - 공지사항
 
   <h2 style="border-bottom : none">💙 조원 : 고영훈</h2>
 
@@ -93,6 +93,124 @@ ERD Cloud :
 
 # 📽 프로젝트 구현
 <h2 style="border-bottom : none">🧡 조장 : 서동진</h2>
-◽ 메인페이지 <br/>
 
-<img src="/resources/assets/온라인투표%20투표%20기능.gif" alt="온라인투표 GIF"/>
+## ◽ 메인페이지 <br/>
+
+<img src="./thisLibrary/WebContent/resources/assets/메인페이지슬라이더및PICKS.gif" alt="메인페이지 GIF"/>
+<br/><br/>
+
+## ◽ 로그인 <br/>
+<img src="./thisLibrary/WebContent/resources/assets/네이버 SNS 로그인.gif" alt="로그인 GIF"/>
+<br/><br/>
+
+## ◽ 회원가입 <br/>
+<img src="./thisLibrary/WebContent/resources/assets/회원가입.gif" alt="로그인 GIF"/>
+
+## ◽ 아이디 찾기 <br/>
+<img src="./thisLibrary/WebContent/resources/assets/아이디찾기.gif" alt="로그인 GIF"/>
+
+## ◽ 비밀번호 찾기 <br/>
+<img src="./thisLibrary/WebContent/resources/assets/비밀번호 재설정.gif" alt="로그인 GIF"/>
+
+## ◽ 베스트 셀러 <br/>
+<img src="./thisLibrary/WebContent/resources/assets/인기도서 목록 조회2.gif" alt="로그인 GIF"/>
+
+## ◽ 도서 정보 상세 페이지 <br/>
+<img src="./thisLibrary/WebContent/resources/assets/도서 정보 상세 페이지 조회2.gif" alt="로그인 GIF"/>
+
+## ◽ 도서 검색 기능 <br/>
+<img src="./thisLibrary/WebContent/resources/assets/도서 검색 기능2.gif" alt="로그인 GIF"/>
+
+
+
+
+
+<br/><br/>
+<br/><br/>
+
+
+# 
+<h2 style="border-bottom : none">🤎 조원 : 이호석</h2>
+
+
+
+  ## ◽ SNS 간편로그인(Google)<br/>
+<img src="./thisLibrary/WebContent/resources/assets/구글로그인(완).gif" alt="찜하기 GIF"/>
+
+
+  ## ◽ 마이페이지 - 정보변경/탈퇴<br/>
+<img src="./thisLibrary/WebContent/resources/assets/마이페이지 회원정보 변경 및 탈퇴 (완).gif" alt="찜하기 GIF"/>
+
+  ## ◽ 마이페이지 - 감상문<br/>
+<img src="./thisLibrary/WebContent/resources/assets/감상문 마이페이지에서 확인(완).gif" alt="찜하기 GIF"/>
+
+
+  ## ◽ 찜하기<br/>
+<img src="./thisLibrary/WebContent/resources/assets/찜하기 마이페이지에서 확인 (완).gif" alt="찜하기 GIF"/>
+
+
+  ## ◽ 고객센터 - 문의글 작성/조회/수정/삭제<br/>
+<img src="./thisLibrary/WebContent/resources/assets/문의글 작성하기(완).gif" alt="찜하기 GIF"/>
+
+
+
+ ## ◽ 고객센터 - F&Q<br/>
+<img src="./thisLibrary/WebContent/resources/assets/F&Q.gif" alt="찜하기 GIF"/>
+
+ <br/>
+
+# 💙 조원 : 고영훈
+ <br/>
+
+ ## ◽ 카카오 로그인(API)
+
+<img src="./thisLibrary/WebContent/resources/assets/카카오 로그인.gif" alt="카카오 로그인 GIF"/>
+
+<br/>
+
+ ## ◽ 자유 게시판(작성, 수정, 삭제)
+
+<img src="./thisLibrary/WebContent/resources/assets/자유게시판 작성.gif" alt="자유게시판 GIF"/>
+
+<br/>
+
+ ## ◽ 자유 게시판 (댓글 기능)
+
+<img src="./thisLibrary/WebContent/resources/assets/자유게시판 댓글 작성.gif" alt="자유 게시판 (댓글 기능) GIF"/>
+
+<br/>
+
+ ## ◽ 온라인 투표 (작성, 수정, 삭제)
+
+<img src="./thisLibrary/WebContent/resources/assets/온라인투표 작성.gif" alt="온라인 투표 (작성, 수정, 삭제) GIF"/>
+
+<br/>
+
+ ## ◽ 온라인 투표 (댓글 기능)
+
+<img src="./thisLibrary/WebContent/resources/assets/온라인투표 댓글 기능.gif" alt="온라인 투표 (댓글 기능) GIF"/>
+
+<br/>
+
+ ## ◽ 온라인 투표 (투표 기능)
+
+<img src="./thisLibrary/WebContent/resources/assets/온라인투표 투표 기능.gif" alt="온라인 투표 (투표 기능) GIF"/>
+
+<br/>
+
+ ## ◽ 책 리뷰 작성
+
+<img src="./thisLibrary/WebContent/resources/assets/책 리뷰 작성.gif" alt="책 리뷰 작성 GIF"/>
+
+<br/>
+
+ ## ◽ 팔로우 / 언팔로우 기능
+
+<img src="./thisLibrary/WebContent/resources/assets/책 리뷰 작성.gif" alt="팔로우 / 언팔로우 기능 GIF"/>
+
+
+
+
+
+
+

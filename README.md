@@ -206,11 +206,15 @@ ERD Cloud :
 
  ## ◽ 팔로우 / 언팔로우 기능
 
-<img src="./thisLibrary/WebContent/resources/assets/책 리뷰 작성.gif" alt="팔로우 / 언팔로우 기능 GIF"/>
+<img src="./thisLibrary/WebContent/resources/assets/팔로우 언팔로우 기능.gif" alt="팔로우 / 언팔로우 기능 GIF"/>
+
+<br/><br/><br/>
+
+# 📚 보고서
 
 
-
-
+<img src="./thisLibrary/WebContent/resources/assets/
+This_서고.pdf" alt="팔로우 / 언팔로우 기능 GIF"/>
 
 
 

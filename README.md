@@ -210,13 +210,9 @@ ERD Cloud :
 
 <br/><br/><br/>
 
-# 📚 보고서
+# 📚 최종 보고서 확인
 
-
-<img src="[./thisLibrary/WebContent/resources/assets/
-This_서고.pdf]()" alt="최종보고서"/>
-
-<a href="./thisLibrary/WebContent/resources/assets/This.서고_최종보고서.pdf" download>📄 보고서 다운로드</a>
+<a href="./thisLibrary/WebContent/resources/assets/This.서고_최종보고서.pdf" download>📄 This.서고_최종보고서.pdf</a>
 
 
 

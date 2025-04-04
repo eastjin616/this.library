@@ -17,7 +17,7 @@
 <img src="./thisLibrary/WebContent/resources/assets/개발기간.png" alt="개발기간"/>
 <br/><br/><br/>
 
-# 🎈 구성원 및 역할
+<h2 style="border-bottom : none">🎈 구성원 및 역할</h2>
 
 <h2 style="border-bottom : none">🧡 조장 : 서동진</h2>
 

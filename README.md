@@ -13,7 +13,7 @@
 <br/><br/><br/>
 
 # ⏱ 개발기간
-![개발 기간](./thisLibrary/WebContent/resources/assets/개발기간.png)
+<img src="./thisLibrary/WebContent/resources/assets/개발기간.png" alt=""/>
 <br/><br/><br/>
 
 # 🎈 구성원 및 역할

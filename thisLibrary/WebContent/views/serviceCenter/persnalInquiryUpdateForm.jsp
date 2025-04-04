@@ -152,21 +152,12 @@
                             required><%= sc.getContent() %></textarea>
 
                         <div class="file-upload-container">
-                            <label for="fileUpload" class="custom-file-label">첨부파일</label>
-                            <input type="file" id="fileUpload" class="hidden-file-input" name="upfile">
-
 
                             <div class="button-group">
                                 <button onclick="goBack()">뒤로가기</button>
                                 <button type="submit">수정하기</button>
                             </div>
                         </div>
-                        <% if(at != null){ %>
-                       <p style="margin-top: 5px;" id="fileName"><%= at.getOriginName()  %></p>
-                       <input type="hidden" name="originFileNo" value="<%= at.getFileNo() %>">
-                       <%}else{ %>
-                        <p style="margin-top: 5px;" id="fileName">선택된 파일 없음</p>
-                       <%} %>
                     </form>
                 </div>
                 <!-- 자유게시판 게시글 작성 끝 -->

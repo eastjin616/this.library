@@ -86,5 +86,12 @@
 <br/><br/><br/>
 
 # ✔ 설계
+ERD Cloud : 
+![ERD Cloud](https://www.erdcloud.com/d/cwC3dM5W3tQNLPx55)
+
+<br/><br/><br/>
 
 # 📽 프로젝트 구현
+<h2 style="border-bottom : none">🧡 조장 : 서동진</h2>
+◽ 메인페이지 
+![메인페이지](./thisLibrary/WebContent/resources/assets/메인페이지슬라이더및PICKS.gif)

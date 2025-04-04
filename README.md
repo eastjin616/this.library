@@ -213,8 +213,8 @@ ERD Cloud :
 # 📚 보고서
 
 
-<img src="./thisLibrary/WebContent/resources/assets/
-This_서고.pdf" alt="팔로우 / 언팔로우 기능 GIF"/>
+<img src="[./thisLibrary/WebContent/resources/assets/
+This_서고.pdf](https://github.com/eastjin616/this.library/blob/main/thisLibrary/WebContent/resources/assets/This.%EC%84%9C%EA%B3%A0_%EC%B5%9C%EC%A2%85%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf)" alt="최종보고서"/>
 
 
 

@@ -1,5 +1,6 @@
 <!-- Heading -->
 ![서고 로고](./thisLibrary/WebContent/resources/assets/This_서고%20로고.png)
+![디스서고 로고](https://raw.githubusercontent.com/eastjin616/this.library/main/thisLibrary/WebContent/resources/assets/This_서고%20로고.png)
 
 # 📘 프로젝트 소개
 
